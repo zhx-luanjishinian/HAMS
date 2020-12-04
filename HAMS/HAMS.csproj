@@ -35,6 +35,38 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.3.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.11.4.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4, Version=1.1.11.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\K4os.Compression.LZ4.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4.Streams, Version=1.1.11.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\K4os.Compression.LZ4.Streams.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Hash.xxHash, Version=1.0.6.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\K4os.Hash.xxHash.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.22.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.EntityFramework, Version=8.0.22.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\MySql.Data.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Web, Version=8.0.22.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\MySql.Web.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -55,6 +87,116 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Admin\AdminView\ClassManagement.xaml.cs">
+      <DependentUpon>ClassManagement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminView\Notice.xaml.cs">
+      <DependentUpon>Notice.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminView\NoticeManagement.xaml.cs">
+      <DependentUpon>NoticeManagement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminView\ReviseClass.xaml.cs">
+      <DependentUpon>ReviseClass.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminView\ReviseStudent.xaml.cs">
+      <DependentUpon>ReviseStudent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminView\ReviseTeacher.xaml.cs">
+      <DependentUpon>ReviseTeacher.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminView\StudentManagement.xaml.cs">
+      <DependentUpon>StudentManagement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminView\TeacherManagement.xaml.cs">
+      <DependentUpon>TeacherManagement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Student\StudentView\AlertForm.xaml.cs">
+      <DependentUpon>AlertForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Student\StudentView\HomeworkSubmit.xaml.cs">
+      <DependentUpon>HomeworkSubmit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Student\StudentView\StuCheckHomework.xaml.cs">
+      <DependentUpon>StuCheckHomework.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Student\StudentView\StuChooseCalender.xaml.cs">
+      <DependentUpon>StuChooseCalender.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Student\StudentView\StudentAnswerQuestion.xaml.cs">
+      <DependentUpon>StudentAnswerQuestion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Student\StudentView\StudentMainForm.xaml.cs">
+      <DependentUpon>StudentMainForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Student\StudentView\StuDoHomework.xaml.cs">
+      <DependentUpon>StuDoHomework.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Student\StudentView\StuHomeworkRank.xaml.cs">
+      <DependentUpon>StuHomeworkRank.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Student\StudentView\StuMainHomework.xaml.cs">
+      <DependentUpon>StuMainHomework.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Student\StudentView\StuSubmitHomework.xaml.cs">
+      <DependentUpon>StuSubmitHomework.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\TeacherView\AnnounceNotice.xaml.cs">
+      <DependentUpon>AnnounceNotice.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\TeacherView\AnswerQuestion.xaml.cs">
+      <DependentUpon>AnswerQuestion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\TeacherView\BreifView.xaml.cs">
+      <DependentUpon>BreifView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\TeacherView\HomeworkNoticeCheck.xaml.cs">
+      <DependentUpon>HomeworkNoticeCheck.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\TeacherView\HomeworkNoticeCheckFinish.xaml.cs">
+      <DependentUpon>HomeworkNoticeCheckFinish.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\TeacherView\HomeworkNoticeUncheck.xaml.cs">
+      <DependentUpon>HomeworkNoticeUncheck.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\TeacherView\HomeworkStatistic.xaml.cs">
+      <DependentUpon>HomeworkStatistic.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\TeacherView\TeacherMainForm.xaml.cs">
+      <DependentUpon>TeacherMainForm.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Admin\AdminView\ClassManagement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin\AdminView\Notice.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin\AdminView\NoticeManagement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin\AdminView\ReviseClass.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin\AdminView\ReviseStudent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin\AdminView\ReviseTeacher.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin\AdminView\StudentManagement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin\AdminView\TeacherManagement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -63,10 +205,93 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DataUtil\DBUtil.cs" />
+    <Compile Include="Entity\Admin.cs" />
+    <Compile Include="Entity\Class.cs" />
+    <Compile Include="Entity\Comm1.cs" />
+    <Compile Include="Entity\Comm2.cs" />
+    <Compile Include="Entity\Homework.cs" />
+    <Compile Include="Entity\Notice.cs" />
+    <Compile Include="Entity\Student.cs" />
+    <Compile Include="Entity\SysNotice.cs" />
+    <Compile Include="Entity\TakeCourse.cs" />
+    <Compile Include="Entity\Teacher.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Student\StudentView\AlertForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Student\StudentView\HomeworkSubmit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Student\StudentView\StuCheckHomework.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Student\StudentView\StuChooseCalender.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Student\StudentView\StudentAnswerQuestion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Student\StudentView\StudentMainForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Student\StudentView\StuDoHomework.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Student\StudentView\StuHomeworkRank.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Student\StudentView\StuMainHomework.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Student\StudentView\StuSubmitHomework.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Teacher\TeacherView\AnnounceNotice.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Teacher\TeacherView\AnswerQuestion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Teacher\TeacherView\BreifView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Teacher\TeacherView\HomeworkNoticeCheck.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Teacher\TeacherView\HomeworkNoticeCheckFinish.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Teacher\TeacherView\HomeworkNoticeUncheck.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Teacher\TeacherView\HomeworkStatistic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Teacher\TeacherView\TeacherMainForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -94,6 +319,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Admin\AdminDao\" />
+    <Folder Include="Admin\AdminService\" />
+    <Folder Include="Student\StudentDao\" />
+    <Folder Include="Student\StudentService\" />
+    <Folder Include="Teacher\TeacherDao\" />
+    <Folder Include="Teacher\TeacherService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\notice.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

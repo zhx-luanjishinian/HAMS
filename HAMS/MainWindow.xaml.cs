@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MySql.Data.MySqlClient;
 
 namespace HAMS
 {
@@ -24,5 +25,28 @@ namespace HAMS
         {
             InitializeComponent();
         }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            string constr = "server=182.92.220.26;Uid=HAMS;password=HAMS;Database=HAMS";
+            MySqlConnection conn = new MySqlConnection(constr);
+            try
+            {
+                conn.Open();
+                MySqlCommand mycmd = new MySqlCommand("insert into admin(password,name,sex) values('dikd3939','紫梓','女')", conn);
+                if (mycmd.ExecuteNonQuery() > 0)
+                {
+                    MessageBox.Show("插入成功");
+
+                }
+                    Console.ReadLine();
+                    conn.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+            }
+        }
     }
+    
 }

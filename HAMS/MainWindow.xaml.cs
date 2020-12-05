@@ -31,7 +31,7 @@ namespace HAMS
             InitializeComponent();
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             if (radiobtnStudent.IsChecked==true) { 
             BaseResult br = sts.login(txtUserName.Text, txtPassword.Text);

@@ -53,7 +53,7 @@
             </Canvas>
             <Canvas Background="Azure" Height="108">
                 <Label Content="作业备注" Canvas.Left="132.666" Height="26.567" Width="82.667" FontSize="14" FontWeight="Bold" Canvas.Top="10"/>
-                <ListView x:Name="listViewHomeworkNote" Height="56.433"  VerticalContentAlignment="Center" Canvas.Left="110.666" Canvas.Top="41.567" Width="492.669" SelectionChanged="ListViewHomeworkNote_SelectionChanged"/>
+                <ListView x:Name="listViewHomeworkNote" Height="56.433"  VerticalContentAlignment="Center" Canvas.Left="110.666" Canvas.Top="41.567" Width="492.669"/>
             </Canvas>
             <Canvas Background="Azure" Height="97" Margin="0,0,-0.333,0">
                 <Button x:Name="btnSubmitHomework" Content="提交" Canvas.Left="565" Canvas.Top="36" Width="75" Height="37" FontSize="14"/>

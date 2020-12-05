@@ -2,20 +2,20 @@
 using MySql.Data.MySqlClient;
 using System.Data;
 
-namespace HAMS.Student.StudentDao
+namespace HAMS.Teacher.TeacherDao
 {
-    class SDao
+    class TDao
     {
         private MySqlConnection conn = DataUtil.DBUtil.getConnection();
         public DataTable Login(String account, String pw)
         {
-            
-            String sql = "select stuSpecId,name,password from student where stuSpecId=@id";
+
+            String sql = "select teacherSpecId,name from teacher where teacherSpecId=@id";
             //传入要填写的参数
-            MySqlParameter parameter = new MySqlParameter("@id",account);
+            MySqlParameter parameter = new MySqlParameter("@id", account);
             DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);
             return table;
-           
+
 
         }
     }

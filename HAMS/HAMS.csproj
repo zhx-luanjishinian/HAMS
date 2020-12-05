@@ -37,53 +37,50 @@
   <ItemGroup>
     <Reference Include="BouncyCastle.Crypto, Version=1.8.3.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\lxree\Downloads\mysql-connector-net-8.0.22-noinstall\v4.5.2\BouncyCastle.Crypto.dll</HintPath>
+      <HintPath>..\..\..\..\..\Documents\Tencent Files\461981055\FileRecv\mysql-connector-net-8.0.22-noinstall\v4.5.2\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
     <Reference Include="Google.Protobuf, Version=3.11.4.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\lxree\Downloads\mysql-connector-net-8.0.22-noinstall\v4.5.2\Google.Protobuf.dll</HintPath>
+      <HintPath>..\..\..\..\..\Documents\Tencent Files\461981055\FileRecv\mysql-connector-net-8.0.22-noinstall\v4.5.2\Google.Protobuf.dll</HintPath>
     </Reference>
     <Reference Include="K4os.Compression.LZ4, Version=1.1.11.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\lxree\Downloads\mysql-connector-net-8.0.22-noinstall\v4.5.2\K4os.Compression.LZ4.dll</HintPath>
+      <HintPath>..\..\..\..\..\Documents\Tencent Files\461981055\FileRecv\mysql-connector-net-8.0.22-noinstall\v4.5.2\K4os.Compression.LZ4.dll</HintPath>
     </Reference>
     <Reference Include="K4os.Compression.LZ4.Streams, Version=1.1.11.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\lxree\Downloads\mysql-connector-net-8.0.22-noinstall\v4.5.2\K4os.Compression.LZ4.Streams.dll</HintPath>
+      <HintPath>..\..\..\..\..\Documents\Tencent Files\461981055\FileRecv\mysql-connector-net-8.0.22-noinstall\v4.5.2\K4os.Compression.LZ4.Streams.dll</HintPath>
     </Reference>
     <Reference Include="K4os.Hash.xxHash, Version=1.0.6.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\lxree\Downloads\mysql-connector-net-8.0.22-noinstall\v4.5.2\K4os.Hash.xxHash.dll</HintPath>
+      <HintPath>..\..\..\..\..\Documents\Tencent Files\461981055\FileRecv\mysql-connector-net-8.0.22-noinstall\v4.5.2\K4os.Hash.xxHash.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data, Version=8.0.22.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\lxree\Downloads\mysql-connector-net-8.0.22-noinstall\v4.5.2\MySql.Data.dll</HintPath>
+      <HintPath>..\..\..\..\..\Documents\Tencent Files\461981055\FileRecv\mysql-connector-net-8.0.22-noinstall\v4.5.2\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data.EntityFramework, Version=8.0.22.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\lxree\Downloads\mysql-connector-net-8.0.22-noinstall\v4.5.2\MySql.Data.EntityFramework.dll</HintPath>
+      <HintPath>..\..\..\..\..\Documents\Tencent Files\461981055\FileRecv\mysql-connector-net-8.0.22-noinstall\v4.5.2\MySql.Data.EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Web, Version=8.0.22.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\lxree\Downloads\mysql-connector-net-8.0.22-noinstall\v4.5.2\MySql.Web.dll</HintPath>
+      <HintPath>..\..\..\..\..\Documents\Tencent Files\461981055\FileRecv\mysql-connector-net-8.0.22-noinstall\v4.5.2\MySql.Web.dll</HintPath>
     </Reference>
     <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\lxree\Downloads\mysql-connector-net-8.0.22-noinstall\v4.5.2\Renci.SshNet.dll</HintPath>
-    </Reference>
-    <Reference Include="SshNet.Security.Cryptography">
-      <HintPath>C:\Users\lxree\Downloads\mysql-connector-net-8.0.22-noinstall\v4.5.2\SshNet.Security.Cryptography.dll</HintPath>
+      <HintPath>..\..\..\..\..\Documents\Tencent Files\461981055\FileRecv\mysql-connector-net-8.0.22-noinstall\v4.5.2\Renci.SshNet.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\lxree\Downloads\mysql-connector-net-8.0.22-noinstall\v4.5.2\System.Buffers.dll</HintPath>
+      <HintPath>..\..\..\..\..\Documents\Tencent Files\461981055\FileRecv\mysql-connector-net-8.0.22-noinstall\v4.5.2\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\lxree\Downloads\mysql-connector-net-8.0.22-noinstall\v4.5.2\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <HintPath>..\..\..\..\..\Documents\Tencent Files\461981055\FileRecv\mysql-connector-net-8.0.22-noinstall\v4.5.2\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -96,17 +93,17 @@
     </Reference>
     <Reference Include="Ubiety.Dns.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\lxree\Downloads\mysql-connector-net-8.0.22-noinstall\v4.5.2\Ubiety.Dns.Core.dll</HintPath>
+      <HintPath>..\..\..\..\..\Documents\Tencent Files\461981055\FileRecv\mysql-connector-net-8.0.22-noinstall\v4.5.2\Ubiety.Dns.Core.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="WPFVisifire.Charts">
-      <HintPath>..\..\..\..\..\wpfvisifire\WPFVisifire.Charts\X86\4.5.2.1\WPFVisifire.Charts.dll</HintPath>
+      <HintPath>..\..\..\..\..\Documents\Tencent Files\461981055\FileRecv\wpfvisifire\WPFVisifire.Charts\X86\4.5.2.1\WPFVisifire.Charts.dll</HintPath>
     </Reference>
     <Reference Include="Zstandard.Net, Version=1.1.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\lxree\Downloads\mysql-connector-net-8.0.22-noinstall\v4.5.2\Zstandard.Net.dll</HintPath>
+      <HintPath>..\..\..\..\..\Documents\Tencent Files\461981055\FileRecv\mysql-connector-net-8.0.22-noinstall\v4.5.2\Zstandard.Net.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

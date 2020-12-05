@@ -56,6 +56,11 @@ namespace HAMS
         {
             
         }
+
+        private void btnReset_Click(object sender, RoutedEventArgs e)
+        {
+            StudentMainForm smf = new StudentMainForm("songhuiyu");
+        }
     }
     
 }

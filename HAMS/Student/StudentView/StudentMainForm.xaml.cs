@@ -22,13 +22,33 @@ namespace HAMS.Student.StudentView
         public StudentMainForm(string session)
 
         {
-            textBlockUserId.Text = session;
+            //textBlockUserId.Text = session;
             InitializeComponent();
         }
 
         private void BtnHomewordAlert_Click(object sender, RoutedEventArgs e)
         {
+            AlertForm af = new AlertForm();
+        }
 
+        private void btnHomeworkMana_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void class1_Click(object sender, RoutedEventArgs e)
+        {
+            StuMainHomework smw = new StuMainHomework();
+        }
+
+        private void class2_Click(object sender, RoutedEventArgs e)
+        {
+            StuMainHomework smw = new StuMainHomework();
+        }
+
+        private void class3_Click(object sender, RoutedEventArgs e)
+        {
+            StuMainHomework smw = new StuMainHomework();
         }
     }
 }

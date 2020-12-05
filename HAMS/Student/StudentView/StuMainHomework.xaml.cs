@@ -24,6 +24,71 @@ namespace HAMS.Student.StudentView
             InitializeComponent();
         }
 
+        private void homeworkManagement_Click(object sender, RoutedEventArgs e)
+        {
+            StudentMainForm smf = new StudentMainForm(tbuserNameAc.Text);
+        }
+
+        private void btnCheckRank_Click(object sender, RoutedEventArgs e)
+        {
+            StuHomeworkRank shr = new StuHomeworkRank();
+        }
+
+        private void btnHomeworkAnswer_Click(object sender, RoutedEventArgs e)
+        {
+            StudentAnswerQuestion saq = new StudentAnswerQuestion();
+        }
+
+        private void labelHomeworkName_Click(object sender, RoutedEventArgs e)
+        {
+            StuDoHomework sdh = new StuDoHomework();
+        }
+
+        private void homeworkName1_Click(object sender, RoutedEventArgs e)
+        {
+            StuDoHomework sdh = new StuDoHomework();
+        }
+
+        private void homeworkName2_Click(object sender, RoutedEventArgs e)
+        {
+            StuDoHomework sdh = new StuDoHomework();
+        }
+
+        private void homeworkName3_Click(object sender, RoutedEventArgs e)
+        {
+            StuDoHomework sdh = new StuDoHomework();
+        }
+
+        private void homeworkAnswer2_Click(object sender, RoutedEventArgs e)
+        {
+            StudentAnswerQuestion saq = new StudentAnswerQuestion();
+        }
+
+        private void checkRank2_Click(object sender, RoutedEventArgs e)
+        {
+            StuHomeworkRank shr = new StuHomeworkRank();
+        }
+
+        private void checkRank1_Click(object sender, RoutedEventArgs e)
+        {
+            StuHomeworkRank shr = new StuHomeworkRank();
+        }
+
+        private void checkRank3_Click(object sender, RoutedEventArgs e)
+        {
+            StuHomeworkRank shr = new StuHomeworkRank();
+        }
+
+        private void homeworkAnswer3_Click(object sender, RoutedEventArgs e)
+        {
+            StudentAnswerQuestion saq = new StudentAnswerQuestion();
+        }
+
+        private void homeworkAnswer1_Click(object sender, RoutedEventArgs e)
+        {
+            StudentAnswerQuestion saq = new StudentAnswerQuestion();
+        }
+
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             App.Current.Shutdown();

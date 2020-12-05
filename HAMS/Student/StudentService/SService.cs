@@ -22,11 +22,14 @@ namespace HAMS.Student.StudentService
                 return BaseResult.errorMsg("账号或者密码为空");
             }
             DataTable table = sd.Login(account, pw);
+            //table[0][0]表示第0个从数据库查出来数据的第0条信息-》stuSpecId
+            //table[0][1]->name
+            //table[0][1]表示第0个从数据库查出来数据的第1条信息-》password
             if (table.Rows.Count == 0)
             {
                 return BaseResult.errorMsg( "账号或者密码输入错误，请检查后再进行输入");
             }
-            else if (table.Rows[0][0].ToString() != pw)
+            else if (table.Rows[0][2].ToString() != pw)
             {
                 return BaseResult.errorMsg("账号正确，密码错误");
             }

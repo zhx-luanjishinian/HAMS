@@ -19,9 +19,14 @@ namespace HAMS.Teacher.TeacherView
     /// </summary>
     public partial class TeacherMainForm : Window
     {
-        public TeacherMainForm()
+        public TeacherMainForm(string session)
         {
             InitializeComponent();
+            try { if (session != null) { textBlockUserId.Text = session; } }
+            catch (Exception ex)
+            {
+                throw new Exception("界面间传值发生异常" + ex.Message);
+            }
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)

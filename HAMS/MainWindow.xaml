@@ -38,7 +38,7 @@
         <InkCanvas HorizontalAlignment="Left" Height="319" VerticalAlignment="Top" Width="380.833" Margin="377.167,81.5,0,0" Background="#FFD2DAF0"/>
         <RadioButton x:Name="radiobtnTeacher" Content="老师" IsChecked="True"  HorizontalAlignment="Left" Margin="426,113.25,0,269.544" Width="66" FontSize="16" Checked="RadiobtnTeacher_Checked"/>
         <RadioButton x:Name="radiobtnStudent" Content="学生" IsChecked="True"  HorizontalAlignment="Left" Margin="526,113.248,0,269.544" Width="67" FontSize="16" Checked="RadiobtnStudent_Checked"/>
-        <RadioButton x:Name="radiobtnAdmin" Content="管理员" IsChecked="True"  HorizontalAlignment="Left" Margin="614.147,113.248,0,269.544" Width="66"  FontSize="16"/>
+        <RadioButton x:Name="radiobtnAdmin" Content="管理员" IsChecked="True"  HorizontalAlignment="Left" Margin="614.147,113.248,0,269.544" Width="66"  FontSize="16" Checked="RadiobtnAdmin_Checked"/>
         <Label Content="账号" HorizontalAlignment="Left" Margin="439,191.033,0,0" VerticalAlignment="Top" FontSize="18" Width="53"/>
         <Label Content="密码" HorizontalAlignment="Left" Margin="439,242.22,0,0" VerticalAlignment="Top" FontSize="18" Width="53"/>
         <TextBox x:Name="txtUserName" HorizontalAlignment="Left" Height="29" Margin="539,194.893,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="168" FontSize="16"/>
@@ -46,13 +46,13 @@
 
         <Button x:Name="btnLogin" Content="登录" HorizontalAlignment="Left" Height="33.667" Margin="468.167,315.413,0,0" VerticalAlignment="Top" Width="68.98" FontSize="16" Background="#FF93B3DE" Click="btnLogin_Click" />
 
-        <Button x:Name="btnReset" Content="重置" HorizontalAlignment="Left" Height="33.667" Margin="611.167,316.5,0,0" VerticalAlignment="Top" Width="68.98" RenderTransformOrigin="1.392,0.567" FontSize="16" Background="#FF93B3DE"/>
+        <Button x:Name="btnReset" Content="重置" HorizontalAlignment="Left" Height="33.667" Margin="611.167,316.5,0,0" VerticalAlignment="Top" Width="68.98" RenderTransformOrigin="1.392,0.567" FontSize="16" Background="#FF93B3DE" Click="btnReset_Click"/>
         <Canvas HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="793.333" Background="{DynamicResource {x:Static SystemColors.InfoBrushKey}}">
             <Image Height="40" Canvas.Left="3.667" Canvas.Top="5.5" Width="35" Source="./Resources/notice.png"/>
             <!--<Image Height="40" Canvas.Left="3.667" Canvas.Top="5.5" Width="35" Source="pack://siteoforigin:,,,/Resources/notice.png"/>-->
             <TextBox x:Name="txtShowNotice" Height="30" Canvas.Left="56.167" TextWrapping="Wrap" Canvas.Top="10" Width="727.166"/>
         </Canvas>
-        <Button x:Name="button" Content="用于测试数据库连接成功的按钮" HorizontalAlignment="Left" Height="43" Margin="297,425,0,0" VerticalAlignment="Top" Width="240" Click="btnLogin_Click"/>
+        <Button x:Name="button" Content="用于测试数据库连接成功的按钮" HorizontalAlignment="Left" Height="43" Margin="297,425,0,0" VerticalAlignment="Top" Width="240" Click="button_Click"/>
 
 
     </Grid>

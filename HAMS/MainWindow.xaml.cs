@@ -14,8 +14,12 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 using HAMS.Student.StudentService;
+using HAMS.Teacher.TeacherService;
+using HAMS.Admin.AdminService;
 using HAMS.ToolClass;
 using HAMS.Student.StudentView;
+using HAMS.Teacher.TeacherView;
+using HAMS.Admin.AdminView;
 
 namespace HAMS
 {
@@ -26,6 +30,9 @@ namespace HAMS
     {
         //将业务逻辑层对象变为私有变量
         private SService sts = new SService();
+        private TService tts = new TService();
+        private AService ats = new AService();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -33,17 +40,75 @@ namespace HAMS
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            if (radiobtnStudent.IsChecked==true) { 
-            BaseResult br = sts.login(txtUserName.Text, txtPassword.Text);
-            if (br.code == 0)
+            if (radiobtnStudent.IsChecked == true)
             {
-                MessageBox.Show("恭喜您登录成功");
-                StudentMainForm smf = new StudentMainForm(txtUserName.Text+ (string)br.data);
+                BaseResult br = sts.login(txtUserName.Text, txtPassword.Text);
+                if (br.code == 0)
+                {
+                    MessageBox.Show("恭喜你已登录成功");
+
+                    StudentMainForm smf = new StudentMainForm(txtUserName.Text + (string)br.data);
+                    smf.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show(br.msg);
+                }
             }
-            else
+            else if (radiobtnTeacher.IsChecked == true)
             {
-                MessageBox.Show(br.msg);
+                BaseResult br = tts.login(txtUserName.Text, txtPassword.Text);
+                if (br.code == 0)
+                {
+                    MessageBox.Show("恭喜你已登录成功");
+                    
+                    TeacherMainForm tmf = new TeacherMainForm(txtUserName.Text + (string)br.data);
+                    //txtUserName.Text是教师工号Z0004520
+                    //(string)br.data是刘树栋
+                    tmf.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show(br.msg);
+                }
             }
+            else if (radiobtnAdmin.IsChecked == true)
+            {
+                BaseResult br = ats.login(txtUserName.Text, txtPassword.Text);
+                if (br.code == 0)
+                {
+                    MessageBox.Show("恭喜你已登录成功");
+
+                    StudentManagement sm = new StudentManagement(txtUserName.Text + (string)br.data);
+                    sm.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show(br.msg);
+                }
+            }
+        }
+
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            string constr = "server=182.92.220.26;Uid=HAMS;password=HAMS;Database=HAMS";
+            MySqlConnection conn = new MySqlConnection(constr);
+            try
+            {
+                conn.Open();
+                MySqlCommand mycmd = new MySqlCommand("insert into admin(password,name,sex) values('dikd3939','紫梓','女')", conn);
+                if (mycmd.ExecuteNonQuery() > 0)
+                {
+                    MessageBox.Show("插入成功");
+
+                }
+                Console.ReadLine();
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
             }
         }
 
@@ -54,7 +119,17 @@ namespace HAMS
 
         private void RadiobtnStudent_Checked(object sender, RoutedEventArgs e)
         {
-            
+
+        }
+
+        private void RadiobtnAdmin_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnReset_Click(object sender, RoutedEventArgs e)
+        {
+            StudentMainForm smf = new StudentMainForm("songhuiyu");
         }
     }
     

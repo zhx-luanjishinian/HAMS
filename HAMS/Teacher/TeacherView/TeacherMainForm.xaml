@@ -67,19 +67,19 @@
             </ListView.View>
             <Button x:Name="btnRecntNo1" Height="43.201" Width="194.776" OpacityMask="White" Background="#FFD2F5FA">
                 <Canvas Height="40" Width="193.31">
-                    <Image x:Name="image1" Height="20" Canvas.Left="10" Canvas.Top="10" Width="26.113" Source="/Resources/公告.png"/>
+                    <Image x:Name="image1" Height="20" Canvas.Left="10" Canvas.Top="10" Width="26.113" Source="/HAMS;component/Resources/notice1.png"/>
                     <Label x:Name="label" Content="SVM实验" Height="30" Canvas.Left="41.113" Canvas.Top="10" Width="85.133" FontSize="11"/>
                 </Canvas>
             </Button>
             <Button x:Name="btnRecntNo2" Height="43.201" Width="194.776" OpacityMask="White" Background="#FFD2F5FA">
                 <Canvas Height="40" Width="193.31">
-                    <Image x:Name="image2" Height="20" Canvas.Left="10" Canvas.Top="10" Width="26.113" Source="/Resources/公告.png"/>
+                    <Image x:Name="image2" Height="20" Canvas.Left="10" Canvas.Top="10" Width="26.113" Source="/HAMS;component/Resources/notice1.png"/>
                     <Label x:Name="label1" Content="R语言监督学习总结" Height="30" Canvas.Left="41.113" Canvas.Top="10" Width="111.8" FontSize="11"/>
                 </Canvas>
             </Button>
             <Button x:Name="btnRecntNo3" Height="43.201" Width="194.776" OpacityMask="White" Background="#FFD2F5FA">
                 <Canvas Height="40" Width="193.31">
-                    <Image x:Name="image3" Height="20" Canvas.Left="10" Canvas.Top="10" Width="26.113" Source="/Resources/公告.png"/>
+                    <Image x:Name="image3" Height="20" Canvas.Left="10" Canvas.Top="10" Width="26.113" Source="/HAMS;component/Resources/notice1.png"/>
                     <Label x:Name="label2" Content="LR实验报告" Height="30" Canvas.Left="41.113" Canvas.Top="10" Width="85.133" FontSize="11"/>
                 </Canvas>
             </Button>
@@ -137,7 +137,7 @@
             </ListView>
         </StackPanel>
         <Canvas Height="49.645" Background="LightBlue" Grid.ColumnSpan="3" Margin="-8.537,-47.028,-9.6,0" VerticalAlignment="Top">
-            <TextBlock x:Name="userId" Height="18.666" Canvas.Left="70.066" Canvas.Top="21.979" Width="137.334" TextAlignment="Center" Text="Z0004520  刘树栋" FontSize="13"/>
+            <TextBlock x:Name="textBlockUserId" Height="18.666" Canvas.Left="70.066" Canvas.Top="21.979" Width="137.334" TextAlignment="Center" FontSize="13"><Run Text="Z0004520 "/><Run Text="123 "/><Run Text="刘树栋"/></TextBlock>
             <Border x:Name="headImage" BorderBrush="Black" BorderThickness="0" HorizontalAlignment="Left" Height="36.996" VerticalAlignment="Top" Width="40.666" CornerRadius="35" Canvas.Left="24.4" RenderTransformOrigin="1.894,0.568" Canvas.Top="10">
                 <Border.Background>
                     <ImageBrush>
@@ -149,7 +149,7 @@
             </Border>
             <Button x:Name="btnExit" Background="LightBlue"  Canvas.Left="579.674" Canvas.Top="4.644" Width="81.667" RenderTransformOrigin="0.622,0.945" Height="43.907" Foreground="#FF151111" BorderBrush="LightBlue" d:LayoutOverrides="LeftMargin, RightMargin" Click="btnExit_Click">
                 <StackPanel>
-                    <Image x:Name="exit1" Width="28" Height="23.907" Source="/Resources/注销1.png"/>
+                    <Image x:Name="exit1" Width="28" Height="23.907" Source="/HAMS;component/Resources/resizeApi.png"/>
                     <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
                 </StackPanel>
             </Button>

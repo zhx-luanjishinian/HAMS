@@ -44,7 +44,7 @@
         <TextBox x:Name="txtUserName" HorizontalAlignment="Left" Height="29" Margin="539,194.893,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="168" FontSize="16"/>
         <TextBox x:Name="txtPassword" HorizontalAlignment="Left" Height="29" Margin="539,242.22,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="168" FontSize="16"/>
 
-        <Button x:Name="btnLogin" Content="登录" HorizontalAlignment="Left" Height="33.667" Margin="468.167,315.413,0,0" VerticalAlignment="Top" Width="68.98" FontSize="16" Background="#FF93B3DE" Click="button_Click" />
+        <Button x:Name="btnLogin" Content="登录" HorizontalAlignment="Left" Height="33.667" Margin="468.167,315.413,0,0" VerticalAlignment="Top" Width="68.98" FontSize="16" Background="#FF93B3DE" Click="btnLogin_Click" />
 
         <Button x:Name="btnReset" Content="重置" HorizontalAlignment="Left" Height="33.667" Margin="611.167,316.5,0,0" VerticalAlignment="Top" Width="68.98" RenderTransformOrigin="1.392,0.567" FontSize="16" Background="#FF93B3DE" Click="btnReset_Click"/>
         <Canvas HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="793.333" Background="{DynamicResource {x:Static SystemColors.InfoBrushKey}}">

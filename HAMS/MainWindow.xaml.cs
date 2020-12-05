@@ -31,7 +31,7 @@ namespace HAMS
             InitializeComponent();
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             if (radiobtnStudent.IsChecked==true) { 
             BaseResult br = sts.login(txtUserName.Text, txtPassword.Text);
@@ -39,11 +39,34 @@ namespace HAMS
             {
                 MessageBox.Show("恭喜您登录成功");
                 StudentMainForm smf = new StudentMainForm(txtUserName.Text+ (string)br.data);
+                    smf.ShowDialog();
             }
             else
             {
                 MessageBox.Show(br.msg);
             }
+            }
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            string constr = "server=182.92.220.26;Uid=HAMS;password=HAMS;Database=HAMS";
+            MySqlConnection conn = new MySqlConnection(constr);
+            try
+            {
+                conn.Open();
+                MySqlCommand mycmd = new MySqlCommand("insert into admin(password,name,sex) values('dikd3939','紫梓','女')", conn);
+                if (mycmd.ExecuteNonQuery() > 0)
+                {
+                    MessageBox.Show("插入成功");
+
+                }
+                Console.ReadLine();
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
             }
         }
 

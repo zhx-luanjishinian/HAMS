@@ -23,5 +23,10 @@ namespace HAMS.Student.StudentView
         {
             InitializeComponent();
         }
+
+        private void ListViewHomeworkNote_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

@@ -15,14 +15,14 @@ namespace HAMS.DataUtil
         public static DataTable DataQuery(string sql, params MySqlParameter[] paras)
         {
             try {
-            //conn.Open();//打开数据库
+            
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             DataSet dt = new DataSet();
             MySqlDataAdapter adapter = new MySqlDataAdapter();
             cmd.Parameters.AddRange(paras);
             adapter.SelectCommand = cmd;
             adapter.Fill(dt);
-            //conn.Close();//关闭数据库
+    
             return dt.Tables[0];
             }
             catch(Exception ex)
@@ -36,11 +36,11 @@ namespace HAMS.DataUtil
         {
             try
             {
-                conn.Open();
+                
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddRange(paras);
                 var row = cmd.ExecuteNonQuery();
-                conn.Close();
+                
                 if (row > 0)//增加成功
                 {       
                     return true;
@@ -49,19 +49,19 @@ namespace HAMS.DataUtil
             }
             catch(Exception ex)
             {
-                throw new ApplicationException("数据出入异常" + ex.Message);
+                throw new ApplicationException("数据插入异常" + ex.Message);
             }
         }
         //静态数据更新函数
         public static bool DataUpdate(string sql,params MySqlParameter[]paras)
         {
             try { 
-            conn.Open();
+           
             MySqlCommand cmd = new MySqlCommand(sql,conn);
             //添加多个参数
             cmd.Parameters.AddRange(paras);
             var row = cmd.ExecuteNonQuery();
-            conn.Close();
+           
             if (row > 0)
             {
                 return true;
@@ -79,11 +79,11 @@ namespace HAMS.DataUtil
         {
             try
             {
-                conn.Open();
+               
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddRange(paras);
                 var row = cmd.ExecuteNonQuery();
-                conn.Close();
+                
                 if (row > 0)
                 {
                     return true;

@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"
+        
         mc:Ignorable="d"
         Title="StudentMainForm" Height="381.175" Width="561.481" WindowState="Normal" ResizeMode="CanMinimize">
     <Grid Margin="6.667,0,6.666,6.667" Height="337.678" VerticalAlignment="Bottom">
@@ -26,7 +26,11 @@
                 <Border.Background>
                     <ImageBrush>
                         <ImageBrush.ImageSource>
-                            <ImageSource>pack://siteoforigin:,,,/Resources/bk_create.jpg</ImageSource>
+                            <DrawingImage>
+                                <DrawingImage.Drawing>
+                                    <ImageDrawing ></ImageDrawing>
+                                </DrawingImage.Drawing>
+                            </DrawingImage>
                         </ImageBrush.ImageSource>
                     </ImageBrush>
                 </Border.Background>

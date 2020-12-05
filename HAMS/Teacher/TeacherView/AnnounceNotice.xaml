@@ -27,7 +27,7 @@
             <Label x:Name="teacherInformation" Content="Z0004520  刘树栋" Width="119.001" Height="25.81" Canvas.Left="72.466" Canvas.Top="23.535"/>
             <Canvas Width="230.4" Height="78.981" Canvas.Left="20.4" Canvas.Top="9.2"/>
             <Image x:Name="image3" Height="40.145" Canvas.Left="294.2" Canvas.Top="9.2" Width="104.8" Source="/Resources/logo.jpg" Stretch="Fill"/>
-            <Button x:Name="btnExit" Background="LightBlue" Width="81.667" RenderTransformOrigin="0.622,0.945" Foreground="#FF151111" BorderBrush="LightBlue" Height="43.907" Canvas.Left="418.874" Canvas.Top="5.526">
+            <Button x:Name="btnExit" Background="LightBlue" Width="81.667" RenderTransformOrigin="0.622,0.945" Foreground="#FF151111" BorderBrush="LightBlue" Height="43.907" Canvas.Left="418.874" Canvas.Top="5.526" Click="btnExit_Click">
                 <StackPanel>
                     <Image x:Name="exit1" Width="28" Height="23.907" Source="/Resources/注销1.png"/>
                     <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>

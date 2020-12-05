@@ -33,5 +33,17 @@ namespace HAMS.Teacher.TeacherView
         {
             App.Current.Shutdown();    //注销，关闭系统
         }
+
+        private void btnRecntNo1_Click(object sender, RoutedEventArgs e)
+        {
+            if (true)//里面是验证函数
+            {
+                // 打开子窗体
+                BreifView newBreifView = new BreifView();
+                newBreifView.Show();
+                // 隐藏自己(父窗体)
+                this.Visibility = System.Windows.Visibility.Hidden;
+            }
+        }
     }
 }

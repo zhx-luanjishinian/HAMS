@@ -65,8 +65,8 @@
                     <GridViewColumn/>
                 </GridView>
             </ListView.View>
-            <Button x:Name="btnRecntNo1" Height="43.201" Width="194.776" OpacityMask="White" Background="#FFD2F5FA">
-                <Canvas Height="40" Width="193.31">
+            <Button x:Name="btnRecntNo1" Height="43.201" Width="194.776" OpacityMask="White" Background="#FFD2F5FA" Click="btnRecntNo1_Click">
+                <Canvas Height="40" Width="193">
                     <Image x:Name="image1" Height="20" Canvas.Left="10" Canvas.Top="10" Width="26.113" Source="/HAMS;component/Resources/notice1.png"/>
                     <Label x:Name="label" Content="SVM实验" Height="30" Canvas.Left="41.113" Canvas.Top="10" Width="85.133" FontSize="11"/>
                 </Canvas>

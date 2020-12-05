@@ -5,8 +5,150 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HAMS.Student.StudentView"
         mc:Ignorable="d"
-        Title="AlertForm" Height="300" Width="300">
-    <Grid>
-        
+        Title="AlertForm" Height="381.175" Width="561.481">
+    <Grid Margin="6.667,0,6.666,6.667" Height="337.678" VerticalAlignment="Bottom">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="372*"/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="7*"/>
+
+            <RowDefinition Height="162*"/>
+        </Grid.RowDefinitions>
+        <Canvas Background="LightBlue" Grid.ColumnSpan="2" Margin="-6.203,-13.015,-6.269,0" Height="55.634" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="553.953">
+            <TextBlock x:Name="textBlockUserId" Height="18.666" Canvas.Left="70.066" Canvas.Top="21.979" Width="137.334" TextAlignment="Center"><Run Text="201821130099"/><Run Text="   "/><Run Text="宋慧毓"/></TextBlock>
+
+            <Border x:Name="headImage" BorderBrush="Black" BorderThickness="0" HorizontalAlignment="Left" Height="36.996" VerticalAlignment="Top" Width="40.666" CornerRadius="35" Canvas.Left="24.4" RenderTransformOrigin="1.894,0.568" Canvas.Top="10">
+                <Border.Background>
+                    <ImageBrush>
+                        <ImageBrush.ImageSource>
+                            <ImageSource>pack://siteoforigin:,,,/Resources/bk_create.jpg</ImageSource>
+                        </ImageBrush.ImageSource>
+                    </ImageBrush>
+                </Border.Background>
+            </Border>
+            <Button x:Name="btnExit" Background="LightBlue"  Canvas.Left="460.341" Canvas.Top="2.644" Width="81.667" RenderTransformOrigin="0.622,0.945" Height="43.907" Foreground="#FF151111" BorderBrush="LightBlue" d:LayoutOverrides="LeftMargin, RightMargin">
+                <StackPanel>
+                    <Image x:Name="exit1" Width="28" Height="23.907" Source="pack://siteoforigin:,,,/Resources/resizeApi.png"/>
+                    <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
+                </StackPanel>
+            </Button>
+            <Image x:Name="imgSystemLogo" Height="49.029" Width="197.332" Source="pack://siteoforigin:,,,/Resources/management.jpg" Stretch="UniformToFill" Canvas.Left="268.001" Canvas.Top="2.872"/>
+        </Canvas>
+        <Menu x:Name="menu" Height="26.667" Background="LightPink" Margin="-6.29,42.538,-5.882,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Row="1" d:LayoutOverrides="VerticalAlignment">
+            <Button x:Name="btnHomeworkMana" Height="21" Width="109" Content="作业管理"/>
+            <Button x:Name="btnHomeworkAlert" Height="21" Width="109" Content="作业预警"/>
+        </Menu>
+
+        <Canvas Height="28.668" Background="LightBlue"  Margin="-6.333,68.011,-6.525,0" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left" Width="554.339">
+            <Label x:Name="label1" Content="我的作业" Height="24.333" HorizontalAlignment="Right" Width="354.334" Canvas.Left="9.338" Canvas.Top="2.667"/>
+        </Canvas>
+
+        <StackPanel Margin="-5.527,97.892,4.342,1.993" Grid.Row="1" Grid.ColumnSpan="2">
+            <Canvas  Height="30.11" Margin="2.637,0,1.968,0">
+                <Label x:Name="label2" Content="未完成数：" Height="23.667" Canvas.Left="6.332" Width="68.001" Canvas.Top="1.333"/>
+                <TextBlock x:Name="textBlockUnfinishedNumber" Text ="3" Height="17.667" Canvas.Left="83.666" Width="15.334" Canvas.Top="4.333" RenderTransformOrigin="0.621,0.534"/>
+                <Label x:Name="label3" Content="预警数：" Height="23.667" Canvas.Left="112.998" Width="57.334" Canvas.Top="1.333"/>
+                <Button x:Name="textBlockAlertNumber" Content ="5" Height="17.667" Canvas.Left="180.333" Width="15.334" Canvas.Top="4.333" RenderTransformOrigin="0.621,0.534"/>
+                <Label x:Name="label4" Content="排序：" Height="23.667" Canvas.Left="198.999" Width="39.334" Canvas.Top="1.333"/>
+                <ComboBox x:Name="comBoxByTime" Text="按时间" Height="23.667" Canvas.Left="238.999" Width="45" Canvas.Top="1.333">
+                    <ComboBox.ContextMenu>
+                        <ContextMenu/>
+                    </ComboBox.ContextMenu>
+                    <Button Content="升序"/>
+                    <Button Content="降序"/>
+                </ComboBox>
+                <ComboBox x:Name="comBoxByDegree" Text="按难易" Height="23.667" Canvas.Left="284.333" Width="45" Canvas.Top="1.333"/>
+
+            </Canvas>
+            <ListView x:Name="listView2" Height="191.054" Margin="7.349,0,0,0" HorizontalAlignment="Left" Width="525.886">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn/>
+                    </GridView>
+                </ListView.View>
+                <Border HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="Gray"  BorderThickness="2" Width="493.334">
+                    <Canvas x:Name="canvasHomework1" Height="66.111" Width="485" HorizontalAlignment="Left">
+                        <Border x:Name="homeworkImage" BorderBrush="Black" BorderThickness="0" Grid.Column="1" HorizontalAlignment="Left" Height="45.662" VerticalAlignment="Top" Width="44" RenderTransformOrigin="0.471,0.567" Canvas.Top="7.668" Canvas.Left="65.834">
+                            <Border.Background>
+                                <ImageBrush>
+                                    <ImageBrush.ImageSource>
+                                        <DrawingImage>
+                                            <DrawingImage.Drawing>
+                                                <ImageDrawing ImageSource="pack://siteoforigin:,,,/Resources/homework.png" Rect="100,200,110,100"/>
+                                            </DrawingImage.Drawing>
+                                        </DrawingImage>
+                                    </ImageBrush.ImageSource>
+                                </ImageBrush>
+                            </Border.Background>
+                        </Border>
+                        <TextBlock x:Name="textBlockHomeworkOrder1" Text="1" Height="23.332" Canvas.Left="19.833" Canvas.Top="22.333" Width="16.001" RenderTransformOrigin="0.375,0.341"/>
+                        <TextBlock x:Name="textBlockHomeworkName1" Text="quiz1" Height="16.666" Canvas.Left="153.666" Canvas.Top="10.334" Width="40"/>
+                        <TextBlock x:Name="textBlockClassName1" Height="16.222" Width="35.778" Canvas.Left="155.777" Canvas.Top="37.556"><Run Text="R语言"/></TextBlock>
+                        <Label x:Name="lab1" Content="剩余时间" Height="23.332" Canvas.Left="289.832" Canvas.Top="8.335" Width="61.334" RenderTransformOrigin="0.489,0.519"/>
+                        <TextBlock x:Name="textBlockTimeLeft1" Height="16.222" Width="62.89" Canvas.Left="289.054" Canvas.Top="41.556"><Run Text="2d:7h:30m"/></TextBlock>
+                        <ComboBox x:Name="comboBoxDegree1" Height="25.907" Width="75" Canvas.Left="406" Canvas.Top="4.666" Text="难易程度" RenderTransformOrigin="0.301,0.704">
+                            <CheckBox Content="最难"/>
+                        </ComboBox>
+                        <Button x:Name="btnLimitedTime1" Content="截止时间设置" Width="75" Canvas.Left="406" Canvas.Top="33.333" Height="25.907"/>
+                    </Canvas>
+                </Border>
+
+                <Border HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="Gray"  BorderThickness="2" Width="493.334">
+                    <Canvas x:Name="canvasHomework12"  Height="66.111" Width="493">
+                        <Border x:Name="homeworkImage1" BorderBrush="Black" BorderThickness="0" Grid.Column="1" HorizontalAlignment="Left" Height="45.662" VerticalAlignment="Top" Width="44" RenderTransformOrigin="0.471,0.567" Canvas.Top="7.668" Canvas.Left="65.834">
+                            <Border.Background>
+                                <ImageBrush>
+                                    <ImageBrush.ImageSource>
+                                        <DrawingImage>
+                                            <DrawingImage.Drawing>
+                                                <ImageDrawing ImageSource="pack://siteoforigin:,,,/Resources/homework.png" Rect="100,200,110,100"/>
+                                            </DrawingImage.Drawing>
+                                        </DrawingImage>
+                                    </ImageBrush.ImageSource>
+                                </ImageBrush>
+                            </Border.Background>
+                        </Border>
+                        <TextBlock x:Name="textBlockHomeworkOrder2" Text="2" Height="23.332" Canvas.Left="19.833" Canvas.Top="22.333" Width="16.001" RenderTransformOrigin="0.375,0.341"/>
+                        <TextBlock x:Name="textBlockHomeworkName2" Text="quiz2" Height="16.666" Canvas.Left="153.666" Canvas.Top="10.334" Width="40"/>
+                        <TextBlock x:Name="textBlockClassName2" Height="16.222" Width="35.778" Canvas.Left="155.777" Canvas.Top="37.556"><Run Text="R语言"/></TextBlock>
+                        <Label x:Name="lab2" Content="剩余时间" Height="23.332" Canvas.Left="289.832" Canvas.Top="8.335" Width="61.334" RenderTransformOrigin="0.489,0.519"/>
+                        <TextBlock x:Name="textBlockTimeLeft2" Height="16.222" Width="62.89" Canvas.Left="289.054" Canvas.Top="41.556"><Run Text="2d:8h:30m"/></TextBlock>
+                        <ComboBox x:Name="comboBoxDegree2" Height="25.907" Width="75" Canvas.Left="406" Canvas.Top="4.666" Text="难易程度" RenderTransformOrigin="0.301,0.704"/>
+                        <Button x:Name="btnLimitedTime2" Content="截止时间设置" Width="75" Canvas.Left="406" Canvas.Top="33.333" Height="25.907"/>
+                    </Canvas>
+                </Border>
+
+                <Border HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="Gray"  BorderThickness="2" Width="493.334">
+                    <Canvas x:Name="canvasHomework3"  Height="66.111" Width="493">
+                        <Border x:Name="homeworkImage2" BorderBrush="Black" BorderThickness="0" Grid.Column="1" HorizontalAlignment="Left" Height="45.662" VerticalAlignment="Top" Width="44" RenderTransformOrigin="0.471,0.567" Canvas.Top="7.668" Canvas.Left="65.834">
+                            <Border.Background>
+                                <ImageBrush>
+                                    <ImageBrush.ImageSource>
+                                        <DrawingImage>
+                                            <DrawingImage.Drawing>
+                                                <ImageDrawing ImageSource="pack://siteoforigin:,,,/Resources/homework.png" Rect="100,200,110,100"/>
+                                            </DrawingImage.Drawing>
+                                        </DrawingImage>
+                                    </ImageBrush.ImageSource>
+                                </ImageBrush>
+                            </Border.Background>
+                        </Border>
+                        <TextBlock x:Name="textBlockHomeworkOrder3" Text="3" Height="23.332" Canvas.Left="19.833" Canvas.Top="22.333" Width="16.001" RenderTransformOrigin="0.375,0.341"/>
+                        <TextBlock x:Name="textBlockHomeworkName3" Text="quiz3" Height="16.666" Canvas.Left="153.666" Canvas.Top="10.334" Width="40"/>
+                        <TextBlock x:Name="textBlockClassName3" Height="16.222" Width="35.778" Canvas.Left="155.777" Canvas.Top="37.556"><Run Text="R语言"/></TextBlock>
+                        <Label x:Name="lab3" Content="剩余时间" Height="23.332" Canvas.Left="289.832" Canvas.Top="8.335" Width="61.334" RenderTransformOrigin="0.489,0.519"/>
+                        <TextBlock x:Name="textBlockTimeLeft3" Height="16.222" Width="62.89" Canvas.Left="289.054" Canvas.Top="41.556"><Run Text="2d:10h:30m"/></TextBlock>
+                        <ComboBox x:Name="comboBoxDegree3" Height="25.907" Width="75" Canvas.Left="406" Canvas.Top="4.666" Text="难易程度" RenderTransformOrigin="0.301,0.704"/>
+                        <Button x:Name="btnLimitedTime3" Content="截止时间设置" Width="75" Canvas.Left="406" Canvas.Top="33.333" Height="25.907"/>
+                    </Canvas>
+                </Border>
+
+
+            </ListView>
+        </StackPanel>
+
+
     </Grid>
 </Window>

@@ -19,9 +19,16 @@ namespace HAMS.Student.StudentView
     /// </summary>
     public partial class StudentMainForm : Window
     {
-        public StudentMainForm()
+        public StudentMainForm(string session)
+
         {
+            textBlockUserId.Text = session;
             InitializeComponent();
+        }
+
+        private void BtnHomewordAlert_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

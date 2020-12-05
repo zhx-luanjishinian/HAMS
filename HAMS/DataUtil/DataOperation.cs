@@ -15,14 +15,14 @@ namespace HAMS.DataUtil
         public static DataTable DataQuery(string sql, params MySqlParameter[] paras)
         {
             try {
-            conn.Open();//打开数据库
+            //conn.Open();//打开数据库
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             DataSet dt = new DataSet();
             MySqlDataAdapter adapter = new MySqlDataAdapter();
             cmd.Parameters.AddRange(paras);
             adapter.SelectCommand = cmd;
             adapter.Fill(dt);
-            conn.Close();//关闭数据库
+            //conn.Close();//关闭数据库
             return dt.Tables[0];
             }
             catch(Exception ex)

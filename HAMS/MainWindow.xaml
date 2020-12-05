@@ -52,7 +52,7 @@
             <!--<Image Height="40" Canvas.Left="3.667" Canvas.Top="5.5" Width="35" Source="pack://siteoforigin:,,,/Resources/notice.png"/>-->
             <TextBox x:Name="txtShowNotice" Height="30" Canvas.Left="56.167" TextWrapping="Wrap" Canvas.Top="10" Width="727.166"/>
         </Canvas>
-        <Button x:Name="button" Content="用于测试数据库连接成功的按钮" HorizontalAlignment="Left" Height="43" Margin="297,425,0,0" VerticalAlignment="Top" Width="240" Click="btnLogin_Click"/>
+        <Button x:Name="button" Content="用于测试数据库连接成功的按钮" HorizontalAlignment="Left" Height="43" Margin="297,425,0,0" VerticalAlignment="Top" Width="240" Click="button_Click"/>
 
 
     </Grid>

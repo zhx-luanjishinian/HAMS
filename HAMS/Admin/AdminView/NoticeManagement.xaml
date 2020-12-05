@@ -5,8 +5,80 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HAMS.Admin.AdminView"
         mc:Ignorable="d"
-        Title="NoticeManagement" Height="300" Width="300">
+        Title="NoticeManagement" Height="574" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8.8*"/>
+            <RowDefinition Height="57.8*"/>
+        </Grid.RowDefinitions>
+        <Canvas Background="LightBlue" Margin="0" Grid.Row="0" HorizontalAlignment="Left" Height="70.944" VerticalAlignment="Top" Width="793.333" Grid.RowSpan="2" Grid.ColumnSpan="2">
+            <Border x:Name="imgHead" BorderBrush="Black" BorderThickness="0" Grid.Column="1" HorizontalAlignment="Left" Height="50.078" VerticalAlignment="Top" Width="54.021" CornerRadius="35" Canvas.Left="10" RenderTransformOrigin="1.894,0.568" Canvas.Top="10.366">
+                <Border.Background>
+                    <ImageBrush>
+                        <ImageBrush.ImageSource>
+                            <DrawingImage>
+                                <DrawingImage.Drawing>
+                                    <ImageDrawing ImageSource="pack://siteoforigin:,,,/Resources/profile.png" Rect="100,200,110,100"></ImageDrawing>
+                                </DrawingImage.Drawing>
+                            </DrawingImage>
+                        </ImageBrush.ImageSource>
+                    </ImageBrush>
+                </Border.Background>
+            </Border>
+            <TextBlock x:Name="txtblockUserName" Text="管理员" Canvas.Left="75.021" Canvas.Top="28.689" RenderTransformOrigin="1.087,0.535" FontWeight="Bold"/>
+            <Image x:Name="imgSystemLogo" Height="64.072" Width="197.332" Source="pack://siteoforigin:,,,/Resources/management.jpg" Stretch="UniformToFill" Canvas.Left="490.334" Canvas.Top="3.872"/>
+            <Button x:Name="btnExit" Background="LightBlue"  Canvas.Left="701.666" Canvas.Top="13.955" Width="81.667" RenderTransformOrigin="0.622,0.945" Height="43.907" Foreground="#FF151111" BorderBrush="LightBlue">
+                <StackPanel>
+                    <Image x:Name="exit1" Width="28" Height="23.907" Source="pack://siteoforigin:,,,/Resources/resizeApi.png"/>
+                    <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
+                </StackPanel>
+            </Button>
+        </Canvas>
+        <DockPanel HorizontalAlignment="Left" Height="473.723" LastChildFill="False" Margin="0,70.944,0,0" VerticalAlignment="Top" Width="133.667" Grid.RowSpan="2">
+            <Menu Height="473.723" VerticalAlignment="Top" Width="133">
+                <Button x:Name="btnStuManagement" Content="学生管理" Width="120" Height="41.24"/>
+                <Button x:Name="btnTeaManagement" Content="教师管理" Width="120" Height="41.24"/>
+                <Button x:Name="btnClassManagement1" Content="课堂管理" Width="120" Height="41.24"/>
+                <Button x:Name="btnClassManagement" Content="公告管理" Width="120" Height="41.24" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" />
+            </Menu>
+        </DockPanel>
+        <Canvas HorizontalAlignment="Left" Height="53.699" Margin="138.667,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="654.666" Background="{DynamicResource {x:Static SystemColors.InfoBrushKey}}">
+            <Button x:Name="btnAddNotice" Canvas.Left="10" Canvas.Top="10" Width="67" Height="33.699" Background="{DynamicResource {x:Static SystemColors.InfoBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.InfoBrushKey}}">
+                <StackPanel Orientation="Horizontal" RenderTransformOrigin="0.293,0.557" Width="62">
+                    <Image x:Name="add1" Height="33.699" Width="35" Source="pack://siteoforigin:,,,/Resources/add.png" />
+                    <TextBlock x:Name="add2" VerticalAlignment="Center"  FontWeight="SemiBold"><Run Text="添加"/></TextBlock>
+                </StackPanel>
+            </Button>
+        </Canvas>
+        <ListView x:Name="listviewNotice" Height="Auto" FontStretch="Condensed" Margin="138.667,58.699,7,0" Grid.RowSpan="1" Grid.Row="1">
+            <Canvas x:Name="canNoticeRecord" Height="70.001" Width="637.666">
+                <Image x:Name="imgLable" Height="70.001" Canvas.Left="10" Width="44.666" Source="pack://siteoforigin:,,,/Resources/news.gif"/>
+                <Label x:Name="labelNoticeName" Content="公告1" Canvas.Left="81.666" Canvas.Top="9.521" FontWeight="Bold"/>
+                <Label x:Name="labelNoticeDescription" Content="系统将于5月15日进行维护" Canvas.Left="81.666" Canvas.Top="34.761"/>
+                <Button x:Name="btnDeleteNotice" Content="删除" Canvas.Left="419.667" Canvas.Top="25.627" Width="75" FontFamily="Nirmala UI Semilight"/>
+                <Button x:Name="btnReviseNotice" Content="修改" Canvas.Left="534.667" Canvas.Top="25.627" Width="75" FontFamily="Nirmala UI Semilight"/>
+            </Canvas>
+            <Canvas x:Name="canNoticeRecord1" Height="70.001" Width="637.666">
+                <Image x:Name="imgLable1" Height="66.763" Canvas.Left="10" Width="44.666" Source="pack://siteoforigin:,,,/Resources/news.gif"/>
+                <Label x:Name="labelNoticeName1" Content="公告2" Canvas.Left="81.666" Canvas.Top="9.521" FontWeight="Bold"/>
+                <Label x:Name="labelNoticeDescription1" Content="系统已更新，新增了xxxx功能" Canvas.Left="81.666" Canvas.Top="34.761"/>
+                <Button x:Name="btnDeleteNotice1" Content="删除" Canvas.Left="419.667" Canvas.Top="25.627" Width="75" FontFamily="Nirmala UI Semilight"/>
+                <Button x:Name="btnReviseNotice1" Content="修改" Canvas.Left="534.667" Canvas.Top="25.627" Width="75" FontFamily="Nirmala UI Semilight"/>
+            </Canvas>
+            <Canvas x:Name="canNoticeRecord2" Height="70.001" Width="637.666">
+                <Image x:Name="imgLable2" Height="66.763" Canvas.Left="10" Width="44.666" Source="pack://siteoforigin:,,,/Resources/news.gif"/>
+                <Label x:Name="labelNoticeName2" Content="公告3" Canvas.Left="81.666" Canvas.Top="9.521" FontWeight="Bold"/>
+                <Label x:Name="labelNoticeDescription2" Content="所有用户初始密码为123456，登录后可自行修改..." Canvas.Left="81.666" Canvas.Top="34.761"/>
+                <Button x:Name="btnDeleteNotice2" Content="删除" Canvas.Left="420.167" Canvas.Top="25.627" Width="75" FontFamily="Nirmala UI Semilight"/>
+                <Button x:Name="btnDeleteRevise2" Content="修改" Canvas.Left="534.667" Canvas.Top="25.627" Width="75" FontFamily="Nirmala UI Semilight"/>
+            </Canvas>
+            <Canvas x:Name="canNoticeRecord3" Height="70.001" Width="637.666">
+                <Image x:Name="imgLable3" Height="66.763" Canvas.Left="10" Width="44.666" Source="pack://siteoforigin:,,,/Resources/news.gif"/>
+                <Label x:Name="labelNoticeName3" Content="公告4" Canvas.Left="81.666" Canvas.Top="9.521" FontWeight="Bold"/>
+                <Label x:Name="labelNoticeDescription3" Content="新增xxx老师开设的xxx课堂" Canvas.Left="81.666" Canvas.Top="34.761"/>
+                <Button x:Name="btnDeleteNotcie3" Content="删除" Canvas.Left="421.167" Canvas.Top="25.627" Width="75" FontFamily="Nirmala UI Semilight"/>
+                <Button x:Name="btnReviseNotice3" Content="修改" Canvas.Left="534.667" Canvas.Top="25.627" Width="75" FontFamily="Nirmala UI Semilight"/>
+            </Canvas>
+        </ListView>
     </Grid>
 </Window>

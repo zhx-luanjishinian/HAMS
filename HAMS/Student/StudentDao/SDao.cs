@@ -14,7 +14,7 @@ namespace HAMS.Student.StudentDao
         public DataTable Login(String account, String pw)
         {
             
-            String sql = "select stuSpecId,name from student where stuSpecId=@id";
+            String sql = "select stuSpecId,name,password from student where stuSpecId=@id";
             //传入要填写的参数
             MySqlParameter parameter = new MySqlParameter("@id",account);
             DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);

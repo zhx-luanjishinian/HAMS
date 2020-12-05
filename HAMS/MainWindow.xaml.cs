@@ -39,6 +39,7 @@ namespace HAMS
             {
                 MessageBox.Show("恭喜您登录成功");
                 StudentMainForm smf = new StudentMainForm(txtUserName.Text+ (string)br.data);
+                    smf.ShowDialog();
             }
             else
             {

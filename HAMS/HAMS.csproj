@@ -77,7 +77,7 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="WPFVisifire.Charts">
-      <HintPath>..\..\..\..\..\wpfvisifire\WPFVisifire.Charts\X86\4.5.2.1\WPFVisifire.Charts.dll</HintPath>
+      <HintPath>..\..\..\引用\WPFVisifire.Charts.dll</HintPath>
     </Reference>
     <Reference Include="Zstandard.Net, Version=1.1.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

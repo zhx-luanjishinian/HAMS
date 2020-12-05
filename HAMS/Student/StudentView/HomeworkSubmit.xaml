@@ -5,8 +5,55 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HAMS.Student.StudentView"
         mc:Ignorable="d"
-        Title="HomeworkSubmit" Height="300" Width="300">
-    <Grid>
-        
+        Title="HomeworkSubmit" Height="381.175" Width="561.481">
+    <Grid Margin="0.001,0,6.666,6.667" Height="337.678" VerticalAlignment="Bottom">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="233*"/>
+            <ColumnDefinition Width="103*"/>
+            <ColumnDefinition Width="153*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="14*"/>
+
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="41*"/>
+            <RowDefinition Height="268*"/>
+        </Grid.RowDefinitions>
+        <Canvas Background="LightBlue" Grid.ColumnSpan="3" Margin="-6.203,0.972,-6.269,0" Height="55.634" VerticalAlignment="Top" HorizontalAlignment="Right" Width="553.953" Grid.RowSpan="3">
+            <TextBlock x:Name="textBlockUserId" Height="18.666" Canvas.Left="70.066" Canvas.Top="21.979" Width="137.334" TextAlignment="Center"><Run Text="201821130099"/><Run Text="   "/><Run Text="宋慧毓"/></TextBlock>
+
+            <Border x:Name="headImage" BorderBrush="Black" BorderThickness="0" HorizontalAlignment="Left" Height="36.996" VerticalAlignment="Top" Width="40.666" CornerRadius="35" Canvas.Left="24.4" RenderTransformOrigin="1.894,0.568" Canvas.Top="10">
+                <Border.Background>
+                    <ImageBrush>
+                        <ImageBrush.ImageSource>
+                            <ImageSource>pack://siteoforigin:,,,/Resources/bk_create.jpg</ImageSource>
+                        </ImageBrush.ImageSource>
+                    </ImageBrush>
+                </Border.Background>
+            </Border>
+            <Button x:Name="btnExit" Background="LightBlue"  Canvas.Left="460.341" Canvas.Top="2.644" Width="81.667" RenderTransformOrigin="0.622,0.945" Height="43.907" Foreground="#FF151111" BorderBrush="LightBlue" d:LayoutOverrides="LeftMargin, RightMargin">
+                <StackPanel>
+                    <Image x:Name="exit1" Width="28" Height="23.907" Source="pack://siteoforigin:,,,/Resources/resizeApi.png"/>
+                    <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
+                </StackPanel>
+            </Button>
+            <Image x:Name="imgSystemLogo" Height="49.029" Width="197.332" Source="pack://siteoforigin:,,,/Resources/management.jpg" Stretch="UniformToFill" Canvas.Left="268.001" Canvas.Top="2.872"/>
+        </Canvas>
+        <Menu x:Name="menu" Height="26.667" Background="LightPink" Margin="0,-13.313,-5.882,0" VerticalAlignment="Top" Grid.ColumnSpan="3" Grid.Row="3" d:LayoutOverrides="VerticalAlignment" HorizontalAlignment="Right" Width="551.207">
+            <Button x:Name="btnComeback" Background="LightPink" RenderTransformOrigin="0.622,0.945" Height="21.921" Foreground="#FF151111" BorderBrush="LightBlue" Width="50.335">
+                <Image x:Name="comeback1" Width="27.884" Height="18.093" Source="pack://siteoforigin:,,,/Resources/返回.png" RenderTransformOrigin="0.345,0.505"/>
+            </Button>
+            <Button x:Name="btnHomeworkMana" Height="21" Width="109" Content="作业管理"/>
+            <Button x:Name="btnHomeworkAlert" Height="21" Width="109" Content="作业预警"/>
+
+        </Menu>
+        <Canvas Margin="0,13.525,-5.669,5.967" Grid.ColumnSpan="3" Grid.Row="3" Background="#FFD6F4FE" HorizontalAlignment="Right" Width="552.878">
+            <Label x:Name="label1" Content="作业成绩：" Height="23.332" Canvas.Left="15.832" Canvas.Top="10.001" Width="61.334" RenderTransformOrigin="0.489,0.519"/>
+            <TextBlock x:Name="textBlockGrade" Height="16.222" Width="35.778" Canvas.Left="88.444" Canvas.Top="13.556" Text="优秀"/>
+            <Label x:Name="label2" Content="老师评语：" Height="23.332" Canvas.Left="15.832" Canvas.Top="59.294" Width="61.334" RenderTransformOrigin="0.489,0.519"/>
+            <TextBox x:Name="textBoxComment" Height="132.666" Canvas.Left="87.333" TextWrapping="Wrap" Text="TextBox" Canvas.Top="59.294" Width="397.333"/>
+        </Canvas>
+
+
     </Grid>
 </Window>

@@ -4,9 +4,55 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HAMS.Student.StudentView"
+        xmlns:vc="clr-namespace:Visifire.Charts;assembly=WPFVisifire.Charts"
         mc:Ignorable="d"
-        Title="StuHomeworkRank" Height="300" Width="300">
+        Title="StuHomeworkRank" Height="490" Width="800" ResizeMode="CanMinimize">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="72*"/>
+            <RowDefinition Height="56*"/>
+            <RowDefinition Height="333*"/>
+        </Grid.RowDefinitions>
+        <Canvas Background="LightBlue" Margin="0" Grid.Row="0" HorizontalAlignment="Left" Height="71" VerticalAlignment="Top" Width="793">
+            <Border x:Name="imgHead" BorderBrush="Black" BorderThickness="0" Grid.Column="1" HorizontalAlignment="Left" Height="37" VerticalAlignment="Top" Width="41" CornerRadius="35" Canvas.Left="23" RenderTransformOrigin="1.894,0.568" Canvas.Top="18">
+                <Border.Background>
+                    <ImageBrush>
+                        <ImageBrush.ImageSource>
+                            <DrawingImage>
+                                <DrawingImage.Drawing>
+                                    <ImageDrawing ImageSource="pack://siteoforigin:,,,/Resources/bk_create.jpg" Rect="100,200,110,100"></ImageDrawing>
+                                </DrawingImage.Drawing>
+                            </DrawingImage>
+                        </ImageBrush.ImageSource>
+                    </ImageBrush>
+                </Border.Background>
+            </Border>
+            <Label x:Name="tbUserNameAc" Content="201821060569刘小蕊" Canvas.Left="91" Canvas.Top="29" RenderTransformOrigin="1.087,0.535" FontWeight="Bold"/>
+            <Image x:Name="imgSystemLogo" Height="59" Width="191" Source="pack://siteoforigin:,,,/Resources/management.jpg" Stretch="UniformToFill" Canvas.Left="519" Canvas.Top="10"/>
+            <Button x:Name="btnExit" Background="LightBlue"  Canvas.Left="714.999" Canvas.Top="10" Width="68.334" RenderTransformOrigin="0.622,0.945" Height="43.907" Foreground="#FF151111" BorderBrush="LightBlue">
+                <StackPanel>
+                    <Image x:Name="exit1" Width="28" Height="23.907" Source="pack://siteoforigin:,,,/Resources/resizeApi.png"/>
+                    <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
+                </StackPanel>
+            </Button>
+
+        </Canvas>
+        <DockPanel  HorizontalAlignment="Left" Height="54" LastChildFill="False" Background="LightPink" Grid.Row="1" VerticalAlignment="Top" Width="793" Margin="0,1,0,0">
+            <Image x:Name="imgReturn" Height="28.696" Canvas.Left="10" Canvas.Top="22.333" Width="42" Source="pack://siteoforigin:,,,/Resources/返回.png"/>
+            <Menu x:Name="menu" Background="LightPink" HorizontalAlignment="Left" Height="55.463" VerticalAlignment="Center" Width="794.847" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="0,0,0,-1.506">
+                <Button x:Name="homeworkManagement" Height="45.463" Width="188" Content="作业管理" FontSize="14" FontWeight="Bold"/>
+                <Button x:Name="homeworkAlert" Height="45.463" Width="200" Content="作业预警" FontSize="14" FontWeight="Bold"/>
+            </Menu>
+        </DockPanel>
+        <Canvas Grid.Row="1" Margin="0,49,0.333,-0.333" Grid.RowSpan="2">
+            <vc:Chart Name="chart" DockPanel.Dock="Left" Height="274.565" Canvas.Top="40" Width="750.666" Canvas.Left="24" />
+            <Button Content="查看提交排行榜" Height="23" HorizontalAlignment="Left" x:Name="btnShowChartData" VerticalAlignment="Top" Width="120.333"  Canvas.Left="24" Canvas.Top="8" />
+            <Button Content="查看提交人数" Height="23" HorizontalAlignment="Left" x:Name="btnShowNumber" VerticalAlignment="Top" Width="120.333"  Canvas.Left="172.667" Canvas.Top="8" ></Button>
+
+
+        </Canvas>
+
+
+
     </Grid>
 </Window>

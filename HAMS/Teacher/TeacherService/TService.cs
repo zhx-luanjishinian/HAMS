@@ -30,7 +30,7 @@ namespace HAMS.Teacher.TeacherService
             }
             else
             {
-                return BaseResult.ok(table.Rows[0][1].ToString());
+                return BaseResult.ok(table.Rows[0][1].ToString());//table.Rows[0][1].ToString()是传递的data
             }
 
         }

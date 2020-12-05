@@ -61,8 +61,10 @@ namespace HAMS
                 if (br.code == 0)
                 {
                     MessageBox.Show("恭喜你已登录成功");
-
+                    
                     TeacherMainForm tmf = new TeacherMainForm(txtUserName.Text + (string)br.data);
+                    //txtUserName.Text是教师工号Z0004520
+                    //(string)br.data是刘树栋
                     tmf.ShowDialog();
                 }
                 else

@@ -5,8 +5,66 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HAMS.Student.StudentView"
         mc:Ignorable="d"
-        Title="StuChooseCalender" Height="300" Width="300">
-    <Grid>
-        
+        Title="StuChooseCalender" Height="450" Width="631.333" ResizeMode="CanMinimize">
+    <Grid Margin="0,0,-0.333,0">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="101*"/>
+            <RowDefinition Height="177*"/>
+            <RowDefinition Height="73*"/>
+            <RowDefinition Height="70*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="94,35,164.333,25.333" Height="41" Width="368">
+            <TextBlock Text="选择日期: " VerticalAlignment="Center"  Width="61" Height="16" Margin="0,13,0,12.333" />
+            <TextBox x:Name="txtShowDate" Margin="20,0" MinWidth="100" MaxWidth="150" Text="{Binding SelectedDate, ElementName=datePicker}" VerticalAlignment="Center"/>
+            <DatePicker x:Name="datePicker" VerticalAlignment="Center" Width="84" Margin="0,9,0,8.333"/>
+        </StackPanel>
+        <Canvas Margin="126,101,244,11.667" Grid.RowSpan="2">
+            <Calendar Canvas.Left="102" Height="180" />
+        </Canvas>
+        <Canvas Grid.Row="2" Margin="202,13.333,184.333,0" RenderTransformOrigin="0.5,0.5">
+            <TextBlock Text="选择时间：" Canvas.Left="19.332" Canvas.Top="24.666"></TextBlock>
+            <Border BorderThickness="1" BorderBrush="Black" RenderTransformOrigin="0.5,0.5"  Canvas.Left="102.431" Canvas.Top="20.303" Height="30.5" Width="92.9" >
+                <Border.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="0.462"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Border.RenderTransform>
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="3"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="3"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Name="textbox_hour" Text="12" BorderThickness="0"   VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="0"></TextBox>
+                    <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14">:</TextBlock>
+                    <TextBox Name="textbox_minute" Text="06" BorderThickness="0"   VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Grid.Column="2" Grid.ColumnSpan="2" Margin="0,0,-0.001,0"></TextBox>
+                    <TextBlock Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14">:</TextBlock>
+                    <TextBox Name="textbox_second" Text="49" BorderThickness="0"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Grid.Column="4"></TextBox>
+                    <Grid Grid.Column="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="14.667"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Button Name="button_up"  Grid.Row="0" FontSize="5">▲</Button>
+                        <Button Name="button_down"  Grid.Row="1" FontSize="5">▼</Button>
+                    </Grid>
+                </Grid>
+            </Border>
+
+        </Canvas>
+        <Canvas Grid.Row="3" Margin="202,10,195.333,18">
+            <Button x:Name="btnConfirmDate"  Content="确认"  Canvas.Top="12" Canvas.Left="45" Canvas.Right="145" Width="43" ></Button>
+            <Button x:Name="btnCancelDate"  Content="取消"  Canvas.Left="158" Canvas.Top="10" RenderTransformOrigin="3.316,0.669" Width="45"></Button>
+        </Canvas>
+
+
+
     </Grid>
 </Window>

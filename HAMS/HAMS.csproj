@@ -386,6 +386,22 @@
   <ItemGroup>
     <None Include="Resources\homework.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\homework.png" />
+    <Resource Include="Resources\logo.jpg" />
+    <Resource Include="Resources\teacher.png" />
+    <Resource Include="Resources\作业1.png" />
+    <Resource Include="Resources\修改.png" />
+    <Resource Include="Resources\公告.png" />
+    <Resource Include="Resources\删 除 .png" />
+    <Resource Include="Resources\删除.png" />
+    <Resource Include="Resources\学生.png" />
+    <Resource Include="Resources\注销1.png" />
+    <Resource Include="Resources\男老师.png" />
+    <Resource Include="Resources\评论.png" />
+    <Resource Include="Resources\返回.png" />
+    <Resource Include="Resources\链接.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

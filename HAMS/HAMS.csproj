@@ -89,6 +89,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Admin\AdminDao\ADao.cs" />
+    <Compile Include="Admin\AdminService\AService.cs" />
     <Compile Include="Admin\AdminView\ClassManagement.xaml.cs">
       <DependentUpon>ClassManagement.xaml</DependentUpon>
     </Compile>
@@ -146,6 +148,8 @@
     <Compile Include="Student\StudentView\StuSubmitHomework.xaml.cs">
       <DependentUpon>StuSubmitHomework.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Teacher\TeacherDao\TDao.cs" />
+    <Compile Include="Teacher\TeacherService\TService.cs" />
     <Compile Include="Teacher\TeacherView\AnnounceNotice.xaml.cs">
       <DependentUpon>AnnounceNotice.xaml</DependentUpon>
     </Compile>
@@ -327,12 +331,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Admin\AdminDao\" />
-    <Folder Include="Admin\AdminService\" />
-    <Folder Include="Teacher\TeacherDao\" />
-    <Folder Include="Teacher\TeacherService\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\1200856.gif" />
   </ItemGroup>

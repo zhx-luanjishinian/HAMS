@@ -55,8 +55,24 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Users\lxree\Downloads\mysql-connector-net-8.0.22-noinstall\v4.5.2\MySql.Web.dll</HintPath>
     </Reference>
+    <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\lxree\Downloads\mysql-connector-net-8.0.22-noinstall\v4.5.2\Renci.SshNet.dll</HintPath>
+    </Reference>
+    <Reference Include="SshNet.Security.Cryptography">
+      <HintPath>C:\Users\lxree\Downloads\mysql-connector-net-8.0.22-noinstall\v4.5.2\SshNet.Security.Cryptography.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\lxree\Downloads\mysql-connector-net-8.0.22-noinstall\v4.5.2\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\lxree\Downloads\mysql-connector-net-8.0.22-noinstall\v4.5.2\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -66,13 +82,13 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="Ubiety.Dns.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\lxree\Downloads\mysql-connector-net-8.0.22-noinstall\v4.5.2\Ubiety.Dns.Core.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="WPFVisifire.Charts, Version=4.5.2.1, Culture=neutral, PublicKeyToken=0cd785983078370b, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\WPFVisifire.Charts.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -103,6 +119,9 @@
     <Compile Include="Admin\AdminView\TeacherManagement.xaml.cs">
       <DependentUpon>TeacherManagement.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DataUtil\DataOperation.cs" />
+    <Compile Include="Student\StudentDao\SDao.cs" />
+    <Compile Include="Student\StudentService\SService.cs" />
     <Compile Include="Student\StudentView\AlertForm.xaml.cs">
       <DependentUpon>AlertForm.xaml</DependentUpon>
     </Compile>
@@ -157,6 +176,7 @@
     <Compile Include="Teacher\TeacherView\TeacherMainForm.xaml.cs">
       <DependentUpon>TeacherMainForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ToolClass\BaseResult.cs" />
     <Compile Include="ToolClass\FtpUpDown.cs" />
     <Page Include="Admin\AdminView\ClassManagement.xaml">
       <SubType>Designer</SubType>
@@ -316,13 +336,62 @@
   <ItemGroup>
     <Folder Include="Admin\AdminDao\" />
     <Folder Include="Admin\AdminService\" />
-    <Folder Include="Student\StudentDao\" />
-    <Folder Include="Student\StudentService\" />
     <Folder Include="Teacher\TeacherDao\" />
     <Folder Include="Teacher\TeacherService\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\notice.png" />
+    <None Include="Resources\1200856.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bk_create.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\management.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\navigation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notice.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\resizeApi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot_2020_1109_160715.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\保存图标.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\存款图标.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\返回.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\开户.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\开户小图标.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\链接.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\男老师.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\评论.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\删除.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\学生.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\homework.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\teacher.png" />

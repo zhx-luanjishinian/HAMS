@@ -23,5 +23,13 @@ namespace HAMS.Teacher.TeacherView
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            HomeworkNoticeCheck newHomeworkNoticeCheck = new HomeworkNoticeCheck();
+            newHomeworkNoticeCheck.Show();
+            // 隐藏自己(父窗体)
+            this.Visibility = System.Windows.Visibility.Hidden;
+        }
     }
 }

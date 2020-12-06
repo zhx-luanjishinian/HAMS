@@ -28,5 +28,13 @@ namespace HAMS.Teacher.TeacherView
         {
             App.Current.Shutdown();
         }
+
+        private void btnReturn_Click(object sender, RoutedEventArgs e)
+        {
+            BreifView newBreifView = new BreifView();
+            newBreifView.Show();
+            // 隐藏自己(父窗体)
+            this.Visibility = System.Windows.Visibility.Hidden;
+        }
     }
 }

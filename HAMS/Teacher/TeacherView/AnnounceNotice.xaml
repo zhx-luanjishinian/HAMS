@@ -18,7 +18,7 @@
                     <Border.Background>
                         <ImageBrush>
                             <ImageBrush.ImageSource>
-                                <ImageSource>/Resources/teacher.png</ImageSource>
+                                <ImageSource>/HAMS;component/Resources/teacher.png</ImageSource>
                             </ImageBrush.ImageSource>
                         </ImageBrush>
                     </Border.Background>
@@ -26,10 +26,10 @@
             </Border>
             <Label x:Name="teacherInformation" Content="Z0004520  刘树栋" Width="119.001" Height="25.81" Canvas.Left="72.466" Canvas.Top="23.535"/>
             <Canvas Width="230.4" Height="78.981" Canvas.Left="20.4" Canvas.Top="9.2"/>
-            <Image x:Name="image3" Height="40.145" Canvas.Left="294.2" Canvas.Top="9.2" Width="104.8" Source="/Resources/logo.jpg" Stretch="Fill"/>
+            <Image x:Name="image3" Height="40.145" Canvas.Left="294.2" Canvas.Top="9.2" Width="104.8" Source="/HAMS;component/Resources/management.jpg" Stretch="Fill"/>
             <Button x:Name="btnExit" Background="LightBlue" Width="81.667" RenderTransformOrigin="0.622,0.945" Foreground="#FF151111" BorderBrush="LightBlue" Height="43.907" Canvas.Left="418.874" Canvas.Top="5.526" Click="btnExit_Click">
                 <StackPanel>
-                    <Image x:Name="exit1" Width="28" Height="23.907" Source="/Resources/注销1.png"/>
+                    <Image x:Name="exit1" Width="28" Height="23.907" Source="/HAMS;component/Resources/resizeApi.png"/>
                     <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
                 </StackPanel>
             </Button>
@@ -40,8 +40,8 @@
             <Border BorderBrush="Black" BorderThickness="1" Width="0" Height="49.003" Canvas.Left="67.999" Canvas.Top="14.759"/>
             <Label x:Name="labelClassNumber" Content="Z004530B1300720 " Width="148.533" Height="50.111" Canvas.Left="97.934" Canvas.Top="7.952" FontSize="14" FontWeight="Bold"/>
             <Label x:Name="labelcClassName" Content="R语言" Width="75.2" Height="49.003" Canvas.Left="261.133" Canvas.Top="7.952" FontSize="14" FontWeight="Bold"/>
-            <Button x:Name="btnReturn" Width="72.533" Background="LightPink" BorderThickness="0" Height="20" Canvas.Left="20.401" Canvas.Top="7.952">
-                <Image x:Name="image2" Width="72.533" Source="/Resources/返回.png" OpacityMask="LightPink" Height="17.175"/>
+            <Button x:Name="btnReturn" Width="72.533" Background="LightPink" BorderThickness="0" Height="20" Canvas.Left="20.401" Canvas.Top="7.952" Click="btnReturn_Click">
+                <Image x:Name="image2" Width="73" Source="/HAMS;component/Resources/返回.png" OpacityMask="LightPink" Height="17"/>
             </Button>
         </Canvas>
         <Canvas Margin="0,2.603,3.6,35.397" Grid.Row="2">
@@ -66,7 +66,7 @@
                             <ColumnDefinition Width="29*"/>
                             <ColumnDefinition Width="73*"/>
                         </Grid.ColumnDefinitions>
-                        <Image x:Name="image" Source="/Resources/链接.png" Margin="0,0,5,0"/>
+                        <Image x:Name="image" Source="/HAMS;component/Resources/链接.png" Margin="0,0,5,0"/>
                         <Label x:Name="upload" Content="点击上传" Grid.Column="1" d:LayoutOverrides="Width, Height" FontSize="9" Margin="-10.002,0,10,0"/>
                     </Grid>
                 </Button>

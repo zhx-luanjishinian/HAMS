@@ -64,20 +64,20 @@
     <Grid Margin="0,0,0,-1">
         <Grid Height="55.344" VerticalAlignment="Top">
             <Canvas Background="LightBlue" Grid.Row="0"/>
-            <Button x:Name="btnExit" Background="LightBlue" Width="43.534" RenderTransformOrigin="0.622,0.945" Foreground="#FF151111" BorderBrush="LightBlue" HorizontalAlignment="Right" Margin="0,4.437,2,7">
+            <Button x:Name="btnExit" Background="LightBlue" Width="43.534" RenderTransformOrigin="0.622,0.945" Foreground="#FF151111" BorderBrush="LightBlue" HorizontalAlignment="Right" Margin="0,4.437,2,7" Click="btnExit_Click">
                 <StackPanel>
-                    <Image x:Name="exit1" Width="28" Height="23.907" Source="../../Resources/resizeApi.png" RenderTransformOrigin="0.483,0.453"/>
+                    <Image x:Name="exit1" Width="28" Height="23.907" Source="/HAMS;component/Resources/resizeApi.png" RenderTransformOrigin="0.483,0.453"/>
                     <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
                 </StackPanel>
             </Button>
-            <Image x:Name="imgSystemLogo" Width="129.332" Source="../../Resources/management.jpg" Stretch="UniformToFill" HorizontalAlignment="Right" Margin="0,4,95.468,10.412"/>
+            <Image x:Name="imgSystemLogo" Width="129.332" Source="/HAMS;component/Resources/management.jpg" Stretch="UniformToFill" HorizontalAlignment="Right" Margin="0,4,95.468,10.412"/>
             <TextBlock x:Name="tbTeacherIdentity" Width="120.8" TextAlignment="Center" HorizontalAlignment="Left" Margin="58.281,18.677,0,17.667">
                 <TextBlock.Background>
                     <ImageBrush/>
                 </TextBlock.Background><Run Text="Z0004520 "/><Run Text="刘树栋"/></TextBlock>
             <Ellipse x:Name="btnProfile" Stroke="Black" Width="35.315" RenderTransformOrigin="0.497,0.505" StrokeThickness="0" HorizontalAlignment="Left" Margin="18.992,10.417,0,9.612" Height="Auto" VerticalAlignment="Stretch">
                 <Ellipse.Fill>
-                    <ImageBrush ImageSource="../../Resources/teacher.png"/>
+                    <ImageBrush ImageSource="/HAMS;component/Resources/teacher.png"/>
                 </Ellipse.Fill>
                 <Ellipse.RenderTransform>
                     <TransformGroup>
@@ -96,7 +96,7 @@
                 <ColumnDefinition Width="454*"/>
             </Grid.ColumnDefinitions>
             <Menu x:Name="menu" Background="LightPink" Margin="0,0,-5.333,-1.062" Grid.ColumnSpan="3" d:LayoutOverrides="TopMargin, BottomMargin" BorderThickness="0,0,1,0"/>
-            <Button x:Name="btnReturn" Margin="10,0,0,-1.062" BorderThickness="0" BorderBrush="#FF9F9D9D" d:LayoutOverrides="TopMargin, BottomMargin" HorizontalAlignment="Left" Width="44.95">
+            <Button x:Name="btnReturn" Margin="10,0,0,-1.062" BorderThickness="0" BorderBrush="#FF9F9D9D" d:LayoutOverrides="TopMargin, BottomMargin" HorizontalAlignment="Left" Width="44.95" Click="btnReturn_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="../../Resources/返回.png"/>
                 </Button.Background>
@@ -120,7 +120,7 @@
                 <TextBlock x:Name="className1" Text="1.调试代码，结合代码和教材理解svm的大间隔理论" TextAlignment="Center" Margin="0,0,0,24" HorizontalAlignment="Left" Width="282"/>
                 <TextBlock x:Name="className1_Copy" Text="2.尝试用已经学过的有监督模型，对附件中的三个数据集进行分析" Height="24" TextAlignment="Center" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="352" Grid.ColumnSpan="4"/>
             </Grid>
-            <Image Source="../../Resources/homework.png" Stretch="Fill" Width="56" Height="48.562" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+            <Image Source="/HAMS;component/Resources/homework.png" Stretch="Fill" Width="56" Height="48.562" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
             <Label x:Name="labelHomeworkArrangeTime" Content="2020年11月10日 星期二 10:10" Width="152.821" FontSize="10" HorizontalAlignment="Left" Margin="334.4,5,0,0" VerticalAlignment="Top"/>
             <StackPanel Margin="0,88,343.4,0" HorizontalAlignment="Right" Width="165" Height="23" VerticalAlignment="Top">
                 <Button x:Name="uploadButton" Height="20.159" Background="White" BorderThickness="0" Width="102.934" HorizontalAlignment="Right" Margin="0,0,47,0">
@@ -129,7 +129,7 @@
                             <ColumnDefinition Width="29*"/>
                             <ColumnDefinition Width="73*"/>
                         </Grid.ColumnDefinitions>
-                        <Image x:Name="image" Source="../../Resources/链接.png" Margin="0,0,5,0"/>
+                        <Image x:Name="image" Source="/HAMS;component/Resources/链接.png" Margin="0,0,5,0"/>
                         <Label x:Name="labelAccessoryName1" Content="查看相关附件" FontSize="9" Margin="0,0,10.2,0.159" Grid.ColumnSpan="2" HorizontalAlignment="Right" Width="73"/>
                     </Grid>
                 </Button>
@@ -137,15 +137,15 @@
 
             <Button x:Name="btnDisappear" Content="" Width="14.405" Height="15.107" BorderThickness="0" HorizontalAlignment="Left" Margin="85.4,0,0,5.344" VerticalAlignment="Bottom">
                 <Button.Background>
-                    <ImageBrush ImageSource="../../Resources/向上.png"/>
+                    <ImageBrush ImageSource="/HAMS;component/Resources/向上.png"/>
                 </Button.Background>
             </Button>
             <Label x:Name="label5" Content="收起作业内容" HorizontalAlignment="Left" Margin="22.4,0,0,5.344" VerticalAlignment="Bottom" FontSize="8"/>
             <Border HorizontalAlignment="Right" Margin="0,139.658,19.6,0" Width="98.8" Height="32.84" VerticalAlignment="Top">
                 <Grid>
-                    <Button x:Name="btnAnswerQuestion" Content="" Margin="0.8,0,0,0"/>
-                    <Button x:Name="button3" Margin="28.8,0,0,0" Background="White" Content="作业答疑区" BorderBrush="{x:Null}"/>
-                    <Button x:Name="button2" Content="" Width="28.8" HorizontalAlignment="Left" d:LayoutOverrides="HorizontalAlignment">
+                    <Button x:Name="btnAnswerQuestion" Content="" Margin="0.8,0,0,0" Click="btnAnswerQuestion_Click"/>
+                    <Button x:Name="button3" Margin="28.8,0,0,0" Background="White" Content="作业答疑区" BorderBrush="{x:Null}" Click="btnAnswerQuestion_Click"/>
+                    <Button x:Name="button2" Content="" Width="28.8" HorizontalAlignment="Left" d:LayoutOverrides="HorizontalAlignment" Click="btnAnswerQuestion_Click">
                         <Button.OpacityMask>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="Black" Offset="0"/>
@@ -153,7 +153,7 @@
                             </LinearGradientBrush>
                         </Button.OpacityMask>
                         <Button.Background>
-                            <ImageBrush ImageSource="../../Resources/提交作业.png"/>
+                            <ImageBrush ImageSource="/HAMS;component/Resources/提交作业.png"/>
                         </Button.Background>
                     </Button>
                 </Grid>
@@ -169,7 +169,7 @@
 
             <Rectangle Stroke="Black" StrokeThickness="0" Width="22.2" HorizontalAlignment="Right" Margin="0,0,10,0" d:LayoutOverrides="HorizontalAlignment" Height="20.027" VerticalAlignment="Bottom" Grid.Column="1">
                 <Rectangle.Fill>
-                    <ImageBrush ImageSource="../../Resources/查询.png"/>
+                    <ImageBrush ImageSource="/HAMS;component/Resources/查询.png"/>
                 </Rectangle.Fill>
             </Rectangle>
 
@@ -204,7 +204,7 @@
                 <Canvas Height="39.8" Width="522.333">
                     <Rectangle Height="25.811" Canvas.Left="10" Stroke="Black" Canvas.Top="6.189" Width="29.2" StrokeThickness="0">
                         <Rectangle.Fill>
-                            <ImageBrush ImageSource="../../Resources/profile.jpg"/>
+                            <ImageBrush ImageSource="/HAMS;component/Resources/profile.jpg"/>
                         </Rectangle.Fill>
                     </Rectangle>
                     <Border BorderBrush="#FFABADB3" BorderThickness="0,0,0,1" Height="39.8" Width="520.866" Canvas.Left="-8.533"/>
@@ -215,7 +215,7 @@
                 <Canvas Height="39.8" Width="522.333">
                     <Rectangle Height="25.811" Canvas.Left="10" Stroke="Black" Canvas.Top="6.189" Width="29.2" StrokeThickness="0">
                         <Rectangle.Fill>
-                            <ImageBrush ImageSource="../../Resources/profile.jpg"/>
+                            <ImageBrush ImageSource="/HAMS;component/Resources/profile.jpg"/>
                         </Rectangle.Fill>
                     </Rectangle>
                     <Border BorderBrush="#FFABADB3" BorderThickness="0,0,0,1" Height="39.8" Width="520.866" Canvas.Left="-8.533"/>
@@ -226,7 +226,7 @@
                 <Canvas Height="39.8" Width="522.333">
                     <Rectangle Height="25.811" Canvas.Left="10" Stroke="Black" Canvas.Top="6.189" Width="29.2" StrokeThickness="0">
                         <Rectangle.Fill>
-                            <ImageBrush ImageSource="../../Resources/profile.jpg"/>
+                            <ImageBrush ImageSource="/HAMS;component/Resources/profile.jpg"/>
                         </Rectangle.Fill>
                     </Rectangle>
                     <Border BorderBrush="#FFABADB3" BorderThickness="0,0,0,1" Height="39.8" Width="520.866" Canvas.Left="-8.533"/>
@@ -237,7 +237,7 @@
                 <Canvas Height="39.8" Width="522.333">
                     <Rectangle Height="25.811" Canvas.Left="10" Stroke="Black" Canvas.Top="6.189" Width="29.2" StrokeThickness="0">
                         <Rectangle.Fill>
-                            <ImageBrush ImageSource="../../Resources/profile.jpg"/>
+                            <ImageBrush ImageSource="/HAMS;component/Resources/profile.jpg"/>
                         </Rectangle.Fill>
                     </Rectangle>
                     <Border BorderBrush="#FFABADB3" BorderThickness="0,0,0,1" Height="39.8" Width="520.866" Canvas.Left="-8.533"/>
@@ -248,7 +248,7 @@
                 <Canvas Height="39.8" Width="522.333">
                     <Rectangle Height="25.811" Canvas.Left="10" Stroke="Black" Canvas.Top="6.189" Width="29.2" StrokeThickness="0">
                         <Rectangle.Fill>
-                            <ImageBrush ImageSource="../../Resources/profile.jpg"/>
+                            <ImageBrush ImageSource="/HAMS;component/Resources/profile.jpg"/>
                         </Rectangle.Fill>
                     </Rectangle>
                     <Border BorderBrush="#FFABADB3" BorderThickness="0,0,0,1" Height="39.8" Width="520.866" Canvas.Left="-8.533"/>
@@ -259,7 +259,7 @@
                 <Canvas Height="39.8" Width="522.333">
                     <Rectangle Height="25.811" Canvas.Left="10" Stroke="Black" Canvas.Top="6.189" Width="29.2" StrokeThickness="0">
                         <Rectangle.Fill>
-                            <ImageBrush ImageSource="../../Resources/profile.jpg"/>
+                            <ImageBrush ImageSource="/HAMS;component/Resources/profile.jpg"/>
                         </Rectangle.Fill>
                     </Rectangle>
                     <Border BorderBrush="#FFABADB3" BorderThickness="0,0,0,1" Height="39.8" Width="520.866" Canvas.Left="-8.533"/>
@@ -270,7 +270,7 @@
                 <Canvas Height="39.8" Width="522.333">
                     <Rectangle Height="25.811" Canvas.Left="10" Stroke="Black" Canvas.Top="6.189" Width="29.2" StrokeThickness="0">
                         <Rectangle.Fill>
-                            <ImageBrush ImageSource="../../Resources/profile.jpg"/>
+                            <ImageBrush ImageSource="/HAMS;component/Resources/profile.jpg"/>
                         </Rectangle.Fill>
                     </Rectangle>
                     <Border BorderBrush="#FFABADB3" BorderThickness="0,0,0,1" Height="39.8" Width="520.866" Canvas.Left="-8.533"/>

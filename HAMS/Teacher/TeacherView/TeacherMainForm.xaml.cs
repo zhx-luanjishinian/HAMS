@@ -22,7 +22,7 @@ namespace HAMS.Teacher.TeacherView
         public TeacherMainForm(string session)
         {
             InitializeComponent();
-            try { if (session != null) { textBlockUserId.Text = session; } }
+            try { if (session != null) { tbTeacherInfo.Text = session; } }
             catch (Exception ex)
             {
                 throw new Exception("界面间传值发生异常" + ex.Message);

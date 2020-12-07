@@ -71,7 +71,7 @@
                 </StackPanel>
             </Button>
             <Image x:Name="imgSystemLogo" Width="129.332" Source="/HAMS;component/Resources/management.jpg" Stretch="UniformToFill" HorizontalAlignment="Right" Margin="0,4,95.468,10.412"/>
-            <TextBlock x:Name="tbTeacherIdentity" Width="120.8" TextAlignment="Center" HorizontalAlignment="Left" Margin="58.281,18.677,0,17.667">
+            <TextBlock x:Name="tbTeacherInfo" Width="120.8" TextAlignment="Center" HorizontalAlignment="Left" Margin="58.281,18.677,0,17.667">
                 <TextBlock.Background>
                     <ImageBrush/>
                 </TextBlock.Background><Run Text="Z0004520 "/><Run Text="刘树栋"/></TextBlock>

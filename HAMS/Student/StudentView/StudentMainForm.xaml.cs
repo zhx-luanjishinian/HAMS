@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
+
 
 namespace HAMS.Student.StudentView
 {
@@ -10,12 +12,8 @@ namespace HAMS.Student.StudentView
         public StudentMainForm(string session)
         {
             InitializeComponent();
-            try { if (session != null) { textBlockUserId.Text = session; } }
-            catch(Exception ex)
-            {
-                throw new Exception("界面间传值发生异常" + ex.Message);
-            }
-            
+            textBlockUserId.Text = session;
+           
             
             
         }

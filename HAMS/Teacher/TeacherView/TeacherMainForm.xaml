@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HAMS.Teacher.TeacherView"
-                xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" 
+        xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" 
         mc:Ignorable="d"
        Title="MainWindow" Height="419.861" Width="742.397">
     <Window.Resources>
@@ -21,7 +21,7 @@
             <RowDefinition Height="55*"/>
             <RowDefinition Height="84*"/>
         </Grid.RowDefinitions>
-        <ListView x:Name="listViewRecentNotice" Grid.Column="2" Style="{DynamicResource ListViewStyle1}" Margin="-0.001,29.6,0.001,23.143" d:LayoutOverrides="LeftMargin, RightMargin" Grid.RowSpan="3">
+        <ListView x:Name="listViewRecentNotice" Grid.Column="2" Style="{DynamicResource ListViewStyle1}" Margin="-0.001,29.6,0.001,23.143" Grid.RowSpan="3">
             <ListView.Resources>
                 <SolidColorBrush x:Key="ListBorder" Color="#828790"/>
                 <Style x:Key="ListViewStyle1" TargetType="{x:Type ListView}">

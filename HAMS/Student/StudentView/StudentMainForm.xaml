@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" 
         
         mc:Ignorable="d"
         Title="StudentMainForm" Height="381.175" Width="561.481" WindowState="Normal" ResizeMode="CanMinimize">
@@ -18,7 +19,73 @@
             <RowDefinition Height="162*"/>
         </Grid.RowDefinitions>
 
-        <ListView >
+        <ListView x:Name="listView" Grid.Column="2" Grid.Row="1" Style="{DynamicResource ListViewStyle1}" Margin="0.665,0,0,5.84" HorizontalAlignment="Left" Width="159.421" Height="220.518" VerticalAlignment="Bottom">
+            <ListView.Resources>
+                <SolidColorBrush x:Key="ListBorder" Color="#828790"/>
+                <Style x:Key="ListViewStyle1" TargetType="{x:Type ListView}">
+                    <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+                    <Setter Property="BorderBrush" Value="{StaticResource ListBorder}"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="Foreground" Value="#FF042271"/>
+                    <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+                    <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+                    <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+                    <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
+                    <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListView}">
+                                <Themes:ListBoxChrome x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" RenderMouseOver="{TemplateBinding IsMouseOver}" RenderFocused="{TemplateBinding IsKeyboardFocusWithin}" SnapsToDevicePixels="true">
+                                    <ScrollViewer Padding="{TemplateBinding Padding}" Style="{DynamicResource {x:Static GridView.GridViewScrollViewerStyleKey}}">
+                                        <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                    </ScrollViewer>
+                                </Themes:ListBoxChrome>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsEnabled" Value="false">
+                                        <Setter Property="Background" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+                                    </Trigger>
+                                    <MultiTrigger>
+                                        <MultiTrigger.Conditions>
+                                            <Condition Property="IsGrouping" Value="true"/>
+                                            <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false"/>
+                                        </MultiTrigger.Conditions>
+                                        <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
+                                    </MultiTrigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListView.Resources>
+            <Button x:Name="btnRecntNo1" Height="31.201" Width="148.776" OpacityMask="White" Background="#FFD2F5FA">
+                <Canvas Height="22.667" Width="137.667">
+                    <Image x:Name="image1" Height="20" Canvas.Left="1.333" Canvas.Top="1.333" Width="26.113" Source="pack://siteoforigin:,,,/Resources/notice.png" RenderTransformOrigin="0.423,0.012"/>
+                    <Label x:Name="lab1" Content="SVM实验" Height="23.333" Width="105.8" FontSize="11" Canvas.Left="30.667"/>
+                </Canvas>
+            </Button>
+            <Button x:Name="btnRecntNo2" Height="31.201" Width="148.776" OpacityMask="White" Background="#FFD2F5FA">
+                <Canvas Height="22.667" Width="137.667">
+                    <Image x:Name="image2" Height="20" Canvas.Left="1.333" Canvas.Top="1.333" Width="26.113" Source="pack://siteoforigin:,,,/Resources/notice.png" RenderTransformOrigin="0.423,0.012"/>
+                    <Label x:Name="lab2" Content="R语言监督学习总结" Height="23.333" Width="105.8" FontSize="11" Canvas.Left="30.667"/>
+                </Canvas>
+            </Button>
+
+            <Button x:Name="btnRecntNo3" Height="31.201" Width="148.776" OpacityMask="White" Background="#FFD2F5FA">
+                <Canvas Height="22.667" Width="137.667">
+                    <Image x:Name="image3" Height="20" Canvas.Left="1.333" Canvas.Top="1.333" Width="26.113" Source="pack://siteoforigin:,,,/Resources/notice.png" RenderTransformOrigin="0.423,0.012"/>
+                    <Label x:Name="lab3" Content="LR实验报告" Height="23.333" Width="105.8" FontSize="11" Canvas.Left="30.667"/>
+                </Canvas>
+            </Button>
+
+            <Button x:Name="btnRecntNo4" Height="31.201" Width="148.776" OpacityMask="White" Background="#FFD2F5FA">
+                <Canvas Height="22.667" Width="137.667">
+                    <Image x:Name="image4" Height="20" Canvas.Left="1.333" Canvas.Top="1.333" Width="26.113" Source="pack://siteoforigin:,,,/Resources/notice.png" RenderTransformOrigin="0.423,0.012"/>
+                    <Label x:Name="lab4" Content="UML用例图绘制" Height="23.333" Width="105.8" FontSize="11" Canvas.Left="30.667"/>
+                </Canvas>
+            </Button>
+
+
         </ListView>
         <Canvas Background="LightBlue" Grid.ColumnSpan="3" Margin="-6.203,-13.015,-6.269,0" Height="55.634" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="553.953">
             <TextBlock x:Name="textBlockUserId" Height="18.666" Canvas.Left="70.066" Canvas.Top="21.979" Width="137.334" TextAlignment="Center"><Run Text="201821130099"/><Run Text="   "/><Run Text="宋慧毓"/></TextBlock>
@@ -53,7 +120,7 @@
         </Canvas>
 
         <StackPanel Grid.ColumnSpan="2" Margin="0,98.946,11.561,0" Grid.Row="1" Height="224.291" VerticalAlignment="Top" HorizontalAlignment="Right" Width="357.443">
-            <ListView x:Name="listView2" Height="222.668" Margin="0,0,0.668,0" HorizontalAlignment="Right" Width="351.225" >
+            <ListView x:Name="listView2" Height="223" Margin="0,0,1,0" HorizontalAlignment="Right" Width="351" >
                 <ListView.View>
                     <GridView>
                         <GridViewColumn/>
@@ -65,8 +132,8 @@
                         <Label x:Name="labelClassId3" Content="Z004530B1300722 " Height="23.999" Canvas.Left="3.833" Canvas.Top="4.334" Width="120.667"/>
                         <TextBlock x:Name="textBlockClassName3" Text="UML设计" Height="15.666" Width="54.333" Canvas.Left="138.888" Canvas.Top="10.668" TextAlignment="Center"/>
                         <Label x:Name="labe23" Content="教师：" Height="27.556" Width="53.778" RenderTransformOrigin="0.48,1.592" Canvas.Left="3.112" Canvas.Top="34.223"/>
-                        <TextBlock x:Name="textBlockDepartmentName3" Text="信息与安全工程学院" Height="26.222" Width="119.111" Canvas.Left="60.444" Canvas.Top="34.223"/>
-                        <TextBlock x:Name="textBlockTeacherName3" Text="杨璠" Height="25.333" Width="93.778" Canvas.Left="185.334" Canvas.Top="33.334"/>
+                        <TextBlock x:Name="textBlockDepartmentName3" Text="信息与安全工程学院" Height="27" Width="120" Canvas.Left="46" Canvas.Top="40"/>
+                        <TextBlock x:Name="textBlockTeacherName3" Text="杨璠" Height="26" Width="94" Canvas.Left="171" Canvas.Top="40"/>
                     </Canvas>
                 </Border>
                 <Border HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="Gray"  BorderThickness="2" Width="318.667">
@@ -74,8 +141,8 @@
                         <Label x:Name="labelClassId1" Content="Z004530B1300720 " Height="23.999" Canvas.Left="3.833" Canvas.Top="4.334" Width="120.667"/>
                         <TextBlock x:Name="textBlockClassName1" Text="R语言" Height="15.666" Width="41" Canvas.Left="138.888" Canvas.Top="10.668" TextAlignment="Center"/>
                         <Label x:Name="labe21" Content="教师：" Height="27.556" Width="53.778" RenderTransformOrigin="0.48,1.592" Canvas.Left="3.112" Canvas.Top="34.223"/>
-                        <TextBlock x:Name="textBlockDepartmentName1" Text="信息与安全工程学院" Height="26.222" Width="119.111" Canvas.Left="60.444" Canvas.Top="34.223"/>
-                        <TextBlock x:Name="textBlockTeacherName1" Text="刘树栋" Height="25.333" Width="93.778" Canvas.Left="185.334" Canvas.Top="33.334"/>
+                        <TextBlock x:Name="textBlockDepartmentName1" Text="信息与安全工程学院" Height="27" Width="120" Canvas.Left="47" Canvas.Top="40"/>
+                        <TextBlock x:Name="textBlockTeacherName1" Text="刘树栋" Height="26" Width="94" Canvas.Left="172" Canvas.Top="41"/>
                     </Canvas>
                 </Border>
                 <Border HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="Gray"  BorderThickness="2" Width="318.667">

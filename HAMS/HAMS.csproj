@@ -55,6 +55,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Users\lxree\Downloads\mysql-connector-net-8.0.22-noinstall\v4.5.2\MySql.Web.dll</HintPath>
     </Reference>
+    <Reference Include="presentationframework.aero2" />
     <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Users\lxree\Downloads\mysql-connector-net-8.0.22-noinstall\v4.5.2\Renci.SshNet.dll</HintPath>

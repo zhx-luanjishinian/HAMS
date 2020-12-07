@@ -39,5 +39,9 @@ namespace HAMS.Student.StudentService
             }
             
         }
+        public Dictionary<int,List<String>> showCourseInfo(string account)
+        {
+            return sd.showCourseInfo(account);
+        }
     }
 }

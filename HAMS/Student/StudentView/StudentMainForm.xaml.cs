@@ -50,5 +50,10 @@ namespace HAMS.Student.StudentView
         {
             StuMainHomework smw = new StuMainHomework();
         }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            App.Current.Shutdown();
+        }
     }
 }

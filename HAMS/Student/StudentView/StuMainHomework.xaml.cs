@@ -88,5 +88,10 @@ namespace HAMS.Student.StudentView
         {
             StudentAnswerQuestion saq = new StudentAnswerQuestion();
         }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            App.Current.Shutdown();
+        }
     }
 }

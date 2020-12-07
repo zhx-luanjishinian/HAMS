@@ -23,5 +23,28 @@ namespace HAMS.Teacher.TeacherView
         {
             InitializeComponent();
         }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            App.Current.Shutdown();
+        }
+
+        private void btnReturn_Click(object sender, RoutedEventArgs e)
+        {
+            // 打开子窗体
+            BreifView newBriefView = new BreifView();
+            newBriefView.Show();
+            // 隐藏自己(父窗体)
+            this.Visibility = System.Windows.Visibility.Hidden;
+        }
+
+        private void btnAnswerQuestion_Click(object sender, RoutedEventArgs e)
+        {
+            // 打开子窗体
+            AnswerQuestion newAnswerQuestion = new AnswerQuestion();
+            newAnswerQuestion.Show();
+            // 隐藏自己(父窗体)
+            this.Visibility = System.Windows.Visibility.Hidden;
+        }
     }
 }

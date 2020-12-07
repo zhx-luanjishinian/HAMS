@@ -14,7 +14,7 @@ namespace HAMS.Admin.AdminDao
         public DataTable Login(String account, String pw)
         {
 
-            String sql = "select adminId,name from admin where adminId=@id";
+            String sql = "select adminId,name,password from admin where adminId=@id";
             //传入要填写的参数
             MySqlParameter parameter = new MySqlParameter("@id", account);
             DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);

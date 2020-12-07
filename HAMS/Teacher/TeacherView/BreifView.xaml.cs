@@ -23,5 +23,52 @@ namespace HAMS.Teacher.TeacherView
         {
             InitializeComponent();
         }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            App.Current.Shutdown();
+        }
+
+        private void btnReturn_Click(object sender, RoutedEventArgs e)
+        {
+            if (true)//里面是验证函数
+            {
+                // 打开子窗体
+                TeacherMainForm newTeacherMainForm = new TeacherMainForm("1");
+                newTeacherMainForm.Show();
+                // 隐藏自己(父窗体)
+                this.Visibility = System.Windows.Visibility.Hidden;
+            }
+        }
+
+        private void btnDeliverHomework_Click(object sender, RoutedEventArgs e)
+        {
+            // 打开子窗体
+            AnnounceNotice newAnnounceNotice = new AnnounceNotice();
+            newAnnounceNotice.Show();
+            // 隐藏自己(父窗体)
+            this.Visibility = System.Windows.Visibility.Hidden;
+        }
+
+        private void btnCheckDetail_Click(object sender, RoutedEventArgs e)
+        {
+            if (true)//里面是验证函数
+            {
+                // 打开子窗体
+                HomeworkNoticeCheck newHomeworkNoticeCheck = new HomeworkNoticeCheck();
+                newHomeworkNoticeCheck.Show();
+                // 隐藏自己(父窗体)
+                this.Visibility = System.Windows.Visibility.Hidden;
+            }
+        }
+
+        private void btnModify_Click(object sender, RoutedEventArgs e)
+        {
+            // 打开子窗体
+            AnnounceNotice newAnnounceNotice = new AnnounceNotice();
+            newAnnounceNotice.Show();
+            // 隐藏自己(父窗体)
+            this.Visibility = System.Windows.Visibility.Hidden;
+        }
     }
 }

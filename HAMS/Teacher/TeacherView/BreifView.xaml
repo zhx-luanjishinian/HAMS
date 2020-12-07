@@ -18,17 +18,17 @@
                     <Border.Background>
                         <ImageBrush>
                             <ImageBrush.ImageSource>
-                                <ImageSource>/Resources/teacher.png</ImageSource>
+                                <ImageSource>/HAMS;component/Resources/teacher.png</ImageSource>
                             </ImageBrush.ImageSource>
                         </ImageBrush>
                     </Border.Background>
                 </Border>
             </Border>
-            <Label x:Name="teacherInformation" Content="Z0004520  刘树栋" HorizontalAlignment="Left" Margin="73.266,19.2,0,10" Width="125.401" FontSize="13"/>
-            <Image x:Name="image" HorizontalAlignment="Left" Margin="284.4,9.2,0,10" Width="104" Source="/Resources/logo.jpg" Stretch="Fill"/>
-            <Button x:Name="btnExit" Background="LightBlue" Width="81.667" RenderTransformOrigin="0.622,0.945" Foreground="#FF151111" BorderBrush="LightBlue" HorizontalAlignment="Right" Margin="0,5.526,24.459,4.567">
+            <Label x:Name="lbTeacherInfo" Content="Z0004520  刘树栋" HorizontalAlignment="Left" Margin="73.266,19.2,0,10" Width="125.401" FontSize="13"/>
+            <Image x:Name="image" HorizontalAlignment="Left" Margin="284.4,9.2,0,10" Width="104" Source="/HAMS;component/Resources/management.jpg" Stretch="Fill"/>
+            <Button x:Name="btnExit" Background="LightBlue" Width="81.667" RenderTransformOrigin="0.622,0.945" Foreground="#FF151111" BorderBrush="LightBlue" HorizontalAlignment="Right" Margin="0,5.526,24.459,4.567" Click="btnExit_Click">
                 <StackPanel>
-                    <Image x:Name="exit1" Width="28" Height="23.907" Source="/Resources/注销1.png"/>
+                    <Image x:Name="exit1" Width="28" Height="23.907" Source="/HAMS;component/Resources/resizeApi.png"/>
                     <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
                 </StackPanel>
             </Button>
@@ -39,9 +39,9 @@
             <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Margin="67.999,14.759,0,11.108" Width="0"/>
             <Label x:Name="labelCourseNumber" Content="Z004530B1300720 " Margin="107.533,10,230.136,6.647" FontSize="18"/>
             <Label x:Name="labelCourseName" Content="R语言" Margin="0,10,192.802,4.759" FontSize="18" HorizontalAlignment="Right" Width="59.2"/>
-            <Button x:Name="btnDeliverHomework" Content="发布作业" HorizontalAlignment="Right" Margin="0,14.759,24.868,11.108" Width="91.199" Background="#FFE8E4E4" FontSize="13"/>
-            <Button x:Name="btnReturn" Width="57.933" Background="LightPink" BorderThickness="0" Height="Auto" HorizontalAlignment="Left" Margin="22.734,14.759,0,13.193">
-                <Image x:Name="image2" Width="47.933" Source="/Resources/返回.png" Height="21.986"/>
+            <Button x:Name="btnDeliverHomework" Content="发布作业" HorizontalAlignment="Right" Margin="0,14.759,24.868,11.108" Width="91.199" Background="#FFE8E4E4" FontSize="13" Click="btnDeliverHomework_Click"/>
+            <Button x:Name="btnReturn" Width="57.933" Background="LightPink" BorderThickness="0" Height="Auto" HorizontalAlignment="Left" Margin="22.734,14.759,0,13.193" Click="btnReturn_Click">
+                <Image x:Name="image2" Width="47.933" Source="/HAMS;component/Resources/返回.png" Height="21.986"/>
             </Button>
             <Canvas Height="215.2" Margin="10,0,0,-215.2" VerticalAlignment="Bottom">
                 <Grid Height="113.8" Width="515" Margin="0,0,0,-1">
@@ -50,19 +50,19 @@
                         <ColumnDefinition Width="197*"/>
                         <ColumnDefinition Width="206*"/>
                     </Grid.ColumnDefinitions>
-                    <Button x:Name="btnModify" Grid.Column="2" Margin="54.928,46.413,0,34.52" OpacityMask="#FFB3B2B2" Background="White" BorderThickness="0" HorizontalAlignment="Left" Width="38.399" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
-                        <Image x:Name="image4" Height="24.533" Width="19.2" Source="/Resources/修改.png"/>
+                    <Button x:Name="btnModify" Grid.Column="2" Margin="54.928,46.413,0,34.52" OpacityMask="#FFB3B2B2" Background="White" BorderThickness="0" HorizontalAlignment="Left" Width="38.399" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Click="btnModify_Click">
+                        <Image x:Name="image4" Height="24.533" Width="19.2" Source="/HAMS;component/Resources/修改.png"/>
                     </Button>
                     <Button x:Name="btnDelete" Grid.Column="2" HorizontalAlignment="Right" Margin="0,46.413,53.52,34.52" Width="34.933" OpacityMask="#FFB0ACAC" Background="White" BorderThickness="0">
-                        <Image x:Name="image5" Height="28.187" Width="21.867" Source="/Resources/删 除 .png"/>
+                        <Image x:Name="image5" Height="28.187" Width="21.867" Source="/HAMS;component/Resources/删 除 .png"/>
                     </Button>
-                    <Button x:Name="btnCheckDetail" Background="White" Grid.ColumnSpan="2" Margin="10,20,39,18.4" BorderThickness="0" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
+                    <Button x:Name="btnCheckDetail" Background="White" Grid.ColumnSpan="2" Margin="10,20,39,18.4" BorderThickness="0" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Click="btnCheckDetail_Click">
                         <Grid Height="75.4" Width="244.4">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="121*"/>
                                 <ColumnDefinition Width="123*"/>
                             </Grid.ColumnDefinitions>
-                            <Image x:Name="image3" Margin="0,4.2,30.098,0" Source="/Resources/作业1.png"/>
+                            <Image x:Name="image3" Margin="0,4.2,30.098,0" Source="/HAMS;component/Resources/作业1.png"/>
                             <Label x:Name="title" Content="SVM实验" Grid.Column="1" Margin="-25.098,4.2,54.563,0" FontWeight="Bold" FontSize="16" Height="26.4" VerticalAlignment="Top"/>
                             <Label x:Name="description" Content="调通SVM代码，打卡上传" Grid.Column="1" Margin="-29.872,35.6,-10.563,0" FontSize="13"/>
                         </Grid>

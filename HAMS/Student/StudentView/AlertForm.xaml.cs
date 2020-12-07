@@ -31,5 +31,10 @@ namespace HAMS.Student.StudentView
         {
             StudentMainForm smf = new StudentMainForm(textBlockUserId.Text);
         }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            App.Current.Shutdown();
+        }
     }
 }

@@ -19,9 +19,31 @@ namespace HAMS.Teacher.TeacherView
     /// </summary>
     public partial class TeacherMainForm : Window
     {
-        public TeacherMainForm()
+        public TeacherMainForm(string session)
         {
             InitializeComponent();
+            try { if (session != null) { tbTeacherInfo.Text = session; } }
+            catch (Exception ex)
+            {
+                throw new Exception("界面间传值发生异常" + ex.Message);
+            }
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            App.Current.Shutdown();    //注销，关闭系统
+        }
+
+        private void btnRecntNo1_Click(object sender, RoutedEventArgs e)
+        {
+            if (true)//里面是验证函数
+            {
+                // 打开子窗体
+                BreifView newBreifView = new BreifView();
+                newBreifView.Show();
+                // 隐藏自己(父窗体)
+                this.Visibility = System.Windows.Visibility.Hidden;
+            }
         }
     }
 }

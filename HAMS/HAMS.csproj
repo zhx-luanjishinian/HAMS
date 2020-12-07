@@ -35,18 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BouncyCastle.Crypto, Version=1.8.3.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\lxree\Downloads\mysql-connector-net-8.0.22-noinstall\v4.5.2\BouncyCastle.Crypto.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.Protobuf, Version=3.11.4.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\lxree\Downloads\mysql-connector-net-8.0.22-noinstall\v4.5.2\Google.Protobuf.dll</HintPath>
-    </Reference>
-    <Reference Include="K4os.Compression.LZ4, Version=1.1.11.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\lxree\Downloads\mysql-connector-net-8.0.22-noinstall\v4.5.2\K4os.Compression.LZ4.dll</HintPath>
-    </Reference>
     <Reference Include="K4os.Compression.LZ4.Streams, Version=1.1.11.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Users\lxree\Downloads\mysql-connector-net-8.0.22-noinstall\v4.5.2\K4os.Compression.LZ4.Streams.dll</HintPath>
@@ -71,6 +59,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Users\lxree\Downloads\mysql-connector-net-8.0.22-noinstall\v4.5.2\Renci.SshNet.dll</HintPath>
     </Reference>
+    <Reference Include="SshNet.Security.Cryptography">
+      <HintPath>C:\Users\lxree\Downloads\mysql-connector-net-8.0.22-noinstall\v4.5.2\SshNet.Security.Cryptography.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -78,10 +69,7 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\lxree\Downloads\mysql-connector-net-8.0.22-noinstall\v4.5.2\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-    </Reference>
+    <Reference Include="System.Windows" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -91,15 +79,11 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="Ubiety.Dns.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\lxree\Downloads\mysql-connector-net-8.0.22-noinstall\v4.5.2\Ubiety.Dns.Core.dll</HintPath>
-    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="WPFVisifire.Charts">
-      <HintPath>..\..\..\..\..\wpfvisifire\WPFVisifire.Charts\X86\4.5.2.1\WPFVisifire.Charts.dll</HintPath>
+      <HintPath>..\..\..\引用\WPFVisifire.Charts.dll</HintPath>
     </Reference>
     <Reference Include="Zstandard.Net, Version=1.1.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -111,6 +95,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Admin\AdminDao\ADao.cs" />
+    <Compile Include="Admin\AdminService\AService.cs" />
     <Compile Include="Admin\AdminView\ClassManagement.xaml.cs">
       <DependentUpon>ClassManagement.xaml</DependentUpon>
     </Compile>
@@ -168,6 +154,8 @@
     <Compile Include="Student\StudentView\StuSubmitHomework.xaml.cs">
       <DependentUpon>StuSubmitHomework.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Teacher\TeacherDao\TDao.cs" />
+    <Compile Include="Teacher\TeacherService\TService.cs" />
     <Compile Include="Teacher\TeacherView\AnnounceNotice.xaml.cs">
       <DependentUpon>AnnounceNotice.xaml</DependentUpon>
     </Compile>
@@ -349,12 +337,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Admin\AdminDao\" />
-    <Folder Include="Admin\AdminService\" />
-    <Folder Include="Teacher\TeacherDao\" />
-    <Folder Include="Teacher\TeacherService\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\1200856.gif" />
   </ItemGroup>
@@ -408,6 +391,22 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\homework.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\homework.png" />
+    <Resource Include="Resources\logo.jpg" />
+    <Resource Include="Resources\teacher.png" />
+    <Resource Include="Resources\作业1.png" />
+    <Resource Include="Resources\修改.png" />
+    <Resource Include="Resources\公告.png" />
+    <Resource Include="Resources\删 除 .png" />
+    <Resource Include="Resources\删除.png" />
+    <Resource Include="Resources\学生.png" />
+    <Resource Include="Resources\注销1.png" />
+    <Resource Include="Resources\男老师.png" />
+    <Resource Include="Resources\评论.png" />
+    <Resource Include="Resources\返回.png" />
+    <Resource Include="Resources\链接.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

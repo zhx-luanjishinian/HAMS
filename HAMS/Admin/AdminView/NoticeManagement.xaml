@@ -38,8 +38,8 @@
             <Menu Height="473.723" VerticalAlignment="Top" Width="133">
                 <Button x:Name="btnStuManagement" Content="学生管理" Width="120" Height="41.24"/>
                 <Button x:Name="btnTeaManagement" Content="教师管理" Width="120" Height="41.24"/>
-                <Button x:Name="btnClassManagement1" Content="课堂管理" Width="120" Height="41.24"/>
-                <Button x:Name="btnClassManagement" Content="公告管理" Width="120" Height="41.24" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" />
+                <Button x:Name="btnClassManagement" Content="课堂管理" Width="120" Height="41.24"/>
+                <Button x:Name="btnNoticeManagement" Content="公告管理" Width="120" Height="41.24" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" />
             </Menu>
         </DockPanel>
         <Canvas HorizontalAlignment="Left" Height="53.699" Margin="138.667,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="654.666" Background="{DynamicResource {x:Static SystemColors.InfoBrushKey}}">

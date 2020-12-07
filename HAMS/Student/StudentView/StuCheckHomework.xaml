@@ -28,7 +28,7 @@
             </Border>
             <Label x:Name="tbUserNameAc" Content="201821060569刘小蕊" Canvas.Left="85" Canvas.Top="34" RenderTransformOrigin="1.087,0.535" FontWeight="Bold"/>
             <Image x:Name="imgSystemLogo" Height="61.029" Width="197.332" Source="pack://siteoforigin:,,,/Resources/management.jpg" Stretch="UniformToFill" Canvas.Left="501.001" Canvas.Top="6.872"/>
-            <Button x:Name="btnExit" Background="LightBlue"  Canvas.Left="714.999" Canvas.Top="15.433" Width="68.334" RenderTransformOrigin="0.622,0.945" Height="43.907" Foreground="#FF151111" BorderBrush="LightBlue">
+            <Button x:Name="btnExit" Background="LightBlue"  Canvas.Left="714.999" Canvas.Top="15.433" Width="68.334" RenderTransformOrigin="0.622,0.945" Height="43.907" Foreground="#FF151111" BorderBrush="LightBlue" Click="btnExit_Click">
                 <StackPanel>
                     <Image x:Name="exit1" Width="28" Height="23.907" Source="pack://siteoforigin:,,,/Resources/resizeApi.png"/>
                     <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>

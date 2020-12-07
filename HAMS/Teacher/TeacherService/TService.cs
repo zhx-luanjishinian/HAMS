@@ -24,13 +24,13 @@ namespace HAMS.Teacher.TeacherService
             {
                 return BaseResult.errorMsg("账号或者密码输入错误，请检查后再进行输入");
             }
-            else if (table.Rows[0][0].ToString() != pw)
+            else if (table.Rows[0][2].ToString() != pw)
             {
                 return BaseResult.errorMsg("账号正确，密码错误");
             }
             else
             {
-                return BaseResult.ok(table.Rows[0][1].ToString());
+                return BaseResult.ok(table.Rows[0][1].ToString());//table.Rows[0][1].ToString()是传递的data
             }
 
         }

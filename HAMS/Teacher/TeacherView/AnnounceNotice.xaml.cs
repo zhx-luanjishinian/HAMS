@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Forms;//要在依赖中引入Window.Forms,并添加这个命名空间
+using System.Text.RegularExpressions;
 
 namespace HAMS.Teacher.TeacherView
 {
@@ -22,6 +24,59 @@ namespace HAMS.Teacher.TeacherView
         public AnnounceNotice()
         {
             InitializeComponent();
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            App.Current.Shutdown();
+        }
+
+        private void btnReturn_Click(object sender, RoutedEventArgs e)
+        {
+            BreifView newBreifView = new BreifView();
+            newBreifView.Show();
+            // 隐藏自己(父窗体)
+            this.Visibility = System.Windows.Visibility.Hidden;
+        }
+
+        private void btnUpload_Click(object sender, RoutedEventArgs e)
+        {
+            //文件打开用到openFileDialog，文件保存是SaveFileDialog
+
+            OpenFileDialog ofd = new OpenFileDialog();//选择文件的对话框
+            ofd.Title = tbTeacherInfo.Text+"老师，请选择要传的文件";
+            ofd.InitialDirectory = @"C:\Users";//打开本地文件框的起始路径
+            string filter = @"文本文档|*.txt;*.pdf;*.doc;*.html;*.wps;*.rtf";
+            /*
+            string filter = @"所有文件|*.*|
+                           压缩文件|*.zip;*.rar;*.arj|
+                           文本文档|*.txt;*.pdf;*.doc;*.html;*.wps;*.rtf|
+                           图片文件|*.jpg;*.png;*.gif;*.jpeg;*.bmp|
+                           视频文件|*.avi;*.mp3;*.swf;*.mpg;*.mov|
+                           系统文件|*.int;*.sys;*.dll;*.adt|
+                           可执行文件|*.exe;*.com;*.bat;*.vbs";
+            */
+
+            ofd.Filter = Regex.Replace(filter,@"\s",""); //筛选文件
+
+            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                upload.Text = System.IO.Path.GetFileName(ofd.FileName); ;//获取文件名
+                                              //System.IO.Path.GetFullPath(ofd.FileName);//获取文件路径
+                                              //ofd.FileName//获取文件路径
+                                              // string fileName = System.IO.Path.GetFileName(ofd.FileName);//获取文件名
+                                              //string extension = System.IO.Path.GetExtension(fileName);//获取文件扩展名
+
+                /*
+                //令选择的文件可以以图片形式显示在image控件上
+                BitmapImage bitmapImage = new BitmapImage();
+                bitmapImage.BeginInit();  //给BitmapImage对象赋予数据的时候，需要用BeginInit()开始，用EndInit()结束
+                bitmapImage.UriSource = new Uri(@pngfile);//@+引用这个图片pngfile
+                //bitmapImage.DecodePixelWidth = 320;   //对大图片，可以节省内存。尽可能不要同时设置DecodePixelWidth和DecodePixelHeight，否则宽高比可能改变
+                bitmapImage.EndInit();
+                image1.Source = bitmapImage;
+                */
+            }
         }
     }
 }

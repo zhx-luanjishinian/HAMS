@@ -76,7 +76,7 @@ namespace HAMS.ToolClass
            
             this.code = 0;
             this.msg = "OK";
-            this.data = data;
+            this.data = data;//保存的是业务层传来的数据
           
         }
 

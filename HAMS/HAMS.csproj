@@ -159,14 +159,8 @@
     <Compile Include="Teacher\TeacherView\BreifView.xaml.cs">
       <DependentUpon>BreifView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Teacher\TeacherView\HomeworkNoticeCheck.xaml.cs">
-      <DependentUpon>HomeworkNoticeCheck.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Teacher\TeacherView\HomeworkNoticeCheckFinish.xaml.cs">
-      <DependentUpon>HomeworkNoticeCheckFinish.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Teacher\TeacherView\HomeworkNoticeUncheck.xaml.cs">
-      <DependentUpon>HomeworkNoticeUncheck.xaml</DependentUpon>
+    <Compile Include="Teacher\TeacherView\CheckingClassHomework.xaml.cs">
+      <DependentUpon>CheckingClassHomework.xaml</DependentUpon>
     </Compile>
     <Compile Include="Teacher\TeacherView\HomeworkStatistic.xaml.cs">
       <DependentUpon>HomeworkStatistic.xaml</DependentUpon>
@@ -283,15 +277,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Teacher\TeacherView\HomeworkNoticeCheck.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Teacher\TeacherView\HomeworkNoticeCheckFinish.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Teacher\TeacherView\HomeworkNoticeUncheck.xaml">
+    <Page Include="Teacher\TeacherView\CheckingClassHomework.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

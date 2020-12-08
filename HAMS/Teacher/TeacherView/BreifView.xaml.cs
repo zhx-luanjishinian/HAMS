@@ -57,7 +57,7 @@ namespace HAMS.Teacher.TeacherView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                HomeworkNoticeCheck newHomeworkNoticeCheck = new HomeworkNoticeCheck();
+                CheckingClassHomework newHomeworkNoticeCheck = new CheckingClassHomework();
                 newHomeworkNoticeCheck.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;

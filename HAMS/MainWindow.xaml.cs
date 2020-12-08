@@ -48,6 +48,7 @@ namespace HAMS
                     MessageBox.Show("恭喜你已登录成功");
 
                     StudentMainForm smf = new StudentMainForm(txtUserName.Text + (string)br.data);
+                    //StudentMainForm smf = new StudentMainForm(txtUserName.Text);
                     smf.ShowDialog();
                 }
                 else
@@ -62,7 +63,8 @@ namespace HAMS
                 {
                     MessageBox.Show("恭喜你已登录成功");
                     
-                    TeacherMainForm tmf = new TeacherMainForm(txtUserName.Text + (string)br.data);
+                    //TeacherMainForm tmf = new TeacherMainForm(txtUserName.Text + (string)br.data);
+                    TeacherMainForm tmf = new TeacherMainForm(txtUserName.Text, (string)br.data);
                     //txtUserName.Text是教师工号Z0004520
                     //(string)br.data是刘树栋
                     tmf.ShowDialog();

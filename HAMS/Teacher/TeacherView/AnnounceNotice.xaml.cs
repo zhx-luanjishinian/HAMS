@@ -33,10 +33,10 @@ namespace HAMS.Teacher.TeacherView
 
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
-            BreifView newBreifView = new BreifView();
-            newBreifView.Show();
-            // 隐藏自己(父窗体)
-            this.Visibility = System.Windows.Visibility.Hidden;
+            ////BreifView newBreifView = new BreifView();
+            //newBreifView.Show();
+            //// 隐藏自己(父窗体)
+            //this.Visibility = System.Windows.Visibility.Hidden;
         }
 
         private void btnUpload_Click(object sender, RoutedEventArgs e)

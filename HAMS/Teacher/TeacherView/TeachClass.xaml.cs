@@ -27,7 +27,12 @@ namespace HAMS.Teacher.TeacherView
 
         public void btnEnterClass_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("test");
+            //MessageBox.Show("test");
+            string courseName = labelClassName1.Content.ToString();
+            string courseNumber = labelClassId1.Content.ToString();
+            BreifView newBreifView = new BreifView(courseName, courseNumber);
+            newBreifView.Show();
+            this.Visibility = System.Windows.Visibility.Hidden;
         }
     }
 }

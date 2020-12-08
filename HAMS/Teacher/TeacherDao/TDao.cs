@@ -21,8 +21,8 @@ namespace HAMS.Teacher.TeacherDao
             //MessageBox.Show(table.Rows[0][1].ToString());->name
             //MessageBox.Show(table.Rows[0][2].ToString());->password
             return table;
-
-
         }
+       
     }
+
 }

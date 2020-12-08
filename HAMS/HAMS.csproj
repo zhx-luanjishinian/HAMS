@@ -63,6 +63,7 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -169,6 +170,9 @@
     </Compile>
     <Compile Include="Teacher\TeacherView\HomeworkStatistic.xaml.cs">
       <DependentUpon>HomeworkStatistic.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\TeacherView\TeachClass.xaml.cs">
+      <DependentUpon>TeachClass.xaml</DependentUpon>
     </Compile>
     <Compile Include="Teacher\TeacherView\TeacherMainForm.xaml.cs">
       <DependentUpon>TeacherMainForm.xaml</DependentUpon>
@@ -295,6 +299,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Teacher\TeacherView\HomeworkStatistic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Teacher\TeacherView\TeachClass.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

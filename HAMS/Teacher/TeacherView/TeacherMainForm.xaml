@@ -96,7 +96,7 @@
                         <GridViewColumn/>
                     </GridView>
                 </ListView.View>
-                <Canvas Height="66.111" Width="452.8" Style="{DynamicResource CanvasStyle1}">
+                <!--<Canvas Height="66.111" Width="452.8" Style="{DynamicResource CanvasStyle1}">
                     <Button x:Name="btnEnterClass" Content="" Height="62.963" Width="452.8" Background="White" />
                     <Label x:Name="labelClassId1" Content="Z004530B1300720 " Height="23.999" Canvas.Left="96.621" Canvas.Top="20.335" Width="120.667" RenderTransformOrigin="0.507,0.631"/>
                     <TextBlock x:Name="labelClassName1" Text="R语言" Height="15.666" Width="41" Canvas.Left="246.888" Canvas.Top="25.335" TextAlignment="Center"/>
@@ -129,8 +129,8 @@
                     <Border BorderBrush="Black" BorderThickness="1" Height="66.111" Width="452.8"/>
                     <Image x:Name="homework_png1_Copy1" Source="/Resources/homework.png" Stretch="Fill" Width="56" Height="48.562" Canvas.Left="10" Canvas.Top="10"/>
                 </Canvas>
-
-
+                <Button x:Name="button" Content="Button" Width="75"/>-->
+               
 
 
 

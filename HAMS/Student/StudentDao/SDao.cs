@@ -24,6 +24,7 @@ namespace HAMS.Student.StudentDao
         public Dictionary<int,List<String>> showCourseInfo(String account)
         {
             //此类用来装返回的对象
+            
             Dictionary<int,List<String>> dictionaryEntry = new Dictionary<int, System.Collections.Generic.List<String>>();
             String sql = "select stuId from student where stuSpecId=@id";
             MySqlParameter parameter = new MySqlParameter("@id", account);
@@ -52,7 +53,7 @@ namespace HAMS.Student.StudentDao
                 dictionaryEntry.Add(i, arrayList);
             }
             return dictionaryEntry;
-            
+      
 
         }
     }

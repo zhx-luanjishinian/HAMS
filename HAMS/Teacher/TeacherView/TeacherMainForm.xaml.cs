@@ -1,6 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -23,36 +22,27 @@ namespace HAMS.Teacher.TeacherView
     /// </summary>
     public partial class TeacherMainForm : Window
     {
-        public TeacherMainForm(string session,string session1)
+        public TeacherMainForm(string session)
         {
             InitializeComponent();
-            try {
-                if (session != null)
-                {
-                    tbTeacherInfo.Text = session;
-                    tbTeacherInfo1.Text = session1;
-                }
-            }  //教师的工号加姓名
+            try { if (session != null) { tbTeacherInfo.Text = session; } }
             catch (Exception ex)
             {
                 throw new Exception("界面间传值发生异常" + ex.Message);
             }
-            //生成业务逻辑层对象
-            TeacherDao.TDao td = new TeacherDao.TDao();
-            //生成动态控件组
-            TeachClass[] arrayTeachClass = new TeachClass[10];
-            //调用方法
-            DataTable table = td.LoadMainFormLeft(tbTeacherInfo.Text);
-            //生成左边控件
-            for (int i = 0; i < table.Rows.Count; i++)
-            {
-                arrayTeachClass[i] = new TeachClass();
-                arrayTeachClass[i].labelClassId1.Content = table.Rows[i][5];
-                arrayTeachClass[i].labelClassName1.Content = table.Rows[i][1].ToString();
-                listViewTeacherClass.Items.Add(arrayTeachClass[i]);
-            }
+            //成功动态加载控件
+            String sql = "select className from class where classId=@id";
+            //传入要填写的参数
+            MySqlParameter parameter = new MySqlParameter("@id", 1);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);
+            TeachClass test1 = new TeachClass();
+            TeachClass test2 = new TeachClass();
+            test1.labelStudentNumber.Content = table.Rows[0][0];
+            listViewTeacherClass.Items.Add(test1);
+            listViewTeacherClass.Items.Add(test2);
+          
         }
-
+        
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
@@ -62,15 +52,27 @@ namespace HAMS.Teacher.TeacherView
         private void btnRecntNo1_Click(object sender, RoutedEventArgs e)
         {
 
-            //if (true)//里面是验证函数
-            //{
-            //    // 打开子窗体
-            //    BreifView newBreifView = new BreifView();
-            //    newBreifView.Show();
-            //    // 隐藏自己(父窗体)
-            //    this.Visibility = System.Windows.Visibility.Hidden;
-            //}
+            if (true)//里面是验证函数
+            {
+                // 打开子窗体
+                BreifView newBreifView = new BreifView();
+                newBreifView.Show();
+                // 隐藏自己(父窗体)
+                this.Visibility = System.Windows.Visibility.Hidden;
+            }
         }
-      
+        private void createClassButton()
+        {
+            //String sql = "select teacherSpecId,name,password from  where teacherSpecId=@id";
+            ////传入要填写的参数
+            //MySqlParameter parameter = new MySqlParameter("@id", account);
+            //DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);
+            ////MessageBox.Show(table.Rows[0][0].ToString());->stuSpecId
+            ////MessageBox.Show(table.Rows[0][1].ToString());->name
+            ////MessageBox.Show(table.Rows[0][2].ToString());->password
+            //return table;
+            //DataContext q = new DataContext
+            //for (int i = 0; i <)
+        }
     }
 }

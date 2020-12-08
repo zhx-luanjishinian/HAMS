@@ -19,11 +19,9 @@ namespace HAMS.Teacher.TeacherView
     /// </summary>
     public partial class BreifView : Window
     {
-        public BreifView(string courseName,string courseNumber)
+        public BreifView()
         {
             InitializeComponent();
-            labelCourseName.Content=courseName;
-            labelCourseNumber.Content = courseNumber;
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
@@ -36,7 +34,7 @@ namespace HAMS.Teacher.TeacherView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                TeacherMainForm newTeacherMainForm = new TeacherMainForm("1","0");
+                TeacherMainForm newTeacherMainForm = new TeacherMainForm("1");
                 newTeacherMainForm.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;

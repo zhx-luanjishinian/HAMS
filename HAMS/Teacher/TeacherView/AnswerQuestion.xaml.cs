@@ -26,7 +26,7 @@ namespace HAMS.Teacher.TeacherView
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            HomeworkNoticeCheck newHomeworkNoticeCheck = new HomeworkNoticeCheck();
+            CheckingClassHomework newHomeworkNoticeCheck = new CheckingClassHomework();
             newHomeworkNoticeCheck.Show();
             // 隐藏自己(父窗体)
             this.Visibility = System.Windows.Visibility.Hidden;

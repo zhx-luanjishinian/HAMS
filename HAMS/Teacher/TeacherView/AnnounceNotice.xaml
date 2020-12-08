@@ -6,9 +6,10 @@
         xmlns:local="clr-namespace:HAMS.Teacher.TeacherView"
         mc:Ignorable="d"
         Title="AnnounceNotice" Height="617.6" Width="523.2">
-    <Grid Height="567">
+    <Grid Margin="0,10,0,-1.5">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="498*"/>
+            <ColumnDefinition Width="286*"/>
+            <ColumnDefinition Width="211*"/>
             <ColumnDefinition Width="19*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -16,7 +17,7 @@
             <RowDefinition Height="50*"/>
             <RowDefinition Height="538*"/>
         </Grid.RowDefinitions>
-        <Canvas Margin="-10,0,3.6,-12.521" d:LayoutOverrides="LeftMargin, RightMargin" Grid.ColumnSpan="2" Height="68.961" VerticalAlignment="Bottom">
+        <Canvas Margin="-10,0,3.6,-12.521" d:LayoutOverrides="LeftMargin, RightMargin" Grid.ColumnSpan="3" Height="68.961" VerticalAlignment="Bottom">
             <Border BorderBrush="Black" BorderThickness="0,0,0,1" Height="70.012" Canvas.Left="10" Width="515" Background="LightBlue" Canvas.Top="-10.667">
                 <Border x:Name="headImage" BorderBrush="Black" BorderThickness="0" HorizontalAlignment="Left" Height="36.996" VerticalAlignment="Top" Width="40.666" CornerRadius="35" RenderTransformOrigin="1.894,0.568" Margin="25.734,10,0,0" d:LayoutOverrides="HorizontalAlignment">
                     <Border.Background>
@@ -28,7 +29,7 @@
                     </Border.Background>
                 </Border>
             </Border>
-            <TextBlock x:Name="tbTeacherInfo" TextWrapping="Wrap" Text="Z0004520  刘树栋" Canvas.Left="85.4" Canvas.Top="21.4" Width="132.597" Height="19.145" FontSize="14"/>
+            <TextBlock x:Name="tbTeacherInfo" TextWrapping="Wrap" Text="Z0004520  刘树栋" Canvas.Left="87" Canvas.Top="10" Width="132.597" Height="19.145" FontSize="14"/>
             <Image x:Name="image3" Height="40.145" Canvas.Left="294.2" Canvas.Top="9.2" Width="104.8" Source="/HAMS;component/Resources/management.jpg" Stretch="Fill"/>
             <Button x:Name="btnExit" Background="LightBlue" Width="81.667" RenderTransformOrigin="0.622,0.945" Foreground="#FF151111" BorderBrush="LightBlue" Height="43.907" Canvas.Left="418.874" Canvas.Top="5.526" Click="btnExit_Click">
                 <StackPanel>
@@ -37,8 +38,8 @@
                 </StackPanel>
             </Button>
         </Canvas>
-        <Canvas Grid.Row="1" Margin="-10,3.066,-6.4,0" d:LayoutOverrides="LeftMargin, RightMargin" Height="37.952" VerticalAlignment="Top" Grid.ColumnSpan="2">
-            <Border BorderBrush="Black" BorderThickness="0,0,0,1" Height="37.552" Canvas.Top="0.4" Width="525" Background="LightPink" Canvas.Left="10"/>
+        <Canvas Grid.Row="1" Margin="-10,3.066,-6.4,0" d:LayoutOverrides="LeftMargin, RightMargin" Height="37.952" VerticalAlignment="Top" Grid.ColumnSpan="3">
+            <Border BorderBrush="Black" BorderThickness="0,0,0,1" Height="37.552" Canvas.Top="0.4" Width="513.2" Background="LightPink" Canvas.Left="10"/>
             <Border BorderBrush="Black" BorderThickness="1" Width="0" Height="53.762" Canvas.Left="80.667" Canvas.Top="10"/>
             <Border BorderBrush="Black" BorderThickness="1" Width="0" Height="49.003" Canvas.Left="67.999" Canvas.Top="14.759"/>
             <Label x:Name="labelClassNumber" Content="Z004530B1300720 " Width="148.533" Height="50.111" Canvas.Left="97.934" Canvas.Top="7.952" FontSize="14" FontWeight="Bold"/>
@@ -47,7 +48,7 @@
                 <Image x:Name="image2" Width="73" Source="/HAMS;component/Resources/返回.png" OpacityMask="LightPink" Height="17"/>
             </Button>
         </Canvas>
-        <Canvas Margin="0,2.603,3.6,35.397" Grid.Row="2" Grid.ColumnSpan="2">
+        <Canvas Margin="0,2.603,3.6,0" Grid.Row="2" Grid.ColumnSpan="3">
             <Canvas Height="35.455" Canvas.Left="10" Canvas.Top="10" Width="458.4">
                 <Label x:Name="homeworkTitle" Height="28.055" Canvas.Left="20.8" Canvas.Top="10" Width="112.8"/>
                 <TextBox x:Name="textBoxHomeworkTitle" Height="28.055" Canvas.Left="163.2" TextWrapping="Wrap" Canvas.Top="7.4" Width="220" Background="White" Text="请输入作业标题"/>

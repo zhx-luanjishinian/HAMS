@@ -5,8 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HAMS.Admin.AdminView"
         mc:Ignorable="d"
-        Title="ReviseTeacher" Height="300" Width="300">
+        Title="ReviseTeacher" Height="450" Width="800">
     <Grid>
-        
+        <Canvas Background="LightBlue" HorizontalAlignment="Left" Height="57.5" VerticalAlignment="Top" Width="793.333">
+            <Label Content="修改教师信息" Canvas.Left="331.166" Canvas.Top="11.5" Width="106" Height="37.74" FontSize="16"/>
+        </Canvas>
+        <Label Content="工号" HorizontalAlignment="Left" Margin="282.166,78.5,0,0" VerticalAlignment="Top"/>
+        <Label Content="姓名" HorizontalAlignment="Left" Margin="283.667,127.74,0,0" VerticalAlignment="Top"/>
+        <Label Content="性别" HorizontalAlignment="Left" Margin="283.667,178.313,0,0" VerticalAlignment="Top"/>
+        <Label Content="学院" HorizontalAlignment="Left" Margin="283.667,239.313,0,0" VerticalAlignment="Top"/>
+        <Label Content="密码" HorizontalAlignment="Left" Margin="282.166,293.26,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.471,0.555"/>
+        <TextBox x:Name="txtTeaNum" HorizontalAlignment="Left" Height="23" Margin="394.667,80.74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtTeaName" HorizontalAlignment="Left" Height="23" Margin="394.667,127.74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtSTeaCollege" HorizontalAlignment="Left" Height="23" Margin="394.667,239.313,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.492,0.5"/>
+        <TextBox x:Name="lableTeaPassword" HorizontalAlignment="Left" Height="23" Margin="394.667,295.5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <RadioButton x:Name="radiobtnTeaMale" Content="男" HorizontalAlignment="Left" Margin="394.667,184.313,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="radiobtnTeaFemale" Content="女" HorizontalAlignment="Left" Margin="483.667,184.313,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnRevise" Content="修改" HorizontalAlignment="Left" Margin="282.166,364.053,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnReset" Content="重置" HorizontalAlignment="Left" Margin="439.667,364.053,0,0" VerticalAlignment="Top" Width="75"/>
+
     </Grid>
 </Window>

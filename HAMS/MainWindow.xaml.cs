@@ -20,6 +20,7 @@ using HAMS.ToolClass;
 using HAMS.Student.StudentView;
 using HAMS.Teacher.TeacherView;
 using HAMS.Admin.AdminView;
+using System.Windows.Media.Animation;
 
 namespace HAMS
 {
@@ -37,6 +38,7 @@ namespace HAMS
         {
             InitializeComponent();
         }
+
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
@@ -79,7 +81,7 @@ namespace HAMS
                 {
                     MessageBox.Show("恭喜你已登录成功");
 
-                    StudentManagement sm = new StudentManagement(txtUserName.Text + (string)br.data);
+                    AdminIndex sm = new AdminIndex(txtUserName.Text + (string)br.data);
                     sm.ShowDialog();
                 }
                 else

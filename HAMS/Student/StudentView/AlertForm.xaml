@@ -68,7 +68,8 @@
                         <GridViewColumn/>
                     </GridView>
                 </ListView.View>
-                <Border HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="Gray"  BorderThickness="2" Width="493.334">
+
+                <Border HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="Gray"  BorderThickness="2" Width="493">
                     <Canvas x:Name="canvasHomework1" Height="66.111" Width="485" HorizontalAlignment="Left">
                         <Border x:Name="homeworkImage" BorderBrush="Black" BorderThickness="0" Grid.Column="1" HorizontalAlignment="Left" Height="45.662" VerticalAlignment="Top" Width="44" RenderTransformOrigin="0.471,0.567" Canvas.Top="7.668" Canvas.Left="65.834">
                             <Border.Background>
@@ -91,7 +92,7 @@
                         <ComboBox x:Name="comboBoxDegree1" Height="25.907" Width="75" Canvas.Left="406" Canvas.Top="4.666" Text="难易程度" RenderTransformOrigin="0.301,0.704">
                             <CheckBox Content="最难"/>
                         </ComboBox>
-                        <Button x:Name="btnLimitedTime1" Content="截止时间设置" Width="75" Canvas.Left="406" Canvas.Top="33.333" Height="25.907"/>
+                        <Button x:Name="btnLimitedTime1" Content="截止时间设置" Width="75" Canvas.Left="406" Canvas.Top="33.333" Height="25.907" Click="btnLimitedTime1_Click"/>
                     </Canvas>
                 </Border>
 

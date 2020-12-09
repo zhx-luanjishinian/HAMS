@@ -43,5 +43,42 @@ namespace HAMS.Student.StudentView
         {
             App.Current.Shutdown();
         }
+
+        private void btnLimitedTime1_Click(object sender, RoutedEventArgs e)
+        {
+            if (true)//里面是验证函数
+            {
+                // 打开子窗体
+                StuChooseCalender smf = new StuChooseCalender();
+                smf.Show();
+                // 隐藏自己(父窗体)
+                this.Visibility = System.Windows.Visibility.Hidden;
+            }
+        }
+
+        private void btnLimitedTime2_Click(object sender, RoutedEventArgs e)
+        {
+            if (true)//里面是验证函数
+            {
+                // 打开子窗体
+                StuChooseCalender smf = new StuChooseCalender();
+                smf.Show();
+                // 隐藏自己(父窗体)
+                this.Visibility = System.Windows.Visibility.Hidden;
+            }
+        }
+
+        private void btnLimitedTime3_Click(object sender, RoutedEventArgs e)
+        {
+            if (true)//里面是验证函数
+            {
+                // 打开子窗体
+                StuChooseCalender smf = new StuChooseCalender();
+                smf.Show();
+                // 隐藏自己(父窗体)
+                this.Visibility = System.Windows.Visibility.Hidden;
+            }
+        }
+
     }
 }

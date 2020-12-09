@@ -117,7 +117,9 @@
     </Compile>
     <Compile Include="DataUtil\DataOperation.cs" />
     <Compile Include="Student\StudentDao\SDao.cs" />
+    <Compile Include="Student\StudentDao\SubmitHomeworkDao.cs" />
     <Compile Include="Student\StudentService\SService.cs" />
+    <Compile Include="Student\StudentService\StuHomeworkService.cs" />
     <Compile Include="Student\StudentView\AlertForm.xaml.cs">
       <DependentUpon>AlertForm.xaml</DependentUpon>
     </Compile>

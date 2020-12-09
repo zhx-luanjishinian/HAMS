@@ -26,6 +26,15 @@ namespace HAMS.Entity
         public String HomeName { set; get; }
         //是否删除
         public int IfDelete { set; get; }
+        //学生学号
+        public int StuId { set;  get; }
+
+        public int ClassId { set; get; }
+
+        public int TeacherId { set; get; }
+
+        public int NotId { set; get; }
+
 
     }
 }

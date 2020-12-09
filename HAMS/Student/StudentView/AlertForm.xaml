@@ -23,14 +23,14 @@
                 <Border.Background>
                     <ImageBrush>
                         <ImageBrush.ImageSource>
-                            <ImageSource>pack://siteoforigin:,,,/Resources/bk_create.jpg</ImageSource>
+                            <ImageSource>/Resources/bk_create.jpg</ImageSource>
                         </ImageBrush.ImageSource>
                     </ImageBrush>
                 </Border.Background>
             </Border>
             <Button x:Name="btnExit" Background="LightBlue"  Canvas.Left="460.341" Canvas.Top="2.644" Width="81.667" RenderTransformOrigin="0.622,0.945" Height="43.907" Foreground="#FF151111" BorderBrush="LightBlue" d:LayoutOverrides="LeftMargin, RightMargin" Click="btnExit_Click">
                 <StackPanel>
-                    <Image x:Name="exit1" Width="28" Height="23.907" Source="pack://siteoforigin:,,,/Resources/resizeApi.png"/>
+                    <Image x:Name="exit1" Width="28" Height="23.907" Source="/Resources/resizeApi.png"/>
                     <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
                 </StackPanel>
             </Button>
@@ -68,7 +68,8 @@
                         <GridViewColumn/>
                     </GridView>
                 </ListView.View>
-                <Border HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="Gray"  BorderThickness="2" Width="493.334">
+
+                <Border HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="Gray"  BorderThickness="2" Width="493">
                     <Canvas x:Name="canvasHomework1" Height="66.111" Width="485" HorizontalAlignment="Left">
                         <Border x:Name="homeworkImage" BorderBrush="Black" BorderThickness="0" Grid.Column="1" HorizontalAlignment="Left" Height="45.662" VerticalAlignment="Top" Width="44" RenderTransformOrigin="0.471,0.567" Canvas.Top="7.668" Canvas.Left="65.834">
                             <Border.Background>
@@ -76,7 +77,7 @@
                                     <ImageBrush.ImageSource>
                                         <DrawingImage>
                                             <DrawingImage.Drawing>
-                                                <ImageDrawing ImageSource="pack://siteoforigin:,,,/Resources/homework.png" Rect="100,200,110,100"/>
+                                                <ImageDrawing ImageSource="/Resources/homework.png" Rect="100,200,110,100"/>
                                             </DrawingImage.Drawing>
                                         </DrawingImage>
                                     </ImageBrush.ImageSource>
@@ -91,7 +92,7 @@
                         <ComboBox x:Name="comboBoxDegree1" Height="25.907" Width="75" Canvas.Left="406" Canvas.Top="4.666" Text="难易程度" RenderTransformOrigin="0.301,0.704">
                             <CheckBox Content="最难"/>
                         </ComboBox>
-                        <Button x:Name="btnLimitedTime1" Content="截止时间设置" Width="75" Canvas.Left="406" Canvas.Top="33.333" Height="25.907"/>
+                        <Button x:Name="btnLimitedTime1" Content="截止时间设置" Width="75" Canvas.Left="406" Canvas.Top="33.333" Height="25.907" Click="btnLimitedTime1_Click"/>
                     </Canvas>
                 </Border>
 
@@ -103,7 +104,7 @@
                                     <ImageBrush.ImageSource>
                                         <DrawingImage>
                                             <DrawingImage.Drawing>
-                                                <ImageDrawing ImageSource="pack://siteoforigin:,,,/Resources/homework.png" Rect="100,200,110,100"/>
+                                                <ImageDrawing ImageSource="/Resources/homework.png" Rect="100,200,110,100"/>
                                             </DrawingImage.Drawing>
                                         </DrawingImage>
                                     </ImageBrush.ImageSource>
@@ -128,7 +129,7 @@
                                     <ImageBrush.ImageSource>
                                         <DrawingImage>
                                             <DrawingImage.Drawing>
-                                                <ImageDrawing ImageSource="pack://siteoforigin:,,,/Resources/homework.png" Rect="100,200,110,100"/>
+                                                <ImageDrawing ImageSource="/Resources/homework.png" Rect="100,200,110,100"/>
                                             </DrawingImage.Drawing>
                                         </DrawingImage>
                                     </ImageBrush.ImageSource>

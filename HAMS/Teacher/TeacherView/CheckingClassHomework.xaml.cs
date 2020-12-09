@@ -15,21 +15,13 @@ using System.Windows.Shapes;
 namespace HAMS.Teacher.TeacherView
 {
     /// <summary>
-    /// AnswerQuestion.xaml 的交互逻辑
+    /// CheckingClassHomework.xaml 的交互逻辑
     /// </summary>
-    public partial class AnswerQuestion : Window
+    public partial class CheckingClassHomework : Window
     {
-        public AnswerQuestion()
+        public CheckingClassHomework()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, RoutedEventArgs e)
-        {
-            CheckingClassHomework newHomeworkNoticeCheck = new CheckingClassHomework();
-            newHomeworkNoticeCheck.Show();
-            // 隐藏自己(父窗体)
-            this.Visibility = System.Windows.Visibility.Hidden;
         }
     }
 }

@@ -10,26 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace HAMS.Teacher.TeacherView
 {
     /// <summary>
-    /// AnswerQuestion.xaml 的交互逻辑
+    /// BreifHomework.xaml 的交互逻辑
     /// </summary>
-    public partial class AnswerQuestion : Window
+    public partial class BreifHomework : UserControl
     {
-        public AnswerQuestion()
+        public BreifHomework()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, RoutedEventArgs e)
-        {
-            CheckingClassHomework newHomeworkNoticeCheck = new CheckingClassHomework();
-            newHomeworkNoticeCheck.Show();
-            // 隐藏自己(父窗体)
-            this.Visibility = System.Windows.Visibility.Hidden;
         }
     }
 }

@@ -19,28 +19,31 @@
                         <ImageBrush.ImageSource>
                             <DrawingImage>
                                 <DrawingImage.Drawing>
-                                    <ImageDrawing ImageSource="pack://siteoforigin:,,,/Resources/bk_create.jpg" Rect="100,200,110,100"></ImageDrawing>
+                                    <ImageDrawing ImageSource="/Resources/bk_create.jpg" Rect="100,200,110,100"></ImageDrawing>
                                 </DrawingImage.Drawing>
                             </DrawingImage>
                         </ImageBrush.ImageSource>
                     </ImageBrush>
                 </Border.Background>
             </Border>
-            <Label x:Name="tbUserNameAc" Content="201821060569刘小蕊" Canvas.Left="85" Canvas.Top="34" RenderTransformOrigin="1.087,0.535" FontWeight="Bold"/>
-            <Image x:Name="imgSystemLogo" Height="61.029" Width="197.332" Source="pack://siteoforigin:,,,/Resources/management.jpg" Stretch="UniformToFill" Canvas.Left="501.001" Canvas.Top="6.872"/>
+            <Label x:Name="tbUserNameAc" Content="201821060569  刘小蕊" Canvas.Left="85" Canvas.Top="34" RenderTransformOrigin="1.087,0.535" FontWeight="Bold"/>
+            <Image x:Name="imgSystemLogo" Height="61.029" Width="197.332" Source="/Resources/management.jpg" Stretch="UniformToFill" Canvas.Left="501.001" Canvas.Top="6.872"/>
             <Button x:Name="btnExit" Background="LightBlue"  Canvas.Left="714.999" Canvas.Top="15.433" Width="68.334" RenderTransformOrigin="0.622,0.945" Height="43.907" Foreground="#FF151111" BorderBrush="LightBlue" Click="btnExit_Click">
                 <StackPanel>
-                    <Image x:Name="exit1" Width="28" Height="23.907" Source="pack://siteoforigin:,,,/Resources/resizeApi.png"/>
+                    <Image x:Name="exit1" Width="28" Height="23.907" Source="/Resources/resizeApi.png"/>
                     <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
                 </StackPanel>
             </Button>
 
         </Canvas>
         <DockPanel  HorizontalAlignment="Left" Background="LightPink" Height="54" LastChildFill="False" Grid.Row="1" VerticalAlignment="Top" Width="793" Margin="0,1.333,0,0">
-            <Image x:Name="imgReturn" Height="26.64" Canvas.Top="21.389" Width="61.333" Source="pack://siteoforigin:,,,/Resources/返回.png"/>
-            <Menu x:Name="menu" Background="LightPink" HorizontalAlignment="Left" Height="55.463" VerticalAlignment="Center" Width="794.847" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="0,0,0,-1.506">
-                <Button x:Name="homeworkManagement" Height="45.463" Width="188" Content="作业管理" FontSize="14" FontWeight="Bold"/>
-                <Button x:Name="homeworkAlert" Height="45.463" Width="200" Content="作业预警" FontSize="14" FontWeight="Bold"/>
+
+            <Menu x:Name="menu" Background="LightPink" HorizontalAlignment="Left" Height="55" VerticalAlignment="Center" Width="729" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="0,0,0,-1">
+                <Button x:Name="btnReturn" Height="31" Canvas.Top="21.389" Width="63" Click="btnReturn_Click">
+                    <Image x:Name="imgReturn" Height="21" Canvas.Top="21.389" Width="38" Source="/Resources/返回.png"/>
+                </Button>
+                <Button x:Name="homeworkManagement" Height="45.463" Width="188" Content="作业管理" FontSize="14" FontWeight="Bold" Click="homeworkManagement_Click"/>
+                <Button x:Name="homeworkAlert" Height="45.463" Width="200" Content="作业预警" FontSize="14" FontWeight="Bold" Click="homeworkAlert_Click"/>
             </Menu>
         </DockPanel>
         <StackPanel Grid.Row="1" Margin="0,55.333,0,0" Grid.RowSpan="2">
@@ -55,7 +58,7 @@
                         <Label Content="截止时间" Height="27.24" Canvas.Left="10" Canvas.Top="223.119" RenderTransformOrigin="0.586,1.293"/>
                         <TextBox Height="23" TextAlignment="Center" VerticalContentAlignment="Center"  Text="2020年11月11日"  Name="deadLineTime" Canvas.Left="73" TextWrapping="Wrap" Canvas.Top="224.239" Width="120"/>
                         <ListBox x:Name="listBoxRequest" Height="80.119" Canvas.Left="10" Canvas.Top="34.573" Width="570.999"/>
-                        <Image x:Name="imgAccessory" Height="22" Canvas.Left="34.333" Canvas.Top="114.692" Width="33.667" Source="pack://siteoforigin:,,,/Resources/链接.png"/>
+                        <Image x:Name="imgAccessory" Height="22" Canvas.Left="34.333" Canvas.Top="114.692" Width="33.667" Source="/Resources/链接.png"/>
                         <TextBlock x:Name="tbAccessoryName" Canvas.Left="68" TextWrapping="Wrap" Text="附件名字" Canvas.Top="119.692" />
 
                     </Canvas>
@@ -65,7 +68,7 @@
                     <GroupBox Header="作业" Height="92.668" Width="763.333" Canvas.Top="-10">
                         <Canvas>
                             <RichTextBox Height="58" Canvas.Left="68" Canvas.Top="3" Width="173"/>
-                            <Button Content="查看作业" x:Name="btnCheckHomework" Canvas.Left="532" Canvas.Top="19" Width="74" Height="32" RenderTransformOrigin="0.758,0.491"/>
+                            <Button Content="查看作业" x:Name="btnCheckHomework" Canvas.Left="532" Canvas.Top="19" Width="74" Height="32" RenderTransformOrigin="0.758,0.491" Click="btnCheckHomework_Click"/>
                         </Canvas>
                     </GroupBox>
 

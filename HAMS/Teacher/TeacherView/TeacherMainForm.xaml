@@ -96,7 +96,7 @@
                         <GridViewColumn/>
                     </GridView>
                 </ListView.View>
-                <Canvas Height="66.111" Width="452.8" Style="{DynamicResource CanvasStyle1}">
+                <!--<Canvas Height="66.111" Width="452.8" Style="{DynamicResource CanvasStyle1}">
                     <Button x:Name="btnEnterClass" Content="" Height="62.963" Width="452.8" Background="White" />
                     <Label x:Name="labelClassId1" Content="Z004530B1300720 " Height="23.999" Canvas.Left="96.621" Canvas.Top="20.335" Width="120.667" RenderTransformOrigin="0.507,0.631"/>
                     <TextBlock x:Name="labelClassName1" Text="R语言" Height="15.666" Width="41" Canvas.Left="246.888" Canvas.Top="25.335" TextAlignment="Center"/>
@@ -129,15 +129,16 @@
                     <Border BorderBrush="Black" BorderThickness="1" Height="66.111" Width="452.8"/>
                     <Image x:Name="homework_png1_Copy1" Source="/Resources/homework.png" Stretch="Fill" Width="56" Height="48.562" Canvas.Left="10" Canvas.Top="10"/>
                 </Canvas>
-
-
+                <Button x:Name="button" Content="Button" Width="75"/>-->
+               
 
 
 
             </ListView>
         </StackPanel>
         <Canvas Height="49.645" Background="LightBlue" Grid.ColumnSpan="3" Margin="-8.537,-47.028,-9.6,0" VerticalAlignment="Top">
-            <TextBlock x:Name="tbTeacherInfo" Height="18.666" Canvas.Left="70.066" Canvas.Top="21.979" Width="137.334" TextAlignment="Center" FontSize="13"><Run Text="Z0004520 "/><Run Text="123 "/><Run Text="刘树栋"/></TextBlock>
+            <TextBlock x:Name="tbTeacherInfo" Height="18.666" Canvas.Left="70.066" Canvas.Top="21.979" Width="137.334" TextAlignment="Center" FontSize="13"><Run Text="Z0004520 "/></TextBlock>
+            <TextBlock x:Name="tbTeacherInfo1" Height="18.666" Canvas.Left="210.066" Canvas.Top="21.979" Width="137.334" TextAlignment="Center" FontSize="13"><Run Text="刘树栋"/></TextBlock>
             <Border x:Name="headImage" BorderBrush="Black" BorderThickness="0" HorizontalAlignment="Left" Height="36.996" VerticalAlignment="Top" Width="40.666" CornerRadius="35" Canvas.Left="24.4" RenderTransformOrigin="1.894,0.568" Canvas.Top="10">
                 <Border.Background>
                     <ImageBrush>

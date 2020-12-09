@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace HAMS.Teacher.TeacherView
 {
     /// <summary>
-    /// HomeworkNoticeCheckFinish.xaml 的交互逻辑
+    /// TeachClass.xaml 的交互逻辑
     /// </summary>
-    public partial class HomeworkNoticeCheckFinish : Window
+    public partial class TeachClass : UserControl
     {
-        public HomeworkNoticeCheckFinish()
+        public TeachClass()
         {
             InitializeComponent();
         }

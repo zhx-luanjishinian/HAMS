@@ -28,32 +28,80 @@ namespace HAMS.Student.StudentView
 
         private void BtnHomewordAlert_Click(object sender, RoutedEventArgs e)
         {
-            AlertForm af = new AlertForm();
+            if (true)//里面是验证函数
+            {
+                // 打开子窗体
+                AlertForm af = new AlertForm();
+                af.Show();
+                // 隐藏自己(父窗体)
+                this.Visibility = System.Windows.Visibility.Hidden;
+            }
         }
 
         private void btnHomeworkMana_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void class1_Click(object sender, RoutedEventArgs e)
         {
-            StuMainHomework smw = new StuMainHomework();
+            
+            if (true)//里面是验证函数
+            {
+                // 打开子窗体
+                StuMainHomework smw = new StuMainHomework();
+                smw.Show();
+                // 隐藏自己(父窗体)
+                this.Visibility = System.Windows.Visibility.Hidden;
+            }
         }
 
         private void class2_Click(object sender, RoutedEventArgs e)
         {
-            StuMainHomework smw = new StuMainHomework();
+            if (true)//里面是验证函数
+            {
+                // 打开子窗体
+                StuMainHomework smw = new StuMainHomework();
+                smw.Show();
+                // 隐藏自己(父窗体)
+                this.Visibility = System.Windows.Visibility.Hidden;
+            }
         }
 
         private void class3_Click(object sender, RoutedEventArgs e)
         {
-            StuMainHomework smw = new StuMainHomework();
+            if (true)//里面是验证函数
+            {
+                // 打开子窗体
+                StuMainHomework smw = new StuMainHomework();
+                smw.Show();
+                // 隐藏自己(父窗体)
+                this.Visibility = System.Windows.Visibility.Hidden;
+            }
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             App.Current.Shutdown();
+        }
+
+       
+
+        private void listView2_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void btnRecntNo1_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (true)//里面是验证函数
+            {
+                // 打开子窗体
+                StuCheckHomework sch = new StuCheckHomework();
+                sch.Show();
+                // 隐藏自己(父窗体)
+                this.Visibility = System.Windows.Visibility.Hidden;
+            }
         }
     }
 }

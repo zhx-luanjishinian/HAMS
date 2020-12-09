@@ -28,5 +28,41 @@ namespace HAMS.Student.StudentView
         {
             App.Current.Shutdown();
         }
+
+        private void btnComeback_Click(object sender, RoutedEventArgs e)
+        {
+            if (true)//里面是验证函数
+            {
+                // 打开子窗体
+                StuCheckHomework sch = new StuCheckHomework();
+                sch.Show();
+                // 隐藏自己(父窗体)
+                this.Visibility = System.Windows.Visibility.Hidden;
+            }
+        }
+
+        private void btnHomeworkMana_Click(object sender, RoutedEventArgs e)
+        {
+            if (true)//里面是验证函数
+            {
+                // 打开子窗体
+                StudentMainForm smf = new StudentMainForm(textBlockUserId.Text);
+                smf.Show();
+                // 隐藏自己(父窗体)
+                this.Visibility = System.Windows.Visibility.Hidden;
+            }
+        }
+
+        private void btnHomeworkAlert_Click(object sender, RoutedEventArgs e)
+        {
+            if (true)//里面是验证函数
+            {
+                // 打开子窗体
+                AlertForm af = new AlertForm();
+                af.Show();
+                // 隐藏自己(父窗体)
+                this.Visibility = System.Windows.Visibility.Hidden;
+            }
+        }
     }
 }

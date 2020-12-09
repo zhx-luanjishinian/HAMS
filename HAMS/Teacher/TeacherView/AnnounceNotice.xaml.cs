@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Forms;//要在依赖中引入Window.Forms,并添加这个命名空间
 using System.Text.RegularExpressions;
+using HAMS.Teacher.TeacherService;
+using HAMS.ToolClass;
 
 namespace HAMS.Teacher.TeacherView
 {
@@ -23,6 +25,7 @@ namespace HAMS.Teacher.TeacherView
     {
         public AnnounceNotice()
         {
+            
             InitializeComponent();
         }
 
@@ -44,7 +47,7 @@ namespace HAMS.Teacher.TeacherView
             //文件打开用到openFileDialog，文件保存是SaveFileDialog
 
             OpenFileDialog ofd = new OpenFileDialog();//选择文件的对话框
-            ofd.Title = tbTeacherInfo.Text+"老师，请选择要传的文件";
+            ofd.Title = tbName.Text + "老师，请选择要传的文件";
             ofd.InitialDirectory = @"C:\Users";//打开本地文件框的起始路径
             string filter = @"文本文档|*.txt;*.pdf;*.doc;*.html;*.wps;*.rtf";
             /*
@@ -57,15 +60,15 @@ namespace HAMS.Teacher.TeacherView
                            可执行文件|*.exe;*.com;*.bat;*.vbs";
             */
 
-            ofd.Filter = Regex.Replace(filter,@"\s",""); //筛选文件
+            ofd.Filter = Regex.Replace(filter, @"\s", ""); //筛选文件
 
             if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 upload.Text = System.IO.Path.GetFileName(ofd.FileName); ;//获取文件名
-                                              //System.IO.Path.GetFullPath(ofd.FileName);//获取文件路径
-                                              //ofd.FileName//获取文件路径
-                                              // string fileName = System.IO.Path.GetFileName(ofd.FileName);//获取文件名
-                                              //string extension = System.IO.Path.GetExtension(fileName);//获取文件扩展名
+                                                                         //System.IO.Path.GetFullPath(ofd.FileName);//获取文件路径
+                                                                         //ofd.FileName//获取文件路径
+                                                                         // string fileName = System.IO.Path.GetFileName(ofd.FileName);//获取文件名
+                                                                         //string extension = System.IO.Path.GetExtension(fileName);//获取文件扩展名
 
                 /*
                 //令选择的文件可以以图片形式显示在image控件上
@@ -78,5 +81,34 @@ namespace HAMS.Teacher.TeacherView
                 */
             }
         }
+
+        private AnnounceNoticeService ans = new AnnounceNoticeService();
+        
+        private void btnAnnounce_Click(object sender, RoutedEventArgs e)
+        {
+            //调用业务层方法，往数据库里添加新的作业公告
+            String notTitle = textBoxHomeworkTitle.Text;
+            String content = textBoxContent.Text;
+           
+            if(calTruDeadline.SelectedDate == null)//如果没有选择截止日期，默认两天后
+            {
+                calTruDeadline.SelectedDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day+2); ;//给日历控件截止时间设置默认为当前时间两天之后
+            }
+            DateTime truDeadline = calTruDeadline.SelectedDate.Value;
+            String fileName = upload.Text;
+            String classSpecId = lbClassSpecId.Text;
+            //String notURL = 课堂真实号/作业公告名/作业附件/文件名
+            String notURL = classSpecId + "/" + notTitle + "/" + "作业附件" + fileName;
+            //该方法实现向notice表中新增一条作业公告，且返回具体的信息提示用户
+            string message = ans.announceNotice(truDeadline, content, notTitle, classSpecId,tbTeacherSpecId.Text, notURL);
+            System.Windows.MessageBox.Show(message);
+        }
+        
+            
+        
     }
 }
+
+
+    
+

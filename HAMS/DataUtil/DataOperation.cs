@@ -27,7 +27,7 @@ namespace HAMS.DataUtil
             }
             catch(Exception ex)
             {
-                throw new ApplicationException("数据查询出现错误"+ ex.Message);
+                throw new ApplicationException("数据查询出现错误:"+ ex.Message);
             }
 
         }

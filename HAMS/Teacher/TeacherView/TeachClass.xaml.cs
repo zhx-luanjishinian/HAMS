@@ -24,10 +24,5 @@ namespace HAMS.Teacher.TeacherView
         {
             InitializeComponent();
         }
-
-        public void btnEnterClass_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("test");
-        }
     }
 }

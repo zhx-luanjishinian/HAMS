@@ -23,7 +23,21 @@ namespace HAMS.Teacher.TeacherDao
             //MessageBox.Show(table.Rows[0][2].ToString());->password
             return table;
         }
-       
+        public DataTable LoadMainFormLeft(string teacherSpecId)
+        {
+            //sql语句
+            String sql = "select * from class where teacherId=@id";   //查询对应老师id的class表中所有的数据，这里查不到
+            String sql1 = "select teacherId from teacher where teacherSpecId=@spaceId";  //根据当前老师的spaceId查询teacherId
+            MySqlParameter parameter1 = new MySqlParameter("@spaceId", teacherSpecId);   //tbTeacherInfo.Text,这里我修改了一下，传过来的只有老师工号
+            DataTable table1 = DataUtil.DataOperation.DataQuery(sql1, parameter1);
+            //MessageBox.Show(table1.Rows[0][0].ToString());
+            //以上是正确的
+            MySqlParameter parameter = new MySqlParameter("@id", table1.Rows[0][0]);  //查到当前老师的teacherID
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);       //在class表中查老师教的课程名
+           
+            return table;
+        }
+
     }
 
 

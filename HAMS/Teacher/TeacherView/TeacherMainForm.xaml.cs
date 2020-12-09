@@ -22,27 +22,54 @@ namespace HAMS.Teacher.TeacherView
     /// </summary>
     public partial class TeacherMainForm : Window
     {
-        public TeacherMainForm(string session)
+        string[] className=new string[10];
+        string[] classNum=new string[10];
+        public TeacherMainForm(string session,string tname)
         {
             InitializeComponent();
-            try { if (session != null) { tbTeacherInfo.Text = session; } }
+            try
+            {
+                if (session != null)
+                {
+                    tbTeacherInfo.Text = session;
+                    tbTeacherInfo1.Text = tname;
+                }
+            }
             catch (Exception ex)
             {
                 throw new Exception("界面间传值发生异常" + ex.Message);
             }
-            //成功动态加载控件
-            String sql = "select className from class where classId=@id";
-            //传入要填写的参数
-            MySqlParameter parameter = new MySqlParameter("@id", 1);
-            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);
-            TeachClass test1 = new TeachClass();
-            TeachClass test2 = new TeachClass();
-            test1.labelStudentNumber.Content = table.Rows[0][0];
-            listViewTeacherClass.Items.Add(test1);
-            listViewTeacherClass.Items.Add(test2);
-          
+            TeacherDao.TDao td = new TeacherDao.TDao();
+            DataTable table= td.LoadMainFormLeft(tbTeacherInfo.Text);
+            TeachClass[] arrayTeachClass = new TeachClass[10];
+            //给自定义控件的子控件加属性
+            for (int i = 0; i < table.Rows.Count; i++)
+            {
+                arrayTeachClass[i] = new TeachClass();
+                arrayTeachClass[i].Name = "array" + i.ToString();
+                arrayTeachClass[i].labelClassId1.Content = table.Rows[i][5];
+                
+                arrayTeachClass[i].labelClassName1.Content = table.Rows[i][1].ToString();
+                listViewTeacherClass.Items.Add(arrayTeachClass[i]);
+                arrayTeachClass[i].MouseDown += new System.Windows.Input.MouseButtonEventHandler(mousedown);
+                
+    }  
+    }
+
+        private void mousedown(object sender, MouseButtonEventArgs e)
+        {
+            //记录点击的是哪个控件
+            TeachClass clickTeachClass = (TeachClass)sender;
+            //动态加载BreifView界面，需要知道当前课程名，课程id，老师id,老师姓名
+            BreifView newBreif = new BreifView(clickTeachClass.labelClassId1.Content.ToString(), clickTeachClass.labelClassName1.Content.ToString(), tbTeacherInfo.Text, tbTeacherInfo1.Text);
+            newBreif.Show();
+            this.Visibility = System.Windows.Visibility.Hidden;
         }
-        
+
+        private void btnEnterClass_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
@@ -55,24 +82,12 @@ namespace HAMS.Teacher.TeacherView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                BreifView newBreifView = new BreifView();
+                BreifView newBreifView = new BreifView("0","0","0","0");
                 newBreifView.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
             }
         }
-        private void createClassButton()
-        {
-            //String sql = "select teacherSpecId,name,password from  where teacherSpecId=@id";
-            ////传入要填写的参数
-            //MySqlParameter parameter = new MySqlParameter("@id", account);
-            //DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);
-            ////MessageBox.Show(table.Rows[0][0].ToString());->stuSpecId
-            ////MessageBox.Show(table.Rows[0][1].ToString());->name
-            ////MessageBox.Show(table.Rows[0][2].ToString());->password
-            //return table;
-            //DataContext q = new DataContext
-            //for (int i = 0; i <)
-        }
+       
     }
 }

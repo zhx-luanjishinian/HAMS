@@ -24,7 +24,8 @@
                     </Border.Background>
                 </Border>
             </Border>
-            <Label x:Name="lbTeacherInfo" Content="Z0004520  刘树栋" HorizontalAlignment="Left" Margin="73.266,19.2,0,10" Width="125.401" FontSize="13"/>
+            <Label x:Name="lbTeacherInfo" Content="Z0004520" HorizontalAlignment="Left" Margin="73.266,19.2,0,10" Width="125.401" FontSize="13"/>
+            <Label x:Name="lbTeacherInfo1" Content="刘树栋" HorizontalAlignment="Left" Margin="140.266,19.2,0,10" Width="125.401" FontSize="13"/>
             <Image x:Name="image" HorizontalAlignment="Left" Margin="284.4,9.2,0,10" Width="104" Source="/HAMS;component/Resources/management.jpg" Stretch="Fill"/>
             <Button x:Name="btnExit" Background="LightBlue" Width="81.667" RenderTransformOrigin="0.622,0.945" Foreground="#FF151111" BorderBrush="LightBlue" HorizontalAlignment="Right" Margin="0,5.526,24.459,4.567" Click="btnExit_Click">
                 <StackPanel>

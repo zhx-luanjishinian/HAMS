@@ -33,7 +33,7 @@ namespace HAMS.Teacher.TeacherView
 
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
-            BreifView newBreifView = new BreifView();
+            BreifView newBreifView = new BreifView("0","0","0","0");
             newBreifView.Show();
             // 隐藏自己(父窗体)
             this.Visibility = System.Windows.Visibility.Hidden;

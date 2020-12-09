@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:HAMS"
              StartupUri="MainWindow.xaml"><!--//MainWindow.xaml-->
+                <!--"Teacher/TeacherView/AnnounceNotice.xaml"-->
     <Application.Resources>
          
     </Application.Resources>

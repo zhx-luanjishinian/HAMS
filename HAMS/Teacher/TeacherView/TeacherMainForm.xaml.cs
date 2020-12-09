@@ -22,8 +22,7 @@ namespace HAMS.Teacher.TeacherView
     /// </summary>
     public partial class TeacherMainForm : Window
     {
-        string[] className=new string[10];
-        string[] classNum=new string[10];
+       
         public TeacherMainForm(string session,string tname)
         {
             InitializeComponent();

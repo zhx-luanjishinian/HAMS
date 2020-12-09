@@ -23,5 +23,18 @@ namespace HAMS.Student.StudentView
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+             
+            if (true)//里面是验证函数
+            {
+                // 打开子窗体
+                StuMainHomework smh = new StuMainHomework();
+                smh.Show();
+                // 隐藏自己(父窗体)
+                this.Visibility = System.Windows.Visibility.Hidden;
+        }
+    }
     }
 }

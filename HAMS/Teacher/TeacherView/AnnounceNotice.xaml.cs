@@ -23,10 +23,13 @@ namespace HAMS.Teacher.TeacherView
     /// </summary>
     public partial class AnnounceNotice : Window
     {
-        public AnnounceNotice()
+        public AnnounceNotice(string tNum,string tName,string cId, string cName)
         {
-            
             InitializeComponent();
+            tbName.Text = tName;
+            tbTeacherSpecId.Text = tNum;
+            labelcClassName.Content = cName;
+            lbClassSpecId.Text = cId;
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
@@ -36,7 +39,7 @@ namespace HAMS.Teacher.TeacherView
 
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
-            BreifView newBreifView = new BreifView("0","0","0","0");
+            BreifView newBreifView = new BreifView(lbClassSpecId.Text,labelcClassName.Content.ToString(),tbTeacherSpecId.Text,tbName.Text);
             newBreifView.Show();
             // 隐藏自己(父窗体)
             this.Visibility = System.Windows.Visibility.Hidden;

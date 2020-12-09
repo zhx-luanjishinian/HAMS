@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:HAMS.Student.StudentView"
         mc:Ignorable="d"
         Title="StuSubmitHomework" Height="479" Width="800" ResizeMode="CanMinimize">
-    <Grid Margin="0,0,-0.333,-28">
+    <Grid Margin="0,0,-0.333,2.667">
         <Grid.RowDefinitions>
             <RowDefinition Height="70*"/>
             <RowDefinition Height="52*"/>
@@ -45,19 +45,19 @@
                 <Button x:Name="homeworkAlert" Height="45.463" Width="200" Content="作业预警" FontSize="14" FontWeight="Bold" Click="homeworkAlert_Click"/>
             </Menu>
         </DockPanel>
-        <StackPanel Grid.Row="2" Margin="0,2,1,-0.333">
+        <StackPanel Grid.Row="2" Margin="0,2,1,27.667">
             <Canvas Background="Beige" Height="34"  Margin="0,0,-0.667,0" />
             <Canvas Height="73.333" Background="Azure">
-                <StackPanel Orientation="Horizontal" Height="38" Width="555.334" Canvas.Left="124.666" Canvas.Top="26.666">
+                <StackPanel Orientation="Horizontal" Height="38" Width="476" Canvas.Left="125" Canvas.Top="27">
                     <TextBox x:Name="tbFileURL" Width="383.334"></TextBox>
-                    <Button x:Name="btnChooseFile" Width="92" Content="选择文件"></Button>
+                    <Button x:Name="btnChooseFile" Width="92" Content="选择文件" Click="btnChooseFile_Click"></Button>
                 </StackPanel>
             </Canvas>
             <Canvas Background="Azure" Height="108">
                 <Label Content="作业备注" Canvas.Left="132.666" Height="26.567" Width="82.667" FontSize="14" FontWeight="Bold" Canvas.Top="10"/>
-                <ListView x:Name="listViewHomeworkNote" Height="56.433"  VerticalContentAlignment="Center" Canvas.Left="110.666" Canvas.Top="41.567" Width="492.669"/>
+                <TextBox x:Name="listViewHomeworkNote" Background="White"  Height="56.433"   Canvas.Left="110.666" Canvas.Top="41.567" Width="492.669"/>
             </Canvas>
-            <Canvas Background="Azure" Height="97" Margin="0,0,-0.333,0">
+            <Canvas Background="Azure" Height="112" Margin="0,0,-0.667,0">
                 <Button x:Name="btnSubmitHomework" Content="提交" Canvas.Left="565" Canvas.Top="36" Width="75" Height="37" FontSize="14" Click="btnSubmitHomework_Click"/>
             </Canvas>
         </StackPanel>

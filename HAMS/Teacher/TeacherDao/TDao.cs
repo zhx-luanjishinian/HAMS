@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using HAMS.Teacher.TeacherView;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;

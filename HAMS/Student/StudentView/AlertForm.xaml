@@ -23,14 +23,14 @@
                 <Border.Background>
                     <ImageBrush>
                         <ImageBrush.ImageSource>
-                            <ImageSource>pack://siteoforigin:,,,/Resources/bk_create.jpg</ImageSource>
+                            <ImageSource>/Resources/bk_create.jpg</ImageSource>
                         </ImageBrush.ImageSource>
                     </ImageBrush>
                 </Border.Background>
             </Border>
             <Button x:Name="btnExit" Background="LightBlue"  Canvas.Left="460.341" Canvas.Top="2.644" Width="81.667" RenderTransformOrigin="0.622,0.945" Height="43.907" Foreground="#FF151111" BorderBrush="LightBlue" d:LayoutOverrides="LeftMargin, RightMargin" Click="btnExit_Click">
                 <StackPanel>
-                    <Image x:Name="exit1" Width="28" Height="23.907" Source="pack://siteoforigin:,,,/Resources/resizeApi.png"/>
+                    <Image x:Name="exit1" Width="28" Height="23.907" Source="/Resources/resizeApi.png"/>
                     <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
                 </StackPanel>
             </Button>
@@ -76,7 +76,7 @@
                                     <ImageBrush.ImageSource>
                                         <DrawingImage>
                                             <DrawingImage.Drawing>
-                                                <ImageDrawing ImageSource="pack://siteoforigin:,,,/Resources/homework.png" Rect="100,200,110,100"/>
+                                                <ImageDrawing ImageSource="/Resources/homework.png" Rect="100,200,110,100"/>
                                             </DrawingImage.Drawing>
                                         </DrawingImage>
                                     </ImageBrush.ImageSource>
@@ -103,7 +103,7 @@
                                     <ImageBrush.ImageSource>
                                         <DrawingImage>
                                             <DrawingImage.Drawing>
-                                                <ImageDrawing ImageSource="pack://siteoforigin:,,,/Resources/homework.png" Rect="100,200,110,100"/>
+                                                <ImageDrawing ImageSource="/Resources/homework.png" Rect="100,200,110,100"/>
                                             </DrawingImage.Drawing>
                                         </DrawingImage>
                                     </ImageBrush.ImageSource>
@@ -128,7 +128,7 @@
                                     <ImageBrush.ImageSource>
                                         <DrawingImage>
                                             <DrawingImage.Drawing>
-                                                <ImageDrawing ImageSource="pack://siteoforigin:,,,/Resources/homework.png" Rect="100,200,110,100"/>
+                                                <ImageDrawing ImageSource="/Resources/homework.png" Rect="100,200,110,100"/>
                                             </DrawingImage.Drawing>
                                         </DrawingImage>
                                     </ImageBrush.ImageSource>

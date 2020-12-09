@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="507.827" Width="786.682">
     <Grid Background="#FFF1C1D1">
-        <InkCanvas HorizontalAlignment="Left" Height="319" Margin="28.167,83,0,0" VerticalAlignment="Top" Width="317" Background="#FFF1DADA"/>
+        <Canvas HorizontalAlignment="Left" Height="319" Margin="28.167,83,0,0" VerticalAlignment="Top" Width="317" Background="#FFF1DADA"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="作业预警管理系统" VerticalAlignment="Top" Margin="91,100,0,0" Height="30" Width="175.147" FontSize="20" FontWeight="Bold"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="发布作业" VerticalAlignment="Top" Height="29" Width="89.147" Margin="148,163.813,0,0" FontSize="20"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="查看作业" VerticalAlignment="Top" Height="29" Width="89.147" Margin="148,215.813,0,0" FontSize="20"/>
@@ -35,7 +35,7 @@
                 <ImageBrush />
             </Border.Background>
         </Border>
-        <InkCanvas HorizontalAlignment="Left" Height="319" VerticalAlignment="Top" Width="380.833" Margin="377.167,81.5,0,0" Background="#FFD2DAF0"/>
+        <Canvas HorizontalAlignment="Left" Height="319" VerticalAlignment="Top" Width="380.833" Margin="377.167,81.5,0,0" Background="#FFD2DAF0"/>
         <RadioButton x:Name="radiobtnTeacher" Content="老师" IsChecked="True"  HorizontalAlignment="Left" Margin="426,113.25,0,269.544" Width="66" FontSize="16" Checked="RadiobtnTeacher_Checked"/>
         <RadioButton x:Name="radiobtnStudent" Content="学生" IsChecked="True"  HorizontalAlignment="Left" Margin="526,113.248,0,269.544" Width="67" FontSize="16" Checked="RadiobtnStudent_Checked"/>
         <RadioButton x:Name="radiobtnAdmin" Content="管理员" IsChecked="True"  HorizontalAlignment="Left" Margin="614.147,113.248,0,269.544" Width="66"  FontSize="16" Checked="RadiobtnAdmin_Checked"/>

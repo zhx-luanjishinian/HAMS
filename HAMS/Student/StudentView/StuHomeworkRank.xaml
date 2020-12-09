@@ -20,7 +20,7 @@
                         <ImageBrush.ImageSource>
                             <DrawingImage>
                                 <DrawingImage.Drawing>
-                                    <ImageDrawing ImageSource="pack://siteoforigin:,,,/Resources/bk_create.jpg" Rect="100,200,110,100"></ImageDrawing>
+                                    <ImageDrawing ImageSource="/Resources/bk_create.jpg" Rect="100,200,110,100"></ImageDrawing>
                                 </DrawingImage.Drawing>
                             </DrawingImage>
                         </ImageBrush.ImageSource>

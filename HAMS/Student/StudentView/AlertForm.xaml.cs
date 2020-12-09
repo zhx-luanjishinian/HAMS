@@ -29,7 +29,14 @@ namespace HAMS.Student.StudentView
 
         private void btnHomeworkMana_Click(object sender, RoutedEventArgs e)
         {
-            StudentMainForm smf = new StudentMainForm(textBlockUserId.Text);
+            if (true)//里面是验证函数
+            {
+                // 打开子窗体
+                StudentMainForm smf = new StudentMainForm(textBlockUserId.Text);
+                smf.Show();
+                // 隐藏自己(父窗体)
+                this.Visibility = System.Windows.Visibility.Hidden;
+            }
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)

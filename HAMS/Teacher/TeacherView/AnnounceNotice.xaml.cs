@@ -41,12 +41,10 @@ namespace HAMS.Teacher.TeacherView
             // 隐藏自己(父窗体)
             this.Visibility = System.Windows.Visibility.Hidden;
         }
-
+        OpenFileDialog ofd = new OpenFileDialog();//选择文件的对话框
         private void btnUpload_Click(object sender, RoutedEventArgs e)
         {
             //文件打开用到openFileDialog，文件保存是SaveFileDialog
-
-            OpenFileDialog ofd = new OpenFileDialog();//选择文件的对话框
             ofd.Title = tbName.Text + "老师，请选择要传的文件";
             ofd.InitialDirectory = @"C:\Users";//打开本地文件框的起始路径
             string filter = @"文本文档|*.txt;*.pdf;*.doc;*.html;*.wps;*.rtf";
@@ -95,12 +93,12 @@ namespace HAMS.Teacher.TeacherView
                 calTruDeadline.SelectedDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day+2); ;//给日历控件截止时间设置默认为当前时间两天之后
             }
             DateTime truDeadline = calTruDeadline.SelectedDate.Value;
-            String fileName = upload.Text;
+            String localpath = ofd.FileName;
             String classSpecId = lbClassSpecId.Text;
             //String notURL = 课堂真实号/作业公告名/作业附件/文件名
-            String notURL = classSpecId + "/" + notTitle + "/" + "作业附件" + fileName;
+            //String notURL = classSpecId + "/" + notTitle + "/" + "作业附件" + fileName;
             //该方法实现向notice表中新增一条作业公告，且返回具体的信息提示用户
-            string message = ans.announceNotice(truDeadline, content, notTitle, classSpecId,tbTeacherSpecId.Text, notURL);
+            string message = ans.announceNotice(truDeadline, content, notTitle, classSpecId,tbTeacherSpecId.Text, localpath);
             System.Windows.MessageBox.Show(message);
         }
         

@@ -198,17 +198,31 @@ namespace HAMS.ToolClass
             }
         }
 
-        //创建目录
-
-        public static bool MakeDir(string dirName, out string errorinfo)
+        //创建目录，orginPath是已有目录，表示在已有目录下根据传入的newdirName进行创建（dirName可能是多层级的）
+        public static bool MakeDir(string newdirName, out string errorinfo,string orginPath = "")
         {
             try
             {
-                string uri = "ftp://" + ftpServerIP + "/" + dirName;
-                Connect(uri);//连接 
-                reqFTP.Method = WebRequestMethods.Ftp.MakeDirectory;
-                FtpWebResponse response = (FtpWebResponse)reqFTP.GetResponse();
-                response.Close();
+                string[] newdirNames = newdirName.Split('/');//可能会一次创建多个层级的目录
+                int dirLength = newdirNames.Length;//获取要创建的多级目录的长度
+                
+                string uri = "ftp://" + ftpServerIP;
+                if(orginPath != "")
+                {
+                    uri += "/" + orginPath;
+                }
+                
+                for (int i = 0;i< dirLength;i++)
+                {
+                    uri += "/" + newdirNames[i];
+                    
+                    Connect(uri);//连接 
+                    reqFTP.Method = WebRequestMethods.Ftp.MakeDirectory;
+                    FtpWebResponse response = (FtpWebResponse)reqFTP.GetResponse();
+                    response.Close();
+                    
+                }
+                
                 errorinfo = "";
                 return true;
             }
@@ -227,6 +241,7 @@ namespace HAMS.ToolClass
         {
             try
             {
+
                 string uri = "ftp://" + ftpServerIP + "/" + dirName;
                 Connect(uri);//连接 
                 reqFTP.Method = WebRequestMethods.Ftp.RemoveDirectory;

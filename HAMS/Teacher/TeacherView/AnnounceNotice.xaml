@@ -43,7 +43,7 @@
             <Border BorderBrush="Black" BorderThickness="0,0,0,1" Height="37.552" Canvas.Top="0.4" Width="513.2" Background="LightPink" Canvas.Left="10"/>
             <Border BorderBrush="Black" BorderThickness="1" Width="0" Height="53.762" Canvas.Left="80.667" Canvas.Top="10"/>
             <Border BorderBrush="Black" BorderThickness="1" Width="0" Height="49.003" Canvas.Left="67.999" Canvas.Top="14.759"/>
-            <TextBlock x:Name="lbClassSpecId"  Width="136" Height="20" Canvas.Left="107" Canvas.Top="10" FontSize="14" FontWeight="Bold" Text="Z004530B1300720 "/>
+            <TextBlock x:Name="lbClassSpecId"  Width="136" Height="20" Canvas.Left="107" Canvas.Top="10" FontSize="14" FontWeight="Bold" Text="Z004530B1300720"/>
             <Label x:Name="labelcClassName" Content="R语言" Width="75.2" Height="49.003" Canvas.Left="261.133" Canvas.Top="7.952" FontSize="14" FontWeight="Bold"/>
             <Button x:Name="btnReturn" Width="72.533" Background="LightPink" BorderThickness="0" Height="20" Canvas.Left="20.401" Canvas.Top="7.952" Click="btnReturn_Click">
                 <Image x:Name="image2" Width="73" Source="/HAMS;component/Resources/返回.png" OpacityMask="LightPink" Height="17"/>

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using HAMS.ToolClass;
 
 namespace HAMS.Teacher.TeacherService
 {
@@ -17,12 +18,12 @@ namespace HAMS.Teacher.TeacherService
         //对truDeadline用datetime
         private AnnounceNoticeDao annNotDao = new AnnounceNoticeDao();
 
-        public String announceNotice(DateTime truDeadline,String content,String notTitle, String classSpecId, String teacherSpecId,String notURL = "")
+        public String announceNotice(DateTime truDeadline,String content,String notTitle, String classSpecId, String teacherSpecId,String localpath = "")
         {
             Notice notice = new Notice();
             notice.TruDeadLine = truDeadline;
             notice.Content = content;
-            notice.NoteURL = notURL;
+            
             
             //查询该真实的课堂号在数据库中课堂表对应自增主键ClassId
             DataTable tbClassId = annNotDao.getClassId(classSpecId);
@@ -49,16 +50,46 @@ namespace HAMS.Teacher.TeacherService
             }
             notice.NoteTitle = notTitle;//说明没有重复，该作业公告标题合法
 
-            /*
-            //上传作业公告附件
-            if (notURL != "")//存在作业公告附件，根据路径插入FTP服务器中
+            bool flag;
+            string errorinfo;
+            
+            //创建作业公告目录 
+            string dirNotTitle = notTitle;//课堂真实号/作业公告标题/
+            string orginPath = classSpecId;//原始目录或起始目录，即在哪个目录下创建
+            flag = FtpUpDown.MakeDir(dirNotTitle, out errorinfo, orginPath);//创建目录的静态方法，可以直接通过类名访问
+            if (flag == false)
             {
-                
+                return "在文件服务器中创建对应作业公告的目录失败";
             }
-            */
 
+
+            //上传作业公告附件
+            if (localpath != "")//存在作业公告附件，根据路径插入FTP服务器中
+            {
+                //创建作业附件目录
+                string dirNotFile = "作业附件";
+                orginPath += "/" + dirNotTitle;
+                flag = FtpUpDown.MakeDir(dirNotFile, out errorinfo, orginPath);//创建目录的静态方法，可以直接通过类名访问
+                if (flag == false)
+                {
+                    return "在文件服务器中创建存放作业附件的目录失败";
+                }
+
+                //上传作业附件
+                string dirFullNotFile = orginPath+"/"+ dirNotFile;
+                flag = FtpUpDown.Upload(localpath, dirFullNotFile);
+                if (!flag)
+                {
+                    return "在文件服务器中指定目录上传作业附件失败";
+                }
+            }
+            else
+            {
+                notice.NoteURL = "";
+            }
+            //notice.NoteURL = notURL;
             //调用插入作业公告函数，将公告插入数据库notice表
-            bool flag = annNotDao.insertNotice(notice);
+            flag = annNotDao.insertNotice(notice);
             if (!flag)
             {
                 return "无法将新增的作业公告插入到notice表";

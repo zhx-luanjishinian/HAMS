@@ -34,7 +34,17 @@ namespace HAMS.Teacher.TeacherDao
             //以上是正确的
             MySqlParameter parameter = new MySqlParameter("@id", table1.Rows[0][0]);  //查到当前老师的teacherID
             DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);       //在class表中查老师教的课程名
-           
+        
+            return table;
+        }
+        public DataTable getNotice(string classSpaceId)  //从数据库查询目前已有的作业
+        {
+            AnnounceNoticeDao temp = new AnnounceNoticeDao(); //为了使用查询classId的函数
+            DataTable table0 = temp.getClassId(classSpaceId);  //查询需要的classId
+            String sql = "select * from notice where classId = @id;";
+            //传入要填写的参数
+            MySqlParameter para = new MySqlParameter("@id", table0.Rows[0][0]);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, para);
             return table;
         }
 

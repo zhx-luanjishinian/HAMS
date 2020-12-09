@@ -158,6 +158,9 @@
     <Compile Include="Teacher\TeacherView\AnswerQuestion.xaml.cs">
       <DependentUpon>AnswerQuestion.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Teacher\TeacherView\BreifHomeworkControll.xaml.cs">
+      <DependentUpon>BreifHomeworkControll.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Teacher\TeacherView\BreifView.xaml.cs">
       <DependentUpon>BreifView.xaml</DependentUpon>
     </Compile>
@@ -167,8 +170,8 @@
     <Compile Include="Teacher\TeacherView\HomeworkStatistic.xaml.cs">
       <DependentUpon>HomeworkStatistic.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Teacher\TeacherView\TeachClass.xaml.cs">
-      <DependentUpon>TeachClass.xaml</DependentUpon>
+    <Compile Include="Teacher\TeacherView\TeachClassControll.xaml.cs">
+      <DependentUpon>TeachClassControll.xaml</DependentUpon>
     </Compile>
     <Compile Include="Teacher\TeacherView\TeacherMainForm.xaml.cs">
       <DependentUpon>TeacherMainForm.xaml</DependentUpon>
@@ -278,6 +281,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Teacher\TeacherView\BreifHomeworkControll.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Teacher\TeacherView\BreifView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -290,7 +297,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Teacher\TeacherView\TeachClass.xaml">
+    <Page Include="Teacher\TeacherView\TeachClassControll.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

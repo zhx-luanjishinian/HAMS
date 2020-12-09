@@ -175,6 +175,9 @@
     <Compile Include="Teacher\TeacherView\TeachClassControll.xaml.cs">
       <DependentUpon>TeachClassControll.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Teacher\TeacherView\TeacherHomeworkCheck.xaml.cs">
+      <DependentUpon>TeacherHomeworkCheck.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Teacher\TeacherView\TeacherMainForm.xaml.cs">
       <DependentUpon>TeacherMainForm.xaml</DependentUpon>
     </Compile>
@@ -300,6 +303,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Teacher\TeacherView\TeachClassControll.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Teacher\TeacherView\TeacherHomeworkCheck.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -481,6 +488,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\向右.png" />
+    <Resource Include="Resources\向左.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

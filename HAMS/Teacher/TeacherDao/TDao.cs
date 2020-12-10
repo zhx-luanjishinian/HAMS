@@ -23,7 +23,7 @@ namespace HAMS.Teacher.TeacherDao
             //MessageBox.Show(table.Rows[0][2].ToString());->password
             return table;
         }
-        public DataTable LoadMainFormLeft(string teacherSpecId)
+        public DataTable LoadMainFormLeft(string teacherSpecId)   //加载教师教的课程
         {
             //sql语句
             String sql = "select * from class where teacherId=@id";   //查询对应老师id的class表中所有的数据，这里查不到
@@ -47,7 +47,24 @@ namespace HAMS.Teacher.TeacherDao
             DataTable table = DataUtil.DataOperation.DataQuery(sql, para);
             return table;
         }
-
+        public int getNoticeNum(string classId)   
+        {
+            //根据classId获取notice的数量
+            String sql = "select * from notice where classId = @tid;";
+            //传入要填写的参数
+            MySqlParameter para = new MySqlParameter("@tid", classId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, para);
+            return table.Rows.Count;
+        }
+        public int getStuNum(string classId)
+        {
+            //根据classId获取notice的数量
+            String sql = "select * from takecourse where classId = @tid;";
+            //传入要填写的参数
+            MySqlParameter para = new MySqlParameter("@tid", classId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, para);
+            return table.Rows.Count;
+        }
     }
 
 

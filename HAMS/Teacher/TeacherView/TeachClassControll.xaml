@@ -10,8 +10,8 @@
         <Button x:Name="btnEnterClass" Content="" Height="62.963" Width="452.8" Background="White" />
         <Label x:Name="labelClassId1" Content="" Height="23.999" Canvas.Left="96.621" Canvas.Top="20.335" Width="120.667" RenderTransformOrigin="0.507,0.631"/>
         <Label x:Name="labelClassName1" Content="" Height="23.999" Canvas.Left="215.621" Canvas.Top="20.335" Width="120.667" RenderTransformOrigin="0.507,0.631"/>
-        <Label x:Name="labelStudentNumber" Content="" Height="32.72" Canvas.Left="347.6" Canvas.Top="3.148" Width="95.2"/>
-        <Label x:Name="labelNoticeNumber" Content="" Height="30.243" Canvas.Left="314.633" Canvas.Top="35.868" Width="128.167"/>
+        <Label x:Name="labelStudentNumber" Content="" Height="33" Canvas.Left="281" Canvas.Top="3" Width="128"/>
+        <Label x:Name="labelNoticeNumber" Content="" Height="30.243" Canvas.Left="280.633" Canvas.Top="35.868" Width="128.167"/>
         <Image x:Name="homework_png" Source="/Resources/homework.png" Stretch="Fill" Width="56" Height="48.562" Canvas.Left="10" Canvas.Top="10"/>
         <Border BorderBrush="Black" BorderThickness="1" Height="66" Width="453" RenderTransformOrigin="0.573,0.593"/>
     </Canvas>

@@ -52,5 +52,23 @@ namespace HAMS.Teacher.TeacherDao
             DataTable table = DataUtil.DataOperation.DataQuery(sql, para);
             return table;
         }
+        public DataTable getClassIdByTId(string teacherId)
+        {
+            //根据teacherId获得classId
+            String sql = "select classId from class where teacherId = @tid;";
+            //传入要填写的参数
+            MySqlParameter para = new MySqlParameter("@tid", teacherId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, para);
+            return table;
+        }
+        public DataTable getRecentNoticeByClassId(string classId)
+        {
+            //根据classId获取公告表里的全部内容
+            String sql = "select * from notice where classId = @tid;";
+            //传入要填写的参数
+            MySqlParameter para = new MySqlParameter("@tid", classId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, para);
+            return table;
+        }
     }
 }

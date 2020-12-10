@@ -83,7 +83,7 @@ namespace HAMS.Student.StudentView
             //String notURL = 课堂真实号/作业公告名/作业附件/文件名
             
             //该方法实现向notice表中新增一条作业公告，且返回具体的信息提示用户
-            string message = ans.announceNotice(truDeadline, content, notTitle, classSpecId, tbTeacherSpecId.Text, notURL);
+           //string message = ans.announceNotice(truDeadline, content, notTitle, classSpecId, tbTeacherSpecId.Text, notURL);
             //System.Windows.MessageBox.Show(message);
             System.Windows.MessageBox.Show("提交成功！");
         }

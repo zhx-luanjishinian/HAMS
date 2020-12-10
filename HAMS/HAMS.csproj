@@ -172,6 +172,9 @@
     <Compile Include="Teacher\TeacherView\HomeworkStatistic.xaml.cs">
       <DependentUpon>HomeworkStatistic.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Teacher\TeacherView\RecentNoticeControll.xaml.cs">
+      <DependentUpon>RecentNoticeControll.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Teacher\TeacherView\TeachClassControll.xaml.cs">
       <DependentUpon>TeachClassControll.xaml</DependentUpon>
     </Compile>
@@ -296,6 +299,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Teacher\TeacherView\HomeworkStatistic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Teacher\TeacherView\RecentNoticeControll.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

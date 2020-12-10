@@ -1,0 +1,51 @@
+﻿<Window x:Class="HAMS.Admin.AdminView.AdminIndex"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HAMS.Admin.AdminView"
+        mc:Ignorable="d"
+        Title="AdminIndex" Height="574" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8.8*"/>
+            <RowDefinition Height="57.8*"/>
+        </Grid.RowDefinitions>
+        <Canvas Background="LightBlue" Margin="0" Grid.Row="0" HorizontalAlignment="Left" Height="70.944" VerticalAlignment="Top" Width="793.333" Grid.RowSpan="2" Grid.ColumnSpan="2">
+            <Border x:Name="headImage" BorderBrush="Black" BorderThickness="0" Grid.Column="1" HorizontalAlignment="Left" Height="50.078" VerticalAlignment="Top" Width="54.021" CornerRadius="35" Canvas.Left="10" RenderTransformOrigin="1.894,0.568" Canvas.Top="10.366">
+                <Border.Background>
+                    <ImageBrush>
+                        <ImageBrush.ImageSource>
+                            <DrawingImage>
+                                <DrawingImage.Drawing>
+                                    <ImageDrawing ImageSource="/HAMS;component/Resources/profile.png" Rect="100,200,110,100"></ImageDrawing>
+                                </DrawingImage.Drawing>
+                            </DrawingImage>
+                        </ImageBrush.ImageSource>
+                    </ImageBrush>
+                </Border.Background>
+            </Border>
+            <TextBlock x:Name="userName" Text="管理员" Canvas.Left="75.021" Canvas.Top="28.689" RenderTransformOrigin="1.087,0.535" FontWeight="Bold"/>
+            <Image x:Name="systemLogo" Height="64.072" Width="197.332" Source="/HAMS;component/Resources/management.jpg" Stretch="UniformToFill" Canvas.Left="490.334" Canvas.Top="3.872"/>
+            <Button x:Name="btnExit" Background="LightBlue"  Canvas.Left="701.666" Canvas.Top="13.955" Width="81.667" RenderTransformOrigin="0.622,0.945" Height="43.907" Foreground="#FF151111" BorderBrush="LightBlue">
+                <StackPanel>
+                    <Image x:Name="exit1" Width="28" Height="23.907" Source="/HAMS;component/Resources/resizeApi.png"/>
+                    <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold">
+            <Run Text="注销"/>
+                    </TextBlock>
+                </StackPanel>
+            </Button>
+        </Canvas>
+        <DockPanel HorizontalAlignment="Left" Height="473.723" LastChildFill="False" Margin="0,70.944,0,0" VerticalAlignment="Top" Width="133.667" Grid.RowSpan="2">
+            <Menu Height="473.723" VerticalAlignment="Top" Width="133">
+                <Button x:Name="btnStuManage" Content="学生管理" Width="120" Height="41.24" Click="BtnStuManage_Click"/>
+                <Button x:Name="btnTeaManage" Content="教师管理" Width="120" Height="41.24" Click="BtnTeaManage_Click"/>
+                <Button x:Name="btnClassManage" Content="课堂管理" Width="120" Height="41.24" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Click="BtnClassManage_Click" />
+                <Button x:Name="btnNoticeManage" Content="公告管理" Width="120" Height="41.24" Click="BtnNoticeManage_Click"/>
+            </Menu>
+        </DockPanel>
+        <ContentControl  Name="content" Margin="134,0,0.333,-0.333" Grid.Row="1" Height="472" Width="659">
+            <TextBlock Margin="150,175,150,176" Text="管理员界面欢迎您" FontSize="36" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </ContentControl>
+    </Grid>
+</Window>

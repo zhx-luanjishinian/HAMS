@@ -47,7 +47,7 @@ namespace HAMS
                 {
                     MessageBox.Show("恭喜你已登录成功");
 
-                    StudentMainForm smf = new StudentMainForm(txtUserName.Text + (string)br.data);
+                    StudentMainForm smf = new StudentMainForm(txtUserName.Text,(string)br.data);
                     smf.ShowDialog();
                 }
                 else
@@ -129,7 +129,7 @@ namespace HAMS
 
         private void btnReset_Click(object sender, RoutedEventArgs e)
         {
-            StudentMainForm smf = new StudentMainForm("songhuiyu");
+            StudentMainForm smf = new StudentMainForm("songhuiyu","hello");
         }
     }
     

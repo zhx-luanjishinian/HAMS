@@ -26,7 +26,7 @@ namespace HAMS.Student.StudentView
 
         private void homeworkManagement_Click(object sender, RoutedEventArgs e)
         {
-            StudentMainForm smf = new StudentMainForm(tbuserNameAc.Text);
+            StudentMainForm smf = new StudentMainForm(tbuserNameAc.Text,"hello");
         }
 
         private void btnCheckRank_Click(object sender, RoutedEventArgs e)

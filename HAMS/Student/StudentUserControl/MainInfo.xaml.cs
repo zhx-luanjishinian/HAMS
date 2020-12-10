@@ -10,31 +10,26 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using HAMS.Student.StudentService;
-using HAMS.ToolClass;
 using HAMS.Student.StudentView;
 
-namespace HAMS.Student.StudentView
+namespace HAMS
 {
     /// <summary>
-    /// AlertForm.xaml 的交互逻辑
+    /// MainInfo.xaml 的交互逻辑
     /// </summary>
-    public partial class AlertForm : Window
-    { 
-        public AlertForm()
+    public partial class MainInfo : UserControl
+    {
+        public MainInfo()
         {
             InitializeComponent();
         }
 
-        private void btnHomeworkMana_Click(object sender, RoutedEventArgs e)
+        private void class1_Click(object sender, RoutedEventArgs e)
         {
-            StudentMainForm smf = new StudentMainForm(textBlockUserId.Text,"ge");
-        }
-
-        private void btnExit_Click(object sender, RoutedEventArgs e)
-        {
-            App.Current.Shutdown();
+            StuMainHomework smh = new StuMainHomework();
+                
         }
     }
 }

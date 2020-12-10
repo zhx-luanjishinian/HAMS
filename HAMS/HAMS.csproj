@@ -116,6 +116,12 @@
       <DependentUpon>TeacherManagement.xaml</DependentUpon>
     </Compile>
     <Compile Include="DataUtil\DataOperation.cs" />
+    <Compile Include="Student\StudentUserControl\HomeworkNoteInfo.xaml.cs">
+      <DependentUpon>HomeworkNoteInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Student\StudentUserControl\MainInfo.xaml.cs">
+      <DependentUpon>MainInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Student\StudentDao\SDao.cs" />
     <Compile Include="Student\StudentService\SService.cs" />
     <Compile Include="Student\StudentView\AlertForm.xaml.cs">
@@ -205,6 +211,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Admin\AdminView\TeacherManagement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Student\StudentUserControl\HomeworkNoteInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Student\StudentUserControl\MainInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

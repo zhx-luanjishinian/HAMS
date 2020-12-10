@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HAMS"
         mc:Ignorable="d"
-        xmlns:i="http://schemas.microsoft.com/xaml/behaviors" xmlns:btn="clr-namespace:UI.btn"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors" 
         Title="MainWindow" Height="507.827" Width="786.682">
     <Grid Background="#FFF1C1D1">
         <Canvas HorizontalAlignment="Left" Height="319" Margin="28.167,83,0,0" VerticalAlignment="Top" Width="317" Background="#FFF1DADA"/>

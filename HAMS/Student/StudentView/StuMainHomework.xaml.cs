@@ -29,10 +29,10 @@ namespace HAMS.Student.StudentView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                StudentMainForm smf = new StudentMainForm(tbuserNameAc.Text);
-                smf.Show();
-                // 隐藏自己(父窗体)
-                this.Visibility = System.Windows.Visibility.Hidden;
+                //StudentMainForm smf = new StudentMainForm(tbuserNameAc.Text);
+                //smf.Show();
+                //// 隐藏自己(父窗体)
+                //this.Visibility = System.Windows.Visibility.Hidden;
             }
         }
 
@@ -160,10 +160,10 @@ namespace HAMS.Student.StudentView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                StudentMainForm smf = new StudentMainForm(tbuserNameAc.Text);
-                smf.Show();
-                // 隐藏自己(父窗体)
-                this.Visibility = System.Windows.Visibility.Hidden;
+                //StudentMainForm smf = new StudentMainForm(tbuserNameAc.Text);
+                //smf.Show();
+                //// 隐藏自己(父窗体)
+                //this.Visibility = System.Windows.Visibility.Hidden;
             }
         }
 

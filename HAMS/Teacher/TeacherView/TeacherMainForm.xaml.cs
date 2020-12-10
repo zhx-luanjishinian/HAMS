@@ -41,9 +41,9 @@ namespace HAMS.Teacher.TeacherView
                 throw new Exception("界面间传值发生异常" + ex.Message);
             }
             TeacherDao.TDao td = new TeacherDao.TDao();
-            AnnounceNoticeDao temp = new AnnounceNoticeDao();
+            //AnnounceNoticeDao temp = new AnnounceNoticeDao();
             //两个方法类
-            DataTable tableTeacherId = temp.getTeacherId(session);
+            DataTable tableTeacherId = td.getTeacherId(session);
             DataTable table= td.LoadMainFormLeft(tbTeacherInfo.Text);
 
             TeachClass[] arrayTeachClass = new TeachClass[10];
@@ -63,14 +63,14 @@ namespace HAMS.Teacher.TeacherView
             //查到老师当前教的课程的id
             
          
-            DataTable tableclassId = temp.getClassIdByTId(tableTeacherId.Rows[0][0].ToString());
+            DataTable tableclassId = td.getClassIdByTId(tableTeacherId.Rows[0][0].ToString());
             
             RecentNoticeControll[] arrayRecentNotice = new RecentNoticeControll[20];
             //动态生成控件
             DataTable tableRecentNotice;
             for (int j = 0; j < tableclassId.Rows.Count; j++)
             {
-                tableRecentNotice=temp.getRecentNoticeByClassId(tableclassId.Rows[j][0].ToString());
+                tableRecentNotice=td.getRecentNoticeByClassId(tableclassId.Rows[j][0].ToString());
                 int noticeNum = tableRecentNotice.Rows.Count;
                 if(noticeNum>=3)
                 {

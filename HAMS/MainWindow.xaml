@@ -3,9 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:HAMS"
         mc:Ignorable="d"
-        xmlns:i="http://schemas.microsoft.com/xaml/behaviors" xmlns:btn="clr-namespace:UI.btn"
         Title="MainWindow" Height="507.827" Width="786.682">
     <Grid Background="#FFF1C1D1">
         <Canvas HorizontalAlignment="Left" Height="319" Margin="28.167,83,0,0" VerticalAlignment="Top" Width="317" Background="#FFF1DADA"/>
@@ -36,19 +36,46 @@
                 <ImageBrush ImageSource="Resources/navigation.png" />
             </Border.Background>
         </Border>
-        <Canvas HorizontalAlignment="Left" Height="319" VerticalAlignment="Top" Width="380.833" Margin="377.167,81.5,0,0" Background="#FFD2DAF0"/>
+        <Canvas HorizontalAlignment="Left" Height="319" VerticalAlignment="Top" Width="380.833" Margin="377,81,0,0" Background="#FFD2DAF0">
+            <Button x:Name="btnLogin" RenderTransformOrigin="1.392,0.567" HorizontalAlignment="Left" Background="#FF93B3DE" Width="72"
+                  Style="{StaticResource MaterialDesignRaisedButton}"
+                  materialDesign:ButtonProgressAssist.Value="-1"
+                  materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
+                  materialDesign:ButtonProgressAssist.IsIndeterminate="True" Content="登录" FontSize="20" Height="35"  Click="btnLogin_Click" Canvas.Left="85" Canvas.Top="238">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform X="0.477"/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+
+            </Button>
+            <Button x:Name="btnReset" Content="重置" HorizontalAlignment="Left" Height="36" VerticalAlignment="Top" Width="72" 
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                  materialDesign:ButtonProgressAssist.Value="-1"
+                  materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
+                  materialDesign:ButtonProgressAssist.IsIndeterminate="True"
+                RenderTransformOrigin="1.392,0.567" FontSize="20" Background="#FF93B3DE" Click="btnReset_Click" Canvas.Left="235" Canvas.Top="237">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform X="0.477"/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+
+            </Button>
+        </Canvas>
         <RadioButton x:Name="radiobtnTeacher" Content="老师" IsChecked="True"  HorizontalAlignment="Left" Margin="426,113.25,0,269.544" Width="66" FontSize="16" Checked="RadiobtnTeacher_Checked"/>
         <RadioButton x:Name="radiobtnStudent" Content="学生" IsChecked="True"  HorizontalAlignment="Left" Margin="526,113.248,0,269.544" Width="67" FontSize="16" Checked="RadiobtnStudent_Checked"/>
-        <RadioButton x:Name="radiobtnAdmin" Content="管理员" IsChecked="True"  HorizontalAlignment="Left" Margin="614.147,113.248,0,269.544" Width="66"  FontSize="16" Checked="RadiobtnAdmin_Checked"/>
+        <RadioButton x:Name="radiobtnAdmin" Content="管理员" IsChecked="True"  HorizontalAlignment="Left" Margin="618,113,0,269.667" Width="89"  FontSize="16" Checked="RadiobtnAdmin_Checked"/>
         <Label Content="账号" HorizontalAlignment="Left" Margin="439,191.033,0,0" VerticalAlignment="Top" FontSize="18" Width="53"/>
         <Label Content="密码" HorizontalAlignment="Left" Margin="439,242.22,0,0" VerticalAlignment="Top" FontSize="18" Width="53"/>
         <TextBox x:Name="txtUserName" HorizontalAlignment="Left" Height="29" Margin="539,194.893,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="168" FontSize="16"/>
         <TextBox x:Name="txtPassword" HorizontalAlignment="Left" Height="29" Margin="539,242.22,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="168" FontSize="16"/>
-
-
-        <Button x:Name="btnLogin" Content="登录" HorizontalAlignment="Left" Height="33.667" Margin="468.167,315.413,0,0" VerticalAlignment="Top" Width="68.98" FontSize="16" Background="#FF93B3DE" Click="btnLogin_Click" />
-
-        <Button x:Name="btnReset" Content="重置" HorizontalAlignment="Left" Height="33.667" Margin="611.167,316.5,0,0" VerticalAlignment="Top" Width="68.98" RenderTransformOrigin="1.392,0.567" FontSize="16" Background="#FF93B3DE" Click="btnReset_Click"/>
         <Grid Background="{DynamicResource {x:Static SystemColors.InfoBrushKey}}" Margin="0,0,0,428.667">
             <Image Height="50" Width="62" Source="./Resources/notice.png" RenderTransformOrigin="0.58,0.429" Margin="-720,0,0,0"/>
             <Canvas HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="1000"  Margin="84,0,-508,0">

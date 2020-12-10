@@ -10,19 +10,26 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.Windows.Navigation;
+using System.Windows.Shapes;
+using HAMS.Student.StudentView;
 
-namespace HAMS.Admin.AdminView
+namespace HAMS
 {
     /// <summary>
-    /// TeacherManagement.xaml 的交互逻辑
+    /// MainInfo.xaml 的交互逻辑
     /// </summary>
-    public partial class TeacherManagement : Page
+    public partial class MainInfo : UserControl
     {
-        public TeacherManagement()
+        public MainInfo()
         {
             InitializeComponent();
+        }
+
+        private void class1_Click(object sender, RoutedEventArgs e)
+        {
+            StuMainHomework smh = new StuMainHomework();
+                
         }
     }
 }

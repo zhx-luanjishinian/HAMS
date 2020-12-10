@@ -82,6 +82,7 @@ namespace HAMS.Teacher.TeacherService
                 {
                     return "在文件服务器中指定目录上传作业附件失败";
                 }
+                notice.NoteURL = dirFullNotFile;
             }
             else
             {

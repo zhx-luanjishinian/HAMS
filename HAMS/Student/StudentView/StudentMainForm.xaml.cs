@@ -11,6 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using HAMS.Student.StudentService;
+using HAMS.Student.StudentView;
+using HAMS.Student.StudentUserControl;
 
 namespace HAMS.Student.StudentView
 {
@@ -19,12 +22,54 @@ namespace HAMS.Student.StudentView
     /// </summary>
     public partial class StudentMainForm : Window
     {
-        public StudentMainForm(string session)
+        private SService sts = new SService();
+        public string account { set; get; }
+        public string name { set; get; }
+        public StudentMainForm(string account,string name)
 
         {
-            //textBlockUserId.Text = session;
+          
             InitializeComponent();
+            this.account = account;
+            this.name = name;
+            textBlockUserId.Text = account+name;
+            MainShow();
+            HomeWorkShow();
         }
+        //主界面生成
+        public void MainShow()
+        {
+            Dictionary<int, List<string>> info = sts.showCourseInfo(this.account);
+            
+            for(int i = 0; i < info.Count; i++)
+            {
+                ListViewItem ivi = new ListViewItem();
+                MainInfo mf = new MainInfo();
+                mf.Name = "mf_" + i;
+                mf.labelClassId1.Content = info[i][2];
+                mf.textBlockClassName1.Text = info[i][3];
+                mf.textBlockDepartmentName1.Text = info[i][1];
+                mf.textBlockTeacherName1.Text = info[i][0];
+                ivi.Content = mf;
+                listView2.Items.Add(ivi);
+            }
+            
+        }
+        //作业公告生成调用
+        public void HomeWorkShow()
+        {
+            List<String> result = sts.showHomeNoticeInfo(this.account);
+           
+            for(int i = 0; i < result.Count; i++) {
+                ListViewItem ivi = new ListViewItem();
+                HomeworkNoteInfo hni = new HomeworkNoteInfo();
+                hni.lab1.Content = result[i];
+                ivi.Content = hni;
+                listView.Items.Add(ivi);
+                     }
+        }
+        //作业主界面每个button的点击事件
+       
 
         private void BtnHomewordAlert_Click(object sender, RoutedEventArgs e)
         {

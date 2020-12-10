@@ -11,16 +11,15 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.Windows.Navigation;
 
-namespace HAMS.Admin.AdminView
+namespace HAMS.Teacher.TeacherView
 {
     /// <summary>
-    /// TeacherManagement.xaml 的交互逻辑
+    /// CheckingClassHomework.xaml 的交互逻辑
     /// </summary>
-    public partial class TeacherManagement : Page
+    public partial class CheckingClassHomework : Window
     {
-        public TeacherManagement()
+        public CheckingClassHomework()
         {
             InitializeComponent();
         }

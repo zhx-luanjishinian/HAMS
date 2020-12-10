@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace HAMS.Teacher.TeacherView
 {
     /// <summary>
-    /// HomeworkNoticeUncheck.xaml 的交互逻辑
+    /// TeacherHomeworkCheck.xaml 的交互逻辑
     /// </summary>
-    public partial class HomeworkNoticeUncheck : Window
+    public partial class TeacherHomeworkCheck : Window
     {
-        public HomeworkNoticeUncheck()
+        public TeacherHomeworkCheck()
         {
             InitializeComponent();
         }

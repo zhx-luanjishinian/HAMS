@@ -11,24 +11,19 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Navigation;
 
 namespace HAMS.Admin.AdminView
 {
     /// <summary>
     /// StudentManagement.xaml 的交互逻辑
     /// </summary>
-    public partial class StudentManagement : Window
+    public partial class StudentManagement : Page
     {
-        public StudentManagement(string session)
+        public StudentManagement()
         {
             InitializeComponent();
-            /*
-            try { if (session != null) { textBlockUserId.Text = session; } }
-            catch (Exception ex)
-            {
-                throw new Exception("界面间传值发生异常" + ex.Message);
-            }
-            */
+            
         }
     }
 }

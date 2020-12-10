@@ -24,7 +24,8 @@
                     </Border.Background>
                 </Border>
             </Border>
-            <Label x:Name="lbTeacherInfo" Content="Z0004520  刘树栋" HorizontalAlignment="Left" Margin="73.266,19.2,0,10" Width="125.401" FontSize="13"/>
+            <Label x:Name="lbTeacherInfo" Content="Z0004520" HorizontalAlignment="Left" Margin="73.266,19.2,0,10" Width="125.401" FontSize="13"/>
+            <Label x:Name="lbTeacherInfo1" Content="刘树栋" HorizontalAlignment="Left" Margin="140.266,19.2,0,10" Width="125.401" FontSize="13"/>
             <Image x:Name="image" HorizontalAlignment="Left" Margin="284.4,9.2,0,10" Width="104" Source="/HAMS;component/Resources/management.jpg" Stretch="Fill"/>
             <Button x:Name="btnExit" Background="LightBlue" Width="81.667" RenderTransformOrigin="0.622,0.945" Foreground="#FF151111" BorderBrush="LightBlue" HorizontalAlignment="Right" Margin="0,5.526,24.459,4.567" Click="btnExit_Click">
                 <StackPanel>
@@ -43,8 +44,15 @@
             <Button x:Name="btnReturn" Width="57.933" Background="LightPink" BorderThickness="0" Height="Auto" HorizontalAlignment="Left" Margin="22.734,14.759,0,13.193" Click="btnReturn_Click">
                 <Image x:Name="image2" Width="47.933" Source="/HAMS;component/Resources/返回.png" Height="21.986"/>
             </Button>
-            <Canvas Height="215.2" Margin="10,0,0,-215.2" VerticalAlignment="Bottom">
-                <Grid Height="113.8" Width="515" Margin="0,0,0,-1">
+            <Canvas x:Name="arrayHomk" Height="216" Margin="10,0,-0.2,-215.6" VerticalAlignment="Bottom">
+                <ListView x:Name="homeworkListView" Height="216" Width="515">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <!--<Grid Height="113.8" Width="515" Margin="0,0,0,-1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="112*"/>
                         <ColumnDefinition Width="197*"/>
@@ -68,7 +76,7 @@
                         </Grid>
                     </Button>
                     <Border BorderBrush="Black" BorderThickness="0,0,0,1" Grid.ColumnSpan="3"/>
-                </Grid>
+                </Grid>-->
             </Canvas>
         </Grid>
 

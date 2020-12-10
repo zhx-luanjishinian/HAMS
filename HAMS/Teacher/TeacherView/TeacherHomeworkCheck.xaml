@@ -176,11 +176,9 @@
                         <ImageBrush ImageSource="../../Resources/返回.png"/>
                     </Button.Background>
                 </Button>
-                <TextBlock x:Name="labelHomeworkName" Width="62.8" TextAlignment="Center" VerticalAlignment="Center" Text="SVM实验">
-                    <TextBlock.Background>
-                        <ImageBrush/>
-                    </TextBlock.Background></TextBlock>
-                <Label x:Name="label" Content="作业批改" VerticalAlignment="Bottom" Width="61.256" Height="22.942" Style="{DynamicResource LabelStyle1}"/>
+                <Label x:Name="lbNotTitle" Width="107"  VerticalAlignment="Center" Content="猫狗大战期末作业">
+                </Label>
+                <Label x:Name="label" Content="作业批改" VerticalAlignment="Bottom" Width="61" Height="27" Style="{DynamicResource LabelStyle1}"/>
             </Menu>
         </Grid>
         <Grid HorizontalAlignment="Right" Height="19.24" Margin="0,55.344,92.667,0" VerticalAlignment="Top" Width="75">
@@ -201,9 +199,9 @@
                 </Grid>
             </Button>
         </Grid>
-        <Grid Height="122" VerticalAlignment="Top" Margin="0,79.584,0.4,0">
-            <Label x:Name="lbStuInfo" Content="201821130135郑昊欣&#xA;" Height="29" HorizontalAlignment="Left" Margin="22,15,0,0" VerticalAlignment="Top" Width="131"/>
-            <Button x:Name="btnUpload" Background="White" BorderThickness="0" Width="140.001" HorizontalAlignment="Right" Margin="0,43.985,356.199,0" Height="31.892" VerticalAlignment="Top">
+        <Grid Height="122" VerticalAlignment="Top" Margin="0,80,0.4,0">
+            <Label x:Name="lbStudentInfo" Content="201821130135 郑昊欣" Height="24" HorizontalAlignment="Left" Margin="22,15,0,0" VerticalAlignment="Top" Width="140"/>
+            <Button x:Name="btnUpload" Background="White" BorderThickness="0" Width="140.001" HorizontalAlignment="Right" Margin="0,43.985,356.199,0" Height="31.892" VerticalAlignment="Top" Click="btnUpload_Click">
                 <Grid Height="31.892" Width="140.001">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="29*"/>

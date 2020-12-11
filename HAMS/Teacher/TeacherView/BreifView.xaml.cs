@@ -57,16 +57,19 @@ namespace HAMS.Teacher.TeacherView
         }
         private void btnModify_Click(object sender, RoutedEventArgs e)
         {
+            TDao td = new TDao();  //创建TDao对象
+            TeacherService.TService ts = new TeacherService.TService();
             System.Windows.Controls.Button sonBtn = (System.Windows.Controls.Button)sender;  //获取当前点击的那个
             Grid sonGrid = (Grid)sonBtn.Parent;
             BreifHomework clickTeachClass = (BreifHomework)sonGrid.Parent;
             //获取父级元素
-
+            DateTime dt = ts.GetPreviousDateTime(labelCourseNumber.Content.ToString(), clickTeachClass.title.Content.ToString());
+            //获取当前作业的作业截止时间
             // 打开子窗体
             AnnounceNotice newAnnounceNotice = new AnnounceNotice(lbTeacherInfo.Content.ToString(), lbTeacherInfo1.Content.ToString(), labelCourseNumber.Content.ToString()
-                , labelCourseName.Content.ToString(),clickTeachClass.title.Content.ToString(),clickTeachClass.description.Content.ToString());
+                , labelCourseName.Content.ToString(), clickTeachClass.title.Content.ToString(), clickTeachClass.description.Content.ToString(),dt);
             newAnnounceNotice.Show();
-
+            this.Visibility = System.Windows.Visibility.Hidden;
         }
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -132,13 +135,6 @@ namespace HAMS.Teacher.TeacherView
             }
         }
 
-        //private void btnModify_Click(object sender, RoutedEventArgs e)
-        //{
-        //    // 打开子窗体
-        //    AnnounceNotice newAnnounceNotice = new AnnounceNotice("","","","");
-        //    newAnnounceNotice.Show();
-        //    // 隐藏自己(父窗体)
-        //    this.Visibility = System.Windows.Visibility.Hidden;
-        //}
+     
     }
 }

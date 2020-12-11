@@ -32,7 +32,7 @@ namespace HAMS.Teacher.TeacherView
             lbClassSpecId.Text = cId;
             textBoxContent.Text = "请输入作业描述";
         }
-        public AnnounceNotice(string tNum, string tName, string cId, string cName,string nTitle,string nContent)
+        public AnnounceNotice(string tNum, string tName, string cId, string cName,string nTitle,string nContent,DateTime nSubTime)
         {
             InitializeComponent();
             tbName.Text = tName;
@@ -41,6 +41,7 @@ namespace HAMS.Teacher.TeacherView
             lbClassSpecId.Text = cId;
             textBoxHomeworkTitle.Text = nTitle;
             textBoxContent.Text = nContent;
+            calTruDeadline.SelectedDate = nSubTime;
         }
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {

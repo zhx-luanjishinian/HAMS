@@ -161,7 +161,16 @@ namespace HAMS.Teacher.TeacherService
             Scoreinfos[1] = (string)tbScoreAndRemark.Rows[0][1];
             return Scoreinfos;
         }
-        
+        public DateTime GetPreviousDateTime(string classSpaceId,string homeworkTitle)
+        {
+            DataTable table1 = td.getClassId(classSpaceId);
+            DataTable table2 = td.getNoteId(homeworkTitle, table1.Rows[0][0].ToString());
+            DataTable table3 = td.getTrueDeadLine(table2.Rows[0][0].ToString());
+            return (DateTime)table3.Rows[0][0];
+        }
+
+
+
 
     }
 }

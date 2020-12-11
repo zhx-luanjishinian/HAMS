@@ -31,8 +31,8 @@ namespace HAMS.Student.StudentView
                 // 打开子窗体
                 //StudentMainForm smf = new StudentMainForm(tbuserNameAc.Text);
                 //smf.Show();
-                // 隐藏自己(父窗体)
-                this.Visibility = System.Windows.Visibility.Hidden;
+                //// 隐藏自己(父窗体)
+                //this.Visibility = System.Windows.Visibility.Hidden;
             }
         }
 
@@ -162,8 +162,8 @@ namespace HAMS.Student.StudentView
                 // 打开子窗体
                 //StudentMainForm smf = new StudentMainForm(tbuserNameAc.Text);
                 //smf.Show();
-                // 隐藏自己(父窗体)
-                this.Visibility = System.Windows.Visibility.Hidden;
+                //// 隐藏自己(父窗体)
+                //this.Visibility = System.Windows.Visibility.Hidden;
             }
         }
 

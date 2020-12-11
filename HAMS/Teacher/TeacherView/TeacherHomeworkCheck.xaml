@@ -141,7 +141,7 @@
             <Canvas Background="LightBlue" Grid.Row="0"/>
             <Button x:Name="btnExit" Background="LightBlue" Width="43.534" RenderTransformOrigin="0.622,0.945" Foreground="#FF151111" BorderBrush="LightBlue" HorizontalAlignment="Right" Margin="0,4.437,2,7">
                 <StackPanel>
-                    <Image x:Name="exit1" Width="28" Height="23.907" Source="resizeApi.png" RenderTransformOrigin="0.483,0.453"/>
+                    <Image x:Name="exit1" Width="28" Height="23.907" Source="/HAMS;component/Resources/resizeApi.png" RenderTransformOrigin="0.483,0.453"/>
                     <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
                 </StackPanel>
             </Button>
@@ -176,11 +176,9 @@
                         <ImageBrush ImageSource="../../Resources/返回.png"/>
                     </Button.Background>
                 </Button>
-                <TextBlock x:Name="labelHomeworkName" Width="62.8" TextAlignment="Center" VerticalAlignment="Center" Text="SVM实验">
-                    <TextBlock.Background>
-                        <ImageBrush/>
-                    </TextBlock.Background></TextBlock>
-                <Label x:Name="label" Content="作业批改" VerticalAlignment="Bottom" Width="61.256" Height="22.942" Style="{DynamicResource LabelStyle1}"/>
+                <Label x:Name="lbNotTitle" Width="107"  VerticalAlignment="Center" Content="猫狗大战期末作业">
+                </Label>
+                <Label x:Name="label" Content="作业批改" VerticalAlignment="Bottom" Width="61" Height="27" Style="{DynamicResource LabelStyle1}"/>
             </Menu>
         </Grid>
         <Grid HorizontalAlignment="Right" Height="19.24" Margin="0,55.344,92.667,0" VerticalAlignment="Top" Width="75">
@@ -201,17 +199,18 @@
                 </Grid>
             </Button>
         </Grid>
-        <Grid Height="122" VerticalAlignment="Top" Margin="0,79.584,0.4,0">
-            <Label x:Name="lbStuInfo" Content="201821130135郑昊欣&#xA;" Height="29" HorizontalAlignment="Left" Margin="22,15,0,0" VerticalAlignment="Top" Width="131"/>
-            <Button x:Name="btnUpload" Background="White" BorderThickness="0" Width="140.001" HorizontalAlignment="Right" Margin="0,43.985,356.199,0" Height="31.892" VerticalAlignment="Top">
-                <Grid Height="31.892" Width="140.001">
+        <Grid Height="122" VerticalAlignment="Top" Margin="0,80,0.4,0">
+            <Label x:Name="lbStudentInfo" Content="2018211XXXXX 小红帽" Height="24" HorizontalAlignment="Left" Margin="22,15,0,0" VerticalAlignment="Top" Width="140"/>
+            <Button x:Name="btnUpload" Background="White" BorderThickness="0" Width="140.001" HorizontalAlignment="Right" Margin="0,43.985,356.199,0" Height="31.892" VerticalAlignment="Top" Click="btnUpload_Click">
+                <Grid Height="32" Width="140">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="29*"/>
                         <ColumnDefinition Width="73*"/>
                     </Grid.ColumnDefinitions>
                     <Image x:Name="image2" Source="../../Resources/链接.png" HorizontalAlignment="Left" Width="23.581" Height="21.892" VerticalAlignment="Bottom" Margin="6.223,0,0,5.475"/>
-                    <Label x:Name="lbUpload" Content="下载文件" Grid.Column="1" FontSize="10" Margin="-10,0,0,5.475" HorizontalAlignment="Left" VerticalAlignment="Bottom" d:LayoutOverrides="HorizontalAlignment"/>
-                    <Label x:Name="label2" Content="(1个文件)" Grid.Column="1" Margin="40,3.717,1.4,6.283" FontSize="10"/>
+                    <Label x:Name="lbUpload" Content="下载文件" FontSize="10" Margin="30,0,0,5" HorizontalAlignment="Left" VerticalAlignment="Bottom" ToolTip="" Grid.ColumnSpan="2" Width="100"/>
+
+                    <Label x:Name="label2" Content="(1个文件)" Grid.Column="1" Margin="40,5,0,5" FontSize="10"/>
                 </Grid>
             </Button>
             <Label x:Name="lbHomPostil" Content="老师好，这是我的猫狗大战期末作业。" HorizontalAlignment="Left" Margin="22,81,0,0" VerticalAlignment="Top"/>
@@ -225,13 +224,13 @@
             </Border.BorderBrush>
             <Grid>
                 <Label x:Name="label5" Content="成绩等级：" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-                <Button x:Name="btnA" Content="优秀" Width="30.2" Background="#FFA6DDDD" HorizontalAlignment="Left" Margin="85,13,0,0" VerticalAlignment="Top"/>
-                <Button x:Name="btnB" Content="良好" Width="30.2" Background="{x:Null}" HorizontalAlignment="Left" Margin="129.8,13,0,0" VerticalAlignment="Top" />
-                <Button x:Name="btnC" Content="及格" Width="30.2" Background="{x:Null}" HorizontalAlignment="Left" Margin="175.4,13,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="label5_Copy" Content="点评：" HorizontalAlignment="Left" Margin="10,49.2,0,0" VerticalAlignment="Top"/>
-                <TextBox x:Name="tbRemark" TextWrapping="Wrap" Text="继续努力!" Margin="85,53.2,23.2,61.294"/>
-                <Button x:Name="btnCorrect" Content="修改" Width="75" HorizontalAlignment="Right" Margin="0,0,23.2,18.6" VerticalAlignment="Bottom"/>
-                <Button x:Name="btnC_Copy" Content="不及格" Width="44" Background="{x:Null}" HorizontalAlignment="Left" Margin="218,13,0,0" VerticalAlignment="Top" />
+                <TextBox x:Name="tbRemark" TextWrapping="Wrap" Text="请输入你的点评" Margin="85,53.2,23.2,61.294"  GotFocus="tbRemark_GotFocus"/>
+                <Button x:Name="btnCorrect" Content="批改" Width="75" HorizontalAlignment="Right" Margin="0,0,23.2,18.6" VerticalAlignment="Bottom" Click="btnCorrect_Click"/>
+                <RadioButton x:Name="rBtnA" Content="优秀" HorizontalAlignment="Left" Margin="85,16,0,0" VerticalAlignment="Top" />
+                <RadioButton x:Name="rBtnB" Content="良好" HorizontalAlignment="Left" Margin="203,16,0,0" VerticalAlignment="Top"/>
+                <RadioButton x:Name="rBtnC" Content="及格" HorizontalAlignment="Left" Margin="312,16,0,0" VerticalAlignment="Top"/>
+                <RadioButton x:Name="rBtnD" Content="不及格" HorizontalAlignment="Left" Margin="426,16,0,0" VerticalAlignment="Top"/>
             </Grid>
         </Border>
 

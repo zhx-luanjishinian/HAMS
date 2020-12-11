@@ -23,7 +23,7 @@
                     <Border.Background>
                         <ImageBrush>
                             <ImageBrush.ImageSource>
-                                <ImageSource>/HAMS;component/Resources/teacher.png</ImageSource>
+                                <ImageSource>/Resources/teacher.png</ImageSource>
                             </ImageBrush.ImageSource>
                         </ImageBrush>
                     </Border.Background>

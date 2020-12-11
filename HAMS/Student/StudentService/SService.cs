@@ -44,10 +44,13 @@ namespace HAMS.Student.StudentService
         {
             return sd.showCourseInfo(account);
         }
+        
         //获得主界面的作业信息
         public List<String> showHomeNoticeInfo(String account)
         {
             return sd.showHomeNoticeInfo(account);
         }
+
+
     }
 }

@@ -46,7 +46,6 @@
     </Reference>
     <Reference Include="presentationframework.aero2" />
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Install" />
@@ -146,8 +145,6 @@
       <DependentUpon>StuSubmitHomework.xaml</DependentUpon>
     </Compile>
     <Compile Include="Teacher\TeacherDao\TDao.cs" />
-    <Compile Include="Teacher\TeacherService\AnnounceNoticeService.cs" />
-    <Compile Include="Teacher\TeacherService\TeacherHomeworkCheckService.cs" />
     <Compile Include="Teacher\TeacherService\TService.cs" />
     <Compile Include="Teacher\TeacherView\AnnounceNotice.xaml.cs">
       <DependentUpon>AnnounceNotice.xaml</DependentUpon>

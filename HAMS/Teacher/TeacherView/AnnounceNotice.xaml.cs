@@ -32,7 +32,16 @@ namespace HAMS.Teacher.TeacherView
             lbClassSpecId.Text = cId;
             textBoxContent.Text = "请输入作业描述";
         }
-
+        public AnnounceNotice(string tNum, string tName, string cId, string cName,string nTitle,string nContent)
+        {
+            InitializeComponent();
+            tbName.Text = tName;
+            tbTeacherSpecId.Text = tNum;
+            labelcClassName.Content = cName;
+            lbClassSpecId.Text = cId;
+            textBoxHomeworkTitle.Text = nTitle;
+            textBoxContent.Text = nContent;
+        }
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             App.Current.Shutdown();
@@ -84,7 +93,7 @@ namespace HAMS.Teacher.TeacherView
             }
         }
 
-        private AnnounceNoticeService ans = new AnnounceNoticeService();
+        private TService ts = new TService();
         
         private void btnAnnounce_Click(object sender, RoutedEventArgs e)
         {
@@ -102,7 +111,7 @@ namespace HAMS.Teacher.TeacherView
             //String notURL = 课堂真实号/作业公告名/作业附件/文件名
             //String notURL = classSpecId + "/" + notTitle + "/" + "作业附件" + fileName;
             //该方法实现向notice表中新增一条作业公告，且返回具体的信息提示用户
-            string message = ans.announceNotice(truDeadline, content, notTitle, classSpecId,tbTeacherSpecId.Text, localpath);
+            string message = ts.AnnounceNotice(truDeadline, content, notTitle, classSpecId,tbTeacherSpecId.Text, localpath);
             System.Windows.MessageBox.Show(message);
         }
 

@@ -22,7 +22,7 @@ namespace HAMS.Teacher.TeacherView
     /// </summary>
     public partial class BreifView : Window
     {
-        AnnounceNoticeDao an = new AnnounceNoticeDao();
+        TDao an = new TDao();
         public BreifView(string courseNum,string courseName,string tId,string tName)
         {
             //生成基本信息
@@ -51,13 +51,21 @@ namespace HAMS.Teacher.TeacherView
                 homeworkListView.Items.Add(arrayBreifHomework[i]);
                 //定义点击删除按钮时的事件
                 arrayBreifHomework[i].btnDelete.Click += new RoutedEventHandler(btnDelete_Click);
-
                 //定义修改公告按钮的操作
-                //arrayBreifHomework[i].btnModify.Click += new RoutedEventHandler;
+                arrayBreifHomework[i].btnModify.Click += new RoutedEventHandler(btnModify_Click);
             }
         }
         private void btnModify_Click(object sender, RoutedEventArgs e)
         {
+            System.Windows.Controls.Button sonBtn = (System.Windows.Controls.Button)sender;  //获取当前点击的那个
+            Grid sonGrid = (Grid)sonBtn.Parent;
+            BreifHomework clickTeachClass = (BreifHomework)sonGrid.Parent;
+            //获取父级元素
+
+            // 打开子窗体
+            AnnounceNotice newAnnounceNotice = new AnnounceNotice(lbTeacherInfo.Content.ToString(), lbTeacherInfo1.Content.ToString(), labelCourseNumber.Content.ToString()
+                , labelCourseName.Content.ToString(),clickTeachClass.title.Content.ToString(),clickTeachClass.description.Content.ToString());
+            newAnnounceNotice.Show();
 
         }
         private void btnDelete_Click(object sender, RoutedEventArgs e)
@@ -124,13 +132,13 @@ namespace HAMS.Teacher.TeacherView
             }
         }
 
-        private void btnModify_Click(object sender, RoutedEventArgs e)
-        {
-            // 打开子窗体
-            AnnounceNotice newAnnounceNotice = new AnnounceNotice("","","","");
-            newAnnounceNotice.Show();
-            // 隐藏自己(父窗体)
-            this.Visibility = System.Windows.Visibility.Hidden;
-        }
+        //private void btnModify_Click(object sender, RoutedEventArgs e)
+        //{
+        //    // 打开子窗体
+        //    AnnounceNotice newAnnounceNotice = new AnnounceNotice("","","","");
+        //    newAnnounceNotice.Show();
+        //    // 隐藏自己(父窗体)
+        //    this.Visibility = System.Windows.Visibility.Hidden;
+        //}
     }
 }

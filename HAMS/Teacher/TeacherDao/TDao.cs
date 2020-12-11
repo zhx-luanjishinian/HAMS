@@ -170,9 +170,25 @@ namespace HAMS.Teacher.TeacherDao
 
             return table;
         }
+        public Boolean deleteNotice(string noticeTitle)
+        {
+            String sql = "delete from notice where notTitle=@ntitle;";
+            //传入要填写的参数
+            MySqlParameter para = new MySqlParameter("@ntitle", noticeTitle);
+            return DataUtil.DataOperation.DataDelete(sql, para);//如果删除成功，则返回true
+        }
+        public Boolean updateNotice(int notId, string notTitle,string content)
+        {
+            String sql = "update notice set content = @content,notTitle = @notTitle where notId = @notId;";
+            //传入要填写的参数
+            MySqlParameter para1 = new MySqlParameter("@content", content);
+            MySqlParameter para2 = new MySqlParameter("@notTitle", notTitle);
+            MySqlParameter para3 = new MySqlParameter("@notId", notId);
+            return DataUtil.DataOperation.DataUpdate(sql, para1, para2, para3);//如果更新成功，则返回true
+        }
 
     }
 
 
-    }
+}
 

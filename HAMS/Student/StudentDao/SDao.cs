@@ -5,12 +5,14 @@ using System.Windows;
 using HAMS.DataUtil;
 using System.Collections;
 using System.Collections.Generic;
+using HAMS.Entity;
 
 namespace HAMS.Student.StudentDao
 {
     class SDao
     {
         private MySqlConnection conn = DataUtil.DBUtil.getConnection();
+        //登录方法调用此类
         public DataTable Login(String account, String pw)
         {
             
@@ -21,6 +23,8 @@ namespace HAMS.Student.StudentDao
             return table;
            
         }
+
+
         public Dictionary<int,List<String>> showCourseInfo(String account)
         {
             //此类用来装返回的对象
@@ -83,6 +87,21 @@ namespace HAMS.Student.StudentDao
             }
             return result;
 
+        }
+
+
+        public Boolean InsertHomework(Homework homework)
+        {
+            String sql = "insert into homework (submitTime,postil,homURL,homName,stuId,teaId,classId) values (@subTime,@postil,@homUrl,@homName,@stuid,@teaid,@cid);";
+            //传入要填写的参数
+            MySqlParameter para1 = new MySqlParameter("@subTime", homework.SubmitTime);
+            MySqlParameter para2 = new MySqlParameter("@postil", homework.Postil);
+            MySqlParameter para3 = new MySqlParameter("@homUrl", homework.HomeURL);
+            MySqlParameter para4 = new MySqlParameter("@homName", homework.HomeName);
+            MySqlParameter para5 = new MySqlParameter("@stuid", homework.StuId);
+            MySqlParameter para6 = new MySqlParameter("@teaid", homework.TeacherId);
+            MySqlParameter para7 = new MySqlParameter("@cid", homework.ClassId);
+            return DataUtil.DataOperation.DataAdd(sql, para1, para2, para3, para4, para5, para6, para7);  //插入成功时返回true
         }
     }
 }

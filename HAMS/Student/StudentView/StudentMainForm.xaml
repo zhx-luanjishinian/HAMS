@@ -18,7 +18,7 @@
             <RowDefinition Height="162*"/>
         </Grid.RowDefinitions>
 
-        <ListView x:Name="listView" Grid.Column="2" Grid.Row="1"  Margin="0.665,0,0,5.84" HorizontalAlignment="Left" Width="159.421" Height="220.518" VerticalAlignment="Bottom">
+        <ListView x:Name="listView" Grid.Column="2" Grid.Row="1"  Margin="0.665,0,0,5.84" HorizontalAlignment="Left" Width="159.421" Height="220.518" VerticalAlignment="Bottom" SelectionChanged="listView_SelectionChanged">
 
           
 

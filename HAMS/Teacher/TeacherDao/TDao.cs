@@ -38,6 +38,23 @@ namespace HAMS.Teacher.TeacherDao
         
             return table;
         }
+        public DataTable getTrueDeadLine(string notId)
+        {
+            //sql语句
+            String sql = "select truDeadline from notice where notId=@id";   //根据noticeId查找truDeadline
+            MySqlParameter parameter = new MySqlParameter("@id", notId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);       
+            return table;
+        }
+        public DataTable getNoteId(string notTitle,string classId)    //根据名称和classId查notId
+        {
+            //sql语句
+            String sql = "select notId from notice where notTitle=@id and classId=@cId";   //根据noticeId查找truDeadline
+            MySqlParameter parameter = new MySqlParameter("@id", notTitle);
+            MySqlParameter parameter1 = new MySqlParameter("@cid", classId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter,parameter1);
+            return table;
+        }
         public DataTable getNotice(string classSpaceId)  //从数据库查询目前已有的作业
         {
             
@@ -179,7 +196,7 @@ namespace HAMS.Teacher.TeacherDao
         }
         public Boolean updateNotice(int notId, string notTitle,string content)
         {
-            String sql = "update notice set content = @content,notTitle = @notTitle where notId = @notId;";
+            String sql = "update notice set content = @content,notTitle = @notTitle where notId  = @notId;";
             //传入要填写的参数
             MySqlParameter para1 = new MySqlParameter("@content", content);
             MySqlParameter para2 = new MySqlParameter("@notTitle", notTitle);

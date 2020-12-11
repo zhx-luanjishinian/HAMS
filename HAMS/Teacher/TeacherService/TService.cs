@@ -36,13 +36,15 @@ namespace HAMS.Teacher.TeacherService
 
         }
 
-        public String GetHomURLByHomId(int homId)
+        public String[] GetHomURLAndNameByHomId(int homId)
         {
             //根据homId获取文件在服务器上的路径
-            DataTable tbHomURL = td.getHomURLByHomId(homId);
-            string homURL = tbHomURL.Rows[0][0].ToString();
-
-            return homURL;
+            DataTable tbHomURL = td.getHomURLAndNameByHomId(homId);
+            
+            string[] homURLInfos = new string[2];
+            homURLInfos[0] = tbHomURL.Rows[0][0].ToString();
+            homURLInfos[1] = tbHomURL.Rows[0][1].ToString();
+            return homURLInfos;
         }
         public String GetPostilByHomId(int homId)
         {
@@ -61,7 +63,7 @@ namespace HAMS.Teacher.TeacherService
         //DateTime baseDate = new DateTime(1970, 1, 1);
         //DateTime result = temp.AddSeconds(timeStamp);
         //对truDeadline用datetime
-        public String AnnounceNotice(DateTime truDeadline, String content, String notTitle, String classSpecId, String teacherSpecId, String localpath = "")
+        public String AnnounceNotice(DateTime truDeadline, String content, String notTitle, String classSpecId, String teacherSpecId, String localpath = "",String notURLName = "")
         {
             Notice notice = new Notice();
             notice.TruDeadLine = truDeadline;
@@ -126,6 +128,7 @@ namespace HAMS.Teacher.TeacherService
                     return "在文件服务器中指定目录上传作业附件失败";
                 }
                 notice.NoteURL = dirFullNotFile;
+                notice.NoteURLName = notURLName;
             }
             else
             {

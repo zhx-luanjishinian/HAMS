@@ -67,14 +67,15 @@ namespace HAMS.Teacher.TeacherDao
         }
         public bool insertNotice(Notice notice)
         {
-            String sql = "insert into notice (truDeadline,content,notURL,notTitle,classId) values (@truDdl,@cont,@ntUrl,@ntTitle,@cid);";
+            String sql = "insert into notice (truDeadline,content,notURL,notURLName,notTitle,classId) values (@truDdl,@cont,@ntUrl,@ntUrlName,@ntTitle,@cid);";
             //传入要填写的参数
             MySqlParameter para1 = new MySqlParameter("@truDdl", notice.TruDeadLine);
             MySqlParameter para2 = new MySqlParameter("@cont", notice.Content);
             MySqlParameter para3 = new MySqlParameter("@ntUrl", notice.NoteURL);
-            MySqlParameter para4 = new MySqlParameter("@ntTitle", notice.NoteTitle);
-            MySqlParameter para5 = new MySqlParameter("@cid", notice.ClassId);
-            return DataUtil.DataOperation.DataAdd(sql, para1, para2, para3, para4, para5);//如果插入成功，则返回true
+            MySqlParameter para4 = new MySqlParameter("@@ntUrlName", notice.NoteURLName);
+            MySqlParameter para5 = new MySqlParameter("@ntTitle", notice.NoteTitle);
+            MySqlParameter para6 = new MySqlParameter("@cid", notice.ClassId);
+            return DataUtil.DataOperation.DataAdd(sql, para1, para2, para3, para4, para5, para6);//如果插入成功，则返回true
         }
         public DataTable getClassId(string classSpecId)
         {
@@ -147,10 +148,10 @@ namespace HAMS.Teacher.TeacherDao
             return table;
         }
 
-        public DataTable getHomURLByHomId(int homId)
+        public DataTable getHomURLAndNameByHomId(int homId)
         {
             //根据homId获得homURL
-            String sql = "select homURL from homework where homId = @hid;";
+            String sql = "select homURL,homURLName from homework where homId = @hid;";
             //传入要填写的参数
             MySqlParameter para = new MySqlParameter("@hid", homId);
             DataTable table = DataUtil.DataOperation.DataQuery(sql, para);

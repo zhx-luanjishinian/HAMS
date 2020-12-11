@@ -203,14 +203,18 @@
             <Label x:Name="lbStudentInfo" Content="2018211XXXXX 小红帽" Height="24" HorizontalAlignment="Left" Margin="22,15,0,0" VerticalAlignment="Top" Width="140"/>
             <Button x:Name="btnUpload" Background="White" BorderThickness="0" Width="140.001" HorizontalAlignment="Right" Margin="0,43.985,356.199,0" Height="31.892" VerticalAlignment="Top" Click="btnUpload_Click">
                 <Grid Height="32" Width="140">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="27*"/>
+                        <RowDefinition Height="5*"/>
+                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="29*"/>
                         <ColumnDefinition Width="73*"/>
                     </Grid.ColumnDefinitions>
-                    <Image x:Name="image2" Source="../../Resources/链接.png" HorizontalAlignment="Left" Width="23.581" Height="21.892" VerticalAlignment="Bottom" Margin="6.223,0,0,5.475"/>
-                    <Label x:Name="lbUpload" Content="下载文件" FontSize="10" Margin="30,0,0,5" HorizontalAlignment="Left" VerticalAlignment="Bottom" ToolTip="" Grid.ColumnSpan="2" Width="100"/>
+                    <Image x:Name="image2" Source="../../Resources/链接.png" HorizontalAlignment="Left" Width="24" Height="22" VerticalAlignment="Bottom" Margin="6,0,0,0.2"/>
+                    <Label x:Name="lbUpload" Content="下载文件" FontSize="10" Margin="30,0,0,0.2" HorizontalAlignment="Left" VerticalAlignment="Bottom" ToolTip="" Grid.ColumnSpan="2" Width="100"/>
 
-                    <Label x:Name="label2" Content="(1个文件)" Grid.Column="1" Margin="40,5,0,5" FontSize="10"/>
+                    <Label x:Name="label2" Content="(1个文件)" Grid.Column="1" Margin="40,5,0,0.2" FontSize="10"/>
                 </Grid>
             </Button>
             <Label x:Name="lbHomPostil" Content="老师好，这是我的猫狗大战期末作业。" HorizontalAlignment="Left" Margin="22,81,0,0" VerticalAlignment="Top"/>

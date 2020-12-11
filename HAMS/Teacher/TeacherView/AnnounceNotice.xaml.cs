@@ -30,6 +30,7 @@ namespace HAMS.Teacher.TeacherView
             tbTeacherSpecId.Text = tNum;
             labelcClassName.Content = cName;
             lbClassSpecId.Text = cId;
+            textBoxContent.Text = "请输入作业描述";
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
@@ -104,9 +105,19 @@ namespace HAMS.Teacher.TeacherView
             string message = ans.announceNotice(truDeadline, content, notTitle, classSpecId,tbTeacherSpecId.Text, localpath);
             System.Windows.MessageBox.Show(message);
         }
-        
-            
-        
+
+
+      
+
+        private void textBoxHomeworkTitle_GotFocus(object sender, RoutedEventArgs e)
+        {
+            textBoxHomeworkTitle.Text = "";  //实现鼠标点击时提示文字消失
+        }
+
+        private void textBoxContent_GotFocus(object sender, RoutedEventArgs e)
+        {
+            textBoxContent.Text = "";
+        }
     }
 }
 

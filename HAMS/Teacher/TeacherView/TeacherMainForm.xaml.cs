@@ -1,4 +1,6 @@
-﻿using MySql.Data.MySqlClient;
+﻿using HAMS.Teacher.TeacherDao;
+using HAMS.Teacher.TeacherService;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -39,7 +41,11 @@ namespace HAMS.Teacher.TeacherView
                 throw new Exception("界面间传值发生异常" + ex.Message);
             }
             TeacherDao.TDao td = new TeacherDao.TDao();
+            //AnnounceNoticeDao temp = new AnnounceNoticeDao();
+            //两个方法类
+            DataTable tableTeacherId = td.getTeacherId(session);
             DataTable table= td.LoadMainFormLeft(tbTeacherInfo.Text);
+
             TeachClass[] arrayTeachClass = new TeachClass[10];
             //给自定义控件的子控件加属性
             for (int i = 0; i < table.Rows.Count; i++)
@@ -47,13 +53,47 @@ namespace HAMS.Teacher.TeacherView
                 arrayTeachClass[i] = new TeachClass();
                 arrayTeachClass[i].Name = "array" + i.ToString();
                 arrayTeachClass[i].labelClassId1.Content = table.Rows[i][5];
-                
+                arrayTeachClass[i].labelNoticeNumber.Content = "已发布公告数："+td.getNoticeNum(table.Rows[i][0].ToString()).ToString();
+                arrayTeachClass[i].labelStudentNumber.Content = "当前课堂人数：" + td.getStuNum(table.Rows[i][0].ToString()).ToString();
                 arrayTeachClass[i].labelClassName1.Content = table.Rows[i][1].ToString();
                 listViewTeacherClass.Items.Add(arrayTeachClass[i]);
                 arrayTeachClass[i].MouseDown += new System.Windows.Input.MouseButtonEventHandler(mousedown);
                 
-    }  
-    }
+             }
+            //查到老师当前教的课程的id
+            
+         
+            DataTable tableclassId = td.getClassIdByTId(tableTeacherId.Rows[0][0].ToString());
+            
+            RecentNoticeControll[] arrayRecentNotice = new RecentNoticeControll[20];
+            //动态生成控件
+            DataTable tableRecentNotice;
+            for (int j = 0; j < tableclassId.Rows.Count; j++)
+            {
+                tableRecentNotice=td.getRecentNoticeByClassId(tableclassId.Rows[j][0].ToString());
+                int noticeNum = tableRecentNotice.Rows.Count;
+                if(noticeNum>=3)
+                {
+                     for(int k = 0; k<3 ; k++)
+                     {
+                        arrayRecentNotice[k] = new RecentNoticeControll();
+                        arrayRecentNotice[k].labelNotName.Content = tableRecentNotice.Rows[2-k][7];
+                        listViewRecentNotice.Items.Add(arrayRecentNotice[k]);
+                     }
+                }
+                else
+                {
+                    for (int k = 0; k < noticeNum; k++)
+                    {
+                        arrayRecentNotice[k] = new RecentNoticeControll();
+                        arrayRecentNotice[k].labelNotName.Content = tableRecentNotice.Rows[noticeNum-1-k][7];
+                        listViewRecentNotice.Items.Add(arrayRecentNotice[k]);
+                    }
+                }
+               
+            }
+
+        }
 
         private void mousedown(object sender, MouseButtonEventArgs e)
         {

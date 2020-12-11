@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="HAMS.MainInfo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HAMS"
+             mc:Ignorable="d" Height="68.001" Width="328.667">
+    <Grid Margin="0,0,9.667,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="293*"/>
+            <ColumnDefinition Width="26*"/>
+        </Grid.ColumnDefinitions>
+        <Button  x:Name="class1"        HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="Gray"  BorderThickness="2" Width="328" Click="class1_Click" Margin="0,0,-9.001,0" Grid.ColumnSpan="2">
+            <Canvas  x:Name="canvasClass1" Height="66" Width="319" >
+                <Label x:Name="labelClassId1" Content="Z004530B1300720 " Height="24" Canvas.Left="10" Canvas.Top="6" Width="121"/>
+                <TextBlock x:Name="textBlockClassName1" Text="R语言" Height="23" Width="143" Canvas.Left="136" Canvas.Top="11" TextAlignment="Center"/>
+                <Label x:Name="labe21" Content="教师：" Height="27.556" Width="53.778" RenderTransformOrigin="0.48,1.592" Canvas.Left="3.112" Canvas.Top="34.223"/>
+                <TextBlock x:Name="textBlockDepartmentName1" Text="信息与安全工程学院" Height="27" Width="120" Canvas.Left="54" Canvas.Top="39"/>
+                <TextBlock x:Name="textBlockTeacherName1" Text="刘树栋" Height="26" Width="94" Canvas.Left="193" Canvas.Top="39"/>
+            </Canvas>
+        </Button>
+    </Grid>
+</UserControl>

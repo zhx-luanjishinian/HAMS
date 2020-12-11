@@ -154,21 +154,22 @@ namespace HAMS.ToolClass
             }
             return bol;
         }
-        //下载文件,localpath是文件要下载到本地的哪个路径，fileName是存储在数据库中的路径
-        public static bool Download(string localpath, string fileName, out string errorinfo)
+        //下载文件,localpath是文件要下载到本地的哪个路径，DbURL是存储在数据库中的路径
+        public static bool Download(string localpath, string DbURL, out string errorinfo)
         {
             try
             {//由于存储在数据库中的是文件夹/文件名的形式，因此这里要截一下然后直接取文件名
-                string[] results = fileName.Split('/');
-                String onlyFileName = Path.GetFileName(results[1]);
-                string newFileName = localpath + "\\" + onlyFileName;
+                string[] DbURLs = DbURL.Split('/');
+                String onlyFileName = Path.GetFileName(DbURLs[DbURLs.Length-1]);
+                
 
-                if (File.Exists(newFileName))
+                if (File.Exists(localpath))
                 {
-                    errorinfo = string.Format("本地文件{0}已存在,无法下载", newFileName);
+                    errorinfo = string.Format("本地文件{0}已存在,无法下载", localpath);
                     return false;
                 }
-                string url = "ftp://" + ftpServerIP + "/" + fileName;
+                string url = "ftp://" + ftpServerIP + "/" + DbURL;
+                
                 Connect(url);//连接 
                 reqFTP.Credentials = new NetworkCredential(ftpUserID, ftpPassword);
                 FtpWebResponse response = (FtpWebResponse)reqFTP.GetResponse();
@@ -179,7 +180,7 @@ namespace HAMS.ToolClass
                 byte[] buffer = new byte[bufferSize];
                 readCount = ftpStream.Read(buffer, 0, bufferSize);
 
-                FileStream outputStream = new FileStream(newFileName, FileMode.Create);
+                FileStream outputStream = new FileStream(localpath, FileMode.Create);
                 while (readCount > 0)
                 {
                     outputStream.Write(buffer, 0, readCount);

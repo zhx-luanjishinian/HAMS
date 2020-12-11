@@ -16,7 +16,7 @@ namespace HAMS.Teacher.TeacherService
         //DateTime baseDate = new DateTime(1970, 1, 1);
         //DateTime result = temp.AddSeconds(timeStamp);
         //对truDeadline用datetime
-        private AnnounceNoticeDao annNotDao = new AnnounceNoticeDao();
+        private TDao td = new TDao();
 
         public String announceNotice(DateTime truDeadline,String content,String notTitle, String classSpecId, String teacherSpecId,String localpath = "")
         {
@@ -26,7 +26,7 @@ namespace HAMS.Teacher.TeacherService
             
             
             //查询该真实的课堂号在数据库中课堂表对应自增主键ClassId
-            DataTable tbClassId = annNotDao.getClassId(classSpecId);
+            DataTable tbClassId = td.getClassId(classSpecId);
             
             int result;
             if (!int.TryParse(tbClassId.Rows[0][0].ToString(), out result))//table[0][0]就是查到的classId
@@ -37,7 +37,7 @@ namespace HAMS.Teacher.TeacherService
             notice.ClassId = result;
 
             //根据ClassId获取notice表中所有作业公告标题，比对是否重复
-            DataTable tbNoteTitles = annNotDao.getNoteTitle(notice.ClassId);
+            DataTable tbNoteTitles = td.getNoteTitle(notice.ClassId);
             
             int count = tbNoteTitles.Rows.Count;//获得该课堂号所发布的所有作业公告的标题
             for (int x = 0; x < count; x++)//判断是否和已布置的作业公告标题存在重复
@@ -82,6 +82,7 @@ namespace HAMS.Teacher.TeacherService
                 {
                     return "在文件服务器中指定目录上传作业附件失败";
                 }
+                notice.NoteURL = dirFullNotFile;
             }
             else
             {
@@ -89,14 +90,14 @@ namespace HAMS.Teacher.TeacherService
             }
             //notice.NoteURL = notURL;
             //调用插入作业公告函数，将公告插入数据库notice表
-            flag = annNotDao.insertNotice(notice);
+            flag = td.insertNotice(notice);
             if (!flag)
             {
                 return "无法将新增的作业公告插入到notice表";
             }
 
             //查询该教师工号在数据库中教师表对应的教师自增主键teacherId
-            DataTable tbTeacherId = annNotDao.getTeacherId(teacherSpecId);//tbTeacherSpecId.Text是教师工号
+            DataTable tbTeacherId = td.getTeacherId(teacherSpecId);//tbTeacherSpecId.Text是教师工号
             if (!int.TryParse(tbTeacherId.Rows[0][0].ToString(), out result))//table[0][0]就是查到的classId
             {
                 return "classSpecId转换为classId失败";

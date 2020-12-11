@@ -53,10 +53,10 @@ namespace HAMS.Student.StudentView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                StudentMainForm smf = new StudentMainForm(tbUserNameAc.Text);
-                smf.Show();
-                // 隐藏自己(父窗体)
-                this.Visibility = System.Windows.Visibility.Hidden;
+                //StudentMainForm smf = new StudentMainForm(tbUserNameAc.Text);
+                //smf.Show();
+                //// 隐藏自己(父窗体)
+                //this.Visibility = System.Windows.Visibility.Hidden;
             }
         }
 
@@ -74,18 +74,18 @@ namespace HAMS.Student.StudentView
 
         private void btnSubmitHomework_Click(object sender, RoutedEventArgs e)
         {
-            //调用业务层方法，往数据库里添加新的作业公告
-            String folderName = tbUserNameAc.Text;
-            String content = tbFileURL.Text;
-            DateTime currentTime = DateTime.Now;
-            String postil = listViewHomeworkNote.Text;
-            String homURL =  "Z004530B1300720" + "/" + "狗" + "/" + folderName +content;
-            //String notURL = 课堂真实号/作业公告名/作业附件/文件名
+            ////调用业务层方法，往数据库里添加新的作业公告
+            //String folderName = tbUserNameAc.Text;
+            //String content = tbFileURL.Text;
+            //DateTime currentTime = DateTime.Now;
+            //String postil = listViewHomeworkNote.Text;
+            //String homURL =  "Z004530B1300720" + "/" + "狗" + "/" + folderName +content;
+            ////String notURL = 课堂真实号/作业公告名/作业附件/文件名
             
-            //该方法实现向notice表中新增一条作业公告，且返回具体的信息提示用户
+            ////该方法实现向notice表中新增一条作业公告，且返回具体的信息提示用户
             //string message = ans.announceNotice(truDeadline, content, notTitle, classSpecId, tbTeacherSpecId.Text, notURL);
-            //System.Windows.MessageBox.Show(message);
-            System.Windows.MessageBox.Show("提交成功！");
+            ////System.Windows.MessageBox.Show(message);
+            //System.Windows.MessageBox.Show("提交成功！");
         }
 
         private void btnChooseFile_Click(object sender, RoutedEventArgs e)

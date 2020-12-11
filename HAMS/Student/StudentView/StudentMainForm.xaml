@@ -6,10 +6,11 @@
         
         mc:Ignorable="d"
         Title="StudentMainForm" Height="381.175" Width="561.481" WindowState="Normal" ResizeMode="CanMinimize">
-    <Grid Margin="7,0,0,6.333" Height="338" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="542">
+    <Grid Margin="6.667,0,6.666,6.667" Height="337.678" VerticalAlignment="Bottom">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="259*"/>
-            <ColumnDefinition Width="284*"/>
+            <ColumnDefinition Width="233*"/>
+            <ColumnDefinition Width="103*"/>
+            <ColumnDefinition Width="153*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="7*"/>
@@ -17,42 +18,12 @@
             <RowDefinition Height="162*"/>
         </Grid.RowDefinitions>
 
-        <ListView x:Name="listView" Grid.Column="1" Grid.Row="1"  Margin="0,0,15.667,6" HorizontalAlignment="Right" Width="161" Height="220" VerticalAlignment="Bottom">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
-            <Button x:Name="btnRecntNo1" Height="31" Width="144" OpacityMask="White" Background="#FFD2F5FA" Click="btnRecntNo1_Click_1">
-                <Canvas Height="22.667" Width="137.667">
-                    <Image x:Name="image1" Height="20" Canvas.Left="1.333" Canvas.Top="1.333" Width="26.113" Source="/HAMS;component/Resources/notice1.png" RenderTransformOrigin="0.423,0.012"/>
-                    <Label x:Name="lab1" Content="SVM实验" Height="23.333" Width="105.8" FontSize="11" Canvas.Left="30.667"/>
-                </Canvas>
-            </Button>
-            <Button x:Name="btnRecntNo2" Height="31" Width="144" OpacityMask="White" Background="#FFD2F5FA">
-                <Canvas Height="22.667" Width="137.667">
-                    <Image x:Name="image2" Height="20" Canvas.Left="1.333" Canvas.Top="1.333" Width="26.113" Source="/HAMS;component/Resources/notice1.png" RenderTransformOrigin="0.423,0.012"/>
-                    <Label x:Name="lab2" Content="R语言监督学习总结" Height="23.333" Width="105.8" FontSize="11" Canvas.Left="30.667"/>
-                </Canvas>
-            </Button>
+        <ListView x:Name="listView" Grid.Column="2" Grid.Row="1"  Margin="0.665,0,0,5.84" HorizontalAlignment="Left" Width="159.421" Height="220.518" VerticalAlignment="Bottom">
 
-            <Button x:Name="btnRecntNo3" Height="31" Width="144" OpacityMask="White" Background="#FFD2F5FA">
-                <Canvas Height="22.667" Width="137.667">
-                    <Image x:Name="image3" Height="20" Canvas.Left="1.333" Canvas.Top="1.333" Width="26.113" Source="/HAMS;component/Resources/notice1.png" RenderTransformOrigin="0.423,0.012"/>
-                    <Label x:Name="lab3" Content="LR实验报告" Height="23.333" Width="105.8" FontSize="11" Canvas.Left="30.667"/>
-                </Canvas>
-            </Button>
-
-            <Button x:Name="btnRecntNo4" Height="31" Width="144" OpacityMask="White" Background="#FFD2F5FA">
-                <Canvas Height="22.667" Width="137.667">
-                    <Image x:Name="image4" Height="20" Canvas.Left="1.333" Canvas.Top="1.333" Width="26.113" Source="/HAMS;component/Resources/notice1.png" RenderTransformOrigin="0.423,0.012"/>
-                    <Label x:Name="lab4" Content="UML用例图绘制" Height="23.333" Width="105.8" FontSize="11" Canvas.Left="30.667"/>
-                </Canvas>
-            </Button>
-
+          
 
         </ListView>
-        <Canvas Background="LightBlue" Grid.ColumnSpan="2" Margin="-6,1,-5.333,0" Height="56" VerticalAlignment="Top" HorizontalAlignment="Left" Width="554" Grid.RowSpan="2">
+        <Canvas Background="LightBlue" Grid.ColumnSpan="3" Margin="-6.203,-13.015,-6.269,0" Height="55.634" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="553.953">
             <TextBlock x:Name="textBlockUserId" Height="18.666" Canvas.Left="70.066" Canvas.Top="21.979" Width="137.334" TextAlignment="Center" Text="201821130099 宋慧毓"/>
             <Border x:Name="headImage" BorderBrush="Black" BorderThickness="0" HorizontalAlignment="Left" Height="36.996" VerticalAlignment="Top" Width="40.666" CornerRadius="35" Canvas.Left="24.4" RenderTransformOrigin="1.894,0.568" Canvas.Top="10">
                 <Border.Background>
@@ -71,50 +42,20 @@
             </Button>
             <Image x:Name="imgSystemLogo" Height="49.029" Width="197.332" Source="/Resources/management.jpg" Stretch="UniformToFill" Canvas.Left="268.001" Canvas.Top="2.872"/>
         </Canvas>
-        <Menu x:Name="menu" Height="26" Background="LightPink" Margin="-6,43,-6.333,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Row="1">
+        <Menu x:Name="menu" Height="26.667" Background="LightPink" Margin="-6.29,42.538,-5.882,0" VerticalAlignment="Top" Grid.ColumnSpan="3" Grid.Row="1" d:LayoutOverrides="VerticalAlignment">
             <Button x:Name="btnHomeworkMana" Height="21" Width="109" Content="作业管理" Click="btnHomeworkMana_Click"/>
             <Button x:Name="btnHomewordAlert" Height="21" Width="109" Content="作业预警" Click="BtnHomewordAlert_Click"/>
         </Menu>
-        <Canvas Height="29" Background="LightBlue"  Margin="-6,68,-5.333,0" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left" Width="554">
+        <Canvas Height="28.668" Background="LightBlue"  Margin="-6.333,68.011,-6.525,0" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="3" HorizontalAlignment="Left" Width="554.339">
             <Label x:Name="label1" Content="我的课程   （在课程中您是   学生）" Height="24.333" HorizontalAlignment="Right" Width="354.334" Canvas.Left="9.338" Canvas.Top="2.667"/>
             <Label x:Name="label" Content="作业公告" Canvas.Left="381.294" Canvas.Top="0.996" Height="24.322" HorizontalAlignment="Right" Width="64.752"/>
         </Canvas>
 
-        <StackPanel Grid.ColumnSpan="2" Margin="0,99,181.667,0" Grid.Row="1" Height="224" VerticalAlignment="Top" HorizontalAlignment="Right" Width="357">
-            <ListView x:Name="listView2" Height="222.668" Margin="0,0,0.668,0" HorizontalAlignment="Right" Width="351.225" SelectionChanged="listView2_SelectionChanged" >
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn/>
-                    </GridView>
-                </ListView.View>
-                <Button  x:Name="class1"        HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="DarkGray"  BorderThickness="2" Width="319" Background="White" Click="class1_Click">
-                    <Canvas  x:Name="canvasClass1" Height="63" Width="307" >
-                        <Label x:Name="labelClassId1" Content="Z004530B1300720 " Height="23.999" Canvas.Left="3.833" Canvas.Top="4.334" Width="120.667"/>
-                        <TextBlock x:Name="textBlockClassName1" Text="R语言" Height="15.666" Width="41" Canvas.Left="138.888" Canvas.Top="10.668" TextAlignment="Center"/>
-                        <Label x:Name="labe21" Content="教师：" Height="27.556" Width="53.778" RenderTransformOrigin="0.48,1.592" Canvas.Left="3.112" Canvas.Top="34.223"/>
-                        <TextBlock x:Name="textBlockDepartmentName1" Text="信息与安全工程学院" Height="26.222" Width="119.111" Canvas.Left="60.444" Canvas.Top="34.223"/>
-                        <TextBlock x:Name="textBlockTeacherName1" Text="刘树栋" Height="25.333" Width="93.778" Canvas.Left="185.334" Canvas.Top="33.334"/>
-                    </Canvas>
-                </Button>
-                <Button x:Name="class2"      HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="DarkGray"  BorderThickness="2" Width="319" Background="White" Click="class2_Click">
-                    <Canvas x:Name="canvasClass2" Height="63" Width="307">
-                        <Label x:Name="labelClassId2" Content="Z004530B1300721 " Height="23.999" Canvas.Left="3.833" Canvas.Top="4.334" Width="120.667"/>
-                        <TextBlock x:Name="textBlockClassName2" Text="信息检索" Height="15.666" Width="54.333" Canvas.Left="138.888" Canvas.Top="10.668" TextAlignment="Center"/>
-                        <Label x:Name="labe22" Content="教师：" Height="27.556" Width="53.778" RenderTransformOrigin="0.48,1.592" Canvas.Left="3.112" Canvas.Top="34.223"/>
-                        <TextBlock x:Name="textBlockDepartmentName2" Text="信息与安全工程学院" Height="26.222" Width="119.111" Canvas.Left="60.444" Canvas.Top="34.223"/>
-                        <TextBlock x:Name="textBlockTeacherName2" Text="余传明" Height="25.333" Width="93.778" Canvas.Left="185.334" Canvas.Top="33.334"/>
-                    </Canvas>
-                </Button>
+        <StackPanel Grid.ColumnSpan="2" Margin="0,98.946,11.561,0" Grid.Row="1" Height="224.291" VerticalAlignment="Top" HorizontalAlignment="Right" Width="357.443">
+            <ListView x:Name="listView2" Height="223" Margin="0,0,1,0" HorizontalAlignment="Right" Width="351" >
 
-                <Button x:Name="class3"     HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="DarkGray"  BorderThickness="2" Width="319" Background="White" Click="class3_Click">
-                    <Canvas x:Name="canvasClass3" Height="63" Width="307">
-                        <Label x:Name="labelClassId3" Content="Z004530B1300722 " Height="23.999" Canvas.Left="3.833" Canvas.Top="4.334" Width="120.667"/>
-                        <TextBlock x:Name="textBlockClassName3" Text="UML设计" Height="15.666" Width="54.333" Canvas.Left="138.888" Canvas.Top="10.668" TextAlignment="Center"/>
-                        <Label x:Name="labe23" Content="教师：" Height="27.556" Width="53.778" RenderTransformOrigin="0.48,1.592" Canvas.Left="3.112" Canvas.Top="34.223"/>
-                        <TextBlock x:Name="textBlockDepartmentName3" Text="信息与安全工程学院" Height="26.222" Width="119.111" Canvas.Left="60.444" Canvas.Top="34.223"/>
-                        <TextBlock x:Name="textBlockTeacherName3" Text="杨璠" Height="25.333" Width="93.778" Canvas.Left="185.334" Canvas.Top="33.334"/>
-                    </Canvas>
-                </Button>
+                
+
             </ListView>
         </StackPanel>
 

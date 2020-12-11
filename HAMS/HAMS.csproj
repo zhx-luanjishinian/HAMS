@@ -36,33 +36,24 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="K4os.Compression.LZ4.Streams, Version=1.1.11.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\lxree\Downloads\mysql-connector-net-8.0.22-noinstall\v4.5.2\K4os.Compression.LZ4.Streams.dll</HintPath>
+      <HintPath>..\packages\K4os.Compression.LZ4.Streams.1.1.11\lib\net45\K4os.Compression.LZ4.Streams.dll</HintPath>
     </Reference>
     <Reference Include="K4os.Hash.xxHash, Version=1.0.6.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\lxree\Downloads\mysql-connector-net-8.0.22-noinstall\v4.5.2\K4os.Hash.xxHash.dll</HintPath>
+      <HintPath>..\packages\K4os.Hash.xxHash.1.0.6\lib\net45\K4os.Hash.xxHash.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data, Version=8.0.22.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\lxree\Downloads\mysql-connector-net-8.0.22-noinstall\v4.5.2\MySql.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="MySql.Data.EntityFramework, Version=8.0.22.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\lxree\Downloads\mysql-connector-net-8.0.22-noinstall\v4.5.2\MySql.Data.EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="MySql.Web, Version=8.0.22.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\lxree\Downloads\mysql-connector-net-8.0.22-noinstall\v4.5.2\MySql.Web.dll</HintPath>
+      <HintPath>..\packages\MySql.Data.8.0.22\lib\net452\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="presentationframework.aero2" />
     <Reference Include="System" />
-    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\lxree\Downloads\mysql-connector-net-8.0.22-noinstall\v4.5.2\System.Buffers.dll</HintPath>
-    </Reference>
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -77,11 +68,7 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="WPFVisifire.Charts">
-      <HintPath>..\..\..\..\..\wpfvisifire\WPFVisifire.Charts\X86\4.5.2.1\WPFVisifire.Charts.dll</HintPath>
-    </Reference>
-    <Reference Include="Zstandard.Net, Version=1.1.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\lxree\Downloads\mysql-connector-net-8.0.22-noinstall\v4.5.2\Zstandard.Net.dll</HintPath>
+      <HintPath>..\..\..\..\..\Documents\Tencent Files\1355592786\FileRecv\wpfvisifire\WPFVisifire.Charts\X86\4.5.2.1\WPFVisifire.Charts.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +78,9 @@
     </ApplicationDefinition>
     <Compile Include="Admin\AdminDao\ADao.cs" />
     <Compile Include="Admin\AdminService\AService.cs" />
+    <Compile Include="Admin\AdminView\AdminIndex.xaml.cs">
+      <DependentUpon>AdminIndex.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Admin\AdminView\ClassManagement.xaml.cs">
       <DependentUpon>ClassManagement.xaml</DependentUpon>
     </Compile>
@@ -116,6 +106,12 @@
       <DependentUpon>TeacherManagement.xaml</DependentUpon>
     </Compile>
     <Compile Include="DataUtil\DataOperation.cs" />
+    <Compile Include="Student\StudentUserControl\HomeworkNoteInfo.xaml.cs">
+      <DependentUpon>HomeworkNoteInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Student\StudentUserControl\MainInfo.xaml.cs">
+      <DependentUpon>MainInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Student\StudentDao\SDao.cs" />
     <Compile Include="Student\StudentDao\SubmitHomeworkDao.cs" />
     <Compile Include="Student\StudentService\SService.cs" />
@@ -150,9 +146,9 @@
     <Compile Include="Student\StudentView\StuSubmitHomework.xaml.cs">
       <DependentUpon>StuSubmitHomework.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Teacher\TeacherDao\AnnounceNoticeDao.cs" />
     <Compile Include="Teacher\TeacherDao\TDao.cs" />
     <Compile Include="Teacher\TeacherService\AnnounceNoticeService.cs" />
+    <Compile Include="Teacher\TeacherService\TeacherHomeworkCheckService.cs" />
     <Compile Include="Teacher\TeacherService\TService.cs" />
     <Compile Include="Teacher\TeacherView\AnnounceNotice.xaml.cs">
       <DependentUpon>AnnounceNotice.xaml</DependentUpon>
@@ -172,14 +168,24 @@
     <Compile Include="Teacher\TeacherView\HomeworkStatistic.xaml.cs">
       <DependentUpon>HomeworkStatistic.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Teacher\TeacherView\RecentNoticeControll.xaml.cs">
+      <DependentUpon>RecentNoticeControll.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Teacher\TeacherView\TeachClassControll.xaml.cs">
       <DependentUpon>TeachClassControll.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\TeacherView\TeacherHomeworkCheck.xaml.cs">
+      <DependentUpon>TeacherHomeworkCheck.xaml</DependentUpon>
     </Compile>
     <Compile Include="Teacher\TeacherView\TeacherMainForm.xaml.cs">
       <DependentUpon>TeacherMainForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="ToolClass\BaseResult.cs" />
     <Compile Include="ToolClass\FtpUpDown.cs" />
+    <Page Include="Admin\AdminView\AdminIndex.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Admin\AdminView\ClassManagement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -209,6 +215,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Admin\AdminView\TeacherManagement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Student\StudentUserControl\HomeworkNoteInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Student\StudentUserControl\MainInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -299,7 +313,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Teacher\TeacherView\RecentNoticeControll.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Teacher\TeacherView\TeachClassControll.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Teacher\TeacherView\TeacherHomeworkCheck.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -326,6 +348,7 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -481,6 +504,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\向右.png" />
+    <Resource Include="Resources\向左.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

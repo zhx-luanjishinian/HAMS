@@ -150,13 +150,13 @@
             <Label x:Name="label" Content="作业公告详情" Grid.Column="2" HorizontalAlignment="Right" Margin="0,-1.88,48.41,-1.062" VerticalAlignment="Bottom" Width="83.123" Height="22.942" Style="{DynamicResource LabelStyle1}"/>
         </Grid>
         <Grid Height="133.329" VerticalAlignment="Top" Margin="0,80.344,0,0" d:LayoutOverrides="VerticalAlignment">
-            <Label x:Name="labelHomeworkName" Content="SVM实验" Height="23.999" Width="61.467" RenderTransformOrigin="0.507,0.631" HorizontalAlignment="Left" Margin="79.021,5,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lbNotTitle" Content="猫狗大战期末作业" Height="24" Width="105" RenderTransformOrigin="0.507,0.631" HorizontalAlignment="Left" Margin="79,5,0,0" VerticalAlignment="Top"/>
             <Image x:Name="homework_png" Source="../../Resources/homework.png" Stretch="Fill" Width="56" Height="48.562" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" OpacityMask="{x:Null}"/>
             <Label x:Name="labelHomeworkArrangeTime" Content="2020年11月10日 星期二 10:10" Width="156.021" FontSize="10" HorizontalAlignment="Left" Margin="334.4,5,0,0" VerticalAlignment="Top"/>
             <Grid Height="49.126" Margin="79.021,33.999,87.379,0" VerticalAlignment="Top">
-                <ListBox x:Name="listBoxRequest" Margin="0,0,0.2,0.126"/>
-                <TextBlock x:Name="className1" Text="1.调试代码，结合代码和教材理解svm的大间隔理论" Height="24.563" TextAlignment="Center" Margin="0,0,69.6,0" VerticalAlignment="Top"/>
-                <TextBlock x:Name="className1_Copy" Text="2.尝试用已经学过的有监督模型，对附件中的三个数据集进行分析" Height="24.563" TextAlignment="Center" VerticalAlignment="Bottom"/>
+                <ListBox x:Name="listBoxContent" Margin="0,0,0,10.126">
+                    <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="1.调试代码，结合代码和教材理解svm的大间隔理论                                                    2.尝试用CNN去跑数据集" Height="29" Width="334"/>
+                </ListBox>
             </Grid>
             <StackPanel Margin="0,83.125,0,0" Height="24.192" VerticalAlignment="Top" HorizontalAlignment="Left" Width="166.601">
                 <Button x:Name="uploadButton" Height="20.159" Background="White" BorderThickness="0" Width="102.934" HorizontalAlignment="Right" Margin="0,0,48.601,0">
@@ -166,7 +166,7 @@
                             <ColumnDefinition Width="73*"/>
                         </Grid.ColumnDefinitions>
                         <Image x:Name="image" Source="../../Resources/链接.png" Margin="0,0,5,0"/>
-                        <Label x:Name="labelAccessoryName1" Content="查看相关附件" FontSize="9" Margin="20,0,0,0.159" Grid.ColumnSpan="2" HorizontalAlignment="Left" Width="73"/>
+                        <Label x:Name="labelAccessoryName1" Content="查看相关附件" FontSize="9" Margin="20,0,10.2,0.159" Grid.ColumnSpan="2"/>
                     </Grid>
                 </Button>
             </StackPanel>
@@ -216,7 +216,7 @@
                     </LinearGradientBrush>
                 </Border.BorderBrush>
                 <TabControl x:Name="tabControl" Margin="0,-43.7,0,0" d:LayoutOverrides="LeftPosition, RightPosition" Height="216.933" VerticalAlignment="Top">
-                    <TabItem Header="已批改   5" Margin="-2,0,0,-0.067" HorizontalAlignment="Left" Style="{StaticResource TabItemStyle}" Width="80" Height="22" VerticalAlignment="Bottom">
+                    <TabItem x:Name="TbItemChecked" Header="已批改   5" Margin="-2,0,0,-0.067" HorizontalAlignment="Left" Style="{StaticResource TabItemStyle}" Width="80" Height="22" VerticalAlignment="Bottom">
                         <Grid Background="#FFE5E5E5" Margin="0,0,0,-3.066">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="0*"/>
@@ -225,7 +225,7 @@
                                 <ColumnDefinition Width="199*"/>
                                 <ColumnDefinition Width="169*"/>
                             </Grid.ColumnDefinitions>
-                            <ListView x:Name="listViewFinish" Grid.ColumnSpan="5">
+                            <ListView x:Name="listViewChecked" Grid.ColumnSpan="5">
                                 <ListView.View>
                                     <GridView>
                                         <GridViewColumn/>
@@ -239,7 +239,7 @@
                                     </Rectangle>
                                     <Border BorderBrush="#FFABADB3" BorderThickness="0,0,0,1" Height="39.8" Width="491.933" Canvas.Left="-8.533"/>
                                     <Label x:Name="lbStudentInfo1" Content="201821130135   郑昊欣&#xA;" Canvas.Left="48.4" Canvas.Top="8.5" Height="22" FontSize="10"/>
-                                    <Button x:Name="btnHomeworkCorrect1" Content="检查作业" Canvas.Left="423.867" Canvas.Top="10.47" Width="55.8" Background="{x:Null}" BorderThickness="0" FontWeight="Bold"/>
+                                    <Button x:Name="btnHomeworkCorrect1" Content="检查作业" Canvas.Left="423.867" Canvas.Top="10.47" Width="55.8" Background="{x:Null}" BorderThickness="0" FontWeight="Bold" Click="btnHomeworkCorrect1_Click"/>
                                     <Label x:Name="lbHomeworkState1" Content="已批改" Canvas.Left="375.067" Canvas.Top="6.76" Width="48.8"/>
                                 </Canvas>
                                 <Canvas Height="39.8" Width="484.466">
@@ -278,13 +278,14 @@
                             </ListView>
                         </Grid>
                     </TabItem>
-                    <TabItem Header="待批改   56" Margin="-2,0,0,-0.067" HorizontalAlignment="Left" Style="{StaticResource TabItemStyle}" Width="80" Height="22" VerticalAlignment="Bottom">
+                    <TabItem x:Name="TbItemUnCheck" Header="待批改   56" Margin="-2,0,0,-0.067" HorizontalAlignment="Left" Style="{StaticResource TabItemStyle}" Width="80" Height="22" VerticalAlignment="Bottom">
                         <Grid Background="#FFE5E5E5">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="0*"/>
-                                <ColumnDefinition Width="169*"/>
+                                <ColumnDefinition Width="73*"/>
+                                <ColumnDefinition Width="98*"/>
                             </Grid.ColumnDefinitions>
-                            <ListView x:Name="listViewFinish_Copy" Grid.ColumnSpan="2">
+                            <ListView x:Name="listViewUnCheck" Grid.ColumnSpan="3" Margin="0,0,-0.2,0.2">
                                 <ListView.View>
                                     <GridView>
                                         <GridViewColumn/>
@@ -297,8 +298,8 @@
                                         </Rectangle.Fill>
                                     </Rectangle>
                                     <Border BorderBrush="#FFABADB3" BorderThickness="0,0,0,1" Height="39.8" Width="491.399" Canvas.Left="-8.533"/>
-                                    <Label x:Name="lbStudentInfo9" Content="201821130135   郑昊欣&#xA;" Canvas.Left="48.4" Canvas.Top="8.5" Height="22" FontSize="10"/>
-                                    <Button x:Name="btnHomeworkCorrect3" Content="批改作业" Canvas.Left="423.867" Canvas.Top="10.47" Width="56.867" Background="{x:Null}" BorderThickness="0" FontWeight="Bold"/>
+                                    <Label x:Name="lbStudentInfo" Content="201821130135 郑昊欣" Canvas.Left="48.4" Canvas.Top="8.5" Height="22" FontSize="10"/>
+                                    <Button x:Name="btnHomeworkCorrect" Content="批改作业" Canvas.Left="423.867" Canvas.Top="10.47" Width="56.867" Background="{x:Null}" BorderThickness="0" FontWeight="Bold" Click="btnHomeworkCorrect_Click"/>
                                     <Label x:Name="lbHomeworkState3" Content="待批改" Canvas.Left="375.067" Canvas.Top="6.76" Width="48.8"/>
                                 </Canvas>
                                 <Canvas Height="39.8" Width="485.533">
@@ -308,7 +309,7 @@
                                         </Rectangle.Fill>
                                     </Rectangle>
                                     <Border BorderBrush="#FFABADB3" BorderThickness="0,0,0,1" Height="39.8" Width="494.066" Canvas.Left="-8.533"/>
-                                    <Label x:Name="lbStudentInfo10" Content="201821130135   郑昊欣&#xA;" Canvas.Left="48.4" Canvas.Top="8.5" Height="22" FontSize="10"/>
+                                    <Label x:Name="lbStudentInfo10" Content="201821130135 郑昊欣" Canvas.Left="48.4" Canvas.Top="8.5" Height="22" FontSize="10"/>
                                     <Button x:Name="btnHomeworkCorrect5" Content="批改作业" Canvas.Left="423.867" Canvas.Top="10.76" Width="58.599" Background="{x:Null}" BorderThickness="0" FontWeight="Bold"/>
                                     <Label x:Name="lbHomeworkState5" Content="待批改" Canvas.Left="375.067" Canvas.Top="6.76" Width="48.8"/>
                                 </Canvas>
@@ -319,7 +320,7 @@
                                         </Rectangle.Fill>
                                     </Rectangle>
                                     <Border BorderBrush="#FFABADB3" BorderThickness="0,0,0,1" Height="39.8" Width="492.066" Canvas.Left="-8.533"/>
-                                    <Label x:Name="lbStudentInfo11" Content="201821130135   郑昊欣&#xA;" Canvas.Left="48.4" Canvas.Top="8.5" Height="22" FontSize="10"/>
+                                    <Label x:Name="lbStudentInfo11" Content="201821130135 郑昊欣" Canvas.Left="48.4" Canvas.Top="8.5" Height="22" FontSize="10"/>
                                     <Button x:Name="btnHomeworkCorrect6" Content="批改作业" Canvas.Left="423.867" Canvas.Top="12.5" Width="59.666" Background="{x:Null}" BorderThickness="0" FontWeight="Bold"/>
                                     <Label x:Name="lbHomeworkState6" Content="待批改" Canvas.Left="375.067" Canvas.Top="6.76" Width="48.8"/>
                                 </Canvas>
@@ -337,7 +338,7 @@
                             </ListView>
                         </Grid>
                     </TabItem>
-                    <TabItem Header="未完成   15" Margin="-2,0,0,-0.067" HorizontalAlignment="Left" Style="{StaticResource TabItemStyle}" Width="80" Height="22" VerticalAlignment="Bottom">
+                    <TabItem x:Name="TbItemUnFinish" Header="未完成   15" Margin="-2,0,0,-0.067" HorizontalAlignment="Left" Style="{StaticResource TabItemStyle}" Width="80" Height="22" VerticalAlignment="Bottom">
                         <Grid Background="#FFE5E5E5" Margin="0,0,0,-10.4">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="0*"/>
@@ -346,7 +347,7 @@
                                 <ColumnDefinition Width="120*"/>
                                 <ColumnDefinition Width="11*"/>
                             </Grid.ColumnDefinitions>
-                            <ListView x:Name="listView" Margin="0,0,0,10" Grid.ColumnSpan="4">
+                            <ListView x:Name="listViewUnFinish" Margin="0,0,0,10" Grid.ColumnSpan="4">
                                 <ListView.View>
                                     <GridView>
                                         <GridViewColumn/>

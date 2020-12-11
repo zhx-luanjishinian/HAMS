@@ -88,17 +88,17 @@ namespace HAMS.Teacher.TeacherView
                 Grid sonGrid = (Grid)sonBtn.Parent;
                 BreifHomework clickTeachClass = (BreifHomework)sonGrid.Parent;
                
-                bool ifDelete = an.deleteNotice(clickTeachClass.title.Content.ToString());  //删除时要考虑到与作业表级联删除的情况
+                //bool ifDelete = an.deleteNotice(clickTeachClass.title.Content.ToString());  //删除时要考虑到与作业表级联删除的情况
                 homeworkListView.Items.Remove(clickTeachClass);
                
-                if(ifDelete==true)
-                {
-                    System.Windows.MessageBox.Show("删除成功");
-                }
-                else
-                {
-                    System.Windows.MessageBox.Show("删除失败");
-                }
+                //if(ifDelete==true)
+                //{
+                //    System.Windows.MessageBox.Show("删除成功");
+                //}
+                //else
+                //{
+                //    System.Windows.MessageBox.Show("删除失败");
+                //}
             }
            
         }

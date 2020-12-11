@@ -158,7 +158,7 @@ namespace HAMS.Teacher.TeacherService
                 return "获取新增公告的notId并转换为int失败";
 
             }
-           
+            int classId = notice.ClassId;
             //调用学生角色的业务层添加作业函数，该函数负责调用Dao层将作业插入数据库homework表
             //[studentDao文件夹下某Dao文件的一个对象].insertHomework(classId,teacherId,notId);
             //该函数还需要根据classId，获得每个选课学生的stuId，然后依次在作业表中根据(stuId,classId,teacherId,notId)进行插入
@@ -176,7 +176,9 @@ namespace HAMS.Teacher.TeacherService
         public DateTime GetPreviousDateTime(string classSpaceId,string homeworkTitle)
         {
             DataTable table1 = td.getClassId(classSpaceId);
-            DataTable table2 = td.getNoteId(homeworkTitle, table1.Rows[0][0].ToString());
+            int result;
+            int.TryParse(table1.Rows[0][0].ToString(), out result);
+            DataTable table2 = td.getNoteId(homeworkTitle, result);
             DataTable table3 = td.getTrueDeadLine(table2.Rows[0][0].ToString());
             return (DateTime)table3.Rows[0][0];
         }

@@ -46,7 +46,7 @@ namespace HAMS.Teacher.TeacherDao
             DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);       
             return table;
         }
-        public DataTable getNoteId(string notTitle,string classId)    //根据名称和classId查notId
+        public DataTable getNoteId(string notTitle,int classId)    //根据名称和classId查notId
         {
             //sql语句
             String sql = "select notId from notice where notTitle=@id and classId=@cId";   //根据noticeId查找truDeadline

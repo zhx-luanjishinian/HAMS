@@ -146,10 +146,19 @@ namespace HAMS.Teacher.TeacherService
             DataTable tbTeacherId = td.getTeacherId(teacherSpecId);//tbTeacherSpecId.Text是教师工号
             if (!int.TryParse(tbTeacherId.Rows[0][0].ToString(), out result))//table[0][0]就是查到的classId
             {
-                return "classSpecId转换为classId失败";
+                return "teacherSpecId转换为teacherId失败";
 
             }
             int teacherId = result;
+            //查询刚刚发布作业公告的notId
+            DataTable tbNotId = td.getNoteId(notice.NoteTitle, notice.ClassId);
+            int notId;
+            if (!int.TryParse(tbTeacherId.Rows[0][0].ToString(), out notId))//table[0][0]就是查到的classId
+            {
+                return "获取新增公告的notId并转换为int失败";
+
+            }
+           
             //调用学生角色的业务层添加作业函数，该函数负责调用Dao层将作业插入数据库homework表
             //[studentDao文件夹下某Dao文件的一个对象].insertHomework(classId,teacherId,notId);
             //该函数还需要根据classId，获得每个选课学生的stuId，然后依次在作业表中根据(stuId,classId,teacherId,notId)进行插入

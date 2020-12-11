@@ -50,7 +50,7 @@
 
         <Button x:Name="btnReset" Content="重置" HorizontalAlignment="Left" Height="33.667" Margin="611.167,316.5,0,0" VerticalAlignment="Top" Width="68.98" RenderTransformOrigin="1.392,0.567" FontSize="16" Background="#FF93B3DE" Click="btnReset_Click"/>
         <Grid Background="{DynamicResource {x:Static SystemColors.InfoBrushKey}}" Margin="0,0,0,428.667">
-            <Image Height="50" Width="62" Source="./Resources/notice.png" RenderTransformOrigin="0.58,0.429" Margin="-720,0,0,0"/>
+            <Image Height="50" Width="62" Source="./Resources/notice.png" RenderTransformOrigin="0.58,0.429" Margin="10,0,708,0"/>
             <Canvas HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="1000"  Margin="84,0,-508,0">
                 <Canvas.Triggers>
                     <EventTrigger RoutedEvent="FrameworkElement.Loaded">

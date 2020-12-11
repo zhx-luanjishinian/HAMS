@@ -73,13 +73,21 @@ namespace HAMS.Teacher.TeacherView
         }
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
+            //删除服务器上的作业附件
+            //需要把所有学生表里的作业都删掉
+            //首先根据课堂具体工号找到classId
+            //然后找到该classId下title对应的notId
+            //然后执行删除公告操作（业务层），在该业务层需要先删除作业附件，再调用删除作业表上的所有作业，再删除所有作业公告
+
+
             MessageBoxResult dr = System.Windows.MessageBox.Show("是否确定删除该作业？", "", MessageBoxButton.OKCancel, MessageBoxImage.Question);
            if(dr== MessageBoxResult.OK)
             {
                 System.Windows.Controls.Button sonBtn = (System.Windows.Controls.Button)sender;  //获取当前点击的那个
+                //获取父级元素，找到要删除的公告
                 Grid sonGrid = (Grid)sonBtn.Parent;
                 BreifHomework clickTeachClass = (BreifHomework)sonGrid.Parent;
-                //获取父级元素
+               
                 bool ifDelete = an.deleteNotice(clickTeachClass.title.Content.ToString());  //删除时要考虑到与作业表级联删除的情况
                 homeworkListView.Items.Remove(clickTeachClass);
                

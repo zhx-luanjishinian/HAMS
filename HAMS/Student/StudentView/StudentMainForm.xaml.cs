@@ -148,5 +148,10 @@ namespace HAMS.Student.StudentView
                 this.Visibility = System.Windows.Visibility.Hidden;
             }
         }
+
+        private void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

@@ -32,7 +32,16 @@ namespace HAMS.Teacher.TeacherView
             lbClassSpecId.Text = cId;
             textBoxContent.Text = "请输入作业描述";
         }
-
+        public AnnounceNotice(string tNum, string tName, string cId, string cName,string nTitle,string nContent)
+        {
+            InitializeComponent();
+            tbName.Text = tName;
+            tbTeacherSpecId.Text = tNum;
+            labelcClassName.Content = cName;
+            lbClassSpecId.Text = cId;
+            textBoxHomeworkTitle.Text = nTitle;
+            textBoxContent.Text = nContent;
+        }
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             App.Current.Shutdown();

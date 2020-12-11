@@ -147,9 +147,30 @@ namespace HAMS.Teacher.TeacherService
 
             }
             int teacherId = result;
-            //调用学生角色的业务层添加作业函数，该函数负责调用Dao层将作业插入数据库homework表
-            //[studentDao文件夹下某Dao文件的一个对象].insertHomework(classId,teacherId,notId);
+            //调用老师角色的业务层添加作业函数，该函数负责调用Dao层将作业插入数据库homework表
+            //[teacherDao文件夹下某Dao文件的一个对象].insertHomework(classId,teacherId,notId);
             //该函数还需要根据classId，获得每个选课学生的stuId，然后依次在作业表中根据(stuId,classId,teacherId,notId)进行插入
+            DataTable tbStuId = td.GetStuIdFromClassId(notice.ClassId);
+            int stuidNum = tbStuId.Rows.Count;  //获取所有选课学生的数量
+            for (    int i=0;    i<stuidNum ;    i++)
+            {
+                string stuId = tbNoteTitles.Rows[i][0].ToString();  //获取每一个学生的id号
+                Homework homework = new Homework(); //新建一个homework实体
+                homework.ClassId = notice.ClassId;
+                int sid;
+                if(int.TryParse(stuId, out sid))
+                {
+                    homework.StuId = sid;
+                }
+                homework.TeacherId = teacherId;
+
+                //stuId, classId, teacherId, notId
+                bool flag1 = td.InsertHomework(homework);
+                if (!flag1)
+                {
+                    return "发布失败，请重试";
+                }
+            }
             return "发布公告成功";
         }
         public string[] GetScoreAndRemarkByHomId(int homId)

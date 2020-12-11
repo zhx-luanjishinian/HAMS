@@ -11,6 +11,7 @@ namespace HAMS.Student.StudentDao
 {
     class SDao
     {
+        //数据库连接方法
         private MySqlConnection conn = DataUtil.DBUtil.getConnection();
         //登录方法调用此类
         public DataTable Login(String account, String pw)
@@ -24,7 +25,7 @@ namespace HAMS.Student.StudentDao
            
         }
 
-
+        //显示该学生所选修的全部课程
         public Dictionary<int,List<String>> showCourseInfo(String account)
         {
             //此类用来装返回的对象
@@ -89,10 +90,10 @@ namespace HAMS.Student.StudentDao
 
         }
 
-
-        public Boolean InsertHomework(Homework homework)
+        //学生提交作业时需要调用该方法
+        public bool UpdateHomework(Homework homework)
         {
-            String sql = "insert into homework (submitTime,postil,homURL,homName,stuId,teaId,classId) values (@subTime,@postil,@homUrl,@homName,@stuid,@teaid,@cid);";
+            String sql = "insert into homework (submitTime,postil,homURL,homName,stuId,teaId,classId,notId) values (@subTime,@postil,@homUrl,@homName,@stuid,@teaid,@cid,@notid);";
             //传入要填写的参数
             MySqlParameter para1 = new MySqlParameter("@subTime", homework.SubmitTime);
             MySqlParameter para2 = new MySqlParameter("@postil", homework.Postil);
@@ -101,7 +102,20 @@ namespace HAMS.Student.StudentDao
             MySqlParameter para5 = new MySqlParameter("@stuid", homework.StuId);
             MySqlParameter para6 = new MySqlParameter("@teaid", homework.TeacherId);
             MySqlParameter para7 = new MySqlParameter("@cid", homework.ClassId);
-            return DataUtil.DataOperation.DataAdd(sql, para1, para2, para3, para4, para5, para6, para7);  //插入成功时返回true
+            MySqlParameter para8 = new MySqlParameter("@notid", homework.NotId);
+            return DataUtil.DataOperation.DataAdd(sql, para1, para2, para3, para4, para5, para6, para7,para8);  //插入成功时返回true
+        }
+
+        //获取作业公告标题
+        public DataTable GetNotTitle(int NotId)
+        {
+            //根据真实的课堂号获取课堂表里的自增主键课堂号classId
+            String sql = "select notTitle from notice where notId = @id;";
+            //传入要填写的参数
+            MySqlParameter para = new MySqlParameter("@id", NotId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, para);
+            return table;
+
         }
     }
 }

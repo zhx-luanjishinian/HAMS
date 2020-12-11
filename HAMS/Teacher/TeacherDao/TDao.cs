@@ -187,13 +187,29 @@ namespace HAMS.Teacher.TeacherDao
             return DataUtil.DataOperation.DataUpdate(sql, para1, para2, para3);//如果更新成功，则返回true
         }
 
-        public Boolean deleteNotice(string noticeTitle)
+        public bool InsertHomework(Homework homework)
         {
-            String sql = "delete from notice where notTitle=@ntitle;";
+            String sql = "insert into homework (stuId, classId, teacherId, notId) values (@stuid,@classid,@teacherid,@notid);";
             //传入要填写的参数
-            MySqlParameter para = new MySqlParameter("@ntitle", noticeTitle);
-            return DataUtil.DataOperation.DataDelete(sql, para);//如果删除成功，则返回true
+            MySqlParameter para1 = new MySqlParameter("@stuid", homework.StuId);
+            MySqlParameter para2 = new MySqlParameter("@classid", homework.ClassId);
+            MySqlParameter para3 = new MySqlParameter("@teacherid", homework.TeacherId);
+            MySqlParameter para4 = new MySqlParameter("@notid", homework.NotId);
+            return DataUtil.DataOperation.DataAdd(sql, para1, para2, para3, para4);  //插入成功时返回true
         }
+
+        //通过课堂名获取选修该课堂的学生id
+        public DataTable GetStuIdFromClassId(int classId)
+        {
+            //根据homId获得homURL
+            String sql = "select stuId from takecourse where classId = @classId;";
+            //传入要填写的参数
+            MySqlParameter para = new MySqlParameter("@classId", classId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, para);
+            return table;
+        }
+
+
 
     }
 

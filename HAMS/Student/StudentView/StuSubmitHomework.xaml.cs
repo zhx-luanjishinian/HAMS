@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using HAMS.Student.StudentService;
 
 namespace HAMS.Student.StudentView
 {
@@ -25,7 +26,7 @@ namespace HAMS.Student.StudentView
         {
             InitializeComponent();
         }
-
+        private SService ss = new SService();
         private void ListViewHomeworkNote_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
@@ -71,21 +72,24 @@ namespace HAMS.Student.StudentView
                 this.Visibility = System.Windows.Visibility.Hidden;
             }
         }
-
+        OpenFileDialog ofd = new OpenFileDialog();//选择文件的对话框
         private void btnSubmitHomework_Click(object sender, RoutedEventArgs e)
         {
-            ////调用业务层方法，往数据库里添加新的作业公告
-            //String folderName = tbUserNameAc.Text;
-            //String content = tbFileURL.Text;
-            //DateTime currentTime = DateTime.Now;
-            //String postil = listViewHomeworkNote.Text;
-            //String homURL =  "Z004530B1300720" + "/" + "狗" + "/" + folderName +content;
-            ////String notURL = 课堂真实号/作业公告名/作业附件/文件名
+            //调用业务层方法，往数据库里添加新的作业
+            //调用业务层方法，往数据库里添加新的作业公告
+            //insert into homework (submitTime,postil,homURL,homName,stuId,teaId,classId,notId) values (@subTime,@postil,@homUrl,@homName,@stuid,@teaid,@cid,@notid);
+            String postil = listViewHomeworkNote.Text;
+            String honName = tbFileURL.Text;
+            DateTime submitTime = DateTime.Now;
+            String dirHomName = stuId + stuName;
+            String homURL = classSpecId + "/" + notTitle + "/" + dirHomName;
+            //String localpath = ofd.FileName;
+
+            //String notURL = 课堂真实号/作业公告名/作业附件/文件名
+            //String notURL = classSpecId + "/" + notTitle + "/" + "作业附件" + fileName;
+            string message = ss.SubmitHomework(submitTime, postil, homURL, homName, stuId, teaId, classId, notId);
+            System.Windows.MessageBox.Show(message);
             
-            ////该方法实现向notice表中新增一条作业公告，且返回具体的信息提示用户
-            //string message = ans.announceNotice(truDeadline, content, notTitle, classSpecId, tbTeacherSpecId.Text, notURL);
-            ////System.Windows.MessageBox.Show(message);
-            //System.Windows.MessageBox.Show("提交成功！");
         }
 
         private void btnChooseFile_Click(object sender, RoutedEventArgs e)

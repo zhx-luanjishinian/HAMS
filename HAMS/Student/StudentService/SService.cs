@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using HAMS.ToolClass;
 using HAMS.Student.StudentDao;
-
+using HAMS.Entity;
 
 namespace HAMS.Student.StudentService
 {
@@ -51,6 +51,54 @@ namespace HAMS.Student.StudentService
             return sd.showHomeNoticeInfo(account);
         }
 
+        //获取作业公告标题
+        public String GetNotTitleByHomId(int NotId)
+        {
+            //根据homId获取文件在服务器上的路径
+            DataTable tbNotTitle = sd.GetNotTitle(NotId);
+            string notTitle = tbNotTitle.Rows[0][0].ToString();
+            return notTitle;
+        }
 
+        public String SubmitHomework(DateTime submitTime, String postil, String homName, String stuName, int stuId, int teaId, String classSpecId , int notid)
+        {
+            //insert into homework (submitTime,postil,homURL,homName,stuId,teaId,classId,notId) values (@subTime,@postil,@homUrl,@homName,@stuid,@teaid,@cid,@notid);
+            Homework homework = new Homework();
+            homework.SubmitTime = submitTime;
+            homework.Postil = postil;
+            homework.HomeName = homName;
+            //stuId、teaId、classSpecId、notId可以从界面中获取到值
+            //作业URL是：课堂真实号/作业公告标题/学号+姓名/homName
+            string notTitle = GetNotTitleByHomId(notid);
+
+
+            bool flag;
+            string errorinfo;
+
+            //创建作业公告目录 
+            string dirNotTitle = stuId+stuName;//学号+姓名/
+            string orginPath = classSpecId+"/"+notTitle;//原始目录或起始目录，即在哪个目录下创建，也就是：课堂真实号/作业公告标题/
+            flag = FtpUpDown.MakeDir(dirNotTitle, out errorinfo, orginPath);//创建目录的静态方法，可以直接通过类名访问
+            if (flag == false)
+            {
+                return "在文件服务器中创建对应学生作业的目录失败";
+            }
+             //上传作业
+             string dirFullNotFile = orginPath + "/" + dirNotTitle;
+             flag = FtpUpDown.Upload(homName, dirFullNotFile);
+             if (!flag)
+             {
+                return "在文件服务器中指定目录上传作业失败";
+            }
+            homework.HomeURL = dirFullNotFile;
+            //notice.NoteURL = notURL;
+            //调用插入作业公告函数，将公告插入数据库notice表
+            flag = sd.InsertHomework(homework);
+            if (!flag)
+            {
+                return "无法将新增的作业插入到homework表";
+            }
+            return "提交作业成功";
+        }
     }
 }

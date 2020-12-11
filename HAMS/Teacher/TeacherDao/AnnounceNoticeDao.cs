@@ -22,6 +22,13 @@ namespace HAMS.Teacher.TeacherDao
             MySqlParameter para5 = new MySqlParameter("@cid", notice.ClassId);
             return DataUtil.DataOperation.DataAdd(sql, para1, para2, para3, para4, para5);//如果插入成功，则返回true
         }
+        public Boolean deleteNotice(string noticeTitle)
+        {
+            String sql = "delete from notice where notTitle=@ntitle;";
+            //传入要填写的参数
+            MySqlParameter para = new MySqlParameter("@ntitle", noticeTitle);
+            return DataUtil.DataOperation.DataDelete(sql, para);//如果删除成功，则返回true
+        }
         public DataTable getClassId(string classSpecId)
         {
             //根据真实的课堂号获取课堂表里的自增主键课堂号classId

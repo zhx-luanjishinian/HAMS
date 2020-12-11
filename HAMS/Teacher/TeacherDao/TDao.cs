@@ -65,6 +65,7 @@ namespace HAMS.Teacher.TeacherDao
             DataTable table = DataUtil.DataOperation.DataQuery(sql, para);
             return table.Rows.Count;
         }
+
     }
 
 

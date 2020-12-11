@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HAMS.Teacher.TeacherDao;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -20,6 +22,7 @@ namespace HAMS.Teacher.TeacherView
     /// </summary>
     public partial class BreifView : Window
     {
+        AnnounceNoticeDao an = new AnnounceNoticeDao();
         public BreifView(string courseNum,string courseName,string tId,string tName)
         {
             //生成基本信息
@@ -37,6 +40,7 @@ namespace HAMS.Teacher.TeacherView
             for (int i = 0; i < table.Rows.Count; i++)
             {
                 arrayBreifHomework[i] = new BreifHomework();
+
                 arrayBreifHomework[i].Name = "arrayHk" + i.ToString();
                 //加载作业标题
                 arrayBreifHomework[i].title.Content = table.Rows[i][7].ToString();
@@ -45,9 +49,42 @@ namespace HAMS.Teacher.TeacherView
                 //加在canvas里面
                 //arrayHomk.Children.Add(arrayBreifHomework[i]);
                 homeworkListView.Items.Add(arrayBreifHomework[i]);
+                //定义点击删除按钮时的事件
+                arrayBreifHomework[i].btnDelete.Click += new RoutedEventHandler(btnDelete_Click);
+
+                //定义修改公告按钮的操作
+                //arrayBreifHomework[i].btnModify.Click += new RoutedEventHandler;
             }
         }
-       // public BreifV
+        private void btnModify_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult dr = System.Windows.MessageBox.Show("是否确定删除该作业？", "", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+           if(dr== MessageBoxResult.OK)
+            {
+                System.Windows.Controls.Button sonBtn = (System.Windows.Controls.Button)sender;  //获取当前点击的那个
+                Grid sonGrid = (Grid)sonBtn.Parent;
+                BreifHomework clickTeachClass = (BreifHomework)sonGrid.Parent;
+                //获取父级元素
+                bool ifDelete = an.deleteNotice(clickTeachClass.title.Content.ToString());  //删除时要考虑到与作业表级联删除的情况
+                homeworkListView.Items.Remove(clickTeachClass);
+               
+                if(ifDelete==true)
+                {
+                    System.Windows.MessageBox.Show("删除成功");
+                }
+                else
+                {
+                    System.Windows.MessageBox.Show("删除失败");
+                }
+            }
+           
+        }
+
+        // public BreifV
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             App.Current.Shutdown();

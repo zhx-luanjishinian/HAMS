@@ -166,7 +166,7 @@
                             <ColumnDefinition Width="73*"/>
                         </Grid.ColumnDefinitions>
                         <Image x:Name="image" Source="../../Resources/链接.png" Margin="0,0,5,0"/>
-                        <Label x:Name="labelAccessoryName1" Content="查看相关附件" FontSize="9" Margin="20,0,0,0.159" Grid.ColumnSpan="2" HorizontalAlignment="Left" Width="73"/>
+                        <Label x:Name="labelAccessoryName1" Content="查看相关附件" FontSize="9" Margin="20,0,10.2,0.159" Grid.ColumnSpan="2"/>
                     </Grid>
                 </Button>
             </StackPanel>

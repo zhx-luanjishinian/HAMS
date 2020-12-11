@@ -81,14 +81,14 @@ namespace HAMS.Student.StudentView
             String postil = listViewHomeworkNote.Text;
             String honName = tbFileURL.Text;
             DateTime submitTime = DateTime.Now;
-            String dirHomName = stuId + stuName;
-            String homURL = classSpecId + "/" + notTitle + "/" + dirHomName;
+            //String dirHomName = stuId + stuName;
+            //String homURL = classSpecId + "/" + notTitle + "/" + dirHomName;
             //String localpath = ofd.FileName;
 
             //String notURL = 课堂真实号/作业公告名/作业附件/文件名
             //String notURL = classSpecId + "/" + notTitle + "/" + "作业附件" + fileName;
-            string message = ss.SubmitHomework(submitTime, postil, homURL, homName, stuId, teaId, classId, notId);
-            System.Windows.MessageBox.Show(message);
+            //string message = ss.SubmitHomework(submitTime, postil, homURL, homName, stuId, teaId, classId, notId);
+            //System.Windows.MessageBox.Show(message);
             
         }
 

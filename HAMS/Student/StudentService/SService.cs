@@ -93,7 +93,7 @@ namespace HAMS.Student.StudentService
             homework.HomeURL = dirFullNotFile;
             //notice.NoteURL = notURL;
             //调用插入作业公告函数，将公告插入数据库notice表
-            flag = sd.InsertHomework(homework);
+            flag = sd.UpdateHomework(homework);
             if (!flag)
             {
                 return "无法将新增的作业插入到homework表";

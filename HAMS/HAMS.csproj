@@ -147,8 +147,6 @@
       <DependentUpon>StuSubmitHomework.xaml</DependentUpon>
     </Compile>
     <Compile Include="Teacher\TeacherDao\TDao.cs" />
-    <Compile Include="Teacher\TeacherService\AnnounceNoticeService.cs" />
-    <Compile Include="Teacher\TeacherService\TeacherHomeworkCheckService.cs" />
     <Compile Include="Teacher\TeacherService\TService.cs" />
     <Compile Include="Teacher\TeacherView\AnnounceNotice.xaml.cs">
       <DependentUpon>AnnounceNotice.xaml</DependentUpon>

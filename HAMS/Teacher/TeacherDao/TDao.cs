@@ -160,6 +160,17 @@ namespace HAMS.Teacher.TeacherDao
             return DataUtil.DataOperation.DataUpdate(sql, para1, para2, para3);//如果更新成功，则返回true
         }
 
+        public DataTable GetScoreAndRemarkByHomId(int homId)
+        {
+            //根据homId获取score和remark
+            String sql = "select score,remark from homework where homId = @hid;";
+            //传入要填写的参数
+            MySqlParameter para = new MySqlParameter("@hid", homId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, para);
+
+            return table;
+        }
+
     }
 
 

@@ -6,9 +6,9 @@
              xmlns:local="clr-namespace:HAMS.Student.StudentUserControl"
              mc:Ignorable="d" Height="31.201" Width="148.776">
     <Button x:Name="btnRecntNo1" OpacityMask="White" Height="31.201" Width="148.776" Background="#FFD2F5FA" >
-        <Canvas Height="44" Width="138">
-            <Image x:Name="image1" Height="20" Canvas.Left="23" Width="26" Source="/HAMS;component/Resources/notice1.png" RenderTransformOrigin="0.423,0.012"/>
-            <Label x:Name="lab1" Content="SVM实验" Height="23" Width="105" FontSize="11" Canvas.Left="54"/>
+        <Canvas Height="28" Width="146">
+            <Image x:Name="image1" Height="20" Canvas.Left="10" Width="26" Source="/HAMS;component/Resources/notice1.png" RenderTransformOrigin="0.423,0.012" Canvas.Top="3"/>
+            <Label x:Name="lab1" Content="SVM实验" Height="23" Width="61" FontSize="11" Canvas.Left="58" Canvas.Top="3"/>
         </Canvas>
     </Button>
 </UserControl>

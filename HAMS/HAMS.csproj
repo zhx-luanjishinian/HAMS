@@ -113,7 +113,6 @@
       <DependentUpon>MainInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="Student\StudentDao\SDao.cs" />
-    <Compile Include="Student\StudentDao\SubmitHomeworkDao.cs" />
     <Compile Include="Student\StudentService\SService.cs" />
     <Compile Include="Student\StudentService\StuHomeworkService.cs" />
     <Compile Include="Student\StudentView\AlertForm.xaml.cs">

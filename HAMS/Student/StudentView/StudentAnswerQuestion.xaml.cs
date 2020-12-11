@@ -19,6 +19,9 @@ namespace HAMS.Student.StudentView
     /// </summary>
     public partial class StudentAnswerQuestion : Window
     {
+        public String account { set; get; }
+        public String name { set; get; }
+        public String classId { set; get; }
         public StudentAnswerQuestion()
         {
             InitializeComponent();
@@ -30,7 +33,7 @@ namespace HAMS.Student.StudentView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                StuMainHomework smh = new StuMainHomework();
+                StuMainHomework smh = new StuMainHomework(account,name,classId);
                 smh.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;

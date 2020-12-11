@@ -21,9 +21,17 @@ namespace HAMS.Student.StudentView
     /// </summary>
     public partial class StuSubmitHomework : Window
     {
-        public StuSubmitHomework()
+        public String account { set; get; }
+        public String name { set; get; }
+        public String notId { set; get; }
+        public String classId { set; get; }
+        public StuSubmitHomework(String account, String name,String notId,String classId)
         {
             InitializeComponent();
+            this.account = account;
+            this.name = name;
+            this.notId = notId;
+            this.classId = classId;
         }
 
         private void ListViewHomeworkNote_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -41,7 +49,7 @@ namespace HAMS.Student.StudentView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                StuDoHomework sdh = new StuDoHomework();
+                StuDoHomework sdh = new StuDoHomework(account,name,notId,classId);
                 sdh.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
@@ -53,10 +61,10 @@ namespace HAMS.Student.StudentView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                //StudentMainForm smf = new StudentMainForm(tbUserNameAc.Text);
-                //smf.Show();
-                //// 隐藏自己(父窗体)
-                //this.Visibility = System.Windows.Visibility.Hidden;
+                StudentMainForm smf = new StudentMainForm(account,name);
+                smf.Show();
+                // 隐藏自己(父窗体)
+                this.Visibility = System.Windows.Visibility.Hidden;
             }
         }
 
@@ -65,7 +73,7 @@ namespace HAMS.Student.StudentView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                AlertForm af = new AlertForm();
+                AlertForm af = new AlertForm(account,name);
                 af.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;

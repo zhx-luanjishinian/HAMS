@@ -11,6 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using HAMS.Student.StudentService;
+using HAMS.Student.StudentUserControl;
+using HAMS.Teacher.TeacherView;
 
 namespace HAMS.Student.StudentView
 {
@@ -19,137 +22,96 @@ namespace HAMS.Student.StudentView
     /// </summary>
     public partial class StuMainHomework : Window
     {
-        public StuMainHomework()
+        private SService ss = new SService();
+        public String account { set; get; }
+        public String name { set; get; }
+        public String notId { set; get; }
+        public String classId { set; get; }
+        public String Message { set; get; }
+        public StuMainHomework(String account,String name,String classId)
         {
             InitializeComponent();
+            this.account = account;
+            this.name = name;
+            this.classId = classId;
+            tbuserNameAc.Text = account + name;
+            MainHomeworkShow(classId);
         }
+        public void MainHomeworkShow(String clId)
+        {
+            Dictionary<int, List<String>> info = ss.showAllHomeworkInfo(clId);
+            for(int i = 0; i < info.Count; i++)
+            {
+                String[] temp = new String[2];
+                ListViewItem ivi = new ListViewItem();
+                MainHomeworkInfo mhi = new MainHomeworkInfo(info[i][1], info[i][2]);
+                temp[0] = info[i][1];
+                temp[1] = info[i][2];
+                mhi.labelHomeworkName.Content = info[i][0];
+                //如果长度很长的话只显示7个
+                if (info[i][1].Length > 7) {
+                mhi.labelHomeworkDescription.Content = info[i][1].Substring(0,7)+"...";
+                }
+                else
+                {
+                    mhi.labelHomeworkDescription.Content = info[i][1];
+                }
+                notId = info[i][2].ToString();
+                mhi.tbHomeworkStatus.Text = ss.judgeHomeworkStatus(account, notId, info[i][3].ToString());
+                this.Message = mhi.tbHomeworkStatus.Text;
+                mhi.btnHomRe1.Tag = temp;
+                mhi.btnCheckRank.Tag = temp;
+                mhi.btnHomeworkAnswer.Tag = temp;
+                mhi.btnHomRe1.Click += new RoutedEventHandler(doHomework_Click);
+                mhi.btnCheckRank.Click += new RoutedEventHandler(homRk);
+                mhi.btnHomeworkAnswer.Click += new RoutedEventHandler(asq);
+                ivi.Content = mhi;
+                listview.Items.Add(ivi);
+            }
 
+        }
+        //打开具体的做作业界面的点击事件
+        private void doHomework_Click(object sender,RoutedEventArgs e)
+        {
+            Button mh = (Button)sender;
+            String[] info = (String[])mh.Tag;
+            if(Message != "已逾期"){
+            StuDoHomework sdh = new StuDoHomework(account, name, info[0],info[1]);
+            sdh.Show();
+            this.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                MessageBox.Show("该作业已逾期，无法再进行作答");
+            }
+        }
+        //查看排行榜的点击时间（后面还要传参，这里目前是这样写)
+        private void homRk(object sender, RoutedEventArgs e)
+        {
+            Button mh = (Button)sender;
+            String[] info = (String[])mh.Tag;
+            StuHomeworkRank shr = new StuHomeworkRank(info[0], info[1]);
+            shr.Show();
+            this.Visibility = Visibility.Hidden;
+        }
+       
+        //打开作业答疑区的点击事件
+        private void asq(object sender, RoutedEventArgs e)
+        {
+            Button mh = (Button)sender;
+            String[] info = (String[])mh.Tag;
+            AnswerQuestion aq = new AnswerQuestion(info[0], info[1]);
+            aq.Show();
+            this.Visibility = Visibility.Hidden;
+        }
+       
         private void homeworkManagement_Click(object sender, RoutedEventArgs e)
         {
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                //StudentMainForm smf = new StudentMainForm(tbuserNameAc.Text);
-                //smf.Show();
-                //// 隐藏自己(父窗体)
-                //this.Visibility = System.Windows.Visibility.Hidden;
-            }
-        }
-
-        private void btnCheckRank_Click(object sender, RoutedEventArgs e)
-        {
-            if (true)//里面是验证函数
-            {
-                // 打开子窗体
-                StuHomeworkRank shr = new StuHomeworkRank();
-                shr.Show();
-                // 隐藏自己(父窗体)
-                this.Visibility = System.Windows.Visibility.Hidden;
-            }
-        }
-
-        private void btnHomeworkAnswer_Click(object sender, RoutedEventArgs e)
-        {
-            if (true)//里面是验证函数
-            {
-                // 打开子窗体
-                StudentAnswerQuestion saq = new StudentAnswerQuestion();
-                saq.Show();
-                // 隐藏自己(父窗体)
-                this.Visibility = System.Windows.Visibility.Hidden;
-            }
-
-        }
-
-       
-
-        
-        
-        private void homeworkAnswer2_Click(object sender, RoutedEventArgs e)
-        {
-            if (true)//里面是验证函数
-            {
-                // 打开子窗体
-                StudentAnswerQuestion saq = new StudentAnswerQuestion();
-                saq.Show();
-                // 隐藏自己(父窗体)
-                this.Visibility = System.Windows.Visibility.Hidden;
-            }
-        }
-
-        private void checkRank2_Click(object sender, RoutedEventArgs e)
-        {
-            if (true)//里面是验证函数
-            {
-                // 打开子窗体
-                StuHomeworkRank shr = new StuHomeworkRank();
-                shr.Show();
-                // 隐藏自己(父窗体)
-                this.Visibility = System.Windows.Visibility.Hidden;
-            }
-        }
-
-        private void checkRank1_Click(object sender, RoutedEventArgs e)
-        {
-            if (true)//里面是验证函数
-            {
-                // 打开子窗体
-                StuHomeworkRank shr = new StuHomeworkRank();
-                shr.Show();
-                // 隐藏自己(父窗体)
-                this.Visibility = System.Windows.Visibility.Hidden;
-            }
-           
-        }
-
-        private void checkRank3_Click(object sender, RoutedEventArgs e)
-        {
-            if (true)//里面是验证函数
-            {
-                // 打开子窗体
-                StuHomeworkRank shr = new StuHomeworkRank();
-                shr.Show();
-                // 隐藏自己(父窗体)
-                this.Visibility = System.Windows.Visibility.Hidden;
-            }
-        }
-
-        private void homeworkAnswer3_Click(object sender, RoutedEventArgs e)
-        {
-            if (true)//里面是验证函数
-            {
-                // 打开子窗体
-                StudentAnswerQuestion saq = new StudentAnswerQuestion();
-                saq.Show();
-                // 隐藏自己(父窗体)
-                this.Visibility = System.Windows.Visibility.Hidden;
-            }
-        }
-
-        private void homeworkAnswer1_Click(object sender, RoutedEventArgs e)
-        {
-            if (true)//里面是验证函数
-            {
-                // 打开子窗体
-                StudentAnswerQuestion saq = new StudentAnswerQuestion();
-                saq.Show();
-                // 隐藏自己(父窗体)
-                this.Visibility = System.Windows.Visibility.Hidden;
-            }
-        }
-
-        private void btnExit_Click(object sender, RoutedEventArgs e)
-        {
-            App.Current.Shutdown();
-        }
-
-        private void homeworkAlert_Click(object sender, RoutedEventArgs e)
-        {
-            if (true)//里面是验证函数
-            {
-                // 打开子窗体
-                AlertForm af= new AlertForm();
-                af.Show();
+                StudentMainForm smf = new StudentMainForm(account,name);
+                smf.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
             }
@@ -160,52 +122,28 @@ namespace HAMS.Student.StudentView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                //StudentMainForm smf = new StudentMainForm(tbuserNameAc.Text);
-                //smf.Show();
-                //// 隐藏自己(父窗体)
-                //this.Visibility = System.Windows.Visibility.Hidden;
-            }
-        }
-
-        private void btnHomRe1_Click(object sender, RoutedEventArgs e)
-        {
-            if (true)//里面是验证函数
-            {
-                // 打开子窗体
-                StuCheckHomework sch = new StuCheckHomework();
-                sch.Show();
+                StudentMainForm smh = new StudentMainForm(account, name);
+                smh.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
             }
         }
 
-        private void btnHomRe2_Click(object sender, RoutedEventArgs e)
+         private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            App.Current.Shutdown();
+        }
+
+        private void homeworkAlert_Click(object sender, RoutedEventArgs e)
         {
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                StuDoHomework sdh = new StuDoHomework();
-                sdh.Show();
+                AlertForm af = new AlertForm(account,name);
+                af.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
             }
-        }
-
-        private void btnHomRe3_Click(object sender, RoutedEventArgs e)
-        {
-            if (true)//里面是验证函数
-            {
-                // 打开子窗体
-                StuCheckHomework sch = new StuCheckHomework();
-                sch.Show();
-                // 隐藏自己(父窗体)
-                this.Visibility = System.Windows.Visibility.Hidden;
-            }
-        }
-
-        private void btnHomRe4_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

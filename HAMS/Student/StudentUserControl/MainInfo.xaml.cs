@@ -21,15 +21,19 @@ namespace HAMS
     /// </summary>
     public partial class MainInfo : UserControl
     {
-        public MainInfo()
+        public String classSpecId { set; get; }
+       
+        public MainInfo(String classSpecId)
         {
             InitializeComponent();
+            this.classSpecId = classSpecId;
+            
         }
 
         private void class1_Click(object sender, RoutedEventArgs e)
         {
-            StuMainHomework smh = new StuMainHomework();
-                
+            
+
         }
     }
 }

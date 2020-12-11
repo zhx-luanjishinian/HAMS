@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using HAMS.Student.StudentService;
 
 namespace HAMS.Student.StudentView
 {
@@ -19,11 +20,51 @@ namespace HAMS.Student.StudentView
     /// </summary>
     public partial class StuDoHomework : Window
     {
-        public StuDoHomework()
+        private SService ss = new SService();
+        public String account { set; get; }
+        public String name { set; get; }
+        public String notId { set; get; }
+        public String classId { set; get; }
+        public StuDoHomework(String account,String name)
         {
             InitializeComponent();
+            this.account = account;
+            this.name = name;
+            tbUserNameAc.Text = account + name;
+            doHomeworkInfoShow();
         }
+        public StuDoHomework(String account, String name,String notId,String classId)
+        {
+            InitializeComponent();
+            this.account = account;
+            this.name = name;
+            this.notId = notId;
+            this.classId = classId;
+            tbUserNameAc.Text = account + name;
+            doHomeworkInfoShow();
+        }
+        public void doHomeworkInfoShow()
+        {
+            List<String> result = ss.showDohomeworkInfo(notId);
+            labelHomeworkName.Content = result[0];
+            ListBoxItem lbi = new ListBoxItem();
+            lbi.Content = result[1];
+            listBoxRequest.Items.Add(lbi);
+            tbDeadLineTime.Text = result[2];
+            if (result[3] != null)
+            {
+                tbAccessoryName.Text = result[3];
+            }
+            else
+            {
+                //如果不存在作业附件则不进行显示
+                tbAccessoryName.Text = "";
+                imgAccessory.Source = null;
+            }
 
+        }
+        //点击作答按钮跳转到作业提交界面
+       
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             App.Current.Shutdown();
@@ -34,7 +75,7 @@ namespace HAMS.Student.StudentView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                StuMainHomework smh = new StuMainHomework();
+                StuMainHomework smh = new StuMainHomework(account,name,classId);
                 smh.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
@@ -46,7 +87,7 @@ namespace HAMS.Student.StudentView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                StudentMainForm smf= new StudentMainForm(tbUserNameAc.Text);
+                StudentMainForm smf= new StudentMainForm(account,name);
                 smf.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
@@ -58,7 +99,7 @@ namespace HAMS.Student.StudentView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                AlertForm af = new AlertForm();
+                AlertForm af = new AlertForm(account,name);
                 af.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
@@ -70,7 +111,7 @@ namespace HAMS.Student.StudentView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                StuSubmitHomework ssh = new StuSubmitHomework();
+                StuSubmitHomework ssh = new StuSubmitHomework(account,name,notId,classId);
                 ssh.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;

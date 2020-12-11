@@ -89,7 +89,7 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="WPFVisifire.Charts">
-      <HintPath>..\..\..\..\..\Documents\Tencent Files\1355592786\FileRecv\wpfvisifire\WPFVisifire.Charts\X86\4.5.2.1\WPFVisifire.Charts.dll</HintPath>
+      <HintPath>..\..\..\..\..\wpfvisifire\WPFVisifire.Charts\X86\4.5.2.1\WPFVisifire.Charts.dll</HintPath>
     </Reference>
     <Reference Include="Zstandard.Net, Version=1.1.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.8.0.22\lib\net452\Zstandard.Net.dll</HintPath>
@@ -130,8 +130,14 @@
       <DependentUpon>TeacherManagement.xaml</DependentUpon>
     </Compile>
     <Compile Include="DataUtil\DataOperation.cs" />
+    <Compile Include="Student\StudentUserControl\AlertMainForm.xaml.cs">
+      <DependentUpon>AlertMainForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Student\StudentUserControl\HomeworkNoteInfo.xaml.cs">
       <DependentUpon>HomeworkNoteInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Student\StudentUserControl\MainHomeworkInfo.xaml.cs">
+      <DependentUpon>MainHomeworkInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="Student\StudentUserControl\MainInfo.xaml.cs">
       <DependentUpon>MainInfo.xaml</DependentUpon>
@@ -239,7 +245,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Student\StudentUserControl\AlertMainForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Student\StudentUserControl\HomeworkNoteInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Student\StudentUserControl\MainHomeworkInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

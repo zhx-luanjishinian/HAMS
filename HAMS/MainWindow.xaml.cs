@@ -50,7 +50,8 @@ namespace HAMS
                     MessageBox.Show("恭喜你已登录成功");
 
                     StudentMainForm smf = new StudentMainForm(txtUserName.Text,(string)br.data);
-                    smf.ShowDialog();
+                    smf.Show();
+                    this.Visibility = Visibility.Hidden;
                 }
                 else
                 {

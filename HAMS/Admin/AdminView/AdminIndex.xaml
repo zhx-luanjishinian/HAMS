@@ -40,7 +40,7 @@
             <Menu Height="473.723" VerticalAlignment="Top" Width="133">
                 <Button x:Name="btnStuManage" Content="学生管理" Width="120" Height="41.24" Click="BtnStuManage_Click"/>
                 <Button x:Name="btnTeaManage" Content="教师管理" Width="120" Height="41.24" Click="BtnTeaManage_Click"/>
-                <Button x:Name="btnClassManage" Content="课堂管理" Width="120" Height="41.24" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Click="BtnClassManage_Click" />
+                <Button x:Name="btnClassManage" Content="课堂管理" Width="120" Height="41.24" Click="BtnClassManage_Click" />
                 <Button x:Name="btnNoticeManage" Content="公告管理" Width="120" Height="41.24" Click="BtnNoticeManage_Click"/>
             </Menu>
         </DockPanel>

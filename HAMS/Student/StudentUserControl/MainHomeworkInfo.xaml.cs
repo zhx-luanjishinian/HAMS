@@ -10,30 +10,38 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace HAMS.Teacher.TeacherView
+namespace HAMS.Student.StudentUserControl
 {
     /// <summary>
-    /// AnswerQuestion.xaml 的交互逻辑
+    /// MainHomeworkInfo.xaml 的交互逻辑
     /// </summary>
-    public partial class AnswerQuestion : Window
+    public partial class MainHomeworkInfo : UserControl
     {
         public String notId { set; get; }
         public String classSpecId { set; get; }
-        public AnswerQuestion(String notId,String classSpecId)
+        public MainHomeworkInfo(String notId,String classSpecId)
         {
             InitializeComponent();
             this.notId = notId;
             this.classSpecId = classSpecId;
         }
 
-        private void button1_Click(object sender, RoutedEventArgs e)
+        private void btnHomeworkAnswer_Click(object sender, RoutedEventArgs e)
         {
-            CheckingClassHomework newHomeworkNoticeCheck = new CheckingClassHomework();
-            newHomeworkNoticeCheck.Show();
-            // 隐藏自己(父窗体)
-            this.Visibility = System.Windows.Visibility.Hidden;
+
+        }
+
+        private void btnCheckRank_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnHomRe1_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

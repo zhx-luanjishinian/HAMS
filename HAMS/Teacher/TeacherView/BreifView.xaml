@@ -39,7 +39,7 @@
             <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Margin="80.667,10,0,11.108" Width="0"/>
             <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Margin="67.999,14.759,0,11.108" Width="0"/>
             <Label x:Name="labelCourseNumber" Content="Z004530B1300720 " Margin="113,18,224.4,-1.6" FontSize="18"/>
-            <Label x:Name="labelCourseName" Content="R语言" Margin="0,18,183.4,-3.6" FontSize="18" HorizontalAlignment="Right" Width="59"/>
+            <Label x:Name="labelCourseName" Content="R语言" Margin="0,18,121.4,-3.6" FontSize="18" HorizontalAlignment="Right" Width="121"/>
             <Button x:Name="btnDeliverHomework" Content="发布作业" HorizontalAlignment="Right" Margin="0,14.759,24.868,11.108" Width="91.199" Background="#FFE8E4E4" FontSize="13" Click="btnDeliverHomework_Click"/>
             <Button x:Name="btnReturn" Width="57.933" Background="LightPink" BorderThickness="0" Height="Auto" HorizontalAlignment="Left" Margin="22.734,14.759,0,13.193" Click="btnReturn_Click">
                 <Image x:Name="image2" Width="47.933" Source="/HAMS;component/Resources/返回.png" Height="21.986"/>

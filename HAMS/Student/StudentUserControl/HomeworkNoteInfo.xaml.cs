@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using HAMS.Student.StudentView;
 
 namespace HAMS.Student.StudentUserControl
 {
@@ -20,9 +21,19 @@ namespace HAMS.Student.StudentUserControl
     /// </summary>
     public partial class HomeworkNoteInfo : UserControl
     {
-        public HomeworkNoteInfo()
+        public String notId { set; get; }
+        public String classSpecId { set; get; }
+        public HomeworkNoteInfo(String notId,String classSpecId)
         {
             InitializeComponent();
+            this.notId = notId;
+            this.classSpecId = classSpecId;
+           
+        }
+
+        private void BtnRecntNo1_Click(object sender, RoutedEventArgs e)
+        {
+           
         }
     }
 }

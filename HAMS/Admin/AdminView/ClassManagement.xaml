@@ -27,7 +27,7 @@
                 <DataGridTextColumn Width="80" Header=" "/>
                 <DataGridTextColumn Width="80" Header="课堂号"/>
                 <DataGridTextColumn Width="80" Header="课堂名"/>
-                <DataGridTextColumn Width="80" Header="教师工号"/>
+                <DataGridTextColumn Width="120" Header="教师工号"/>
             </DataGrid.Columns>
             <Border Grid.Row="1"  BorderThickness="1,1,1,0"></Border>
             <Border Grid.Row="2"  BorderThickness="1,1,1,0"></Border>

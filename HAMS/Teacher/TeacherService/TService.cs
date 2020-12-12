@@ -36,14 +36,7 @@ namespace HAMS.Teacher.TeacherService
 
         }
 
-        //public String GetHomURLByHomId(int homId)
-        //{
-        //    //根据homId获取文件在服务器上的路径
-        //    DataTable tbHomURL = td.getHomURLAndNameByHomId(homId);
-        //    string homURL = tbHomURL.Rows[0][0].ToString();
-
-        //    return homURL;
-        //}
+        
         public String GetPostilByHomId(int homId)
         {
             //根据homId获取学生的作业备注
@@ -61,7 +54,7 @@ namespace HAMS.Teacher.TeacherService
         //DateTime baseDate = new DateTime(1970, 1, 1);
         //DateTime result = temp.AddSeconds(timeStamp);
         //对truDeadline用datetime
-        public String AnnounceNotice(DateTime truDeadline, String content, String notTitle, String classSpecId, String teacherSpecId, String localpath = "",String notURLName="")
+        public String AnnounceNotice(DateTime truDeadline, String content, String notTitle, String classSpecId, String teacherSpecId, String localpath = "",String notURLName = "")
         {
             Notice notice = new Notice();
             notice.TruDeadLine = truDeadline;
@@ -132,7 +125,7 @@ namespace HAMS.Teacher.TeacherService
             {
                 notice.NoteURL = "";
             }
-            // tice.NoteURL = notURL;
+            //notice.NoteURL = notURL;
             //调用插入作业公告函数，将公告插入数据库notice表
             flag = td.insertNotice(notice);
             if (!flag)
@@ -149,7 +142,7 @@ namespace HAMS.Teacher.TeacherService
             }
             int teacherId = result;
             //查询刚刚发布作业公告的notId
-            //DataTable tbNotId = td.getNoteId(notice.NoteTitle, notice.ClassId);
+            DataTable tbNotId = td.getNoteId(notice.NoteTitle, notice.ClassId);
             int notId;
             if (!int.TryParse(tbTeacherId.Rows[0][0].ToString(), out notId))//table[0][0]就是查到的classId
             {
@@ -157,30 +150,32 @@ namespace HAMS.Teacher.TeacherService
 
             }
             int classId = notice.ClassId;
-            //调用老师角色的业务层添加作业函数，该函数负责调用Dao层将作业插入数据库homework表
-            //[teacherDao文件夹下某Dao文件的一个对象].insertHomework(classId,teacherId,notId);
+            //调用学生角色的业务层添加作业函数，该函数负责调用Dao层将作业插入数据库homework表
+            //[studentDao文件夹下某Dao文件的一个对象].insertHomework(classId,teacherId,notId);
             //该函数还需要根据classId，获得每个选课学生的stuId，然后依次在作业表中根据(stuId,classId,teacherId,notId)进行插入
-           // DataTable tbStuId = td.GetStuIdFromClassId(notice.ClassId);
-          //  int stuidNum = tbStuId.Rows.Count;  //获取所有选课学生的数量
-            //for (    int i=0;    i<stuidNum ;    i++)
-            //{
-            //    string stuId = tbNoteTitles.Rows[i][0].ToString();  //获取每一个学生的id号
-            //    Homework homework = new Homework(); //新建一个homework实体
-            //    homework.ClassId = notice.ClassId;
-            //    int sid;
-            //    if(int.TryParse(stuId, out sid))
-            //    {
-            //        homework.StuId = sid;
-            //    }
-            //    homework.TeacherId = teacherId;
-            //    homework.NotId = notId;
-            //    //stuId, classId, teacherId, notId
-            //    //bool flag1 = td.InsertHomework(homework);
-            //    //if (!flag1)
-            //    //{
-            //    //    return "发布失败，请重试";
-            //    //}
-            //}
+            DataTable tbStuId = td.GetStuIdFromClassId(notice.ClassId);
+            int stuidNum = tbStuId.Rows.Count;  //获取所有选课学生的数量
+            for (int i = 0; i < stuidNum; i++)
+            {
+                string stuId = tbNoteTitles.Rows[i][0].ToString();  //获取每一个学生的id号
+                Homework homework = new Homework(); //新建一个homework实体
+                homework.ClassId = notice.ClassId;
+                int sid;
+                if (int.TryParse(stuId, out sid))
+                {
+                    homework.StuId = sid;
+                }
+                homework.TeacherId = teacherId;
+                homework.NotId = notId;
+                //stuId, classId, teacherId, notId
+                bool flag1 = td.InsertHomework(homework);
+                if (!flag1)
+                {
+                    return "发布失败，请重试";
+                }
+            }
+
+
             return "发布公告成功";
         }
         public string[] GetScoreAndRemarkByHomId(int homId)
@@ -192,26 +187,25 @@ namespace HAMS.Teacher.TeacherService
             Scoreinfos[1] = (string)tbScoreAndRemark.Rows[0][1];
             return Scoreinfos;
         }
-
-        public DateTime GetPreviousDateTime(string classSpaceId, string homeworkTitle)
+        public DateTime GetPreviousDateTime(string classSpaceId,string homeworkTitle)
         {
             DataTable table1 = td.getClassId(classSpaceId);
             int result;
             int.TryParse(table1.Rows[0][0].ToString(), out result);
-            DataTable table2 = td.getNoteId(homeworkTitle, result.ToString());
+            DataTable table2 = td.getNoteId(homeworkTitle, result);
             DataTable table3 = td.getTrueDeadLine(table2.Rows[0][0].ToString());
             return (DateTime)table3.Rows[0][0];
         }
-        //public String[] GetHomURLAndNameByHomId(int homId)
-        //{
-        //    //根据homId获取文件在服务器上的路径
-        // //   DataTable tbHomURL = td.getHomURLAndNameByHomId(homId);
-
-        //    //string[] homURLInfos = new string[2];
-        //    //homURLInfos[0] = tbHomURL.Rows[0][0].ToString();
-        //    //homURLInfos[1] = tbHomURL.Rows[0][1].ToString();
-        //    //return homURLInfos;
-        //}
+        public String[] GetHomURLAndNameByHomId(int homId)
+        {
+            //根据homId获取文件在服务器上的路径
+            DataTable tbHomURL = td.getHomURLAndNameByHomId(homId);
+            string[] homURLInfos = new string[2];
+            homURLInfos[0] = tbHomURL.Rows[0][0].ToString();
+            homURLInfos[1] = tbHomURL.Rows[0][1].ToString();
+            return homURLInfos;
+        }
+       
 
 
     }

@@ -23,7 +23,7 @@ namespace HAMS.Teacher.TeacherView
     public partial class TeacherHomeworkCheck : Window
     {
         private TService ts = new TService();
-        private string homURL; //存储待下载作业文件的路径
+        private string homURL = ""; //存储待下载作业文件的路径
         private string homName; //存储待下载作业文件的文件名
         int homId;//存储作业Id
         private bool ifCorrect;//表示该作业是否是已批改作业
@@ -65,12 +65,12 @@ namespace HAMS.Teacher.TeacherView
             //对下载附件按钮进行初始化：能够实现鼠标放上去之后学生附件的名称，将该按钮和服务器上的某个路径建立关系（这里应该得到数据库中存储的文件路
             //根据homId获得要下载文件在服务器上的路径
             string[] homURLInfos;
-            
-           // homURLInfos = ts.GetHomURLAndNameByHomId(homId);
-           // homURL = homURLInfos[0];//路径为课堂号/作业标题/学生信息文件夹
-            
-            //homName = homURLInfos[1];//获取学生文件名，然后进行显示
-           
+
+            homURLInfos = ts.GetHomURLAndNameByHomId(homId);
+            homURL = homURLInfos[0];//路径为课堂号/作业标题/学生信息文件夹
+
+            homName = homURLInfos[1];//获取学生文件名，然后进行显示
+
             //string[] homURLs = homURL.Split('/');
             //homName = homURLs[homURLs.Length - 1];
             lbUpload.ToolTip = homName;
@@ -85,7 +85,7 @@ namespace HAMS.Teacher.TeacherView
             bool IfCorrect = true;
             this.ifCorrect = IfCorrect;
 
-            if(IfCorrect == true)//如果已经批改，则有成绩并且直接在原来的基础上编辑评语
+            if (IfCorrect == true)//如果已经批改，则有成绩并且直接在原来的基础上编辑评语
             {
                 string[] Scoreinfos;
                 Scoreinfos = ts.GetScoreAndRemarkByHomId(homId);
@@ -121,7 +121,7 @@ namespace HAMS.Teacher.TeacherView
         }
 
         //下方函数才是真正需要的
-        public TeacherHomeworkCheck(List<int> homIds,int index, string NotTitle,string StudentInfo,bool IfCorrect = false)
+        public TeacherHomeworkCheck(List<int> homIds, int index, string NotTitle, string StudentInfo, bool IfCorrect = false)
         {
             InitializeComponent();
             //通过上一个界面传递过来的值，进行此界面控件信息的赋值操作
@@ -136,7 +136,7 @@ namespace HAMS.Teacher.TeacherView
 
             //获取当前待批改作业的作业Id
             homId = homIds[index];
-            
+
 
             //给学生信息赋值
             lbStudentInfo.Content = StudentInfo;
@@ -155,9 +155,9 @@ namespace HAMS.Teacher.TeacherView
             //根据homId获得要下载文件在服务器上的路径
             string[] homURLInfos;
 
-           // homURLInfos = ts.GetHomURLAndNameByHomId(homId);
-            //homURL = homURLInfos[0];//路径为课堂号/作业标题/学生信息文件夹
-           // homName = homURLInfos[1];//获取学生文件名，然后进行显示
+            homURLInfos = ts.GetHomURLAndNameByHomId(homId);
+            homURL = homURLInfos[0];//路径为课堂号/作业标题/学生信息文件夹
+            homName = homURLInfos[1];//获取学生文件名，然后进行显示
 
             //string[] homURLs = homURL.Split('/');
             //homName = homURLs[homURLs.Length - 1];
@@ -170,7 +170,7 @@ namespace HAMS.Teacher.TeacherView
 
             //从上一个界面获取是否已批改信息
             //这里设置了一个假值
-            
+
             this.ifCorrect = IfCorrect;
 
             if (IfCorrect == true)//如果已经批改，则有成绩并且直接在原来的基础上编辑评语

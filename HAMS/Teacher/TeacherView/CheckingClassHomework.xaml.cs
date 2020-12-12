@@ -30,7 +30,8 @@ namespace HAMS.Teacher.TeacherView
             InitializeComponent();
             lbNotTitle.Content = homeworkTitle;
             textBlockDescription.Text = description;
-            tbTeacherInfo.Text = teacherName;
+            tbTeacherInfo.Text = teacherSpecId;
+            tbTeacherInfo1.Text = teacherName;
             tbClassInfo.Text = classSpecId;
             tbClassInfo1.Text = className;
         }
@@ -77,7 +78,7 @@ namespace HAMS.Teacher.TeacherView
 
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
-            BreifView newBreifView = new BreifView(tbClassInfo.Text.ToString(),tbClassInfo1.Text.ToString(),tbClassInfo.Text.ToString(),tbClassInfo1.Text.ToString());
+            BreifView newBreifView = new BreifView(tbClassInfo.Text.ToString(),tbClassInfo1.Text.ToString(),tbTeacherInfo.Text.ToString(),tbTeacherInfo1.Text.ToString());
             newBreifView.Show();
             this.Visibility = System.Windows.Visibility.Hidden;
         }

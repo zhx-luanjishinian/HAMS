@@ -4,8 +4,7 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
-
-
+using System.Windows;
 
 namespace HAMS.Teacher.TeacherDao
 {
@@ -215,7 +214,13 @@ namespace HAMS.Teacher.TeacherDao
         }
         public bool InsertHomework(Homework homework)
         {
-            String sql = "insert into notice (stuId, classId, teacherId, notId) values (@stuid,@classid,@teaid,@notid);";
+            String sql = "insert into homework (stuId, classId, teacherId, notId) values (@stuid,@classid,@teaid,@notid);";
+
+            //MessageBox.Show(homework.StuId.ToString());
+            //MessageBox.Show(homework.ClassId.ToString());
+            //MessageBox.Show(homework.TeacherId.ToString());
+            //MessageBox.Show(homework.NotId.ToString());
+
             //传入要填写的参数
             MySqlParameter para1 = new MySqlParameter("@stuid", homework.StuId);
             MySqlParameter para2 = new MySqlParameter("@classid", homework.ClassId);

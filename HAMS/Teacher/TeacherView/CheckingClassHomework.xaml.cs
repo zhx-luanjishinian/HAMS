@@ -24,7 +24,17 @@ namespace HAMS.Teacher.TeacherView
             InitializeComponent();
         }
 
-        
+        public CheckingClassHomework(string homeworkTitle, string description,string teacherSpecId,string teacherName,string classSpecId,string className)
+        {
+            //生成基本信息
+            InitializeComponent();
+            lbNotTitle.Content = homeworkTitle;
+            textBlockDescription.Text = description;
+            tbTeacherInfo.Text = teacherSpecId;
+            tbTeacherInfo1.Text = teacherName;
+            tbClassInfo.Text = classSpecId;
+            tbClassInfo1.Text = className;
+        }
 
         private void btnHomeworkCorrect_Click(object sender, RoutedEventArgs e)
         {
@@ -57,6 +67,19 @@ namespace HAMS.Teacher.TeacherView
             TeacherHomeworkCheck thc = new TeacherHomeworkCheck(homIds, index, (string)lbNotTitle.Content, (string)lbStudentInfo.Content,true);//最后的true表示这属于已经批改的界面
             //这里的homId是要带给下一个界面的值,表示待的homId数组，其中index是正要批改的homId在homId数组中的索引
             thc.ShowDialog();
+            this.Visibility = System.Windows.Visibility.Hidden;
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            //注销程序
+            App.Current.Shutdown();
+        }
+
+        private void btnReturn_Click(object sender, RoutedEventArgs e)
+        {
+            BreifView newBreifView = new BreifView(tbClassInfo.Text.ToString(),tbClassInfo1.Text.ToString(),tbTeacherInfo.Text.ToString(),tbTeacherInfo1.Text.ToString());
+            newBreifView.Show();
             this.Visibility = System.Windows.Visibility.Hidden;
         }
     }

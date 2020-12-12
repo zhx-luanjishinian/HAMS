@@ -106,7 +106,7 @@
     <Grid Margin="0,0,0,-1">
         <Grid Height="55.344" VerticalAlignment="Top">
             <Canvas Background="LightBlue" Grid.Row="0"/>
-            <Button x:Name="btnExit" Background="LightBlue" Width="43.534" RenderTransformOrigin="0.622,0.945" Foreground="#FF151111" BorderBrush="LightBlue" HorizontalAlignment="Right" Margin="0,4.437,2,7">
+            <Button x:Name="btnExit" Background="LightBlue" Width="43.534" RenderTransformOrigin="0.622,0.945" Foreground="#FF151111" BorderBrush="LightBlue" HorizontalAlignment="Right" Margin="0,4.437,2,7" Click="btnExit_Click">
                 <StackPanel>
                     <Image x:Name="exit1" Width="28" Height="23.907" Source="../../Resources/resizeApi.png" RenderTransformOrigin="0.483,0.453"/>
                     <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
@@ -129,7 +129,11 @@
             <TextBlock x:Name="tbTeacherInfo" Width="117.6" TextAlignment="Center" HorizontalAlignment="Left" Margin="58.281,18.677,0,17.667">
                 <TextBlock.Background>
                     <ImageBrush/>
-                </TextBlock.Background><Run Text="Z0004520 "/><Run Text="刘树栋"/></TextBlock>
+                </TextBlock.Background><Run Text=""/></TextBlock>
+            <TextBlock x:Name="tbTeacherInfo1" Width="117.6" TextAlignment="Center" HorizontalAlignment="Left" Margin="128.281,18.677,0,17.667">
+                <TextBlock.Background>
+                    <ImageBrush/>
+                </TextBlock.Background><Run Text=""/></TextBlock>
         </Grid>
         <Grid Margin="0,55.344,0,0" Height="20" VerticalAlignment="Top" Background="#FF292323">
             <Grid.ColumnDefinitions>
@@ -138,7 +142,7 @@
                 <ColumnDefinition Width="454*"/>
             </Grid.ColumnDefinitions>
             <Menu x:Name="menu" Background="LightPink" Margin="0,0,0,-1.062" Grid.ColumnSpan="3" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" BorderThickness="0,0,1,0"/>
-            <Button x:Name="btnReturn" Margin="10,0,10,-1.062" BorderThickness="0" BorderBrush="#FF9F9D9D" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
+            <Button x:Name="btnReturn" Margin="10,0,10,-1.062" BorderThickness="0" BorderBrush="#FF9F9D9D" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Click="btnReturn_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="../../Resources/返回.png"/>
                 </Button.Background>
@@ -146,16 +150,20 @@
             <TextBlock x:Name="tbClassInfo" Width="153.467" TextAlignment="Center" HorizontalAlignment="Left" Margin="10,1,0,0" Grid.Column="2" VerticalAlignment="Center">
                 <TextBlock.Background>
                     <ImageBrush/>
-                </TextBlock.Background><Run Text="Z004530B1300720   "/><Run Text="R语言"/></TextBlock>
+                </TextBlock.Background><Run Text="Z004530B1300720   "/></TextBlock>
+            <TextBlock x:Name="tbClassInfo1" Width="153.467" TextAlignment="Center" HorizontalAlignment="Left" Margin="95,1,0,0" Grid.Column="2" VerticalAlignment="Center">
+                <TextBlock.Background>
+                    <ImageBrush/>
+                </TextBlock.Background><Run Text="R语言"/></TextBlock>
             <Label x:Name="label" Content="作业公告详情" Grid.Column="2" HorizontalAlignment="Right" Margin="0,-1.88,48.41,-1.062" VerticalAlignment="Bottom" Width="83.123" Height="22.942" Style="{DynamicResource LabelStyle1}"/>
         </Grid>
         <Grid Height="133.329" VerticalAlignment="Top" Margin="0,80.344,0,0" d:LayoutOverrides="VerticalAlignment">
-            <Label x:Name="lbNotTitle" Content="猫狗大战期末作业" Height="24" Width="105" RenderTransformOrigin="0.507,0.631" HorizontalAlignment="Left" Margin="79,5,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lbNotTitle" Content="" Height="24" Width="105" RenderTransformOrigin="0.507,0.631" HorizontalAlignment="Left" Margin="79,0,0,0" VerticalAlignment="Top"/>
             <Image x:Name="homework_png" Source="../../Resources/homework.png" Stretch="Fill" Width="56" Height="48.562" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" OpacityMask="{x:Null}"/>
             <Label x:Name="labelHomeworkArrangeTime" Content="2020年11月10日 星期二 10:10" Width="156.021" FontSize="10" HorizontalAlignment="Left" Margin="334.4,5,0,0" VerticalAlignment="Top"/>
             <Grid Height="49.126" Margin="79.021,33.999,87.379,0" VerticalAlignment="Top">
                 <ListBox x:Name="listBoxContent" Margin="0,0,0,10.126">
-                    <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="1.调试代码，结合代码和教材理解svm的大间隔理论                                                    2.尝试用CNN去跑数据集" Height="29" Width="334"/>
+                    <TextBlock x:Name="textBlockDescription" TextWrapping="Wrap" Text="1.调试代码，结合代码和教材理解svm的大间隔理论                                                    2.尝试用CNN去跑数据集" Height="39" Width="342"/>
                 </ListBox>
             </Grid>
             <StackPanel Margin="0,83.125,0,0" Height="24.192" VerticalAlignment="Top" HorizontalAlignment="Left" Width="166.601">

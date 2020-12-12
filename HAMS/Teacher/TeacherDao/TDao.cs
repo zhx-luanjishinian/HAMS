@@ -64,6 +64,7 @@ namespace HAMS.Teacher.TeacherDao
             MySqlParameter para = new MySqlParameter("@id", table0.Rows[0][0]);
             DataTable table = DataUtil.DataOperation.DataQuery(sql, para);
             return table;
+
         }
         public bool insertNotice(Notice notice)
         {

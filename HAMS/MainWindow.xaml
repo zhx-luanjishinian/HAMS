@@ -7,6 +7,24 @@
         xmlns:local="clr-namespace:HAMS"
         mc:Ignorable="d"
         Title="MainWindow" Height="507.827" Width="786.682">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <!--PRIMARY-->
+            <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="#349fda"/>
+            <SolidColorBrush x:Key="PrimaryHueLightForegroundBrush" Color="#333333"/>
+            <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#0288d1"/>
+            <SolidColorBrush x:Key="PrimaryHueMidForegroundBrush" Color="#FFFFFF"/>
+            <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="#015f92"/>
+            <SolidColorBrush x:Key="PrimaryHueDarkForegroundBrush" Color="#FFFFFF"/>
+            <!--ACCENT-->
+            <SolidColorBrush x:Key="SecondaryAccentBrush" Color="#689f38"/>
+            <SolidColorBrush x:Key="SecondaryAccentForegroundBrush" Color="#FFFFFF"/>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid Background="#FFF1C1D1">
         <Canvas HorizontalAlignment="Left" Height="319" Margin="28.167,83,0,0" VerticalAlignment="Top" Width="317" Background="#FFF1DADA"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="作业预警管理系统" VerticalAlignment="Top" Margin="91,100,0,0" Height="30" Width="175.147" FontSize="20" FontWeight="Bold"/>

@@ -69,64 +69,12 @@
                 </Path>
                 <Button x:Name="btnRefresh" Content="刷新" Canvas.Left="627" Width="62" Canvas.Top="7"/>
             </Canvas>
-            <ListView Height="325" FontStretch="Condensed" Margin="10,0,0,0" HorizontalAlignment="Left" Width="773">
-                
-                
-                <Canvas x:Name="canHomRecord1" Height="58" Width="754" >
-                    <Button x:Name="btnHomRe1" Height="58"  Width="400"  Background="White" BorderBrush="White" Click="btnHomRe1_Click">
-                        <Canvas Height="58" Width="400">
-                            <Image x:Name="imgLabel" Height="47" Canvas.Left="10" Canvas.Top="10" Width="42" Source="/Resources/1200856.gif"/>
-                            <Label x:Name="labelHomeworkName" Content="第一次作业" Canvas.Left="81" Canvas.Top="4" FontWeight="Bold" Height="23" Width="76"/>
-                            <Label x:Name="labelHomeworkDescription" Content="本次作业需要完成支持向量机打卡..." Canvas.Left="81" Canvas.Top="27"/>
-                        </Canvas>
-                    </Button>
-                    <Button x:Name="btnCheckRank" Content="查看排行" Canvas.Left="423.667" Canvas.Top="25.627" Width="75" FontFamily="Nirmala UI Semilight" Click="btnCheckRank_Click"/>
-                    <Button x:Name="btnHomeworkAnswer" Content="作业答疑区" Canvas.Left="555.666" Canvas.Top="25.627" Width="75" FontFamily="Nirmala UI Semilight" Click="btnHomeworkAnswer_Click"/>
-                    <TextBlock x:Name="tbHomeworkStatus" Text="待批改" Canvas.Left="673.667" Canvas.Top="25.627" Width="75" FontFamily="Nirmala UI Semilight"/>
-                </Canvas>
-
-                <Canvas x:Name="canHomRecord2" Height="58" Width="754" >
-                    <Button x:Name="btnHomRe2" Height="58"  Width="400"  Background="White" BorderBrush="White" Click="btnHomRe2_Click">
-                        <Canvas Height="58" Width="400">
-                            <Image x:Name="imageLable1" Height="47" Canvas.Left="10" Canvas.Top="10" Width="42" Source="/Resources/1200856.gif"/>
-                            <Label x:Name="homeworkName1" Content="第二次作业" Canvas.Left="81" Canvas.Top="4" FontWeight="Bold" Height="23" Width="76"/>
-                            <Label x:Name="homeworkDescription1" Content="本次作业需要完成XGboost打卡..." Canvas.Left="81" Canvas.Top="27"/>
-                        </Canvas>
-                    </Button>
-                    <Button x:Name="checkRank1" Content="查看排行" Canvas.Left="423.667" Canvas.Top="25.627" Width="75" FontFamily="Nirmala UI Semilight" Click="btnCheckRank_Click"/>
-                    <Button x:Name="homeworkAnswer1" Content="作业答疑区" Canvas.Left="555.666" Canvas.Top="25.627" Width="75" FontFamily="Nirmala UI Semilight" Click="btnHomeworkAnswer_Click"/>
-                    <TextBlock x:Name="homeworkStatus1" Text="去完成" Canvas.Left="673.667" Canvas.Top="25.627" Width="75" FontFamily="Nirmala UI Semilight"/>
-                </Canvas>
-
-                <Canvas x:Name="canHomRecord3" Height="58" Width="754" >
-                    <Button x:Name="btnHomRe3" Height="58"  Width="400"  Background="White" BorderBrush="White" Click="btnHomRe3_Click">
-                        <Canvas Height="58" Width="400">
-                            <Image x:Name="imageLable2" Height="47" Canvas.Left="10" Canvas.Top="10" Width="42" Source="/Resources/1200856.gif"/>
-                            <Label x:Name="homeworkName2" Content="第三次作业" Canvas.Left="81" Canvas.Top="4" FontWeight="Bold" Height="23" Width="76"/>
-                            <Label x:Name="homeworkDescription2" Content="本次作业需要完成BP神经网络打卡..." Canvas.Left="81" Canvas.Top="27"/>
-                        </Canvas>
-                    </Button>
-                    <Button x:Name="checkRank2" Content="查看排行" Canvas.Left="423.667" Canvas.Top="25.627" Width="75" FontFamily="Nirmala UI Semilight" Click="btnCheckRank_Click"/>
-                    <Button x:Name="homeworkAnswer2" Content="作业答疑区" Canvas.Left="555.666" Canvas.Top="25.627" Width="75" FontFamily="Nirmala UI Semilight" Click="btnHomeworkAnswer_Click"/>
-                    <TextBlock x:Name="homeworkStatus2" Text="已批改"  Canvas.Left="673.667" Canvas.Top="25.627" Width="75" FontFamily="Nirmala UI Semilight"/>
-                </Canvas>
-
-                <Canvas x:Name="canHomRecord4" Height="58" Width="754" >
-                    <Button x:Name="btnHomRe4" Height="58"  Width="400"  Background="White" BorderBrush="White" Click="btnHomRe4_Click">
-                        <Canvas Height="58" Width="400">
-                            <Image x:Name="imgLabel3" Height="47" Canvas.Left="10" Canvas.Top="10" Width="42" Source="/Resources/1200856.gif"/>
-                            <Label x:Name="labelHomeworkName3" Content="第四次作业" Canvas.Left="81" Canvas.Top="4" FontWeight="Bold" Height="23" Width="76"/>
-                            <Label x:Name="labelHomeworkDescription3" Content="本次作业需要完成线性回归打卡..." Canvas.Left="81" Canvas.Top="27"/>
-                        </Canvas>
-                    </Button>
-                    <Button x:Name="btnCheckRank3" Content="查看排行" Canvas.Left="423.667" Canvas.Top="25.627" Width="75" FontFamily="Nirmala UI Semilight" Click="btnCheckRank_Click"/>
-                    <Button x:Name="btnHomeworkAnswer3" Content="作业答疑区" Canvas.Left="555.666" Canvas.Top="25.627" Width="75" FontFamily="Nirmala UI Semilight" Click="btnHomeworkAnswer_Click"/>
-                    <TextBlock x:Name="tbHomeworkStatus3" Text="已逾期" Canvas.Left="673.667" Canvas.Top="25.627" Width="75" FontFamily="Nirmala UI Semilight"/>
-                </Canvas>
-
+            <ListView Name="listview" Height="325" FontStretch="Condensed" Margin="10,0,0,0" HorizontalAlignment="Left" Width="773">
                 
                 
 
+                
+           
                 
             </ListView>
 

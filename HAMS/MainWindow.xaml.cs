@@ -50,7 +50,8 @@ namespace HAMS
                     MessageBox.Show("恭喜你已登录成功");
 
                     StudentMainForm smf = new StudentMainForm(txtUserName.Text,(string)br.data);
-                    smf.ShowDialog();
+                    smf.Show();
+                    this.Visibility = Visibility.Hidden;
                 }
                 else
                 {
@@ -59,7 +60,7 @@ namespace HAMS
             }
             else if (radiobtnTeacher.IsChecked == true)
             {
-                BaseResult br = tts.login(txtUserName.Text, txtPassword.Text);
+                BaseResult br = tts.Login(txtUserName.Text, txtPassword.Text);
                 if (br.code == 0)
                 {
                     MessageBox.Show("恭喜你已登录成功");

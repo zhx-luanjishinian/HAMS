@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="HAMS.Student.StudentUserControl.MainHomeworkInfo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HAMS.Student.StudentUserControl"
+             mc:Ignorable="d" Height="60.511" Width="794.435">
+    <Canvas x:Name="canHomRecord1" Margin="10,0,0.667,-0.333" >
+        <Button x:Name="btnHomRe1" Height="58"  Width="400"  Background="White" BorderBrush="White" Click="btnHomRe1_Click">
+            <Canvas Height="58" Width="400">
+                <Image x:Name="imgLabel" Height="47" Canvas.Left="10" Canvas.Top="10" Width="42" Source="/Resources/1200856.gif"/>
+                <Label x:Name="labelHomeworkName" Content="第一次作业" Canvas.Left="81" Canvas.Top="4" FontWeight="Bold" Height="23" Width="199"/>
+                <Label x:Name="labelHomeworkDescription" Content="本次作业需要完成支持向量机打卡..." Canvas.Left="81" Canvas.Top="27"/>
+            </Canvas>
+        </Button>
+        <Button x:Name="btnCheckRank" Content="查看排行" Canvas.Left="423.667" Canvas.Top="25.627" Width="75" FontFamily="Nirmala UI Semilight" Click="btnCheckRank_Click"/>
+        <Button x:Name="btnHomeworkAnswer" Content="作业答疑区" Canvas.Left="555.666" Canvas.Top="25.627" Width="75" FontFamily="Nirmala UI Semilight" Click="btnHomeworkAnswer_Click"/>
+        <TextBlock x:Name="tbHomeworkStatus" Text="待批改" Canvas.Left="673.667" Canvas.Top="25.627" Width="75" FontFamily="Nirmala UI Semilight"/>
+    </Canvas>
+
+</UserControl>
+   

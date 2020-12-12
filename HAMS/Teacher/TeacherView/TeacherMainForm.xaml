@@ -65,7 +65,7 @@
                     <GridViewColumn/>
                 </GridView>
             </ListView.View>
-            <Button x:Name="btnRecntNo1" Height="43.201" Width="194.776" OpacityMask="White" Background="#FFD2F5FA" Click="btnRecntNo1_Click">
+            <!--<Button x:Name="btnRecntNo1" Height="43.201" Width="194.776" OpacityMask="White" Background="#FFD2F5FA" Click="btnRecntNo1_Click">
                 <Canvas Height="40" Width="193">
                     <Image x:Name="image1" Height="20" Canvas.Left="10" Canvas.Top="10" Width="26.113" Source="/HAMS;component/Resources/notice1.png"/>
                     <Label x:Name="label" Content="SVM实验" Height="30" Canvas.Left="41.113" Canvas.Top="10" Width="85.133" FontSize="11"/>
@@ -82,12 +82,12 @@
                     <Image x:Name="image3" Height="20" Canvas.Left="10" Canvas.Top="10" Width="26.113" Source="/HAMS;component/Resources/notice1.png"/>
                     <Label x:Name="label2" Content="LR实验报告" Height="30" Canvas.Left="41.113" Canvas.Top="10" Width="85.133" FontSize="11"/>
                 </Canvas>
-            </Button>
+            </Button>-->
         </ListView>
         <Label x:Name="labelRecent" Content="近期发布作业公告" Grid.Column="2" Margin="0,7.617,0,22.326" FontSize="13"/>
         <StackPanel Grid.ColumnSpan="2" Margin="-8.537,2.617,17.598,23.143" Grid.RowSpan="3">
             <Label x:Name="labelTeachClass" Content="我教的课   （在课程中您是   老师）" Height="25.8" Margin="3,0,-1,0" FontSize="13"/>
-            <ListView x:Name="listViewTeacherClass" Height="285.8" Margin="4,0,-12,0">
+            <ListView x:Name="listViewTeacherClass" Height="286" Margin="4,0,-11.8,0">
                 <ListView.Background>
                     <ImageBrush/>
                 </ListView.Background>
@@ -130,7 +130,7 @@
                     <Image x:Name="homework_png1_Copy1" Source="/Resources/homework.png" Stretch="Fill" Width="56" Height="48.562" Canvas.Left="10" Canvas.Top="10"/>
                 </Canvas>
                 <Button x:Name="button" Content="Button" Width="75"/>-->
-               
+
 
 
 
@@ -138,7 +138,7 @@
         </StackPanel>
         <Canvas Height="49.645" Background="LightBlue" Grid.ColumnSpan="3" Margin="-8.537,-47.028,-9.6,0" VerticalAlignment="Top">
             <TextBlock x:Name="tbTeacherInfo" Height="18.666" Canvas.Left="70.066" Canvas.Top="21.979" Width="137.334" TextAlignment="Center" FontSize="13"><Run Text="Z0004520 "/></TextBlock>
-            <TextBlock x:Name="tbTeacherInfo1" Height="18.666" Canvas.Left="210.066" Canvas.Top="21.979" Width="137.334" TextAlignment="Center" FontSize="13"><Run Text="刘树栋"/></TextBlock>
+            <TextBlock x:Name="tbTeacherInfo1" Height="19" Canvas.Left="166" Canvas.Top="21" Width="138" TextAlignment="Center" FontSize="13"><Run Text="刘树栋"/></TextBlock>
             <Border x:Name="headImage" BorderBrush="Black" BorderThickness="0" HorizontalAlignment="Left" Height="36.996" VerticalAlignment="Top" Width="40.666" CornerRadius="35" Canvas.Left="24.4" RenderTransformOrigin="1.894,0.568" Canvas.Top="10">
                 <Border.Background>
                     <ImageBrush>
@@ -148,7 +148,7 @@
                     </ImageBrush>
                 </Border.Background>
             </Border>
-            <Button x:Name="btnExit" Background="LightBlue"  Canvas.Left="579.674" Canvas.Top="4.644" Width="81.667" RenderTransformOrigin="0.622,0.945" Height="43.907" Foreground="#FF151111" BorderBrush="LightBlue" d:LayoutOverrides="LeftMargin, RightMargin" Click="btnExit_Click">
+            <Button x:Name="btnExit" Background="LightBlue"  Canvas.Left="600" Canvas.Top="9" Width="82" RenderTransformOrigin="0.622,0.945" Height="41" Foreground="#FF151111" BorderBrush="LightBlue" Click="btnExit_Click">
                 <StackPanel>
                     <Image x:Name="exit1" Width="28" Height="23.907" Source="/HAMS;component/Resources/resizeApi.png"/>
                     <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>

@@ -12,28 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using HAMS.Student.StudentView;
 
-namespace HAMS
+namespace HAMS.Teacher.TeacherView
 {
     /// <summary>
-    /// MainInfo.xaml 的交互逻辑
+    /// RecentNoticeControll.xaml 的交互逻辑
     /// </summary>
-    public partial class MainInfo : UserControl
+    public partial class RecentNoticeControll : UserControl
     {
-        public String classSpecId { set; get; }
-       
-        public MainInfo(String classSpecId)
+        public RecentNoticeControll()
         {
             InitializeComponent();
-            this.classSpecId = classSpecId;
-            
-        }
-
-        private void class1_Click(object sender, RoutedEventArgs e)
-        {
-            
-
         }
     }
 }

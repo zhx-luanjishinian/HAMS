@@ -19,9 +19,18 @@ namespace HAMS.Student.StudentView
     /// </summary>
     public partial class HomeworkSubmit : Window
     {
-        public HomeworkSubmit()
+        public String name { set; get; }
+        public String account { set; get; }
+        public String notId { set; get; }
+        public String classSpecId { set; get; }
+        public HomeworkSubmit(String account,String name,String notId,String classSpecId)
         {
             InitializeComponent();
+            this.name = name;
+            this.account = account;
+            this.notId = notId;
+            this.classSpecId = classSpecId;
+            textBlockUserId.Text = account + name;
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
@@ -34,7 +43,7 @@ namespace HAMS.Student.StudentView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                StuCheckHomework sch = new StuCheckHomework();
+                StuCheckHomework sch = new StuCheckHomework(account,name);
                 sch.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
@@ -46,8 +55,8 @@ namespace HAMS.Student.StudentView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-               // StudentMainForm smf = new StudentMainForm(textBlockUserId.Text);
-                //smf.Show();
+                StudentMainForm smf = new StudentMainForm(account,name);
+                smf.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
             }
@@ -58,7 +67,7 @@ namespace HAMS.Student.StudentView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                AlertForm af = new AlertForm();
+                AlertForm af = new AlertForm(account,name);
                 af.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;

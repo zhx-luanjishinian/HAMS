@@ -19,9 +19,15 @@ namespace HAMS.Student.StudentView
     /// </summary>
     public partial class StuCheckHomework : Window
     {
-        public StuCheckHomework()
+        public String account { set; get; }
+        public String name { set; get; }
+        public String classId { set; get; }
+        public String notId { set; get; }
+        public StuCheckHomework(String account, String name)
         {
             InitializeComponent();
+            this.account = account;
+            this.name = name;
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
@@ -34,7 +40,7 @@ namespace HAMS.Student.StudentView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                StuMainHomework smh = new StuMainHomework();
+                StuMainHomework smh = new StuMainHomework(account,name,classId);
                 smh.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
@@ -46,7 +52,7 @@ namespace HAMS.Student.StudentView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                HomeworkSubmit hs = new HomeworkSubmit();
+                HomeworkSubmit hs = new HomeworkSubmit(account,name,notId,classId);
                 hs.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
@@ -58,7 +64,7 @@ namespace HAMS.Student.StudentView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                AlertForm af = new AlertForm();
+                AlertForm af = new AlertForm(account,name);
                 af.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
@@ -70,8 +76,8 @@ namespace HAMS.Student.StudentView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                //StudentMainForm smf = new StudentMainForm(tbUserNameAc.Content.ToString());
-                //smf.Show();
+                StudentMainForm smf = new StudentMainForm(account,name);
+                smf.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
             }

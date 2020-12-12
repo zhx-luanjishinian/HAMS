@@ -19,9 +19,13 @@ namespace HAMS.Student.StudentView
     /// </summary>
     public partial class StuHomeworkRank : Window
     {
-        public StuHomeworkRank()
+        public String notId { set; get; }
+        public String classSpecId { set; get; }
+        public StuHomeworkRank(String notId,String classSpecId)
         {
             InitializeComponent();
+            this.notId = notId;
+            this.classSpecId = classSpecId;
         }
     }
 }

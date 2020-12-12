@@ -20,7 +20,7 @@ namespace HAMS.Entity
         //作业公告的路径地址
         public String NoteURL { set; get; }
         //作业公告附件的名字
-        public String NoteName { set; get; }
+        public String NoteURLName { set; get; }
         //作业公告的标题
         public String NoteTitle { set; get; }
         //班级的id

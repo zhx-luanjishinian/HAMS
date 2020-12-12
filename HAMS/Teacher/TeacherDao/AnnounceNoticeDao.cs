@@ -30,7 +30,6 @@ namespace HAMS.Teacher.TeacherDao
             MySqlParameter para = new MySqlParameter("@id", classSpecId);
             DataTable table = DataUtil.DataOperation.DataQuery(sql, para);
             return table;
-
         }
         public DataTable getNoteTitle(int classId)
         {

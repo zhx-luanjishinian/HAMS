@@ -110,6 +110,9 @@
     </ApplicationDefinition>
     <Compile Include="Admin\AdminDao\ADao.cs" />
     <Compile Include="Admin\AdminService\AService.cs" />
+    <Compile Include="Admin\AdminUserControl\SysNoticeInfo.xaml.cs">
+      <DependentUpon>SysNoticeInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Admin\AdminView\AdminIndex.xaml.cs">
       <DependentUpon>AdminIndex.xaml</DependentUpon>
     </Compile>
@@ -211,6 +214,10 @@
     </Compile>
     <Compile Include="ToolClass\BaseResult.cs" />
     <Compile Include="ToolClass\FtpUpDown.cs" />
+    <Page Include="Admin\AdminUserControl\SysNoticeInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Admin\AdminView\AdminIndex.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

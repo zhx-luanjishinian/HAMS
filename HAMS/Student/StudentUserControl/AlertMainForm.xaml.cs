@@ -36,7 +36,9 @@ namespace HAMS.Student.StudentUserControl
             InitializeComponent();
             this.truD = truDl;
             this.defD = defDl;
-            showTime();
+       
+            
+            //showTime();
         }
         //计时器函数
         private TimeSpan timer()

@@ -67,7 +67,7 @@
                         </TransformGroup>
                     </Path.RenderTransform>
                 </Path>
-                <Button x:Name="btnRefresh" Content="刷新" Canvas.Left="627" Width="62" Canvas.Top="7"/>
+                <Button x:Name="btnRefresh" Content="刷新" Canvas.Left="627" Width="62" Canvas.Top="7" Click="BtnRefresh_Click"/>
             </Canvas>
             <ListView Name="listview" Height="325" FontStretch="Condensed" Margin="10,0,0,0" HorizontalAlignment="Left" Width="773">
 

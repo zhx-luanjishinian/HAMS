@@ -147,6 +147,14 @@ namespace HAMS.Student.StudentView
                 this.Visibility = System.Windows.Visibility.Hidden;
             }
         }
+
+        private void BtnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            //首先删除listview里面的东西
+            listview.Items.Clear();
+            //然后再重新加载一遍
+            MainHomeworkShow(classId);
+        }
     }
 }
 

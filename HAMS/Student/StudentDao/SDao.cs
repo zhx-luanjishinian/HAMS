@@ -316,16 +316,16 @@ namespace HAMS.Student.StudentDao
 
         //}
         //通过学生真实学号寻找学生姓名
-        public DataTable GetStuName(string account)
-        {
-            //根据真实的课堂号获取课堂表里的自增主键课堂号classId
-            String sql = "select name from student where stuSpecId = @id;";
-            //传入要填写的参数
-            MySqlParameter para = new MySqlParameter("@id", account);
-            DataTable table = DataUtil.DataOperation.DataQuery(sql, para);
-            return table;
+        //public DataTable GetStuName(string account)
+        //{
+        //    //根据真实的课堂号获取课堂表里的自增主键课堂号classId
+        //    String sql = "select name from student where stuSpecId = @id;";
+        //    //传入要填写的参数
+        //    MySqlParameter para = new MySqlParameter("@id", account);
+        //    DataTable table = DataUtil.DataOperation.DataQuery(sql, para);
+        //    return table;
 
-        }
+        //}
 
         //通过作业公告Id来获取作业公告标题
         public DataTable GetNotName(string notId)

@@ -212,13 +212,13 @@ namespace HAMS.Student.StudentService
             return results;
         }
         //学生提交作业时需要调用该函数对作业表中的字段进行修改
-        public String SubmitHomework(string classId, string account, string postil, string homUrlName, string notId, string localpath)
+        public String SubmitHomework(string name, string classId, string account, string postil, string homUrlName, string notId, string localpath)
         {
-           
+           //可以直接从前端界面取值，就不需要查库了
             //通过账号来获取到姓名
-            DataTable sdName = sd.GetStuName(account);
-            string name = sdName.Rows[0][0].ToString();
-            System.Windows.MessageBox.Show(name);
+            //DataTable sdName = sd.GetStuName(account);
+            //string name = sdName.Rows[0][0].ToString();
+            //System.Windows.MessageBox.Show(name);
 
             //通过作业公告Id获取作业公告名
             DataTable sdNotName = sd.GetNotName(notId);
@@ -229,11 +229,11 @@ namespace HAMS.Student.StudentService
             //数据库中数据的更新
             //update homework  set postil = @postil, homUrl = @homUrl, homUrlName = @homUrlName , submitTime = @submitTime where notId  = @notId  and  stuId = @stuId;";
             //学生提交作业的时间
-            DateTime submitTime = DateTime.Now;
+            DateTime submitTime = DateTime.Now; 
             //查询该真实的学号在数据库中课堂表对应自增主键stuId
             DataTable sdStuId = sd.GetStuIdByAccount(account);
             int result;
-            if (!int.TryParse(sdStuId.Rows[0][0].ToString(), out result))//table[0][0]就是查到的classId
+            if (!int.TryParse(sdStuId.Rows[0][0].ToString(), out result))//table[0][0]就是查到的stuId
             {
                 return "account转换为stuId失败";
             }
@@ -292,6 +292,13 @@ namespace HAMS.Student.StudentService
                 return "无法将更新homework表";
             }
             return "上传作业成功";
+        }
+
+        public string downloadLink(string notId)
+        {
+            DataTable sdNotName = sd.GetNotName(notId);
+            string notName = sdNotName.Rows[0][0].ToString();
+            return notName;
         }
     }
 }

@@ -45,6 +45,12 @@ namespace HAMS.Teacher.TeacherService
             string homURL = tbHomURL.Rows[0][0].ToString();
             return homURL;
         }
+
+        internal string PasteSubmitTimeInForm(string classSpecId, string homeworkTitle)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool CorrectHomework(int homId, string score, string remark)
         {
             //批改作业，往数据库中写入成绩和点评

@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HAMS.Student.StudentService;
+using System.Windows.Forms;
+using HAMS.ToolClass;
 
 namespace HAMS.Student.StudentView
 {
@@ -53,12 +55,12 @@ namespace HAMS.Student.StudentView
             tbDeadLineTime.Text = result[2];
             if (result[3] != null)
             {
-                tbAccessoryName.Text = result[3];
+                tbAccessoryName.Content = result[3];
             }
             else
             {
                 //如果不存在作业附件则不进行显示
-                tbAccessoryName.Text = "";
+                tbAccessoryName.Content = "";
                 imgAccessory.Source = null;
             }
 
@@ -115,6 +117,36 @@ namespace HAMS.Student.StudentView
                 ssh.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
+            }
+        }
+
+
+        private void tbAccessoryName_Click(object sender, RoutedEventArgs e)
+        {
+            string notTitle = ss.downloadLink(notId);
+            //1、从数据库中查出homURL,然后获取文件名并能够鼠标放上去时在旁边显示文件名
+            //从上一界面获取notId,根据notId+stuId访问到homId
+
+            SaveFileDialog sfd = new SaveFileDialog();
+            //设置默认要保存文件的文件名（文件名.扩展名）
+            sfd.FileName = tbAccessoryName.Content.ToString();//这个名字也是原本服务器上保存文件的文件名
+            //初始化提示保存文件的路径地址,默认保存在D盘中
+            sfd.InitialDirectory = @"D:\";
+
+            if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+
+                string errorinfo;
+                //获取要保存文件名的本地完整路径
+                string localpath = sfd.FileName;// System.IO.Path.GetFullPath(sfd.FileName);
+                                                //调用下载文件函数，将教师作业公告从服务器上下载下来，其中localpath是本地路径,NotURL是数据库中存放的文件路径（文件在服务器上的路径）
+                string NotURL = classId + "/" +notTitle +"/作业附件/"+ tbAccessoryName.Content.ToString();
+                bool flag = FtpUpDown.Download(localpath, NotURL, out errorinfo);
+
+                if (flag == true)
+                    System.Windows.MessageBox.Show("下载成功");
+                else
+                    System.Windows.MessageBox.Show("下载失败：" + errorinfo + "");
             }
         }
     }

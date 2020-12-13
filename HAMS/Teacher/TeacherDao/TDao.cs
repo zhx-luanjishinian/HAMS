@@ -46,6 +46,14 @@ namespace HAMS.Teacher.TeacherDao
             DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);       
             return table;
         }
+        public DataTable getSubmitTime(string notId)
+        {
+            //sql语句
+            String sql = "select submitTime from notice where notId=@id";   //根据noticeId查找truDeadline
+            MySqlParameter parameter = new MySqlParameter("@id", notId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);
+            return table;
+        }
         public DataTable getNoteId(string notTitle,int classId)    //根据名称和classId查notId
         {
             //sql语句
@@ -55,6 +63,19 @@ namespace HAMS.Teacher.TeacherDao
             DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter,parameter1);
             return table;
         }
+        public DataTable getNoteIdByClassSpaceId(string notTitle, string classSpaceId)    //根据名称和classSpace和noteTitleId查notId
+        {
+            //sql语句
+            String sql = "select notId from notice where notTitle=@id and classId=@cId";   //根据noticeId查找truDeadline
+            MySqlParameter parameter = new MySqlParameter("@id", notTitle);
+            //首先获取classId
+            DataTable table1 = getClassId(classSpaceId);
+            MySqlParameter parameter1 = new MySqlParameter("@cid", table1.Rows[0][0].ToString());
+            //再根据classId和noteTitle获得noteId
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter, parameter1);
+            return table;
+        }
+
         public DataTable getNotice(string classSpaceId)  //从数据库查询目前已有的作业
         {
             

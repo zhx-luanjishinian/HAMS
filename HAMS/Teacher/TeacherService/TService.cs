@@ -205,7 +205,14 @@ namespace HAMS.Teacher.TeacherService
             homURLInfos[1] = tbHomURL.Rows[0][1].ToString();
             return homURLInfos;
         }
-       
+        public string PasteSubmitTimeInForm(string classSpaceId, string hTitle)
+        {
+            DataTable table11 = td.getNoteIdByClassSpaceId(hTitle, classSpaceId);
+            DataTable table2 = td.getSubmitTime(table11.Rows[0][0].ToString());
+            string subTime = table2.Rows[0][0].ToString();
+            return subTime;
+
+        }
 
 
     }

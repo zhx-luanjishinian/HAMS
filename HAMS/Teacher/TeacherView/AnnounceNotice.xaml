@@ -73,7 +73,7 @@
                         </Grid.ColumnDefinitions>
                         <Image x:Name="image" Source="/HAMS;component/Resources/链接.png" d:LayoutOverrides="TopMargin, BottomMargin"/>
                         <!--<TextBlock x:Name="upload" Margin="0.4,0,-0.2,0.055" TextWrapping="Wrap" FontSize="11" FontFamily="Microsoft YaHei" FontWeight="Medium" FontStretch="SemiCondensed" RenderTransformOrigin="0.504,-0.272" Grid.Column="1"><Run Text="   "/><Run Text="                 "/><Run Text="点击"/><LineBreak/><Run Text="                    "/><Run Text="上传"/></TextBlock>-->
-                        <TextBlock x:Name="upload" Margin="0.4,0,-0.2,0.055" TextWrapping="Wrap" FontSize="11" FontFamily="Microsoft YaHei" FontWeight="Medium" FontStretch="SemiCondensed" RenderTransformOrigin="0.504,-0.272" Grid.Column="1"><Run Text="                      "/><Run Text="点击"/><Run Text="上传"/></TextBlock>
+                        <TextBlock x:Name="upload" Margin="0.4,0,-0.2,0.055" TextWrapping="Wrap" FontSize="11" FontFamily="Microsoft YaHei" FontWeight="Medium" FontStretch="SemiCondensed" RenderTransformOrigin="0.504,-0.272" Grid.Column="1" VerticalAlignment="Center"><Run Text="                      "/><Run Text="点击"/><Run Text="上传"/></TextBlock>
                     </Grid>
                 </Button>
             </Canvas>

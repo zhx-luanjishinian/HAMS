@@ -35,12 +35,14 @@ namespace HAMS.Student.StudentView
             this.name = name;
             this.classId = classId;
             tbuserNameAc.Text = account + name;
+            
             MainHomeworkShow(classId);
         }
         public void MainHomeworkShow(String clId)
         {
             Dictionary<int, List<String>> info = ss.showAllHomeworkInfo(clId);
-            for(int i = 0; i < info.Count; i++)
+            labelClassName.Content = info[info.Count-1][0];
+            for(int i = 0; i < info.Count-1; i++)
             {
                 String[] temp = new String[2];
                 ListViewItem ivi = new ListViewItem();
@@ -76,7 +78,7 @@ namespace HAMS.Student.StudentView
             Button mh = (Button)sender;
             String[] info = (String[])mh.Tag;
             if(Message != "已逾期"){
-            StuDoHomework sdh = new StuDoHomework(account, name, info[0],info[1]);
+            StuDoHomework sdh = new StuDoHomework(account, name, info[1],classId);
             sdh.Show();
             this.Visibility = Visibility.Hidden;
             }
@@ -144,6 +146,14 @@ namespace HAMS.Student.StudentView
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
             }
+        }
+
+        private void BtnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            //首先删除listview里面的东西
+            listview.Items.Clear();
+            //然后再重新加载一遍
+            MainHomeworkShow(classId);
         }
     }
 }

@@ -32,6 +32,7 @@ namespace HAMS.Student.StudentView
             this.name = name;
             this.notId = notId;
             this.classId = classId;
+            tbUserNameAc.Text = account + name;
         }
 
         private void ListViewHomeworkNote_SelectionChanged(object sender, SelectionChangedEventArgs e)

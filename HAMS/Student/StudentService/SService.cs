@@ -116,5 +116,100 @@ namespace HAMS.Student.StudentService
         {
             return sd.alertFomrInfo(account);
         }
+        //统计已完成作业的数量
+        public int countHomeworkNumber(String account)
+        {
+            return sd.countHomeworkNumber(account);
+        }
+        //进行预警数量的修改
+        public bool updateAlertNum(String num)
+        {
+            return sd.insertAlertNum(num);
+        }
+        //设置预警数量的值
+        public String setAlertNum(String account)
+        {
+            return sd.showAlertNumber(account);
+        }
+        //进行作业的升序排序
+        public List<List<String>> upRank(String account)
+        {
+            List<List<String>> results = sd.alertFomrInfo(account);
+            results.Sort(delegate (List<String> l1, List<String> l2) {
+                if (l1.Count > 4 && l2.Count > 4)
+                {
+                    return l1[4].CompareTo(l2[4]);
+                }
+                else if (l1.Count > 4 && l2.Count <= 4)
+                {
+                    return l1[4].CompareTo(l2[1]);
+                }
+                else if (l1.Count <= 4 && l2.Count > 4)
+                {
+                    return l1[1].CompareTo(l2[4]);
+                }
+                return l1[1].CompareTo(l2[1]);
+            });
+            return results;
+
+        }
+
+        //进行作业的降序排序
+        public List<List<String >>downRank(String account)
+        {
+            List<List<String>> results = sd.alertFomrInfo(account);
+            results.Sort(delegate (List<String> l1, List<String> l2) {
+                if (l1.Count > 4 && l2.Count > 4)
+                {
+                    return l2[4].CompareTo(l1[4]);
+                }
+                else if (l1.Count > 4 && l2.Count <= 4)
+                {
+                    return l2[1].CompareTo(l1[4]);
+                }
+                else if (l1.Count <= 4 && l2.Count > 4)
+                {
+                    return l2[4].CompareTo(l1[1]);
+                }
+                return l2[1].CompareTo(l1[1]);
+            });
+            return results;
+        }
+        //更新作业复杂度的信息
+        public bool updateComplexity(String account,String notId,String complexity)
+        {
+            return sd.updateComplexity(account, notId, complexity);
+        }
+        //进行作业复杂度的升序排序
+        public List<List<String>> upComplexity(String account)
+        {
+            List<List<String>> results = sd.alertFomrInfo(account);
+           
+            //按第五项进行升序排序
+            results.Sort(delegate (List<String> l1, List<String> l2)
+            {
+                if (l1.Count > 5 && l2.Count > 5) {
+                return l1[5].CompareTo(l2[5]);
+                }
+                return 0;
+            });
+            return results;
+        }
+        //进行作业复杂度的降序排序
+        public List<List<String>> downComplexity(String account)
+        {
+            List<List<String>> results = sd.alertFomrInfo(account);
+            
+            //进行降序排序
+            results.Sort(delegate (List<String> l1, List<String> l2)
+            {
+                if (l1.Count > 5 && l2.Count > 5)
+                {
+                    return l2[5].CompareTo(l1[5]);
+                }
+                return 0;
+            });
+            return results;
+        }
     }
 }

@@ -103,7 +103,7 @@ namespace HAMS.Student.StudentDao
         public Dictionary<int,List<String>> showAllHomeworkInfo(String classSpecId)
         {
             Dictionary<int, List<String>> result = new Dictionary<int, List<string>>();
-            String sql = "select classId from class where classSpecId=@cid";
+            String sql = "select classId,className from class where classSpecId=@cid";
             MySqlParameter para = new MySqlParameter("@cid", classSpecId);
             DataTable table = DataOperation.DataQuery(sql, para);
             String sql1 = "select notTitle,content,notId,truDeadline from notice where classId =@cd";
@@ -119,10 +119,14 @@ namespace HAMS.Student.StudentDao
                 info.Add(table1.Rows[i][1].ToString());
                 //添加作业公告的id
                 info.Add(table1.Rows[i][2].ToString());
-                //添加作业的具体截止事件
+                //添加作业的具体截止时间
                 info.Add(table1.Rows[i][3].ToString());
                 result.Add(i, info);
             }
+            //添加课堂名字
+            List<String> className = new List<string>();
+            className.Add(table.Rows[0][1].ToString());
+            result.Add(table1.Rows.Count, className);
             return result;
         }
         //判断学生的作业状态,直接返回一张表,传入学生的学号以及具体的课堂号
@@ -208,6 +212,95 @@ namespace HAMS.Student.StudentDao
             }
             return result;
         }
-        
+        //统计学生已经完成的作业数量
+        public int countHomeworkNumber(String account)
+        {
+            String sql = "select stuId from student where stuSpecId=@sid";
+            MySqlParameter para = new MySqlParameter("@sid", account);
+            DataTable table = DataOperation.DataQuery(sql, para);
+            String sql1 = "select homURL from homework where stuId=@sd";
+            MySqlParameter para1 = new MySqlParameter("@sd", table.Rows[0][0].ToString());
+            DataTable table1 = DataOperation.DataQuery(sql1, para1);
+            int count = 0;
+            for(int i = 0; i < table1.Rows.Count; i++)
+            {
+                if (table1.Rows[i][0] != DBNull.Value)
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+        //设置预警数量的值
+        public String showAlertNumber(String account)
+        {
+            String sql = "select defHomNum from student where stuSpecId = @sid";
+            MySqlParameter para = new MySqlParameter("@sid", account);
+            DataTable table = DataOperation.DataQuery(sql, para);
+            return table.Rows[0][0].ToString();
+        }
+        //插入用户设置的预警数量
+        public bool insertAlertNum(String num)
+        {
+            String sql = "update student set defHomNum=@dfn";
+            MySqlParameter para = new MySqlParameter("@dfn", long.Parse(num));
+            return DataOperation.DataUpdate(sql, para);
+        }
+        //进行作业复杂度信息的更新
+        public bool updateComplexity(String account,String notId,String complexity)
+        {
+            String sql = "select stuId from student where stuSpecId=@sid";
+            MySqlParameter para = new MySqlParameter("@sid", account);
+            DataTable table = DataOperation.DataQuery(sql, para);
+            String sql1 = "update homework set defComplexity=@cl where stuId=@sd and notId=@nid";
+            MySqlParameter[] paras = new MySqlParameter[3];
+            MySqlParameter para1 = new MySqlParameter("@cl", complexity);
+            paras[0] = para1;
+            MySqlParameter para2 = new MySqlParameter("@sd", table.Rows[0][0].ToString());
+            paras[1] = para2;
+            MySqlParameter para3 = new MySqlParameter("@nid", notId);
+            paras[2] = para3;
+            return DataOperation.DataUpdate(sql1, paras);
+           
+        }
+        //通过真实学号来获取学生Id号
+        public DataTable GetStuIdByAccount(String account)
+        {
+            //在学生表中，通过真实学号来获取学生的Id号
+            String sql = "select stuId from student where stuSpecId=@id";
+            //传入要填写的参数
+            MySqlParameter parameter = new MySqlParameter("@id", account);
+            //执行查询语句，以table类型返回
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);
+            return table;
+        }
+
+        //学生提交作业，其实是对homework表的一个修改操作，修改与作业相关的字段即可
+        public Boolean UpdateHomework(DateTime submitTime, int notId, int stuId, string postil, string homUrl, string homUrlName)
+        {
+            //sql语句，对homework表的更新操作
+            String sql = "update homework  set postil = @postil, homUrl = @homUrl, homUrlName = @homUrlName , submitTime = @submitTime where notId  = @notId  and  stuId = @stuId;";
+            //传入要填写的参数
+            MySqlParameter para1 = new MySqlParameter("@postil",postil);
+            MySqlParameter para2 = new MySqlParameter("@homUrl", homUrl);
+            MySqlParameter para3 = new MySqlParameter("@homUrlName", homUrlName);
+            MySqlParameter para4 = new MySqlParameter("@submitTime",submitTime);
+            MySqlParameter para5 = new MySqlParameter("@notId", notId);
+            MySqlParameter para6 = new MySqlParameter("@stuId",stuId);
+            return DataUtil.DataOperation.DataUpdate(sql, para1, para2, para3,para4,para5,para6);//如果更新成功，则返回true
+        }
+
+        //通过作业名是否为空来判断它是否交过作业
+        public DataTable GetHomeUrlNameByStuIdAndNotId(int stuId, int notId)
+        {
+            //在作业表中，通过学号和作业公告号来获取作业名 
+            String sql = "select homURLName from homework where stuId=@stuid, notId = @notId";
+            //传入要填写的参数
+            MySqlParameter para1 = new MySqlParameter("@stuId", stuId);
+            MySqlParameter para2 = new MySqlParameter("@notId", notId);
+            //执行查询语句，以table类型返回
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, para1,para2);
+            return table;
+        }
     }
 }

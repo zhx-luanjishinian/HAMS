@@ -21,14 +21,14 @@
                 </Border.Background>
             </Border>
             <TextBlock x:Name="textBlockHomeworkOrder1" Text="1" Height="23.332" Canvas.Left="19.833" Canvas.Top="22.333" Width="16.001" RenderTransformOrigin="0.375,0.341"/>
-            <TextBlock x:Name="textBlockHomeworkName1" Text="quiz1" Height="16" Canvas.Left="153" Canvas.Top="11" Width="97"/>
-            <TextBlock x:Name="textBlockClassName1" Height="16" Width="116" Canvas.Left="156" Canvas.Top="38"><Run Text="R语言"/></TextBlock>
-            <Label x:Name="lab1" Content="剩余时间" Height="23.332" Canvas.Left="289.832" Canvas.Top="8.335" Width="61.334" RenderTransformOrigin="0.489,0.519"/>
+            <TextBlock x:Name="textBlockHomeworkName1" Text="quiz1" Height="23" Canvas.Left="130" Canvas.Top="8" Width="150"/>
+            <TextBlock x:Name="textBlockClassName1" Height="16" Width="116" Canvas.Left="132" Canvas.Top="41"><Run Text="R语言"/></TextBlock>
+            <Label x:Name="lab1" Content="剩余时间" Height="23" Canvas.Left="291" Canvas.Top="10" Width="61" RenderTransformOrigin="0.489,0.519"/>
             <TextBlock x:Name="textBlockTimeLeft1" Height="16.222" Width="62.89" Canvas.Left="289.054" Canvas.Top="41.556"><Run Text="2d:7h:30m"/></TextBlock>
-            <ComboBox x:Name="comboBoxDegree1" Height="25.907" Width="75" Canvas.Left="406" Canvas.Top="4.666" Text="难易程度" RenderTransformOrigin="0.301,0.704">
-              
+            <ComboBox x:Name="comboBoxDegree1" ToolTip="1,2,3,4,5表示难度从易到难" Height="25.907" Width="75" Canvas.Left="406" Canvas.Top="4.666" Text="难易程度" RenderTransformOrigin="0.301,0.704">
+
             </ComboBox>
-            <Button x:Name="btnLimitedTime1" Content="截止时间设置" Width="75" Canvas.Left="406" Canvas.Top="33.333" Height="25.907" Click="btnLimitedTime1_Click"/>
+            <Button x:Name="btnLimitedTime1"  Width="75" Canvas.Left="406" Canvas.Top="33.333" Height="25.907" Click="btnLimitedTime1_Click"/>
         </Canvas>
     </Border>
 </UserControl>

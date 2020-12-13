@@ -4,8 +4,7 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
-
-
+using System.Windows;
 
 namespace HAMS.Teacher.TeacherDao
 {
@@ -46,15 +45,7 @@ namespace HAMS.Teacher.TeacherDao
             DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);       
             return table;
         }
-        public DataTable getSubmitTime(string notId)
-        {
-            //sql语句
-            String sql = "select submitTime from notice where notId=@id";   //根据noticeId查找truDeadline
-            MySqlParameter parameter = new MySqlParameter("@id", notId);
-            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);
-            return table;
-        }
-        public DataTable getNoteId(string notTitle,int classId)    //根据名称和classId查notId
+        public DataTable getNotIdByClassIdAndNotTitle(string notTitle,int classId)    //根据名称和classId查notId
         {
             //sql语句
             String sql = "select notId from notice where notTitle=@id and classId=@cId";   //根据noticeId查找truDeadline
@@ -63,19 +54,6 @@ namespace HAMS.Teacher.TeacherDao
             DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter,parameter1);
             return table;
         }
-        public DataTable getNoteIdByClassSpaceId(string notTitle, string classSpaceId)    //根据名称和classSpace和noteTitleId查notId
-        {
-            //sql语句
-            String sql = "select notId from notice where notTitle=@id and classId=@cId";   //根据noticeId查找truDeadline
-            MySqlParameter parameter = new MySqlParameter("@id", notTitle);
-            //首先获取classId
-            DataTable table1 = getClassId(classSpaceId);
-            MySqlParameter parameter1 = new MySqlParameter("@cid", table1.Rows[0][0].ToString());
-            //再根据classId和noteTitle获得noteId
-            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter, parameter1);
-            return table;
-        }
-
         public DataTable getNotice(string classSpaceId)  //从数据库查询目前已有的作业
         {
             
@@ -89,15 +67,29 @@ namespace HAMS.Teacher.TeacherDao
         }
         public bool insertNotice(Notice notice)
         {
-            String sql = "insert into notice (truDeadline,content,notURL,notTitle,classId) values (@truDdl,@cont,@ntUrl,@ntTitle,@cid);";
+            String sql = "insert into notice (truDeadline,content,notURL,notURLName,notTitle,classId) values (@truDdl,@cont,@ntUrl,@ntUrlName,@ntTitle,@cid);";
             //传入要填写的参数
             MySqlParameter para1 = new MySqlParameter("@truDdl", notice.TruDeadLine);
             MySqlParameter para2 = new MySqlParameter("@cont", notice.Content);
             MySqlParameter para3 = new MySqlParameter("@ntUrl", notice.NoteURL);
-            MySqlParameter para4 = new MySqlParameter("@ntTitle", notice.NoteTitle);
-            MySqlParameter para5 = new MySqlParameter("@cid", notice.ClassId);
-            return DataUtil.DataOperation.DataAdd(sql, para1, para2, para3, para4, para5);//如果插入成功，则返回true
+            MySqlParameter para4 = new MySqlParameter("@ntUrlName", notice.NoteURLName);
+            MySqlParameter para5 = new MySqlParameter("@ntTitle", notice.NoteTitle);
+            MySqlParameter para6 = new MySqlParameter("@cid", notice.ClassId);
+            return DataUtil.DataOperation.DataAdd(sql, para1, para2, para3, para4, para5, para6);//如果插入成功，则返回true
         }
+
+        public bool updateNotice(DateTime truDeadline,string content,string notURLName,int notId)
+        {
+            //根据notId更新truDeadline,content,notURLName
+            String sql = "update notice set truDeadline=@truDdl,content=@cont,notURLName=@ntUrlName where notId=@nid";
+            //传入要填写的参数
+            MySqlParameter para1 = new MySqlParameter("@truDdl", truDeadline);
+            MySqlParameter para2 = new MySqlParameter("@cont", content);
+            MySqlParameter para3 = new MySqlParameter("@ntUrlName", notURLName);
+            MySqlParameter para4 = new MySqlParameter("@nid", notId);
+            return DataUtil.DataOperation.DataAdd(sql, para1, para2, para3, para4);//如果插入成功，则返回true
+        }
+
         public DataTable getClassId(string classSpecId)
         {
             //根据真实的课堂号获取课堂表里的自增主键课堂号classId
@@ -209,15 +201,17 @@ namespace HAMS.Teacher.TeacherDao
 
             return table;
         }
-        public Boolean deleteNotice(string noticeTitle)
-        {
-            String sql = "delete from notice where notTitle=@ntitle;";
-            //传入要填写的参数
-            MySqlParameter para = new MySqlParameter("@ntitle", noticeTitle);
-            return DataUtil.DataOperation.DataDelete(sql, para);//如果删除成功，则返回true
-        }
+        //public Boolean deleteNotice(string noticeTitle)
+        //{
+        //    //根据notTitle删除公告，此功能有问题
+        //    String sql = "delete from notice where notTitle=@ntitle;";
+        //    //传入要填写的参数
+        //    MySqlParameter para = new MySqlParameter("@ntitle", noticeTitle);
+        //    return DataUtil.DataOperation.DataDelete(sql, para);//如果删除成功，则返回true
+        //}
         public Boolean updateNotice(int notId, string notTitle,string content)
         {
+            //根据notId更新notTitle和ontent
             String sql = "update notice set content = @content,notTitle = @notTitle where notId  = @notId;";
             //传入要填写的参数
             MySqlParameter para1 = new MySqlParameter("@content", content);
@@ -236,7 +230,10 @@ namespace HAMS.Teacher.TeacherDao
         }
         public bool InsertHomework(Homework homework)
         {
-            String sql = "insert into notice (stuId, classId, teacherId, notId) values (@stuid,@classid,@teaid,@notid);";
+            //发布作业公告后，需要在Homework表添加作业记录
+            //向Homework表添加新作业记录
+            String sql = "insert into homework (stuId, classId, teacherId, notId) values (@stuid,@classid,@teaid,@notid);";
+
             //传入要填写的参数
             MySqlParameter para1 = new MySqlParameter("@stuid", homework.StuId);
             MySqlParameter para2 = new MySqlParameter("@classid", homework.ClassId);
@@ -253,14 +250,17 @@ namespace HAMS.Teacher.TeacherDao
             DataTable table = DataUtil.DataOperation.DataQuery(sql, para);
             return table;
         }
+        public DataTable getNotURLNameByNotId(int notId)
+        {
+            //根据notId获得notURLName
+            String sql = "select notURLName from notice where notId = @nid;";
+            //传入要填写的参数
+            MySqlParameter para = new MySqlParameter("@nid", notId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, para);
+            return table;
 
-        //public Boolean deleteNotice(string noticeTitle)
-        //{
-        //    String sql = "delete from notice where notTitle=@ntitle;";
-        //    //传入要填写的参数
-        //    MySqlParameter para = new MySqlParameter("@ntitle", noticeTitle);
-        //    return DataUtil.DataOperation.DataDelete(sql, para);//如果删除成功，则返回true
-        //}
+        }
+
 
     }
 

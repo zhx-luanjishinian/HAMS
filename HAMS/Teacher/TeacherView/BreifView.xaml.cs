@@ -53,6 +53,9 @@ namespace HAMS.Teacher.TeacherView
                 arrayBreifHomework[i].btnDelete.Click += new RoutedEventHandler(btnDelete_Click);
                 //定义修改公告按钮的操作
                 arrayBreifHomework[i].btnModify.Click += new RoutedEventHandler(btnModify_Click);
+                //定义点击查看作业公告详情按钮
+                arrayBreifHomework[i].btnCheckDetail.Click += new RoutedEventHandler(btnCheckDetail_Click);
+
             }
         }
         private void btnModify_Click(object sender, RoutedEventArgs e)
@@ -88,17 +91,17 @@ namespace HAMS.Teacher.TeacherView
                 Grid sonGrid = (Grid)sonBtn.Parent;
                 BreifHomework clickTeachClass = (BreifHomework)sonGrid.Parent;
                
-                bool ifDelete = an.deleteNotice(clickTeachClass.title.Content.ToString());  //删除时要考虑到与作业表级联删除的情况
+                //bool ifDelete = an.deleteNotice(clickTeachClass.title.Content.ToString());  //删除时要考虑到与作业表级联删除的情况
                 homeworkListView.Items.Remove(clickTeachClass);
                
-                if(ifDelete==true)
-                {
-                    System.Windows.MessageBox.Show("删除成功");
-                }
-                else
-                {
-                    System.Windows.MessageBox.Show("删除失败");
-                }
+                //if(ifDelete==true)
+                //{
+                //    System.Windows.MessageBox.Show("删除成功");
+                //}
+                //else
+                //{
+                //    System.Windows.MessageBox.Show("删除失败");
+                //}
             }
            
         }
@@ -133,14 +136,23 @@ namespace HAMS.Teacher.TeacherView
 
         private void btnCheckDetail_Click(object sender, RoutedEventArgs e)
         {
-            if (true)//里面是验证函数
-            {
-                // 打开子窗体
-                CheckingClassHomework newHomeworkNoticeCheck = new CheckingClassHomework();
-                newHomeworkNoticeCheck.Show();
-                // 隐藏自己(父窗体)
-                this.Visibility = System.Windows.Visibility.Hidden;
-            }
+            System.Windows.Controls.Button sonBtn = (System.Windows.Controls.Button)sender;  //获取当前点击的那个按钮
+                                                                                             //获取父级元素，找到要进入的公告
+            Grid sonGrid = (Grid)sonBtn.Parent;
+         
+            BreifHomework clickTeachClass = (BreifHomework)sonGrid.Parent;
+            //获得当前点击按钮对应的作业标题和作业描述
+            string homeworkTitle =clickTeachClass.title.Content.ToString();
+            string homeworkDescription = clickTeachClass.description.Content.ToString();
+            string teacherSpecId = lbTeacherInfo.Content.ToString();
+            string teacherName = lbTeacherInfo1.Content.ToString();
+            string classSpecId = labelCourseNumber.Content.ToString();
+            string className = labelCourseName.Content.ToString();
+            //生成新界面
+            CheckingClassHomework newCheckingClassHomework = new CheckingClassHomework(homeworkTitle, homeworkDescription,teacherSpecId,teacherName,classSpecId,className);
+            newCheckingClassHomework.Show();
+            this.Visibility = System.Windows.Visibility.Hidden;
+
         }
 
      

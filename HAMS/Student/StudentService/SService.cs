@@ -181,17 +181,35 @@ namespace HAMS.Student.StudentService
             return sd.updateComplexity(account, notId, complexity);
         }
         //进行作业复杂度的升序排序
-        //public List<List<String>> upComplexity(String account)
-        //{
-        //    List<List<String>> results = sd.alertFomrInfo(account);
-        //}
+        public List<List<String>> upComplexity(String account)
+        {
+            List<List<String>> results = sd.alertFomrInfo(account);
+           
+            //按第五项进行升序排序
+            results.Sort(delegate (List<String> l1, List<String> l2)
+            {
+                if (l1.Count > 5 && l2.Count > 5) {
+                return l1[5].CompareTo(l2[5]);
+                }
+                return 0;
+            });
+            return results;
+        }
         //进行作业复杂度的降序排序
-        //public List<List<String>> downComplexity(String account)
-        //{
-        //    List<List<String>> results = sd.alertFomrInfo(account);
-        //}
-
-        //学生提交作业操作
-        
+        public List<List<String>> downComplexity(String account)
+        {
+            List<List<String>> results = sd.alertFomrInfo(account);
+            
+            //进行降序排序
+            results.Sort(delegate (List<String> l1, List<String> l2)
+            {
+                if (l1.Count > 5 && l2.Count > 5)
+                {
+                    return l2[5].CompareTo(l1[5]);
+                }
+                return 0;
+            });
+            return results;
+        }
     }
 }

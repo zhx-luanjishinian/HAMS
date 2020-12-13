@@ -35,10 +35,7 @@ namespace HAMS.Student.StudentView
             tbUserNameAc.Text = account + name;
         }
 
-        private void ListViewHomeworkNote_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
+        
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {

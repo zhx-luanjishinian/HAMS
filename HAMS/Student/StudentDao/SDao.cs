@@ -263,7 +263,44 @@ namespace HAMS.Student.StudentDao
             return DataOperation.DataUpdate(sql1, paras);
            
         }
-       
-        
+        //通过真实学号来获取学生Id号
+        public DataTable GetStuIdByAccount(String account)
+        {
+            //在学生表中，通过真实学号来获取学生的Id号
+            String sql = "select stuId from student where stuSpecId=@id";
+            //传入要填写的参数
+            MySqlParameter parameter = new MySqlParameter("@id", account);
+            //执行查询语句，以table类型返回
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);
+            return table;
+        }
+
+        //学生提交作业，其实是对homework表的一个修改操作，修改与作业相关的字段即可
+        public Boolean UpdateHomework(DateTime submitTime, int notId, int stuId, string postil, string homUrl, string homUrlName)
+        {
+            //sql语句，对homework表的更新操作
+            String sql = "update homework  set postil = @postil, homUrl = @homUrl, homUrlName = @homUrlName , submitTime = @submitTime where notId  = @notId  and  stuId = @stuId;";
+            //传入要填写的参数
+            MySqlParameter para1 = new MySqlParameter("@postil",postil);
+            MySqlParameter para2 = new MySqlParameter("@homUrl", homUrl);
+            MySqlParameter para3 = new MySqlParameter("@homUrlName", homUrlName);
+            MySqlParameter para4 = new MySqlParameter("@submitTime",submitTime);
+            MySqlParameter para5 = new MySqlParameter("@notId", notId);
+            MySqlParameter para6 = new MySqlParameter("@stuId",stuId);
+            return DataUtil.DataOperation.DataUpdate(sql, para1, para2, para3,para4,para5,para6);//如果更新成功，则返回true
+        }
+
+        //通过作业名是否为空来判断它是否交过作业
+        public DataTable GetHomeUrlNameByStuIdAndNotId(int stuId, int notId)
+        {
+            //在作业表中，通过学号和作业公告号来获取作业名 
+            String sql = "select homURLName from homework where stuId=@stuid, notId = @notId";
+            //传入要填写的参数
+            MySqlParameter para1 = new MySqlParameter("@stuId", stuId);
+            MySqlParameter para2 = new MySqlParameter("@notId", notId);
+            //执行查询语句，以table类型返回
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, para1,para2);
+            return table;
+        }
     }
 }

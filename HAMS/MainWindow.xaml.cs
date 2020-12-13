@@ -136,6 +136,11 @@ namespace HAMS
         {
             StudentMainForm smf = new StudentMainForm("songhuiyu","hello");
         }
+
+        private void TxtUserName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
     
 }

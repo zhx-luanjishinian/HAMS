@@ -41,7 +41,7 @@
         <RadioButton x:Name="radiobtnAdmin" Content="管理员" IsChecked="True"  HorizontalAlignment="Left" Margin="614.147,113.248,0,269.544" Width="66"  FontSize="16" Checked="RadiobtnAdmin_Checked"/>
         <Label Content="账号" HorizontalAlignment="Left" Margin="439,191.033,0,0" VerticalAlignment="Top" FontSize="18" Width="53"/>
         <Label Content="密码" HorizontalAlignment="Left" Margin="439,242.22,0,0" VerticalAlignment="Top" FontSize="18" Width="53"/>
-        <TextBox x:Name="txtUserName" HorizontalAlignment="Left" Height="29" Margin="539,194.893,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="168" FontSize="16"/>
+        <TextBox x:Name="txtUserName" HorizontalAlignment="Left" Height="29" Margin="539,194.893,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="168" FontSize="16" TextChanged="TxtUserName_TextChanged"/>
         <TextBox x:Name="txtPassword" HorizontalAlignment="Left" Height="29" Margin="539,242.22,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="168" FontSize="16"/>
 
 

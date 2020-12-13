@@ -50,21 +50,23 @@
                 <Label x:Name="label2" Content="未完成数：" Height="23.667" Canvas.Left="6.332" Width="68.001" Canvas.Top="1.333"/>
                 <TextBlock x:Name="textBlockUnfinishedNumber" Text ="3" Height="17.667" Canvas.Left="83.666" Width="15.334" Canvas.Top="4.333" RenderTransformOrigin="0.621,0.534"/>
                 <Label x:Name="label3" Content="预警数：" Height="23.667" Canvas.Left="112.998" Width="57.334" Canvas.Top="1.333"/>
-                <Button x:Name="textBlockAlertNumber" Content ="5" Height="17.667" Canvas.Left="180.333" Width="15.334" Canvas.Top="4.333" RenderTransformOrigin="0.621,0.534"/>
+                <TextBox x:Name="textBlockAlertNumber" Text ="5" Height="17.667" Canvas.Left="180.333" Width="15.334" Canvas.Top="4.333" RenderTransformOrigin="0.621,0.534" TextChanged="TextBlockAlertNumber_TextChanged"/>
                 <Label x:Name="label4" Content="排序：" Height="23.667" Canvas.Left="198.999" Width="39.334" Canvas.Top="1.333"/>
-                <ComboBox x:Name="comBoxByTime" Text="按时间" Height="23.667" Canvas.Left="238.999" Width="45" Canvas.Top="1.333">
+                <ComboBox x:Name="comBoxByTime" Text="按时间" Height="24" Canvas.Left="304" Width="45" Canvas.Top="1" SelectionChanged="ComBoxByTime_SelectionChanged">
                     <ComboBox.ContextMenu>
                         <ContextMenu/>
                     </ComboBox.ContextMenu>
                     <Button Content="升序"/>
                     <Button Content="降序"/>
                 </ComboBox>
-                <ComboBox x:Name="comBoxByDegree" Text="按难易" Height="23.667" Canvas.Left="284.333" Width="45" Canvas.Top="1.333"/>
+                <ComboBox x:Name="comBoxByDegree" Text="按难易" Height="24" Canvas.Left="409" Width="44" Canvas.Top="1"/>
+                <Label Content="时间" Canvas.Left="260" Canvas.Top="1" Width="44"/>
+                <Label Content="难易" Canvas.Left="365" Width="44"/>
 
             </Canvas>
             <ListView x:Name="listView2" Height="191" Margin="7,0,0,0" HorizontalAlignment="Left" Width="526">
-                
-                
+
+
             </ListView>
         </StackPanel>
         <DataGrid HorizontalAlignment="Left" Height="100" Margin="646,240,-204.667,-16" Grid.Row="1" VerticalAlignment="Top" Width="100"/>

@@ -276,7 +276,7 @@ namespace HAMS.ToolClass
                 //MessageBox.Show(uri);
                
                 Connect(uri);//连接 
-
+                
                 reqFTP.Method = WebRequestMethods.Ftp.DeleteFile;
 
                 FtpWebResponse response = (FtpWebResponse)reqFTP.GetResponse();

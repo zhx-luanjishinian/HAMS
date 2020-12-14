@@ -296,7 +296,32 @@ namespace HAMS.Teacher.TeacherService
             return FtpUpDown.delFile(FileFullPath, out errorinfo);
             
         }
-
+        public string PasteSubmitTimeInForm(string classSpecId, string homeworkTitle)
+        {
+          DataTable table1 =  td.getClassId(classSpecId);
+            int classId=Convert.ToInt32(table1.Rows[0][0]) ;
+            DataTable table2 = td.getNotIdByClassIdAndNotTitle(homeworkTitle, classId);
+            DataTable table3 = td.GetSubmitTime(table2.Rows[0][0].ToString());
+            string submitTime = table3.Rows[0][0].ToString();
+            return submitTime;
+        }
+        public Boolean DeleteHomeworkNotice(string classSpecId, string homeworkTitle)
+        {
+            DataTable table1 = td.getClassId(classSpecId);
+            int classId = Convert.ToInt32(table1.Rows[0][0]);
+            DataTable table2 = td.getNotIdByClassIdAndNotTitle(homeworkTitle, classId);
+            bool flag = td.deleteHomework(table2.Rows[0][0].ToString());
+            if(flag==true)
+            {
+                bool flag1 = td.deleteNotice(table2.Rows[0][0].ToString());
+                return flag1;
+            }
+            else
+            {
+                MessageBox.Show("删除学生作业记录失败");
+                return false;
+            }
+        }
 
     }
 }

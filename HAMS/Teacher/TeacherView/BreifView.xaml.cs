@@ -23,6 +23,7 @@ namespace HAMS.Teacher.TeacherView
     public partial class BreifView : Window
     {
         TDao an = new TDao();
+        TeacherService.TService ts = new TeacherService.TService();
         public BreifView(string courseNum,string courseName,string tId,string tName)
         {
             //生成基本信息
@@ -92,18 +93,21 @@ namespace HAMS.Teacher.TeacherView
                 //获取父级元素，找到要删除的公告
                 Grid sonGrid = (Grid)sonBtn.Parent;
                 BreifHomework clickTeachClass = (BreifHomework)sonGrid.Parent;
-               
-                //bool ifDelete = an.deleteNotice(clickTeachClass.title.Content.ToString());  //删除时要考虑到与作业表级联删除的情况
+
+                bool ifDelete = ts.DeleteHomeworkNotice(labelCourseNumber.Content.ToString(),clickTeachClass.title.Content.ToString());  //删除时要考虑到与作业表级联删除的情况
+
+                if (ifDelete == true)
+                {
+                    System.Windows.MessageBox.Show("删除成功");
+                }
+                else
+                {
+                    System.Windows.MessageBox.Show("删除失败");
+                }
+
                 homeworkListView.Items.Remove(clickTeachClass);
+
                
-                //if(ifDelete==true)
-                //{
-                //    System.Windows.MessageBox.Show("删除成功");
-                //}
-                //else
-                //{
-                //    System.Windows.MessageBox.Show("删除失败");
-                //}
             }
            
         }

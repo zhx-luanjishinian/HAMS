@@ -45,6 +45,14 @@ namespace HAMS.Teacher.TeacherDao
             DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);       
             return table;
         }
+        public DataTable GetSubmitTime(string notId)
+        {
+            //sql语句
+            String sql = "select submitTime from notice where notId=@id";   //根据noticeId查找truDeadline
+            MySqlParameter parameter = new MySqlParameter("@id", notId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);
+            return table;
+        }
         public DataTable getNotIdByClassIdAndNotTitle(string notTitle,int classId)    //根据名称和classId查notId
         {
             //sql语句
@@ -201,14 +209,24 @@ namespace HAMS.Teacher.TeacherDao
 
             return table;
         }
-        //public Boolean deleteNotice(string noticeTitle)
-        //{
-        //    //根据notTitle删除公告，此功能有问题
-        //    String sql = "delete from notice where notTitle=@ntitle;";
-        //    //传入要填写的参数
-        //    MySqlParameter para = new MySqlParameter("@ntitle", noticeTitle);
-        //    return DataUtil.DataOperation.DataDelete(sql, para);//如果删除成功，则返回true
-        //}
+        public Boolean deleteNotice(string noticeId)
+        {
+            //根据notTitle删除公告，此功能有问题
+
+            String sql = "delete from notice where notId=@nId;";
+          
+            //传入要填写的参数
+            
+            MySqlParameter para = new MySqlParameter("@nId", noticeId);
+            return DataUtil.DataOperation.DataDelete(sql, para);//如果删除成功，则返回true
+        }
+        public Boolean deleteHomework(string noticeId)
+        {
+            //因为需要级联删除，因此需要首先删除homework表中的数据,才能删除notice表中的数据
+            String sql1 = "delete from homework where notId=@nId;";
+            MySqlParameter para = new MySqlParameter("@nId", noticeId);
+            return DataUtil.DataOperation.DataDelete(sql1, para);//如果删除成功，则返回true
+        }
         public Boolean updateNotice(int notId, string notTitle,string content)
         {
             //根据notId更新notTitle和ontent

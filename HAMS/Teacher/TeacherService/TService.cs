@@ -46,10 +46,7 @@ namespace HAMS.Teacher.TeacherService
             return homURL;
         }
 
-        //internal string PasteSubmitTimeInForm(string classSpecId, string homeworkTitle)
-        //{
-        //    throw new NotImplementedException();
-        //}
+       
 
         public bool CorrectHomework(int homId, string score, string remark)
         {

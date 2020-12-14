@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HAMS.ToolClass;
 using HAMS.Teacher.TeacherService;
+using System.Data;
+using HAMS.Entity;
 
 namespace HAMS.Teacher.TeacherView
 {
@@ -23,7 +25,7 @@ namespace HAMS.Teacher.TeacherView
     public partial class TeacherHomeworkCheck : Window
     {
         private TService ts = new TService();
-        private string homURL; //存储待下载作业文件的路径
+        private string homURL = ""; //存储待下载作业文件的路径
         private string homName; //存储待下载作业文件的文件名
         int homId;//存储作业Id
         private bool ifCorrect;//表示该作业是否是已批改作业
@@ -64,11 +66,15 @@ namespace HAMS.Teacher.TeacherView
 
             //对下载附件按钮进行初始化：能够实现鼠标放上去之后学生附件的名称，将该按钮和服务器上的某个路径建立关系（这里应该得到数据库中存储的文件路
             //根据homId获得要下载文件在服务器上的路径
-            homURL = ts.GetHomURLByHomId(homId);
+            string[] homURLInfos;
 
-            //对路径按照"/"进行切分，路径为课堂号/作业标题/学生信息文件夹/学生文件名
-            string[] homURLs = homURL.Split('/');
-            homName = homURLs[homURLs.Length - 1];//获取学生文件名，然后进行显示
+            homURLInfos = ts.GetHomURLAndNameByHomId(homId);
+            homURL = homURLInfos[0];//路径为课堂号/作业标题/学生信息文件夹
+
+            homName = homURLInfos[1];//获取学生文件名，然后进行显示
+
+            //string[] homURLs = homURL.Split('/');
+            //homName = homURLs[homURLs.Length - 1];
             lbUpload.ToolTip = homName;
 
             //查询是否已经批改，即查询homwork里面是否已经有score
@@ -81,7 +87,7 @@ namespace HAMS.Teacher.TeacherView
             bool IfCorrect = true;
             this.ifCorrect = IfCorrect;
 
-            if(IfCorrect == true)//如果已经批改，则有成绩并且直接在原来的基础上编辑评语
+            if (IfCorrect == true)//如果已经批改，则有成绩并且直接在原来的基础上编辑评语
             {
                 string[] Scoreinfos;
                 Scoreinfos = ts.GetScoreAndRemarkByHomId(homId);
@@ -117,7 +123,7 @@ namespace HAMS.Teacher.TeacherView
         }
 
         //下方函数才是真正需要的
-        public TeacherHomeworkCheck(List<int> homIds,int index, string NotTitle,string StudentInfo,bool IfCorrect = false)
+        public TeacherHomeworkCheck(List<int> homIds, int index, string NotTitle, string StudentInfo, bool IfCorrect = false)
         {
             InitializeComponent();
             //通过上一个界面传递过来的值，进行此界面控件信息的赋值操作
@@ -132,7 +138,7 @@ namespace HAMS.Teacher.TeacherView
 
             //获取当前待批改作业的作业Id
             homId = homIds[index];
-            
+
 
             //给学生信息赋值
             lbStudentInfo.Content = StudentInfo;
@@ -147,28 +153,67 @@ namespace HAMS.Teacher.TeacherView
             //根据homId获取该学生的作业备注并显示在控件上
             lbHomPostil.Content = ts.GetPostilByHomId(homId);
 
-
             //对下载附件按钮进行初始化：能够实现鼠标放上去之后学生附件的名称，将该按钮和服务器上的某个路径建立关系（这里应该得到数据库中存储的文件路
             //根据homId获得要下载文件在服务器上的路径
-            homURL = ts.GetHomURLByHomId(homId);
+            string[] homURLInfos;
 
-            //对路径按照"/"进行切分，路径为课堂号/作业标题/学生信息文件夹/学生文件名
-            string[] homURLs = homURL.Split('/');
-            
-            homName = homURLs[homURLs.Length - 1];//获取学生文件名，然后进行显示
+            homURLInfos = ts.GetHomURLAndNameByHomId(homId);
+            homURL = homURLInfos[0];//路径为课堂号/作业标题/学生信息文件夹
+            homName = homURLInfos[1];//获取学生文件名，然后进行显示
+
+            //string[] homURLs = homURL.Split('/');
+            //homName = homURLs[homURLs.Length - 1];
             lbUpload.ToolTip = homName;
 
+            //查询是否已经批改，即查询homwork里面是否已经有score
+            //1.查询数据库中是否有成绩字段，2.如果有成绩，则显示原来的成绩和评语
+            //如果有成绩，则直接在原来的基础上编辑评语，如果没有成绩，就鼠标点击，则可以从头输入评语
+            //ts.GetScoreByHomId(homId);
+
+            //从上一个界面获取是否已批改信息
+            //这里设置了一个假值
 
             this.ifCorrect = IfCorrect;
+
+            if (IfCorrect == true)//如果已经批改，则有成绩并且直接在原来的基础上编辑评语
+            {
+                string[] Scoreinfos;
+                Scoreinfos = ts.GetScoreAndRemarkByHomId(homId);
+                if ((string)rBtnA.Content == Scoreinfos[0])
+                {
+                    rBtnA.IsChecked = true;
+                }
+                else if ((string)rBtnB.Content == Scoreinfos[0])
+                {
+                    rBtnB.IsChecked = true;
+                }
+                else if ((string)rBtnC.Content == Scoreinfos[0])
+                {
+                    rBtnC.IsChecked = true;
+                }
+                else if ((string)rBtnD.Content == Scoreinfos[0])
+                {
+                    rBtnD.IsChecked = true;
+                }
+                tbRemark.Text = Scoreinfos[1];
+                btnCorrect.Content = "重新批改";
+            }
+            else//如果还没有批改，则鼠标点击评语处就可以从头输入评语
+            {
+                rBtnA.IsChecked = true;//默认设置“优秀”会被选中
+                tbRemark.Text = "请输入您的评语";
+            }
+
 
 
         }
 
-        
+
 
         private void btnUpload_Click(object sender, RoutedEventArgs e)
         {
 
+            
             //1、从数据库中查出homURL,然后获取文件名并能够鼠标放上去时在旁边显示文件名
             //从上一界面获取notId,根据notId+stuId访问到homId
 
@@ -177,7 +222,7 @@ namespace HAMS.Teacher.TeacherView
             //设置默认要保存文件的文件名（文件名.扩展名）
             sfd.FileName = homName;//这个名字也是原本服务器上保存文件的文件名
             //初始化提示保存文件的路径地址
-            sfd.InitialDirectory = @"C:\Users\郑昊欣\Documents"; 
+            sfd.InitialDirectory = @"D:\"; 
 
             if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
@@ -185,8 +230,9 @@ namespace HAMS.Teacher.TeacherView
                 string errorinfo;
                 //获取要保存文件名的本地完整路径
                 string localpath = sfd.FileName;// System.IO.Path.GetFullPath(sfd.FileName);
-                //调用下载文件函数，将学生作业从服务器上下载下来，其中localpath是本地路径,homURL是数据库中存放的文件路径（文件在服务器上的路径）
-                bool flag = FtpUpDown.Download(localpath, homURL, out errorinfo);
+                                                //调用下载文件函数，将学生作业从服务器上下载下来，其中localpath是本地路径,homURL是数据库中存放的文件路径（文件在服务器上的路径）
+                string homFullURL = homURL + "/" + homName;
+                bool flag = FtpUpDown.Download(localpath, homFullURL, out errorinfo);
                 
                 if (flag == true)
                     System.Windows.MessageBox.Show("下载成功");

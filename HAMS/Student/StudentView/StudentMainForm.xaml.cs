@@ -25,10 +25,14 @@ namespace HAMS.Student.StudentView
         private SService sts = new SService();
         public string account { set; get; }
         public string name { set; get; }
+        //此处值指的是课堂号
+        public String cls { set; get; }
+        public String notId { set; get; }
+       
+
         public StudentMainForm(string account,string name)
 
         {
-          
             InitializeComponent();
             this.account = account;
             this.name = name;
@@ -44,10 +48,14 @@ namespace HAMS.Student.StudentView
             for(int i = 0; i < info.Count; i++)
             {
                 ListViewItem ivi = new ListViewItem();
-                MainInfo mf = new MainInfo();
+               
+                cls = info[i][2];
+                MainInfo mf = new MainInfo(cls);
                 mf.Name = "mf_" + i;
                 mf.labelClassId1.Content = info[i][2];
                 mf.textBlockClassName1.Text = info[i][3];
+                mf.class1.Tag = cls;
+                mf.class1.Click += new RoutedEventHandler(btnStuMainHomework_Click);
                 mf.textBlockDepartmentName1.Text = info[i][1];
                 mf.textBlockTeacherName1.Text = info[i][0];
                 ivi.Content = mf;
@@ -55,28 +63,54 @@ namespace HAMS.Student.StudentView
             }
             
         }
+        //主界面点击到达stuMainHomework界面的点击事件
+        private void btnStuMainHomework_Click(object sender, RoutedEventArgs e)
+        {
+            Button mf = (Button)sender;
+            StuMainHomework smh = new StuMainHomework(account, name, (String)mf.Tag);
+            smh.Show();
+            this.Visibility = Visibility.Hidden;
+
+        }
         //作业公告生成调用
         public void HomeWorkShow()
         {
-            List<String> result = sts.showHomeNoticeInfo(this.account);
-           
+            List<List<String>> result = sts.showHomeNoticeInfo(this.account);
             for(int i = 0; i < result.Count; i++) {
                 ListViewItem ivi = new ListViewItem();
-                HomeworkNoteInfo hni = new HomeworkNoteInfo();
-                hni.lab1.Content = result[i];
+                //定义一个数组用来放东西
+                String[] temp = new String[2];
+                this.notId = result[i][1];
+                this.cls = result[i][2];
+                temp[0] = result[i][1];
+                temp[1] = result[i][2];
+                HomeworkNoteInfo hni = new HomeworkNoteInfo(notId,cls);
+                hni.btnRecntNo1.Tag = temp;
+                hni.btnRecntNo1.Click += new RoutedEventHandler(HomeworkNote_Click);
+                hni.lab1.Content = result[i][0];
                 ivi.Content = hni;
                 listView.Items.Add(ivi);
-            }
+                    }
         }
-        //作业主界面每个button的点击事件
+        
+        //作业公告的按钮点击事件
        
-
+        private void HomeworkNote_Click(object sender , RoutedEventArgs e)
+        {
+            //记录生成的是哪个动态控件
+            Button hnif = (Button)sender;
+            String[] info = (String[])hnif.Tag;
+            StuDoHomework sdh = new StuDoHomework(account,name,info[0],info[1]);
+            sdh.Show();
+            this.Visibility = Visibility.Hidden;
+        }
+       
         private void BtnHomewordAlert_Click(object sender, RoutedEventArgs e)
         {
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                AlertForm af = new AlertForm();
+                AlertForm af = new AlertForm(account,name);
                 af.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
@@ -88,42 +122,11 @@ namespace HAMS.Student.StudentView
 
         }
 
-        private void class1_Click(object sender, RoutedEventArgs e)
-        {
-            
-            if (true)//里面是验证函数
-            {
-                // 打开子窗体
-                StuMainHomework smw = new StuMainHomework();
-                smw.Show();
-                // 隐藏自己(父窗体)
-                this.Visibility = System.Windows.Visibility.Hidden;
-            }
-        }
+       
 
-        private void class2_Click(object sender, RoutedEventArgs e)
-        {
-            if (true)//里面是验证函数
-            {
-                // 打开子窗体
-                StuMainHomework smw = new StuMainHomework();
-                smw.Show();
-                // 隐藏自己(父窗体)
-                this.Visibility = System.Windows.Visibility.Hidden;
-            }
-        }
+      
 
-        private void class3_Click(object sender, RoutedEventArgs e)
-        {
-            if (true)//里面是验证函数
-            {
-                // 打开子窗体
-                StuMainHomework smw = new StuMainHomework();
-                smw.Show();
-                // 隐藏自己(父窗体)
-                this.Visibility = System.Windows.Visibility.Hidden;
-            }
-        }
+      
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
@@ -132,21 +135,28 @@ namespace HAMS.Student.StudentView
 
        
 
-        private void listView2_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
+        
 
         private void btnRecntNo1_Click_1(object sender, RoutedEventArgs e)
         {
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                StuCheckHomework sch = new StuCheckHomework();
+                StuCheckHomework sch = new StuCheckHomework(account,name);
                 sch.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
             }
+        }
+
+        private void ListView2_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

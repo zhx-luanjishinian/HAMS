@@ -5,11 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using HAMS.ToolClass;
-using HAMS.Entity;
-using MySql.Data.MySqlClient;
-using HAMS.DataUtil;
 using HAMS.Teacher.TeacherDao;
-using System.Windows;
+using HAMS.Entity;
+using System.Windows.Forms;
 
 namespace HAMS.Teacher.TeacherService
 {
@@ -39,14 +37,7 @@ namespace HAMS.Teacher.TeacherService
 
         }
 
-        public String GetHomURLByHomId(int homId)
-        {
-            //根据homId获取文件在服务器上的路径
-            DataTable tbHomURL = td.getHomURLByHomId(homId);
-            string homURL = tbHomURL.Rows[0][0].ToString();
-
-            return homURL;
-        }
+        
         public String GetPostilByHomId(int homId)
         {
             //根据homId获取学生的作业备注
@@ -54,17 +45,20 @@ namespace HAMS.Teacher.TeacherService
             string homURL = tbHomURL.Rows[0][0].ToString();
             return homURL;
         }
+
+       
+
         public bool CorrectHomework(int homId, string score, string remark)
         {
             //批改作业，往数据库中写入成绩和点评
-            bool flag = td.UpdateHomeworkByCorrect(homId, score, remark);
+            bool flag = td.updateHomeworkByCorrect(homId, score, remark);
             return flag;
         }
 
         //DateTime baseDate = new DateTime(1970, 1, 1);
         //DateTime result = temp.AddSeconds(timeStamp);
         //对truDeadline用datetime
-        public String AnnounceNotice(DateTime truDeadline, String content, String notTitle, String classSpecId, String teacherSpecId, String localpath = "")
+        public String AnnounceNotice(DateTime truDeadline, String content, String notTitle, String classSpecId, String teacherSpecId, String localpath = "",String notURLName = "")
         {
             Notice notice = new Notice();
             notice.TruDeadLine = truDeadline;
@@ -108,32 +102,31 @@ namespace HAMS.Teacher.TeacherService
                 return "在文件服务器中创建对应作业公告的目录失败";
             }
 
+            //此处注意：不管有没有作业附件，都先建好作业附件的目录
+            //创建作业附件目录
+            string dirNotFile = "作业附件";
+            orginPath += "/" + dirNotTitle;
+            flag = FtpUpDown.MakeDir(dirNotFile, out errorinfo, orginPath);//创建目录的静态方法，可以直接通过类名访问
+            if (flag == false)
+            {
+                return "在文件服务器中创建存放作业附件的目录失败";
+            }
+            string dirFullNotFile = orginPath + "/" + dirNotFile;
+            notice.NoteURL = dirFullNotFile;
 
             //上传作业公告附件
             if (localpath != "")//存在作业公告附件，根据路径插入FTP服务器中
             {
-                //创建作业附件目录
-                string dirNotFile = "作业附件";
-                orginPath += "/" + dirNotTitle;
-                flag = FtpUpDown.MakeDir(dirNotFile, out errorinfo, orginPath);//创建目录的静态方法，可以直接通过类名访问
-                if (flag == false)
-                {
-                    return "在文件服务器中创建存放作业附件的目录失败";
-                }
-
-                //上传作业附件
-                string dirFullNotFile = orginPath + "/" + dirNotFile;
+                
                 flag = FtpUpDown.Upload(localpath, dirFullNotFile);
                 if (!flag)
                 {
                     return "在文件服务器中指定目录上传作业附件失败";
                 }
-                notice.NoteURL = dirFullNotFile;
+                
+                notice.NoteURLName = notURLName;
             }
-            else
-            {
-                notice.NoteURL = "";
-            }
+           
             //notice.NoteURL = notURL;
             //调用插入作业公告函数，将公告插入数据库notice表
             flag = td.insertNotice(notice);
@@ -146,15 +139,110 @@ namespace HAMS.Teacher.TeacherService
             DataTable tbTeacherId = td.getTeacherId(teacherSpecId);//tbTeacherSpecId.Text是教师工号
             if (!int.TryParse(tbTeacherId.Rows[0][0].ToString(), out result))//table[0][0]就是查到的classId
             {
-                return "classSpecId转换为classId失败";
+                return "teacherSpecId转换为teacherId失败";
 
             }
             int teacherId = result;
+            //查询刚刚发布作业公告的notId
+            DataTable tbNotId = td.getNotIdByClassIdAndNotTitle(notice.NoteTitle, notice.ClassId);
+            int notId;
+            if (!int.TryParse(tbNotId.Rows[0][0].ToString(), out notId))//table[0][0]就是查到的classId
+            {
+                return "获取新增公告的notId并转换为int失败";
+
+            }
+           
+
+            int classId = notice.ClassId;
             //调用学生角色的业务层添加作业函数，该函数负责调用Dao层将作业插入数据库homework表
             //[studentDao文件夹下某Dao文件的一个对象].insertHomework(classId,teacherId,notId);
             //该函数还需要根据classId，获得每个选课学生的stuId，然后依次在作业表中根据(stuId,classId,teacherId,notId)进行插入
+            DataTable tbStuId = td.GetStuIdFromClassId(notice.ClassId);
+            int stuidNum = tbStuId.Rows.Count;  //获取所有选课学生的数量
+            for (int i = 0; i < stuidNum; i++)
+            {
+                string stuId = tbStuId.Rows[i][0].ToString();  //获取每一个学生的id号
+                Homework homework = new Homework(); //新建一个homework实体
+                homework.ClassId = notice.ClassId;
+                int sid;
+                if (int.TryParse(stuId, out sid))
+                {
+                    homework.StuId = sid;
+                }
+                homework.TeacherId = teacherId;
+                homework.NotId = notId;
+                //stuId, classId, teacherId, notId
+                bool flag1 = td.InsertHomework(homework);
+                if (!flag1)
+                {
+                    return "发布失败，请重试";
+                }
+            }
+
+
             return "发布公告成功";
         }
+
+        public String ModifyNotice(DateTime truDeadline, String content, String notTitle, String classSpecId, String teacherSpecId, String localpath = "", String notURLName = "")
+        {
+            Notice notice = new Notice();
+            notice.TruDeadLine = truDeadline;
+            notice.Content = content;
+
+
+            //查询该真实的课堂号在数据库中课堂表对应自增主键ClassId
+            DataTable tbClassId = td.getClassId(classSpecId);
+
+            int result;
+            if (!int.TryParse(tbClassId.Rows[0][0].ToString(), out result))//table[0][0]就是查到的classId
+            {
+                return "classSpecId转换为classId失败";
+
+            }
+            notice.ClassId = result;
+
+            
+            notice.NoteTitle = notTitle;
+
+            bool flag;
+                    
+            //上传作业公告附件
+            if (localpath != "")//存在作业公告附件，根据路径插入FTP服务器中（已经有存放作业附件的目录了）
+            {
+                //具体上传作业附件
+                string dirFullNotFile = classSpecId + "/" + notTitle+ "/" + "作业附件";
+                flag = FtpUpDown.Upload(localpath, dirFullNotFile);
+                if (!flag)
+                {
+                    return "在文件服务器中指定目录上传作业附件失败";
+                }
+                notice.NoteURL = dirFullNotFile;
+                notice.NoteURLName = notURLName;
+            }
+            else
+            {
+                notice.NoteURL = "";
+            }
+            //notice.NoteURL = notURL;
+
+            //查询待修改作业公告的notId
+            DataTable tbNotId = td.getNotIdByClassIdAndNotTitle(notice.NoteTitle, notice.ClassId);
+            int notId;
+            if (!int.TryParse(tbNotId.Rows[0][0].ToString(), out notId))//table[0][0]就是查到的classId
+            {
+                return "获取待修改公告的notId并转换为int失败";
+
+            }
+
+            //调用插入作业公告函数，将公告插入数据库notice表
+            flag = td.updateNotice(truDeadline, content, notURLName,notId);
+            if (!flag)
+            {
+                return "无法更新作业公告";
+            }
+            return "更新公告成功";
+        }
+
         public string[] GetScoreAndRemarkByHomId(int homId)
         {
             //根据作业Id获取成绩和点评
@@ -164,16 +252,79 @@ namespace HAMS.Teacher.TeacherService
             Scoreinfos[1] = (string)tbScoreAndRemark.Rows[0][1];
             return Scoreinfos;
         }
+        public DateTime GetPreviousDateTime(string classSpaceId,string homeworkTitle)
+        {
+            DataTable table1 = td.getClassId(classSpaceId);
+            int result;
+            int.TryParse(table1.Rows[0][0].ToString(), out result);
+            DataTable table2 = td.getNotIdByClassIdAndNotTitle(homeworkTitle, result);
+            DataTable table3 = td.getTrueDeadLine(table2.Rows[0][0].ToString());
+            return (DateTime)table3.Rows[0][0];
+        }
+        public string[] GetHomURLAndNameByHomId(int homId)
+        {
+            //根据homId获取文件在服务器上的路径
+            DataTable tbHomURL = td.getHomURLAndNameByHomId(homId);
+            string[] homURLInfos = new string[2];
+            homURLInfos[0] = tbHomURL.Rows[0][0].ToString();
+            homURLInfos[1] = tbHomURL.Rows[0][1].ToString();
+            return homURLInfos;
+        }
 
-		public String GetNotId(String classSpecId,String notTitle)   //根据classSpecId和notTitle获取notId
-		{	
-			DataTable table = td.getClassId(classSpecId);
-			String classId = table.Rows[0][0].ToString();
-			MessageBox.Show(classId);
-			DataTable table1 = td.getNotIdByClassIdAndNotTitle(notTitle, Convert.ToInt32(classId));
-			String notId = table1.Rows[0][0].ToString();
-			MessageBox.Show(notId);
-			return notId;
-		}
-	}
+
+        public string getNotURLName(string notTitle, string classSpecId)
+        {
+            //根据notTitle、 classSpecId获取作业附件URL名
+            //（1）通过cSpecId获取cId
+            DataTable tbClassId = td.getClassId(classSpecId);
+            int cId;
+            int.TryParse(tbClassId.Rows[0][0].ToString(), out cId);
+            //（2）通过cId,nTitle获取notId
+            DataTable tbNotId = td.getNotIdByClassIdAndNotTitle(notTitle,cId) ;
+            int notId;
+            int.TryParse(tbNotId.Rows[0][0].ToString(), out notId);
+            //（3）通过notId获取URLName
+            DataTable tbNotURLName = td.getNotURLNameByNotId(notId);
+            return tbNotURLName.Rows[0][0].ToString();
+
+            
+        }
+        public bool deleteNotURL(string classSpecId,string notTitle,string notFileName)
+        {
+            //删除作业公告附件URL，用于实现上传新的作业附件
+            //作业附件文件夹->classSpecId/notTitle/作业附件
+            string errorinfo;
+            string FileFullPath = classSpecId + "/" + notTitle +"/"+"作业附件/"+notFileName;
+            //MessageBox.Show(dirName);
+            return FtpUpDown.delFile(FileFullPath, out errorinfo);
+            
+        }
+        public string PasteSubmitTimeInForm(string classSpecId, string homeworkTitle)
+        {
+          DataTable table1 =  td.getClassId(classSpecId);
+            int classId=Convert.ToInt32(table1.Rows[0][0]) ;
+            DataTable table2 = td.getNotIdByClassIdAndNotTitle(homeworkTitle, classId);
+            DataTable table3 = td.GetSubmitTime(table2.Rows[0][0].ToString());
+            string submitTime = table3.Rows[0][0].ToString();
+            return submitTime;
+        }
+        public Boolean DeleteHomeworkNotice(string classSpecId, string homeworkTitle)
+        {
+            DataTable table1 = td.getClassId(classSpecId);
+            int classId = Convert.ToInt32(table1.Rows[0][0]);
+            DataTable table2 = td.getNotIdByClassIdAndNotTitle(homeworkTitle, classId);
+            bool flag = td.deleteHomework(table2.Rows[0][0].ToString());
+            if(flag==true)
+            {
+                bool flag1 = td.deleteNotice(table2.Rows[0][0].ToString());
+                return flag1;
+            }
+            else
+            {
+                MessageBox.Show("删除学生作业记录失败");
+                return false;
+            }
+        }
+
+    }
 }

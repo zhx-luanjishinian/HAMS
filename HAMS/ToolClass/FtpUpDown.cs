@@ -238,15 +238,20 @@ namespace HAMS.ToolClass
 
 
         //删除目录(老师要删除作业公告）
-        public static bool delDir(string dirName, out string errorinfo)
+        //注意，当目录下面有文件时，无法删除该目录
+        public static bool delDir(string dirPath, out string errorinfo)
         {
             try
             {
 
-                string uri = "ftp://" + ftpServerIP + "/" + dirName;
+                string uri = "ftp://" + ftpServerIP + "/" + dirPath;
+                
                 Connect(uri);//连接 
+                
                 reqFTP.Method = WebRequestMethods.Ftp.RemoveDirectory;
+                
                 FtpWebResponse response = (FtpWebResponse)reqFTP.GetResponse();
+                
                 response.Close();
                 errorinfo = "";
                 return true;
@@ -261,7 +266,34 @@ namespace HAMS.ToolClass
             }
         }
 
+        //删除文件(覆盖提交时使用）
+        public static bool delFile(string FileFullPath, out string errorinfo)
+        {
+            try
+            {
 
+                string uri = "ftp://" + ftpServerIP + "/" + FileFullPath;
+                //MessageBox.Show(uri);
+               
+                Connect(uri);//连接 
+                
+                reqFTP.Method = WebRequestMethods.Ftp.DeleteFile;
+
+                FtpWebResponse response = (FtpWebResponse)reqFTP.GetResponse();
+
+                response.Close();
+                errorinfo = "";
+                return true;
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show()
+                //Console.Write(ex.Message);
+                MessageBox.Show(ex.Message);
+                errorinfo = string.Format("因{0},无法删除", ex.Message);
+                return false;
+            }
+        }
 
 
     }

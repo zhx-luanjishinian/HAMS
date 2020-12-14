@@ -4,7 +4,8 @@
              xmlns:local="clr-namespace:HAMS"
              StartupUri="MainWindow.xaml">
     <!--//MainWindow.xaml-->
+    <!--"Teacher/TeacherView/TeacherHomeworkCheck.xaml"-->
     <Application.Resources>
-         
+        
     </Application.Resources>
 </Application>

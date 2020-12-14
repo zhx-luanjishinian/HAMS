@@ -18,7 +18,7 @@
             <RowDefinition Height="162*"/>
         </Grid.RowDefinitions>
 
-        <ListView x:Name="listView" Grid.Column="2" Grid.Row="1"  Margin="0.665,0,0,5.84" HorizontalAlignment="Left" Width="159.421" Height="220.518" VerticalAlignment="Bottom">
+        <ListView x:Name="listView" Grid.Column="2" Grid.Row="1"  Margin="0.665,0,0,5.84" HorizontalAlignment="Left" Width="159.421" Height="220.518" VerticalAlignment="Bottom" SelectionChanged="ListView_SelectionChanged">
 
           
 
@@ -52,7 +52,7 @@
         </Canvas>
 
         <StackPanel Grid.ColumnSpan="2" Margin="0,98.946,11.561,0" Grid.Row="1" Height="224.291" VerticalAlignment="Top" HorizontalAlignment="Right" Width="357.443">
-            <ListView x:Name="listView2" Height="223" Margin="0,0,1,0" HorizontalAlignment="Right" Width="351" >
+            <ListView x:Name="listView2" Height="223" Margin="0,0,1,0" HorizontalAlignment="Right" Width="351" SelectionChanged="ListView2_SelectionChanged_1" >
 
                 
 

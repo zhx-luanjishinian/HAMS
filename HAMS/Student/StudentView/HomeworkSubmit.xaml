@@ -31,7 +31,7 @@
                     </ImageBrush>
                 </Border.Background>
             </Border>
-            <Button x:Name="btnExit" Background="LightBlue"  Canvas.Left="460.341" Canvas.Top="2.644" Width="81.667" RenderTransformOrigin="0.622,0.945" Height="43.907" Foreground="#FF151111" BorderBrush="LightBlue" d:LayoutOverrides="LeftMargin, RightMargin" Click="btnExit_Click">
+            <Button x:Name="btnExit" Background="LightBlue"  Canvas.Left="460.341" Canvas.Top="2.644" Width="81.667" RenderTransformOrigin="0.622,0.945" Height="43.907" Foreground="#FF151111" BorderBrush="LightBlue"  Click="btnExit_Click">
                 <StackPanel>
                     <Image x:Name="exit1" Width="28" Height="23.907" Source="/Resources/resizeApi.png"/>
                     <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>

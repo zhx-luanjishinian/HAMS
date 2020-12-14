@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="HAMS.Admin.AdminUserControl.SysNoticeInfo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HAMS.Admin.AdminUserControl"
+             mc:Ignorable="d" 
+             d:DesignHeight="70.001" d:DesignWidth="637.666">
+    <Canvas x:Name="canNoticeRecord" Height="70.001" Width="637.666">
+        <Image x:Name="imgLable" Height="70.001" Canvas.Left="10" Width="44.666" Source="pack://siteoforigin:,,,/Resources/news.gif"/>
+        <Label x:Name="labelNoticeName" Content="公告1" Canvas.Left="81.666" Canvas.Top="9.521" FontWeight="Bold"/>
+        <Label x:Name="labelNoticeDescription" Content="系统将于5月15日进行维护" Canvas.Left="81.666" Canvas.Top="34.761"/>
+        <Button x:Name="btnDeleteNotice" Content="删除" Canvas.Left="419.667" Canvas.Top="25.627" Width="75" FontFamily="Nirmala UI Semilight"/>
+        <Button x:Name="btnReviseNotice" Content="修改" Canvas.Left="534.667" Canvas.Top="25.627" Width="75" FontFamily="Nirmala UI Semilight"/>
+    </Canvas>
+</UserControl>

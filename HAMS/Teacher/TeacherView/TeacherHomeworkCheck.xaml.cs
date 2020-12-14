@@ -232,12 +232,12 @@ namespace HAMS.Teacher.TeacherView
 
         private void tbRemark_GotFocus(object sender, RoutedEventArgs e)
         {
-            //如果没有批改，则需要实现鼠标点击时提示文字消失
-            if (!ifCorrect)
+			//如果没有批改，则需要实现鼠标点击时提示文字消失
+			if (!ifCorrect)
             {
                 tbRemark.Text = "";  //实现鼠标点击时提示文字消失
             }
-            
-        }
+			
+		}
     }
 }

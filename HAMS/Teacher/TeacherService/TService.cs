@@ -5,8 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using HAMS.ToolClass;
-using HAMS.Teacher.TeacherDao;
 using HAMS.Entity;
+using MySql.Data.MySqlClient;
+using HAMS.DataUtil;
+using HAMS.Teacher.TeacherDao;
+using System.Windows;
 
 namespace HAMS.Teacher.TeacherService
 {
@@ -54,7 +57,7 @@ namespace HAMS.Teacher.TeacherService
         public bool CorrectHomework(int homId, string score, string remark)
         {
             //批改作业，往数据库中写入成绩和点评
-            bool flag = td.updateHomeworkByCorrect(homId, score, remark);
+            bool flag = td.UpdateHomeworkByCorrect(homId, score, remark);
             return flag;
         }
 
@@ -161,7 +164,16 @@ namespace HAMS.Teacher.TeacherService
             Scoreinfos[1] = (string)tbScoreAndRemark.Rows[0][1];
             return Scoreinfos;
         }
-        
 
-    }
+		public String GetNotId(String classSpecId,String notTitle)   //根据classSpecId和notTitle获取notId
+		{	
+			DataTable table = td.getClassId(classSpecId);
+			String classId = table.Rows[0][0].ToString();
+			MessageBox.Show(classId);
+			DataTable table1 = td.getNotIdByClassIdAndNotTitle(notTitle, Convert.ToInt32(classId));
+			String notId = table1.Rows[0][0].ToString();
+			MessageBox.Show(notId);
+			return notId;
+		}
+	}
 }

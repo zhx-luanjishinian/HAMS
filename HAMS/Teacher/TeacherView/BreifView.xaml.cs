@@ -22,7 +22,7 @@ namespace HAMS.Teacher.TeacherView
     /// </summary>
     public partial class BreifView : Window
     {
-        AnnounceNoticeDao an = new AnnounceNoticeDao();
+        TDao an = new TDao();
         public BreifView(string courseNum,string courseName,string tId,string tName)
         {
             //生成基本信息
@@ -124,13 +124,6 @@ namespace HAMS.Teacher.TeacherView
             }
         }
 
-        private void btnModify_Click(object sender, RoutedEventArgs e)
-        {
-            // 打开子窗体
-            AnnounceNotice newAnnounceNotice = new AnnounceNotice("","","","");
-            newAnnounceNotice.Show();
-            // 隐藏自己(父窗体)
-            this.Visibility = System.Windows.Visibility.Hidden;
-        }
+       
     }
 }

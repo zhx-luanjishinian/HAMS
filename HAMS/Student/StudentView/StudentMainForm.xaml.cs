@@ -66,7 +66,7 @@ namespace HAMS.Student.StudentView
                 hni.lab1.Content = result[i];
                 ivi.Content = hni;
                 listView.Items.Add(ivi);
-                     }
+            }
         }
         //作业主界面每个button的点击事件
        

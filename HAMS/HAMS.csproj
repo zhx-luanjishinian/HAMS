@@ -67,7 +67,7 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="WPFVisifire.Charts">
-      <HintPath>..\..\..\..\..\Documents\Tencent Files\1355592786\FileRecv\wpfvisifire\WPFVisifire.Charts\X86\4.5.2.1\WPFVisifire.Charts.dll</HintPath>
+      <HintPath>..\..\wpfvisifire\WPFVisifire.Charts\X86\4.5.2.1\WPFVisifire.Charts.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -147,6 +147,15 @@
     </Compile>
     <Compile Include="Teacher\TeacherDao\TDao.cs" />
     <Compile Include="Teacher\TeacherService\TService.cs" />
+    <Compile Include="Teacher\TeacherUserControl\HomeworkChecked.xaml.cs">
+      <DependentUpon>HomeworkChecked.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\TeacherUserControl\HomeworkChecking.xaml.cs">
+      <DependentUpon>HomeworkChecking.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\TeacherUserControl\HomeworkUnfinished.xaml.cs">
+      <DependentUpon>HomeworkUnfinished.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Teacher\TeacherView\AnnounceNotice.xaml.cs">
       <DependentUpon>AnnounceNotice.xaml</DependentUpon>
     </Compile>
@@ -283,6 +292,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Student\StudentView\StuSubmitHomework.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Teacher\TeacherUserControl\HomeworkChecked.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Teacher\TeacherUserControl\HomeworkChecking.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Teacher\TeacherUserControl\HomeworkUnfinished.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

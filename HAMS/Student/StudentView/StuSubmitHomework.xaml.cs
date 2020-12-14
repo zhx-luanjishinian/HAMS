@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using HAMS.Student.StudentService;
 
 namespace HAMS.Student.StudentView
 {
@@ -25,6 +26,7 @@ namespace HAMS.Student.StudentView
         public String name { set; get; }
         public String notId { set; get; }
         public String classId { set; get; }
+       
         public StuSubmitHomework(String account, String name,String notId,String classId)
         {
             InitializeComponent();
@@ -35,10 +37,7 @@ namespace HAMS.Student.StudentView
             tbUserNameAc.Text = account + name;
         }
 
-        private void ListViewHomeworkNote_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
+        
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
@@ -81,27 +80,13 @@ namespace HAMS.Student.StudentView
             }
         }
 
-        private void btnSubmitHomework_Click(object sender, RoutedEventArgs e)
-        {
-            ////调用业务层方法，往数据库里添加新的作业公告
-            //String folderName = tbUserNameAc.Text;
-            //String content = tbFileURL.Text;
-            //DateTime currentTime = DateTime.Now;
-            //String postil = listViewHomeworkNote.Text;
-            //String homURL =  "Z004530B1300720" + "/" + "狗" + "/" + folderName +content;
-            ////String notURL = 课堂真实号/作业公告名/作业附件/文件名
-            
-            ////该方法实现向notice表中新增一条作业公告，且返回具体的信息提示用户
-            //string message = ans.announceNotice(truDeadline, content, notTitle, classSpecId, tbTeacherSpecId.Text, notURL);
-            ////System.Windows.MessageBox.Show(message);
-            //System.Windows.MessageBox.Show("提交成功！");
-        }
 
+        OpenFileDialog ofd = new OpenFileDialog();//选择文件的对话框
         private void btnChooseFile_Click(object sender, RoutedEventArgs e)
         {
             //文件打开用到openFileDialog，文件保存是SaveFileDialog
 
-            OpenFileDialog ofd = new OpenFileDialog();//选择文件的对话框
+            
             ofd.Title = tbUserNameAc.Text + "同学，请选择要传的文件";
             ofd.InitialDirectory = @"C:\Users";//打开本地文件框的起始路径
             string filter = @"文本文档|*.txt;*.pdf;*.doc;*.html;*.wps;*.rtf";
@@ -135,6 +120,22 @@ namespace HAMS.Student.StudentView
                 image1.Source = bitmapImage;
                 */
             }
+        }
+        
+        private SService ss = new SService();
+        private void btnSubmitHomework_Click(object sender, RoutedEventArgs e)
+        {
+            //public String SubmitHomework(string classId, string account, string postil, string homUrlName, string notId, string localpath)
+            //调用业务层方法，修改数据库Homework表的相应字段
+            String homUrlName = tbFileURL.Text;  //获取到文件名，从tbFileURL这个界面控件中获取
+            String postil = listViewHomeworkNote.Text; //从listViewHomeworkNote中获取备注的信息
+            String localpath = ofd.FileName; //获取作业内容在本地的存储路径
+            //System.Windows.MessageBox.Show(localpath);
+            //System.Windows.MessageBox.Show(classId);
+            //该方法实现向homework表中修改一条作业记录，且返回具体的信息提示用户
+            string message = ss.SubmitHomework(name,classId, account, postil, homUrlName, notId, localpath);
+            System.Windows.MessageBox.Show(message);
+            //System.Windows.MessageBox.Show("提交成功！");//只要一个提示就OK，所以就注释了一个
         }
     }
 }

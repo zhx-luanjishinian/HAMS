@@ -158,17 +158,17 @@
             <Label x:Name="label" Content="作业公告详情" Grid.Column="2" HorizontalAlignment="Right" Margin="0,-1.88,48.41,-1.062" VerticalAlignment="Bottom" Width="83.123" Height="22.942" Style="{DynamicResource LabelStyle1}"/>
         </Grid>
         <Grid Height="133.329" VerticalAlignment="Top" Margin="0,80.344,0,0" d:LayoutOverrides="VerticalAlignment">
-            <Label x:Name="lbNotTitle" Content="" Height="24" Width="105" RenderTransformOrigin="0.507,0.631" HorizontalAlignment="Left" Margin="79,0,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lbNotTitle" Content="" Height="24" Width="130" RenderTransformOrigin="0.507,0.631" HorizontalAlignment="Left" Margin="79,0,0,0" VerticalAlignment="Top"/>
             <Image x:Name="homework_png" Source="../../Resources/homework.png" Stretch="Fill" Width="56" Height="48.562" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" OpacityMask="{x:Null}"/>
             <Label x:Name="labelHomeworkArrangeTime" Content="2020年11月10日 星期二 10:10" Width="156.021" FontSize="10" HorizontalAlignment="Left" Margin="334.4,5,0,0" VerticalAlignment="Top"/>
             <Grid Height="49.126" Margin="79.021,33.999,87.379,0" VerticalAlignment="Top">
-                <ListBox x:Name="listBoxContent" Margin="0,0,0,10.126">
+                <ListBox x:Name="listBoxContent" Margin="0,0,0,-16.874">
                     <TextBlock x:Name="textBlockDescription" TextWrapping="Wrap" Text="1.调试代码，结合代码和教材理解svm的大间隔理论                                                    2.尝试用CNN去跑数据集" Height="39" Width="342"/>
                 </ListBox>
             </Grid>
             <StackPanel Margin="0,83.125,0,0" Height="24.192" VerticalAlignment="Top" HorizontalAlignment="Left" Width="166.601">
                 <Button x:Name="uploadButton" Height="20.159" Background="White" BorderThickness="0" Width="102.934" HorizontalAlignment="Right" Margin="0,0,48.601,0">
-                    <Grid Height="20.159" Width="102.934">
+                    <Grid Height="20" Width="103">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="29*"/>
                             <ColumnDefinition Width="73*"/>

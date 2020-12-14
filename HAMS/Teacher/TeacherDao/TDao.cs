@@ -233,11 +233,12 @@ namespace HAMS.Teacher.TeacherDao
             //发布作业公告后，需要在Homework表添加作业记录
             //向Homework表添加新作业记录
             String sql = "insert into homework (stuId, classId, teacherId, notId) values (@stuid,@classid,@teaid,@notid);";
-            
+
             //传入要填写的参数
             MySqlParameter para1 = new MySqlParameter("@stuid", homework.StuId);
             MySqlParameter para2 = new MySqlParameter("@classid", homework.ClassId);
-            MySqlParameter para3 = new MySqlParameter("@teaid", homework.TeacherId.ToString());
+            MySqlParameter para3 = new MySqlParameter("@teaid", homework.TeacherId);
+            //MessageBox.Show(homework.TeacherId.ToString());
             MySqlParameter para4 = new MySqlParameter("@notId", homework.NotId);
             return DataUtil.DataOperation.DataAdd(sql, para1, para2, para3, para4);//如果插入成功，则返回true
         }

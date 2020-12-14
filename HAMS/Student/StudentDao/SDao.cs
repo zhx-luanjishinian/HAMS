@@ -276,7 +276,7 @@ namespace HAMS.Student.StudentDao
         }
 
         //学生提交作业，其实是对homework表的一个修改操作，修改与作业相关的字段即可
-        public Boolean UpdateHomework(DateTime submitTime, int notId, int stuId, string postil, string homUrl, string homUrlName)
+        public Boolean UpdateHomework(DateTime submitTime, string notId, string stuId, string postil, string homUrl, string homUrlName)
         {
             //sql语句，对homework表的更新操作
             String sql = "update homework  set postil = @postil, homUrl = @homUrl, homUrlName = @homUrlName , submitTime = @submitTime where notId  = @notId  and  stuId = @stuId;";
@@ -291,16 +291,52 @@ namespace HAMS.Student.StudentDao
         }
 
         //通过作业名是否为空来判断它是否交过作业
-        public DataTable GetHomeUrlNameByStuIdAndNotId(int stuId, int notId)
+        public DataTable GetHomeUrlNameByStuIdAndNotId(String stuId, String notId)
         {
             //在作业表中，通过学号和作业公告号来获取作业名 
-            String sql = "select homURLName from homework where stuId=@stuid, notId = @notId";
+            String sql = "select homURLName from homework where stuId=@stuid and notId = @notId";
             //传入要填写的参数
             MySqlParameter para1 = new MySqlParameter("@stuId", stuId);
             MySqlParameter para2 = new MySqlParameter("@notId", notId);
             //执行查询语句，以table类型返回
             DataTable table = DataUtil.DataOperation.DataQuery(sql, para1,para2);
             return table;
+        }
+
+        //通过classId来获取classSpecld
+        //public DataTable GetClassSpecld(string classId)
+        //{
+        //    //根据真实的课堂号获取课堂表里的自增主键课堂号classId
+        //    String sql = "select classSpecId from class where classId = @id;";
+        //    //传入要填写的参数
+        //    MySqlParameter para = new MySqlParameter("@id", classId);
+        //    DataTable table = DataUtil.DataOperation.DataQuery(sql, para);
+        //    MessageBox.Show(table.Rows[0][0].ToString());
+        //    return table;
+
+        //}
+        //通过学生真实学号寻找学生姓名
+        //public DataTable GetStuName(string account)
+        //{
+        //    //根据真实的课堂号获取课堂表里的自增主键课堂号classId
+        //    String sql = "select name from student where stuSpecId = @id;";
+        //    //传入要填写的参数
+        //    MySqlParameter para = new MySqlParameter("@id", account);
+        //    DataTable table = DataUtil.DataOperation.DataQuery(sql, para);
+        //    return table;
+
+        //}
+
+        //通过作业公告Id来获取作业公告标题
+        public DataTable GetNotName(string notId)
+        {
+            //根据作业公告号来获取作业公告标题
+            String sql = "select notTitle from notice where notId = @id;";
+            //传入要填写的参数
+            MySqlParameter para = new MySqlParameter("@id", notId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, para);
+            return table;
+
         }
     }
 }

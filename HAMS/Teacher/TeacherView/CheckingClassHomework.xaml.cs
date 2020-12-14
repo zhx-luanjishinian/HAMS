@@ -38,7 +38,10 @@ namespace HAMS.Teacher.TeacherView
 		//展示已批改作业信息
 		public void HomeworkCheckedShow()
 		{
-			String notId="6";
+			//string[] str = tbClassInfo.Text.Split(' ');
+			//String classSpecId = str[0];
+			//MessageBox.Show(classSpecId.ToString());
+			String notId ="6";
 			Dictionary<int, List<string>> info = td.showHomeworkCheckedInfo(notId);
 			for (int i = 0; i < info.Count; i++)
 			{
@@ -57,12 +60,11 @@ namespace HAMS.Teacher.TeacherView
 		public void HomeworkCheckingShow()
 		{
 			
-			string[] str = tbClassInfo.Text.Split(' ');
-			String classSpecId = str[0];
-			MessageBox.Show(classSpecId.ToString());
+			//string[] str = tbClassInfo.Text.Split(' ');
+			//String classSpecId = str[0];
+			//MessageBox.Show(classSpecId.ToString());
 
-			string notId = null;
-			//= ts.GetNotId("Z004530B1300720", "测试2");
+			string notId = ts.GetNotId("Z004530B1300720", "测试2");
 			Dictionary<int, List<string>> info = td.showHomeworkCheckingInfo(notId);
 			
 			for (int i = 0; i < info.Count; i++)
@@ -82,6 +84,9 @@ namespace HAMS.Teacher.TeacherView
 		//展示未完成作业信息
 		public void HomeworkUnfinishedShow()
 		{
+			//string[] str = tbClassInfo.Text.Split(' ');
+			//String classSpecId = str[0];
+			//MessageBox.Show(classSpecId.ToString());
 			string id = "7";
 			Dictionary<int, List<string>> info = td.showHomeworkUnfinishedInfo(id);
 

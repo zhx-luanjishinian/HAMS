@@ -162,13 +162,19 @@
     </Compile>
     <Compile Include="Teacher\TeacherDao\TDao.cs" />
     <Compile Include="Teacher\TeacherService\TService.cs" />
+    <Compile Include="Teacher\TeacherUserControl\CommentControl.xaml.cs">
+      <DependentUpon>CommentControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\TeacherUserControl\StudentCheck.xaml.cs">
+      <DependentUpon>StudentCheck.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Teacher\TeacherView\AnnounceNotice.xaml.cs">
       <DependentUpon>AnnounceNotice.xaml</DependentUpon>
     </Compile>
     <Compile Include="Teacher\TeacherView\AnswerQuestion.xaml.cs">
       <DependentUpon>AnswerQuestion.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Teacher\TeacherView\BreifHomeworkControll.xaml.cs">
+    <Compile Include="Teacher\TeacherUserControl\BreifHomeworkControll.xaml.cs">
       <DependentUpon>BreifHomeworkControll.xaml</DependentUpon>
     </Compile>
     <Compile Include="Teacher\TeacherView\BreifView.xaml.cs">
@@ -180,10 +186,10 @@
     <Compile Include="Teacher\TeacherView\HomeworkStatistic.xaml.cs">
       <DependentUpon>HomeworkStatistic.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Teacher\TeacherView\RecentNoticeControll.xaml.cs">
+    <Compile Include="Teacher\TeacherUserControl\RecentNoticeControll.xaml.cs">
       <DependentUpon>RecentNoticeControll.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Teacher\TeacherView\TeachClassControll.xaml.cs">
+    <Compile Include="Teacher\TeacherUserControl\TeachClassControll.xaml.cs">
       <DependentUpon>TeachClassControll.xaml</DependentUpon>
     </Compile>
     <Compile Include="Teacher\TeacherView\TeacherHomeworkCheck.xaml.cs">
@@ -313,6 +319,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Teacher\TeacherUserControl\CommentControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Teacher\TeacherUserControl\StudentCheck.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Teacher\TeacherView\AnnounceNotice.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -321,7 +335,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Teacher\TeacherView\BreifHomeworkControll.xaml">
+    <Page Include="Teacher\TeacherUserControl\BreifHomeworkControll.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -337,11 +351,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Teacher\TeacherView\RecentNoticeControll.xaml">
+    <Page Include="Teacher\TeacherUserControl\RecentNoticeControll.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Teacher\TeacherView\TeachClassControll.xaml">
+    <Page Include="Teacher\TeacherUserControl\TeachClassControll.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

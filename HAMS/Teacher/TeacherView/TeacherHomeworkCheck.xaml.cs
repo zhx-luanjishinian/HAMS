@@ -123,16 +123,16 @@ namespace HAMS.Teacher.TeacherView
         }
 
         //下方函数才是真正需要的
-        public TeacherHomeworkCheck(List<int> homIds, int index, string NotTitle, string StudentInfo, bool IfCorrect = false)
+        public TeacherHomeworkCheck(List<int> homIds, int index, string notTitle, string studentInfo, bool IfCorrect = false)
         {
             InitializeComponent();
             //通过上一个界面传递过来的值，进行此界面控件信息的赋值操作
 
             //给作业公告标题赋值
-            lbNotTitle.Content = NotTitle;
+            lbNotTitle.Content = notTitle;
 
             //假值，由于前一个界面还没有实现
-            lbNotTitle.Content = "猫狗大战期末作业";
+            //lbNotTitle.Content = "猫狗大战期末作业";
 
 
 
@@ -141,7 +141,7 @@ namespace HAMS.Teacher.TeacherView
 
 
             //给学生信息赋值
-            lbStudentInfo.Content = StudentInfo;
+            lbStudentInfo.Content = studentInfo;
 
 
 
@@ -210,7 +210,7 @@ namespace HAMS.Teacher.TeacherView
 
 
 
-        private void btnUpload_Click(object sender, RoutedEventArgs e)
+        private void btnDownload_Click(object sender, RoutedEventArgs e)
         {
 
             

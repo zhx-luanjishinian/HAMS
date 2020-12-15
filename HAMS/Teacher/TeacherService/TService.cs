@@ -252,7 +252,7 @@ namespace HAMS.Teacher.TeacherService
             Scoreinfos[1] = (string)tbScoreAndRemark.Rows[0][1];
             return Scoreinfos;
         }
-        public DateTime GetPreviousDateTime(string classSpaceId,string homeworkTitle)
+        public DateTime GetPreviousDateTime(String classSpaceId,String homeworkTitle)
         {
             DataTable table1 = td.getClassId(classSpaceId);
             int result;
@@ -272,7 +272,7 @@ namespace HAMS.Teacher.TeacherService
         }
 
 
-        public string getNotURLName(string notTitle, string classSpecId)
+        public string getNotURLName(String notTitle, String classSpecId)
         {
             //根据notTitle、 classSpecId获取作业附件URL名
             //（1）通过cSpecId获取cId
@@ -308,7 +308,7 @@ namespace HAMS.Teacher.TeacherService
             string submitTime = table3.Rows[0][0].ToString();
             return submitTime;
         }
-        public Boolean DeleteHomeworkNotice(string classSpecId, string homeworkTitle)
+        public Boolean DeleteHomeworkNotice(String classSpecId, String homeworkTitle)
         {
             DataTable table1 = td.getClassId(classSpecId);
             int classId = Convert.ToInt32(table1.Rows[0][0]);

@@ -222,9 +222,6 @@ namespace HAMS.Teacher.TeacherView
             }
         }
 
-
-      
-
         private void textBoxHomeworkTitle_GotFocus(object sender, RoutedEventArgs e)
         {
             if (!ifAnnounce)//当这个公告是没有发布的公告时，才需要实现此功能；如果是修改已发布公告，不需要实现文字消失

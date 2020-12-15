@@ -138,10 +138,10 @@ namespace HAMS.Student.StudentDao
             String sql = "select stuId from student where stuSpecId=@sid";
             MySqlParameter para = new MySqlParameter("@sid", account);
             DataTable table = DataOperation.DataQuery(sql, para);
-            //查询notId
-            String sql1 = "select homId,submitTime,score,homURL from homework where notId =@nid and stuId=@sd";
-            MySqlParameter para1 = new MySqlParameter("@nid", notId);
-            MySqlParameter para2 = new MySqlParameter("@sd", table.Rows[0][0].ToString());
+            //查询作业表中的信息，包括homId,submitTime,score,homURLName
+            String sql1 = "select homId,submitTime,score,homURLName from homework where notId =@nid and stuId=@sd";
+            MySqlParameter para1 = new MySqlParameter("@nid", notId);//notId的赋值
+            MySqlParameter para2 = new MySqlParameter("@sd", table.Rows[0][0].ToString());//stuId的赋值
             //此处有两个查询条件
             MySqlParameter[] paras = new MySqlParameter[2];
             paras[0] = para1;

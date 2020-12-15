@@ -20,13 +20,17 @@ namespace HAMS.Student.StudentUserControl
     /// </summary>
     public partial class MainHomeworkInfo : UserControl
     {
+        public String content { set; get; }
         public String notId { set; get; }
-        public String classSpecId { set; get; }
-        public MainHomeworkInfo(String notId,String classSpecId)
+
+        //public String message { set; get; }
+        public MainHomeworkInfo(String content,String notId)
         {
             InitializeComponent();
+            
             this.notId = notId;
-            this.classSpecId = classSpecId;
+            this.content = content;
+            //this.message = message;
         }
 
         private void btnHomeworkAnswer_Click(object sender, RoutedEventArgs e)

@@ -67,7 +67,7 @@ namespace HAMS.Student.StudentView
         private void btnStuMainHomework_Click(object sender, RoutedEventArgs e)
         {
             Button mf = (Button)sender;
-            StuMainHomework smh = new StuMainHomework(account, name, (String)mf.Tag);
+            StuMainHomework smh = new StuMainHomework(account, name, (String)mf.Tag);//真实课堂号
             smh.Show();
             this.Visibility = Visibility.Hidden;
 

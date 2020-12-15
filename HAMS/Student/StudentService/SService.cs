@@ -112,7 +112,7 @@ namespace HAMS.Student.StudentService
             }
             return result;
         }
-        public List<List<String>> showAlertFormInfo(String account)
+        public List<List<List<String>>> showAlertFormInfo(String account)
         {
             return sd.alertFomrInfo(account);
         }
@@ -132,19 +132,20 @@ namespace HAMS.Student.StudentService
             return sd.showAlertNumber(account);
         }
         //进行作业的升序排序
-        public List<List<String>> upRank(String account)
+        public List<List<List<String>>> upRank(String account)
         {
-            List<List<String>> results = sd.alertFomrInfo(account);
-            results.Sort(delegate (List<String> l1, List<String> l2) {
-                if (l1.Count > 4 && l2.Count > 4)
+            List<List<List<String>>> results = sd.alertFomrInfo(account);
+            List < List < String >> result = results[0];
+            result.Sort(delegate (List<String> l1, List<String> l2) {
+                if (l1[4] !=""  && l2[4] !="")
                 {
                     return l1[4].CompareTo(l2[4]);
                 }
-                else if (l1.Count > 4 && l2.Count <= 4)
+                else if (l1[4] != "" && l2[4] == "")
                 {
                     return l1[4].CompareTo(l2[1]);
                 }
-                else if (l1.Count <= 4 && l2.Count > 4)
+                else if (l1[4] == "" && l2[4] != "")
                 {
                     return l1[1].CompareTo(l2[4]);
                 }
@@ -155,21 +156,22 @@ namespace HAMS.Student.StudentService
         }
 
         //进行作业的降序排序
-        public List<List<String >>downRank(String account)
+        public List<List<List<String >>>downRank(String account)
         {
-            List<List<String>> results = sd.alertFomrInfo(account);
-            results.Sort(delegate (List<String> l1, List<String> l2) {
-                if (l1.Count > 4 && l2.Count > 4)
+            List<List<List<String>>> results = sd.alertFomrInfo(account);
+            List<List<String>> result = results[0];
+            result.Sort(delegate (List<String> l1, List<String> l2) {
+                if (l1[4] != "" && l2[4] != "")
                 {
                     return l2[4].CompareTo(l1[4]);
                 }
-                else if (l1.Count > 4 && l2.Count <= 4)
-                {
-                    return l2[1].CompareTo(l1[4]);
-                }
-                else if (l1.Count <= 4 && l2.Count > 4)
+                else if (l1[4] != "" && l2[4] == "")
                 {
                     return l2[4].CompareTo(l1[1]);
+                }
+                else if (l1[4] == "" && l2[4] != "")
+                {
+                    return l2[1].CompareTo(l1[4]);
                 }
                 return l2[1].CompareTo(l1[1]);
             });
@@ -181,12 +183,12 @@ namespace HAMS.Student.StudentService
             return sd.updateComplexity(account, notId, complexity);
         }
         //进行作业复杂度的升序排序
-        public List<List<String>> upComplexity(String account)
+        public List<List<List<String>>> upComplexity(String account)
         {
-            List<List<String>> results = sd.alertFomrInfo(account);
-           
+            List<List<List<String>>> results = sd.alertFomrInfo(account);
+            List<List<String>> result = results[0];
             //按第五项进行升序排序
-            results.Sort(delegate (List<String> l1, List<String> l2)
+            result.Sort(delegate (List<String> l1, List<String> l2)
             {
                 if (l1.Count > 5 && l2.Count > 5) {
                 return l1[5].CompareTo(l2[5]);
@@ -196,12 +198,12 @@ namespace HAMS.Student.StudentService
             return results;
         }
         //进行作业复杂度的降序排序
-        public List<List<String>> downComplexity(String account)
+        public List<List<List<String>>> downComplexity(String account)
         {
-            List<List<String>> results = sd.alertFomrInfo(account);
-            
+            List<List<List<String>>> results = sd.alertFomrInfo(account);
+            List<List<String>> result = results[0];
             //进行降序排序
-            results.Sort(delegate (List<String> l1, List<String> l2)
+            result.Sort(delegate (List<String> l1, List<String> l2)
             {
                 if (l1.Count > 5 && l2.Count > 5)
                 {

@@ -158,10 +158,12 @@ namespace HAMS.Student.StudentDao
             return table;
         }
         //查询作业预警主界面的信息,直接根据学生的学号进行查询
-        public List<List<String>> alertFomrInfo(String account)
+        public List<List<List<String>>> alertFomrInfo(String account)
         {
-            List<List<String>> result = new List<List<string>>();
-            
+            //此处返回超过老师设置的截止时间的作业和没有超过老师设置的截止时间的作业
+            List<List<String>> notBeyondHomework = new List<List<string>>();
+            List<List<String>> BeyondHomework = new List<List<string>>();
+            List<List<List<String>>> result = new List<List<List<string>>>();     
             String sql = "select stuId from student where stuSpecId=@id";
             MySqlParameter parameter = new MySqlParameter("@id", account);
             DataTable table = DataOperation.DataQuery(sql, parameter);
@@ -187,7 +189,6 @@ namespace HAMS.Student.StudentDao
                 //由于一门课的作业公告又有多个，所以还要进行一次循环操作
                 for(int j = 0; j < table2.Rows.Count; j++)
                 {
-                    
                     List<String> ls = new List<string>();
                     //1添加课堂名信息
                     ls.Add(table3.Rows[0][0].ToString());
@@ -205,12 +206,25 @@ namespace HAMS.Student.StudentDao
                     DataTable table4 = DataOperation.DataQuery(sql4, paras);
                     //5,6添加每门作业的自定义截止时间，自定义复杂度
                     //此处需要判断用户有没有自定义截止时间和自定义复杂度
-                    if (table4.Rows.Count > 0) {
-                    ls.Add(table4.Rows[0][0].ToString());
-                    ls.Add(table4.Rows[0][1].ToString());
+                    if (table4.Rows.Count > 0)
+                    {
+                        ls.Add(table4.Rows[0][0].ToString());
+                        ls.Add(table4.Rows[0][1].ToString());
                     }
-                    result.Add(ls);
+                    //如果还没有达到老师设置的截止时间就放在没有超过截止时间的里面
+                    if (Convert.ToDateTime(table2.Rows[j][2].ToString()) > DateTime.Now) {  
+                    notBeyondHomework.Add(ls);
+                    }
+                    //否则就将其放在超过了截止时间的列表里面
+                    else
+                    {
+                        BeyondHomework.Add(ls);
+                    }
                 }
+                //首先放的是没有超过截止时间的数据
+                result.Add(notBeyondHomework);
+                //然后放超过了截止时间的数据
+                result.Add(BeyondHomework);
             }
             return result;
         }

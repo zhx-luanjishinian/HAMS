@@ -83,7 +83,7 @@ namespace HAMS.ToolClass
 
 
         //上传文件,传入的路径是本地,目录名默认为空
-        public static bool Upload(string localpath, string dirpath = "")
+        public static bool Upload(String localpath, string dirpath = "")
         {
             bool bol = false;
             string uri = "";
@@ -200,7 +200,7 @@ namespace HAMS.ToolClass
         }
 
         //创建目录，orginPath是已有目录，表示在已有目录下根据传入的newdirName进行创建（dirName可能是多层级的）
-        public static bool MakeDir(string newdirName, out string errorinfo,string orginPath = "")
+        public static bool MakeDir(String newdirName, out String errorinfo,String orginPath = "")
         {
             try
             {
@@ -237,7 +237,7 @@ namespace HAMS.ToolClass
         }
 
 
-        //删除目录(老师要删除作业公告）
+        //删除目录
         //注意，当目录下面有文件时，无法删除该目录
         public static bool delDir(string dirPath, out string errorinfo)
         {
@@ -292,6 +292,28 @@ namespace HAMS.ToolClass
                 MessageBox.Show(ex.Message);
                 errorinfo = string.Format("因{0},无法删除", ex.Message);
                 return false;
+            }
+        }
+
+        //目录改名（当作业公告在数据库中被删除后，将该作业公告文件夹进行更名，表示该作业公告文件夹已经无用）
+        //currentDirFullPath是现有的完整路径, newDirName是想改的新目录名
+        public static void Rename(String currentDirFullPath, String newDirName)
+        {
+            try
+            {
+                FileInfo fileInf = new FileInfo(currentDirFullPath);
+                string uri = "ftp://" + ftpServerIP + "/" + fileInf;
+                
+                Connect(uri);//连接
+                reqFTP.Method = WebRequestMethods.Ftp.Rename;
+                reqFTP.RenameTo = newDirName;
+                FtpWebResponse response = (FtpWebResponse)reqFTP.GetResponse();
+                response.Close();
+            }
+            catch (Exception ex)
+            {
+                //Console.Write(ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
 

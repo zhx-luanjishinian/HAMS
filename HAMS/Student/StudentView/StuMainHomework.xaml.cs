@@ -28,7 +28,7 @@ namespace HAMS.Student.StudentView
         public String notId { set; get; }
         public String classId { set; get; }
         public String Message { set; get; }
-        public StuMainHomework(String account,String name,String classId)
+        public StuMainHomework(String account,String name,String classId)//真实课堂号
         {
             InitializeComponent();
             this.account = account;
@@ -38,27 +38,35 @@ namespace HAMS.Student.StudentView
             
             MainHomeworkShow(classId);
         }
+
+        //显示主页面，加载动态控件,参数是classId
         public void MainHomeworkShow(String clId)
         {
-            Dictionary<int, List<String>> info = ss.showAllHomeworkInfo(clId);
-            labelClassName.Content = info[info.Count-1][0];
-            for(int i = 0; i < info.Count-1; i++)
+            Dictionary<int, List<String>> info = ss.showAllHomeworkInfo(clId); //返回的是所有作业的信息列表+【作业数量，课堂名】
+            labelClassName.Content = info[info.Count-1][0]; //取课堂名，显示在前端课堂名的位置
+            for(int i = 0; i < info.Count-1; i++) //对作业进行遍历，遍历初始化动态控件，并展示在前端界面listview位置
             {
-                String[] temp = new String[2];
-                ListViewItem ivi = new ListViewItem();
-                MainHomeworkInfo mhi = new MainHomeworkInfo(info[i][1], info[i][2]);
-                temp[0] = info[i][1];
-                temp[1] = info[i][2];
-                mhi.labelHomeworkName.Content = info[i][0];
-                //如果长度很长的话只显示7个
+                String[] temp = new String[2]; //定义一个字符串数组temp
+                ListViewItem ivi = new ListViewItem();  //初始化一个listview元素，用来装一条一条的作业
+                //notTitle,content,notId,truDeadline
+               //this.Message = ss.judgeHomeworkStatus(account, notId, info[i][3].ToString());
+                MainHomeworkInfo mhi = new MainHomeworkInfo(info[i][1], info[i][2]); //传入两个参数，一个是content,一个是notId
+                //mhi.tbHomeworkStatus.Text = this.Message;
+                temp[0] = info[i][1]; //获取content的值
+                temp[1] = info[i][2]; //获取作业公告Id
+                mhi.labelHomeworkName.Content = info[i][0];//将作业公告的标题notTitle显示在作业公告名这个前端控件中
+                //如果作业内容长度很长的话只显示7个
                 if (info[i][1].Length > 7) {
-                mhi.labelHomeworkDescription.Content = info[i][1].Substring(0,7)+"...";
+                    mhi.labelHomeworkDescription.Content = info[i][1].Substring(0,7)+"...";//将作业内容content值显示在对应的控件中
                 }
                 else
                 {
-                    mhi.labelHomeworkDescription.Content = info[i][1];
+                    mhi.labelHomeworkDescription.Content = info[i][1];//不超过7条就全部展示
                 }
+                //notId值的获取
                 notId = info[i][2].ToString();
+                //根据学生真实学号、还有作业Id、还有真实截止时间对作业状态进行判断
+                //返回值为作业状态字符串，将该字符串赋值给作业状态的textBlock
                 mhi.tbHomeworkStatus.Text = ss.judgeHomeworkStatus(account, notId, info[i][3].ToString());
                 this.Message = mhi.tbHomeworkStatus.Text;
                 mhi.btnHomRe1.Tag = temp;
@@ -77,17 +85,17 @@ namespace HAMS.Student.StudentView
         {
             Button mh = (Button)sender;
             String[] info = (String[])mh.Tag;
-            if(Message != "已逾期"){
-            StuDoHomework sdh = new StuDoHomework(account, name, info[1],classId);
+            StuDoHomework sdh = new StuDoHomework(account, name, info[1], classId);//这里的classId是真实课堂号
+            //String account, String name,String notId, String classId,String message
             sdh.Show();
             this.Visibility = Visibility.Hidden;
-            }
-            else
+            //如果作业逾期了的话，就跳转之后进行弹窗提示
+            if (Message == "已逾期")
             {
                 MessageBox.Show("该作业已逾期，无法再进行作答");
             }
         }
-        //查看排行榜的点击时间（后面还要传参，这里目前是这样写)
+        //查看排行榜的点击事件（后面还要传参，这里目前是这样写)
         private void homRk(object sender, RoutedEventArgs e)
         {
             Button mh = (Button)sender;

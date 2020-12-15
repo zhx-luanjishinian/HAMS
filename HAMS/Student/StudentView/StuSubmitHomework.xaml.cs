@@ -27,7 +27,7 @@ namespace HAMS.Student.StudentView
         public String notId { set; get; }
         public String classId { set; get; }
        
-        public StuSubmitHomework(String account, String name,String notId,String classId)
+        public StuSubmitHomework(String account, String name,String notId,String classId)//真实课堂号
         {
             InitializeComponent();
             this.account = account;

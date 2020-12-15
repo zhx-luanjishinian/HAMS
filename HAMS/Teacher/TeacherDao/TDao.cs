@@ -37,7 +37,7 @@ namespace HAMS.Teacher.TeacherDao
         
             return table;
         }
-        public DataTable getTrueDeadLine(string notId)
+        public DataTable getTrueDeadLine(String notId)
         {
             //sql语句
             String sql = "select truDeadline from notice where notId=@id";   //根据noticeId查找truDeadline
@@ -53,7 +53,7 @@ namespace HAMS.Teacher.TeacherDao
             DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);
             return table;
         }
-        public DataTable getNotIdByClassIdAndNotTitle(string notTitle,int classId)    //根据名称和classId查notId
+        public DataTable getNotIdByClassIdAndNotTitle(String notTitle,int classId)    //根据名称和classId查notId
         {
             //sql语句
             String sql = "select notId from notice where notTitle=@id and classId=@cId";   //根据noticeId查找truDeadline
@@ -119,7 +119,7 @@ namespace HAMS.Teacher.TeacherDao
 
         }
 
-        public DataTable getTeacherId(string TeacherSpecId)
+        public DataTable getTeacherId(String TeacherSpecId)
         {
             //根据教师工号获取课堂表里的自增主键教师号teacherId
             String sql = "select teacherId from teacher where teacherSpecId = @tid;";
@@ -220,7 +220,7 @@ namespace HAMS.Teacher.TeacherDao
             MySqlParameter para = new MySqlParameter("@nId", noticeId);
             return DataUtil.DataOperation.DataDelete(sql, para);//如果删除成功，则返回true
         }
-        public Boolean deleteHomework(string noticeId)
+        public Boolean deleteHomework(String noticeId)
         {
             //因为需要级联删除，因此需要首先删除homework表中的数据,才能删除notice表中的数据
             String sql1 = "delete from homework where notId=@nId;";
@@ -278,6 +278,14 @@ namespace HAMS.Teacher.TeacherDao
             DataTable table = DataUtil.DataOperation.DataQuery(sql, para);
             return table;
 
+        }
+        public DataTable getNotURLByNotId(String notId)    
+        {
+            //根据notId查notURL
+            String sql = "select notURL from notice where notId=@nid";   //根据noticeId查找truDeadline
+            MySqlParameter parameter = new MySqlParameter("@nid", notId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);
+            return table;
         }
 
         //获得已批改作业信息

@@ -253,7 +253,7 @@ namespace HAMS.Teacher.TeacherService
             Scoreinfos[1] = (string)tbScoreAndRemark.Rows[0][1];
             return Scoreinfos;
         }
-        public DateTime GetPreviousDateTime(string classSpaceId,string homeworkTitle)
+        public DateTime GetPreviousDateTime(String classSpaceId,String homeworkTitle)
         {
             DataTable table1 = td.getClassId(classSpaceId);
             int result;
@@ -273,7 +273,7 @@ namespace HAMS.Teacher.TeacherService
         }
 
 
-        public string getNotURLName(string notTitle, string classSpecId)
+        public string getNotURLName(String notTitle, String classSpecId)
         {
             //根据notTitle、 classSpecId获取作业附件URL名
             //（1）通过cSpecId获取cId
@@ -309,7 +309,7 @@ namespace HAMS.Teacher.TeacherService
             string submitTime = table3.Rows[0][0].ToString();
             return submitTime;
         }
-        public Boolean DeleteHomeworkNotice(string classSpecId, string homeworkTitle)
+        public Boolean DeleteHomeworkNotice(String classSpecId, String homeworkTitle)
         {
             DataTable table1 = td.getClassId(classSpecId);
             int classId = Convert.ToInt32(table1.Rows[0][0]);
@@ -317,7 +317,22 @@ namespace HAMS.Teacher.TeacherService
             bool flag = td.deleteHomework(table2.Rows[0][0].ToString());
             if(flag==true)
             {
-                bool flag1 = td.deleteNotice(table2.Rows[0][0].ToString());
+                string notId = table2.Rows[0][0].ToString();
+                
+               
+                //根据notId找notURL
+                DataTable tbNotURL = td.getNotURLByNotId(notId);
+                //把作业公告文件夹进行改名
+                string notURL = tbNotURL.Rows[0][0].ToString();//课堂号/作业公告号/作业附件
+                string[] notURLs = notURL.Split('/');
+                string currentDirFullPath = notURLs[0] + "/" + notURLs[1];
+                string newDirName = "已被删除的作业公告" + notURLs[1];
+                FtpUpDown.Rename(currentDirFullPath, newDirName);
+                
+
+                //在数据库中删除作业公告
+                bool flag1 = td.deleteNotice(notId);
+                
                 return flag1;
             }
             else

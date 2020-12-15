@@ -15,6 +15,7 @@ using HAMS.Student.StudentService;
 using HAMS.ToolClass;
 using HAMS.Student.StudentView;
 using HAMS.Student.StudentUserControl;
+using System.Windows.Threading;
 
 namespace HAMS.Student.StudentView
 {
@@ -27,6 +28,7 @@ namespace HAMS.Student.StudentView
         public String account{set;get;}
         public String name { set; get; }
         private SService ss = new SService();
+        DispatcherTimer disTimer = new DispatcherTimer();
         public AlertForm(String account,String name)
         {
             InitializeComponent();
@@ -37,57 +39,102 @@ namespace HAMS.Student.StudentView
             showAertInfo(ss.showAlertFormInfo(account));
             //初始化操作
             initComboxRank();
-            
+            homeNumberAlert();
+
+
         }
+       
         //显示预警主界面信息的函数
-        public void showAertInfo( List<List<String>> info)
+        public void showAertInfo( List<List<List<String>>> info)
         {
-            List< List<String>> result = info;
-            int count = result.Count;
-            for(int i = 0; i < result.Count; i++)
+            List<List< List<String>>> result = info;
+            int count = result[0].Count;
+            for(int i = 0; i < result[0].Count; i++)
             {
                 ListViewItem lvi = new ListViewItem();
-                //首先默认用户没有设置自定义的时间
-                AlertMainForm amf = new AlertMainForm(result[i][1]);
-                if (result[i].Count > 4) {
-                 amf = new AlertMainForm(result[i][1],result[i][4]);
-                    if (result[i][4] != "") {
-                    amf.btnLimitedTime1.Content = result[i][4];
+                //首先默认用户没有设置自定义的时间,传入具体截止时间，课堂名，作业标题
+                AlertMainForm amf = new AlertMainForm(result[0][i][1],result[0][i][0],result[0][i][2]);
+                if (result[0][i].Count > 4) {
+                 
+                    if (result[0][i][4] != "") {
+                        //此处相比于先前加入了自定义的截止时间
+                        amf = new AlertMainForm(result[0][i][1], result[0][i][0], result[0][i][2], result[0][i][4]);
+                        amf.btnLimitedTime1.Content = result[0][i][4];
                     }
                     else
                     {
                         amf.btnLimitedTime1.Content = "截止时间设置";
                     }
                 }
-                if (result[i].Count > 5) {
-                if(result[i][5]!="")
+                if (result[0][i].Count > 5) {
+                if(result[0][i][5]!="")
                 {
-                    
-                    amf.comboBoxDegree1.SelectedIndex = int.Parse(result[i][5])-1;
+                    //默认减1获得当前设置的值
+                    amf.comboBoxDegree1.SelectedIndex = int.Parse(result[0][i][5])-1;
                     }
                 }
-                if (DateTime.Compare(Convert.ToDateTime(result[i][1]), DateTime.Now) < 0)
-                {
-                    //如果超过了截止时间就变红
-                    var bc = new BrushConverter();
-                    //超过了截止时间的不计入到里面
-                    count--;
-                    amf.bor.Background = (Brush)bc.ConvertFrom("#FF0000");
-                }
+                
                 amf.textBlockHomeworkOrder1.Text = (i+1).ToString();
-                amf.textBlockHomeworkName1.Text = result[i][2];
-                amf.textBlockClassName1.Text = result[i][0];             
+                amf.textBlockHomeworkName1.Text = result[0][i][2];
+                amf.textBlockClassName1.Text = result[0][i][0];             
                 for (int j = 0; j < 5; j++)
                 { 
                     amf.comboBoxDegree1.Items.Add(j+1);
 
                 }
-                amf.comboBoxDegree1.Tag = result[i][3];
-                
+                amf.comboBoxDegree1.Tag = result[0][i][3];           
                 amf.comboBoxDegree1.SelectionChanged += new SelectionChangedEventHandler(defcomplexity);
                 amf.btnLimitedTime1.Click += new RoutedEventHandler(btnDeadline_Click);
                 lvi.Content = amf;
                 listView2.Items.Add(lvi);
+            }
+            for(int i = 0; i < result[1].Count; i++)
+            {
+                ListViewItem lvi = new ListViewItem();
+                //首先默认用户没有设置自定义的时间,传入具体截止时间，课堂名，作业标题
+                AlertMainForm amf = new AlertMainForm(result[1][i][1], result[1][i][0], result[1][i][2]);
+                if (result[1][i].Count > 4)
+                {
+
+                    if (result[1][i][4] != "")
+                    {
+                        //此处相比于先前加入了自定义的截止时间
+                        amf = new AlertMainForm(result[1][i][1], result[1][i][0], result[1][i][2], result[1][i][4]);
+                        amf.btnLimitedTime1.Content = result[1][i][4];
+                    }
+                    else
+                    {
+                        amf.btnLimitedTime1.Content = "截止时间设置";
+                    }
+                }
+                if (result[1][i].Count > 5)
+                {
+                    if (result[1][i][5] != "")
+                    {
+                        //默认减1获得当前设置的值
+                        amf.comboBoxDegree1.SelectedIndex = int.Parse(result[1][i][5]) - 1;
+                    }
+                }
+
+                amf.textBlockHomeworkOrder1.Text = (i + 1+result[0].Count).ToString();
+                amf.textBlockHomeworkName1.Text = result[1][i][2];
+                amf.textBlockClassName1.Text = result[1][i][0];
+                for (int j = 0; j < 5; j++)
+                {
+                    amf.comboBoxDegree1.Items.Add(j + 1);
+
+                }
+                //超过了截止时间的不计入到里面
+                var bc = new BrushConverter();
+                amf.bor.Background = (Brush)bc.ConvertFrom("#FF0000");
+                amf.comboBoxDegree1.Tag = result[1][i][3];
+                amf.comboBoxDegree1.SelectionChanged += new SelectionChangedEventHandler(defcomplexity);
+                amf.btnLimitedTime1.Click += new RoutedEventHandler(btnDeadline_Click);
+                lvi.Content = amf;
+                listView2.Items.Add(lvi);
+
+                //如果超过了截止时间就变红            
+                
             }
             //总的作业公告数量-已完成的作业数量=未完成的作业数量
             textBlockUnfinishedNumber.Text = (count-ss.countHomeworkNumber(account)).ToString();
@@ -188,5 +235,32 @@ namespace HAMS.Student.StudentView
                 showAertInfo(ss.upComplexity(account));
             }
         }
+        //进行作业预警数量是否到达的预警
+        public void homeNumberAlert()
+        {
+            if (int.Parse(this.textBlockUnfinishedNumber.Text) > int.Parse(this.textBlockAlertNumber.Text))
+            {
+                int count = int.Parse(this.textBlockUnfinishedNumber.Text) - int.Parse(this.textBlockAlertNumber.Text);
+                MessageBox.Show("亲，你已有" + count.ToString() + "份作业超出了预警范围，请及时完成");
+                disTimer.Tick += new EventHandler(funcAlert);
+                disTimer.Interval = new TimeSpan(0, 0, 60);
+                disTimer.Start();
+            }
+        }
+        //设置每隔1分钟进行一次弹窗提醒
+        private void funcAlert(object sender,EventArgs e)
+        {
+            if (int.Parse(this.textBlockUnfinishedNumber.Text) > int.Parse(this.textBlockAlertNumber.Text))
+            {
+                int count = int.Parse(this.textBlockUnfinishedNumber.Text) - int.Parse(this.textBlockAlertNumber.Text);
+                MessageBox.Show("亲，你已有" + count.ToString() + "份作业超出了预警范围，请及时完成");
+            }
+        }
+        public void homeTimeAlert()
+        {
+
+        }
+
+
     }
 }

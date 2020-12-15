@@ -46,10 +46,7 @@ namespace HAMS.Teacher.TeacherService
             return homURL;
         }
 
-        internal string PasteSubmitTimeInForm(string classSpecId, string homeworkTitle)
-        {
-            throw new NotImplementedException();
-        }
+       
 
         public bool CorrectHomework(int homId, string score, string remark)
         {
@@ -302,7 +299,47 @@ namespace HAMS.Teacher.TeacherService
             return FtpUpDown.delFile(FileFullPath, out errorinfo);
             
         }
+        public string PasteSubmitTimeInForm(string classSpecId, string homeworkTitle)
+        {
+          DataTable table1 =  td.getClassId(classSpecId);
+            int classId=Convert.ToInt32(table1.Rows[0][0]) ;
+            DataTable table2 = td.getNotIdByClassIdAndNotTitle(homeworkTitle, classId);
+            DataTable table3 = td.GetSubmitTime(table2.Rows[0][0].ToString());
+            string submitTime = table3.Rows[0][0].ToString();
+            return submitTime;
+        }
+        public Boolean DeleteHomeworkNotice(string classSpecId, string homeworkTitle)
+        {
+            DataTable table1 = td.getClassId(classSpecId);
+            int classId = Convert.ToInt32(table1.Rows[0][0]);
+            DataTable table2 = td.getNotIdByClassIdAndNotTitle(homeworkTitle, classId);
+            bool flag = td.deleteHomework(table2.Rows[0][0].ToString());
+            if(flag==true)
+            {
+                string notId = table2.Rows[0][0].ToString();
+                
+               
+                //根据notId找notURL
+                DataTable tbNotURL = td.getNotURLByNotId(notId);
+                //把作业公告文件夹进行改名
+                string notURL = tbNotURL.Rows[0][0].ToString();//课堂号/作业公告号/作业附件
+                string[] notURLs = notURL.Split('/');
+                string currentDirFullPath = notURLs[0] + "/" + notURLs[1];
+                string newDirName = "已被删除的作业公告" + notURLs[1];
+                FtpUpDown.Rename(currentDirFullPath, newDirName);
+                
 
+                //在数据库中删除作业公告
+                bool flag1 = td.deleteNotice(notId);
+                
+                return flag1;
+            }
+            else
+            {
+                MessageBox.Show("删除学生作业记录失败");
+                return false;
+            }
+        }
 
     }
 }

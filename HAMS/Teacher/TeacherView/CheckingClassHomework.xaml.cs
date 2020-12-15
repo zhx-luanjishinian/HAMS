@@ -85,5 +85,15 @@ namespace HAMS.Teacher.TeacherView
             newBreifView.Show();
             this.Visibility = System.Windows.Visibility.Hidden;
         }
+
+        private void btnAnswerQuestion_Click(object sender, RoutedEventArgs e)
+        {
+            AnswerQuestion newAnswerQuestion = new AnswerQuestion(tbClassInfo1.Text);
+
+            newAnswerQuestion.Show();
+
+           // this.Visibility = System.Windows.Visibility.Hidden;
+
+        }
     }
 }

@@ -102,7 +102,8 @@ namespace HAMS.Student.StudentView
         {
             Button mh = (Button)sender;
             String[] info = (String[])mh.Tag;
-            AnswerQuestion aq = new AnswerQuestion(info[0], info[1]);
+            //AnswerQuestion aq = new AnswerQuestion(info[0], info[1]);
+            AnswerQuestion aq = new AnswerQuestion(info[0]);
             aq.Show();
             this.Visibility = Visibility.Hidden;
         }

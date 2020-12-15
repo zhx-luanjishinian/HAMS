@@ -98,11 +98,11 @@ namespace HAMS.Teacher.TeacherView
 
                 if (ifDelete == true)
                 {
-                    System.Windows.MessageBox.Show("删除成功");
+                    System.Windows.MessageBox.Show("删除该作业公告成功");
                 }
                 else
                 {
-                    System.Windows.MessageBox.Show("删除失败");
+                    System.Windows.MessageBox.Show("删除该作业公告失败");
                 }
 
                 homeworkListView.Items.Remove(clickTeachClass);

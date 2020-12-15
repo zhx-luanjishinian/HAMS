@@ -279,6 +279,14 @@ namespace HAMS.Teacher.TeacherDao
             return table;
 
         }
+        public DataTable getNotURLByNotId(string notId)    
+        {
+            //根据notId查notURL
+            String sql = "select notURL from notice where notId=@nid";   //根据noticeId查找truDeadline
+            MySqlParameter parameter = new MySqlParameter("@nid", notId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);
+            return table;
+        }
 
 
     }

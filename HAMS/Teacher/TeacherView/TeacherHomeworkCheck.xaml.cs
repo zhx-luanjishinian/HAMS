@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HAMS.ToolClass;
 using HAMS.Teacher.TeacherService;
+using System.Data;
+using HAMS.Entity;
 
 namespace HAMS.Teacher.TeacherView
 {
@@ -211,6 +213,7 @@ namespace HAMS.Teacher.TeacherView
         private void btnUpload_Click(object sender, RoutedEventArgs e)
         {
 
+            
             //1、从数据库中查出homURL,然后获取文件名并能够鼠标放上去时在旁边显示文件名
             //从上一界面获取notId,根据notId+stuId访问到homId
 
@@ -275,12 +278,12 @@ namespace HAMS.Teacher.TeacherView
 
         private void tbRemark_GotFocus(object sender, RoutedEventArgs e)
         {
-            //如果没有批改，则需要实现鼠标点击时提示文字消失
-            if (!ifCorrect)
+			//如果没有批改，则需要实现鼠标点击时提示文字消失
+			if (!ifCorrect)
             {
                 tbRemark.Text = "";  //实现鼠标点击时提示文字消失
             }
-            
-        }
+			
+		}
     }
 }

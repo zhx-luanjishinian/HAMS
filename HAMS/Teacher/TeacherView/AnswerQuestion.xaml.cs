@@ -21,19 +21,20 @@ namespace HAMS.Teacher.TeacherView
     {
         public String notId { set; get; }
         public String classSpecId { set; get; }
-        public AnswerQuestion(String notId,String classSpecId)
+        public AnswerQuestion(String className)
         {
             InitializeComponent();
-            this.notId = notId;
-            this.classSpecId = classSpecId;
+            labelClassName.Content = className;
+            
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            CheckingClassHomework newHomeworkNoticeCheck = new CheckingClassHomework();
-            newHomeworkNoticeCheck.Show();
-            // 隐藏自己(父窗体)
-            this.Visibility = System.Windows.Visibility.Hidden;
+            //CheckingClassHomework newHomeworkNoticeCheck = new CheckingClassHomework();
+            //newHomeworkNoticeCheck.Show();
+            //// 隐藏自己(父窗体)
+            //this.Visibility = System.Windows.Visibility.Hidden;
+            this.Close();
         }
     }
 }

@@ -19,6 +19,8 @@ namespace HAMS.Teacher.TeacherView
     /// </summary>
     public partial class CheckingClassHomework : Window
     {
+        TeacherService.TService ts = new TeacherService.TService();
+
         public CheckingClassHomework()
         {
             InitializeComponent();
@@ -34,6 +36,7 @@ namespace HAMS.Teacher.TeacherView
             tbTeacherInfo1.Text = teacherName;
             tbClassInfo.Text = classSpecId;
             tbClassInfo1.Text = className;
+            labelHomeworkArrangeTime.Content = "发布时间："+ts.PasteSubmitTimeInForm(classSpecId, homeworkTitle);
         }
 
         private void btnHomeworkCorrect_Click(object sender, RoutedEventArgs e)
@@ -81,6 +84,16 @@ namespace HAMS.Teacher.TeacherView
             BreifView newBreifView = new BreifView(tbClassInfo.Text.ToString(),tbClassInfo1.Text.ToString(),tbTeacherInfo.Text.ToString(),tbTeacherInfo1.Text.ToString());
             newBreifView.Show();
             this.Visibility = System.Windows.Visibility.Hidden;
+        }
+
+        private void btnAnswerQuestion_Click(object sender, RoutedEventArgs e)
+        {
+            AnswerQuestion newAnswerQuestion = new AnswerQuestion(tbClassInfo1.Text);
+
+            newAnswerQuestion.Show();
+
+           // this.Visibility = System.Windows.Visibility.Hidden;
+
         }
     }
 }

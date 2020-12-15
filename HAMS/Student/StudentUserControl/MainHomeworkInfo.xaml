@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HAMS.Student.StudentUserControl"
              mc:Ignorable="d" Height="60.511" Width="794.435">
+    
     <Canvas x:Name="canHomRecord1" Margin="10,0,0.667,-0.333" >
         <Button x:Name="btnHomRe1" Height="58"  Width="400"  Background="White" BorderBrush="White" Click="btnHomRe1_Click">
             <Canvas Height="58" Width="400">
@@ -15,7 +16,7 @@
         </Button>
         <Button x:Name="btnCheckRank" Content="查看排行" Canvas.Left="423.667" Canvas.Top="25.627" Width="75" FontFamily="Nirmala UI Semilight" Click="btnCheckRank_Click"/>
         <Button x:Name="btnHomeworkAnswer" Content="作业答疑区" Canvas.Left="555.666" Canvas.Top="25.627" Width="75" FontFamily="Nirmala UI Semilight" Click="btnHomeworkAnswer_Click"/>
-        <TextBlock x:Name="tbHomeworkStatus" Text="待批改" Canvas.Left="673.667" Canvas.Top="25.627" Width="75" FontFamily="Nirmala UI Semilight"/>
+        <TextBlock x:Name="tbHomeworkStatus" Text="待批改" Canvas.Left="673.667" Canvas.Top="25.627" Width="75" FontFamily="Nirmala UI Semilight" />
     </Canvas>
 
 </UserControl>

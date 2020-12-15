@@ -212,7 +212,7 @@
                         <ColumnDefinition Width="73*"/>
                     </Grid.ColumnDefinitions>
                     <Image x:Name="image2" Source="../../Resources/链接.png" HorizontalAlignment="Left" Width="24" Height="22" VerticalAlignment="Bottom" Margin="6,0,0,0.2"/>
-                    <Label x:Name="lbUpload" Content="下载文件" FontSize="10" Margin="30,0,0,0.2" HorizontalAlignment="Left" VerticalAlignment="Bottom" ToolTip="" Grid.ColumnSpan="2" Width="100"/>
+                    <Label x:Name="lbUpload" Content="下载文件" FontSize="10" Margin="30,4,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" ToolTip="" Grid.ColumnSpan="2" Width="100"/>
 
                     <Label x:Name="label2" Content="(1个文件)" Grid.Column="1" Margin="40,5,0,0.2" FontSize="10"/>
                 </Grid>

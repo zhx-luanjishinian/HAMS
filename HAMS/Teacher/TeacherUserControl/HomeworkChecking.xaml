@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="HAMS.Teacher.TeacherUserControl.HomeworkChecking"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HAMS.Teacher.TeacherUserControl"
+             mc:Ignorable="d" Height="42.021" Width="498.484">
+    <Grid Margin="10,0,0,382.667">
+        <Canvas Height="39.8" Width="482.866">
+            <Rectangle Height="25.811" Canvas.Left="10" Stroke="Black" Canvas.Top="6.189" Width="29.2" StrokeThickness="0">
+                <Rectangle.Fill>
+                    <ImageBrush ImageSource="/HAMS;component/Resources/profile.jpg"/>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Border BorderBrush="#FFABADB3" BorderThickness="0,0,0,1" Height="40" Width="498" Canvas.Left="-15"/>
+            <Label x:Name="lbStudentInfo" Content="201821130135 郑昊欣" Canvas.Left="48.4" Canvas.Top="8.5" Height="22" FontSize="10"/>
+            <Button x:Name="btnHomeworkCorrect" Content="批改作业" Canvas.Left="423.867" Canvas.Top="10.47" Width="56.867" Background="{x:Null}" BorderThickness="0" FontWeight="Bold" Click="btnHomeworkCorrect_Click"/>
+            <Label x:Name="lbHomeworkState" Content="未批改" Canvas.Left="375.067" Canvas.Top="6.76" Width="48.8"/>
+        </Canvas>
+    </Grid>
+</UserControl>

@@ -10,18 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace HAMS.Admin.AdminView
+namespace HAMS.Teacher.TeacherUserControl
 {
-    /// <summary>
-    /// Notice.xaml 的交互逻辑
-    /// </summary>
-    public partial class Notice : Window
-    {        
-        public Notice()
-        {
-            InitializeComponent();
-        }        
-    }
+	/// <summary>
+	/// HomeworkUnfinished.xaml 的交互逻辑
+	/// </summary>
+	public partial class HomeworkUnfinished : UserControl
+	{
+		public HomeworkUnfinished()
+		{
+			InitializeComponent();
+		}
+	}
 }

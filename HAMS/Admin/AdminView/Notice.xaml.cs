@@ -18,10 +18,10 @@ namespace HAMS.Admin.AdminView
     /// Notice.xaml 的交互逻辑
     /// </summary>
     public partial class Notice : Window
-    {
+    {        
         public Notice()
         {
             InitializeComponent();
-        }
+        }        
     }
 }

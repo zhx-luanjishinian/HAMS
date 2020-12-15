@@ -134,7 +134,7 @@ namespace HAMS
 
         private void btnReset_Click(object sender, RoutedEventArgs e)
         {
-            StudentMainForm smf = new StudentMainForm("songhuiyu","hello");
+            
         }
 
         private void TxtUserName_TextChanged(object sender, TextChangedEventArgs e)

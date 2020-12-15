@@ -87,7 +87,7 @@ namespace HAMS.Student.StudentView
                 MessageBox.Show("该作业已逾期，无法再进行作答");
             }
         }
-        //查看排行榜的点击时间（后面还要传参，这里目前是这样写)
+        //查看排行榜的点击事件（后面还要传参，这里目前是这样写)
         private void homRk(object sender, RoutedEventArgs e)
         {
             Button mh = (Button)sender;

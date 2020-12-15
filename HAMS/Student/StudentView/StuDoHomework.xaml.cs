@@ -110,7 +110,8 @@ namespace HAMS.Student.StudentView
 
         private void btnDoHomework_Click(object sender, RoutedEventArgs e)
         {
-            if (true)//里面是验证函数
+            string content = btnDoHomework.Content.ToString();
+            if (content == "待批改" || content== "未完成")//里面是验证函数
             {
                 // 打开子窗体
                 StuSubmitHomework ssh = new StuSubmitHomework(account,name,notId,classId);

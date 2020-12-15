@@ -102,31 +102,33 @@ namespace HAMS.Student.StudentDao
          */
         public Dictionary<int,List<String>> showAllHomeworkInfo(String classSpecId)
         {
-            Dictionary<int, List<String>> result = new Dictionary<int, List<string>>();
-            String sql = "select classId,className from class where classSpecId=@cid";
-            MySqlParameter para = new MySqlParameter("@cid", classSpecId);
-            DataTable table = DataOperation.DataQuery(sql, para);
-            String sql1 = "select notTitle,content,notId,truDeadline from notice where classId =@cd";
-            MySqlParameter para1 = new MySqlParameter("@cd", table.Rows[0][0].ToString());
-            DataTable table1 = DataOperation.DataQuery(sql1, para1);
-           
+            Dictionary<int, List<String>> result = new Dictionary<int, List<string>>();   //定义返回值，类型是字典类型
+            String sql = "select classId,className from class where classSpecId=@cid"; //通过真实课堂号来查询课堂号、课堂名
+            MySqlParameter para = new MySqlParameter("@cid", classSpecId); //赋值操作
+            DataTable table = DataOperation.DataQuery(sql, para);  //执行SQL语句进行查询
+            String sql1 = "select notTitle,content,notId,truDeadline from notice where classId =@cd";   //通过课堂号来查找notTitle,content,notId,truDeadline
+            MySqlParameter para1 = new MySqlParameter("@cd", table.Rows[0][0].ToString());  //进行赋值操作
+            DataTable table1 = DataOperation.DataQuery(sql1, para1);  //执行SQL语句进行查询
+           //在table1中进行遍历。table1中内容是notTitle,content,notId,truDeadline
             for(int i = 0; i < table1.Rows.Count; i++)
             {
-                List<String> info = new List<string>();
+                //新建info字符串列表
+                List<String> info = new List<string>();  
                 //先添加作业的标题
-                info.Add(table1.Rows[i][0].ToString());
+                info.Add(table1.Rows[i][0].ToString());  
                 //然后添加作业的具体内容
                 info.Add(table1.Rows[i][1].ToString());
                 //添加作业公告的id
                 info.Add(table1.Rows[i][2].ToString());
                 //添加作业的具体截止时间
                 info.Add(table1.Rows[i][3].ToString());
+                //result的value每一个值都是一个列表，列表里是作业的信息，key是0，1，2，3，4，5，6
                 result.Add(i, info);
             }
-            //添加课堂名字
+            //添加课堂名字，只有一个就不需要循环了
             List<String> className = new List<string>();
             className.Add(table.Rows[0][1].ToString());
-            result.Add(table1.Rows.Count, className);
+            result.Add(table1.Rows.Count, className); //key是作业数量的统计，value是课堂名
             return result;
         }
         //判断学生的作业状态,直接返回一张表,传入学生的学号以及具体的课堂号

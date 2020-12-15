@@ -38,9 +38,11 @@ namespace HAMS.Student.StudentView
             
             MainHomeworkShow(classId);
         }
+
+        //显示主页面，加载动态控件,参数是classId
         public void MainHomeworkShow(String clId)
         {
-            Dictionary<int, List<String>> info = ss.showAllHomeworkInfo(clId);
+            Dictionary<int, List<String>> info = ss.showAllHomeworkInfo(clId); 
             labelClassName.Content = info[info.Count-1][0];
             for(int i = 0; i < info.Count-1; i++)
             {

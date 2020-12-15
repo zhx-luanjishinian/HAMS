@@ -31,38 +31,31 @@ namespace HAMS.Teacher.TeacherView
         private bool ifCorrect;//表示该作业是否是已批改作业
 
         //无参构造函数，由于前一个界面没有实现，而为了测试下载控件能否正常使用，并不是真正需要用的
-        public TeacherHomeworkCheck()
+        public TeacherHomeworkCheck(string NotTitle,string teacherId,string teacherName,string studentId, string studentName,string description)
         {
             InitializeComponent();
             //通过上一个界面传递过来的值，进行此界面控件信息的赋值操作
 
-            //给作业公告标题赋值
-            //!!lbNotTitle.Content = NotTitle;需要最后取消注释
+            //前端传值，给基本信息赋值
+            lbNotTitle.Content = NotTitle;
+            tbTeacherIdentity.Text = teacherId;
+            tbTeacherIdentity1.Text = teacherName;
+            lbStudentInfo.Content = studentId;
+            lbHomPostil.Content = description;
 
             //假值，由于前一个界面还没有实现
-            lbNotTitle.Content = "猫狗大战期末作业";
+            //string StudentInfo = "2018211XXXXX 小红帽";
 
+            ////给学生信息赋值
+            //lbStudentInfo.Content = StudentInfo;
 
+            ////StudentInfo存储的是学号+1空格+姓名，按空格切分即可获得学号与姓名
+            //string[] StudentInfos = StudentInfo.Split(' ');
+            //string StuId = StudentInfos[0];//获取当前待批改作业的学号
+            //string StuName = StudentInfos[1];//获取当前待批改作业的姓名
 
-            //获取当前待批改作业的作业Id
-            //!!int homId = homIds[index];需要最后取消注释
-
-            //获得当前待批改作业的作业Id,此处还是一个假值
-            homId = 4;
-
-            //假值，由于前一个界面还没有实现
-            string StudentInfo = "2018211XXXXX 小红帽";
-
-            //给学生信息赋值
-            lbStudentInfo.Content = StudentInfo;
-
-            //StudentInfo存储的是学号+1空格+姓名，按空格切分即可获得学号与姓名
-            string[] StudentInfos = StudentInfo.Split(' ');
-            string StuId = StudentInfos[0];//获取当前待批改作业的学号
-            string StuName = StudentInfos[1];//获取当前待批改作业的姓名
-
-            //根据homId获取该学生的作业备注并显示在控件上
-            lbHomPostil.Content = ts.GetPostilByHomId(homId);
+            ////根据homId获取该学生的作业备注并显示在控件上
+            //lbHomPostil.Content = ts.GetPostilByHomId(homId);
 
             //对下载附件按钮进行初始化：能够实现鼠标放上去之后学生附件的名称，将该按钮和服务器上的某个路径建立关系（这里应该得到数据库中存储的文件路
             //根据homId获得要下载文件在服务器上的路径

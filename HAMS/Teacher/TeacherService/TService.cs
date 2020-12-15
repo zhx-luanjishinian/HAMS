@@ -8,7 +8,8 @@ using HAMS.ToolClass;
 using HAMS.Teacher.TeacherDao;
 using HAMS.Entity;
 using System.Windows.Forms;
-
+using HAMS.Teacher.TeacherUserControl;
+using HAMS.Teacher.TeacherView;
 namespace HAMS.Teacher.TeacherService
 {
     class TService
@@ -326,5 +327,7 @@ namespace HAMS.Teacher.TeacherService
             }
         }
 
+ 
+        }
     }
-}
+

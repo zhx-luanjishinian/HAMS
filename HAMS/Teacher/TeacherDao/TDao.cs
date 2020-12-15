@@ -280,6 +280,61 @@ namespace HAMS.Teacher.TeacherDao
 
         }
 
+        //获得已批改作业信息
+        public DataTable SelectHomeworkCheckedInfo(String notId)
+        {
+            //此类用来装返回的对象
+
+            String sql = "select stuId from homework where score is not null and notId=@nid;";
+            MySqlParameter parameter = new MySqlParameter("@nid", notId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);  //查到学生id,分数,作业路径
+            return table;
+
+        }
+        //获得待批改作业信息
+        public DataTable SelectHomeworkNeedCorrectInfo(String notId)
+        {
+            //此类用来装返回的对象
+
+            String sql = "select stuId from homework where score is null and homURLName is not null and notId=@nid;";   //null
+            MySqlParameter parameter = new MySqlParameter("@nid", notId);
+   
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);  //查到学生id,分数,作业路径
+            return table;
+
+        }
+        //获得未完成作业信息
+        public DataTable SelectHomeworkUnfinishedInfo(String notId)
+        {
+            //此类用来装返回的对象
+
+            String sql = "select stuId from homework where notId=@nid and homURLName is null;";
+            MySqlParameter parameter = new MySqlParameter("@nid", notId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);  //查到学生id,分数,作业路径
+            return table;
+
+        }
+        //根据学生Id查询学生学号和姓名
+        public DataTable GetStudentNameAndIdByStuID(String stuId)
+        {
+            //此类用来装返回的对象
+
+            String sql = "select stuSpecId,name from student where stuId=@nid";
+            MySqlParameter parameter = new MySqlParameter("@nid", stuId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);  //查到学生id,分数,作业路径
+            return table;
+
+        }
+        public DataTable GetPostilByHomId(String stuId)
+        {
+            //此类用来装返回的对象
+
+            String sql = "select stuSpecId,name from student where stuId=@nid";
+            MySqlParameter parameter = new MySqlParameter("@nid", stuId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);  //查到学生id,分数,作业路径
+            return table;
+
+        }
 
     }
 

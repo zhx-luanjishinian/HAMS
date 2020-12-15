@@ -199,7 +199,7 @@ namespace HAMS.Teacher.TeacherDao
             return DataUtil.DataOperation.DataUpdate(sql, para1, para2, para3);//如果更新成功，则返回true
         }
 
-        public DataTable GetScoreAndRemarkByHomId(int homId)
+        public DataTable GetScoreAndRemarkByHomId(int homId)    //需要用到的函数
         {
             //根据homId获取score和remark
             String sql = "select score,remark from homework where homId = @hid;";

@@ -27,7 +27,9 @@ namespace HAMS.Student.StudentView
         public String name { set; get; }
         public String notId { set; get; }
         public String classId { set; get; }
-        public StuDoHomework(String account,String name)
+
+        public String message { set; get; }
+        public StuDoHomework(String account, String name)
         {
             InitializeComponent();
             this.account = account;
@@ -35,16 +37,61 @@ namespace HAMS.Student.StudentView
             tbUserNameAc.Text = account + name;
             doHomeworkInfoShow();
         }
-        public StuDoHomework(String account, String name,String notId,String classId)
+        public StuDoHomework(String account, String name, String notId, String classId)
         {
             InitializeComponent();
             this.account = account;
             this.name = name;
             this.notId = notId;
             this.classId = classId;
+            Dictionary<int, List<String>> info = ss.showAllHomeworkInfo(classId);
+            this.message = ss.judgeHomeworkStatus(account, notId, info[0][3].ToString());
+            if (message == "未完成")
+            {
+                btnDoHomework.Content = "作答";
+            }
+            if (message == "待批改")
+            {
+                btnDoHomework.Content = "修改";
+            }
+            if (message == "已批改")
+            {
+                btnDoHomework.Content = "查看";
+            }
+            if (message == "已逾期")
+            {
+                btnDoHomework.Content = "";
+            }
             tbUserNameAc.Text = account + name;
             doHomeworkInfoShow();
         }
+        //public StuDoHomework(String account, String name,String notId,String classId,String message)//真实课堂号
+        //{
+        //    InitializeComponent();
+        //    this.account = account;
+        //    this.name = name;
+        //    this.notId = notId;
+        //    this.classId = classId;
+        //    this.message = message;
+        //    if(message=="未完成")
+        //    {
+        //        btnDoHomework.Content = "作答";
+        //    }
+        //    if (message == "待批改")
+        //    {
+        //        btnDoHomework.Content = "修改";
+        //    }
+        //    if (message == "已批改")
+        //    {
+        //        btnDoHomework.Content = "查看";
+        //    }
+        //    if (message == "已逾期")
+        //    {
+        //        btnDoHomework.Content = "";
+        //    }
+        //    tbUserNameAc.Text = account + name;
+        //    doHomeworkInfoShow();
+        //}
         public void doHomeworkInfoShow()
         {
             List<String> result = ss.showDohomeworkInfo(notId);
@@ -110,14 +157,25 @@ namespace HAMS.Student.StudentView
 
         private void btnDoHomework_Click(object sender, RoutedEventArgs e)
         {
-            if (true)//里面是验证函数
+            string content = btnDoHomework.Content.ToString();
+            //System.Windows.MessageBox.Show(content);
+            if (content == "修改" || content== "作答")//里面是验证函数
             {
                 // 打开子窗体
-                StuSubmitHomework ssh = new StuSubmitHomework(account,name,notId,classId);
+                StuSubmitHomework ssh = new StuSubmitHomework(account,name,notId,classId);//真实课堂号
                 ssh.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
             }
+            if (content == "查看")//里面是验证函数
+            {
+                // 打开子窗体
+                HomeworkSubmit hs = new HomeworkSubmit(account, name, notId, classId);//真实课堂号
+                hs.Show();
+                // 隐藏自己(父窗体)
+                this.Visibility = System.Windows.Visibility.Hidden;
+            }
+
         }
 
 

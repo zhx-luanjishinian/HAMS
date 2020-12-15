@@ -57,18 +57,19 @@ namespace HAMS.Student.StudentService
         //判断学生的作业状态，根据作业状态呈现出不同的值,传入学号，作业公告id,还有该项作业的截止时间
         public String judgeHomeworkStatus(String account,String notId,String deadline)
         {
+            //account, notId, info[i][3].ToString()真实截止时间
+            //table表的列名homId,submitTime,score,homURLName
             DataTable table = sd.defineHomeworkStatus(account, notId);
             //将timestamp时间戳转换为DateTime类型
             DateTime dl = Convert.ToDateTime(deadline);
             DateTime now = DateTime.Now;
             String message = "";
-            //查到数据了说明已经交了作业
-            if (table.Rows.Count > 0)
+            //查到作业名说明已经交了作业
+            if (table.Rows[0][3].ToString()!="")
             {
-
-
+                object score = table.Rows[0][2];
                 //然后判断老师是否已经批改过作业了,作业评分那一部分不为空，说明作业已经批改
-                if (table.Rows[0][2] != DBNull.Value)
+                if (score != DBNull.Value) //如果有分数的话
                 {
                     message = "已批改";
                 }
@@ -77,21 +78,20 @@ namespace HAMS.Student.StudentService
                     message = "待批改";
                 }
             }
+            //没有提交作业的话，进行截止时间的判断
             else
             {
                 //作业为空说明学生还未提交作业，此时再比较系统当前时间和老师设置的截止时间
                 //截止时间大于当前时间，说明截止时间还没有到
                 if (DateTime.Compare(dl, now) > 0)
                 {
-                    message = "去完成";
+                    message = "未完成";
                 }
                 else
                 {
                     message = "已逾期";
                 }
             }
-            
-
             return message;
         }
         //获得doHomework界面的信息
@@ -112,7 +112,7 @@ namespace HAMS.Student.StudentService
             }
             return result;
         }
-        public List<List<String>> showAlertFormInfo(String account)
+        public List<List<List<String>>> showAlertFormInfo(String account)
         {
             return sd.alertFomrInfo(account);
         }
@@ -132,19 +132,20 @@ namespace HAMS.Student.StudentService
             return sd.showAlertNumber(account);
         }
         //进行作业的升序排序
-        public List<List<String>> upRank(String account)
+        public List<List<List<String>>> upRank(String account)
         {
-            List<List<String>> results = sd.alertFomrInfo(account);
-            results.Sort(delegate (List<String> l1, List<String> l2) {
-                if (l1.Count > 4 && l2.Count > 4)
+            List<List<List<String>>> results = sd.alertFomrInfo(account);
+            List < List < String >> result = results[0];
+            result.Sort(delegate (List<String> l1, List<String> l2) {
+                if (l1[4] !=""  && l2[4] !="")
                 {
                     return l1[4].CompareTo(l2[4]);
                 }
-                else if (l1.Count > 4 && l2.Count <= 4)
+                else if (l1[4] != "" && l2[4] == "")
                 {
                     return l1[4].CompareTo(l2[1]);
                 }
-                else if (l1.Count <= 4 && l2.Count > 4)
+                else if (l1[4] == "" && l2[4] != "")
                 {
                     return l1[1].CompareTo(l2[4]);
                 }
@@ -155,21 +156,22 @@ namespace HAMS.Student.StudentService
         }
 
         //进行作业的降序排序
-        public List<List<String >>downRank(String account)
+        public List<List<List<String >>>downRank(String account)
         {
-            List<List<String>> results = sd.alertFomrInfo(account);
-            results.Sort(delegate (List<String> l1, List<String> l2) {
-                if (l1.Count > 4 && l2.Count > 4)
+            List<List<List<String>>> results = sd.alertFomrInfo(account);
+            List<List<String>> result = results[0];
+            result.Sort(delegate (List<String> l1, List<String> l2) {
+                if (l1[4] != "" && l2[4] != "")
                 {
                     return l2[4].CompareTo(l1[4]);
                 }
-                else if (l1.Count > 4 && l2.Count <= 4)
-                {
-                    return l2[1].CompareTo(l1[4]);
-                }
-                else if (l1.Count <= 4 && l2.Count > 4)
+                else if (l1[4] != "" && l2[4] == "")
                 {
                     return l2[4].CompareTo(l1[1]);
+                }
+                else if (l1[4] == "" && l2[4] != "")
+                {
+                    return l2[1].CompareTo(l1[4]);
                 }
                 return l2[1].CompareTo(l1[1]);
             });
@@ -181,12 +183,12 @@ namespace HAMS.Student.StudentService
             return sd.updateComplexity(account, notId, complexity);
         }
         //进行作业复杂度的升序排序
-        public List<List<String>> upComplexity(String account)
+        public List<List<List<String>>> upComplexity(String account)
         {
-            List<List<String>> results = sd.alertFomrInfo(account);
-           
+            List<List<List<String>>> results = sd.alertFomrInfo(account);
+            List<List<String>> result = results[0];
             //按第五项进行升序排序
-            results.Sort(delegate (List<String> l1, List<String> l2)
+            result.Sort(delegate (List<String> l1, List<String> l2)
             {
                 if (l1.Count > 5 && l2.Count > 5) {
                 return l1[5].CompareTo(l2[5]);
@@ -196,12 +198,12 @@ namespace HAMS.Student.StudentService
             return results;
         }
         //进行作业复杂度的降序排序
-        public List<List<String>> downComplexity(String account)
+        public List<List<List<String>>> downComplexity(String account)
         {
-            List<List<String>> results = sd.alertFomrInfo(account);
-            
+            List<List<List<String>>> results = sd.alertFomrInfo(account);
+            List<List<String>> result = results[0];
             //进行降序排序
-            results.Sort(delegate (List<String> l1, List<String> l2)
+            result.Sort(delegate (List<String> l1, List<String> l2)
             {
                 if (l1.Count > 5 && l2.Count > 5)
                 {

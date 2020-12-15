@@ -29,7 +29,7 @@
                 <Border.Background>
                     <ImageBrush>
                         <ImageBrush.ImageSource>
-                            <ImageSource>/Resources/bk_create.jpg</ImageSource>
+                            <ImageSource>/HAMS;component/Resources/bk_create.jpg</ImageSource>
                         </ImageBrush.ImageSource>
                     </ImageBrush>
                 </Border.Background>

@@ -102,31 +102,33 @@ namespace HAMS.Student.StudentDao
          */
         public Dictionary<int,List<String>> showAllHomeworkInfo(String classSpecId)
         {
-            Dictionary<int, List<String>> result = new Dictionary<int, List<string>>();
-            String sql = "select classId,className from class where classSpecId=@cid";
-            MySqlParameter para = new MySqlParameter("@cid", classSpecId);
-            DataTable table = DataOperation.DataQuery(sql, para);
-            String sql1 = "select notTitle,content,notId,truDeadline from notice where classId =@cd";
-            MySqlParameter para1 = new MySqlParameter("@cd", table.Rows[0][0].ToString());
-            DataTable table1 = DataOperation.DataQuery(sql1, para1);
-           
+            Dictionary<int, List<String>> result = new Dictionary<int, List<string>>();   //定义返回值，类型是字典类型
+            String sql = "select classId,className from class where classSpecId=@cid"; //通过真实课堂号来查询课堂号、课堂名
+            MySqlParameter para = new MySqlParameter("@cid", classSpecId); //赋值操作
+            DataTable table = DataOperation.DataQuery(sql, para);  //执行SQL语句进行查询
+            String sql1 = "select notTitle,content,notId,truDeadline from notice where classId =@cd";   //通过课堂号来查找notTitle,content,notId,truDeadline
+            MySqlParameter para1 = new MySqlParameter("@cd", table.Rows[0][0].ToString());  //进行赋值操作
+            DataTable table1 = DataOperation.DataQuery(sql1, para1);  //执行SQL语句进行查询
+           //在table1中进行遍历。table1中内容是notTitle,content,notId,truDeadline
             for(int i = 0; i < table1.Rows.Count; i++)
             {
-                List<String> info = new List<string>();
+                //新建info字符串列表
+                List<String> info = new List<string>();  
                 //先添加作业的标题
-                info.Add(table1.Rows[i][0].ToString());
+                info.Add(table1.Rows[i][0].ToString());  
                 //然后添加作业的具体内容
                 info.Add(table1.Rows[i][1].ToString());
                 //添加作业公告的id
                 info.Add(table1.Rows[i][2].ToString());
                 //添加作业的具体截止时间
                 info.Add(table1.Rows[i][3].ToString());
+                //result的value每一个值都是一个列表，列表里是作业的信息，key是0，1，2，3，4，5，6
                 result.Add(i, info);
             }
-            //添加课堂名字
+            //添加课堂名字，只有一个就不需要循环了
             List<String> className = new List<string>();
             className.Add(table.Rows[0][1].ToString());
-            result.Add(table1.Rows.Count, className);
+            result.Add(table1.Rows.Count, className); //key是作业数量的统计，value是课堂名
             return result;
         }
         //判断学生的作业状态,直接返回一张表,传入学生的学号以及具体的课堂号
@@ -136,10 +138,10 @@ namespace HAMS.Student.StudentDao
             String sql = "select stuId from student where stuSpecId=@sid";
             MySqlParameter para = new MySqlParameter("@sid", account);
             DataTable table = DataOperation.DataQuery(sql, para);
-            //查询notId
-            String sql1 = "select homId,submitTime,score,homURL from homework where notId =@nid and stuId=@sd";
-            MySqlParameter para1 = new MySqlParameter("@nid", notId);
-            MySqlParameter para2 = new MySqlParameter("@sd", table.Rows[0][0].ToString());
+            //查询作业表中的信息，包括homId,submitTime,score,homURLName
+            String sql1 = "select homId,submitTime,score,homURLName from homework where notId =@nid and stuId=@sd";
+            MySqlParameter para1 = new MySqlParameter("@nid", notId);//notId的赋值
+            MySqlParameter para2 = new MySqlParameter("@sd", table.Rows[0][0].ToString());//stuId的赋值
             //此处有两个查询条件
             MySqlParameter[] paras = new MySqlParameter[2];
             paras[0] = para1;
@@ -156,10 +158,12 @@ namespace HAMS.Student.StudentDao
             return table;
         }
         //查询作业预警主界面的信息,直接根据学生的学号进行查询
-        public List<List<String>> alertFomrInfo(String account)
+        public List<List<List<String>>> alertFomrInfo(String account)
         {
-            List<List<String>> result = new List<List<string>>();
-            
+            //此处返回超过老师设置的截止时间的作业和没有超过老师设置的截止时间的作业
+            List<List<String>> notBeyondHomework = new List<List<string>>();
+            List<List<String>> BeyondHomework = new List<List<string>>();
+            List<List<List<String>>> result = new List<List<List<string>>>();     
             String sql = "select stuId from student where stuSpecId=@id";
             MySqlParameter parameter = new MySqlParameter("@id", account);
             DataTable table = DataOperation.DataQuery(sql, parameter);
@@ -185,7 +189,6 @@ namespace HAMS.Student.StudentDao
                 //由于一门课的作业公告又有多个，所以还要进行一次循环操作
                 for(int j = 0; j < table2.Rows.Count; j++)
                 {
-                    
                     List<String> ls = new List<string>();
                     //1添加课堂名信息
                     ls.Add(table3.Rows[0][0].ToString());
@@ -203,12 +206,25 @@ namespace HAMS.Student.StudentDao
                     DataTable table4 = DataOperation.DataQuery(sql4, paras);
                     //5,6添加每门作业的自定义截止时间，自定义复杂度
                     //此处需要判断用户有没有自定义截止时间和自定义复杂度
-                    if (table4.Rows.Count > 0) {
-                    ls.Add(table4.Rows[0][0].ToString());
-                    ls.Add(table4.Rows[0][1].ToString());
+                    if (table4.Rows.Count > 0)
+                    {
+                        ls.Add(table4.Rows[0][0].ToString());
+                        ls.Add(table4.Rows[0][1].ToString());
                     }
-                    result.Add(ls);
+                    //如果还没有达到老师设置的截止时间就放在没有超过截止时间的里面
+                    if (Convert.ToDateTime(table2.Rows[j][2].ToString()) > DateTime.Now) {  
+                    notBeyondHomework.Add(ls);
+                    }
+                    //否则就将其放在超过了截止时间的列表里面
+                    else
+                    {
+                        BeyondHomework.Add(ls);
+                    }
                 }
+                //首先放的是没有超过截止时间的数据
+                result.Add(notBeyondHomework);
+                //然后放超过了截止时间的数据
+                result.Add(BeyondHomework);
             }
             return result;
         }

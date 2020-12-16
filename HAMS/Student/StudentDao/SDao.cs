@@ -290,6 +290,18 @@ namespace HAMS.Student.StudentDao
             DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);
             return table;
         }
+        //获取学生成绩和老师评语，通过stuId和notId
+        public DataTable getScoreByNotIdStuId(String stuId,String notId)
+        {
+            //在学生表中，通过真实学号来获取学生的Id号
+            String sql = "select score,remark from homework where stuId=@sid  and notId = @nid";
+            //传入要填写的参数
+            MySqlParameter para1 = new MySqlParameter("@sid", stuId);
+            MySqlParameter para2 = new MySqlParameter("@nid", notId);
+            //执行查询语句，以table类型返回
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, para1,para2);
+            return table;
+        }
 
         //学生提交作业，其实是对homework表的一个修改操作，修改与作业相关的字段即可
         public Boolean UpdateHomework(DateTime submitTime, string notId, string stuId, string postil, string homUrl, string homUrlName)

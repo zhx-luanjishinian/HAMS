@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HAMS.Student.StudentService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,7 @@ namespace HAMS.Student.StudentView
     /// </summary>
     public partial class HomeworkSubmit : Window
     {
+        private SService ss = new SService();
         public String name { set; get; }
         public String account { set; get; }
         public String notId { set; get; }
@@ -31,6 +33,9 @@ namespace HAMS.Student.StudentView
             this.notId = notId;
             this.classSpecId = classSpecId;
             textBlockUserId.Text = account + name;
+            List<String> result = ss.showHomeworkInfo(account,notId);
+            textBlockGrade.Text = result[0];
+            textBoxComment.Text = result[1];
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)

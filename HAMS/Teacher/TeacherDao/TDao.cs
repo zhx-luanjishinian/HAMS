@@ -352,7 +352,16 @@ namespace HAMS.Teacher.TeacherDao
             DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter,parameter1);  //查到学生id,分数,作业路径
             return table;
         }
-       
+
+
+        public DataTable getStuIdByHomId(int homId)
+        {
+            //根据homId查询stuId
+            String sql = "select stuId from homework where homId=@hid";
+            MySqlParameter parameter = new MySqlParameter("@hid", homId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);  //查到学生id,分数,作业路径
+            return table;
+        }
 
     }
 

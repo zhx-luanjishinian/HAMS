@@ -21,7 +21,7 @@ namespace HAMS.Teacher.TeacherUserControl
     public partial class StudentCheck : UserControl
     {
         //这是用来记录当前控件在所有动态生成控件中的下标，方便根据这个下标找到该homId在homId数组中的索引，用于实现TeacherHomeworkCheck界面的下一个功能
-        private int index;
+        public int index { get; set; }
         public StudentCheck(int index)
         {
             InitializeComponent();

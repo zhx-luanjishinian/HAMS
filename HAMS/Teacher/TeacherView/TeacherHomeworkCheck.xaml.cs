@@ -27,7 +27,10 @@ namespace HAMS.Teacher.TeacherView
         private TService ts = new TService();
         private string homURL = ""; //存储待下载作业文件的路径
         private string homName; //存储待下载作业文件的文件名
-        int homId;//存储作业Id
+        private int[] homIds;//存储作业Id列表
+        /// </summary>
+        private int homId;//存储作业Id
+        private int index;//存储当前下标
         private bool ifCorrect;//表示该作业是否是已批改作业
 
         //无参构造函数，由于前一个界面没有实现，而为了测试下载控件能否正常使用，并不是真正需要用的
@@ -117,7 +120,7 @@ namespace HAMS.Teacher.TeacherView
         }
 
         //下方函数才是真正需要的
-        public TeacherHomeworkCheck(List<int> homIds, int index, string notTitle, string studentInfo, bool IfCorrect = false)
+        public TeacherHomeworkCheck(int[] hmIds, int idex, string notTitle, string studentInfo, bool IfCorrect = false)
         {
             InitializeComponent();
             //通过上一个界面传递过来的值，进行此界面控件信息的赋值操作
@@ -128,10 +131,13 @@ namespace HAMS.Teacher.TeacherView
             //假值，由于前一个界面还没有实现
             //lbNotTitle.Content = "猫狗大战期末作业";
 
+            //获取homIds列表
+            this.homIds = hmIds;
 
+            this.index = idex;
 
             //获取当前待批改作业的作业Id
-            homId = homIds[index];
+            homId = this.homIds[this.index];
 
 
             //给学生信息赋值
@@ -279,5 +285,58 @@ namespace HAMS.Teacher.TeacherView
             }
 			
 		}
+
+        private void btnReturn_Click(object sender, RoutedEventArgs e)
+        {
+            //string description, string teacherSpecId, string teacherName, string classSpecId, string className
+            //TeacherDao.TDao td = new TeacherDao.TDao();
+            //string classSpecId
+            //string teacherSpecId = tbTeacherSpecId.Text;
+            //string teacherName = tbTeacherName.Text;
+            //string[] classInfos = td.getClassInfosBy;
+            //DataTable table = td.getNotice(classSpecId);  //有问题
+            //CheckingClassHomework cch = new CheckingClassHomework(lbNotTitle.Content, tbClassInfo1.Text.ToString(), tbTeacherInfo.Text.ToString(), tbTeacherInfo1.Text.ToString());
+            //cch.Show();
+            //this.Visibility = System.Windows.Visibility.Hidden;
+        }
+
+        private void btnNext_Click(object sender, RoutedEventArgs e)
+        {
+            
+            try
+            {   //获取学生的基本信息
+                this.index = index + 1;
+                string studentInfo = ts.getStudentInfoByHomId(homIds[index]);
+
+                TeacherHomeworkCheck thc = new TeacherHomeworkCheck(homIds, index, lbNotTitle.Content.ToString(), studentInfo, ifCorrect);
+                thc.Show();
+                this.Visibility = System.Windows.Visibility.Hidden;
+            }
+            catch
+            {
+                System.Windows.MessageBox.Show("您已浏览到最后一个学生作业，无法选择下一个！");
+            }
+            
+        }
+
+        private void btnBefore_Click(object sender, RoutedEventArgs e)
+        {
+            
+            try
+            {
+                //获取学生的基本信息
+                this.index = index - 1;
+                string studentInfo = ts.getStudentInfoByHomId(homIds[index]);
+
+                TeacherHomeworkCheck thc = new TeacherHomeworkCheck(homIds, index, lbNotTitle.Content.ToString(), studentInfo, ifCorrect);
+                thc.Show();
+                this.Visibility = System.Windows.Visibility.Hidden;
+            }
+            catch
+            {
+                System.Windows.MessageBox.Show("您已浏览到第一个学生作业，无法选择上一个！");
+            }
+            
+        }
     }
 }

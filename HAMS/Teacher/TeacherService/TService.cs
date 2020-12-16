@@ -358,6 +358,18 @@ namespace HAMS.Teacher.TeacherService
 
         }
 
+        public string getStudentInfoByHomId(int homId)
+        {
+            //根据homId获取stuInfo(学号+“ ”+姓名）
+            DataTable tbStuId = td.getStuIdByHomId(homId);
+            string stuId = tbStuId.Rows[0][0].ToString();
+            DataTable tbStuInfo = td.GetStudentNameAndIdByStuID(stuId);
+            string stuSpecId = tbStuInfo.Rows[0][0].ToString();
+            string name = tbStuInfo.Rows[0][1].ToString();
+            
+            return stuSpecId + " " + name;
+        }
+
 
         }
     }

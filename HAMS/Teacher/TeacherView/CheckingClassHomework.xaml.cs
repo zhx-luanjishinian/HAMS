@@ -179,12 +179,12 @@ namespace HAMS.Teacher.TeacherView
             listViewUnFinish.Items.Clear();
             //然后再重新加载一遍
 
-            ////加载已批改的动态控件
-            //LoadFinished(tbClassInfo.Text, lbNotTitle.Content.ToString());
-            ////加载待批改的动态控件
-            //LoadNeedCorrect(tbClassInfo.Text, lbNotTitle.Content.ToString());
-            ////加载未完成的动态控件
-            //LoadUnfinished(tbClassInfo.Text, lbNotTitle.Content.ToString());
+            //加载已批改的动态控件
+            LoadFinished(tbClassInfo.Text, lbNotTitle.Content.ToString());
+            //加载待批改的动态控件
+            LoadNeedCorrect(tbClassInfo.Text, lbNotTitle.Content.ToString());
+            //加载未完成的动态控件
+            LoadUnfinished(tbClassInfo.Text, lbNotTitle.Content.ToString());
         }
     }
 }

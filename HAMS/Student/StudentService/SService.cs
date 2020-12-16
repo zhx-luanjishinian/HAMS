@@ -11,13 +11,13 @@ using HAMS.Entity;
 namespace HAMS.Student.StudentService
 {
     class SService
-       
+
     {
         private SDao sd = new SDao();
 
-        public BaseResult login(string account,string pw)
+        public BaseResult login(string account, string pw)
         {
-            if(account =="" || pw == "")
+            if (account == "" || pw == "")
             {
                 return BaseResult.errorMsg("账号或者密码为空");
             }
@@ -27,7 +27,7 @@ namespace HAMS.Student.StudentService
             //table[0][1]表示第0个从数据库查出来数据的第1条信息-》password
             if (table.Rows.Count == 0)
             {
-                return BaseResult.errorMsg( "账号或者密码输入错误，请检查后再进行输入");
+                return BaseResult.errorMsg("账号或者密码输入错误，请检查后再进行输入");
             }
             else if (table.Rows[0][2].ToString() != pw)
             {
@@ -37,10 +37,10 @@ namespace HAMS.Student.StudentService
             {
                 return BaseResult.ok(table.Rows[0][1].ToString());
             }
-            
+
         }
         //获得主界面的课程信息
-        public Dictionary<int,List<String>> showCourseInfo(String account)
+        public Dictionary<int, List<String>> showCourseInfo(String account)
         {
             return sd.showCourseInfo(account);
         }
@@ -50,12 +50,12 @@ namespace HAMS.Student.StudentService
             return sd.showHomeNoticeInfo(account);
         }
         //获取作业主界面每门课程所有的作业信息
-        public Dictionary<int,List<String>> showAllHomeworkInfo(String classSpecId)
+        public Dictionary<int, List<String>> showAllHomeworkInfo(String classSpecId)
         {
             return sd.showAllHomeworkInfo(classSpecId);
         }
         //判断学生的作业状态，根据作业状态呈现出不同的值,传入学号，作业公告id,还有该项作业的截止时间
-        public String judgeHomeworkStatus(String account,String notId,String deadline)
+        public String judgeHomeworkStatus(String account, String notId, String deadline)
         {
             //account, notId, info[i][3].ToString()真实截止时间
             //table表的列名homId,submitTime,score,homURLName
@@ -65,7 +65,7 @@ namespace HAMS.Student.StudentService
             DateTime now = DateTime.Now;
             String message = "";
             //查到作业名说明已经交了作业
-            if (table.Rows[0][3].ToString()!="")
+            if (table.Rows[0][3].ToString() != "")
             {
                 object score = table.Rows[0][2];
                 //然后判断老师是否已经批改过作业了,作业评分那一部分不为空，说明作业已经批改
@@ -135,9 +135,10 @@ namespace HAMS.Student.StudentService
         public List<List<List<String>>> upRank(String account)
         {
             List<List<List<String>>> results = sd.alertFomrInfo(account);
-            List < List < String >> result = results[0];
-            result.Sort(delegate (List<String> l1, List<String> l2) {
-                if (l1[4] !=""  && l2[4] !="")
+            List<List<String>> result = results[0];
+            result.Sort(delegate (List<String> l1, List<String> l2)
+            {
+                if (l1[4] != "" && l2[4] != "")
                 {
                     return l1[4].CompareTo(l2[4]);
                 }
@@ -156,11 +157,12 @@ namespace HAMS.Student.StudentService
         }
 
         //进行作业的降序排序
-        public List<List<List<String >>>downRank(String account)
+        public List<List<List<String>>> downRank(String account)
         {
             List<List<List<String>>> results = sd.alertFomrInfo(account);
             List<List<String>> result = results[0];
-            result.Sort(delegate (List<String> l1, List<String> l2) {
+            result.Sort(delegate (List<String> l1, List<String> l2)
+            {
                 if (l1[4] != "" && l2[4] != "")
                 {
                     return l2[4].CompareTo(l1[4]);
@@ -178,7 +180,7 @@ namespace HAMS.Student.StudentService
             return results;
         }
         //更新作业复杂度的信息
-        public bool updateComplexity(String account,String notId,String complexity)
+        public bool updateComplexity(String account, String notId, String complexity)
         {
             return sd.updateComplexity(account, notId, complexity);
         }
@@ -190,8 +192,9 @@ namespace HAMS.Student.StudentService
             //按第五项进行升序排序
             result.Sort(delegate (List<String> l1, List<String> l2)
             {
-                if (l1.Count > 5 && l2.Count > 5) {
-                return l1[5].CompareTo(l2[5]);
+                if (l1.Count > 5 && l2.Count > 5)
+                {
+                    return l1[5].CompareTo(l2[5]);
                 }
                 return 0;
             });
@@ -216,7 +219,7 @@ namespace HAMS.Student.StudentService
         //学生提交作业时需要调用该函数对作业表中的字段进行修改
         public String SubmitHomework(string name, string classId, string account, string postil, string homUrlName, string notId, string localpath)
         {
-           //可以直接从前端界面取值，就不需要查库了
+            //可以直接从前端界面取值，就不需要查库了
             //通过账号来获取到姓名
             //DataTable sdName = sd.GetStuName(account);
             //string name = sdName.Rows[0][0].ToString();
@@ -225,13 +228,13 @@ namespace HAMS.Student.StudentService
             //通过作业公告Id获取作业公告名
             DataTable sdNotName = sd.GetNotName(notId);
             string notName = sdNotName.Rows[0][0].ToString();
-            
+
 
             //进行服务器文件夹和文件的上传操作
             //数据库中数据的更新
             //update homework  set postil = @postil, homUrl = @homUrl, homUrlName = @homUrlName , submitTime = @submitTime where notId  = @notId  and  stuId = @stuId;";
             //学生提交作业的时间
-            DateTime submitTime = DateTime.Now; 
+            DateTime submitTime = DateTime.Now;
             //查询该真实的学号在数据库中课堂表对应自增主键stuId
             DataTable sdStuId = sd.GetStuIdByAccount(account);
             int result;
@@ -250,7 +253,7 @@ namespace HAMS.Student.StudentService
             //作业名为空，表示是第一次交作业，需要创建目录并添加文件到服务器
             if (homName == "")
             {
-                string dirNameAc = account+name;//课堂真实号/作业公告标题/学生学号+姓名
+                string dirNameAc = account + name;//课堂真实号/作业公告标题/学生学号+姓名
                 System.Windows.MessageBox.Show(dirNameAc);
                 string orginPath = classId + "/" + notName;//原始目录或起始目录，即在哪个目录下创建
                 flag = FtpUpDown.MakeDir(dirNameAc, out errorinfo, orginPath);//创建目录的静态方法，可以直接通过类名访问
@@ -296,11 +299,25 @@ namespace HAMS.Student.StudentService
             return "上传作业成功";
         }
 
+        //通过notId获取作业公告名
         public string downloadLink(string notId)
         {
-            DataTable sdNotName = sd.GetNotName(notId);
+            DataTable sdNotName = sd.GetNotName(notId); //通过notId找到notTitle
             string notName = sdNotName.Rows[0][0].ToString();
             return notName;
+        }
+
+        //显示作业信息
+        public List<String> showHomeworkInfo(String account, String notId)
+        {
+            List<String> result = new List<string>();
+            DataTable stuIdTable = sd.GetStuIdByAccount(account);
+            string stuId = stuIdTable.Rows[0][0].ToString();
+            DataTable homInfo = sd.getScoreByNotIdStuId(stuId, notId);
+            result.Add(homInfo.Rows[0][0].ToString());//将成绩加入列表中
+            result.Add(homInfo.Rows[0][1].ToString());//将评语加入列表中
+            return result;
+
         }
     }
 }

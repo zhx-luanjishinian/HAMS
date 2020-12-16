@@ -341,8 +341,24 @@ namespace HAMS.Teacher.TeacherService
                 return false;
             }
         }
+        public string GetPostilByForm(string classSpecId, string noticeName, string studentSpecId)
+        {
+            DataTable table1 = td.GetStuIdFromStuSpecId(studentSpecId);
+            DataTable table2 = td.getClassId(classSpecId);
+            int classId = Convert.ToInt32(table2.Rows[0][0]);
+            DataTable table3 = td.getNotIdByClassIdAndNotTitle(noticeName, classId);
+            DataTable table4 = td.GetHomIdByStuIdAndNotId(table1.Rows[0][0].ToString(), table3.Rows[0][0].ToString());
+            string postil1 = table4.Rows[0][0].ToString();
+            //根据学生id和noteid查到homeworkid
+            DataTable table5 = td.getPostilByHomId(Convert.ToInt32(table4.Rows[0][0].ToString()));
+            
+            //根据homeworkId查到postil
+            string postil = table5.Rows[0][0].ToString();
+            return postil;
 
- 
+        }
+
+
         }
     }
 

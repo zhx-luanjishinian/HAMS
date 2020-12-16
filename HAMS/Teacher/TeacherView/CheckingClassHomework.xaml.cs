@@ -85,9 +85,11 @@ namespace HAMS.Teacher.TeacherView
             //获得学生学号
             string studentId = stuControl.lbStudentInfo1.Content.ToString();
             //还需要写根据学号得作业提交描述
+            string postil = ts.GetPostilByForm(tbClassInfo.Text,lbNotTitle.Content.ToString(),studentId);
+            MessageBox.Show(postil);
 
-            TeacherHomeworkCheck newTeacherHomeworkCheck = new TeacherHomeworkCheck(lbNotTitle.Content.ToString(),tbTeacherInfo.Text,tbTeacherInfo1.Text,studentId,studentName,"1111");
-            newTeacherHomeworkCheck.Show();
+            //TeacherHomeworkCheck newTeacherHomeworkCheck = new TeacherHomeworkCheck(lbNotTitle.Content.ToString(),tbTeacherInfo.Text,tbTeacherInfo1.Text,studentId,studentName,"1111");
+            //newTeacherHomeworkCheck.Show();
         }
 
         public void LoadNeedCorrect(string classSpecId, string homeworkTitle)
@@ -163,6 +165,22 @@ namespace HAMS.Teacher.TeacherView
             newAnswerQuestion.Show();
 
            // this.Visibility = System.Windows.Visibility.Hidden;
+        }
+
+        private void btnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            //首先删除listview里面的东西
+            listViewChecked.Items.Clear();
+            listViewUnCheck.Items.Clear();
+            listViewUnFinish.Items.Clear();
+            //然后再重新加载一遍
+
+            ////加载已批改的动态控件
+            //LoadFinished(tbClassInfo.Text, lbNotTitle.Content.ToString());
+            ////加载待批改的动态控件
+            //LoadNeedCorrect(tbClassInfo.Text, lbNotTitle.Content.ToString());
+            ////加载未完成的动态控件
+            //LoadUnfinished(tbClassInfo.Text, lbNotTitle.Content.ToString());
         }
     }
 }

@@ -204,14 +204,17 @@
             </Border>
         </Grid>
         <Grid Margin="0,218.673,0,0" Height="27.24" VerticalAlignment="Top">
-            <TextBox x:Name="tbSearch" Height="27.24" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Bottom" Margin="0,0,0,-4.053"/>
-            <Button x:Name="btnSearch" Content="" HorizontalAlignment="Right" Margin="0,7.213,10,2.787" Width="25.4" Background="{x:Null}" BorderThickness="0" d:LayoutOverrides="Height"/>
+            <TextBox x:Name="tbSearch" Height="20" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Bottom" Margin="0,0,55.4,0.24"/>
+            <Button x:Name="btnSearch" Content="" HorizontalAlignment="Right" Margin="0,10,62.4,0.24" Width="25" Background="{x:Null}" BorderThickness="0"/>
 
-            <Rectangle Stroke="Black" StrokeThickness="0" Width="22.2" HorizontalAlignment="Right" Margin="0,0,10,0" d:LayoutOverrides="HorizontalAlignment" Height="20.027" VerticalAlignment="Bottom">
+            <Rectangle Stroke="Black" StrokeThickness="0" Width="22" HorizontalAlignment="Right" Margin="0,0,62.4,0.24" Height="20" VerticalAlignment="Bottom">
                 <Rectangle.Fill>
                     <ImageBrush ImageSource="../../Resources/查询.png"/>
                 </Rectangle.Fill>
             </Rectangle>
+            <Button x:Name="btnRefresh" HorizontalAlignment="Left" Height="17" Margin="482,10,0,0" VerticalAlignment="Top" Width="26" Background="White" BorderBrush="White" Click="btnRefresh_Click">
+                <Image x:Name="image1" Height="10" Width="25" Source="/HAMS;component/Resources/刷新.png"/>
+            </Button>
 
         </Grid>
         <Grid Height="213.673" VerticalAlignment="Top">
@@ -224,6 +227,7 @@
                     </LinearGradientBrush>
                 </Border.BorderBrush>
                 <TabControl x:Name="tabControl" Margin="0,-43.7,0,0" d:LayoutOverrides="LeftPosition, RightPosition" Height="216.933" VerticalAlignment="Top">
+
                     <TabItem x:Name="TbItemChecked" Header="已批改   5" Margin="-2,0,0,-0.067" HorizontalAlignment="Left" Style="{StaticResource TabItemStyle}" Width="80" Height="22" VerticalAlignment="Bottom">
                         <Grid Background="#FFE5E5E5" Margin="0,0,0,-3.066">
                             <Grid.ColumnDefinitions>
@@ -256,7 +260,7 @@
                                         <GridViewColumn/>
                                     </GridView>
                                 </ListView.View>
-                                
+
                             </ListView>
                         </Grid>
                     </TabItem>
@@ -275,7 +279,7 @@
                                         <GridViewColumn/>
                                     </GridView>
                                 </ListView.View>
-                               
+
                             </ListView>
                         </Grid>
                     </TabItem>

@@ -118,7 +118,7 @@ namespace HAMS.Teacher.TeacherDao
             return table;
 
         }
-
+       
         public DataTable getTeacherId(String TeacherSpecId)
         {
             //根据教师工号获取课堂表里的自增主键教师号teacherId
@@ -246,6 +246,15 @@ namespace HAMS.Teacher.TeacherDao
             DataTable table = DataUtil.DataOperation.DataQuery(sql, para);
             return table;
         }
+        public DataTable GetStuIdFromStuSpecId(string stuSpecId)
+        {
+            //根据学生学号查询学生Id
+            String sql = "select stuId from student where stuSpecId = @stuSpecId;";
+            //传入要填写的参数
+            MySqlParameter para = new MySqlParameter("@stuSpecId", stuSpecId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, para);
+            return table;
+        }
         public bool InsertHomework(Homework homework)
         {
             //发布作业公告后，需要在Homework表添加作业记录
@@ -333,16 +342,17 @@ namespace HAMS.Teacher.TeacherDao
             return table;
 
         }
-        public DataTable GetPostilByHomId(String stuId)
+       
+
+        public DataTable GetHomIdByStuIdAndNotId(String stuId,string noteId)
         {
-            //此类用来装返回的对象
-
-            String sql = "select stuSpecId,name from student where stuId=@nid";
+            String sql = "select homId from homework where stuId=@nid and notId=@ntId";
             MySqlParameter parameter = new MySqlParameter("@nid", stuId);
-            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);  //查到学生id,分数,作业路径
+            MySqlParameter parameter1 = new MySqlParameter("@ntid", noteId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter,parameter1);  //查到学生id,分数,作业路径
             return table;
-
         }
+       
 
     }
 

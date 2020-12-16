@@ -59,11 +59,11 @@ namespace HAMS.Teacher.TeacherView
             int checkedNum = table3.Rows.Count;
             //加载已批改的动态控件
             TbItemChecked.Header = "已批改   " + checkedNum;
-
+            List<int> homIds = new List<int>();
             StudentCheck[] checkedStudent = new StudentCheck[50];
             for (int i = 0; i < table3.Rows.Count; i++)
             {
-                checkedStudent[i] = new StudentCheck();
+                checkedStudent[i] = new StudentCheck(i);
                 DataTable table4 = td.GetStudentNameAndIdByStuID(table3.Rows[i][0].ToString());
                 checkedStudent[i].lbStudentInfo1.Content = table4.Rows[0][0].ToString();
                 //加载作业标题
@@ -72,6 +72,8 @@ namespace HAMS.Teacher.TeacherView
                 //为什么这里不能向listview中加数据
                 listViewChecked.Items.Add(checkedStudent[i]);
                 checkedStudent[i].btnHomeworkCorrect1.Click += new RoutedEventHandler(btnHomeworkCorrect1_Click);
+                
+
             }
         }
 
@@ -88,8 +90,10 @@ namespace HAMS.Teacher.TeacherView
             string postil = ts.GetPostilByForm(tbClassInfo.Text,lbNotTitle.Content.ToString(),studentId);
             MessageBox.Show(postil);
 
+            TeacherHomeworkCheck newTeacherHomeworkCheck = new TeacherHomeworkCheck();
+            newTeacherHomeworkCheck.Show();
             //TeacherHomeworkCheck newTeacherHomeworkCheck = new TeacherHomeworkCheck(lbNotTitle.Content.ToString(),tbTeacherInfo.Text,tbTeacherInfo1.Text,studentId,studentName,"1111");
-            //newTeacherHomeworkCheck.Show();
+            //newTeacherHomeworkCheck.Show();01
         }
 
         public void LoadNeedCorrect(string classSpecId, string homeworkTitle)
@@ -109,7 +113,7 @@ namespace HAMS.Teacher.TeacherView
             StudentCheck[] checkedStudent = new StudentCheck[50];
             for (int i = 0; i < table7.Rows.Count; i++)
             {
-                checkedStudent[i] = new StudentCheck();
+                checkedStudent[i] = new StudentCheck(i);
                 DataTable table8 = td.GetStudentNameAndIdByStuID(table7.Rows[i][0].ToString());
                 checkedStudent[i].lbStudentInfo1.Content = table8.Rows[0][0].ToString();
                 //加载作业标题
@@ -135,7 +139,7 @@ namespace HAMS.Teacher.TeacherView
             StudentCheck[] checkedStudent = new StudentCheck[50];
             for (int i = 0; i < table3.Rows.Count; i++)
             {
-                checkedStudent[i] = new StudentCheck();
+                checkedStudent[i] = new StudentCheck(i);
                 DataTable table4 = td.GetStudentNameAndIdByStuID(table3.Rows[i][0].ToString());
                 checkedStudent[i].lbStudentInfo1.Content = table4.Rows[0][0].ToString();
                 //加载作业标题

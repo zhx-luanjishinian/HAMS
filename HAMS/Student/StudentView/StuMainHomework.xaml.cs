@@ -22,7 +22,9 @@ namespace HAMS.Student.StudentView
     /// </summary>
     public partial class StuMainHomework : Window
     {
+       
         static AnswerQuestion newAnswerQuestion = new AnswerQuestion("测试");   //需要获得学生的姓名信息
+       
         private SService ss = new SService();
         public String account { set; get; }
         public String name { set; get; }

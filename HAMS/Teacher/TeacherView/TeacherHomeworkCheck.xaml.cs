@@ -35,11 +35,15 @@ namespace HAMS.Teacher.TeacherView
         public string description;
         public string classSpecId;
         public string className;
+        public string pngfile;//头像路径
 
         //下方函数才是真正需要的
-        public TeacherHomeworkCheck(int[] hmIds, int idex, string notTitle, string studentInfo, bool IfCorrect = false)
+        public TeacherHomeworkCheck(int[] hmIds, int idex, string notTitle, string studentInfo, string pgfile,bool IfCorrect = false)
         {
             InitializeComponent();
+            this.pngfile = pgfile;
+            //设置该img控件的Source
+            headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, pngfile))));
             //通过上一个界面传递过来的值，进行此界面控件信息的赋值操作
 
             //给作业公告标题赋值
@@ -65,6 +69,8 @@ namespace HAMS.Teacher.TeacherView
             //string[] StudentInfos = StudentInfo.Split(' ');
             //string StuId = StudentInfos[0];//获取当前待批改作业的学号
             //string StuName = StudentInfos[1];//获取当前待批改作业的姓名
+            
+
 
             //根据homId获取该学生的作业备注并显示在控件上
             lbHomPostil.Content = ts.GetPostilByHomId(homId);
@@ -209,7 +215,8 @@ namespace HAMS.Teacher.TeacherView
             string teacherName = tbTeacherName.Text;
             string className = this.className;
 
-            CheckingClassHomework newCheckingClassHomework = new CheckingClassHomework(homeworkTitle, description, teacherSpecId, teacherName, classSpecId, className);
+            CheckingClassHomework newCheckingClassHomework = new CheckingClassHomework(homeworkTitle, description, teacherSpecId, teacherName, classSpecId, className,this.pngfile);
+            newCheckingClassHomework.pngfile = this.pngfile;
             newCheckingClassHomework.Show();
             this.Visibility = System.Windows.Visibility.Hidden;
         }
@@ -222,7 +229,8 @@ namespace HAMS.Teacher.TeacherView
                 this.index = index + 1;
                 string studentInfo = ts.getStudentInfoByHomId(homIds[index]);
 
-                TeacherHomeworkCheck thc = new TeacherHomeworkCheck(homIds, index, lbNotTitle.Content.ToString(), studentInfo, ifCorrect);
+                TeacherHomeworkCheck thc = new TeacherHomeworkCheck(homIds, index, lbNotTitle.Content.ToString(), studentInfo, this.pngfile, ifCorrect);
+                thc.pngfile = this.pngfile;
                 thc.Show();
                 this.Visibility = System.Windows.Visibility.Hidden;
             }
@@ -242,7 +250,8 @@ namespace HAMS.Teacher.TeacherView
                 this.index = index - 1;
                 string studentInfo = ts.getStudentInfoByHomId(homIds[index]);
 
-                TeacherHomeworkCheck thc = new TeacherHomeworkCheck(homIds, index, lbNotTitle.Content.ToString(), studentInfo, ifCorrect);
+                TeacherHomeworkCheck thc = new TeacherHomeworkCheck(homIds, index, lbNotTitle.Content.ToString(), studentInfo,this.pngfile, ifCorrect);
+                thc.pngfile = this.pngfile;
                 thc.Show();
                 this.Visibility = System.Windows.Visibility.Hidden;
             }

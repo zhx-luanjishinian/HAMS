@@ -21,6 +21,8 @@ using HAMS.Student.StudentView;
 using HAMS.Teacher.TeacherView;
 using HAMS.Admin.AdminView;
 using System.Windows.Media.Animation;
+using HAMS.Teacher.TeacherDao;
+using HAMS.Student.StudentDao;
 
 namespace HAMS
 {
@@ -33,6 +35,8 @@ namespace HAMS
         private SService sts = new SService();
         private TService tts = new TService();
         private AService ats = new AService();
+        TDao td = new TDao();
+        SDao sd = new SDao();
 
         public MainWindow()
         {
@@ -65,9 +69,22 @@ namespace HAMS
                 if (br.code == 0)
                 {
                     MessageBox.Show("恭喜你已登录成功");
-                    
-                    //TeacherMainForm tmf = new TeacherMainForm(txtUserName.Text + (string)br.data);
-                    TeacherMainForm tmf = new TeacherMainForm(txtUserName.Text, (string)br.data);
+                   
+                    int sex = int.Parse(td.getSexByTeaSpecId(txtUserName.Text.ToString()).Rows[0][0].ToString());
+
+                    string pngfile;
+                    //headImage是image控件名
+                    if (sex == 0)
+                    {
+                        pngfile = @"..\..\Resources\女教师.png";
+                       
+                    }
+                    else
+                    {
+                        pngfile = @"..\..\Resources\男教师.png";
+
+                    }
+                    TeacherMainForm tmf = new TeacherMainForm(txtUserName.Text, (string)br.data,pngfile);
                     //txtUserName.Text是教师工号Z0004520
                     //(string)br.data是刘树栋
                     tmf.ShowDialog();

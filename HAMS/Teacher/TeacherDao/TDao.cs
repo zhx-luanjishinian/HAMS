@@ -421,6 +421,29 @@ namespace HAMS.Teacher.TeacherDao
 
         }
 
+        public bool InsertComment(Comment comm)
+        {
+            
+            //向comm表添加新作业记录
+            String sql = "insert into comment (commId, notId, commStudent, commTeacher) values (@comid,@notid,@comStuid,@comTeaid);";
+
+            //传入要填写的参数
+            MySqlParameter para1 = new MySqlParameter("@comid", comm.CommId);
+            MySqlParameter para2 = new MySqlParameter("@notid", comm.NotId);
+            MySqlParameter para3 = new MySqlParameter("@comStuid", comm.CommStudent);
+            MySqlParameter para4 = new MySqlParameter("@comTeaid", comm.CommTeacher);
+            return DataUtil.DataOperation.DataAdd(sql, para1, para2, para3, para4);//如果插入成功，则返回true
+        }
+
+        public DataTable getSexByTeaSpecId(string teacherSpecId)
+        {
+            //根据teacherSpecId查询sex
+            String sql = "select sex from teacher where teacherSpecId=@tSpecid";
+            MySqlParameter parameter = new MySqlParameter("@tSpecid", teacherSpecId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);  //查到学生id,分数,作业路径
+            return table;
+        }
+
     }
 
 

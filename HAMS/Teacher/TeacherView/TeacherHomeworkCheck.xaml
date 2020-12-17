@@ -145,19 +145,6 @@
                     <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
                 </StackPanel>
             </Button>
-            <Ellipse x:Name="btnProfile" Stroke="Black" Width="35.315" RenderTransformOrigin="0.497,0.505" StrokeThickness="0" HorizontalAlignment="Left" Margin="18.992,10.417,0,9.612">
-                <Ellipse.Fill>
-                    <ImageBrush ImageSource="../../Resources/teacher.png"/>
-                </Ellipse.Fill>
-                <Ellipse.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="0.898"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </Ellipse.RenderTransform>
-            </Ellipse>
             <Image x:Name="systemLogo" Width="129.332" Source="../../Resources/management.jpg" Stretch="UniformToFill" HorizontalAlignment="Right" Margin="0,4,95.468,10.412"/>
             <TextBlock x:Name="tbTeacherSpecId" Width="118.4" TextAlignment="Center" HorizontalAlignment="Left" Margin="58.281,18.677,0,17.667">
                 <TextBlock.Background>
@@ -243,6 +230,7 @@
                 <RadioButton x:Name="rBtnD" Content="不及格" HorizontalAlignment="Left" Margin="426,16,0,0" VerticalAlignment="Top"/>
             </Grid>
         </Border>
+        <Image x:Name="headImage" Source="/HAMS;component/Resources/女教师.png" Margin="10,2,457.4,520.6"/>
 
     </Grid>
 </Window>

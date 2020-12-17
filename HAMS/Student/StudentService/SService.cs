@@ -55,20 +55,23 @@ namespace HAMS.Student.StudentService
             return sd.showAllHomeworkInfo(classSpecId);
         }
         //判断学生的作业状态，根据作业状态呈现出不同的值,传入学号，作业公告id,还有该项作业的截止时间
-        public String judgeHomeworkStatus(String account,String notId,String deadline)
+        public String judgeHomeworkStatus(String account, String notId, String deadline)
         {
+            //account, notId, info[i][3].ToString()真实截止时间
+            //table表的列名homId,submitTime,score,homURLName
             DataTable table = sd.defineHomeworkStatus(account, notId);
             //将timestamp时间戳转换为DateTime类型
             DateTime dl = Convert.ToDateTime(deadline);
             DateTime now = DateTime.Now;
             String message = "";
-            //查到数据了说明已经交了作业
-            if (table.Rows.Count > 0)
+            //查到作业名说明已经交了作业
+            
+
+            if (table.Rows[0][3].ToString() != "")
             {
-
-
+                object score = table.Rows[0][2];
                 //然后判断老师是否已经批改过作业了,作业评分那一部分不为空，说明作业已经批改
-                if (table.Rows[0][2] != DBNull.Value)
+                if (score != DBNull.Value) //如果有分数的话
                 {
                     message = "已批改";
                 }
@@ -77,21 +80,20 @@ namespace HAMS.Student.StudentService
                     message = "待批改";
                 }
             }
+            //没有提交作业的话，进行截止时间的判断
             else
             {
                 //作业为空说明学生还未提交作业，此时再比较系统当前时间和老师设置的截止时间
                 //截止时间大于当前时间，说明截止时间还没有到
                 if (DateTime.Compare(dl, now) > 0)
                 {
-                    message = "去完成";
+                    message = "未完成";
                 }
                 else
                 {
                     message = "已逾期";
                 }
             }
-            
-
             return message;
         }
         //获得doHomework界面的信息
@@ -318,6 +320,18 @@ namespace HAMS.Student.StudentService
         {
             List<Dictionary<String, int>> results = sd.getHomeNumAndDate(classSpecId, notId);
             return results[0];
+        }
+        //显示作业信息
+        public List<String> showHomeworkInfo(String account, String notId)
+        {
+            List<String> result = new List<string>();
+            DataTable stuIdTable = sd.GetStuIdByAccount(account);
+            string stuId = stuIdTable.Rows[0][0].ToString();
+            DataTable homInfo = sd.getScoreByNotIdStuId(stuId, notId);
+            result.Add(homInfo.Rows[0][0].ToString());//将成绩加入列表中
+            result.Add(homInfo.Rows[0][1].ToString());//将评语加入列表中
+            return result;
+
         }
     }
 }

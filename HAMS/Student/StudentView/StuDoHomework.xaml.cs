@@ -107,8 +107,10 @@ namespace HAMS.Student.StudentView
             }
             else
             {
-                content.Add(result[1]);
-                textBoxRequest.Text = content.ToString();
+                System.Windows.MessageBox.Show(result[1].ToString());
+                content.Add(result[1].ToString());
+                textBoxRequest.Text = content[0];
+                System.Windows.MessageBox.Show(content[0]);
             }
             
             tbDeadLineTime.Text = result[2];

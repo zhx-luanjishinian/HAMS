@@ -7,6 +7,7 @@ using System.Data;
 using HAMS.ToolClass;
 using HAMS.Student.StudentDao;
 using HAMS.Entity;
+using System.Windows;
 
 namespace HAMS.Student.StudentService
 {
@@ -244,6 +245,7 @@ namespace HAMS.Student.StudentService
             DateTime submitTime = DateTime.Now;
             //查询该真实的学号在数据库中课堂表对应自增主键stuId
             DataTable sdStuId = sd.GetStuIdByAccount(account);
+            
             int result;
             if (!int.TryParse(sdStuId.Rows[0][0].ToString(), out result))//table[0][0]就是查到的stuId
             {
@@ -261,7 +263,6 @@ namespace HAMS.Student.StudentService
             if (homName == "")
             {
                 string dirNameAc = account + name;//课堂真实号/作业公告标题/学生学号+姓名
-                System.Windows.MessageBox.Show(dirNameAc);
                 string orginPath = classId + "/" + notName;//原始目录或起始目录，即在哪个目录下创建
                 flag = FtpUpDown.MakeDir(dirNameAc, out errorinfo, orginPath);//创建目录的静态方法，可以直接通过类名访问
                 //创建作业目录 
@@ -288,7 +289,15 @@ namespace HAMS.Student.StudentService
                 string dirFullNotFile = orginPath + "/" + dirNameAc;
                 if (localpath != "")
                 {
-                    flag = FtpUpDown.Upload(localpath, dirFullNotFile);
+                    DataTable normalName = sd.GetHomeUrlNameByStuIdAndNotId(stuId, notId);  //寻找到当前文件服务器和数据库中存储的作业文件名
+                    string Name = normalName.Rows[0][0].ToString(); 
+                    string fileFullPath = dirFullNotFile + "/" + Name;  //寻找到在文件服务器中当前作业的路径
+                    flag =  FtpUpDown.delFile(fileFullPath, out errorinfo);  //将文件服务器中已有的作业删除
+                    if (!flag)
+                    {
+                        return "修改时，源文件删除失败，请重试";  //表示修改失败
+                    }
+                    flag = FtpUpDown.Upload(localpath, dirFullNotFile);  //删除原文件之后，将新的文件添加到文件服务器中
                     if (!flag)
                     {
                         return "在文件服务器中指定目录修改作业失败";

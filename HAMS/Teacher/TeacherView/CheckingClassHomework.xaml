@@ -112,19 +112,6 @@
                     <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
                 </StackPanel>
             </Button>
-            <Ellipse x:Name="btnProfile" Stroke="Black" Width="35.315" RenderTransformOrigin="0.497,0.505" StrokeThickness="0" HorizontalAlignment="Left" Margin="18.992,10.417,0,9.612">
-                <Ellipse.Fill>
-                    <ImageBrush ImageSource="../../Resources/teacher.png"/>
-                </Ellipse.Fill>
-                <Ellipse.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="0.898"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </Ellipse.RenderTransform>
-            </Ellipse>
             <Image x:Name="imgSystemLogo" Width="129.332" Source="../../Resources/management.jpg" Stretch="UniformToFill" HorizontalAlignment="Right" Margin="0,4,95.468,10.412"/>
             <TextBlock x:Name="tbTeacherInfo" Width="117.6" TextAlignment="Center" HorizontalAlignment="Left" Margin="58.281,18.677,0,17.667">
                 <TextBlock.Background>
@@ -223,14 +210,7 @@
 
                     <TabItem x:Name="TbItemChecked" Header="已批改   5" Margin="-2,0.067,0,-0.067" HorizontalAlignment="Left" Style="{StaticResource TabItemStyle}" Width="80" Height="23" VerticalAlignment="Top">
                         <Grid Background="#FFE5E5E5" Margin="0,0,0,-3.066">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0*"/>
-                                <ColumnDefinition Width="91*"/>
-                                <ColumnDefinition Width="54*"/>
-                                <ColumnDefinition Width="199*"/>
-                                <ColumnDefinition Width="138*"/>
-                                <ColumnDefinition Width="31*"/>
-                            </Grid.ColumnDefinitions>
+                            
                             <ListView x:Name="listViewChecked" Grid.ColumnSpan="6">
                                 <ListView.View>
                                     <GridView>
@@ -281,5 +261,6 @@
             </Border>
             <Button x:Name="btnHomeworkStatistic" Content="查看作业情况统计图" FontWeight="Bold" Margin="395.733,1,0,207.36" Click="btnHomeworkStatistic_Click"/>
         </Grid>
+        <Image x:Name="headImage" Source="/HAMS;component/Resources/女教师.png" Margin="10,2,457.4,420.4"/>
     </Grid>
 </Window>

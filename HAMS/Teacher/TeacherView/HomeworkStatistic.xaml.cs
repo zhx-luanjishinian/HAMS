@@ -30,12 +30,16 @@ namespace HAMS.Teacher.TeacherView
         public string description;
         public string classSpecId;
         public string className;
-        
+        public string pngfile;//头像路径
 
-        public HomeworkStatistic()
+
+        public HomeworkStatistic(string pgfile)
         {
            
             InitializeComponent();
+            this.pngfile = pgfile;
+            //设置该img控件的Source
+            headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, pngfile))));
 
             Chart chart = new Chart();
             //创建一个标题的对象
@@ -177,7 +181,8 @@ namespace HAMS.Teacher.TeacherView
 
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
-            CheckingClassHomework cch = new CheckingClassHomework(tbNotTitle.Text, description, tSpecId, tName, classSpecId, className);
+            CheckingClassHomework cch = new CheckingClassHomework(tbNotTitle.Text, description, tSpecId, tName, classSpecId, className, this.pngfile);
+            cch.pngfile = this.pngfile;
             cch.Show();
             this.Visibility = System.Windows.Visibility.Hidden;
 

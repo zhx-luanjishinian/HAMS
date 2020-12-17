@@ -442,6 +442,16 @@ namespace HAMS.Teacher.TeacherDao
             MySqlParameter para3 = new MySqlParameter("@nid", commentId);
             return DataUtil.DataOperation.DataUpdate(sql, para2,para3);//如果插入成功，则返回true
         }
+        public DataTable getSexByTeaSpecId(string teacherSpecId)
+        {
+            //根据teacherSpecId查询sex
+            String sql = "select sex from teacher where teacherSpecId=@tSpecid";
+            MySqlParameter parameter = new MySqlParameter("@tSpecid", teacherSpecId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);  //查到学生id,分数,作业路径
+            return table;
+        }
+
+        
     }
 
 

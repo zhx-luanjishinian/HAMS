@@ -93,7 +93,7 @@
         <Label Content="账号" HorizontalAlignment="Left" Margin="439,191.033,0,0" VerticalAlignment="Top" FontSize="18" Width="53"/>
         <Label Content="密码" HorizontalAlignment="Left" Margin="439,242.22,0,0" VerticalAlignment="Top" FontSize="18" Width="53"/>
         <TextBox x:Name="txtUserName" HorizontalAlignment="Left" Height="29" Margin="539,194.893,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="168" FontSize="16" TextChanged="TxtUserName_TextChanged"/>
-        <TextBox x:Name="txtPassword" HorizontalAlignment="Left" Height="29" Margin="539,242.22,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="168" FontSize="16"/>
+        <PasswordBox x:Name="txtPassword" HorizontalAlignment="Left" Height="29" Margin="539,242.22,0,0"   VerticalAlignment="Top" Width="168" FontSize="16" PasswordChar="*"/> <!--TextWrapping="Wrap"  Text=""-->
         <Grid Background="{DynamicResource {x:Static SystemColors.InfoBrushKey}}" Margin="0,0,0,428.667">
             <Image Height="50" Width="62" Source="./Resources/notice.png" RenderTransformOrigin="0.58,0.429" Margin="-720,0,0,0"/>
             <Canvas HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="1000"  Margin="84,0,-508,0">

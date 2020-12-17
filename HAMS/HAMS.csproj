@@ -131,14 +131,14 @@
     </Compile>
     <Compile Include="Student\StudentDao\SDao.cs" />
     <Compile Include="Student\StudentService\SService.cs" />
+    <Compile Include="Student\StudentUserControl\StudentAskQuestion.xaml.cs">
+      <DependentUpon>StudentAskQuestion.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Student\StudentView\AlertForm.xaml.cs">
       <DependentUpon>AlertForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Student\StudentView\HomeworkSubmit.xaml.cs">
       <DependentUpon>HomeworkSubmit.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Student\StudentView\StuCheckHomework.xaml.cs">
-      <DependentUpon>StuCheckHomework.xaml</DependentUpon>
     </Compile>
     <Compile Include="Student\StudentView\StuChooseCalender.xaml.cs">
       <DependentUpon>StuChooseCalender.xaml</DependentUpon>
@@ -268,8 +268,7 @@
     <Compile Include="DataUtil\DBUtil.cs" />
     <Compile Include="Entity\Admin.cs" />
     <Compile Include="Entity\Class.cs" />
-    <Compile Include="Entity\Comm1.cs" />
-    <Compile Include="Entity\Comm2.cs" />
+    <Compile Include="Entity\Comment.cs" />
     <Compile Include="Entity\Homework.cs" />
     <Compile Include="Entity\Notice.cs" />
     <Compile Include="Entity\Student.cs" />
@@ -280,15 +279,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Student\StudentUserControl\StudentAskQuestion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Student\StudentView\AlertForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Student\StudentView\HomeworkSubmit.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Student\StudentView\StuCheckHomework.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -550,6 +549,11 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\刷新.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\对勾.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

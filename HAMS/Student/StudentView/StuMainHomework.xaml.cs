@@ -22,7 +22,7 @@ namespace HAMS.Student.StudentView
     /// </summary>
     public partial class StuMainHomework : Window
     {
-        static AnswerQuestion newAnswerQuestion = new AnswerQuestion("测试");   //需要获得学生的姓名信息
+        //static AnswerQuestion newAnswerQuestion = new AnswerQuestion("测试");   //需要获得学生的姓名信息
         private SService ss = new SService();
         public String account { set; get; }
         public String name { set; get; }
@@ -117,11 +117,11 @@ namespace HAMS.Student.StudentView
             String[] info = (String[])mh.Tag;
             //AnswerQuestion aq = new AnswerQuestion(info[0], info[1]);
             //AnswerQuestion aq = new AnswerQuestion(info[0]);
-            newAnswerQuestion.btnSubmitQuestion.Click += new RoutedEventHandler(btnSubmitQuestion_Click);
-            newAnswerQuestion.labelClassName.Content = mhG.labelHomeworkName.Content.ToString();   //重新修改answerQuestion界面的值
+            //newAnswerQuestion.btnSubmitQuestion.Click += new RoutedEventHandler(btnSubmitQuestion_Click);
+            //newAnswerQuestion.labelClassName.Content = mhG.labelHomeworkName.Content.ToString();   //重新修改answerQuestion界面的值
             string studentName1 = name;    //需要当前学生的姓名
 
-            newAnswerQuestion.Show();  //答疑界面只能用一个
+            //newAnswerQuestion.Show();  //答疑界面只能用一个
             this.Visibility = Visibility.Hidden;
         }
 
@@ -135,7 +135,7 @@ namespace HAMS.Student.StudentView
             //this.Visibility = Visibility.Hidden;
             newStudentAskQuestion.studentName = name; //需要当前学生的姓名
             newStudentAskQuestion.lbStuName.Content = newStudentAskQuestion.studentName;
-            newAnswerQuestion.listViewQuestionAndAnswer.Items.Add(newStudentAskQuestion);
+            //newAnswerQuestion.listViewQuestionAndAnswer.Items.Add(newStudentAskQuestion);
 
         }
 

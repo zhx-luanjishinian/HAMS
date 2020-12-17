@@ -371,7 +371,14 @@ namespace HAMS.Teacher.TeacherDao
             DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);  //查到学生id,分数,作业路径
             return table;
         }
-
+        public DataTable getComment(string notId)
+        {
+            //根据notId查询comment
+            String sql = "select * from comm1 where notId=@hid";
+            MySqlParameter parameter = new MySqlParameter("@hid", notId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);  //查到学生id,分数,作业路径
+            return table;
+        }
     }
 
 

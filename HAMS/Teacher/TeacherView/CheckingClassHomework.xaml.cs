@@ -1,4 +1,5 @@
-﻿using HAMS.Teacher.TeacherUserControl;
+﻿using HAMS.Student.StudentUserControl;
+using HAMS.Teacher.TeacherUserControl;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -24,6 +25,7 @@ namespace HAMS.Teacher.TeacherView
         private int[] homIdCorrecteds;//已完成作业学生的homId数组
         private int[] homIdNeedCorrects;//已完成作业学生的homId数组
         private int[] homIdUnfinisheds;//已完成作业学生的homId数组
+        private string notId; //公告序号
         TeacherService.TService ts = new TeacherService.TService();
         TeacherDao.TDao td = new TeacherDao.TDao();
         public CheckingClassHomework()
@@ -40,6 +42,11 @@ namespace HAMS.Teacher.TeacherView
             tbTeacherInfo.Text = teacherSpecId;
             tbTeacherInfo1.Text = teacherName;
             tbClassInfo.Text = classSpecId;
+            //获得notid
+            DataTable tableClassId = td.getClassId(classSpecId);
+            DataTable tableNotId = td.getNotIdByClassIdAndNotTitle(homeworkTitle, Convert.ToInt32(tableClassId.Rows[0][0]));
+            notId = tableNotId.Rows[0][0].ToString();
+
             tbClassInfo1.Text = className;
             labelHomeworkArrangeTime.Content = "发布时间：" + ts.PasteSubmitTimeInForm(classSpecId, homeworkTitle);
             //加载已批改的动态控件
@@ -227,9 +234,9 @@ namespace HAMS.Teacher.TeacherView
         private void btnAnswerQuestion_Click(object sender, RoutedEventArgs e)
         {
             AnswerQuestion newAnswerQuestion = new AnswerQuestion(tbClassInfo1.Text);
-
             newAnswerQuestion.Show();
-
+            //MessageBox.Show(notId);
+           LoadQuestionAndAnswer(notId, newAnswerQuestion);
            // this.Visibility = System.Windows.Visibility.Hidden;
         }
 
@@ -247,6 +254,51 @@ namespace HAMS.Teacher.TeacherView
             LoadNeedCorrect(tbClassInfo.Text, lbNotTitle.Content.ToString());
             //加载未完成的动态控件
             LoadUnfinished(tbClassInfo.Text, lbNotTitle.Content.ToString());
+        }
+        private void LoadQuestionAndAnswer(string noteId, AnswerQuestion newAnswerQuestion)
+        {
+            //进入答疑界面时加载目前已经有的疑问和解答
+            DataTable table1 = td.getComment(noteId);
+            //List<StudentAskQuestion> list = new List<StudentAskQuestion>();  //生成StudentAskQuestion动态数组
+            StudentAskQuestion[] newStudentAskQuestion = new StudentAskQuestion[50];
+            for (int i =0;i<table1.Rows.Count;i++)
+            {
+                newStudentAskQuestion[i] = new StudentAskQuestion();
+                newStudentAskQuestion[i].lbStuName.Content = "学生"+(i + 1).ToString();
+                newStudentAskQuestion[i].textBoxQuestion.Text = table1.Rows[i][2].ToString();  //有问题
+                newStudentAskQuestion[i].btnComment.Click += new RoutedEventHandler(btnSubmitQuestion_Click);
+                newStudentAskQuestion[i].btnInsert.Click += new RoutedEventHandler(btnbtnInsert_Click);
+               // newStudentAskQuestion[i].lbResponseName
+                newAnswerQuestion.listViewQuestionAndAnswer.Items.Add(newStudentAskQuestion[i]);
+                //newAnswerQuestion.btnSubmitQuestion.Click += new RoutedEventHandler(btnSubmitQuestion_Click); //定义答疑按钮的事件
+                newStudentAskQuestion[i].teacherResponse.Visibility = Visibility.Hidden;
+            }
+
+        }
+
+        private void btnSubmitQuestion_Click(object sender, RoutedEventArgs e)
+        {
+            //TeacherAnswerQuestion newTeacherAnswerQuestion = new TeacherAnswerQuestion();
+            Button sonBtn = (Button)sender;
+            Canvas stuCanvas = (Canvas)sonBtn.Parent;
+            StudentAskQuestion stuControl = (StudentAskQuestion)stuCanvas.Parent;
+            //MessageBox.Show(stuControl.lbStuName.Content.ToString());
+            stuControl.teacherResponse.Visibility = Visibility.Visible;  //点击，此时可见
+
+        }
+        private void btnbtnInsert_Click(object sender, RoutedEventArgs e)
+        {
+            //TeacherAnswerQuestion newTeacherAnswerQuestion = new TeacherAnswerQuestion();
+            Button sonBtn = (Button)sender;
+            Canvas stuCanvas = (Canvas)sonBtn.Parent;
+            StudentAskQuestion stuControl = (StudentAskQuestion)stuCanvas.Parent;
+            //MessageBox.Show(stuControl.lbStuName.Content.ToString());
+            stuControl.tbResponse.IsReadOnly = true;
+
+            //往数据库里插入数据
+
+            //stuControl.teacherResponse.Visibility = Visibility.Visible;  //点击，此时可见
+
         }
     }
 }

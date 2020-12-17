@@ -22,6 +22,7 @@ namespace HAMS.Student.StudentView
     /// </summary>
     public partial class StuMainHomework : Window
     {
+        static AnswerQuestion newAnswerQuestion = new AnswerQuestion("测试");   //需要获得学生的姓名信息
         private SService ss = new SService();
         public String account { set; get; }
         public String name { set; get; }
@@ -74,7 +75,9 @@ namespace HAMS.Student.StudentView
                 mhi.btnHomeworkAnswer.Tag = temp;
                 mhi.btnHomRe1.Click += new RoutedEventHandler(doHomework_Click);
                 mhi.btnCheckRank.Click += new RoutedEventHandler(homRk);
-                mhi.btnHomeworkAnswer.Click += new RoutedEventHandler(asq);
+                mhi.btnHomeworkAnswer.Click += new RoutedEventHandler(asq);      //答疑区的按钮
+
+
                 ivi.Content = mhi;
                 listview.Items.Add(ivi);
             }
@@ -104,18 +107,38 @@ namespace HAMS.Student.StudentView
             shr.Show();
             this.Visibility = Visibility.Hidden;
         }
-       
-        //打开作业答疑区的点击事件
+
+        // 打开作业答疑区的点击事件
         private void asq(object sender, RoutedEventArgs e)
         {
             Button mh = (Button)sender;
+            Canvas mhF = (Canvas)mh.Parent;
+            MainHomeworkInfo mhG = (MainHomeworkInfo)mhF.Parent;
             String[] info = (String[])mh.Tag;
             //AnswerQuestion aq = new AnswerQuestion(info[0], info[1]);
-            AnswerQuestion aq = new AnswerQuestion(info[0]);
-            aq.Show();
+            //AnswerQuestion aq = new AnswerQuestion(info[0]);
+            newAnswerQuestion.btnSubmitQuestion.Click += new RoutedEventHandler(btnSubmitQuestion_Click);
+            newAnswerQuestion.labelClassName.Content = mhG.labelHomeworkName.Content.ToString();   //重新修改answerQuestion界面的值
+            string studentName1 = name;    //需要当前学生的姓名
+
+            newAnswerQuestion.Show();  //答疑界面只能用一个
             this.Visibility = Visibility.Hidden;
         }
+
+
        
+
+        private void btnSubmitQuestion_Click(object sender, RoutedEventArgs e)
+        {
+             StudentAskQuestion newStudentAskQuestion = new StudentAskQuestion();   //静态的，为了保存学生的答疑信息
+            
+            //this.Visibility = Visibility.Hidden;
+            newStudentAskQuestion.studentName = name; //需要当前学生的姓名
+            newStudentAskQuestion.lbStuName.Content = newStudentAskQuestion.studentName;
+            newAnswerQuestion.listViewQuestionAndAnswer.Items.Add(newStudentAskQuestion);
+
+        }
+
         private void homeworkManagement_Click(object sender, RoutedEventArgs e)
         {
             if (true)//里面是验证函数

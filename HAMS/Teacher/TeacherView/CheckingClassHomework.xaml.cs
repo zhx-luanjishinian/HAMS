@@ -106,9 +106,25 @@ namespace HAMS.Teacher.TeacherView
             int index = stuControl.index;
             string notTitle = lbNotTitle.Content.ToString();
             string studentInfo = stuControl.lbStudentInfo1.Content.ToString()+" "+stuControl.lbStudentInfo2.Content.ToString() ;
-            //需要传入的是已批改的homIds列表
-            TeacherHomeworkCheck newTeacherHomeworkCheck = new TeacherHomeworkCheck(homIdCorrecteds,index, notTitle,studentInfo, true);
-            newTeacherHomeworkCheck.Show();
+            bool ifCorrect ;//表示是否进行了作业批改
+            if (stuControl.btnHomeworkCorrect1.Content.ToString() == "检查作业")//说明作业已被批改，需要查询出之前的批改记录
+            {
+                ifCorrect = true;
+                //需要传入的是已批改的homIds列表
+                TeacherHomeworkCheck newTeacherHomeworkCheck = new TeacherHomeworkCheck(homIdCorrecteds, index, notTitle, studentInfo, ifCorrect);
+                
+                newTeacherHomeworkCheck.Show();
+            }
+            else
+            {
+                ifCorrect = false;
+                //需要传入的是待批改的homIds列表
+                TeacherHomeworkCheck newTeacherHomeworkCheck = new TeacherHomeworkCheck(homIdNeedCorrects, index, notTitle, studentInfo, ifCorrect);
+                
+                newTeacherHomeworkCheck.Show();
+            }
+            
+            
             this.Visibility = System.Windows.Visibility.Hidden;
             
         }
@@ -144,6 +160,7 @@ namespace HAMS.Teacher.TeacherView
                 checkedStudent[i].btnHomeworkCorrect1.Content = "批改作业";//修改button名称
                 //为什么这里不能向listview中加数据
                 listViewUnCheck.Items.Add(checkedStudent[i]);
+                checkedStudent[i].btnHomeworkCorrect1.Click += new RoutedEventHandler(btnHomeworkCorrect1_Click);
 
                 //根据stuId和notId查询homId,然后保存在homIds这个数组中
                 DataTable tbHomId = td.GetHomIdByStuIdAndNotId(stuId, notId);

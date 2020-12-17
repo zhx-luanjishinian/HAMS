@@ -196,7 +196,7 @@
             </Grid>
             <Grid HorizontalAlignment="Right" Margin="0,3,-62.8,-2.76" Width="57.8">
                 <Label x:Name="labelNext" Content="下一个" Margin="4.4,-0.76,0,0" VerticalAlignment="Top" FontSize="9" Foreground="#FF074B5C" FontWeight="Bold" HorizontalAlignment="Left"/>
-                <Button x:Name="btnNext" Content="" HorizontalAlignment="Left" Margin="37.2,-0.76,0,-2.24" Width="18.6" Foreground="{x:Null}" BorderThickness="0" Click="btnNext_Click">
+                <Button x:Name="btnNext" Content="" Margin="37,-1,1.8,-0.04" Foreground="{x:Null}" BorderThickness="0" Click="btnNext_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="向右.png"/>
                     </Button.Background>

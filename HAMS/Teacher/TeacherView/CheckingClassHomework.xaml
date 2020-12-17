@@ -206,14 +206,15 @@
                 <ColumnDefinition Width="259*"/>
                 <ColumnDefinition Width="260*"/>
             </Grid.ColumnDefinitions>
-            <TextBox x:Name="tbSearch" TextWrapping="Wrap" Text="TextBox" Margin="0,2.2,55.4,0.24" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="tbStuNameSearch" TextWrapping="Wrap" Margin="0,2.2,55.4,0.24" Grid.ColumnSpan="2" Text="请输入学生的完整姓名。" GotFocus="tbSearch_GotFocus"/>
             <Button x:Name="btnSearch" Content="" HorizontalAlignment="Right" Margin="0,10,62.4,0.24" Width="25" Background="{x:Null}" BorderThickness="0" Grid.Column="1"/>
 
-            <Rectangle Stroke="Black" StrokeThickness="0" Width="22" HorizontalAlignment="Right" Margin="0,0,62.4,0.24" Height="20" VerticalAlignment="Bottom" Grid.Column="1">
-                <Rectangle.Fill>
-                    <ImageBrush ImageSource="../../Resources/查询.png"/>
-                </Rectangle.Fill>
-            </Rectangle>
+            <Button x:Name="btnSearch1" Width="22" HorizontalAlignment="Right" Margin="0,0,62.4,-0.56" Height="20" VerticalAlignment="Bottom" Grid.Column="1" BorderThickness="0" Click="btnSearch_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="/HAMS;component/Resources/查询.png"/>
+                </Button.Background>
+
+            </Button>
             <Button x:Name="btnRefresh" HorizontalAlignment="Left" Margin="223.8,2.2,0,3.24" Width="26" Background="White" BorderBrush="White" Click="btnRefresh_Click" Grid.Column="1">
                 <Image x:Name="image1" Height="10" Width="25" Source="/HAMS;component/Resources/刷新.png"/>
             </Button>

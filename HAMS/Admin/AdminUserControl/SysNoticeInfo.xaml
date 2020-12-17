@@ -7,10 +7,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="70.001" d:DesignWidth="637.666">
     <Canvas x:Name="canNoticeRecord" Height="70.001" Width="637.666">
-        <Image x:Name="imgLable" Height="70.001" Canvas.Left="10" Width="44.666" Source="pack://siteoforigin:,,,/Resources/news.gif"/>
-        <Label x:Name="labelNoticeName" Content="公告1" Canvas.Left="81.666" Canvas.Top="9.521" FontWeight="Bold"/>
+        <Image x:Name="imgLable" Height="70.001" Canvas.Left="10" Width="44.666" Source="/HAMS;component/Resources/news.gif"/>
+        <Label x:Name="labelNoticeId" Content="1" FontWeight="Bold" Canvas.Left="81.666" Canvas.Top="9" ></Label>
+        <Label x:Name="labelNoticeName" Content="公告1" Canvas.Left="108" Canvas.Top="9" FontWeight="Bold"/>
         <Label x:Name="labelNoticeDescription" Content="系统将于5月15日进行维护" Canvas.Left="81.666" Canvas.Top="34.761"/>
-        <Button x:Name="btnDeleteNotice" Content="删除" Canvas.Left="419.667" Canvas.Top="25.627" Width="75" FontFamily="Nirmala UI Semilight"/>
-        <Button x:Name="btnReviseNotice" Content="修改" Canvas.Left="534.667" Canvas.Top="25.627" Width="75" FontFamily="Nirmala UI Semilight"/>
+        <Button x:Name="btnDeleteNotice" Content="删除" Canvas.Left="419.667" Canvas.Top="25.627" Width="75" FontFamily="Nirmala UI Semilight" Click="BtnDeleteNotice_Click"/>
+        <Button x:Name="btnReviseNotice" Content="修改" Canvas.Left="534.667" Canvas.Top="25.627" Width="75" FontFamily="Nirmala UI Semilight" Click="BtnReviseNotice_Click"/>
     </Canvas>
 </UserControl>

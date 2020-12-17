@@ -37,6 +37,7 @@ namespace HAMS
         public MainWindow()
         {
             InitializeComponent();
+            txtblockSysNotice.Text = ats.newSysNotice();
         }
 
 
@@ -84,7 +85,7 @@ namespace HAMS
                 {
                     MessageBox.Show("恭喜你已登录成功");
 
-                    AdminIndex sm = new AdminIndex(txtUserName.Text + (string)br.data);
+                    AdminIndex sm = new AdminIndex(txtUserName.Text, (string)br.data);
                     sm.ShowDialog();
                 }
                 else

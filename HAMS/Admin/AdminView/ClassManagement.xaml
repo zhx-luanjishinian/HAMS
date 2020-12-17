@@ -8,9 +8,9 @@
         Title="ClassManagement" Height="472" Width="659">
     <Grid>
         <Canvas HorizontalAlignment="Left" Height="54" Margin="0,-5,-3,0" VerticalAlignment="Top" Width="655" Background="{DynamicResource {x:Static SystemColors.InfoBrushKey}}">
-            <Button x:Name="btnRevise" Canvas.Left="10" Canvas.Top="9.781" Width="67" Height="33.699" Background="{DynamicResource {x:Static SystemColors.InfoBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.InfoBrushKey}}">
+            <Button x:Name="btnRevise" Canvas.Left="10" Canvas.Top="9.781" Width="67" Height="33.699" Background="{DynamicResource {x:Static SystemColors.InfoBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.InfoBrushKey}}" Click="BtnRevise_Click">
                 <StackPanel Orientation="Horizontal" RenderTransformOrigin="0.293,0.557" Width="62">
-                    <Image x:Name="revise1" Height="33.699" Width="35" Source="pack://siteoforigin:,,,/Resources/revise.png" />
+                    <Image x:Name="revise1" Height="33.699" Width="35" Source="/HAMS;component/Resources/revise.png" />
                     <TextBlock x:Name="revise2" VerticalAlignment="Center"  FontWeight="SemiBold">
             <Run Text="修改"/>
                     </TextBlock>
@@ -20,19 +20,13 @@
             <Label Content="课堂名" Canvas.Left="406.999" Canvas.Top="14.229" RenderTransformOrigin="0.471,0.555"/>
             <TextBox x:Name="txtClassNum" Height="23" Canvas.Left="314.999" TextWrapping="Wrap" Text="" Canvas.Top="16.032" Width="84"/>
             <TextBox x:Name="txtClassName" Height="23" Canvas.Left="454.999" TextWrapping="Wrap" Text="" Canvas.Top="15.729" Width="84" RenderTransformOrigin="0.5,0.478"/>
-            <Button x:Name="btnQuery" Content="查询" Canvas.Left="558" Canvas.Top="14.229" Width="75" Height="24.803"/>
+            <Button x:Name="btnQuery" Content="查询" Canvas.Left="558" Canvas.Top="14.229" Width="75" Height="24.803" Click="BtnQuery_Click_1"/>
         </Canvas>
-        <DataGrid x:Name="datagridShowInfo" HorizontalAlignment="Left" Height="389" Margin="-3,54,-4,-0.333" VerticalAlignment="Top" Width="659">
+        <DataGrid x:Name="datagridShowInfo" CanUserAddRows="False" ColumnWidth="*" AutoGenerateColumns="true" HorizontalAlignment="Left" Height="389" Margin="-3,54,-4,-0.333" VerticalAlignment="Top" Width="659">
             <DataGrid.Columns>
-                <DataGridTextColumn Width="80" Header=" "/>
-                <DataGridTextColumn Width="80" Header="课堂号"/>
-                <DataGridTextColumn Width="80" Header="课堂名"/>
-                <DataGridTextColumn Width="120" Header="教师工号"/>
+                
             </DataGrid.Columns>
-            <Border Grid.Row="1"  BorderThickness="1,1,1,0"></Border>
-            <Border Grid.Row="2"  BorderThickness="1,1,1,0"></Border>
-            <Border Grid.Row="3"  BorderThickness="1,1,1,0"></Border>
-            <Border Grid.Row="4"  BorderThickness="1,1,1,0"></Border>
+            
         </DataGrid>
     </Grid>
 </Page>

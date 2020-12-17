@@ -110,7 +110,7 @@
                     <StackPanel.RenderTransform>
                         <TranslateTransform Y="0" />
                     </StackPanel.RenderTransform>
-                    <TextBlock Foreground="black" Text="温馨提示：本系统将于2020年12月12日更新。请提前进入系统完成任务或将计划延后，给您带来的不便请谅解！" Height="47" Margin="0,12,0,0" FontSize="20" />
+                    <TextBlock x:Name="txtblockSysNotice" Foreground="black" Text="温馨提示：本系统将于2020年12月12日更新。请提前进入系统完成任务或将计划延后，给您带来的不便请谅解！" Height="47" Margin="0,12,0,0" FontSize="20" />
                 </StackPanel>
 
             </Canvas>

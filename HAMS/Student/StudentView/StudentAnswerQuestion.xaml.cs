@@ -22,22 +22,23 @@ namespace HAMS.Student.StudentView
         public String account { set; get; }
         public String name { set; get; }
         public String classId { set; get; }
-        public StudentAnswerQuestion()
+        public StudentAnswerQuestion(String account,String name,String classId)
         {
             InitializeComponent();
+            this.account = account;
+            this.name = name;
+            this.classId = classId;
         }
-
-        private void button1_Click(object sender, RoutedEventArgs e)
+    private void button1_Click_1(object sender, RoutedEventArgs e)
+    {
+        if (true)//里面是验证函数
         {
-             
-            if (true)//里面是验证函数
-            {
-                // 打开子窗体
-                StuMainHomework smh = new StuMainHomework(account,name,classId);
-                smh.Show();
-                // 隐藏自己(父窗体)
-                this.Visibility = System.Windows.Visibility.Hidden;
-        }
-    }
+            // 打开子窗体
+            StuMainHomework smh = new StuMainHomework(account, name, classId);
+                
+            smh.Show();
+            // 隐藏自己(父窗体)
+            this.Visibility = System.Windows.Visibility.Hidden;
+        } }
     }
 }

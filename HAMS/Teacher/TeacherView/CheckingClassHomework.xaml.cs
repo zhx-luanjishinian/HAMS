@@ -37,18 +37,22 @@ namespace HAMS.Teacher.TeacherView
         private String[] stuNameUnfinisheds;//未完成作业学生的stuName数组
 
         private string notId;//当前作业公告Id
+        public string pngfile;//头像路径
+
+
 
         TeacherService.TService ts = new TeacherService.TService();
         TeacherDao.TDao td = new TeacherDao.TDao();
-        public CheckingClassHomework()
-        {
-            InitializeComponent();
-        }
+      
 
-        public CheckingClassHomework(string homeworkTitle, string description, string teacherSpecId, string teacherName, string classSpecId, string className)
+        public CheckingClassHomework(string homeworkTitle, string description, string teacherSpecId, string teacherName, string classSpecId, string className,string pgfile)
         {
             //生成基本信息
             InitializeComponent();
+            this.pngfile = pgfile;
+            //设置该img控件的Source
+            headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, pngfile))));
+
             lbNotTitle.Content = homeworkTitle;
             textBlockDescription.Text = description;
             tbTeacherInfo.Text = teacherSpecId;
@@ -151,7 +155,8 @@ namespace HAMS.Teacher.TeacherView
             {
                 ifCorrect = true;
                 //需要传入的是已批改的homIds列表
-                TeacherHomeworkCheck newTeacherHomeworkCheck = new TeacherHomeworkCheck(homIdCorrecteds, index, notTitle, studentInfo, ifCorrect);
+                TeacherHomeworkCheck newTeacherHomeworkCheck = new TeacherHomeworkCheck(homIdCorrecteds, index, notTitle, studentInfo, this.pngfile,ifCorrect);
+                newTeacherHomeworkCheck.pngfile = this.pngfile;
                 newTeacherHomeworkCheck.className = tbClassInfo1.Text;
                 newTeacherHomeworkCheck.classSpecId = tbClassInfo.Text;
                 newTeacherHomeworkCheck.description = textBlockDescription.Text;
@@ -161,7 +166,7 @@ namespace HAMS.Teacher.TeacherView
             {
                 ifCorrect = false;
                 //需要传入的是待批改的homIds列表
-                TeacherHomeworkCheck newTeacherHomeworkCheck = new TeacherHomeworkCheck(homIdNeedCorrects, index, notTitle, studentInfo, ifCorrect);
+                TeacherHomeworkCheck newTeacherHomeworkCheck = new TeacherHomeworkCheck(homIdNeedCorrects, index, notTitle, studentInfo,this.pngfile, ifCorrect);
                 newTeacherHomeworkCheck.className = tbClassInfo1.Text;
                 newTeacherHomeworkCheck.classSpecId = tbClassInfo.Text;
                 newTeacherHomeworkCheck.description = textBlockDescription.Text;
@@ -271,7 +276,8 @@ namespace HAMS.Teacher.TeacherView
 
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
-            BreifView newBreifView = new BreifView(tbClassInfo.Text.ToString(),tbClassInfo1.Text.ToString(),tbTeacherInfo.Text.ToString(),tbTeacherInfo1.Text.ToString());
+            BreifView newBreifView = new BreifView(tbClassInfo.Text.ToString(),tbClassInfo1.Text.ToString(),tbTeacherInfo.Text.ToString(),tbTeacherInfo1.Text.ToString(),this.pngfile);
+            newBreifView.pngfile = this.pngfile;
             newBreifView.Show();
             this.Visibility = System.Windows.Visibility.Hidden;
         }
@@ -306,7 +312,8 @@ namespace HAMS.Teacher.TeacherView
 
         private void btnHomeworkStatistic_Click(object sender, RoutedEventArgs e)
         {
-            HomeworkStatistic hs = new HomeworkStatistic();
+            HomeworkStatistic hs = new HomeworkStatistic(this.pngfile);
+            hs.pngfile = this.pngfile;
             hs.tSpecId = tbClassInfo.Text;
             hs.tName = tbClassInfo1.Text;
             hs.tbNotTitle.Text = lbNotTitle.Content.ToString();

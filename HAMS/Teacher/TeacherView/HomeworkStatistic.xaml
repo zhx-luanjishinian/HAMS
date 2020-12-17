@@ -19,17 +19,7 @@
     </Window.Resources>
     <Grid>
         <Grid Margin="-10,0,0,0" Height="75.938" VerticalAlignment="Top" d:LayoutOverrides="TopMargin, BottomMargin">
-            <Border BorderBrush="Black" BorderThickness="0,0,0,1" Margin="10,0,0,0" Background="LightBlue">
-                <Border x:Name="headImage" BorderBrush="Black" BorderThickness="0" HorizontalAlignment="Left" Height="37" VerticalAlignment="Top" Width="41" CornerRadius="35" RenderTransformOrigin="1.894,0.568" Margin="31,20,0,0">
-                    <Border.Background>
-                        <ImageBrush>
-                            <ImageBrush.ImageSource>
-                                <ImageSource>/HAMS;component/Resources/teacher.png</ImageSource>
-                            </ImageBrush.ImageSource>
-                        </ImageBrush>
-                    </Border.Background>
-                </Border>
-            </Border>
+            <Border BorderBrush="Black" BorderThickness="0,0,0,1" Margin="10,0,0,0" Background="LightBlue"/>
             <Image x:Name="image" HorizontalAlignment="Left" Margin="284.4,9.2,0,10" Width="104" Source="/HAMS;component/Resources/management.jpg" Stretch="Fill"/>
             <Button x:Name="btnExit" Background="LightBlue" Width="82" RenderTransformOrigin="0.622,0.945" Foreground="#FF151111" BorderBrush="LightBlue" HorizontalAlignment="Right" Margin="0,9,24.4,0.938" Click="btnExit_Click">
                 <StackPanel>
@@ -74,6 +64,7 @@
             <TextBlock.Background>
                 <ImageBrush/>
             </TextBlock.Background><Run Text="刘树栋"/></TextBlock>
+        <Image x:Name="headImage" Source="/HAMS;component/Resources/女教师.png" Margin="10,20,457.4,399.4"/>
 
     </Grid>
 </Window>

@@ -21,6 +21,8 @@ namespace HAMS.Teacher.TeacherView
     {
         public String notId { set; get; }
         public String classSpecId { set; get; }
+        
+
         public AnswerQuestion(String className)
         {
             InitializeComponent();

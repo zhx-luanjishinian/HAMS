@@ -23,11 +23,16 @@ namespace HAMS.Teacher.TeacherView
     /// </summary>
     public partial class AnnounceNotice : Window
     {
+        public string pngfile;//头像路径
         private bool ifAnnounce;//是否是修改作业公告
         private bool upNotFile = false;//是否上传作业附件
-        public AnnounceNotice(string tNum,string tName,string cId, string cName)
+        public AnnounceNotice(string tNum,string tName,string cId, string cName,string pgfile)
         {
             InitializeComponent();
+            this.pngfile = pgfile;
+            //设置该img控件的Source
+            headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, pngfile))));
+
             tbName.Text = tName;
             tbTeacherSpecId.Text = tNum;
             labelcClassName.Content = cName;
@@ -38,6 +43,8 @@ namespace HAMS.Teacher.TeacherView
         public AnnounceNotice(string tNum, string tName, string cSpecId, string cName,string nTitle,string nContent,DateTime nSubTime)
         {
             InitializeComponent();
+            headImage.Source = new BitmapImage(new Uri(@pngfile));
+
             tbName.Text = tName;
             tbTeacherSpecId.Text = tNum;
             labelcClassName.Content = cName;
@@ -69,7 +76,8 @@ namespace HAMS.Teacher.TeacherView
 
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
-            BreifView newBreifView = new BreifView(lbClassSpecId.Text,labelcClassName.Content.ToString(),tbTeacherSpecId.Text,tbName.Text);
+            BreifView newBreifView = new BreifView(lbClassSpecId.Text,labelcClassName.Content.ToString(),tbTeacherSpecId.Text,tbName.Text,this.pngfile);
+            newBreifView.pngfile = this.pngfile;
             newBreifView.Show();
             // 隐藏自己(父窗体)
             this.Visibility = System.Windows.Visibility.Hidden;

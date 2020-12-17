@@ -15,13 +15,14 @@
                 <Canvas Margin="0,0,0,0.76">
                     <Label Content="公告标题" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.08,-0.379" Height="24.573" Width="72.667" Canvas.Left="10" Canvas.Top="10"/>
                     <Label Content="公告内容" RenderTransformOrigin="0.441,2.331" Height="25.908" Canvas.Left="10" Canvas.Top="75.077"/>
-                    <Label Content="发布时间" Height="27.24" Canvas.Left="10" Canvas.Top="207.052" RenderTransformOrigin="0.586,1.293"/>
-                    <TextBox x:Name="txtboxReleaseTime" Height="23" TextAlignment="Center" VerticalContentAlignment="Center"  Text="2020年10月10日" Canvas.Left="73" TextWrapping="Wrap" Canvas.Top="207.052" Width="120"/>
-                    <ListBox x:Name="listboxNoticeTitle" Height="35.504" Canvas.Left="10" Canvas.Top="34.573" Width="570.999"/>
-                    <ListBox x:Name="listboxNoticeContent" Height="80.119" Canvas.Left="10" Canvas.Top="105.985" Width="570.999"/>
+                    <Label Content="时间" Height="27.24" Canvas.Left="10" Canvas.Top="207.052" RenderTransformOrigin="0.586,1.293"/>
+                    <TextBox x:Name="txtboxReleaseTime" Height="23" TextAlignment="Center" VerticalContentAlignment="Center"  Text="" Canvas.Left="43" TextWrapping="Wrap" Canvas.Top="209" Width="168"/>
+                    <TextBox x:Name="txtboxNoticeTitle" Height="35.504" Canvas.Left="10" Canvas.Top="34.573" Width="570.999"/>
+                    <TextBox x:Name="txtboxNoticeContent" Height="80.119" Canvas.Left="10" Canvas.Top="105.985" Width="570.999"/>
                 </Canvas>
             </GroupBox>
-            <Button x:Name="btnAnnounce" Content="发布" Canvas.Left="356.166" Canvas.Top="299.5" Width="75" Height="25.24"/>
+            <Button x:Name="btnAnnounce" Content="发布" Canvas.Left="282" Canvas.Top="299" Width="75" Height="26" Click="BtnAnnounce_Click"/>
+            <Button x:Name="btnCancel" Content="取消" Canvas.Left="440" Canvas.Top="299" Width="75" Height="26" Click="BtnCancel_Click"/>
         </Canvas>
     </Grid>
 </Window>

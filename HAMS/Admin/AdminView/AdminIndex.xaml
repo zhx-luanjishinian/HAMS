@@ -27,7 +27,7 @@
             </Border>
             <TextBlock x:Name="userName" Text="管理员" Canvas.Left="75.021" Canvas.Top="28.689" RenderTransformOrigin="1.087,0.535" FontWeight="Bold"/>
             <Image x:Name="systemLogo" Height="64.072" Width="197.332" Source="/HAMS;component/Resources/management.jpg" Stretch="UniformToFill" Canvas.Left="490.334" Canvas.Top="3.872"/>
-            <Button x:Name="btnExit" Background="LightBlue"  Canvas.Left="701.666" Canvas.Top="13.955" Width="81.667" RenderTransformOrigin="0.622,0.945" Height="43.907" Foreground="#FF151111" BorderBrush="LightBlue">
+            <Button x:Name="btnExit" Background="LightBlue"  Canvas.Left="701.666" Canvas.Top="13.955" Width="81.667" RenderTransformOrigin="0.622,0.945" Height="43.907" Foreground="#FF151111" BorderBrush="LightBlue" Click="BtnExit_Click">
                 <StackPanel>
                     <Image x:Name="exit1" Width="28" Height="23.907" Source="/HAMS;component/Resources/resizeApi.png"/>
                     <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold">

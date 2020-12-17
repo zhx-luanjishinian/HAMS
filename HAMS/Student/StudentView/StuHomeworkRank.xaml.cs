@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Visifire.Charts;
+using HAMS.Student.StudentService;
 
 namespace HAMS.Student.StudentView
 {
@@ -21,11 +23,185 @@ namespace HAMS.Student.StudentView
     {
         public String notId { set; get; }
         public String classSpecId { set; get; }
-        public StuHomeworkRank(String notId,String classSpecId)
+        public String account { set; get; }
+        public String name { set; get; }
+        private SService ss = new SService();
+       
+
+        public StuHomeworkRank(String account,String name,String notId,String classSpecId)
         {
             InitializeComponent();
             this.notId = notId;
             this.classSpecId = classSpecId;
+            this.account = account;
+            this.name = name;
+        }
+        //绘制提交排行榜柱状图
+        public void initColumn()
+        {
+            Dictionary<String, int> result = ss.getTimeAndUsers(classSpecId, notId);
+            String[] valueX = result.Keys.ToArray<String>();
+            int[] valueY = result.Values.ToArray<int>();
+            //创建一个图标
+            Chart chart = new Chart();
+
+            //设置图标的宽度和高度
+            chart.Width = 580;
+            chart.Height = 380;
+            chart.Margin = new Thickness(100, 5, 10, 5);
+            //是否启用打印和保持图片
+            chart.ToolBarEnabled = false;
+
+            //设置图标的属性
+            chart.ScrollingEnabled = false;//是否启用或禁用滚动
+            chart.View3D = true;//3D效果显示
+
+            //创建一个标题的对象
+            Title title = new Title();
+
+            //设置标题的名称
+            title.Text = "该项作业每日完成人数柱状图";
+            title.Padding = new Thickness(0, 10, 5, 0);
+            //向图标添加标题
+            chart.Titles.Add(title);
+
+            Axis yAxis = new Axis();
+            //设置图标中Y轴的最小值永远为0           
+            yAxis.AxisMinimum = 0;
+            //设置图表中Y轴的后缀          
+            yAxis.Suffix = "人";
+            chart.AxesY.Add(yAxis);
+            // 创建一个新的数据线。               
+            DataSeries dataSeries = new DataSeries();
+            // 设置数据线的格式
+            dataSeries.RenderAs = RenderAs.StackedColumn;//柱状Stacked
+            // 设置数据点              
+            DataPoint dataPoint;
+            for (int i = 0; i < valueX.Length; i++)
+            {
+                // 创建一个数据点的实例。                   
+                dataPoint = new DataPoint();
+                // 设置X轴点                    
+                dataPoint.AxisXLabel = valueX[i];
+                //设置Y轴点                   
+                dataPoint.YValue = valueY[i];
+                //添加数据点                   
+                dataSeries.DataPoints.Add(dataPoint);
+            }
+            // 添加数据线到数据序列。                
+            chart.Series.Add(dataSeries);
+            //将图表添加到ca中
+            ca.Children.Add(chart);
+        }
+        //绘制提交人数饼图
+        public void initPie()
+        {
+            Dictionary<String, int> result = ss.getNums(classSpecId, notId);
+            String[] valueX = result.Keys.ToArray<String>();
+            int[] valueY = result.Values.ToArray<int>();
+
+            //创建一个图标
+            Chart chart = new Chart();
+
+            //设置图标的宽度和高度
+            chart.Width = 580;
+            chart.Height = 380;
+            chart.Margin = new Thickness(100, 5, 10, 5);
+            //是否启用打印和保持图片
+            chart.ToolBarEnabled = false;
+
+            //设置图标的属性
+            chart.ScrollingEnabled = false;//是否启用或禁用滚动
+            chart.View3D = true;//3D效果显示
+
+            //创建一个标题的对象
+            Title title = new Title();
+
+            //设置标题的名称
+            title.Text = "作业完成情况饼状图";
+            title.Padding = new Thickness(0, 10, 5, 0);
+            //向图标添加标题
+            chart.Titles.Add(title);
+            // 创建一个新的数据线。               
+            DataSeries dataSeries = new DataSeries();
+
+            // 设置数据线的格式
+            dataSeries.RenderAs = RenderAs.Pie;//柱状Stacked
+
+
+            // 设置数据点              
+            DataPoint dataPoint;
+            for (int i = 0; i < valueX.Length; i++)
+            {
+                // 创建一个数据点的实例。                   
+                dataPoint = new DataPoint();
+                // 设置X轴点                    
+                dataPoint.AxisXLabel = valueX[i];
+
+                dataPoint.LegendText = "##" + valueX[i];
+                //设置Y轴点                   
+                dataPoint.YValue = valueY[i];
+                //添加数据点                   
+                dataSeries.DataPoints.Add(dataPoint);
+            }
+
+            // 添加数据线到数据序列。                
+            chart.Series.Add(dataSeries);
+            //将图表添加到ca中
+            ca.Children.Add(chart);
+        }
+
+        private void BtnShowChartData_Click(object sender, RoutedEventArgs e)
+        {
+            ca.Children.Clear();
+            initColumn();
+        }
+
+        private void BtnShowNumber_Click(object sender, RoutedEventArgs e)
+        {
+            ca.Children.Clear();
+            initPie();
+        }
+
+        private void btnReturn_Click(object sender, RoutedEventArgs e)
+        {
+            if (true)//里面是验证函数
+            {
+                // 打开子窗体
+                StuMainHomework smh = new StuMainHomework(account, name, classSpecId);
+                smh.Show();
+                // 隐藏自己(父窗体)
+                this.Visibility = System.Windows.Visibility.Hidden;
+            }
+        }
+
+        private void HomeworkManagement_Click(object sender, RoutedEventArgs e)
+        {
+            if (true)//里面是验证函数
+            {
+                // 打开子窗体
+                StudentMainForm smf = new StudentMainForm(account, name);
+                smf.Show();
+                // 隐藏自己(父窗体)
+                this.Visibility = System.Windows.Visibility.Hidden;
+            }
+        }
+
+        private void HomeworkAlert_Click(object sender, RoutedEventArgs e)
+        {
+            if (true)//里面是验证函数
+            {
+                // 打开子窗体
+                AlertForm af = new AlertForm(account, name);
+                af.Show();
+                // 隐藏自己(父窗体)
+                this.Visibility = System.Windows.Visibility.Hidden;
+            }
+        }
+
+        private void BtnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

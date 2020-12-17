@@ -27,5 +27,10 @@ namespace HAMS.Teacher.TeacherUserControl
             InitializeComponent();
             this.index = index;
         }
+
+        private void btnHomeworkCorrect1_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

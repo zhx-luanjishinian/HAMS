@@ -190,7 +190,7 @@
                 <Label x:Name="labelBefore" Content="上一个" Margin="0,-0.76,0,0" VerticalAlignment="Top" FontSize="9" Foreground="#FF074B5C" FontWeight="Bold" HorizontalAlignment="Right"/>
                 <Button x:Name="btnBefore" Content="" HorizontalAlignment="Right" Margin="-5.4,-0.76,37,0" Width="19.8" Foreground="{x:Null}" BorderThickness="0" Click="btnBefore_Click" BorderBrush="#FFEADFDF">
                     <Button.Background>
-                        <ImageBrush ImageSource="向左.png"/>
+                        <ImageBrush ImageSource="/HAMS;component/Resources/向左.png"/>
                     </Button.Background>
                 </Button>
             </Grid>
@@ -198,7 +198,7 @@
                 <Label x:Name="labelNext" Content="下一个" Margin="4.4,-0.76,0,0" VerticalAlignment="Top" FontSize="9" Foreground="#FF074B5C" FontWeight="Bold" HorizontalAlignment="Left"/>
                 <Button x:Name="btnNext" Content="" Margin="37,-1,1.8,-0.04" Foreground="{x:Null}" BorderThickness="0" Click="btnNext_Click">
                     <Button.Background>
-                        <ImageBrush ImageSource="向右.png"/>
+                        <ImageBrush ImageSource="/HAMS;component/Resources/向右.png"/>
                     </Button.Background>
                 </Button>
             </Grid>

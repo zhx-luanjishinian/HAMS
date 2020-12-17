@@ -14,11 +14,11 @@
         <Label Content="课堂名" HorizontalAlignment="Left" Margin="283.667,127.74,0,0" VerticalAlignment="Top"/>
         <Label Content="教师工号" HorizontalAlignment="Left" Margin="283.667,178.313,0,0" VerticalAlignment="Top"/>
 
-        <TextBox x:Name="txtClassNum" HorizontalAlignment="Left" Height="23" Margin="394.667,80.74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtClassNum" HorizontalAlignment="Left" Height="23" Margin="394.667,80.74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
         <TextBox x:Name="txtClassName" HorizontalAlignment="Left" Height="23" Margin="394.667,127.74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtTeaNum" HorizontalAlignment="Left" Height="23" Margin="394.667,180.553,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btnRevise" Content="修改" HorizontalAlignment="Left" Margin="282.166,364.053,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="btnReset" Content="重置" HorizontalAlignment="Left" Margin="439.667,364.053,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBox x:Name="txtTeaNum" HorizontalAlignment="Left" Height="23" Margin="394.667,180.553,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
+        <Button x:Name="btnRevise" Content="修改" HorizontalAlignment="Left" Margin="282.166,364.053,0,0" VerticalAlignment="Top" Width="75" Click="BtnRevise_Click"/>
+        <Button x:Name="btnCancel" Content="取消" HorizontalAlignment="Left" Margin="439.667,364.053,0,0" VerticalAlignment="Top" Width="75" Click="BtnCancel_Click"/>
 
     </Grid>
 </Window>

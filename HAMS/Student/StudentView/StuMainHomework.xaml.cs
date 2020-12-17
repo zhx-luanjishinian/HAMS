@@ -100,7 +100,7 @@ namespace HAMS.Student.StudentView
         {
             Button mh = (Button)sender;
             String[] info = (String[])mh.Tag;
-            StuHomeworkRank shr = new StuHomeworkRank(info[0], info[1]);
+            StuHomeworkRank shr = new StuHomeworkRank(account,name,info[1], classId);
             shr.Show();
             this.Visibility = Visibility.Hidden;
         }

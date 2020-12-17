@@ -20,8 +20,10 @@ namespace HAMS.Admin.AdminView
     /// </summary>
     public partial class AdminIndex : Window
     {
-        public AdminIndex(string session)
+        public string adminId{get;set;}
+        public AdminIndex(string session,string number)
         {
+            this.adminId = number;
             InitializeComponent();
             
             try { if (session != null) { userName.Text = session; } }
@@ -61,11 +63,16 @@ namespace HAMS.Admin.AdminView
 
         private void BtnNoticeManage_Click(object sender, RoutedEventArgs e)
         {
-            NoticeManagement NoticeManagement = new NoticeManagement();
+            NoticeManagement NoticeManagement = new NoticeManagement(adminId);
             content.Content = new Frame()
             {
                 Content = NoticeManagement
             };
+        }
+
+        private void BtnExit_Click(object sender, RoutedEventArgs e)
+        {
+            App.Current.Shutdown();
         }
     }
 }

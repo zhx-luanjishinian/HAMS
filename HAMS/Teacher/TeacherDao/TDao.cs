@@ -342,7 +342,16 @@ namespace HAMS.Teacher.TeacherDao
             return table;
 
         }
-       
+        public DataTable GetClassInfoByClassID(String classId)
+        {
+            //此类用来装返回的对象
+
+            String sql = "select * from class where classId=@nid";
+            MySqlParameter parameter = new MySqlParameter("@nid", classId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);  //查到学生id,分数,作业路径
+            return table;
+
+        }
 
         public DataTable GetHomIdByStuIdAndNotId(String stuId,string noteId)
         {

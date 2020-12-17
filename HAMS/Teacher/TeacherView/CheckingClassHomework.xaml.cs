@@ -21,6 +21,9 @@ namespace HAMS.Teacher.TeacherView
     /// </summary>
     public partial class CheckingClassHomework : Window
     {
+        private int[] homIdCorrecteds;//已完成作业学生的homId数组
+        private int[] homIdNeedCorrects;//已完成作业学生的homId数组
+        private int[] homIdUnfinisheds;//已完成作业学生的homId数组
         TeacherService.TService ts = new TeacherService.TService();
         TeacherDao.TDao td = new TeacherDao.TDao();
         public CheckingClassHomework()
@@ -40,7 +43,7 @@ namespace HAMS.Teacher.TeacherView
             tbClassInfo1.Text = className;
             labelHomeworkArrangeTime.Content = "发布时间：" + ts.PasteSubmitTimeInForm(classSpecId, homeworkTitle);
             //加载已批改的动态控件
-            LoadFinished(classSpecId, homeworkTitle);
+            LoadCorrected(classSpecId, homeworkTitle);
             //加载待批改的动态控件
             LoadNeedCorrect(classSpecId, homeworkTitle);
             //加载未完成的动态控件
@@ -48,23 +51,31 @@ namespace HAMS.Teacher.TeacherView
 
         }
 
-        public void LoadFinished(string classSpecId, string homeworkTitle)
+        public void LoadCorrected(string classSpecId, string homeworkTitle)
         {
             DataTable table1 = td.getClassId(classSpecId);
             int classId = Convert.ToInt32(table1.Rows[0][0]);
             DataTable table2 = td.getNotIdByClassIdAndNotTitle(homeworkTitle, classId);
-            //获得noteId
-            DataTable table3 = td.SelectHomeworkCheckedInfo(table2.Rows[0][0].ToString());
+            //获得notId
+            string notId = table2.Rows[0][0].ToString();
+            DataTable table3 = td.SelectHomeworkCheckedInfo(notId);
             //MessageBox.Show(table3.Rows.Count.ToString());
             int checkedNum = table3.Rows.Count;
             //加载已批改的动态控件
             TbItemChecked.Header = "已批改   " + checkedNum;
+            //获取学生列表的长度
+            int stuListLength = table3.Rows.Count;
 
-            StudentCheck[] checkedStudent = new StudentCheck[50];
-            for (int i = 0; i < table3.Rows.Count; i++)
+            //定义动态生成控件的数组，长度与学生列表长一致
+            StudentCheck[] checkedStudent = new StudentCheck[stuListLength];
+
+            //定义存储学生列表对应homId的int数组
+            homIdCorrecteds = new int[stuListLength];
+            for (int i = 0; i < stuListLength; i++)
             {
-                checkedStudent[i] = new StudentCheck();
-                DataTable table4 = td.GetStudentNameAndIdByStuID(table3.Rows[i][0].ToString());
+                checkedStudent[i] = new StudentCheck(i);
+                String stuId = table3.Rows[i][0].ToString();
+                DataTable table4 = td.GetStudentNameAndIdByStuID(stuId);
                 checkedStudent[i].lbStudentInfo1.Content = table4.Rows[0][0].ToString();
                 //加载作业标题
                 checkedStudent[i].lbStudentInfo2.Content = table4.Rows[0][1].ToString();
@@ -72,10 +83,15 @@ namespace HAMS.Teacher.TeacherView
                 //为什么这里不能向listview中加数据
                 listViewChecked.Items.Add(checkedStudent[i]);
                 checkedStudent[i].btnHomeworkCorrect1.Click += new RoutedEventHandler(btnHomeworkCorrect1_Click);
+
+                //根据stuId和notId查询homId,然后保存在homIds这个数组中
+                DataTable tbHomId = td.GetHomIdByStuIdAndNotId(stuId,notId);
+                int homId = int.Parse(tbHomId.Rows[0][0].ToString());
+                homIdCorrecteds[i] = homId;//保存homId到数组
             }
         }
 
-        private void btnHomeworkCorrect1_Click(object sender, RoutedEventArgs e)
+        private void btnHomeworkCorrect1_Click(object sender, RoutedEventArgs e)//检查作业按钮
         {
             Button sonBtn = (Button)sender;
             Canvas stuCanvas = (Canvas)sonBtn.Parent;
@@ -86,10 +102,31 @@ namespace HAMS.Teacher.TeacherView
             string studentId = stuControl.lbStudentInfo1.Content.ToString();
             //还需要写根据学号得作业提交描述
             string postil = ts.GetPostilByForm(tbClassInfo.Text,lbNotTitle.Content.ToString(),studentId);
-            MessageBox.Show(postil);
-
-            //TeacherHomeworkCheck newTeacherHomeworkCheck = new TeacherHomeworkCheck(lbNotTitle.Content.ToString(),tbTeacherInfo.Text,tbTeacherInfo1.Text,studentId,studentName,"1111");
-            //newTeacherHomeworkCheck.Show();
+            //MessageBox.Show(postil);
+            int index = stuControl.index;
+            string notTitle = lbNotTitle.Content.ToString();
+            string studentInfo = stuControl.lbStudentInfo1.Content.ToString()+" "+stuControl.lbStudentInfo2.Content.ToString() ;
+            bool ifCorrect ;//表示是否进行了作业批改
+            if (stuControl.btnHomeworkCorrect1.Content.ToString() == "检查作业")//说明作业已被批改，需要查询出之前的批改记录
+            {
+                ifCorrect = true;
+                //需要传入的是已批改的homIds列表
+                TeacherHomeworkCheck newTeacherHomeworkCheck = new TeacherHomeworkCheck(homIdCorrecteds, index, notTitle, studentInfo, ifCorrect);
+                
+                newTeacherHomeworkCheck.Show();
+            }
+            else
+            {
+                ifCorrect = false;
+                //需要传入的是待批改的homIds列表
+                TeacherHomeworkCheck newTeacherHomeworkCheck = new TeacherHomeworkCheck(homIdNeedCorrects, index, notTitle, studentInfo, ifCorrect);
+                
+                newTeacherHomeworkCheck.Show();
+            }
+            
+            
+            this.Visibility = System.Windows.Visibility.Hidden;
+            
         }
 
         public void LoadNeedCorrect(string classSpecId, string homeworkTitle)
@@ -98,25 +135,37 @@ namespace HAMS.Teacher.TeacherView
             int classId = Convert.ToInt32(table5.Rows[0][0]);
             DataTable table6 = td.getNotIdByClassIdAndNotTitle(homeworkTitle, classId);
             //获得noteId
-            //MessageBox.Show(table2.Rows[0][0].ToString());
-            DataTable table7 = td.SelectHomeworkNeedCorrectInfo(table6.Rows[0][0].ToString());
+            string notId =  table6.Rows[0][0].ToString();
+            DataTable table7 = td.SelectHomeworkNeedCorrectInfo(notId);
             //MessageBox.Show(table3.Rows.Count.ToString());
             int checkedNum = table7.Rows.Count;
             //MessageBox.Show(checkedNum.ToString());
             //加载已批改的动态控件
             TbItemUnCheck.Header = "待批改   " + checkedNum;
 
-            StudentCheck[] checkedStudent = new StudentCheck[50];
-            for (int i = 0; i < table7.Rows.Count; i++)
+            int stuListLength = table7.Rows.Count;
+            StudentCheck[] checkedStudent = new StudentCheck[stuListLength];
+
+            //定义存储学生列表对应homId的int数组
+            homIdNeedCorrects = new int[stuListLength];
+            for (int i = 0; i < stuListLength; i++)
             {
-                checkedStudent[i] = new StudentCheck();
-                DataTable table8 = td.GetStudentNameAndIdByStuID(table7.Rows[i][0].ToString());
+                checkedStudent[i] = new StudentCheck(i);
+                String stuId = table7.Rows[i][0].ToString();
+                DataTable table8 = td.GetStudentNameAndIdByStuID(stuId );
                 checkedStudent[i].lbStudentInfo1.Content = table8.Rows[0][0].ToString();
                 //加载作业标题
                 checkedStudent[i].lbStudentInfo2.Content = table8.Rows[0][1].ToString();
                 checkedStudent[i].lbHomeworkState1.Content = "待批改";
+                checkedStudent[i].btnHomeworkCorrect1.Content = "批改作业";//修改button名称
                 //为什么这里不能向listview中加数据
                 listViewUnCheck.Items.Add(checkedStudent[i]);
+                checkedStudent[i].btnHomeworkCorrect1.Click += new RoutedEventHandler(btnHomeworkCorrect1_Click);
+
+                //根据stuId和notId查询homId,然后保存在homIds这个数组中
+                DataTable tbHomId = td.GetHomIdByStuIdAndNotId(stuId, notId);
+                int homId = int.Parse(tbHomId.Rows[0][0].ToString());
+                homIdNeedCorrects[i] = homId;//保存homId到数组
             }
         }
 
@@ -126,23 +175,36 @@ namespace HAMS.Teacher.TeacherView
             int classId = Convert.ToInt32(table1.Rows[0][0]);
             DataTable table2 = td.getNotIdByClassIdAndNotTitle(homeworkTitle, classId);
             //获得noteId
-            DataTable table3 = td.SelectHomeworkUnfinishedInfo(table2.Rows[0][0].ToString());
+            string notId = table2.Rows[0][0].ToString();
+            DataTable table3 = td.SelectHomeworkUnfinishedInfo(notId);
             //MessageBox.Show(table3.Rows.Count.ToString());
             int checkedNum = table3.Rows.Count;
             //加载已批改的动态控件
             TbItemUnFinish.Header = "未完成   " + checkedNum;
 
-            StudentCheck[] checkedStudent = new StudentCheck[50];
-            for (int i = 0; i < table3.Rows.Count; i++)
+            int stuListLength = table3.Rows.Count;
+            StudentCheck[] checkedStudent = new StudentCheck[stuListLength];
+
+            //定义存储学生列表对应homId的int数组
+            homIdUnfinisheds = new int[stuListLength];
+            for (int i = 0; i < stuListLength; i++)
             {
-                checkedStudent[i] = new StudentCheck();
-                DataTable table4 = td.GetStudentNameAndIdByStuID(table3.Rows[i][0].ToString());
+                checkedStudent[i] = new StudentCheck(i);
+                string stuId = table3.Rows[i][0].ToString();
+                DataTable table4 = td.GetStudentNameAndIdByStuID(stuId);
                 checkedStudent[i].lbStudentInfo1.Content = table4.Rows[0][0].ToString();
                 //加载作业标题
                 checkedStudent[i].lbStudentInfo2.Content = table4.Rows[0][1].ToString();
-                checkedStudent[i].lbHomeworkState1.Content = "未完成";
+               
+                checkedStudent[i].lbHomeworkState1.Content = "";
+                checkedStudent[i].btnHomeworkCorrect1.Content = "";//修改button名称
                 //为什么这里不能向listview中加数据
                 listViewUnFinish.Items.Add(checkedStudent[i]);
+
+                //根据stuId和notId查询homId,然后保存在homIds这个数组中
+                DataTable tbHomId = td.GetHomIdByStuIdAndNotId(stuId, notId);
+                int homId = int.Parse(tbHomId.Rows[0][0].ToString());
+                homIdUnfinisheds[i] = homId;//保存homId到数组
             }
         }
         private void btnExit_Click(object sender, RoutedEventArgs e)
@@ -176,7 +238,7 @@ namespace HAMS.Teacher.TeacherView
             //然后再重新加载一遍
 
             //加载已批改的动态控件
-            LoadFinished(tbClassInfo.Text, lbNotTitle.Content.ToString());
+            LoadCorrected(tbClassInfo.Text, lbNotTitle.Content.ToString());
             //加载待批改的动态控件
             LoadNeedCorrect(tbClassInfo.Text, lbNotTitle.Content.ToString());
             //加载未完成的动态控件

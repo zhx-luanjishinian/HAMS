@@ -220,7 +220,6 @@
 
         </Grid>
         <Grid HorizontalAlignment="Right" Width="518.6" Margin="0,266.134,0,0">
-            <Label x:Name="lbHomeworkStatistic" Content="查看作业情况统计图" FontWeight="Bold" Margin="395.733,-1.034,0,196.594"/>
             <Border Margin="0,-2.701,0,2.107" BorderThickness="0,0.5,0,0">
                 <Border.BorderBrush>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -288,6 +287,7 @@
                     </TabItem>
                 </TabControl>
             </Border>
+            <Button x:Name="btnHomeworkStatistic" Content="查看作业情况统计图" FontWeight="Bold" Margin="395.733,0,0,178.76" Click="btnHomeworkStatistic_Click"/>
         </Grid>
     </Grid>
 </Window>

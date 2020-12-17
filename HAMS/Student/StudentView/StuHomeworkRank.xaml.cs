@@ -35,6 +35,19 @@ namespace HAMS.Student.StudentView
             this.classSpecId = classSpecId;
             this.account = account;
             this.name = name;
+
+            Chart chart = new Chart();
+            //创建一个标题的对象
+            Title title = new Title();
+
+            //设置标题的名称
+            title.Text = "点击上方按钮绘制统计图";//这个没法居中
+            
+            //向图标添加标题
+            chart.Titles.Add(title);
+            ca.Children.Add(chart);
+
+            //initPie();//不知道为什么无法显示
         }
         //绘制提交排行榜柱状图
         public void initColumn()
@@ -46,9 +59,9 @@ namespace HAMS.Student.StudentView
             Chart chart = new Chart();
 
             //设置图标的宽度和高度
-            chart.Width = 580;
-            chart.Height = 380;
-            chart.Margin = new Thickness(100, 5, 10, 5);
+            chart.Width = 793;
+            chart.Height = 308;
+            //chart.Margin = new Thickness(100, 5, 10, 5);
             //是否启用打印和保持图片
             chart.ToolBarEnabled = false;
 
@@ -104,9 +117,9 @@ namespace HAMS.Student.StudentView
             Chart chart = new Chart();
 
             //设置图标的宽度和高度
-            chart.Width = 580;
-            chart.Height = 380;
-            chart.Margin = new Thickness(100, 5, 10, 5);
+            chart.Width = 793;
+            chart.Height = 308;
+            //chart.Margin = new Thickness(100, 5, 10, 5);
             //是否启用打印和保持图片
             chart.ToolBarEnabled = false;
 
@@ -153,12 +166,19 @@ namespace HAMS.Student.StudentView
 
         private void BtnShowChartData_Click(object sender, RoutedEventArgs e)
         {
+            //设置按钮的背景颜色
+            btnShowChartData.Background = new SolidColorBrush(Color.FromRgb(166, 221, 221));
+            btnShowNumber.Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
             ca.Children.Clear();
             initColumn();
         }
 
         private void BtnShowNumber_Click(object sender, RoutedEventArgs e)
         {
+            //设置按钮的背景颜色
+            btnShowNumber.Background = new SolidColorBrush(Color.FromRgb(166, 221, 221));
+            btnShowChartData.Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
+            ca.Children.Clear();
             ca.Children.Clear();
             initPie();
         }

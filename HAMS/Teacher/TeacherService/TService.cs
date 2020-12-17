@@ -374,7 +374,21 @@ namespace HAMS.Teacher.TeacherService
             return stuSpecId + " " + name;
         }
 
-
+        //获得已批改作业的等级和该等级下的作业数,用于绘制成绩等级柱状图
+        public Dictionary<String, int> getScoreAndNums(String notId)
+        {
+            List<Dictionary<String, int>> results = td.getHomeNumAndScore(notId);
+            return results[1];
         }
+
+        //获得该作业公告未完成和已完成的作业人数，用于绘制完成情况饼图
+        public Dictionary<String, int> getNums(String notId)
+        {
+            List<Dictionary<String, int>> results = td.getHomeNumAndScore(notId);
+            return results[0];
+        }
+
+
+    }
     }
 

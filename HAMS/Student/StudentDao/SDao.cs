@@ -382,7 +382,7 @@ namespace HAMS.Student.StudentDao
             return table;
 
         }
-        //获得每一天提交的作业人数的数量和日期数以及已提交和为提交的人数
+        //获得每一天提交的作业人数的数量和日期数以及已提交和未提交的人数
         public List<Dictionary<String,int>> getHomeNumAndDate(String classSpecId,String notId)
         {
             List<Dictionary<String,int>> result = new List<Dictionary<String,int>>();

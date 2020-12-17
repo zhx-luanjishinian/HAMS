@@ -264,5 +264,19 @@ namespace HAMS.Teacher.TeacherView
             //加载未完成的动态控件
             LoadUnfinished(tbClassInfo.Text, lbNotTitle.Content.ToString());
         }
+
+        private void btnHomeworkStatistic_Click(object sender, RoutedEventArgs e)
+        {
+            HomeworkStatistic hs = new HomeworkStatistic();
+            hs.tSpecId = tbClassInfo.Text;
+            hs.tName = tbClassInfo1.Text;
+            hs.tbNotTitle.Text = lbNotTitle.Content.ToString();
+            hs.className = tbClassInfo1.Text;
+            hs.classSpecId = tbClassInfo.Text;
+            hs.description = textBlockDescription.Text;
+            hs.notId = this.notId;//传递作业公告id
+            hs.Show();
+            this.Visibility = System.Windows.Visibility.Hidden;
+        }
     }
 }

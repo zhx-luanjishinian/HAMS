@@ -254,6 +254,11 @@ namespace HAMS.Teacher.TeacherView
             
         }
 
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
         
+            App.Current.Shutdown();    //注销，关闭系统
+        
+        }
     }
 }

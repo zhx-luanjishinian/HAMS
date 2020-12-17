@@ -182,6 +182,11 @@ namespace HAMS.Student.StudentService
         {
             return sd.updateComplexity(account, notId, complexity);
         }
+        //更新自定义截止时间的信息
+        public bool updateDefDeadLine(String account,String notId,String defDead)
+        {
+            return sd.updateDefDeadLine(account, notId, defDead);
+        }
         //进行作业复杂度的升序排序
         public List<List<List<String>>> upComplexity(String account)
         {
@@ -301,6 +306,18 @@ namespace HAMS.Student.StudentService
             DataTable sdNotName = sd.GetNotName(notId);
             string notName = sdNotName.Rows[0][0].ToString();
             return notName;
+        }
+        //获得提交作业时间和当天提交的人数
+        public Dictionary<String,int> getTimeAndUsers(String classSpecId, String notId)
+        {
+            List<Dictionary<String,int>>results = sd.getHomeNumAndDate(classSpecId, notId);
+            return results[1];
+        }
+        //获得未完成和已完成的作业人数
+        public Dictionary<String,int>getNums(String classSpecId,String notId)
+        {
+            List<Dictionary<String, int>> results = sd.getHomeNumAndDate(classSpecId, notId);
+            return results[0];
         }
     }
 }

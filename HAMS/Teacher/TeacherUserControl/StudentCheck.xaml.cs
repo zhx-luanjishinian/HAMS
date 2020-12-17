@@ -24,5 +24,10 @@ namespace HAMS.Teacher.TeacherUserControl
         {
             InitializeComponent();
         }
+
+        private void btnHomeworkCorrect1_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -82,8 +82,11 @@ namespace HAMS.Student.StudentView
                     amf.comboBoxDegree1.Items.Add(j+1);
 
                 }
+                //加入作业公告的id
                 amf.comboBoxDegree1.Tag = result[0][i][3];           
                 amf.comboBoxDegree1.SelectionChanged += new SelectionChangedEventHandler(defcomplexity);
+                //加入作业公告的id
+                amf.btnLimitedTime1.Tag = result[0][i][3];
                 amf.btnLimitedTime1.Click += new RoutedEventHandler(btnDeadline_Click);
                 lvi.Content = amf;
                 listView2.Items.Add(lvi);
@@ -124,12 +127,12 @@ namespace HAMS.Student.StudentView
                     amf.comboBoxDegree1.Items.Add(j + 1);
 
                 }
-                //超过了截止时间的不计入到里面
+                //超过了截止时间的不计入到里面,而且不能进行自定义截止时间和自定义复杂度的设置
                 var bc = new BrushConverter();
                 amf.bor.Background = (Brush)bc.ConvertFrom("#FF0000");
-                amf.comboBoxDegree1.Tag = result[1][i][3];
-                amf.comboBoxDegree1.SelectionChanged += new SelectionChangedEventHandler(defcomplexity);
-                amf.btnLimitedTime1.Click += new RoutedEventHandler(btnDeadline_Click);
+                //amf.comboBoxDegree1.Tag = result[1][i][3];
+                //amf.comboBoxDegree1.SelectionChanged += new SelectionChangedEventHandler(defcomplexity);
+                //amf.btnLimitedTime1.Click += new RoutedEventHandler(btnDeadline_Click);
                 lvi.Content = amf;
                 listView2.Items.Add(lvi);
 
@@ -170,7 +173,8 @@ namespace HAMS.Student.StudentView
         //截止时间设置，打开截止时间设置窗口
         private void btnDeadline_Click(object sender,RoutedEventArgs e)
         {
-            StuChooseCalender scc = new StuChooseCalender();
+            Button bt = (Button)sender;
+            StuChooseCalender scc = new StuChooseCalender(account,bt.Tag.ToString());
             scc.Show();
         }
       
@@ -261,6 +265,10 @@ namespace HAMS.Student.StudentView
 
         }
 
-
+        private void BtnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            //展示预警信息
+            showAertInfo(ss.showAlertFormInfo(account));
+        }
     }
 }

@@ -112,7 +112,9 @@ namespace HAMS.Teacher.TeacherView
                 ifCorrect = true;
                 //需要传入的是已批改的homIds列表
                 TeacherHomeworkCheck newTeacherHomeworkCheck = new TeacherHomeworkCheck(homIdCorrecteds, index, notTitle, studentInfo, ifCorrect);
-                
+                newTeacherHomeworkCheck.className = tbClassInfo1.Text;
+                newTeacherHomeworkCheck.classSpecId = tbClassInfo.Text;
+                newTeacherHomeworkCheck.description = textBlockDescription.Text;
                 newTeacherHomeworkCheck.Show();
             }
             else
@@ -120,7 +122,9 @@ namespace HAMS.Teacher.TeacherView
                 ifCorrect = false;
                 //需要传入的是待批改的homIds列表
                 TeacherHomeworkCheck newTeacherHomeworkCheck = new TeacherHomeworkCheck(homIdNeedCorrects, index, notTitle, studentInfo, ifCorrect);
-                
+                newTeacherHomeworkCheck.className = tbClassInfo1.Text;
+                newTeacherHomeworkCheck.classSpecId = tbClassInfo.Text;
+                newTeacherHomeworkCheck.description = textBlockDescription.Text;
                 newTeacherHomeworkCheck.Show();
             }
             

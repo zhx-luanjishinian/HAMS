@@ -23,6 +23,7 @@ namespace HAMS.Teacher.TeacherView
     public partial class BreifView : Window
     {
         TDao an = new TDao();
+        TeacherService.TService ts = new TeacherService.TService();
         public BreifView(string courseNum,string courseName,string tId,string tName)
         {
             //生成基本信息
@@ -53,6 +54,9 @@ namespace HAMS.Teacher.TeacherView
                 arrayBreifHomework[i].btnDelete.Click += new RoutedEventHandler(btnDelete_Click);
                 //定义修改公告按钮的操作
                 arrayBreifHomework[i].btnModify.Click += new RoutedEventHandler(btnModify_Click);
+                //定义点击查看作业公告详情按钮
+                arrayBreifHomework[i].btnCheckDetail.Click += new RoutedEventHandler(btnCheckDetail_Click);
+
             }
         }
         private void btnModify_Click(object sender, RoutedEventArgs e)
@@ -62,6 +66,8 @@ namespace HAMS.Teacher.TeacherView
             System.Windows.Controls.Button sonBtn = (System.Windows.Controls.Button)sender;  //获取当前点击的那个
             Grid sonGrid = (Grid)sonBtn.Parent;
             BreifHomework clickTeachClass = (BreifHomework)sonGrid.Parent;
+
+         
             //获取父级元素
             DateTime dt = ts.GetPreviousDateTime(labelCourseNumber.Content.ToString(), clickTeachClass.title.Content.ToString());
             //获取当前作业的作业截止时间
@@ -80,25 +86,28 @@ namespace HAMS.Teacher.TeacherView
             //然后执行删除公告操作（业务层），在该业务层需要先删除作业附件，再调用删除作业表上的所有作业，再删除所有作业公告
 
 
-            MessageBoxResult dr = System.Windows.MessageBox.Show("是否确定删除该作业？", "", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+            MessageBoxResult dr = System.Windows.MessageBox.Show("此操作将会导致该公告所有已交作业被删除，是否确定删除该作业？", "", MessageBoxButton.OKCancel, MessageBoxImage.Question);
            if(dr== MessageBoxResult.OK)
             {
                 System.Windows.Controls.Button sonBtn = (System.Windows.Controls.Button)sender;  //获取当前点击的那个
                 //获取父级元素，找到要删除的公告
                 Grid sonGrid = (Grid)sonBtn.Parent;
                 BreifHomework clickTeachClass = (BreifHomework)sonGrid.Parent;
-               
-                //bool ifDelete = an.deleteNotice(clickTeachClass.title.Content.ToString());  //删除时要考虑到与作业表级联删除的情况
+
+                bool ifDelete = ts.DeleteHomeworkNotice(labelCourseNumber.Content.ToString(),clickTeachClass.title.Content.ToString());  //删除时要考虑到与作业表级联删除的情况
+
+                if (ifDelete == true)
+                {
+                    System.Windows.MessageBox.Show("删除该作业公告成功");
+                }
+                else
+                {
+                    System.Windows.MessageBox.Show("删除该作业公告失败");
+                }
+
                 homeworkListView.Items.Remove(clickTeachClass);
+
                
-                //if(ifDelete==true)
-                //{
-                //    System.Windows.MessageBox.Show("删除成功");
-                //}
-                //else
-                //{
-                //    System.Windows.MessageBox.Show("删除失败");
-                //}
             }
            
         }
@@ -133,14 +142,23 @@ namespace HAMS.Teacher.TeacherView
 
         private void btnCheckDetail_Click(object sender, RoutedEventArgs e)
         {
-            if (true)//里面是验证函数
-            {
-                // 打开子窗体
-                CheckingClassHomework newHomeworkNoticeCheck = new CheckingClassHomework();
-                newHomeworkNoticeCheck.Show();
-                // 隐藏自己(父窗体)
-                this.Visibility = System.Windows.Visibility.Hidden;
-            }
+            System.Windows.Controls.Button sonBtn = (System.Windows.Controls.Button)sender;  //获取当前点击的那个按钮
+                                                                                             //获取父级元素，找到要进入的公告
+            Grid sonGrid = (Grid)sonBtn.Parent;
+         
+            BreifHomework clickTeachClass = (BreifHomework)sonGrid.Parent;
+            //获得当前点击按钮对应的作业标题和作业描述
+            string homeworkTitle =clickTeachClass.title.Content.ToString();
+            string homeworkDescription = clickTeachClass.description.Content.ToString();
+            string teacherSpecId = lbTeacherInfo.Content.ToString();
+            string teacherName = lbTeacherInfo1.Content.ToString();
+            string classSpecId = labelCourseNumber.Content.ToString();
+            string className = labelCourseName.Content.ToString();
+            //生成新界面
+            CheckingClassHomework newCheckingClassHomework = new CheckingClassHomework(homeworkTitle, homeworkDescription,teacherSpecId,teacherName,classSpecId,className);
+            newCheckingClassHomework.Show();
+            this.Visibility = System.Windows.Visibility.Hidden;
+
         }
 
      

@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace HAMS.Teacher.TeacherView
+namespace HAMS.Teacher.TeacherUserControl
 {
     /// <summary>
-    /// RecentNoticeControll.xaml 的交互逻辑
+    /// CommentControl.xaml 的交互逻辑
     /// </summary>
-    public partial class RecentNoticeControll : UserControl
+    public partial class CommentControl : UserControl
     {
-        public RecentNoticeControll()
+        public CommentControl()
         {
             InitializeComponent();
         }

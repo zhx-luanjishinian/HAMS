@@ -4,11 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HAMS.Student.StudentUserControl"
-             mc:Ignorable="d" Height="31.201" Width="148.776">
-    <Button x:Name="btnRecntNo1" OpacityMask="White" Height="31.201" Background="#FFD2F5FA" Click="BtnRecntNo1_Click" Margin="0,0,-0.333,0.333" >
-        <Canvas Height="44" Width="138">
-            <Image x:Name="image1" Height="20" Canvas.Left="23" Width="26" Source="/HAMS;component/Resources/notice1.png" RenderTransformOrigin="0.423,0.012"/>
-            <Label x:Name="lab1" Content="SVM实验" Height="23" Width="105" FontSize="11" Canvas.Left="54"/>
+             mc:Ignorable="d" Height="31.201" Width="114.338">
+    <Button x:Name="btnRecntNo1" OpacityMask="White" Height="31.201" Background="#FFD2F5FA" Click="BtnRecntNo1_Click" Margin="0,0,-11.333,0.333" HorizontalAlignment="Left" Width="126" >
+        <Canvas Height="27" Width="121">
+            <Image x:Name="image1" Height="20" Canvas.Left="3" Width="26" Source="/HAMS;component/Resources/notice1.png" RenderTransformOrigin="0.423,0.012" Canvas.Top="3"/>
+            <Label x:Name="lab1" Content="SVM实验" Height="23" Width="74" FontSize="11" Canvas.Left="37"/>
         </Canvas>
     </Button>
 </UserControl>

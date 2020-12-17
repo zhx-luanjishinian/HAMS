@@ -6,12 +6,13 @@
         xmlns:local="clr-namespace:HAMS.Student.StudentView"
         xmlns:vc="clr-namespace:Visifire.Charts;assembly=WPFVisifire.Charts"
         mc:Ignorable="d"
-        Title="StuHomeworkRank" Height="490" Width="800" ResizeMode="CanMinimize">
-    <Grid>
+        Title="StuHomeworkRank" Height="654" Width="800" ResizeMode="CanMinimize">
+    <Grid Margin="0,0,-0.333,-1">
         <Grid.RowDefinitions>
             <RowDefinition Height="72*"/>
-            <RowDefinition Height="56*"/>
-            <RowDefinition Height="333*"/>
+            <RowDefinition Height="58*"/>
+            <RowDefinition Height="46*"/>
+            <RowDefinition Height="451*"/>
         </Grid.RowDefinitions>
         <Canvas Background="LightBlue" Margin="0" Grid.Row="0" HorizontalAlignment="Left" Height="71" VerticalAlignment="Top" Width="793">
             <Border x:Name="imgHead" BorderBrush="Black" BorderThickness="0" Grid.Column="1" HorizontalAlignment="Left" Height="37" VerticalAlignment="Top" Width="41" CornerRadius="35" Canvas.Left="23" RenderTransformOrigin="1.894,0.568" Canvas.Top="18">
@@ -37,19 +38,26 @@
             </Button>
 
         </Canvas>
-        <DockPanel  HorizontalAlignment="Left" Height="54" LastChildFill="False" Background="LightPink" Grid.Row="1" VerticalAlignment="Top" Width="793" Margin="0,1,0,0">
-            <Image x:Name="imgReturn" Height="28.696" Canvas.Left="10" Canvas.Top="22.333" Width="42" Source="pack://siteoforigin:,,,/Resources/返回.png"/>
-            <Menu x:Name="menu" Background="LightPink" HorizontalAlignment="Left" Height="55.463" VerticalAlignment="Center" Width="794.847" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="0,0,0,-1.506">
-                <Button x:Name="homeworkManagement" Height="45.463" Width="188" Content="作业管理" FontSize="14" FontWeight="Bold"/>
-                <Button x:Name="homeworkAlert" Height="45.463" Width="200" Content="作业预警" FontSize="14" FontWeight="Bold"/>
+        <DockPanel  HorizontalAlignment="Left" Height="54" LastChildFill="False" Background="LightPink" Grid.Row="1" VerticalAlignment="Top" Width="793" Margin="0,3,0,0">
+
+            <Menu x:Name="menu" Background="LightPink" HorizontalAlignment="Left" Height="55" VerticalAlignment="Center" Width="682" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="0,0,0,-0.333">
+                <Button x:Name="btnReturn" Background="LightPink"  Height="45" Canvas.Left="10" Canvas.Top="27.189" Width="94" Click="btnReturn_Click" >
+                    <Image x:Name="imgReturn" Height="32" Canvas.Left="10" Canvas.Top="27.189" Width="64" Source="/Resources/返回.png" RenderTransformOrigin="0.651,0.5"/>
+                </Button>
+                <Button x:Name="homeworkManagement" Height="45.463" Width="188" Content="作业管理" FontSize="14" FontWeight="Bold" Click="HomeworkManagement_Click"/>
+                <Button x:Name="homeworkAlert" Height="45.463" Width="200" Content="作业预警" FontSize="14" FontWeight="Bold" Click="HomeworkAlert_Click"/>
+
             </Menu>
+            
         </DockPanel>
-        <Canvas Grid.Row="1" Margin="0,49,0.333,-0.333" Grid.RowSpan="2">
-            <vc:Chart Name="chart" DockPanel.Dock="Left" Height="274.565" Canvas.Top="40" Width="750.666" Canvas.Left="24" />
-            <Button Content="查看提交排行榜" Height="23" HorizontalAlignment="Left" x:Name="btnShowChartData" VerticalAlignment="Top" Width="120.333"  Canvas.Left="24" Canvas.Top="8" />
-            <Button Content="查看提交人数" Height="23" HorizontalAlignment="Left" x:Name="btnShowNumber" VerticalAlignment="Top" Width="120.333"  Canvas.Left="172.667" Canvas.Top="8" ></Button>
 
+        <Canvas Grid.Row="2" Margin="0,8,1,8.667" Grid.RowSpan="2">
 
+            <Button Content="查看提交排行榜" Height="23" HorizontalAlignment="Left" x:Name="btnShowChartData" VerticalAlignment="Top" Width="120.333"  Canvas.Left="24" Canvas.Top="8" Click="BtnShowChartData_Click" />
+            <Button Content="查看提交人数" Height="23" HorizontalAlignment="Left" x:Name="btnShowNumber" VerticalAlignment="Top" Width="120.333"  Canvas.Left="172.667" Canvas.Top="8" Click="BtnShowNumber_Click" ></Button>
+        </Canvas>
+        <Canvas Grid.Row="3" Name ="ca" Margin="0,2,0,-0.333">
+            <vc:Chart Name="chart" DockPanel.Dock="Left" Height="275" Canvas.Top="34" Width="751" Canvas.Left="34" />
         </Canvas>
 
 

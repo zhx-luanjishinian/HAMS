@@ -67,7 +67,7 @@ namespace HAMS.Student.StudentView
         private void btnStuMainHomework_Click(object sender, RoutedEventArgs e)
         {
             Button mf = (Button)sender;
-            StuMainHomework smh = new StuMainHomework(account, name, (String)mf.Tag);
+            StuMainHomework smh = new StuMainHomework(account, name, (String)mf.Tag);//真实课堂号
             smh.Show();
             this.Visibility = Visibility.Hidden;
 
@@ -135,10 +135,7 @@ namespace HAMS.Student.StudentView
 
        
 
-        private void listView2_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
+        
 
         private void btnRecntNo1_Click_1(object sender, RoutedEventArgs e)
         {
@@ -153,6 +150,11 @@ namespace HAMS.Student.StudentView
         }
 
         private void ListView2_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }

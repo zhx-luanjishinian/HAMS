@@ -18,7 +18,7 @@
             <RowDefinition Height="162*"/>
         </Grid.RowDefinitions>
 
-        <ListView x:Name="listView" Grid.Column="2" Grid.Row="1"  Margin="0.665,0,0,5.84" HorizontalAlignment="Left" Width="159.421" Height="220.518" VerticalAlignment="Bottom" >
+        <ListView x:Name="listView" Grid.Column="2" Grid.Row="1"  Margin="0.665,0,0,5.84" HorizontalAlignment="Left" Width="159.421" Height="220.518" VerticalAlignment="Bottom" SelectionChanged="ListView_SelectionChanged">
 
           
 
@@ -29,7 +29,7 @@
                 <Border.Background>
                     <ImageBrush>
                         <ImageBrush.ImageSource>
-                            <ImageSource>/Resources/bk_create.jpg</ImageSource>
+                            <ImageSource>/HAMS;component/Resources/bk_create.jpg</ImageSource>
                         </ImageBrush.ImageSource>
                     </ImageBrush>
                 </Border.Background>

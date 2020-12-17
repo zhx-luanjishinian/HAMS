@@ -373,6 +373,15 @@ namespace HAMS.Teacher.TeacherDao
             return table;
         }
 
+        public DataTable getComment(string notId)
+        {
+            //根据homId查询stuId
+            String sql = "select * from comment where notId=@hid";
+            MySqlParameter parameter = new MySqlParameter("@hid", notId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);  //查到学生id,分数,作业路径
+            return table;
+        }
+
         //获得已批改作业的等级和该等级下的作业数 和 获得该作业公告未完成和已完成的作业人数
         public List<Dictionary<String, int>> getHomeNumAndScore(String notId)
         {
@@ -420,30 +429,19 @@ namespace HAMS.Teacher.TeacherDao
             return result;
 
         }
-
-        public bool InsertComment(Comment comm)
+        public bool UpdateComment(string teacherComment,string commentId)
         {
-            
+
             //向comm表添加新作业记录
-            String sql = "insert into comment (commId, notId, commStudent, commTeacher) values (@comid,@notid,@comStuid,@comTeaid);";
+            String sql = "update comment set commTeacher=@ntUrlName where commStudent=@nid";
 
             //传入要填写的参数
-            MySqlParameter para1 = new MySqlParameter("@comid", comm.CommId);
-            MySqlParameter para2 = new MySqlParameter("@notid", comm.NotId);
-            MySqlParameter para3 = new MySqlParameter("@comStuid", comm.CommStudent);
-            MySqlParameter para4 = new MySqlParameter("@comTeaid", comm.CommTeacher);
-            return DataUtil.DataOperation.DataAdd(sql, para1, para2, para3, para4);//如果插入成功，则返回true
-        }
+           
+            MySqlParameter para2 = new MySqlParameter("@ntUrlName", teacherComment);
 
-        public DataTable getSexByTeaSpecId(string teacherSpecId)
-        {
-            //根据teacherSpecId查询sex
-            String sql = "select sex from teacher where teacherSpecId=@tSpecid";
-            MySqlParameter parameter = new MySqlParameter("@tSpecid", teacherSpecId);
-            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);  //查到学生id,分数,作业路径
-            return table;
+            MySqlParameter para3 = new MySqlParameter("@nid", commentId);
+            return DataUtil.DataOperation.DataUpdate(sql, para2,para3);//如果插入成功，则返回true
         }
-
     }
 
 

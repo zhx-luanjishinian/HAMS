@@ -1,4 +1,6 @@
 ﻿using HAMS.Teacher.TeacherUserControl;
+
+using HAMS.Student.StudentUserControl;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -35,20 +37,18 @@ namespace HAMS.Teacher.TeacherView
         private String[] stuNameUnfinisheds;//未完成作业学生的stuName数组
 
         private string notId;//当前作业公告Id
-        public string pngfile;//头像路径
 
         TeacherService.TService ts = new TeacherService.TService();
         TeacherDao.TDao td = new TeacherDao.TDao();
+        public CheckingClassHomework()
+        {
+            InitializeComponent();
+        }
 
-
-        public CheckingClassHomework(string homeworkTitle, string description, string teacherSpecId, string teacherName, string classSpecId, string className, string pgfile)
+        public CheckingClassHomework(string homeworkTitle, string description, string teacherSpecId, string teacherName, string classSpecId, string className)
         {
             //生成基本信息
             InitializeComponent();
-            this.pngfile = pgfile;
-            //设置该img控件的Source
-            headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, pngfile))));
-
             lbNotTitle.Content = homeworkTitle;
             textBlockDescription.Text = description;
             tbTeacherInfo.Text = teacherSpecId;
@@ -62,7 +62,10 @@ namespace HAMS.Teacher.TeacherView
             LoadNeedCorrect(classSpecId, homeworkTitle);
             //加载未完成的动态控件
             LoadUnfinished(classSpecId, homeworkTitle);
-
+            //获得notid
+            DataTable tableClassId = td.getClassId(classSpecId);
+            DataTable tableNotId = td.getNotIdByClassIdAndNotTitle(homeworkTitle, Convert.ToInt32(tableClassId.Rows[0][0]));
+            notId = tableNotId.Rows[0][0].ToString();
             //对查看相关附件按钮进行初始化：能够实现鼠标放上去之后显示作业附件的名称
             //根据notId获得notURLName
             string notURLName = td.getNotURLNameByNotId(int.Parse(notId)).Rows[0][0].ToString();
@@ -148,8 +151,7 @@ namespace HAMS.Teacher.TeacherView
             {
                 ifCorrect = true;
                 //需要传入的是已批改的homIds列表
-                TeacherHomeworkCheck newTeacherHomeworkCheck = new TeacherHomeworkCheck(homIdCorrecteds, index, notTitle, studentInfo, this.pngfile,ifCorrect);
-                newTeacherHomeworkCheck.pngfile = this.pngfile;
+                TeacherHomeworkCheck newTeacherHomeworkCheck = new TeacherHomeworkCheck(homIdCorrecteds, index, notTitle, studentInfo, ifCorrect);
                 newTeacherHomeworkCheck.className = tbClassInfo1.Text;
                 newTeacherHomeworkCheck.classSpecId = tbClassInfo.Text;
                 newTeacherHomeworkCheck.description = textBlockDescription.Text;
@@ -159,8 +161,7 @@ namespace HAMS.Teacher.TeacherView
             {
                 ifCorrect = false;
                 //需要传入的是待批改的homIds列表
-                TeacherHomeworkCheck newTeacherHomeworkCheck = new TeacherHomeworkCheck(homIdNeedCorrects, index, notTitle, studentInfo, this.pngfile,ifCorrect);
-                newTeacherHomeworkCheck.pngfile = this.pngfile;
+                TeacherHomeworkCheck newTeacherHomeworkCheck = new TeacherHomeworkCheck(homIdNeedCorrects, index, notTitle, studentInfo, ifCorrect);
                 newTeacherHomeworkCheck.className = tbClassInfo1.Text;
                 newTeacherHomeworkCheck.classSpecId = tbClassInfo.Text;
                 newTeacherHomeworkCheck.description = textBlockDescription.Text;
@@ -270,8 +271,7 @@ namespace HAMS.Teacher.TeacherView
 
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
-            BreifView newBreifView = new BreifView(tbClassInfo.Text.ToString(),tbClassInfo1.Text.ToString(),tbTeacherInfo.Text.ToString(),tbTeacherInfo1.Text.ToString(), this.pngfile);
-            newBreifView.pngfile = this.pngfile;
+            BreifView newBreifView = new BreifView(tbClassInfo.Text.ToString(),tbClassInfo1.Text.ToString(),tbTeacherInfo.Text.ToString(),tbTeacherInfo1.Text.ToString());
             newBreifView.Show();
             this.Visibility = System.Windows.Visibility.Hidden;
         }
@@ -279,7 +279,7 @@ namespace HAMS.Teacher.TeacherView
         private void btnAnswerQuestion_Click(object sender, RoutedEventArgs e)
         {
             AnswerQuestion newAnswerQuestion = new AnswerQuestion(tbClassInfo1.Text);
-            
+            LoadQuestionAndAnswer(notId, newAnswerQuestion);
             newAnswerQuestion.Show();
 
            // this.Visibility = System.Windows.Visibility.Hidden;
@@ -305,8 +305,7 @@ namespace HAMS.Teacher.TeacherView
 
         private void btnHomeworkStatistic_Click(object sender, RoutedEventArgs e)
         {
-            HomeworkStatistic hs = new HomeworkStatistic(this.pngfile);
-            hs.pngfile = this.pngfile;
+            HomeworkStatistic hs = new HomeworkStatistic();
             hs.tSpecId = tbClassInfo.Text;
             hs.tName = tbClassInfo1.Text;
             hs.tbNotTitle.Text = lbNotTitle.Content.ToString();
@@ -322,6 +321,59 @@ namespace HAMS.Teacher.TeacherView
         {
             //实现鼠标聚焦时文本消失
             tbStuNameSearch.Text = "";
+        }
+
+        private void LoadQuestionAndAnswer(string noteId, AnswerQuestion newAnswerQuestion)
+        {
+            //进入答疑界面时加载目前已经有的疑问和解答
+            DataTable table1 = td.getComment(noteId);
+            //List<StudentAskQuestion> list = new List<StudentAskQuestion>();  //生成StudentAskQuestion动态数组
+            //MessageBox.Show(table1.Rows.Count.ToString());    //
+            StudentAskQuestion[] newStudentAskQuestion = new StudentAskQuestion[50];
+            for (int i = 0; i < table1.Rows.Count; i++)
+            {
+                newStudentAskQuestion[i] = new StudentAskQuestion();
+                newStudentAskQuestion[i].lbStuName.Content = "本课堂学生";
+                newStudentAskQuestion[i].textBoxQuestion.Text = table1.Rows[i][2].ToString();  //有问题
+                newStudentAskQuestion[i].btnComment.Click += new RoutedEventHandler(btnSubmitQuestion_Click);
+                newStudentAskQuestion[i].btnInsert.Click += new RoutedEventHandler(btnbtnInsert_Click);
+                newStudentAskQuestion[i].lbResponseName.Content = tbTeacherInfo1.Text;    //给老师姓名赋值
+                newAnswerQuestion.listViewQuestionAndAnswer.Items.Add(newStudentAskQuestion[i]);
+                //newAnswerQuestion.btnSubmitQuestion.Click += new RoutedEventHandler(btnSubmitQuestion_Click); //定义答疑按钮的事件
+                newStudentAskQuestion[i].teacherResponse.Visibility = Visibility.Hidden;
+            }
+
+        }
+
+        private void btnSubmitQuestion_Click(object sender, RoutedEventArgs e)
+        {
+            //Teach                        erAnswerQuestion newTeacherAnswerQuestion = new TeacherAnswerQuestion();
+            Button sonBtn = (Button)sender;
+            Canvas stuCanvas = (Canvas)sonBtn.Parent;
+            StudentAskQuestion stuControl = (StudentAskQuestion)stuCanvas.Parent;
+            //MessageBox.Show(stuControl.lbStuName.Content.ToString());
+            stuControl.teacherResponse.Visibility = Visibility.Visible;  //点击，此时可见
+
+        }
+        private void btnbtnInsert_Click(object sender, RoutedEventArgs e)
+        {
+            //TeacherAnswerQuestion newTeacherAnswerQuestion = new TeacherAnswerQuestion();
+            Button sonBtn = (Button)sender;
+            Canvas stuCanvas = (Canvas)sonBtn.Parent;
+            StudentAskQuestion stuControl = (StudentAskQuestion)stuCanvas.Parent;
+            //MessageBox.Show(stuControl.lbStuName.Content.ToString());
+
+            bool flag = td.UpdateComment(stuControl.tbResponse.Text, stuControl.textBoxQuestion.Text);
+            //往数据库里插入数据
+            if (flag == true)
+            {
+                MessageBox.Show("successfully insert!");
+            }
+            else
+            {
+                MessageBox.Show("failed!");
+            }
+            stuControl.tbResponse.IsReadOnly = true;
         }
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)

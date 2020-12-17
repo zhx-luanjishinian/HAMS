@@ -11,7 +11,7 @@ namespace HAMS.Entity
         //一级评论的id
         public int CommId { private set; get; }
         //作业公告的id
-        public int NotId { private set; get; }
+        public int NotId {  set; get; }
         //一级评论的具体内容
         public String CommStudent { set; get; }
 

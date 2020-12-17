@@ -49,7 +49,7 @@ namespace HAMS
         {
             if (radiobtnStudent.IsChecked == true)
             {
-                BaseResult br = sts.login(txtUserName.Text, txtPassword.Text);
+                BaseResult br = sts.login(txtUserName.Text, txtPassword.Password);
                 if (br.code == 0)
                 {
                     MessageBox.Show("恭喜你已登录成功");
@@ -65,7 +65,7 @@ namespace HAMS
             }
             else if (radiobtnTeacher.IsChecked == true)
             {
-                BaseResult br = tts.Login(txtUserName.Text, txtPassword.Text);
+                BaseResult br = tts.Login(txtUserName.Text, txtPassword.Password);
                 if (br.code == 0)
                 {
                     MessageBox.Show("恭喜你已登录成功");
@@ -97,7 +97,7 @@ namespace HAMS
             }
             else if (radiobtnAdmin.IsChecked == true)
             {
-                BaseResult br = ats.login(txtUserName.Text, txtPassword.Text);
+                BaseResult br = ats.login(txtUserName.Text, txtPassword.Password);
                 if (br.code == 0)
                 {
                     MessageBox.Show("恭喜你已登录成功");
@@ -152,7 +152,8 @@ namespace HAMS
 
         private void btnReset_Click(object sender, RoutedEventArgs e)
         {
-            
+            txtUserName.Text = "";
+            txtPassword.Password = "";
         }
 
         private void TxtUserName_TextChanged(object sender, TextChangedEventArgs e)

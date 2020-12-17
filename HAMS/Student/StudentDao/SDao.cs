@@ -380,7 +380,26 @@ namespace HAMS.Student.StudentDao
             MySqlParameter para = new MySqlParameter("@id", notId);
             DataTable table = DataUtil.DataOperation.DataQuery(sql, para);
             return table;
-
+        }
+        //进行提问操作
+        public String insertComm(String notId,String commStudent)
+        {
+            String result;
+            String sql = "insert comm set notId=@notId and commStudent = @comm";
+            MySqlParameter para1 = new MySqlParameter("@notId", notId);
+            MySqlParameter para2 = new MySqlParameter("@comm", commStudent);
+            bool flag=DataUtil.DataOperation.DataAdd(sql, para1, para2);
+            if(flag)
+            {
+                String sql1 = "select commId from comm where notId = @notId and commStudent = @comm";
+                DataTable table = DataUtil.DataOperation.DataQuery(sql1, para1, para2);
+                result = table.Rows[0][0].ToString();
+            }
+            else
+            {
+                return "提问失败，请重试";
+            }
+            return result;
         }
         //获得每一天提交的作业人数的数量和日期数以及已提交和未提交的人数
         public List<Dictionary<String,int>> getHomeNumAndDate(String classSpecId,String notId)

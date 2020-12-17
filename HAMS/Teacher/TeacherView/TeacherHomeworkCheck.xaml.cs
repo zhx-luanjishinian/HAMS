@@ -216,6 +216,7 @@ namespace HAMS.Teacher.TeacherView
             string className = this.className;
 
             CheckingClassHomework newCheckingClassHomework = new CheckingClassHomework(homeworkTitle, description, teacherSpecId, teacherName, classSpecId, className,this.pngfile);
+            
             newCheckingClassHomework.pngfile = this.pngfile;
             newCheckingClassHomework.Show();
             this.Visibility = System.Windows.Visibility.Hidden;

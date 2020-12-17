@@ -137,9 +137,6 @@
     <Compile Include="Student\StudentView\HomeworkSubmit.xaml.cs">
       <DependentUpon>HomeworkSubmit.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Student\StudentView\StuCheckHomework.xaml.cs">
-      <DependentUpon>StuCheckHomework.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Student\StudentView\StuChooseCalender.xaml.cs">
       <DependentUpon>StuChooseCalender.xaml</DependentUpon>
     </Compile>
@@ -285,10 +282,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Student\StudentView\HomeworkSubmit.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Student\StudentView\StuCheckHomework.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

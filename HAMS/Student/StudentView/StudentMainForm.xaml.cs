@@ -137,18 +137,7 @@ namespace HAMS.Student.StudentView
 
         
 
-        private void btnRecntNo1_Click_1(object sender, RoutedEventArgs e)
-        {
-            if (true)//里面是验证函数
-            {
-                // 打开子窗体
-                StuCheckHomework sch = new StuCheckHomework(account,name);
-                sch.Show();
-                // 隐藏自己(父窗体)
-                this.Visibility = System.Windows.Visibility.Hidden;
-            }
-        }
-
+        
         private void ListView2_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
 

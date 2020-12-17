@@ -65,6 +65,8 @@ namespace HAMS.Student.StudentService
             DateTime now = DateTime.Now;
             String message = "";
             //查到作业名说明已经交了作业
+
+
             if (table.Rows[0][3].ToString() != "")
             {
                 object score = table.Rows[0][2];
@@ -114,7 +116,7 @@ namespace HAMS.Student.StudentService
         }
         public List<List<List<String>>> showAlertFormInfo(String account)
         {
-            return sd.alertFomrInfo(account);
+            return sd.alertFormInfo(account);
         }
         //统计已完成作业的数量
         public int countHomeworkNumber(String account)
@@ -134,7 +136,7 @@ namespace HAMS.Student.StudentService
         //进行作业的升序排序
         public List<List<List<String>>> upRank(String account)
         {
-            List<List<List<String>>> results = sd.alertFomrInfo(account);
+            List<List<List<String>>> results = sd.alertFormInfo(account);
             List<List<String>> result = results[0];
             result.Sort(delegate (List<String> l1, List<String> l2)
             {
@@ -159,7 +161,7 @@ namespace HAMS.Student.StudentService
         //进行作业的降序排序
         public List<List<List<String>>> downRank(String account)
         {
-            List<List<List<String>>> results = sd.alertFomrInfo(account);
+            List<List<List<String>>> results = sd.alertFormInfo(account);
             List<List<String>> result = results[0];
             result.Sort(delegate (List<String> l1, List<String> l2)
             {
@@ -184,10 +186,15 @@ namespace HAMS.Student.StudentService
         {
             return sd.updateComplexity(account, notId, complexity);
         }
+        //更新自定义截止时间的信息
+        public bool updateDefDeadLine(String account, String notId, String defDead)
+        {
+            return sd.updateDefDeadLine(account, notId, defDead);
+        }
         //进行作业复杂度的升序排序
         public List<List<List<String>>> upComplexity(String account)
         {
-            List<List<List<String>>> results = sd.alertFomrInfo(account);
+            List<List<List<String>>> results = sd.alertFormInfo(account);
             List<List<String>> result = results[0];
             //按第五项进行升序排序
             result.Sort(delegate (List<String> l1, List<String> l2)
@@ -203,7 +210,7 @@ namespace HAMS.Student.StudentService
         //进行作业复杂度的降序排序
         public List<List<List<String>>> downComplexity(String account)
         {
-            List<List<List<String>>> results = sd.alertFomrInfo(account);
+            List<List<List<String>>> results = sd.alertFormInfo(account);
             List<List<String>> result = results[0];
             //进行降序排序
             result.Sort(delegate (List<String> l1, List<String> l2)
@@ -299,14 +306,24 @@ namespace HAMS.Student.StudentService
             return "上传作业成功";
         }
 
-        //通过notId获取作业公告名
         public string downloadLink(string notId)
         {
-            DataTable sdNotName = sd.GetNotName(notId); //通过notId找到notTitle
+            DataTable sdNotName = sd.GetNotName(notId);
             string notName = sdNotName.Rows[0][0].ToString();
             return notName;
         }
-
+        //获得提交作业时间和当天提交的人数
+        public Dictionary<String, int> getTimeAndUsers(String classSpecId, String notId)
+        {
+            List<Dictionary<String, int>> results = sd.getHomeNumAndDate(classSpecId, notId);
+            return results[1];
+        }
+        //获得未完成和已完成的作业人数
+        public Dictionary<String, int> getNums(String classSpecId, String notId)
+        {
+            List<Dictionary<String, int>> results = sd.getHomeNumAndDate(classSpecId, notId);
+            return results[0];
+        }
         //显示作业信息
         public List<String> showHomeworkInfo(String account, String notId)
         {
@@ -319,5 +336,6 @@ namespace HAMS.Student.StudentService
             return result;
 
         }
+
     }
 }

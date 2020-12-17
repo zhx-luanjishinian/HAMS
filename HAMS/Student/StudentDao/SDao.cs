@@ -158,7 +158,7 @@ namespace HAMS.Student.StudentDao
             return table;
         }
         //查询作业预警主界面的信息,直接根据学生的学号进行查询
-        public List<List<List<String>>> alertFomrInfo(String account)
+        public List<List<List<String>>> alertFormInfo(String account)
         {
             //此处返回超过老师设置的截止时间的作业和没有超过老师设置的截止时间的作业
             List<List<String>> notBeyondHomework = new List<List<string>>();
@@ -196,7 +196,7 @@ namespace HAMS.Student.StudentDao
                     ls.Add(table2.Rows[j][2].ToString());
                     //3添加该项作业的作业标题
                     ls.Add(table2.Rows[j][1].ToString());
-                    //4添加该项作业的作业id
+                    //4添加该项作业的作业公告id
                     ls.Add(table2.Rows[j][0].ToString());
                     MySqlParameter para1 = new MySqlParameter("@nid", table2.Rows[j][0]);
                     MySqlParameter[] paras = new MySqlParameter[2];
@@ -278,6 +278,22 @@ namespace HAMS.Student.StudentDao
             paras[2] = para3;
             return DataOperation.DataUpdate(sql1, paras);
            
+        }
+        //进行自定义截至时间的更新
+        public bool updateDefDeadLine(String account,String notId,String defTime)
+        {
+            String sql = "select stuId from student where stuSpecId=@sid";
+            MySqlParameter para = new MySqlParameter("@sid", account);
+            DataTable table = DataOperation.DataQuery(sql, para);
+            String sql1 = "update homework set defDeadline=@dl where stuId=@sd and notId=@nid";
+            MySqlParameter[] paras = new MySqlParameter[3];
+            MySqlParameter para1 = new MySqlParameter("@dl", defTime);
+            paras[0] = para1;
+            MySqlParameter para2 = new MySqlParameter("@sd", table.Rows[0][0].ToString());
+            paras[1] = para2;
+            MySqlParameter para3 = new MySqlParameter("@nid", notId);
+            paras[2] = para3;
+            return DataOperation.DataUpdate(sql1, paras);
         }
         //通过真实学号来获取学生Id号
         public DataTable GetStuIdByAccount(String account)
@@ -366,5 +382,51 @@ namespace HAMS.Student.StudentDao
             return table;
 
         }
+        //获得每一天提交的作业人数的数量和日期数以及已提交和未提交的人数
+        public List<Dictionary<String,int>> getHomeNumAndDate(String classSpecId,String notId)
+        {
+            List<Dictionary<String,int>> result = new List<Dictionary<String,int>>();
+            String sql = "select classId from class where classSpecId =@cid";
+            MySqlParameter para = new MySqlParameter("@cid", classSpecId);
+            DataTable table = DataOperation.DataQuery(sql,para);
+            String sql1 = "select submitTime,homURL  from homework where notId=@nid and classId=@cd";
+            MySqlParameter[] paras = new MySqlParameter[2];
+            MySqlParameter para1 = new MySqlParameter("nid", notId);
+            paras[0] = para1;
+            MySqlParameter para2 = new MySqlParameter("@cd", table.Rows[0][0].ToString());
+            paras[1] = para2;
+            Dictionary<String, int> dic = new Dictionary<string, int>();
+            //统计已完成作业的人数
+            int count = 0;
+            //查询提交时间以及作业的地址
+            DataTable table1 = DataOperation.DataQuery(sql1, paras);
+            for(int i = 0; i < table1.Rows.Count; i++)
+            {
+                if (table1.Rows[i][1] != DBNull.Value) { 
+                String time = table1.Rows[i][0].ToString().Substring(0,10);
+                    if (dic.ContainsKey(time))
+                    {
+                        //当有这个时间时就进行添加
+                        dic[time] += 1;
+                    }
+                    else
+                    {
+                        //否则就认为是第一次进行添加
+                        dic.Add(time, 1);
+                    }
+                    count++;
+                }
+            }
+            Dictionary<String, int> countNum = new Dictionary<string, int>();
+            countNum.Add("已完成", count);
+            countNum.Add("未完成", table1.Rows.Count - count);
+            //先添加已完成和未完成的数量
+            result.Add(countNum);
+            //再添加提交时间和当天提交的人数
+            result.Add(dic);
+            return result;
+
+        }
+        
     }
 }

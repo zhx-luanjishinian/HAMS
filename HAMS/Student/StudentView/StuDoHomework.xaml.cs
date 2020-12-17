@@ -27,7 +27,6 @@ namespace HAMS.Student.StudentView
         public String name { set; get; }
         public String notId { set; get; }
         public String classId { set; get; }
-
         public String message { set; get; }
         public StuDoHomework(String account, String name)
         {
@@ -35,6 +34,7 @@ namespace HAMS.Student.StudentView
             this.account = account;
             this.name = name;
             tbUserNameAc.Text = account + name;
+            
             doHomeworkInfoShow();
         }
         public StuDoHomework(String account, String name, String notId, String classId)

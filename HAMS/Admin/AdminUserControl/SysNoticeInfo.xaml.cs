@@ -24,5 +24,15 @@ namespace HAMS.Admin.AdminUserControl
         {
             InitializeComponent();
         }
+
+        private void BtnDeleteNotice_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnReviseNotice_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

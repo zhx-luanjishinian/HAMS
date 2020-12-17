@@ -6,7 +6,7 @@
         xmlns:vc="clr-namespace:Visifire.Charts;assembly=WPFVisifire.Charts"
         xmlns:local="clr-namespace:HAMS.Teacher.TeacherView"
         mc:Ignorable="d"
-        Title="HomeworkStatistic" Height="600" Width="525">
+        Title="HomeworkStatistic" Height="500" Width="525">
     <Window.Resources>
         <Style x:Key="LabelStyle1" TargetType="{x:Type Label}">
 
@@ -18,33 +18,62 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <Grid Height="20" VerticalAlignment="Top" Background="#FF292323">
+        <Grid Margin="-10,0,0,0" Height="75.938" VerticalAlignment="Top" d:LayoutOverrides="TopMargin, BottomMargin">
+            <Border BorderBrush="Black" BorderThickness="0,0,0,1" Margin="10,0,0,0" Background="LightBlue">
+                <Border x:Name="headImage" BorderBrush="Black" BorderThickness="0" HorizontalAlignment="Left" Height="37" VerticalAlignment="Top" Width="41" CornerRadius="35" RenderTransformOrigin="1.894,0.568" Margin="31,20,0,0">
+                    <Border.Background>
+                        <ImageBrush>
+                            <ImageBrush.ImageSource>
+                                <ImageSource>/HAMS;component/Resources/teacher.png</ImageSource>
+                            </ImageBrush.ImageSource>
+                        </ImageBrush>
+                    </Border.Background>
+                </Border>
+            </Border>
+            <Image x:Name="image" HorizontalAlignment="Left" Margin="284.4,9.2,0,10" Width="104" Source="/HAMS;component/Resources/management.jpg" Stretch="Fill"/>
+            <Button x:Name="btnExit" Background="LightBlue" Width="82" RenderTransformOrigin="0.622,0.945" Foreground="#FF151111" BorderBrush="LightBlue" HorizontalAlignment="Right" Margin="0,9,24.4,0.938" Click="btnExit_Click">
+                <StackPanel>
+                    <Image x:Name="exit1" Width="28" Height="23.907" Source="/HAMS;component/Resources/resizeApi.png"/>
+                    <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
+                </StackPanel>
+            </Button>
+        </Grid>
+
+        <Grid Height="20" VerticalAlignment="Top" Background="#FF292323" Margin="0,75.938,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="65*"/>
                 <ColumnDefinition Width="0*"/>
                 <ColumnDefinition Width="454*"/>
             </Grid.ColumnDefinitions>
             <Menu x:Name="menu" Background="LightPink" Margin="0,0,0,-1.062" Grid.ColumnSpan="3" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" BorderThickness="0,0,1,0"/>
-            <Button x:Name="btnReturn" Margin="10,0,10,-1.062" BorderThickness="0" BorderBrush="#FF9F9D9D" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
+            <Button x:Name="btnReturn" Margin="10,0,10,-1.062" BorderThickness="0" BorderBrush="#FF9F9D9D" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Click="btnReturn_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="../../Resources/返回.png"/>
                 </Button.Background>
             </Button>
-            <TextBlock x:Name="tbClassInfo" Width="153.467" TextAlignment="Center" HorizontalAlignment="Left" Margin="10,1,0,0" Grid.Column="2" VerticalAlignment="Center">
+            <TextBlock x:Name="tbNotTitle" Width="153.467" TextAlignment="Center" HorizontalAlignment="Left" Margin="10,1,0,0" Grid.Column="2" VerticalAlignment="Center" Text="作业公告标题">
                 <TextBlock.Background>
                     <ImageBrush/>
-                </TextBlock.Background><Run Text="Z004530B1300720   "/><Run Text="R语言"/></TextBlock>
-            <Label x:Name="label" Content="作业公告详情" Grid.Column="2" HorizontalAlignment="Right" Margin="0,-1.88,48.41,-1.062" VerticalAlignment="Bottom" Width="83.123" Height="22.942" Style="{DynamicResource LabelStyle1}"/>
+                </TextBlock.Background></TextBlock>
+            <Label x:Name="label" Content="作业公告详情" Grid.Column="2" HorizontalAlignment="Right" Margin="0,-2,46.4,-1" VerticalAlignment="Bottom" Width="85" Height="23" Style="{DynamicResource LabelStyle1}"/>
         </Grid>
-        <Canvas Margin="0,20,0,0">
-            <vc:Chart x:Name="chart" DockPanel.Dock="Left" Height="228.831" Canvas.Top="55.467" Width="495.639" Canvas.Left="10" />
-            <Button Content="完成统计" Height="23" HorizontalAlignment="Left" x:Name="btnFinishStatistic" VerticalAlignment="Top" Width="120.333"  Canvas.Left="24" Canvas.Top="8" Background="#FFA6DDDD" />
-            <Button Content="得分统计" Height="23" HorizontalAlignment="Left" x:Name="btnScoreStatistic" VerticalAlignment="Top" Width="120.333"  Canvas.Left="172.667" Canvas.Top="8" />
-            <RadioButton x:Name="radioLineChart" Content="条形图" Canvas.Left="10" Canvas.Top="36.227"/>
-            <RadioButton x:Name="radioPieChart" Content="饼状图" Canvas.Left="89.333" Canvas.Top="36.227"/>
+        <Canvas Margin="0,75.938,0,0">
+            <Grid x:Name="ca" Height="230" Canvas.Top="70.8" Width="520" ToolTip="点击上方按钮显示统计图">
+                <vc:Chart x:Name="chart" />
+            </Grid>
+            <Button Content="完成情况统计柱状图" Height="23" HorizontalAlignment="Left" x:Name="btnFinishStatistic" VerticalAlignment="Top" Width="120.333"  Canvas.Left="12.961" Canvas.Top="32" Background="#FFDDDDDD" Click="btnFinishStatistic_Click" />
+            <Button Content="成绩等级统计饼图" Height="23" HorizontalAlignment="Left" x:Name="btnScoreStatistic" VerticalAlignment="Top" Width="120.333"  Canvas.Left="171.467" Canvas.Top="32" Click="btnScoreStatistic_Click_1" />
 
 
         </Canvas>
+        <TextBlock x:Name="tbTeacherSpecId" Width="119" TextAlignment="Center" HorizontalAlignment="Left" Margin="58,29,0,422.4">
+            <TextBlock.Background>
+                <ImageBrush/>
+            </TextBlock.Background><Run Text="Z0004520 "/></TextBlock>
+        <TextBlock x:Name="tbTeacherName" Width="119" TextAlignment="Center" HorizontalAlignment="Left" Margin="120,29,0,422.4">
+            <TextBlock.Background>
+                <ImageBrush/>
+            </TextBlock.Background><Run Text="刘树栋"/></TextBlock>
 
     </Grid>
 </Window>

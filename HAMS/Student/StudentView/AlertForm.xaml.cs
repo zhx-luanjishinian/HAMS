@@ -36,16 +36,14 @@ namespace HAMS.Student.StudentView
             this.name = name;
             this.textBlockUserId.Text = account + name;
             //展示预警信息
-            showAertInfo(ss.showAlertFormInfo(account));
+            showAlertInfo(ss.showAlertFormInfo(account));
             //初始化操作
             initComboxRank();
             homeNumberAlert();
-
-
         }
        
         //显示预警主界面信息的函数
-        public void showAertInfo( List<List<List<String>>> info)
+        public void showAlertInfo( List<List<List<String>>> info)
         {
             List<List< List<String>>> result = info;
             int count = result[0].Count;
@@ -82,8 +80,11 @@ namespace HAMS.Student.StudentView
                     amf.comboBoxDegree1.Items.Add(j+1);
 
                 }
+                //加入作业公告的id
                 amf.comboBoxDegree1.Tag = result[0][i][3];           
                 amf.comboBoxDegree1.SelectionChanged += new SelectionChangedEventHandler(defcomplexity);
+                //加入作业公告的id
+                amf.btnLimitedTime1.Tag = result[0][i][3];
                 amf.btnLimitedTime1.Click += new RoutedEventHandler(btnDeadline_Click);
                 lvi.Content = amf;
                 listView2.Items.Add(lvi);
@@ -124,12 +125,12 @@ namespace HAMS.Student.StudentView
                     amf.comboBoxDegree1.Items.Add(j + 1);
 
                 }
-                //超过了截止时间的不计入到里面
+                //超过了截止时间的不计入到里面,而且不能进行自定义截止时间和自定义复杂度的设置
                 var bc = new BrushConverter();
                 amf.bor.Background = (Brush)bc.ConvertFrom("#FF0000");
-                amf.comboBoxDegree1.Tag = result[1][i][3];
-                amf.comboBoxDegree1.SelectionChanged += new SelectionChangedEventHandler(defcomplexity);
-                amf.btnLimitedTime1.Click += new RoutedEventHandler(btnDeadline_Click);
+                //amf.comboBoxDegree1.Tag = result[1][i][3];
+                //amf.comboBoxDegree1.SelectionChanged += new SelectionChangedEventHandler(defcomplexity);
+                //amf.btnLimitedTime1.Click += new RoutedEventHandler(btnDeadline_Click);
                 lvi.Content = amf;
                 listView2.Items.Add(lvi);
 
@@ -140,9 +141,6 @@ namespace HAMS.Student.StudentView
             textBlockUnfinishedNumber.Text = (count-ss.countHomeworkNumber(account)).ToString();
             //直接进行预警数量的设置,库里面没有的话说明数据是为空的
             textBlockAlertNumber.Text = ss.setAlertNum(account);
-            
-            
-            
         }
         //处理每一个控件的选择部分
         private void defcomplexity(object sender,SelectionChangedEventArgs e)
@@ -170,7 +168,8 @@ namespace HAMS.Student.StudentView
         //截止时间设置，打开截止时间设置窗口
         private void btnDeadline_Click(object sender,RoutedEventArgs e)
         {
-            StuChooseCalender scc = new StuChooseCalender();
+            Button bt = (Button)sender;
+            StuChooseCalender scc = new StuChooseCalender(account,bt.Tag.ToString());
             scc.Show();
         }
       
@@ -211,12 +210,12 @@ namespace HAMS.Student.StudentView
             {
                 //先清空listView2里面的东西
                 listView2.Items.Clear();
-                showAertInfo(ss.upRank(account));      
+                showAlertInfo(ss.upRank(account));      
             }
             else if(comBoxByTime.SelectedValue.ToString() == "降序")
             {
                 listView2.Items.Clear();
-                showAertInfo(ss.downRank(account));
+                showAlertInfo(ss.downRank(account));
             }
         }
 
@@ -226,13 +225,13 @@ namespace HAMS.Student.StudentView
             {
                 listView2.Items.Clear();
                 //进行复杂度的降序排序
-                showAertInfo(ss.downComplexity(account));
+                showAlertInfo(ss.downComplexity(account));
             }
             else if (comBoxByDegree.SelectedValue.ToString() == "升序")
             {
                 listView2.Items.Clear();
                 //进行复杂度的升序排序
-                showAertInfo(ss.upComplexity(account));
+                showAlertInfo(ss.upComplexity(account));
             }
         }
         //进行作业预警数量是否到达的预警
@@ -261,6 +260,10 @@ namespace HAMS.Student.StudentView
 
         }
 
-
+        private void BtnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            //展示预警信息
+            showAlertInfo(ss.showAlertFormInfo(account));
+        }
     }
 }

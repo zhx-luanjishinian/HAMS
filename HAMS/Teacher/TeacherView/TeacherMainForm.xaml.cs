@@ -68,32 +68,65 @@ namespace HAMS.Teacher.TeacherView
             RecentNoticeControll[] arrayRecentNotice = new RecentNoticeControll[20];
             //动态生成控件
             DataTable tableRecentNotice;
+            //for (int j = 0; j < tableclassId.Rows.Count; j++)
+            //{
+            //    tableRecentNotice=td.getRecentNoticeByClassId(tableclassId.Rows[j][0].ToString());    //获得对应classId在notice表中的内容
+            //    DataTable tableclassInfo = td.GetClassInfoByClassID(tableclassId.Rows[j][0].ToString()); //获得对应classId在class表中的其他内容
+            //    int noticeNum = tableRecentNotice.Rows.Count;
+            //    if(noticeNum>=3)     //取布置的所有作业
+            //    {
+            //         for(int k = 0; k<3 ; k++)
+            //         {
+            //            arrayRecentNotice[k] = new RecentNoticeControll();
+            //            arrayRecentNotice[k].labelNotName.Content = tableRecentNotice.Rows[2-k][7];
+            //            //为UserControl的属性赋值
+            //            arrayRecentNotice[k].desrciption = tableRecentNotice.Rows[2 - k][4].ToString();
+            //            arrayRecentNotice[k].className = tableclassInfo.Rows[j][1].ToString();
+            //            arrayRecentNotice[k].classSpecId = tableclassInfo.Rows[j][5].ToString();
+
+            //            listViewRecentNotice.Items.Add(arrayRecentNotice[k]);
+            //            //定义点击查看作业公告详情按钮
+            //            arrayRecentNotice[k].btnRecntNo1.Click += new RoutedEventHandler(btnRecntNo1_Click);
+
+            //        }
+            //    }
+            //    else
+            //    {
+            //        for (int k = 0; k < noticeNum; k++)
+            //        {
+            //            arrayRecentNotice[k] = new RecentNoticeControll();
+            //            arrayRecentNotice[k].labelNotName.Content = tableRecentNotice.Rows[noticeNum-1-k][7];
+            //            arrayRecentNotice[k].desrciption = tableRecentNotice.Rows[noticeNum - 1 - k][4].ToString();
+            //            arrayRecentNotice[k].className = tableclassInfo.Rows[j][1].ToString();   //这里有问题
+            //            arrayRecentNotice[k].classSpecId = tableclassInfo.Rows[j][5].ToString();
+            //            listViewRecentNotice.Items.Add(arrayRecentNotice[k]);
+            //            arrayRecentNotice[k].btnRecntNo1.Click += new RoutedEventHandler(btnRecntNo1_Click);
+            //        }
+            //    }
+
+            //}
             for (int j = 0; j < tableclassId.Rows.Count; j++)
             {
-                tableRecentNotice=td.getRecentNoticeByClassId(tableclassId.Rows[j][0].ToString());
+                tableRecentNotice = td.getRecentNoticeByClassId(tableclassId.Rows[j][0].ToString());    //获得对应classId在notice表中的内容
+                DataTable tableclassInfo = td.GetClassInfoByClassID(tableclassId.Rows[j][0].ToString()); //获得对应classId在class表中的其他内容
                 int noticeNum = tableRecentNotice.Rows.Count;
-                if(noticeNum>=3)
-                {
-                     for(int k = 0; k<3 ; k++)
-                     {
-                        arrayRecentNotice[k] = new RecentNoticeControll();
-                        arrayRecentNotice[k].labelNotName.Content = tableRecentNotice.Rows[2-k][7];
-                        listViewRecentNotice.Items.Add(arrayRecentNotice[k]);
-                     }
-                }
-                else
-                {
                     for (int k = 0; k < noticeNum; k++)
                     {
                         arrayRecentNotice[k] = new RecentNoticeControll();
-                        arrayRecentNotice[k].labelNotName.Content = tableRecentNotice.Rows[noticeNum-1-k][7];
-                        listViewRecentNotice.Items.Add(arrayRecentNotice[k]);
+                        arrayRecentNotice[k].labelNotName.Content = tableRecentNotice.Rows[noticeNum - 1 - k][7];
+                        //为UserControl的属性赋值
+                        arrayRecentNotice[k].desrciption = tableRecentNotice.Rows[noticeNum - 1 - k][4].ToString();
+                    // MessageBox.Show(tableclassInfo.Rows[1][1].ToString());
+                    arrayRecentNotice[k].className = tableclassInfo.Rows[0][1].ToString();   //有问题
+                    arrayRecentNotice[k].classSpecId = tableclassInfo.Rows[0][5].ToString();
+
+                    listViewRecentNotice.Items.Add(arrayRecentNotice[k]);
+                        //定义点击查看作业公告详情按钮
+                        arrayRecentNotice[k].btnRecntNo1.Click += new RoutedEventHandler(btnRecntNo1_Click);
                     }
                 }
                
             }
-
-        }
 
         private void mousedown(object sender, MouseButtonEventArgs e)
         {
@@ -117,15 +150,18 @@ namespace HAMS.Teacher.TeacherView
 
         private void btnRecntNo1_Click(object sender, RoutedEventArgs e)
         {
-
-            if (true)//里面是验证函数
-            {
-                // 打开子窗体
-                BreifView newBreifView = new BreifView("0","0","0","0");
-                newBreifView.Show();
-                // 隐藏自己(父窗体)
-                this.Visibility = System.Windows.Visibility.Hidden;
-            }
+            //有一个按钮还是有问题，就一个
+            Button sonBtn = (Button)sender;  //获取当前点击的那个button
+            RecentNoticeControll clickRectNotice = (RecentNoticeControll)sonBtn.Parent;
+            string homeworkTitle = clickRectNotice.labelNotName.Content.ToString();
+            string description = clickRectNotice.desrciption;
+            string teacherSpecId = tbTeacherInfo.Text;
+            string teacherName = tbTeacherInfo1.Text;
+            string classSpecId = clickRectNotice.classSpecId;
+            string className = clickRectNotice.className;
+            CheckingClassHomework newCheckingClassHomework =new CheckingClassHomework(homeworkTitle, description, teacherSpecId, teacherName, classSpecId, className);
+            newCheckingClassHomework.Show();
+            this.Visibility = System.Windows.Visibility.Hidden;
         }
        
     }

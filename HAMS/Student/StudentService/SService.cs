@@ -7,6 +7,7 @@ using System.Data;
 using HAMS.ToolClass;
 using HAMS.Student.StudentDao;
 using HAMS.Entity;
+using System.Windows;
 
 namespace HAMS.Student.StudentService
 {
@@ -65,6 +66,8 @@ namespace HAMS.Student.StudentService
             DateTime now = DateTime.Now;
             String message = "";
             //查到作业名说明已经交了作业
+            MessageBox.Show(table.Rows[0][3].ToString());
+
             if (table.Rows[0][3].ToString() != "")
             {
                 object score = table.Rows[0][2];

@@ -37,7 +37,7 @@
         </Canvas>
         <Canvas Grid.ColumnSpan="2" Grid.Row="2">
             <Label x:Name="teacherName" Content="刘树栋老师" Height="23.8" Width="91.8" Canvas.Left="89.674" Canvas.Top="30.965"/>
-            <Image x:Name="teacherImage1" Height="35" Width="44.8" Source="/Resources/男老师.png" Canvas.Left="44.874" Canvas.Top="30.965"/>
+            <Image x:Name="teacherImage1" Height="35" Width="44.8" Source="/HAMS;component/Resources/男教师.png" Canvas.Left="44.874" Canvas.Top="30.965"/>
             <TextBox x:Name="textBoxAnswer" TextWrapping="Wrap" Text="将实验结果截图，提交word文档即可" Height="44.302" Canvas.Left="94.674" Canvas.Top="59.765" Width="328.926" FontSize="13"/>
         </Canvas>
 

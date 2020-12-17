@@ -19,22 +19,24 @@ namespace HAMS.Student.StudentView
     /// </summary>
     public partial class StudentAnswerQuestion : Window
     {
+        public string pngfile;
         public String account { set; get; }
         public String name { set; get; }
         public String classId { set; get; }
-        public StudentAnswerQuestion(String account,String name,String classId)
+        public StudentAnswerQuestion(String account,String name,String classId,string pgfile)
         {
             InitializeComponent();
             this.account = account;
             this.name = name;
             this.classId = classId;
+            this.pngfile = pgfile;
         }
     private void button1_Click_1(object sender, RoutedEventArgs e)
     {
         if (true)//里面是验证函数
         {
             // 打开子窗体
-            StuMainHomework smh = new StuMainHomework(account, name, classId);
+            StuMainHomework smh = new StuMainHomework(account, name, classId,pngfile);
                 
             smh.Show();
             // 隐藏自己(父窗体)

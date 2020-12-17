@@ -23,6 +23,7 @@ namespace HAMS.Student.StudentView
     public partial class StudentMainForm : Window
     {
         private SService sts = new SService();
+        public string pngfile;
         public string account { set; get; }
         public string name { set; get; }
         //此处值指的是课堂号
@@ -30,10 +31,14 @@ namespace HAMS.Student.StudentView
         public String notId { set; get; }
        
 
-        public StudentMainForm(string account,string name)
+        public StudentMainForm(string account,string name,string pgfile)
 
         {
             InitializeComponent();
+            this.pngfile = pgfile;
+            //设置该img控件的Source
+            headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, pngfile))));
+            
             this.account = account;
             this.name = name;
             textBlockUserId.Text = account+name;
@@ -67,7 +72,7 @@ namespace HAMS.Student.StudentView
         private void btnStuMainHomework_Click(object sender, RoutedEventArgs e)
         {
             Button mf = (Button)sender;
-            StuMainHomework smh = new StuMainHomework(account, name, (String)mf.Tag);//真实课堂号
+            StuMainHomework smh = new StuMainHomework(account, name, (String)mf.Tag,pngfile);//真实课堂号
             smh.Show();
             this.Visibility = Visibility.Hidden;
 
@@ -100,7 +105,7 @@ namespace HAMS.Student.StudentView
             //记录生成的是哪个动态控件
             Button hnif = (Button)sender;
             String[] info = (String[])hnif.Tag;
-            StuDoHomework sdh = new StuDoHomework(account,name,info[0],info[1]);
+            StuDoHomework sdh = new StuDoHomework(account,name,info[0],info[1],pngfile);
             sdh.Show();
             this.Visibility = Visibility.Hidden;
         }
@@ -110,7 +115,7 @@ namespace HAMS.Student.StudentView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                AlertForm af = new AlertForm(account,name);
+                AlertForm af = new AlertForm(account,name,pngfile);
                 af.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;

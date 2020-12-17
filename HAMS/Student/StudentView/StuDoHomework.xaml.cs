@@ -23,27 +23,36 @@ namespace HAMS.Student.StudentView
     public partial class StuDoHomework : Window
     {
         private SService ss = new SService();
+        public string pngfile;
         public String account { set; get; }
         public String name { set; get; }
         public String notId { set; get; }
         public String classId { set; get; }
         public String message { set; get; }
-        public StuDoHomework(String account, String name)
+        public StuDoHomework(String account, String name,string pgfile)
         {
             InitializeComponent();
             this.account = account;
             this.name = name;
             tbUserNameAc.Text = account + name;
-            
+            this.pngfile = pgfile;
+            //设置该img控件的Source
+            headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, pngfile))));
+
             doHomeworkInfoShow();
         }
-        public StuDoHomework(String account, String name, String notId, String classId)
+        public StuDoHomework(String account, String name, String notId, String classId,string pgfile)
         {
             InitializeComponent();
             this.account = account;
             this.name = name;
             this.notId = notId;
             this.classId = classId;
+            this.pngfile = pgfile;
+            //设置该img控件的Source
+            headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, pngfile))));
+
+
             Dictionary<int, List<String>> info = ss.showAllHomeworkInfo(classId);
             this.message = ss.judgeHomeworkStatus(account, notId, info[0][3].ToString());
             if (message == "未完成")
@@ -85,7 +94,6 @@ namespace HAMS.Student.StudentView
                     }
                     else
                     {
-                        System.Windows.MessageBox.Show((i * notlength).ToString());
                         content.Add(result[1].Substring(i* notlength, notlength));
                     }
                 }
@@ -128,7 +136,7 @@ namespace HAMS.Student.StudentView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                StuMainHomework smh = new StuMainHomework(account,name,classId);
+                StuMainHomework smh = new StuMainHomework(account,name,classId,pngfile);
                 smh.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
@@ -140,7 +148,7 @@ namespace HAMS.Student.StudentView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                StudentMainForm smf= new StudentMainForm(account,name);
+                StudentMainForm smf= new StudentMainForm(account,name,pngfile);
                 smf.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
@@ -152,7 +160,7 @@ namespace HAMS.Student.StudentView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                AlertForm af = new AlertForm(account,name);
+                AlertForm af = new AlertForm(account,name,pngfile);
                 af.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
@@ -166,7 +174,7 @@ namespace HAMS.Student.StudentView
             if (content == "修改" || content== "作答")//里面是验证函数
             {
                 // 打开子窗体
-                StuSubmitHomework ssh = new StuSubmitHomework(account,name,notId,classId);//真实课堂号
+                StuSubmitHomework ssh = new StuSubmitHomework(account,name,notId,classId,pngfile);//真实课堂号
                 ssh.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
@@ -174,7 +182,7 @@ namespace HAMS.Student.StudentView
             if (content == "查看")//里面是验证函数
             {
                 // 打开子窗体
-                HomeworkSubmit hs = new HomeworkSubmit(account, name, notId, classId);//真实课堂号
+                HomeworkSubmit hs = new HomeworkSubmit(account, name, notId, classId,pngfile);//真实课堂号
                 hs.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;

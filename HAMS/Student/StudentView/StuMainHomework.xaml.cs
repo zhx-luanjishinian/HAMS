@@ -22,23 +22,25 @@ namespace HAMS.Student.StudentView
     /// </summary>
     public partial class StuMainHomework : Window
     {
-       
-        static AnswerQuestion newAnswerQuestion = new AnswerQuestion("测试");   //需要获得学生的姓名信息
-       
+        public string pngfile;
+        //static AnswerQuestion newAnswerQuestion = new AnswerQuestion("测试");   //需要获得学生的姓名信息
         private SService ss = new SService();
         public String account { set; get; }
         public String name { set; get; }
         public String notId { set; get; }
         public String classId { set; get; }
         public String Message { set; get; }
-        public StuMainHomework(String account,String name,String classId)//真实课堂号
+        public StuMainHomework(String account,String name,String classId,string pngfile)//真实课堂号
         {
             InitializeComponent();
             this.account = account;
             this.name = name;
             this.classId = classId;
+            this.pngfile = pngfile;
             tbuserNameAc.Text = account + name;
-            
+            //设置该img控件的Source
+            headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, pngfile))));
+
             MainHomeworkShow(classId);
         }
 
@@ -90,7 +92,7 @@ namespace HAMS.Student.StudentView
         {
             Button mh = (Button)sender;
             String[] info = (String[])mh.Tag;
-            StuDoHomework sdh = new StuDoHomework(account, name, info[1], classId);//这里的classId是真实课堂号
+            StuDoHomework sdh = new StuDoHomework(account, name, info[1], classId,pngfile);//这里的classId是真实课堂号
             //String account, String name,String notId, String classId,String message
             sdh.Show();
             this.Visibility = Visibility.Hidden;
@@ -105,7 +107,7 @@ namespace HAMS.Student.StudentView
         {
             Button mh = (Button)sender;
             String[] info = (String[])mh.Tag;
-            StuHomeworkRank shr = new StuHomeworkRank(account,name,info[1], classId);
+            StuHomeworkRank shr = new StuHomeworkRank(account,name,info[1], classId,pngfile);
             shr.Show();
             this.Visibility = Visibility.Hidden;
         }
@@ -119,11 +121,11 @@ namespace HAMS.Student.StudentView
             String[] info = (String[])mh.Tag;
             //AnswerQuestion aq = new AnswerQuestion(info[0], info[1]);
             //AnswerQuestion aq = new AnswerQuestion(info[0]);
-            newAnswerQuestion.btnSubmitQuestion.Click += new RoutedEventHandler(btnSubmitQuestion_Click);
-            newAnswerQuestion.labelClassName.Content = mhG.labelHomeworkName.Content.ToString();   //重新修改answerQuestion界面的值
+            //newAnswerQuestion.btnSubmitQuestion.Click += new RoutedEventHandler(btnSubmitQuestion_Click);
+            //newAnswerQuestion.labelClassName.Content = mhG.labelHomeworkName.Content.ToString();   //重新修改answerQuestion界面的值
             string studentName1 = name;    //需要当前学生的姓名
 
-            newAnswerQuestion.Show();  //答疑界面只能用一个
+            //newAnswerQuestion.Show();  //答疑界面只能用一个
             this.Visibility = Visibility.Hidden;
         }
 
@@ -137,7 +139,7 @@ namespace HAMS.Student.StudentView
             //this.Visibility = Visibility.Hidden;
             newStudentAskQuestion.studentName = name; //需要当前学生的姓名
             newStudentAskQuestion.lbStuName.Content = newStudentAskQuestion.studentName;
-            newAnswerQuestion.listViewQuestionAndAnswer.Items.Add(newStudentAskQuestion);
+            //newAnswerQuestion.listViewQuestionAndAnswer.Items.Add(newStudentAskQuestion);
 
         }
 
@@ -146,7 +148,7 @@ namespace HAMS.Student.StudentView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                StudentMainForm smf = new StudentMainForm(account,name);
+                StudentMainForm smf = new StudentMainForm(account,name,pngfile);
                 smf.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
@@ -158,7 +160,7 @@ namespace HAMS.Student.StudentView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                StudentMainForm smh = new StudentMainForm(account, name);
+                StudentMainForm smh = new StudentMainForm(account, name,pngfile);
                 smh.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
@@ -175,7 +177,7 @@ namespace HAMS.Student.StudentView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                AlertForm af = new AlertForm(account,name);
+                AlertForm af = new AlertForm(account,name,pngfile);
                 af.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;

@@ -29,16 +29,16 @@
                 </Border.Background>
             </Border>
             <Label x:Name="tbUserNameAc" Content="201821060569刘小蕊" Canvas.Left="91" Canvas.Top="29" RenderTransformOrigin="1.087,0.535" FontWeight="Bold"/>
-            <Image x:Name="imgSystemLogo" Height="59" Width="191" Source="pack://siteoforigin:,,,/Resources/management.jpg" Stretch="UniformToFill" Canvas.Left="519" Canvas.Top="10"/>
-            <Button x:Name="btnExit" Background="LightBlue"  Canvas.Left="714.999" Canvas.Top="10" Width="68.334" RenderTransformOrigin="0.622,0.945" Height="43.907" Foreground="#FF151111" BorderBrush="LightBlue">
+            <Image x:Name="imgSystemLogo" Height="59" Width="191" Source="/Resources/management.jpg" Stretch="UniformToFill" Canvas.Left="519" Canvas.Top="10"/>
+            <Button x:Name="btnExit" Background="LightBlue"  Canvas.Left="714.999" Canvas.Top="10" Width="68.334" RenderTransformOrigin="0.622,0.945" Height="43.907" Foreground="#FF151111" BorderBrush="LightBlue" Click="btnExit_Click">
                 <StackPanel>
-                    <Image x:Name="exit1" Width="28" Height="23.907" Source="pack://siteoforigin:,,,/Resources/resizeApi.png"/>
+                    <Image x:Name="exit1" Width="28" Height="23.907" Source="/Resources/resizeApi.png"/>
                     <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
                 </StackPanel>
             </Button>
 
         </Canvas>
-        <DockPanel  HorizontalAlignment="Left" Height="54" LastChildFill="False" Background="LightPink" Grid.Row="1" VerticalAlignment="Top" Width="793" Margin="0,3,0,0">
+        <DockPanel  HorizontalAlignment="Left" Height="58" LastChildFill="False" Background="LightPink" VerticalAlignment="Top" Width="793" Margin="0,71,0,0" Grid.RowSpan="2">
 
             <Menu x:Name="menu" Background="LightPink" HorizontalAlignment="Left" Height="55" VerticalAlignment="Center" Width="682" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="0,0,0,-0.333">
                 <Button x:Name="btnReturn" Background="LightPink"  Height="45" Canvas.Left="10" Canvas.Top="27.189" Width="94" Click="btnReturn_Click" >

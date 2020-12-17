@@ -249,8 +249,12 @@ namespace HAMS.Teacher.TeacherService
             //根据作业Id获取成绩和点评
             DataTable tbScoreAndRemark = td.GetScoreAndRemarkByHomId(homId);
             string[] Scoreinfos = new string[2];
-            Scoreinfos[0] = (string)tbScoreAndRemark.Rows[0][0];
-            Scoreinfos[1] = (string)tbScoreAndRemark.Rows[0][1];
+            Scoreinfos[0] = tbScoreAndRemark.Rows[0][0].ToString();
+            Scoreinfos[1] = tbScoreAndRemark.Rows[0][1].ToString();
+            if(Scoreinfos[1] == "")
+            {
+                Scoreinfos[1] = "老师暂无点评";
+            }
             return Scoreinfos;
         }
         public DateTime GetPreviousDateTime(String classSpaceId,String homeworkTitle)

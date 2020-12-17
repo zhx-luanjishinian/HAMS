@@ -24,6 +24,8 @@ namespace HAMS.Teacher.TeacherView
         private int[] homIdCorrecteds;//已完成作业学生的homId数组
         private int[] homIdNeedCorrects;//已完成作业学生的homId数组
         private int[] homIdUnfinisheds;//已完成作业学生的homId数组
+        private string notId;//当前作业公告Id
+
         TeacherService.TService ts = new TeacherService.TService();
         TeacherDao.TDao td = new TeacherDao.TDao();
         public CheckingClassHomework()
@@ -49,6 +51,20 @@ namespace HAMS.Teacher.TeacherView
             //加载未完成的动态控件
             LoadUnfinished(classSpecId, homeworkTitle);
 
+            //对查看相关附件按钮进行初始化：能够实现鼠标放上去之后显示作业附件的名称
+            //根据notId获得notURLName
+            string notURLName = td.getNotURLNameByNotId(int.Parse(notId)).Rows[0][0].ToString();
+            //加载作业附件名
+            if(notURLName == "")
+            {
+                labelAccessoryName1.ToolTip = "该作业公告无作业附件";
+            }
+            else
+            {
+                labelAccessoryName1.ToolTip = notURLName;
+            }
+            
+
         }
 
         public void LoadCorrected(string classSpecId, string homeworkTitle)
@@ -57,7 +73,7 @@ namespace HAMS.Teacher.TeacherView
             int classId = Convert.ToInt32(table1.Rows[0][0]);
             DataTable table2 = td.getNotIdByClassIdAndNotTitle(homeworkTitle, classId);
             //获得notId
-            string notId = table2.Rows[0][0].ToString();
+            this.notId = table2.Rows[0][0].ToString();
             DataTable table3 = td.SelectHomeworkCheckedInfo(notId);
             //MessageBox.Show(table3.Rows.Count.ToString());
             int checkedNum = table3.Rows.Count;
@@ -135,7 +151,7 @@ namespace HAMS.Teacher.TeacherView
             int classId = Convert.ToInt32(table5.Rows[0][0]);
             DataTable table6 = td.getNotIdByClassIdAndNotTitle(homeworkTitle, classId);
             //获得noteId
-            string notId =  table6.Rows[0][0].ToString();
+            this.notId =  table6.Rows[0][0].ToString();
             DataTable table7 = td.SelectHomeworkNeedCorrectInfo(notId);
             //MessageBox.Show(table3.Rows.Count.ToString());
             int checkedNum = table7.Rows.Count;
@@ -175,7 +191,7 @@ namespace HAMS.Teacher.TeacherView
             int classId = Convert.ToInt32(table1.Rows[0][0]);
             DataTable table2 = td.getNotIdByClassIdAndNotTitle(homeworkTitle, classId);
             //获得noteId
-            string notId = table2.Rows[0][0].ToString();
+            this.notId = table2.Rows[0][0].ToString();
             DataTable table3 = td.SelectHomeworkUnfinishedInfo(notId);
             //MessageBox.Show(table3.Rows.Count.ToString());
             int checkedNum = table3.Rows.Count;

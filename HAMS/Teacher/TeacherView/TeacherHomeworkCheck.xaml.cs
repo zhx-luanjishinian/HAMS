@@ -160,9 +160,8 @@ namespace HAMS.Teacher.TeacherView
             homURL = homURLInfos[0];//路径为课堂号/作业标题/学生信息文件夹
             homName = homURLInfos[1];//获取学生文件名，然后进行显示
 
-            //string[] homURLs = homURL.Split('/');
-            //homName = homURLs[homURLs.Length - 1];
-            lbUpload.ToolTip = homName;
+            //加载学生文件名
+            lbDownload.ToolTip = homName;
 
             //查询是否已经批改，即查询homwork里面是否已经有score
             //1.查询数据库中是否有成绩字段，2.如果有成绩，则显示原来的成绩和评语
@@ -211,8 +210,7 @@ namespace HAMS.Teacher.TeacherView
 
         private void btnDownload_Click(object sender, RoutedEventArgs e)
         {
-
-            
+                       
             //1、从数据库中查出homURL,然后获取文件名并能够鼠标放上去时在旁边显示文件名
             //从上一界面获取notId,根据notId+stuId访问到homId
 
@@ -338,5 +336,7 @@ namespace HAMS.Teacher.TeacherView
             }
             
         }
+
+        
     }
 }

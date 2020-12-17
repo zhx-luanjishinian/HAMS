@@ -174,15 +174,6 @@
                     </Grid>
                 </Button>
             </StackPanel>
-            <Grid HorizontalAlignment="Left" Height="20.16" Margin="0,132.396,0,-20.16" VerticalAlignment="Top" Width="77.405">
-
-                <Button x:Name="btnDisappear" Content="" Width="14.405" BorderThickness="0" HorizontalAlignment="Right" Margin="0,5.053,0,0">
-                    <Button.Background>
-                        <ImageBrush ImageSource="../../Resources/向上.png"/>
-                    </Button.Background>
-                </Button>
-                <Label x:Name="label5" Content="收起作业内容" Margin="0,0,19.405,0" FontSize="8" d:LayoutOverrides="Width, Height"/>
-            </Grid>
             <Border HorizontalAlignment="Right" Margin="0,0.54,5.998,0" Width="91.867" Height="22.7" VerticalAlignment="Top">
                 <Grid>
                     <Button x:Name="btnAnswerQuestion" Content="" Margin="0.8,0,0,0"/>
@@ -201,7 +192,7 @@
                 </Grid>
             </Border>
         </Grid>
-        <Grid Margin="0,238.694,0,0" Height="22.44" VerticalAlignment="Top">
+        <Grid Margin="-0.4,211.56,0.4,0" Height="22.44" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="259*"/>
                 <ColumnDefinition Width="260*"/>
@@ -220,7 +211,7 @@
             </Button>
 
         </Grid>
-        <Grid HorizontalAlignment="Right" Width="518.6" Margin="0,266.134,0,0">
+        <Grid HorizontalAlignment="Right" Width="518.6" Margin="0,239,0,0">
             <Border Margin="0,-2.701,0,2.107" BorderThickness="0,0.5,0,0">
                 <Border.BorderBrush>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -288,7 +279,7 @@
                     </TabItem>
                 </TabControl>
             </Border>
-            <Button x:Name="btnHomeworkStatistic" Content="查看作业情况统计图" FontWeight="Bold" Margin="395.733,0,0,178.76" Click="btnHomeworkStatistic_Click"/>
+            <Button x:Name="btnHomeworkStatistic" Content="查看作业情况统计图" FontWeight="Bold" Margin="395.733,1,0,207.36" Click="btnHomeworkStatistic_Click"/>
         </Grid>
     </Grid>
 </Window>

@@ -1,5 +1,4 @@
 ﻿using HAMS.Teacher.TeacherUserControl;
-using HAMS.Student.StudentUserControl;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -14,7 +13,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using HAMS.Entity;
 
 namespace HAMS.Teacher.TeacherView
 {
@@ -37,8 +35,6 @@ namespace HAMS.Teacher.TeacherView
         private String[] stuNameUnfinisheds;//未完成作业学生的stuName数组
 
         private string notId;//当前作业公告Id
-
-        //private string teacherName;
 
         TeacherService.TService ts = new TeacherService.TService();
         TeacherDao.TDao td = new TeacherDao.TDao();
@@ -65,13 +61,6 @@ namespace HAMS.Teacher.TeacherView
             //加载未完成的动态控件
             LoadUnfinished(classSpecId, homeworkTitle);
 
-            //获得notid
-            DataTable tableClassId = td.getClassId(classSpecId);
-            DataTable tableNotId = td.getNotIdByClassIdAndNotTitle(homeworkTitle, Convert.ToInt32(tableClassId.Rows[0][0]));
-            notId = tableNotId.Rows[0][0].ToString();
-
-
-
             //对查看相关附件按钮进行初始化：能够实现鼠标放上去之后显示作业附件的名称
             //根据notId获得notURLName
             string notURLName = td.getNotURLNameByNotId(int.Parse(notId)).Rows[0][0].ToString();
@@ -84,7 +73,7 @@ namespace HAMS.Teacher.TeacherView
             {
                 labelAccessoryName1.ToolTip = notURLName;
             }
-            
+            btnRefresh.ToolTip = "刷新，查看该作业公告最新作业完成情况";
 
         }
 
@@ -285,15 +274,15 @@ namespace HAMS.Teacher.TeacherView
         private void btnAnswerQuestion_Click(object sender, RoutedEventArgs e)
         {
             AnswerQuestion newAnswerQuestion = new AnswerQuestion(tbClassInfo1.Text);
-            newAnswerQuestion.btnSubmitQuestion.Visibility = Visibility.Hidden;
+
             newAnswerQuestion.Show();
-            LoadQuestionAndAnswer(notId, newAnswerQuestion);
 
            // this.Visibility = System.Windows.Visibility.Hidden;
         }
 
         private void btnRefresh_Click(object sender, RoutedEventArgs e)
         {
+            tbStuNameSearch.Text = null;//因为是刷新整个下半部分，则查询框里的值也没有了
             //首先删除listview里面的东西
             listViewChecked.Items.Clear();
             listViewUnCheck.Items.Clear();
@@ -306,61 +295,8 @@ namespace HAMS.Teacher.TeacherView
             LoadNeedCorrect(tbClassInfo.Text, lbNotTitle.Content.ToString());
             //加载未完成的动态控件
             LoadUnfinished(tbClassInfo.Text, lbNotTitle.Content.ToString());
-        }
-
-        private void LoadQuestionAndAnswer(string noteId, AnswerQuestion newAnswerQuestion)
-        {
-            //进入答疑界面时加载目前已经有的疑问和解答
-            DataTable table1 = td.getComment(noteId);
-            //List<StudentAskQuestion> list = new List<StudentAskQuestion>();  //生成StudentAskQuestion动态数组
-            //MessageBox.Show(table1.Rows.Count.ToString());    //
-            StudentAskQuestion[] newStudentAskQuestion = new StudentAskQuestion[50];
-            for (int i = 0; i < table1.Rows.Count; i++)
-            {
-                newStudentAskQuestion[i] = new StudentAskQuestion();
-                newStudentAskQuestion[i].lbStuName.Content = "本课堂学生";
-                newStudentAskQuestion[i].textBoxQuestion.Text = table1.Rows[i][2].ToString();  //有问题
-                newStudentAskQuestion[i].btnComment.Click += new RoutedEventHandler(btnSubmitQuestion_Click);
-                newStudentAskQuestion[i].btnInsert.Click += new RoutedEventHandler(btnbtnInsert_Click);
-                newStudentAskQuestion[i].lbResponseName.Content = tbTeacherInfo1.Text;    //给老师姓名赋值
-                newAnswerQuestion.listViewQuestionAndAnswer.Items.Add(newStudentAskQuestion[i]);
-                //newAnswerQuestion.btnSubmitQuestion.Click += new RoutedEventHandler(btnSubmitQuestion_Click); //定义答疑按钮的事件
-                newStudentAskQuestion[i].teacherResponse.Visibility = Visibility.Hidden;
-            }
 
         }
-
-        private void btnSubmitQuestion_Click(object sender, RoutedEventArgs e)
-        {
-            //TeacherAnswerQuestion newTeacherAnswerQuestion = new TeacherAnswerQuestion();
-            Button sonBtn = (Button)sender;
-            Canvas stuCanvas = (Canvas)sonBtn.Parent;
-            StudentAskQuestion stuControl = (StudentAskQuestion)stuCanvas.Parent;
-            //MessageBox.Show(stuControl.lbStuName.Content.ToString());
-            stuControl.teacherResponse.Visibility = Visibility.Visible;  //点击，此时可见
-
-        }
-        private void btnbtnInsert_Click(object sender, RoutedEventArgs e)
-        {
-            //TeacherAnswerQuestion newTeacherAnswerQuestion = new TeacherAnswerQuestion();
-            Button sonBtn = (Button)sender;
-            Canvas stuCanvas = (Canvas)sonBtn.Parent;
-            StudentAskQuestion stuControl = (StudentAskQuestion)stuCanvas.Parent;
-            //MessageBox.Show(stuControl.lbStuName.Content.ToString());
-           
-            bool flag = td.UpdateComment(stuControl.tbResponse.Text, stuControl.textBoxQuestion.Text);
-            //往数据库里插入数据
-            if(flag ==true)
-            {
-                MessageBox.Show("successfully insert!");
-            }
-            else
-            {
-                MessageBox.Show("failed!");
-            }
-            stuControl.tbResponse.IsReadOnly = true;
-        }
-
 
         private void btnHomeworkStatistic_Click(object sender, RoutedEventArgs e)
         {
@@ -384,49 +320,115 @@ namespace HAMS.Teacher.TeacherView
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-            //存在问题，如果有重名则只能找到第一个
+            //首先删除listview里面的东西
+            listViewChecked.Items.Clear();
+            listViewUnCheck.Items.Clear();
+            listViewUnFinish.Items.Clear();
+
+            
             //非空判断
-            if (tbStuNameSearch.Text == null)
+            if (tbStuNameSearch.Text == "" || tbStuNameSearch.Text == "请输入学生的完整姓名。")
             {
                 MessageBox.Show("请输入查询条件");
             }
             else 
             {
                 string stuName = tbStuNameSearch.Text;
-                int i;
-                for ( i = 0; i < stuNameCorrecteds.Length; i++)//首先在已批改作业学生姓名中找
+                int i1,i2,i3;
+
+                //统计一下查询到结果的已批改、待批改、未完成人数（考虑到重名情况）
+                int CorrectedNum = 0;
+                int UnCorrectNum = 0;
+                int UnFinishNum = 0;
+
+                for ( i1 = 0; i1 < stuNameCorrecteds.Length; i1++)//首先在已批改作业学生姓名中找
                 {
-                    if(stuNameCorrecteds[i] == stuName)
+                    
+                    if(stuNameCorrecteds[i1] == stuName)
                     {
-                        StudentCheck sc = new StudentCheck(i);//i恰好为在homIdCorrecteds中的下标（关于Correcteds的三个数组下标是对应的）
-                        sc.lbStudentInfo1.Content = stuSpecIdCorrecteds[i];
-                        sc.lbStudentInfo2.Content = stuNameCorrecteds[i];
+                        StudentCheck sc = new StudentCheck(i1);//i恰好为在homIdCorrecteds中的下标（关于Correcteds的三个数组下标是对应的）
+                        sc.lbStudentInfo1.Content = stuSpecIdCorrecteds[i1];
+                        sc.lbStudentInfo2.Content = stuNameCorrecteds[i1];
                         sc.lbHomeworkState1.Content = "已批改";
                         sc.btnHomeworkCorrect1.Content = "检查作业";//修改button名称
-                        TbItemChecked.IsSelected = true;
+                        
                         listViewChecked.Items.Add(sc);                                                           
                         sc.btnHomeworkCorrect1.Click += new RoutedEventHandler(btnHomeworkCorrect1_Click);
+                        CorrectedNum++; 
                         
-                       
-                        break;
                     }
                 }
-                for (i = 0; i < stuNameNeedCorrects.Length; i++)//然后在待批改作业学生姓名中找
+                if(CorrectedNum >= 0)
                 {
-                   if (stuNameNeedCorrects[i] == stuName)
+                    TbItemChecked.IsSelected = true;
+                }
+                TbItemChecked.Header = "已批改   " + CorrectedNum;
+
+
+                for (i2 = 0; i2 < stuNameNeedCorrects.Length; i2++)//然后在待批改作业学生姓名中找
+                {
+                   
+                   if (stuNameNeedCorrects[i2] == stuName)
                    {
-                            break;
+                        StudentCheck sc = new StudentCheck(i2);//i恰好为在homIdCorrecteds中的下标（关于Correcteds的三个数组下标是对应的）
+                        sc.lbStudentInfo1.Content = stuSpecIdNeedCorrects[i2];
+                        sc.lbStudentInfo2.Content = stuNameNeedCorrects[i2];
+                        sc.lbHomeworkState1.Content = "待批改";
+                        sc.btnHomeworkCorrect1.Content = "批改作业";//修改button名称
+                        
+                        
+                        listViewChecked.Items.Add(sc);
+                        sc.btnHomeworkCorrect1.Click += new RoutedEventHandler(btnHomeworkCorrect1_Click);
+
+                        UnCorrectNum++;
+                        
                    }
                  }
-              
-                 for (i = 0; i < stuNameUnfinisheds.Length; i++)//最后在未完成作业学生姓名中找
+                if (UnCorrectNum >= 0)
+                {
+                    if (TbItemChecked.IsSelected != true)//如果没有在已批改作业中找到该学生，才设置待批改属性值为true
+                    {
+                        TbItemUnCheck.IsSelected = true;
+                    }
+                }
+                TbItemUnCheck.Header = "待批改   " + UnCorrectNum;
+
+
+                for (i3 = 0; i3 < stuNameUnfinisheds.Length; i3++)//最后在未完成作业学生姓名中找
                  {
-                     if (stuNameUnfinisheds[i] == stuName)
+                    
+                     if (stuNameUnfinisheds[i3] == stuName)
                      {
-                          break;
+                        StudentCheck sc = new StudentCheck(i3);//i恰好为在homIdCorrecteds中的下标（关于Correcteds的三个数组下标是对应的）
+                        sc.lbStudentInfo1.Content = stuSpecIdUnfinisheds[i3];
+                        sc.lbStudentInfo2.Content = stuNameUnfinisheds[i3];
+                        sc.lbHomeworkState1.Content = "";
+                        sc.btnHomeworkCorrect1.Content = "";//修改button名称
+                        
+
+                        listViewUnFinish.Items.Add(sc);
+                        sc.btnHomeworkCorrect1.Click += new RoutedEventHandler(btnHomeworkCorrect1_Click);
+
+                        UnFinishNum++;
                      }
                  }
-                     
+                if (UnFinishNum >= 0)
+                {
+                    if (TbItemChecked.IsSelected != true || TbItemUnCheck.IsSelected != true)//如果没有在已批改作业或者待批改中找到该学生，才设置未完成属性值为true
+                    {
+                        TbItemUnFinish.IsSelected = true;
+                    }
+                }
+                TbItemUnFinish.Header = "未完成   " + UnFinishNum;
+
+                if (CorrectedNum == 0 && UnCorrectNum == 0 && UnFinishNum == 0)//说明没有在所有学生中找到
+                {
+                    MessageBox.Show("您所查找的学生不存在！");
+                }
+
+
+
+
             }
         }
     }

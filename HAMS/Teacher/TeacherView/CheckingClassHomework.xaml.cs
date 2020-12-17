@@ -347,7 +347,7 @@ namespace HAMS.Teacher.TeacherView
 
         private void btnSubmitQuestion_Click(object sender, RoutedEventArgs e)
         {
-            //TeacherAnswerQuestion newTeacherAnswerQuestion = new TeacherAnswerQuestion();
+            //Teach                        erAnswerQuestion newTeacherAnswerQuestion = new TeacherAnswerQuestion();
             Button sonBtn = (Button)sender;
             Canvas stuCanvas = (Canvas)sonBtn.Parent;
             StudentAskQuestion stuControl = (StudentAskQuestion)stuCanvas.Parent;

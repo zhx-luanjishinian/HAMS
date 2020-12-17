@@ -51,7 +51,7 @@
             <Label x:Name="label1" Content="作业成绩：" Height="23.332" Canvas.Left="15.832" Canvas.Top="10.001" Width="61.334" RenderTransformOrigin="0.489,0.519"/>
             <TextBlock x:Name="textBlockGrade" Height="16.222" Width="35.778" Canvas.Left="88.444" Canvas.Top="13.556" Text="优秀"/>
             <Label x:Name="label2" Content="老师评语：" Height="23.332" Canvas.Left="15.832" Canvas.Top="59.294" Width="61.334" RenderTransformOrigin="0.489,0.519"/>
-            <TextBox x:Name="textBoxComment" Height="132.666" Canvas.Left="87.333" TextWrapping="Wrap" Text="TextBox" Canvas.Top="59.294" Width="397.333"/>
+            <TextBox x:Name="textBoxComment"  IsReadOnly="True"   Height="132.666" Canvas.Left="87.333" TextWrapping="Wrap" Text="TextBox" Canvas.Top="59.294" Width="397.333"/>
         </Canvas>
 
 

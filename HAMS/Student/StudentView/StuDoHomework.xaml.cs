@@ -65,40 +65,44 @@ namespace HAMS.Student.StudentView
             tbUserNameAc.Text = account + name;
             doHomeworkInfoShow();
         }
-        //public StuDoHomework(String account, String name,String notId,String classId,String message)//真实课堂号
-        //{
-        //    InitializeComponent();
-        //    this.account = account;
-        //    this.name = name;
-        //    this.notId = notId;
-        //    this.classId = classId;
-        //    this.message = message;
-        //    if(message=="未完成")
-        //    {
-        //        btnDoHomework.Content = "作答";
-        //    }
-        //    if (message == "待批改")
-        //    {
-        //        btnDoHomework.Content = "修改";
-        //    }
-        //    if (message == "已批改")
-        //    {
-        //        btnDoHomework.Content = "查看";
-        //    }
-        //    if (message == "已逾期")
-        //    {
-        //        btnDoHomework.Content = "";
-        //    }
-        //    tbUserNameAc.Text = account + name;
-        //    doHomeworkInfoShow();
-        //}
+        
         public void doHomeworkInfoShow()
         {
             List<String> result = ss.showDohomeworkInfo(notId);
+            List<String> content = new List<string>();
             labelHomeworkName.Content = result[0];
-            ListBoxItem lbi = new ListBoxItem();
-            lbi.Content = result[1];
-            listBoxRequest.Items.Add(lbi);
+            string lbiContent = result[1];
+            int notlength = 60;
+            if (result[1].Length > notlength)
+            {
+                for (int i = 0; i < result[1].Length / notlength + 1 ;i++)
+                {
+                    
+                    //ListBoxItem lbi = new ListBoxItem();
+                    if (((i+1)* notlength) > result[1].Length)
+                    {
+                        content.Add(result[1].Substring(i* notlength, result[1].Length-1-i* notlength));
+                    }
+                    else
+                    {
+                        System.Windows.MessageBox.Show((i * notlength).ToString());
+                        content.Add(result[1].Substring(i* notlength, notlength));
+                    }
+                }
+                String text ="";
+                int number =content.Count();
+                for (int i=0; i<number;i++)
+                {
+                    text =text + content[i] + "\r\n";
+                }
+                textBoxRequest.Text = text.ToString();
+            }
+            else
+            {
+                content.Add(result[1]);
+                textBoxRequest.Text = content.ToString();
+            }
+            
             tbDeadLineTime.Text = result[2];
             if (result[3] != null)
             {

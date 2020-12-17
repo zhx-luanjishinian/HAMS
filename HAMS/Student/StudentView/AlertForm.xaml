@@ -35,7 +35,7 @@
                     <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
                 </StackPanel>
             </Button>
-            <Image x:Name="imgSystemLogo" Height="49.029" Width="197.332" Source="pack://siteoforigin:,,,/Resources/management.jpg" Stretch="UniformToFill" Canvas.Left="268.001" Canvas.Top="2.872"/>
+            <Image x:Name="imgSystemLogo" Height="49.029" Width="197.332" Source="/Resources/management.jpg" Stretch="UniformToFill" Canvas.Left="268.001" Canvas.Top="2.872"/>
         </Canvas>
         <Menu x:Name="menu" Height="26.667" Background="LightPink" Margin="-6.29,42.538,-5.882,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Row="1" d:LayoutOverrides="VerticalAlignment">
             <Button x:Name="btnHomeworkMana" Height="21" Width="109" Content="作业管理" Click="btnHomeworkMana_Click"/>
@@ -67,7 +67,6 @@
             </Canvas>
             <ListView x:Name="listView2" Height="191" Margin="7,0,0,0" HorizontalAlignment="Left" Width="526"/>
         </StackPanel>
-        <DataGrid HorizontalAlignment="Left" Height="100" Margin="646,240,-204.667,-16" Grid.Row="1" VerticalAlignment="Top" Width="100"/>
 
 
     </Grid>

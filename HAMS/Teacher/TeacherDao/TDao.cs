@@ -37,7 +37,7 @@ namespace HAMS.Teacher.TeacherDao
         
             return table;
         }
-        public DataTable getTrueDeadLine(string notId)
+        public DataTable getTrueDeadLine(String notId)
         {
             //sql语句
             String sql = "select truDeadline from notice where notId=@id";   //根据noticeId查找truDeadline
@@ -53,7 +53,7 @@ namespace HAMS.Teacher.TeacherDao
             DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);
             return table;
         }
-        public DataTable getNotIdByClassIdAndNotTitle(string notTitle,int classId)    //根据名称和classId查notId
+        public DataTable getNotIdByClassIdAndNotTitle(String notTitle,int classId)    //根据名称和classId查notId
         {
             //sql语句
             String sql = "select notId from notice where notTitle=@id and classId=@cId";   //根据noticeId查找truDeadline
@@ -118,8 +118,8 @@ namespace HAMS.Teacher.TeacherDao
             return table;
 
         }
-
-        public DataTable getTeacherId(string TeacherSpecId)
+       
+        public DataTable getTeacherId(String TeacherSpecId)
         {
             //根据教师工号获取课堂表里的自增主键教师号teacherId
             String sql = "select teacherId from teacher where teacherSpecId = @tid;";
@@ -220,7 +220,7 @@ namespace HAMS.Teacher.TeacherDao
             MySqlParameter para = new MySqlParameter("@nId", noticeId);
             return DataUtil.DataOperation.DataDelete(sql, para);//如果删除成功，则返回true
         }
-        public Boolean deleteHomework(string noticeId)
+        public Boolean deleteHomework(String noticeId)
         {
             //因为需要级联删除，因此需要首先删除homework表中的数据,才能删除notice表中的数据
             String sql1 = "delete from homework where notId=@nId;";
@@ -243,6 +243,15 @@ namespace HAMS.Teacher.TeacherDao
             String sql = "select stuId from takecourse where classId = @classId;";
             //传入要填写的参数
             MySqlParameter para = new MySqlParameter("@classId", classId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, para);
+            return table;
+        }
+        public DataTable GetStuIdFromStuSpecId(string stuSpecId)
+        {
+            //根据学生学号查询学生Id
+            String sql = "select stuId from student where stuSpecId = @stuSpecId;";
+            //传入要填写的参数
+            MySqlParameter para = new MySqlParameter("@stuSpecId", stuSpecId);
             DataTable table = DataUtil.DataOperation.DataQuery(sql, para);
             return table;
         }
@@ -279,7 +288,7 @@ namespace HAMS.Teacher.TeacherDao
             return table;
 
         }
-        public DataTable getNotURLByNotId(string notId)    
+        public DataTable getNotURLByNotId(String notId)    
         {
             //根据notId查notURL
             String sql = "select notURL from notice where notId=@nid";   //根据noticeId查找truDeadline
@@ -288,6 +297,80 @@ namespace HAMS.Teacher.TeacherDao
             return table;
         }
 
+        //获得已批改作业信息
+        public DataTable SelectHomeworkCheckedInfo(String notId)
+        {
+            //此类用来装返回的对象
+
+            String sql = "select stuId from homework where score is not null and notId=@nid;";
+            MySqlParameter parameter = new MySqlParameter("@nid", notId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);  //查到学生id,分数,作业路径
+            return table;
+
+        }
+        //获得待批改作业信息
+        public DataTable SelectHomeworkNeedCorrectInfo(String notId)
+        {
+            //此类用来装返回的对象
+
+            String sql = "select stuId from homework where score is null and homURLName is not null and notId=@nid;";   //null
+            MySqlParameter parameter = new MySqlParameter("@nid", notId);
+   
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);  //查到学生id,分数,作业路径
+            return table;
+
+        }
+        //获得未完成作业信息
+        public DataTable SelectHomeworkUnfinishedInfo(String notId)
+        {
+            //此类用来装返回的对象
+
+            String sql = "select stuId from homework where notId=@nid and homURLName is null;";
+            MySqlParameter parameter = new MySqlParameter("@nid", notId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);  //查到学生id,分数,作业路径
+            return table;
+
+        }
+        //根据学生Id查询学生学号和姓名
+        public DataTable GetStudentNameAndIdByStuID(String stuId)
+        {
+            //此类用来装返回的对象
+
+            String sql = "select stuSpecId,name from student where stuId=@nid";
+            MySqlParameter parameter = new MySqlParameter("@nid", stuId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);  //查到学生id,分数,作业路径
+            return table;
+
+        }
+        public DataTable GetClassInfoByClassID(String classId)
+        {
+            //此类用来装返回的对象
+
+            String sql = "select * from class where classId=@nid";
+            MySqlParameter parameter = new MySqlParameter("@nid", classId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);  //查到学生id,分数,作业路径
+            return table;
+
+        }
+
+        public DataTable GetHomIdByStuIdAndNotId(String stuId,string noteId)
+        {
+            String sql = "select homId from homework where stuId=@nid and notId=@ntId";
+            MySqlParameter parameter = new MySqlParameter("@nid", stuId);
+            MySqlParameter parameter1 = new MySqlParameter("@ntid", noteId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter,parameter1);  //查到学生id,分数,作业路径
+            return table;
+        }
+
+
+        public DataTable getStuIdByHomId(int homId)
+        {
+            //根据homId查询stuId
+            String sql = "select stuId from homework where homId=@hid";
+            MySqlParameter parameter = new MySqlParameter("@hid", homId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);  //查到学生id,分数,作业路径
+            return table;
+        }
 
     }
 

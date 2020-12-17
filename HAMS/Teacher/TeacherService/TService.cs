@@ -8,7 +8,8 @@ using HAMS.ToolClass;
 using HAMS.Teacher.TeacherDao;
 using HAMS.Entity;
 using System.Windows.Forms;
-
+using HAMS.Teacher.TeacherUserControl;
+using HAMS.Teacher.TeacherView;
 namespace HAMS.Teacher.TeacherService
 {
     class TService
@@ -252,7 +253,7 @@ namespace HAMS.Teacher.TeacherService
             Scoreinfos[1] = (string)tbScoreAndRemark.Rows[0][1];
             return Scoreinfos;
         }
-        public DateTime GetPreviousDateTime(string classSpaceId,string homeworkTitle)
+        public DateTime GetPreviousDateTime(String classSpaceId,String homeworkTitle)
         {
             DataTable table1 = td.getClassId(classSpaceId);
             int result;
@@ -272,7 +273,7 @@ namespace HAMS.Teacher.TeacherService
         }
 
 
-        public string getNotURLName(string notTitle, string classSpecId)
+        public string getNotURLName(String notTitle, String classSpecId)
         {
             //根据notTitle、 classSpecId获取作业附件URL名
             //（1）通过cSpecId获取cId
@@ -308,7 +309,7 @@ namespace HAMS.Teacher.TeacherService
             string submitTime = table3.Rows[0][0].ToString();
             return submitTime;
         }
-        public Boolean DeleteHomeworkNotice(string classSpecId, string homeworkTitle)
+        public Boolean DeleteHomeworkNotice(String classSpecId, String homeworkTitle)
         {
             DataTable table1 = td.getClassId(classSpecId);
             int classId = Convert.ToInt32(table1.Rows[0][0]);
@@ -340,6 +341,36 @@ namespace HAMS.Teacher.TeacherService
                 return false;
             }
         }
+        public string GetPostilByForm(string classSpecId, string noticeName, string studentSpecId)
+        {
+            DataTable table1 = td.GetStuIdFromStuSpecId(studentSpecId);
+            DataTable table2 = td.getClassId(classSpecId);
+            int classId = Convert.ToInt32(table2.Rows[0][0]);
+            DataTable table3 = td.getNotIdByClassIdAndNotTitle(noticeName, classId);
+            DataTable table4 = td.GetHomIdByStuIdAndNotId(table1.Rows[0][0].ToString(), table3.Rows[0][0].ToString());
+            string postil1 = table4.Rows[0][0].ToString();
+            //根据学生id和noteid查到homeworkid
+            DataTable table5 = td.getPostilByHomId(Convert.ToInt32(table4.Rows[0][0].ToString()));
+            
+            //根据homeworkId查到postil
+            string postil = table5.Rows[0][0].ToString();
+            return postil;
 
+        }
+
+        public string getStudentInfoByHomId(int homId)
+        {
+            //根据homId获取stuInfo(学号+“ ”+姓名）
+            DataTable tbStuId = td.getStuIdByHomId(homId);
+            string stuId = tbStuId.Rows[0][0].ToString();
+            DataTable tbStuInfo = td.GetStudentNameAndIdByStuID(stuId);
+            string stuSpecId = tbStuInfo.Rows[0][0].ToString();
+            string name = tbStuInfo.Rows[0][1].ToString();
+            
+            return stuSpecId + " " + name;
+        }
+
+
+        }
     }
-}
+

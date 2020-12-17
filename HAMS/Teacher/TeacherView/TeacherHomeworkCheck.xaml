@@ -159,10 +159,14 @@
                 </Ellipse.RenderTransform>
             </Ellipse>
             <Image x:Name="systemLogo" Width="129.332" Source="../../Resources/management.jpg" Stretch="UniformToFill" HorizontalAlignment="Right" Margin="0,4,95.468,10.412"/>
-            <TextBlock x:Name="tbTeacherIdentity" Width="118.4" TextAlignment="Center" HorizontalAlignment="Left" Margin="58.281,18.677,0,17.667">
+            <TextBlock x:Name="tbTeacherSpecId" Width="118.4" TextAlignment="Center" HorizontalAlignment="Left" Margin="58.281,18.677,0,17.667">
                 <TextBlock.Background>
                     <ImageBrush/>
-                </TextBlock.Background><Run Text="Z0004520 "/><Run Text="刘树栋"/></TextBlock>
+                </TextBlock.Background><Run Text="Z0004520 "/></TextBlock>
+            <TextBlock x:Name="tbTeacherName" Width="119" TextAlignment="Center" HorizontalAlignment="Left" Margin="120,19,0,17.344">
+                <TextBlock.Background>
+                    <ImageBrush/>
+                </TextBlock.Background><Run Text="刘树栋"/></TextBlock>
         </Grid>
         <Grid Margin="0,55.344,0,0" Height="20" VerticalAlignment="Top" Background="#FF292323">
             <Grid.ColumnDefinitions>
@@ -171,7 +175,7 @@
                 <ColumnDefinition Width="454*"/>
             </Grid.ColumnDefinitions>
             <Menu x:Name="menu" Background="LightPink" Margin="0,0,0.4,-7" Grid.ColumnSpan="3" BorderThickness="0,0,1,0" Height="27" VerticalAlignment="Top">
-                <Button x:Name="btnReturn" BorderThickness="0" BorderBrush="#FF9F9D9D" Height="21.062" Width="44.95">
+                <Button x:Name="btnReturn" BorderThickness="0" BorderBrush="#FF9F9D9D" Height="21.062" Width="44.95" Click="btnReturn_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="../../Resources/返回.png"/>
                     </Button.Background>
@@ -182,27 +186,31 @@
             </Menu>
         </Grid>
         <Grid HorizontalAlignment="Right" Height="19.24" Margin="0,55.344,92.667,0" VerticalAlignment="Top" Width="75">
-            <Button x:Name="button15" Background="{x:Null}" d:LayoutOverrides="Height" BorderThickness="0">
-                <Grid Height="19.24" Width="75">
-                    <Label x:Name="label1" Content="上一个" Margin="28,-0.76,10,0" VerticalAlignment="Top" FontSize="9" d:LayoutOverrides="Width"/>
-                    <Button x:Name="btnPrevious" Content="" HorizontalAlignment="Left" Style="{DynamicResource ButtonStyle4}" Width="21"/>
-                </Grid>
-            </Button>
-            <Button x:Name="button15_Copy" Background="{x:Null}" BorderThickness="0" d:LayoutOverrides="Height" HorizontalAlignment="Right" Margin="0,0,-75,0" Width="75">
-                <Grid Height="19.24" Width="75">
-                    <Label x:Name="label14" Content="下一个" Margin="4.4,-0.76,33.6,0" VerticalAlignment="Top" FontSize="9" d:LayoutOverrides="Width"/>
-                    <Button x:Name="btnNext" Content="" HorizontalAlignment="Right" Margin="0,0,10,0" Style="{DynamicResource ButtonStyle5}" Width="21">
-                        <Button.Background>
-                            <ImageBrush/>
-                        </Button.Background>
-                    </Button>
-                </Grid>
-            </Button>
+            <Grid Margin="0,3,0,-2.76" HorizontalAlignment="Right" Width="51.4">
+                <Label x:Name="labelBefore" Content="上一个" Margin="0,-0.76,0,0" VerticalAlignment="Top" FontSize="9" Foreground="#FF074B5C" FontWeight="Bold" HorizontalAlignment="Right"/>
+                <Button x:Name="btnBefore" Content="" HorizontalAlignment="Right" Margin="-5.4,-0.76,37,0" Width="19.8" Foreground="{x:Null}" BorderThickness="0" Click="btnBefore_Click" BorderBrush="#FFEADFDF">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/HAMS;component/Resources/向左.png"/>
+                    </Button.Background>
+                </Button>
+            </Grid>
+            <Grid HorizontalAlignment="Right" Margin="0,3,-62.8,-2.76" Width="57.8">
+                <Label x:Name="labelNext" Content="下一个" Margin="4.4,-0.76,0,0" VerticalAlignment="Top" FontSize="9" Foreground="#FF074B5C" FontWeight="Bold" HorizontalAlignment="Left"/>
+                <Button x:Name="btnNext" Content="" Margin="37,-1,1.8,-0.04" Foreground="{x:Null}" BorderThickness="0" Click="btnNext_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/HAMS;component/Resources/向右.png"/>
+                    </Button.Background>
+                </Button>
+            </Grid>
         </Grid>
         <Grid Height="122" VerticalAlignment="Top" Margin="0,80,0.4,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="487*"/>
+                <ColumnDefinition Width="31*"/>
+            </Grid.ColumnDefinitions>
             <Label x:Name="lbStudentInfo" Content="2018211XXXXX 小红帽" Height="24" HorizontalAlignment="Left" Margin="22,15,0,0" VerticalAlignment="Top" Width="140"/>
-            <Button x:Name="btnUpload" Background="White" BorderThickness="0" Width="140.001" HorizontalAlignment="Right" Margin="0,43.985,356.199,0" Height="31.892" VerticalAlignment="Top" Click="btnUpload_Click">
-                <Grid Height="32" Width="140">
+            <Button x:Name="btnUpload" Background="White" BorderThickness="0" Width="87" HorizontalAlignment="Right" Margin="0,44,377.933,0" Height="32" VerticalAlignment="Top" >
+                <Grid Height="32" Width="87">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="27*"/>
                         <RowDefinition Height="5*"/>
@@ -212,9 +220,7 @@
                         <ColumnDefinition Width="73*"/>
                     </Grid.ColumnDefinitions>
                     <Image x:Name="image2" Source="../../Resources/链接.png" HorizontalAlignment="Left" Width="24" Height="22" VerticalAlignment="Bottom" Margin="6,0,0,0.2"/>
-                    <Label x:Name="lbUpload" Content="下载文件" FontSize="10" Margin="30,4,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" ToolTip="" Grid.ColumnSpan="2" Width="100"/>
-
-                    <Label x:Name="label2" Content="(1个文件)" Grid.Column="1" Margin="40,5,0,0.2" FontSize="10"/>
+                    <Label x:Name="lbUpload" Content="下载文件" FontSize="10" Margin="30,4,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" ToolTip="" Grid.ColumnSpan="2" Width="52"/>
                 </Grid>
             </Button>
             <Label x:Name="lbHomPostil" Content="老师好，这是我的猫狗大战期末作业。" HorizontalAlignment="Left" Margin="22,81,0,0" VerticalAlignment="Top"/>

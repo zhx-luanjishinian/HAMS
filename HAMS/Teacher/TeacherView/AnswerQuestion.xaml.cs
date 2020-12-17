@@ -36,5 +36,16 @@ namespace HAMS.Teacher.TeacherView
             //this.Visibility = System.Windows.Visibility.Hidden;
             this.Close();
         }
+
+        private void btnSubmitQuestion_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        //private void btnSubmitQuestion_Click(object sender, RoutedEventArgs e)
+        //{
+        //    Student.StudentUserControl.StudentAskQuestion newStudentAskQuestion = new Student.StudentUserControl.StudentAskQuestion();
+
+        //}
     }
 }

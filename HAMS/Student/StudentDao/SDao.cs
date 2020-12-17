@@ -158,7 +158,7 @@ namespace HAMS.Student.StudentDao
             return table;
         }
         //查询作业预警主界面的信息,直接根据学生的学号进行查询
-        public List<List<List<String>>> alertFomrInfo(String account)
+        public List<List<List<String>>> alertFormInfo(String account)
         {
             //此处返回超过老师设置的截止时间的作业和没有超过老师设置的截止时间的作业
             List<List<String>> notBeyondHomework = new List<List<string>>();

@@ -20,6 +20,9 @@ namespace HAMS.Teacher.TeacherView
     /// </summary>
     public partial class RecentNoticeControll : UserControl
     {
+        public string desrciption;
+        public string classSpecId;
+        public string className;
         public RecentNoticeControll()
         {
             InitializeComponent();

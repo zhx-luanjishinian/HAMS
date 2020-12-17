@@ -24,6 +24,9 @@ namespace HAMS.Teacher.TeacherView
     /// </summary>
     public partial class TeacherHomeworkCheck : Window
     {
+        public string description;
+        public string classSpecId;
+        public string className;     //从前一个界面传过来，但因为构造函数还没写好，先这样
         private TService ts = new TService();
         private string homURL = ""; //存储待下载作业文件的路径
         private string homName; //存储待下载作业文件的文件名
@@ -278,5 +281,18 @@ namespace HAMS.Teacher.TeacherView
             }
 			
 		}
+
+        private void btnReturn_Click(object sender, RoutedEventArgs e)
+        {
+            //string homeworkTitle = lbNotTitle.Content.ToString();
+            //string description =
+            //string teacherSpecId = tbTeacherIdentity.Text;
+            //string teacherName = tbTeacherIdentity1.Text;
+            //string classSpecId =
+            //string className =
+            //CheckingClassHomework newCheckingClassHomework = new CheckingClassHomework();
+
+
+        }
     }
 }

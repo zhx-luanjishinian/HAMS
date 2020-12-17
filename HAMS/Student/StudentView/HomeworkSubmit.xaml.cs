@@ -48,8 +48,9 @@ namespace HAMS.Student.StudentView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                StuCheckHomework sch = new StuCheckHomework(account,name);
-                sch.Show();
+                //String account, String name, String notId, String classId
+                StuDoHomework sdh = new StuDoHomework(account, name, notId,classSpecId);
+                sdh.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
             }

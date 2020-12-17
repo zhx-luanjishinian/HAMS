@@ -29,6 +29,7 @@ namespace HAMS.Student.StudentView
             this.account = account;
             this.name = name;
         }
+        
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {

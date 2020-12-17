@@ -35,7 +35,7 @@ namespace HAMS.Student.StudentView
             this.classSpecId = classSpecId;
             this.account = account;
             this.name = name;
-
+            tbUserNameAc.Content = account + name;
             Chart chart = new Chart();
             //创建一个标题的对象
             Title title = new Title();
@@ -219,9 +219,9 @@ namespace HAMS.Student.StudentView
             }
         }
 
-        private void BtnRefresh_Click(object sender, RoutedEventArgs e)
+        private void btnExit_Click(object sender, RoutedEventArgs e)
         {
-
+            App.Current.Shutdown();
         }
     }
 }

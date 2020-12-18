@@ -100,19 +100,40 @@ namespace HAMS.Teacher.TeacherView
                 //获取父级元素，找到要删除的公告
                 Grid sonGrid = (Grid)sonBtn.Parent;
                 BreifHomework clickTeachClass = (BreifHomework)sonGrid.Parent;
-
-                bool ifDelete = ts.DeleteHomeworkNotice(labelCourseNumber.Content.ToString(),clickTeachClass.title.Content.ToString());  //删除时要考虑到与作业表级联删除的情况
-
-                if (ifDelete == true)
+                DataTable tableClassId = an.getClassId(labelCourseNumber.Content.ToString());
+                DataTable tableNotId = an.getNotIdByClassIdAndNotTitle(clickTeachClass.title.Content.ToString(),Convert.ToInt32(tableClassId.Rows[0][0]) );
+                int stuNum = an.getStuNum(tableClassId.Rows[0][0].ToString());
+                if(stuNum==0)
                 {
-                    System.Windows.MessageBox.Show("删除该作业公告成功");
+                    bool flag0 =an.deleteNotice(tableNotId.Rows[0][0].ToString());
+                    if(flag0 ==true)
+                    {
+                        System.Windows.MessageBox.Show("删除成功");
+                        homeworkListView.Items.Remove(clickTeachClass);
+                    } 
+                    else
+                    {
+                        System.Windows.MessageBox.Show("删除失败");
+                    }
                 }
                 else
                 {
-                    System.Windows.MessageBox.Show("删除该作业公告失败");
+                    bool ifDelete = ts.DeleteHomeworkNotice(labelCourseNumber.Content.ToString(), clickTeachClass.title.Content.ToString());  //删除时要考虑到与作业表级联删除的情况
+
+                    if (ifDelete == true)
+                    {
+                        System.Windows.MessageBox.Show("删除该作业公告成功");
+                        homeworkListView.Items.Remove(clickTeachClass);
+                    }
+                    else
+                    {
+                        System.Windows.MessageBox.Show("删除该作业公告失败");
+                    }
                 }
 
-                homeworkListView.Items.Remove(clickTeachClass);
+                
+
+                
 
                
             }

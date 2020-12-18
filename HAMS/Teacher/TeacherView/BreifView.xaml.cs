@@ -80,7 +80,7 @@ namespace HAMS.Teacher.TeacherView
             //获取当前作业的作业截止时间
             // 打开子窗体
             AnnounceNotice newAnnounceNotice = new AnnounceNotice(lbTeacherInfo.Text.ToString(), lbTeacherInfo1.Text.ToString(), labelCourseNumber.Content.ToString()
-                , labelCourseName.Content.ToString(), clickTeachClass.title.Content.ToString(), clickTeachClass.description.Content.ToString(),dt);
+                , labelCourseName.Content.ToString(), clickTeachClass.title.Content.ToString(), clickTeachClass.description.Content.ToString(),dt,this.pngfile);
             newAnnounceNotice.Show();
             this.Visibility = System.Windows.Visibility.Hidden;
         }

@@ -17,6 +17,7 @@
             <Setter Property="VerticalContentAlignment" Value="Top"/>
         </Style>
     </Window.Resources>
+    <Viewbox Stretch="UniformToFill">
     <Grid>
         <Canvas Margin="0,88.991,0,0">
             <Grid x:Name="ca" Height="253.2" Canvas.Top="82" Width="778.4" ToolTip="点击上方按钮显示统计图" Canvas.Left="34.4">
@@ -65,4 +66,5 @@
         </Canvas>
 
     </Grid>
+    </Viewbox>
 </Window>

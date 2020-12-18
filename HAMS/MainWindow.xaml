@@ -124,7 +124,7 @@
                 <Canvas HorizontalAlignment="Left" Margin="0,1.411,0,0" Width="62" Background="#FFFFFFE1">
                     <Image Height="50" Width="62" Source="./Resources/notice.png" RenderTransformOrigin="0.58,0.429" OpacityMask="#FFFFFFE1" d:LayoutOverrides="HorizontalAlignment, Width, Height"/>
                 </Canvas>
-                <Button x:Name="btnExit" Background="{x:Null}" RenderTransformOrigin="0.622,0.945" Height="Auto" Foreground="#FF151111" BorderBrush="{x:Null}" Click="btnExit_Click" Margin="766,1,10,0.411">
+                <Button x:Name="btnExit" Background="{x:Null}" RenderTransformOrigin="0.622,0.945" Height="Auto" Foreground="#FF151111" BorderBrush="{x:Null}" Click="btnExit_Click" Margin="776,1.411,0,0">
                     <StackPanel>
                         <Image x:Name="exit1" Width="28" Height="23.907" Source="Resources/resizeApi.png"/>
                         <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>

@@ -376,7 +376,7 @@ namespace HAMS.Teacher.TeacherView
         {
             HomeworkStatistic hs = new HomeworkStatistic(this.pngfile);
             hs.pngfile = this.pngfile;
-            hs.tSpecId = tbClassInfo.Text;
+            hs.tSpecId = tbTeacherInfo.Text;
             hs.tName = tbClassInfo1.Text;
             hs.tbNotTitle.Text = lbNotTitle.Content.ToString();
             hs.className = tbClassInfo1.Text;

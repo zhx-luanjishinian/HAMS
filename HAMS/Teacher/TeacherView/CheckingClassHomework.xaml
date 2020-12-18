@@ -121,7 +121,7 @@
                         <ImageBrush/>
                     </TextBlock.Background></TextBlock>
                 <Image x:Name="imgSystemLogo" Width="47.831" Source="/HAMS;component/logo.png" Stretch="Fill" HorizontalAlignment="Right" Margin="0,0,82.707,1.235"/>
-                <Image x:Name="headImage" Source="男教师.png" HorizontalAlignment="Left" Height="37" VerticalAlignment="Top" Width="41"  RenderTransformOrigin="1.894,0.568" Margin="10,7.656,0,0"/>
+                <Image x:Name="headImage" Source="../../Resources/男教师.png" HorizontalAlignment="Left" Height="37" VerticalAlignment="Top" Width="41"  RenderTransformOrigin="1.894,0.568" Margin="10,7.656,0,0"/>
             </Grid>
             <Grid Margin="1,50.344,-1,0" Height="37.552" VerticalAlignment="Top" Background="LightPink">
                 <Grid.ColumnDefinitions>

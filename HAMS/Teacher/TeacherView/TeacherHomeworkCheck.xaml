@@ -140,7 +140,7 @@
         <Grid Margin="0,0,0,-1" Height="472" Width="840">
             <Grid Margin="0.4,46.482,-0.4,0" Height="37.552" VerticalAlignment="Top" Background="LightPink">
 
-                <Button x:Name="btnReturn" BorderThickness="0" BorderBrush="#FF9F9D9D" Width="36" Click="btnReturn_Click" HorizontalAlignment="Left" Margin="10,10,0,7.856">
+                <Button x:Name="btnReturn" BorderThickness="0" BorderBrush="#FF9F9D9D" Width="63" Click="btnReturn_Click" HorizontalAlignment="Left" Margin="10,10,0,-0.448" Height="Auto">
                     <Button.Background>
                         <ImageBrush ImageSource="../../Resources/返回.png"/>
                     </Button.Background>
@@ -213,7 +213,7 @@
                     <TextBlock.Background>
                         <ImageBrush/>
                     </TextBlock.Background></TextBlock>
-                <Button x:Name="btnExit" Background="LightBlue" Width="43.534" RenderTransformOrigin="0.622,0.945" Foreground="#FF151111" BorderBrush="LightBlue" Click="btnExit_Click" Height="43.907" Canvas.Left="788.066" Canvas.Top="4.437">
+                <Button x:Name="btnExit" Background="LightBlue" Width="59" RenderTransformOrigin="0.622,0.945" Foreground="#FF151111" BorderBrush="LightBlue" Click="btnExit_Click" Height="46" Canvas.Left="761">
                     <StackPanel>
                         <Image x:Name="exit1" Width="28" Height="23.907" Source="/HAMS;component/Resources/resizeApi.png" RenderTransformOrigin="0.483,0.453"/>
                         <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>

@@ -40,11 +40,12 @@ namespace HAMS.Teacher.TeacherView
             textBoxContent.Text = "请输入作业描述";
             ifAnnounce = false;//表示此公告是新公告，未经发布
         }
-        public AnnounceNotice(string tNum, string tName, string cSpecId, string cName,string nTitle,string nContent,DateTime nSubTime)
+        public AnnounceNotice(string tNum, string tName, string cSpecId, string cName,string nTitle,string nContent,DateTime nSubTime, string pgfile)
         {
             InitializeComponent();
+            this.pngfile = pgfile;
             headImage.Source = new BitmapImage(new Uri(@pngfile));
-
+            
             tbName.Text = tName;
             tbTeacherSpecId.Text = tNum;
             labelcClassName.Content = cName;

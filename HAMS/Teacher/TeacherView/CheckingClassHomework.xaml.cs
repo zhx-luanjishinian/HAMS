@@ -105,7 +105,7 @@ namespace HAMS.Teacher.TeacherView
             //MessageBox.Show(table3.Rows.Count.ToString());
             int checkedNum = table3.Rows.Count;
             //加载已批改的动态控件
-            TbItemChecked.Header = "已批改   " + checkedNum;
+            TbItemChecked.Header = "    已批改   " + checkedNum;
             //获取学生列表的长度
             int stuListLength = table3.Rows.Count;
 
@@ -221,7 +221,7 @@ namespace HAMS.Teacher.TeacherView
             int checkedNum = table7.Rows.Count;
             //MessageBox.Show(checkedNum.ToString());
             //加载已批改的动态控件
-            TbItemUnCheck.Header = "待批改   " + checkedNum;
+            TbItemUnCheck.Header = "    待批改   " + checkedNum;
 
             int stuListLength = table7.Rows.Count;
             StudentCheck[] checkedStudent = new StudentCheck[stuListLength];
@@ -283,7 +283,7 @@ namespace HAMS.Teacher.TeacherView
             //MessageBox.Show(table3.Rows.Count.ToString());
             int checkedNum = table3.Rows.Count;
             //加载已批改的动态控件
-            TbItemUnFinish.Header = "未完成   " + checkedNum;
+            TbItemUnFinish.Header = "    未完成   " + checkedNum;
 
             int stuListLength = table3.Rows.Count;
             StudentCheck[] checkedStudent = new StudentCheck[stuListLength];
@@ -514,7 +514,7 @@ namespace HAMS.Teacher.TeacherView
                 {
                     TbItemChecked.IsSelected = true;
                 }
-                TbItemChecked.Header = "已批改   " + CorrectedNum;
+                TbItemChecked.Header = "    已批改   " + CorrectedNum;
 
 
                 for (i2 = 0; i2 < stuNameNeedCorrects.Length; i2++)//然后在待批改作业学生姓名中找
@@ -555,7 +555,7 @@ namespace HAMS.Teacher.TeacherView
                         TbItemUnCheck.IsSelected = true;
                     }
                 }
-                TbItemUnCheck.Header = "待批改   " + UnCorrectNum;
+                TbItemUnCheck.Header = "    待批改   " + UnCorrectNum;
 
 
                 for (i3 = 0; i3 < stuNameUnfinisheds.Length; i3++)//最后在未完成作业学生姓名中找
@@ -596,7 +596,7 @@ namespace HAMS.Teacher.TeacherView
                         TbItemUnFinish.IsSelected = true;
                     }
                 }
-                TbItemUnFinish.Header = "未完成   " + UnFinishNum;
+                TbItemUnFinish.Header = "    未完成   " + UnFinishNum;
 
                 if (CorrectedNum == 0 && UnCorrectNum == 0 && UnFinishNum == 0)//说明没有在所有学生中找到
                 {

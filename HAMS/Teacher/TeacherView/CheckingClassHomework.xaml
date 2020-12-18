@@ -112,19 +112,6 @@
                     <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
                 </StackPanel>
             </Button>
-            <Ellipse x:Name="btnProfile" Stroke="Black" Width="35.315" RenderTransformOrigin="0.497,0.505" StrokeThickness="0" HorizontalAlignment="Left" Margin="18.992,10.417,0,9.612">
-                <Ellipse.Fill>
-                    <ImageBrush ImageSource="../../Resources/teacher.png"/>
-                </Ellipse.Fill>
-                <Ellipse.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="0.898"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </Ellipse.RenderTransform>
-            </Ellipse>
             <Image x:Name="imgSystemLogo" Width="60.667" Source="../../Resources/logo.png" Stretch="UniformToFill" HorizontalAlignment="Right" Margin="0,0,109.465,0"/>
             <TextBlock x:Name="tbTeacherInfo" Width="117.6" TextAlignment="Center" HorizontalAlignment="Left" Margin="58.281,18.677,0,17.667">
                 <TextBlock.Background>
@@ -315,5 +302,6 @@
                 </Button.Resources>
             </Button>
         </Grid>
+        <Image x:Name="headImage" Source="男教师.png" HorizontalAlignment="Left" Height="37" VerticalAlignment="Top" Width="41"  RenderTransformOrigin="1.894,0.568" Margin="23.143,10,0,0" d:LayoutOverrides="VerticalAlignment"/>
     </Grid>
 </Window>

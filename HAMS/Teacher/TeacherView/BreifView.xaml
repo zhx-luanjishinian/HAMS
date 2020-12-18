@@ -79,7 +79,7 @@
                 </Grid>-->
             </Canvas>
         </Grid>
-        <Image x:Name="headImage" Source="/HAMS;component/Resources/女教师.png" Margin="10,13,489.4,12"/>
+        <Image x:Name="headImage" Source="男教师.png" HorizontalAlignment="Left" Height="45.939" VerticalAlignment="Top" Width="45.479"  RenderTransformOrigin="1.894,0.568" Margin="22.042,19.999,0,0"/>
 
     </Grid>
 </Window>

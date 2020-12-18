@@ -141,15 +141,6 @@
         <Canvas Height="50" Background="LightBlue" Grid.ColumnSpan="4" Margin="-9,-47,-9.333,0" VerticalAlignment="Top">
             <TextBlock x:Name="tbTeacherInfo" Height="18.666" Canvas.Left="70.066" Canvas.Top="21.979" Width="137.334" TextAlignment="Center" FontSize="13"><Run Text="Z0004520 "/></TextBlock>
             <TextBlock x:Name="tbTeacherInfo1" Height="19" Canvas.Left="166" Canvas.Top="21" Width="138" TextAlignment="Center" FontSize="13"><Run Text="刘树栋"/></TextBlock>
-            <Border x:Name="headImage" BorderBrush="Black" BorderThickness="0" HorizontalAlignment="Left" Height="36.996" VerticalAlignment="Top" Width="40.666" CornerRadius="35" Canvas.Left="24.4" RenderTransformOrigin="1.894,0.568" Canvas.Top="10">
-                <Border.Background>
-                    <ImageBrush>
-                        <ImageBrush.ImageSource>
-                            <ImageSource>/Resources/teacher.png</ImageSource>
-                        </ImageBrush.ImageSource>
-                    </ImageBrush>
-                </Border.Background>
-            </Border>
             <Button x:Name="btnExit" Background="LightBlue"  Canvas.Left="659" Width="82" RenderTransformOrigin="0.622,0.945" Height="41" Foreground="#FF151111" BorderBrush="LightBlue" Click="btnExit_Click">
                 <StackPanel>
                     <Image x:Name="exit1" Width="28" Height="23.907" Source="/HAMS;component/Resources/resizeApi.png"/>
@@ -158,5 +149,6 @@
             </Button>
             <Image x:Name="image" Height="50" Canvas.Left="497" Width="81" Source="/Resources/logo.png" Stretch="Fill"/>
         </Canvas>
+        <Image x:Name="headImage" Source="男教师.png" HorizontalAlignment="Left" Height="37" VerticalAlignment="Top" Width="41"  RenderTransformOrigin="1.894,0.568" Margin="7,-39,0,0" d:LayoutOverrides="VerticalAlignment"/>
     </Grid>
 </Window>

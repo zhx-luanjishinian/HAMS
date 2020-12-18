@@ -74,7 +74,7 @@
                 </Button>
             </Canvas>
         </Canvas>
-        <Image x:Name="headImage" Source="/HAMS;component/Resources/女教师.png" Margin="9.6,-0.8,226.27,7.87"/>
+        <Image x:Name="headImage" Source="男教师.png" HorizontalAlignment="Left" Height="40.75" VerticalAlignment="Top" Width="43.882"  RenderTransformOrigin="1.894,0.568" Margin="10,6.934,0,0"/>
 
     </Grid>
 </Window>

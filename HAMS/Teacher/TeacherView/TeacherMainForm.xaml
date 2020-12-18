@@ -6,22 +6,24 @@
         xmlns:local="clr-namespace:HAMS.Teacher.TeacherView"
         xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" 
         mc:Ignorable="d"
-       Title="MainWindow" Height="419.861" Width="742.397">
+       Title="MainWindow" Height="419.861" Width="742.397" >
     <Window.Resources>
         <Style x:Key="CanvasStyle1" TargetType="{x:Type Canvas}"/>
     </Window.Resources>
+
     <Grid Margin="6.667,0,6.666,6.667" Height="337.678" VerticalAlignment="Bottom">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="233*"/>
-            <ColumnDefinition Width="103*"/>
-            <ColumnDefinition Width="153*"/>
+            <ColumnDefinition Width="345*"/>
+            <ColumnDefinition Width="152*"/>
+            <ColumnDefinition Width="42*"/>
+            <ColumnDefinition Width="184*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="30*"/>
             <RowDefinition Height="55*"/>
             <RowDefinition Height="84*"/>
         </Grid.RowDefinitions>
-        <ListView x:Name="listViewRecentNotice" Grid.Column="2" Style="{DynamicResource ListViewStyle1}" Margin="-0.001,29.6,0.001,23.143" Grid.RowSpan="3">
+        <ListView x:Name="listViewRecentNotice" Grid.Column="2" Style="{DynamicResource ListViewStyle1}" Margin="0.333,30,-0.333,23" Grid.RowSpan="3" Grid.ColumnSpan="2">
             <ListView.Resources>
                 <SolidColorBrush x:Key="ListBorder" Color="#828790"/>
                 <Style x:Key="ListViewStyle1" TargetType="{x:Type ListView}">
@@ -84,8 +86,8 @@
                 </Canvas>
             </Button>-->
         </ListView>
-        <Label x:Name="labelRecent" Content="近期发布作业公告" Grid.Column="2" Margin="0,7.617,0,22.326" FontSize="13"/>
-        <StackPanel Grid.ColumnSpan="2" Margin="-8.537,2.617,17.598,23.143" Grid.RowSpan="3">
+        <Label x:Name="labelRecent" Content="近期发布作业公告" Grid.Column="2" Margin="0.333,8,-0.333,22" FontSize="13" Grid.ColumnSpan="2"/>
+        <StackPanel Grid.ColumnSpan="2" Margin="-9,3,17.667,23" Grid.RowSpan="3">
             <Label x:Name="labelTeachClass" Content="我教的课   （在课程中您是   老师）" Height="25.8" Margin="3,0,-1,0" FontSize="13"/>
             <ListView x:Name="listViewTeacherClass" Height="286" Margin="4,0,-11.8,0">
                 <ListView.Background>
@@ -136,7 +138,7 @@
 
             </ListView>
         </StackPanel>
-        <Canvas Height="49.645" Background="LightBlue" Grid.ColumnSpan="3" Margin="-8.537,-47.028,-9.6,0" VerticalAlignment="Top">
+        <Canvas Height="50" Background="LightBlue" Grid.ColumnSpan="4" Margin="-9,-47,-9.333,0" VerticalAlignment="Top">
             <TextBlock x:Name="tbTeacherInfo" Height="18.666" Canvas.Left="70.066" Canvas.Top="21.979" Width="137.334" TextAlignment="Center" FontSize="13"><Run Text="Z0004520 "/></TextBlock>
             <TextBlock x:Name="tbTeacherInfo1" Height="19" Canvas.Left="166" Canvas.Top="21" Width="138" TextAlignment="Center" FontSize="13"><Run Text="刘树栋"/></TextBlock>
             <Border x:Name="headImage" BorderBrush="Black" BorderThickness="0" HorizontalAlignment="Left" Height="36.996" VerticalAlignment="Top" Width="40.666" CornerRadius="35" Canvas.Left="24.4" RenderTransformOrigin="1.894,0.568" Canvas.Top="10">
@@ -148,13 +150,13 @@
                     </ImageBrush>
                 </Border.Background>
             </Border>
-            <Button x:Name="btnExit" Background="LightBlue"  Canvas.Left="600" Canvas.Top="9" Width="82" RenderTransformOrigin="0.622,0.945" Height="41" Foreground="#FF151111" BorderBrush="LightBlue" Click="btnExit_Click">
+            <Button x:Name="btnExit" Background="LightBlue"  Canvas.Left="659" Width="82" RenderTransformOrigin="0.622,0.945" Height="41" Foreground="#FF151111" BorderBrush="LightBlue" Click="btnExit_Click">
                 <StackPanel>
                     <Image x:Name="exit1" Width="28" Height="23.907" Source="/HAMS;component/Resources/resizeApi.png"/>
                     <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
                 </StackPanel>
             </Button>
-            <Image x:Name="image" Height="39.645" Canvas.Left="431.97" Width="124.4" Source="/Resources/logo.jpg" Stretch="Fill"/>
+            <Image x:Name="image" Height="50" Canvas.Left="497" Width="81" Source="/Resources/logo.png" Stretch="Fill"/>
         </Canvas>
     </Grid>
 </Window>

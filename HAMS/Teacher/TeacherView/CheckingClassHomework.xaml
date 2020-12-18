@@ -125,7 +125,7 @@
                     </TransformGroup>
                 </Ellipse.RenderTransform>
             </Ellipse>
-            <Image x:Name="imgSystemLogo" Width="129.332" Source="../../Resources/management.jpg" Stretch="UniformToFill" HorizontalAlignment="Right" Margin="0,4,95.468,10.412"/>
+            <Image x:Name="imgSystemLogo" Width="60.667" Source="../../Resources/logo.png" Stretch="UniformToFill" HorizontalAlignment="Right" Margin="0,0,109.465,0"/>
             <TextBlock x:Name="tbTeacherInfo" Width="117.6" TextAlignment="Center" HorizontalAlignment="Left" Margin="58.281,18.677,0,17.667">
                 <TextBlock.Background>
                     <ImageBrush/>
@@ -222,16 +222,25 @@
                 <TabControl x:Name="tabControl" Margin="0,-0.5,0,-1.713" d:LayoutOverrides="LeftPosition, RightPosition">
 
                     <TabItem x:Name="TbItemChecked" Header="已批改   5" Margin="-2,0.067,0,-0.067" HorizontalAlignment="Left" Style="{StaticResource TabItemStyle}" Width="80" Height="23" VerticalAlignment="Top">
+                        <TabItem.Background>
+                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                                <GradientStop Color="#FFCBC6F0"/>
+                                <GradientStop Color="#FFEEEEF0" Offset="0.376"/>
+                                <GradientStop Color="#FFB4A8E9" Offset="1"/>
+                            </LinearGradientBrush>
+                        </TabItem.Background>
                         <Grid Background="#FFE5E5E5" Margin="0,0,0,-3.066">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="0*"/>
-                                <ColumnDefinition Width="91*"/>
+                                <ColumnDefinition Width="54*"/>
+                                <ColumnDefinition Width="37*"/>
                                 <ColumnDefinition Width="54*"/>
                                 <ColumnDefinition Width="199*"/>
                                 <ColumnDefinition Width="138*"/>
                                 <ColumnDefinition Width="31*"/>
                             </Grid.ColumnDefinitions>
-                            <ListView x:Name="listViewChecked" Grid.ColumnSpan="6">
+                            <ListView x:Name="listViewChecked" Grid.ColumnSpan="7">
                                 <ListView.View>
                                     <GridView>
                                         <GridViewColumn/>
@@ -242,13 +251,24 @@
                         </Grid>
                     </TabItem>
                     <TabItem x:Name="TbItemUnCheck" Header="待批改   56" Margin="-2,0,0,-0.067" HorizontalAlignment="Left" Style="{StaticResource TabItemStyle}" Width="80" Height="22" VerticalAlignment="Bottom">
+                        <TabItem.Background>
+                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                                <GradientStop Color="#FFFAE6F9"/>
+                                <GradientStop Color="#FFEEEEF0" Offset="0.376"/>
+                                <GradientStop Color="#FFF3C5D6" Offset="1"/>
+                            </LinearGradientBrush>
+                        </TabItem.Background>
                         <Grid Background="#FFE5E5E5">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="0*"/>
-                                <ColumnDefinition Width="73*"/>
-                                <ColumnDefinition Width="98*"/>
+                                <ColumnDefinition Width="108*"/>
+                                <ColumnDefinition Width="14*"/>
+                                <ColumnDefinition Width="62*"/>
+                                <ColumnDefinition Width="35*"/>
+                                <ColumnDefinition Width="294*"/>
                             </Grid.ColumnDefinitions>
-                            <ListView x:Name="listViewUnCheck" Grid.ColumnSpan="3" Margin="0,0,-0.2,0.2">
+                            <ListView x:Name="listViewUnCheck" Grid.ColumnSpan="6" Margin="0,0,-0.2,0.2">
                                 <ListView.View>
                                     <GridView>
                                         <GridViewColumn/>
@@ -259,6 +279,14 @@
                         </Grid>
                     </TabItem>
                     <TabItem x:Name="TbItemUnFinish" Header="未完成   15" Margin="-4.8,0,0,-0.4" HorizontalAlignment="Left" Style="{StaticResource TabItemStyle}" Width="80" Height="22" VerticalAlignment="Bottom">
+                        <TabItem.Background>
+                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                                <GradientStop Color="#FFEDF6F5"/>
+                                <GradientStop Color="#FFEEEEF0" Offset="0.376"/>
+                                <GradientStop Color="#FFC5F3EB" Offset="1"/>
+                            </LinearGradientBrush>
+                        </TabItem.Background>
                         <Grid Background="#FFE5E5E5" Margin="0,0,0,-10.4">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="0*"/>
@@ -279,7 +307,13 @@
                     </TabItem>
                 </TabControl>
             </Border>
-            <Button x:Name="btnHomeworkStatistic" Content="查看作业情况统计图" FontWeight="Bold" Margin="395.733,1,0,207.36" Click="btnHomeworkStatistic_Click"/>
+            <Button x:Name="btnHomeworkStatistic" Content="查看作业情况统计图" FontWeight="Bold" Margin="396,-3,-0.4,210" Click="btnHomeworkStatistic_Click" Background="#FFDDD3FA" BorderBrush="#FFCDC1F3">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"></Setter>
+                    </Style>
+                </Button.Resources>
+            </Button>
         </Grid>
     </Grid>
 </Window>

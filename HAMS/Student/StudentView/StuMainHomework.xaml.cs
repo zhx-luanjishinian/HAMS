@@ -23,7 +23,7 @@ namespace HAMS.Student.StudentView
     public partial class StuMainHomework : Window
     {
        
-        static AnswerQuestion newAnswerQuestion = new AnswerQuestion("测试");   //需要获得学生的姓名信息
+        
        
         private SService ss = new SService();
         public String account { set; get; }
@@ -49,14 +49,16 @@ namespace HAMS.Student.StudentView
             labelClassName.Content = info[info.Count-1][0]; //取课堂名，显示在前端课堂名的位置
             for(int i = 0; i < info.Count-1; i++) //对作业进行遍历，遍历初始化动态控件，并展示在前端界面listview位置
             {
-                String[] temp = new String[2]; //定义一个字符串数组temp
+                String[] temp = new String[3]; //定义一个字符串数组temp
                 ListViewItem ivi = new ListViewItem();  //初始化一个listview元素，用来装一条一条的作业
                 //notTitle,content,notId,truDeadline
                //this.Message = ss.judgeHomeworkStatus(account, notId, info[i][3].ToString());
                 MainHomeworkInfo mhi = new MainHomeworkInfo(info[i][1], info[i][2]); //传入两个参数，一个是content,一个是notId
                 //mhi.tbHomeworkStatus.Text = this.Message;
+                
                 temp[0] = info[i][1]; //获取content的值
                 temp[1] = info[i][2]; //获取作业公告Id
+                temp[2] = info[info.Count - 1][0];//获取课堂名
                 mhi.labelHomeworkName.Content = info[i][0];//将作业公告的标题notTitle显示在作业公告名这个前端控件中
                 //如果作业内容长度很长的话只显示7个
                 if (info[i][1].Length > 7) {
@@ -114,32 +116,15 @@ namespace HAMS.Student.StudentView
         private void asq(object sender, RoutedEventArgs e)
         {
             Button mh = (Button)sender;
-            Canvas mhF = (Canvas)mh.Parent;
-            MainHomeworkInfo mhG = (MainHomeworkInfo)mhF.Parent;
+   
             String[] info = (String[])mh.Tag;
-            //AnswerQuestion aq = new AnswerQuestion(info[0], info[1]);
+            //获取的直接是作业id
+            AnswerQuestion aq = new AnswerQuestion(account,name,classId, info[1],info[2]);
+            aq.Show();
             //AnswerQuestion aq = new AnswerQuestion(info[0]);
-            newAnswerQuestion.btnSubmitQuestion.Click += new RoutedEventHandler(btnSubmitQuestion_Click);
-            newAnswerQuestion.labelClassName.Content = mhG.labelHomeworkName.Content.ToString();   //重新修改answerQuestion界面的值
-            string studentName1 = name;    //需要当前学生的姓名
-
-            newAnswerQuestion.Show();  //答疑界面只能用一个
             this.Visibility = Visibility.Hidden;
         }
 
-
-       
-
-        private void btnSubmitQuestion_Click(object sender, RoutedEventArgs e)
-        {
-             StudentAskQuestion newStudentAskQuestion = new StudentAskQuestion();   //静态的，为了保存学生的答疑信息
-            
-            //this.Visibility = Visibility.Hidden;
-            newStudentAskQuestion.studentName = name; //需要当前学生的姓名
-            newStudentAskQuestion.lbStuName.Content = newStudentAskQuestion.studentName;
-            newAnswerQuestion.listViewQuestionAndAnswer.Items.Add(newStudentAskQuestion);
-
-        }
 
         private void homeworkManagement_Click(object sender, RoutedEventArgs e)
         {

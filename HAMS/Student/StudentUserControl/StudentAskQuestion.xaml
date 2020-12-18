@@ -15,7 +15,7 @@
         <Grid x:Name="teacherResponse" Height="81" Canvas.Top="141" Width="298" Visibility="Hidden">
             <TextBox x:Name="tbResponse" TextWrapping="Wrap" Text="TextBox" Margin="46,37,10,10"/>
             <Label x:Name="lbResponseName" Content="" Margin="46,10,164,43"/>
-            <Image x:Name="image" Source="/HAMS;component/Resources/男老师.png" Margin="10,10,252,50"/>
+            <Image x:Name="image" Source="/HAMS;component/Resources/男教师.png" Margin="10,10,252,50"/>
         </Grid>
         <Button x:Name="btnInsert" Height="33" Width="40" Background="White" BorderThickness="0" Canvas.Left="245" Canvas.Top="37" Click="btnComment_Click">
             <Image x:Name="image1" Height="24.866" Width="40.667" Source="/HAMS;component/Resources/对勾.png"/>

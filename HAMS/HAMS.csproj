@@ -143,9 +143,6 @@
     <Compile Include="Student\StudentView\StuChooseCalender.xaml.cs">
       <DependentUpon>StuChooseCalender.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Student\StudentView\StudentAnswerQuestion.xaml.cs">
-      <DependentUpon>StudentAnswerQuestion.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Student\StudentView\StudentMainForm.xaml.cs">
       <DependentUpon>StudentMainForm.xaml</DependentUpon>
     </Compile>
@@ -292,10 +289,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Student\StudentView\StuChooseCalender.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Student\StudentView\StudentAnswerQuestion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

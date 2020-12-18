@@ -122,6 +122,7 @@ namespace HAMS.Student.StudentDao
                 info.Add(table1.Rows[i][2].ToString());
                 //添加作业的具体截止时间
                 info.Add(table1.Rows[i][3].ToString());
+                //添加课堂名
                 //result的value每一个值都是一个列表，列表里是作业的信息，key是0，1，2，3，4，5，6
                 result.Add(i, info);
             }
@@ -445,6 +446,33 @@ namespace HAMS.Student.StudentDao
             result.Add(dic);
             return result;
 
+        }
+        //进行答疑区界面的展示
+        public List< List<String>> showAskQuestion(String notId)
+        {
+            String sql = "select commStudent,commTeacher from comment where notId=@nid";
+            MySqlParameter para = new MySqlParameter("@nid", notId);
+            DataTable table = DataOperation.DataQuery(sql, para);
+            List< List<String>> result = new List<List<String>>();
+            for(int i = 0; i < table.Rows.Count; i++)
+            {
+                List<String> info = new List<String>();
+                info.Add(table.Rows[i][0].ToString());
+                info.Add(table.Rows[i][1].ToString());
+                result.Add(info);
+            }
+            return result;
+        }
+        //进行学生答疑信息的插入
+        public bool insertStudentComment(String notId,String comment)
+        {
+            String sql = "insert into comment(notId,commStudent) values(@notId,@comment)";
+            MySqlParameter para = new MySqlParameter("@notId", long.Parse(notId));
+            MySqlParameter para1 = new MySqlParameter("@comment", comment);
+            MySqlParameter[] paras = new MySqlParameter[2];
+            paras[0] = para;
+            paras[1] = para1;
+            return DataOperation.DataAdd(sql, paras);
         }
         
     }

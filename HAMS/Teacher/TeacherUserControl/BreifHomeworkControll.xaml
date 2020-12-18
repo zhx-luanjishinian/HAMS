@@ -4,8 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HAMS.Teacher.TeacherView"
-             mc:Ignorable="d" Height="115.038" Width="820">
-    <Grid Height="113.8" Width="820" Margin="0,0,0,-1" Background="White">
+             mc:Ignorable="d" Height="115.038" Width="780">
+    <Grid Height="113.8" Width="780" Margin="0,0,0,-1" Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="112*"/>
             <ColumnDefinition Width="197*"/>
@@ -21,17 +21,18 @@
                 <ImageBrush ImageSource="删 除 .png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btnCheckDetail" Background="{x:Null}" Grid.ColumnSpan="2" Margin="10,19,-89.367,12.8" BorderThickness="0" Height="Auto" >
+        <Image x:Name="image3" Margin="21.942,12.8,23.28,10" Source="/HAMS;component/Resources/作业1.png"/>
+        <Button x:Name="btnCheckDetail" Background="{x:Null}" Grid.ColumnSpan="2" Margin="0,0,-114.155,0" BorderThickness="0" Height="Auto" >
             <Grid Height="75.4" Width="526.171">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="121*"/>
                     <ColumnDefinition Width="123*"/>
                 </Grid.ColumnDefinitions>
-                <Image x:Name="image3" Margin="0,4.2,30.098,0" Source="/HAMS;component/Resources/作业1.png"/>
                 <Label x:Name="title" Content="SVM实验" Margin="-82.426,3.6,10,0" FontWeight="Bold" FontSize="16" Height="32" VerticalAlignment="Top" Grid.Column="1"/>
                 <Label x:Name="description" Content="调通SVM代码，打卡上传" Grid.Column="1" Margin="-82.426,35.6,10,10" FontSize="13"/>
             </Grid>
         </Button>
-        <Border BorderBrush="Black" BorderThickness="0" Grid.ColumnSpan="3" Width="820"/>
+        <Border  BorderThickness="1" Grid.ColumnSpan="3" Width="780" BorderBrush="#FF0288D1"/>
+
     </Grid>
 </UserControl>

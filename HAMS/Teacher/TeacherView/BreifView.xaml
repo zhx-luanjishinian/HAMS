@@ -19,7 +19,7 @@
                     <Border BorderBrush="Black" BorderThickness="0,0,0,1" Height="37.552" Canvas.Top="0.4" Width="832" Background="LightPink"/>
                     <Label x:Name="labelCourseNumber" Content="Z004530B1300720 " Width="116" Height="24" Canvas.Left="51.708" Canvas.Top="7.378"/>
                     <Label x:Name="labelCourseName" Content="R语言" Width="40" Height="24" Canvas.Left="183.8" Canvas.Top="6"/>
-                    <Button x:Name="btnDeliverHomework" Content="发布作业" Width="101.199" FontSize="13" Click="btnDeliverHomework_Click" BorderBrush="{x:Null}" Background="#FFFED5E1" Height="36.432" Canvas.Left="728.801" Canvas.Top="0.4" BorderThickness="0">
+                    <Button x:Name="btnDeliverHomework" Content="发布作业" Width="94.799" FontSize="13" Click="btnDeliverHomework_Click" BorderBrush="Black" Background="#FFFED5E1" Height="34.128" Canvas.Left="727.201" Canvas.Top="1.552" BorderThickness="0">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="3"/>

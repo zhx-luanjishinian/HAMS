@@ -10,8 +10,8 @@
 
         <Border BorderBrush="#FFABADB3" BorderThickness="0,0,0,1" Height="40" Width="820"/>
         <Label x:Name="lbStudentInfo1" Content="201821130135&#xA;" Canvas.Left="48.4" Canvas.Top="8.5" Height="22" FontSize="10"/>
-        <Button x:Name="btnHomeworkCorrect1" Content="检查作业" Canvas.Left="718.4" Canvas.Top="3.357" Width="91.6" Background="{x:Null}" BorderThickness="0" FontWeight="Bold" BorderBrush="#FFB1DFE8" />
-        <Label x:Name="lbHomeworkState1" Content="已批改" Canvas.Left="643.867" Canvas.Top="8.5" Width="43.2"/>
+        <Button x:Name="btnHomeworkCorrect1" Content="检查作业" Canvas.Left="708" Canvas.Top="4" Width="92" Background="{x:Null}" BorderThickness="0" FontWeight="Bold" BorderBrush="#FFB1DFE8" />
+        <Label x:Name="lbHomeworkState1" Content="已批改" Canvas.Left="654.267" Canvas.Top="8.5" Width="48.8"/>
         <Label x:Name="lbStudentInfo2" Content="郑昊欣&#xA;" Canvas.Left="137" Canvas.Top="10" Height="22" FontSize="10"/>
     </Canvas>
 </UserControl>

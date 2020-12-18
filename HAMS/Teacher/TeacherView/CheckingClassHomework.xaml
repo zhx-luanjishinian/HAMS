@@ -106,7 +106,7 @@
     <Viewbox Stretch="UniformToFill">
         <Grid Margin="0,0,0,-1" Height="472" Width="840">
             <Grid Height="50" VerticalAlignment="Top" Background="LightBlue" Margin="0,0.344,0,0">
-                <Button x:Name="btnExit" Background="LightBlue" Width="49.177" RenderTransformOrigin="0.622,0.945" Foreground="#FF151111" BorderBrush="LightBlue" HorizontalAlignment="Right" Margin="0,0,2,0" Click="btnExit_Click">
+                <Button x:Name="btnExit" Background="LightBlue" Width="59" RenderTransformOrigin="0.622,0.945" Foreground="#FF151111" BorderBrush="LightBlue" HorizontalAlignment="Right" Margin="0,0,10,1" Click="btnExit_Click" Height="Auto">
                     <StackPanel>
                         <Image x:Name="exit1" Width="28" Height="23.907" Source="../../Resources/resizeApi.png" RenderTransformOrigin="0.483,0.453"/>
                         <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
@@ -129,7 +129,7 @@
                     <ColumnDefinition Width="0*"/>
                     <ColumnDefinition Width="454*"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="btnReturn" Margin="10,3.12,0,6.88" BorderThickness="0" BorderBrush="#FF9F9D9D" Click="btnReturn_Click" HorizontalAlignment="Left" Width="37.971">
+                <Button x:Name="btnReturn" Margin="10,3,0,6.552" BorderThickness="0" BorderBrush="#FF9F9D9D" Click="btnReturn_Click" HorizontalAlignment="Left" Width="51" Height="Auto">
                     <Button.Background>
                         <ImageBrush ImageSource="../../Resources/返回.png"/>
                     </Button.Background>
@@ -149,7 +149,7 @@
                 <Image x:Name="homework_png" Source="../../Resources/homework.png" Stretch="Fill" Width="56" HorizontalAlignment="Left" Margin="10,37.571,0,41.027" OpacityMask="{x:Null}"/>
                 <Label x:Name="labelHomeworkArrangeTime" Content="2020年11月10日 星期二 10:10" Width="156.021" FontSize="10" HorizontalAlignment="Right" Margin="0,10.143,198.177,0" VerticalAlignment="Top"/>
                 <TextBlock x:Name="textBlockDescription" TextWrapping="Wrap" Text="1.调试代码，结合代码和教材理解svm的大间隔理论                                                    2.尝试用CNN去跑数据集" Margin="79,37.571,27.599,0" Height="65.133" VerticalAlignment="Top"/>
-                <Button x:Name="uploadButton" Height="20.159" Background="White" BorderThickness="0" Width="101.334" HorizontalAlignment="Left" Margin="10,0,0,4.297" VerticalAlignment="Bottom" d:LayoutOverrides="HorizontalAlignment">
+                <Button x:Name="uploadButton" Height="24" Background="White" BorderThickness="0" Width="147" HorizontalAlignment="Left" Margin="10,0,0,0.16" VerticalAlignment="Bottom">
                     <Grid Height="20" Width="101.334">
 
                         <Image x:Name="image" Source="../../Resources/链接.png" HorizontalAlignment="Right" Width="20.4" Margin="0,0,75.934,0"/>
@@ -159,24 +159,23 @@
                 <Border HorizontalAlignment="Right" Margin="0,10.143,27.599,0" Width="91.867" Height="22.7" VerticalAlignment="Top">
                     <Grid>
                         <Button x:Name="button" Content="" Margin="0.8,0,0,0"/>
-                        <Button x:Name="btnAnswerQuestion" Margin="23.8,0,0,0" Background="White" Content="作业答疑区" BorderBrush="{x:Null}"  Click="btnAnswerQuestion_Click"/>
-                        <Image x:Name="image2" Source="../../Resources/提交作业.png" Width="23.8" HorizontalAlignment="Left" d:LayoutOverrides="HorizontalAlignment">
-                        </Image>
+                        <Button x:Name="btnAnswerQuestion" Margin="24,0,-22,-9.6" Background="#FFDCD5D5" Content="作业答疑区" BorderBrush="{x:Null}"  Click="btnAnswerQuestion_Click"/>
+                        <Image x:Name="image2" Source="../../Resources/提交作业.png" Width="24" HorizontalAlignment="Left" Margin="0,0,0,-9.6"/>
                     </Grid>
                 </Border>
             </Grid>
             <Grid Margin="1,207.16,0,0" Height="22.44" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment">
 
-                <TextBox x:Name="tbStuNameSearch" TextWrapping="Wrap" Margin="0,2.2,55.4,0.24" Grid.ColumnSpan="2" Text="请输入学生的完整姓名。" GotFocus="tbSearch_GotFocus"/>
+                <TextBox x:Name="tbStuNameSearch" TextWrapping="Wrap" Margin="-5,0,60,-0.56" Text="请输入学生的完整姓名。" GotFocus="tbSearch_GotFocus"/>
 
-                <Button x:Name="btnSearch1" Width="22" HorizontalAlignment="Right" Margin="0,0,62.4,-0.56" Height="20" VerticalAlignment="Bottom" Grid.Column="1" BorderThickness="0" Click="btnSearch_Click">
+                <Button x:Name="btnSearch1" Width="22" HorizontalAlignment="Right" Margin="0,0,71,2.44" Height="20" VerticalAlignment="Bottom" BorderThickness="0" Click="btnSearch_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="/HAMS;component/Resources/查询.png"/>
                     </Button.Background>
 
                 </Button>
-                <Button x:Name="btnRefresh" HorizontalAlignment="Left" Margin="789.6,0,0,0.24" Width="40.4" Background="White" BorderBrush="White" Click="btnRefresh_Click">
-                    <Image x:Name="image1" Height="19.2" Width="30.4" Source="/HAMS;component/Resources/刷新.png"/>
+                <Button x:Name="btnRefresh" HorizontalAlignment="Left" Margin="784,-16,0,-0.56" Width="49" Background="White" BorderBrush="White" Click="btnRefresh_Click" Height="Auto">
+                    <Image x:Name="image1" Height="22" Width="17" Source="/HAMS;component/Resources/刷新.png"/>
                 </Button>
 
             </Grid>
@@ -221,7 +220,7 @@
                                 </LinearGradientBrush>
                             </TabItem.Background>
                             <Grid Background="#FFE5E5E5">
-                                
+
                                 <ListView x:Name="listViewUnCheck" Grid.ColumnSpan="6" Margin="0,0,-0.2,0.2">
                                     <ListView.View>
                                         <GridView>

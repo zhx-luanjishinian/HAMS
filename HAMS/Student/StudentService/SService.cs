@@ -345,6 +345,16 @@ namespace HAMS.Student.StudentService
             return result;
 
         }
+        //显示作业答疑区的信息
+        public List<List<String>> showAskQuestion(String notId)
+        {
+            return sd.showAskQuestion(notId);
+        }
+        //进行学生答疑的插入
+        public bool insertStudentQuestion(String notId,String comment)
+        {
+            return sd.insertStudentComment(notId, comment);
+        }
 
     }
 }

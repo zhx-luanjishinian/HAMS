@@ -55,6 +55,7 @@ namespace HAMS.Student.StudentView
             {
                 // 打开子窗体
                 StuDoHomework sdh = new StuDoHomework(account,name,notId,classId,pngfile);
+                sdh.pngfile = this.pngfile;
                 sdh.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
@@ -67,6 +68,7 @@ namespace HAMS.Student.StudentView
             {
                 // 打开子窗体
                 StudentMainForm smf = new StudentMainForm(account,name,pngfile);
+                smf.pngfile = this.pngfile;
                 smf.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
@@ -78,7 +80,8 @@ namespace HAMS.Student.StudentView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                AlertForm af = new AlertForm(account,name,pngfile);
+                AlertForm af = new AlertForm(account,name,this.pngfile);
+                af.pngfile = this.pngfile;
                 af.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;

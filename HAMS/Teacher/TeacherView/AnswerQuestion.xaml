@@ -25,11 +25,7 @@
             <Button x:Name="btnSubmitQuestion" Content="发送答疑" Height="30" Canvas.Left="399" Canvas.Top="22" Width="87" Click="btnSubmitQuestion_Click"/>
         </Canvas>
         <ListView x:Name="listViewQuestionAndAnswer" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="259" Margin="0,62,0,-0.2" Grid.RowSpan="3" VerticalAlignment="Top" Width="518">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
+           
         </ListView>
 
     </Grid>

@@ -73,6 +73,7 @@ namespace HAMS.Student.StudentView
         {
             Button mf = (Button)sender;
             StuMainHomework smh = new StuMainHomework(account, name, (String)mf.Tag,pngfile);//真实课堂号
+            smh.pngfile = this.pngfile;
             smh.Show();
             this.Visibility = Visibility.Hidden;
 
@@ -106,6 +107,7 @@ namespace HAMS.Student.StudentView
             Button hnif = (Button)sender;
             String[] info = (String[])hnif.Tag;
             StuDoHomework sdh = new StuDoHomework(account,name,info[0],info[1],pngfile);
+            sdh.pngfile = this.pngfile;
             sdh.Show();
             this.Visibility = Visibility.Hidden;
         }
@@ -116,6 +118,7 @@ namespace HAMS.Student.StudentView
             {
                 // 打开子窗体
                 AlertForm af = new AlertForm(account,name,pngfile);
+                af.pngfile = this.pngfile;
                 af.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;

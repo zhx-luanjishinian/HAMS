@@ -67,6 +67,7 @@ namespace HAMS
 
                     }
                     StudentMainForm smf = new StudentMainForm(txtUserName.Text,(string)br.data, pngfile);
+                    
                     smf.Show();
                     this.Visibility = Visibility.Hidden;
                 }

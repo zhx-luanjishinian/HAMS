@@ -245,7 +245,7 @@ namespace HAMS.Teacher.TeacherView
 
                 //查到当前学生的性别
                 DataTable table10 = td.getSexByStuSpecId(table8.Rows[0][0].ToString());
-                MessageBox.Show(table10.Rows[0][0].ToString());
+                
                 if (Convert.ToInt32(table10.Rows[0][0]) == 1)
                 {
                     checkedStudent[i].pngfile = @"..\..\Resources\男生头像.png";
@@ -510,7 +510,7 @@ namespace HAMS.Teacher.TeacherView
                         
                     }
                 }
-                if(CorrectedNum >= 0)
+                if(CorrectedNum > 0)//查找到了已批改的人
                 {
                     TbItemChecked.IsSelected = true;
                 }
@@ -528,7 +528,7 @@ namespace HAMS.Teacher.TeacherView
                         sc.lbHomeworkState1.Content = "待批改";
                         sc.btnHomeworkCorrect1.Content = "批改作业";//修改button名称
                         //查到当前学生的性别
-                        DataTable tbSex = td.getSexByStuSpecId(stuSpecIdCorrecteds[i2]);
+                        DataTable tbSex = td.getSexByStuSpecId(stuSpecIdNeedCorrects[i2]);
                         if (Convert.ToInt32(tbSex.Rows[0][0]) == 1)
                         {
                             sc.pngfile = @"..\..\Resources\男生头像.png";
@@ -541,14 +541,14 @@ namespace HAMS.Teacher.TeacherView
                         sc.headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, @sc.pngfile))));
 
 
-                        listViewChecked.Items.Add(sc);
+                        listViewUnCheck.Items.Add(sc);
                         sc.btnHomeworkCorrect1.Click += new RoutedEventHandler(btnHomeworkCorrect1_Click);
 
                         UnCorrectNum++;
                         
                    }
                  }
-                if (UnCorrectNum >= 0)
+                if (UnCorrectNum > 0)//查找到了待批改的人
                 {
                     if (TbItemChecked.IsSelected != true)//如果没有在已批改作业中找到该学生，才设置待批改属性值为true
                     {
@@ -569,8 +569,9 @@ namespace HAMS.Teacher.TeacherView
                         sc.lbHomeworkState1.Content = "";
                         sc.btnHomeworkCorrect1.Content = "";//修改button名称
                         //查到当前学生的性别
-                        DataTable tbSex = td.getSexByStuSpecId(stuSpecIdCorrecteds[i3]);
-                        if (Convert.ToInt32(tbSex.Rows[0][0]) == 1)
+                        DataTable tbSex = td.getSexByStuSpecId(stuSpecIdUnfinisheds[i3]);
+                        
+                        if (int.Parse(tbSex.Rows[0][0].ToString()) == 1)
                         {
                             sc.pngfile = @"..\..\Resources\男生头像.png";
                         }
@@ -588,7 +589,7 @@ namespace HAMS.Teacher.TeacherView
                         UnFinishNum++;
                      }
                  }
-                if (UnFinishNum >= 0)
+                if (UnFinishNum > 0)//查找到了未完成的人
                 {
                     if (TbItemChecked.IsSelected != true || TbItemUnCheck.IsSelected != true)//如果没有在已批改作业或者待批改中找到该学生，才设置未完成属性值为true
                     {

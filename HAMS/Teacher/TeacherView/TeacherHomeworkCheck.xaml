@@ -145,7 +145,7 @@
                     <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
                 </StackPanel>
             </Button>
-            <Image x:Name="systemLogo" Width="129.332" Source="../../Resources/management.jpg" Stretch="UniformToFill" HorizontalAlignment="Right" Margin="0,4,95.468,10.412"/>
+            <Image x:Name="systemLogo" Width="65.336" Source="../../Resources/logo.png" Stretch="UniformToFill" HorizontalAlignment="Right" Margin="0,0,126.129,0"/>
             <TextBlock x:Name="tbTeacherSpecId" Width="118.4" TextAlignment="Center" HorizontalAlignment="Left" Margin="58.281,18.677,0,17.667">
                 <TextBlock.Background>
                     <ImageBrush/>
@@ -162,7 +162,7 @@
                 <ColumnDefinition Width="454*"/>
             </Grid.ColumnDefinitions>
             <Menu x:Name="menu" Background="LightPink" Margin="0,0,0.4,-7" Grid.ColumnSpan="3" BorderThickness="0,0,1,0" Height="27" VerticalAlignment="Top">
-                <Button x:Name="btnReturn" BorderThickness="0" BorderBrush="#FF9F9D9D" Height="21.062" Width="44.95" Click="btnReturn_Click">
+                <Button x:Name="btnReturn" BorderThickness="0" BorderBrush="#FF9F9D9D" Height="21" Width="36" Click="btnReturn_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="../../Resources/返回.png"/>
                     </Button.Background>
@@ -192,11 +192,12 @@
         </Grid>
         <Grid Height="122" VerticalAlignment="Top" Margin="0,80,0.4,0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="487*"/>
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="452*"/>
                 <ColumnDefinition Width="31*"/>
             </Grid.ColumnDefinitions>
-            <Label x:Name="lbStudentInfo" Content="2018211XXXXX 小红帽" Height="24" HorizontalAlignment="Left" Margin="22,15,0,0" VerticalAlignment="Top" Width="140"/>
-            <Button x:Name="btnDnowload" Background="White" BorderThickness="0" Width="87" HorizontalAlignment="Right" Margin="0,44,377.933,0" Height="32" VerticalAlignment="Top" Click="btnDownload_Click" >
+            <Label x:Name="lbStudentInfo" Content="2018211XXXXX 小红帽" Height="24" HorizontalAlignment="Left" Margin="22,15,0,0" VerticalAlignment="Top" Width="140" Grid.ColumnSpan="2"/>
+            <Button x:Name="btnDnowload" Background="White" BorderThickness="0" Width="87" HorizontalAlignment="Right" Margin="0,44,377.667,0" Height="32" VerticalAlignment="Top" Click="btnDownload_Click" Grid.ColumnSpan="2" >
                 <Grid Height="32" Width="87">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="27*"/>
@@ -210,7 +211,7 @@
                     <Label x:Name="lbDownload" Content="下载文件" FontSize="10" Margin="30,4,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" ToolTip="" Grid.ColumnSpan="2" Width="52"/>
                 </Grid>
             </Button>
-            <Label x:Name="lbHomPostil" Content="老师好，这是我的猫狗大战期末作业。" HorizontalAlignment="Left" Margin="22,81,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lbHomPostil" Content="老师好，这是我的猫狗大战期末作业。" HorizontalAlignment="Left" Margin="22,81,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
         </Grid>
         <Border Margin="0,202,0.4,21.4" BorderThickness="0,1,0,0">
             <Border.BorderBrush>
@@ -223,14 +224,20 @@
                 <Label x:Name="label5" Content="成绩等级：" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="label5_Copy" Content="点评：" HorizontalAlignment="Left" Margin="10,49.2,0,0" VerticalAlignment="Top"/>
                 <TextBox x:Name="tbRemark" TextWrapping="Wrap" Text="请输入你的点评" Margin="85,53.2,23.2,61.294"  GotFocus="tbRemark_GotFocus"/>
-                <Button x:Name="btnCorrect" Content="批改" Width="75" HorizontalAlignment="Right" Margin="0,0,23.2,18.6" VerticalAlignment="Bottom" Click="btnCorrect_Click"/>
+                <Button x:Name="btnCorrect" Content="批改" Width="75" HorizontalAlignment="Right" Margin="0,0,23.2,18.6" VerticalAlignment="Bottom" Click="btnCorrect_Click" BorderBrush="LightBlue" Background="LightBlue">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="3"></Setter>
+                        </Style>
+                    </Button.Resources>
+                </Button>
                 <RadioButton x:Name="rBtnA" Content="优秀" HorizontalAlignment="Left" Margin="85,16,0,0" VerticalAlignment="Top" />
                 <RadioButton x:Name="rBtnB" Content="良好" HorizontalAlignment="Left" Margin="203,16,0,0" VerticalAlignment="Top"/>
                 <RadioButton x:Name="rBtnC" Content="及格" HorizontalAlignment="Left" Margin="312,16,0,0" VerticalAlignment="Top"/>
                 <RadioButton x:Name="rBtnD" Content="不及格" HorizontalAlignment="Left" Margin="426,16,0,0" VerticalAlignment="Top"/>
             </Grid>
         </Border>
-        <Image x:Name="headImage" Source="/HAMS;component/Resources/女教师.png" Margin="10,2,457.4,520.6"/>
+        <Image x:Name="headImage" Source="男教师.png" HorizontalAlignment="Left" Height="37" VerticalAlignment="Top" Width="41"  RenderTransformOrigin="1.894,0.568" Margin="19.8,10,0,0" d:LayoutOverrides="VerticalAlignment"/>
 
     </Grid>
 </Window>

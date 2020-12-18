@@ -19,9 +19,11 @@
     </Window.Resources>
     <Grid>
         <Grid Margin="-10,0,0,0" Height="75.938" VerticalAlignment="Top" d:LayoutOverrides="TopMargin, BottomMargin">
-            <Border BorderBrush="Black" BorderThickness="0,0,0,1" Margin="10,0,0,0" Background="LightBlue"/>
-            <Image x:Name="image" HorizontalAlignment="Left" Margin="284.4,9.2,0,10" Width="104" Source="/HAMS;component/Resources/management.jpg" Stretch="Fill"/>
-            <Button x:Name="btnExit" Background="LightBlue" Width="82" RenderTransformOrigin="0.622,0.945" Foreground="#FF151111" BorderBrush="LightBlue" HorizontalAlignment="Right" Margin="0,9,24.4,0.938" Click="btnExit_Click">
+            <Border BorderBrush="Black" BorderThickness="0,0,0,1" Margin="10,0,0,0" Background="LightBlue">
+                <Image x:Name="headImage" Source="男教师.png" HorizontalAlignment="Left" Height="37" VerticalAlignment="Top" Width="41"  RenderTransformOrigin="1.894,0.568" Margin="31,20,0,0"></Image>
+            </Border>
+            <Image x:Name="image" HorizontalAlignment="Left" Margin="299.733,1.076,0,0" Width="90.667" Source="/HAMS;component/Resources/logo.png" Stretch="Fill"/>
+            <Button x:Name="btnExit" Background="LightBlue" Width="82" RenderTransformOrigin="0.622,0.945" Foreground="#FF151111" BorderBrush="LightBlue" HorizontalAlignment="Right" Margin="0,1,-0.333,8.938" Click="btnExit_Click">
                 <StackPanel>
                     <Image x:Name="exit1" Width="28" Height="23.907" Source="/HAMS;component/Resources/resizeApi.png"/>
                     <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
@@ -51,8 +53,20 @@
             <Grid x:Name="ca" Height="230" Canvas.Top="70.8" Width="520" ToolTip="点击上方按钮显示统计图">
                 <vc:Chart x:Name="chart" />
             </Grid>
-            <Button Content="完成情况统计柱状图" Height="23" HorizontalAlignment="Left" x:Name="btnFinishStatistic" VerticalAlignment="Top" Width="120.333"  Canvas.Left="12.961" Canvas.Top="32" Background="#FFDDDDDD" Click="btnFinishStatistic_Click" />
-            <Button Content="成绩等级统计饼图" Height="23" HorizontalAlignment="Left" x:Name="btnScoreStatistic" VerticalAlignment="Top" Width="120.333"  Canvas.Left="171.467" Canvas.Top="32" Click="btnScoreStatistic_Click_1" />
+            <Button Content="完成情况统计柱状图" Height="23" HorizontalAlignment="Left" x:Name="btnFinishStatistic" VerticalAlignment="Top" Width="120.333"  Canvas.Left="12.961" Canvas.Top="32" Background="#FFEECEE3" Click="btnFinishStatistic_Click" BorderBrush="{x:Null}" >
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"></Setter>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button Content="成绩等级统计饼图" Height="23" HorizontalAlignment="Left" x:Name="btnScoreStatistic" VerticalAlignment="Top" Width="120.333"  Canvas.Left="171.467" Canvas.Top="32" Click="btnScoreStatistic_Click_1" BorderBrush="{x:Null}" Background="#FFCDD5F3" >
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"></Setter>
+                    </Style>
+                </Button.Resources>
+            </Button>
 
 
         </Canvas>
@@ -64,7 +78,6 @@
             <TextBlock.Background>
                 <ImageBrush/>
             </TextBlock.Background><Run Text="刘树栋"/></TextBlock>
-        <Image x:Name="headImage" Source="/HAMS;component/Resources/女教师.png" Margin="10,20,457.4,399.4"/>
 
     </Grid>
 </Window>

@@ -41,6 +41,7 @@ namespace HAMS
         public MainWindow()
         {
             InitializeComponent();
+            this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             txtblockSysNotice.Text = ats.newSysNotice();
         }
 
@@ -100,7 +101,7 @@ namespace HAMS
                     TeacherMainForm tmf = new TeacherMainForm(txtUserName.Text, (string)br.data,pngfile);
                     //txtUserName.Text是教师工号Z0004520
                     //(string)br.data是刘树栋
-                    tmf.ShowDialog();
+                    tmf.Show();
                     this.Visibility = System.Windows.Visibility.Hidden;
                 }
                 else
@@ -116,7 +117,7 @@ namespace HAMS
                     MessageBox.Show("恭喜你已登录成功");
 
                     AdminIndex sm = new AdminIndex(txtUserName.Text, (string)br.data);
-                    sm.ShowDialog();
+                    sm.Show();
                 }
                 else
                 {

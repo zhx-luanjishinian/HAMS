@@ -22,7 +22,13 @@
             <Button x:Name="button1" Width="65.62" Background="LightBlue" BorderThickness="0" Height="30" Canvas.Left="20.066" Canvas.Top="15.439" Click="button1_Click">
                 <Image x:Name="image2" Width="65.62" Source="/HAMS;component/Resources/返回.png" Height="28.53"/>
             </Button>
-            <Button x:Name="btnSubmitQuestion" Content="发送答疑" Height="30" Canvas.Left="399" Canvas.Top="22" Width="87" Click="btnSubmitQuestion_Click"/>
+            <Button x:Name="btnSubmitQuestion" Content="发送答疑" Height="30" Canvas.Left="399" Canvas.Top="22" Width="87" Click="btnSubmitQuestion_Click" Background="#FFFBDFE3" BorderBrush="#FFF0D5D9">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"></Setter>
+                    </Style>
+                </Button.Resources>
+            </Button>
         </Canvas>
         <ListView x:Name="listViewQuestionAndAnswer" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="259" Margin="0,62,0,-0.2" Grid.RowSpan="3" VerticalAlignment="Top" Width="518">
            

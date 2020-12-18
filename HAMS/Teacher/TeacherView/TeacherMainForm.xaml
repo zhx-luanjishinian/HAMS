@@ -140,8 +140,8 @@
                         <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
                     </StackPanel>
                 </Button>
-                <Image x:Name="image" Height="50" Canvas.Left="701.4" Width="43.8" Source="/Resources/logo.png" Stretch="Fill"/>
                 <Image x:Name="headImage" Source="男教师.png" Height="37" VerticalAlignment="Top" Width="41"  RenderTransformOrigin="1.894,0.568" Canvas.Left="10" Canvas.Top="10"/>
+                <Image x:Name="image" Height="50" Canvas.Left="701.4" Width="43.8" Source="/HAMS;component/logo.png" Stretch="Fill"/>
             </Canvas>
         </Grid>
     </Viewbox>

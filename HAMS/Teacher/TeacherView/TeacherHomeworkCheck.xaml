@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HAMS.Teacher.TeacherView"
         mc:Ignorable="d"
-        Title="TeacherHomeworkCheck" Height="600" Width="525">
+        Title="TeacherHomeworkCheck" Height="472" Width="840" WindowState="Maximized" WindowStyle="None">
     <Window.Resources>
         <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
             <Setter Property="Template">
@@ -137,31 +137,9 @@
         </Style>
     </Window.Resources>
     <Grid Margin="0,0,0,-1">
-        <Grid Height="55.344" VerticalAlignment="Top">
-            <Canvas Background="LightBlue" Grid.Row="0"/>
-            <Button x:Name="btnExit" Background="LightBlue" Width="43.534" RenderTransformOrigin="0.622,0.945" Foreground="#FF151111" BorderBrush="LightBlue" HorizontalAlignment="Right" Margin="0,4.437,2,7" Click="btnExit_Click">
-                <StackPanel>
-                    <Image x:Name="exit1" Width="28" Height="23.907" Source="/HAMS;component/Resources/resizeApi.png" RenderTransformOrigin="0.483,0.453"/>
-                    <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
-                </StackPanel>
-            </Button>
-            <Image x:Name="systemLogo" Width="65.336" Source="../../Resources/logo.png" Stretch="UniformToFill" HorizontalAlignment="Right" Margin="0,0,126.129,0"/>
-            <TextBlock x:Name="tbTeacherSpecId" Width="118.4" TextAlignment="Center" HorizontalAlignment="Left" Margin="58.281,18.677,0,17.667">
-                <TextBlock.Background>
-                    <ImageBrush/>
-                </TextBlock.Background><Run Text="Z0004520 "/></TextBlock>
-            <TextBlock x:Name="tbTeacherName" Width="119" TextAlignment="Center" HorizontalAlignment="Left" Margin="120,19,0,17.344">
-                <TextBlock.Background>
-                    <ImageBrush/>
-                </TextBlock.Background><Run Text="刘树栋"/></TextBlock>
-        </Grid>
         <Grid Margin="0,55.344,0,0" Height="20" VerticalAlignment="Top" Background="#FF292323">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="65*"/>
-                <ColumnDefinition Width="0*"/>
-                <ColumnDefinition Width="454*"/>
-            </Grid.ColumnDefinitions>
-            <Menu x:Name="menu" Background="LightPink" Margin="0,0,0.4,-7" Grid.ColumnSpan="3" BorderThickness="0,0,1,0" Height="27" VerticalAlignment="Top">
+
+            <Menu x:Name="menu" Background="LightPink" Width="832" Margin="0.6,0,1,-17.552" Grid.ColumnSpan="3" BorderThickness="0,0,1,0" Height="37.552" VerticalAlignment="Top">
                 <Button x:Name="btnReturn" BorderThickness="0" BorderBrush="#FF9F9D9D" Height="21" Width="36" Click="btnReturn_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="../../Resources/返回.png"/>
@@ -190,7 +168,7 @@
                 </Button>
             </Grid>
         </Grid>
-        <Grid Height="122" VerticalAlignment="Top" Margin="0,80,0.4,0">
+        <Grid Height="102.8" VerticalAlignment="Top" Margin="0,99.2,0.4,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="35*"/>
                 <ColumnDefinition Width="452*"/>
@@ -224,7 +202,7 @@
                 <Label x:Name="label5" Content="成绩等级：" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="label5_Copy" Content="点评：" HorizontalAlignment="Left" Margin="10,49.2,0,0" VerticalAlignment="Top"/>
                 <TextBox x:Name="tbRemark" TextWrapping="Wrap" Text="请输入你的点评" Margin="85,53.2,23.2,61.294"  GotFocus="tbRemark_GotFocus"/>
-                <Button x:Name="btnCorrect" Content="批改" Width="75" HorizontalAlignment="Right" Margin="0,0,23.2,18.6" VerticalAlignment="Bottom" Click="btnCorrect_Click" BorderBrush="LightBlue" Background="LightBlue">
+                <Button x:Name="btnCorrect" Content="批改" Width="75" HorizontalAlignment="Right" Margin="0,0,23.2,10" VerticalAlignment="Bottom" Click="btnCorrect_Click" BorderBrush="LightBlue" Background="LightBlue" Height="27.84">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="3"></Setter>
@@ -238,6 +216,24 @@
             </Grid>
         </Border>
         <Image x:Name="headImage" Source="男教师.png" HorizontalAlignment="Left" Height="37" VerticalAlignment="Top" Width="41"  RenderTransformOrigin="1.894,0.568" Margin="19.8,10,0,0" d:LayoutOverrides="VerticalAlignment"/>
+        <Canvas Height="50" Background="LightBlue" VerticalAlignment="Top" HorizontalAlignment="Left" Width="832">
+            <Image x:Name="headImage1" Source="男教师.png" Height="37" VerticalAlignment="Top" Width="41"  RenderTransformOrigin="1.894,0.568" Canvas.Left="10" Canvas.Top="10"/>
+            <Image x:Name="image1" Height="50" Canvas.Left="701.4" Width="43.8" Source="/HAMS;component/logo.png" Stretch="Fill"/>
+            <TextBlock x:Name="tbTeacherName" Width="119" TextAlignment="Center" Height="19" Canvas.Left="120" Canvas.Top="19">
+                <TextBlock.Background>
+                    <ImageBrush/>
+                </TextBlock.Background><Run Text="刘树栋"/></TextBlock>
+            <TextBlock x:Name="tbTeacherSpecId" Width="118.4" TextAlignment="Center" Height="19" Canvas.Left="58.281" Canvas.Top="18.677">
+                <TextBlock.Background>
+                    <ImageBrush/>
+                </TextBlock.Background><Run Text="Z0004520 "/></TextBlock>
+            <Button x:Name="btnExit" Background="LightBlue" Width="43.534" RenderTransformOrigin="0.622,0.945" Foreground="#FF151111" BorderBrush="LightBlue" Click="btnExit_Click" Height="43.907" Canvas.Left="788.066" Canvas.Top="4.437">
+                <StackPanel>
+                    <Image x:Name="exit1" Width="28" Height="23.907" Source="/HAMS;component/Resources/resizeApi.png" RenderTransformOrigin="0.483,0.453"/>
+                    <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
+                </StackPanel>
+            </Button>
+        </Canvas>
 
     </Grid>
 </Window>

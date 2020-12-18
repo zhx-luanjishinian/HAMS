@@ -37,8 +37,8 @@ namespace HAMS.Teacher.TeacherView
 
             labelCourseName.Content = courseName;
             labelCourseNumber.Content = courseNum;
-            lbTeacherInfo.Content = tId;
-            lbTeacherInfo1.Content = tName;
+            lbTeacherInfo.Text = tId;
+            lbTeacherInfo1.Text = tName;
             //从数据库中查找目前该课堂已经的布置作业
             TeacherDao.TDao td = new TeacherDao.TDao();
             DataTable table = td.getNotice(courseNum);  //有问题
@@ -79,7 +79,7 @@ namespace HAMS.Teacher.TeacherView
             DateTime dt = ts.GetPreviousDateTime(labelCourseNumber.Content.ToString(), clickTeachClass.title.Content.ToString());
             //获取当前作业的作业截止时间
             // 打开子窗体
-            AnnounceNotice newAnnounceNotice = new AnnounceNotice(lbTeacherInfo.Content.ToString(), lbTeacherInfo1.Content.ToString(), labelCourseNumber.Content.ToString()
+            AnnounceNotice newAnnounceNotice = new AnnounceNotice(lbTeacherInfo.Text.ToString(), lbTeacherInfo1.Text.ToString(), labelCourseNumber.Content.ToString()
                 , labelCourseName.Content.ToString(), clickTeachClass.title.Content.ToString(), clickTeachClass.description.Content.ToString(),dt);
             newAnnounceNotice.Show();
             this.Visibility = System.Windows.Visibility.Hidden;
@@ -130,7 +130,7 @@ namespace HAMS.Teacher.TeacherView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                TeacherMainForm newTeacherMainForm = new TeacherMainForm(lbTeacherInfo.Content.ToString(),lbTeacherInfo1.Content.ToString(),this.pngfile);
+                TeacherMainForm newTeacherMainForm = new TeacherMainForm(lbTeacherInfo.Text.ToString(),lbTeacherInfo1.Text.ToString(),this.pngfile);
                 newTeacherMainForm.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
@@ -140,7 +140,7 @@ namespace HAMS.Teacher.TeacherView
         private void btnDeliverHomework_Click(object sender, RoutedEventArgs e)
         {
             // 打开子窗体
-            AnnounceNotice newAnnounceNotice = new AnnounceNotice(lbTeacherInfo.Content.ToString(),lbTeacherInfo1.Content.ToString(),labelCourseNumber.Content.ToString()
+            AnnounceNotice newAnnounceNotice = new AnnounceNotice(lbTeacherInfo.Text.ToString(),lbTeacherInfo1.Text.ToString(),labelCourseNumber.Content.ToString()
                 ,labelCourseName.Content.ToString(), this.pngfile);
             newAnnounceNotice.pngfile = this.pngfile;
             newAnnounceNotice.Show();
@@ -158,8 +158,8 @@ namespace HAMS.Teacher.TeacherView
             //获得当前点击按钮对应的作业标题和作业描述
             string homeworkTitle =clickTeachClass.title.Content.ToString();
             string homeworkDescription = clickTeachClass.description.Content.ToString();
-            string teacherSpecId = lbTeacherInfo.Content.ToString();
-            string teacherName = lbTeacherInfo1.Content.ToString();
+            string teacherSpecId = lbTeacherInfo.Text.ToString();
+            string teacherName = lbTeacherInfo1.Text.ToString();
             string classSpecId = labelCourseNumber.Content.ToString();
             string className = labelCourseName.Content.ToString();
             //生成新界面

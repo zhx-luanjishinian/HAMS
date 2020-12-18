@@ -170,7 +170,7 @@
             <Grid Height="112.8" VerticalAlignment="Top" Margin="0,84.034,0.4,0">
 
                 <Label x:Name="lbStudentInfo" Content="2018211XXXXX 小红帽" Height="24" HorizontalAlignment="Left" Margin="96,10,0,0" VerticalAlignment="Top" Width="140"/>
-                <Button x:Name="btnDnowload" Background="White" BorderThickness="0" Width="111.991" HorizontalAlignment="Right" Margin="0,39,623.548,0" Height="27" VerticalAlignment="Top" Click="btnDownload_Click" >
+                <Button x:Name="btnDnowload" Background="{x:Null}" BorderThickness="0" Width="111.991" HorizontalAlignment="Right" Margin="0,39.323,631.609,0" Height="27" VerticalAlignment="Top" Click="btnDownload_Click" >
                     <Grid Height="27" Width="103.123">
 
                         <Image x:Name="image2" Source="../../Resources/链接.png" HorizontalAlignment="Left" Width="24" Height="22" VerticalAlignment="Bottom" Margin="0,0,0,5"/>

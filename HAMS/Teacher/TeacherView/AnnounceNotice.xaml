@@ -36,7 +36,7 @@
                 </Canvas>
                 <Canvas Height="32.425" Canvas.Top="10" Width="503.161" Canvas.Left="519.239">
                     <Label x:Name="attachment" Content="上传附件（可选）" Height="26.233" Canvas.Left="22.075" Canvas.Top="2.167" Width="112"/>
-                    <Button x:Name="btnUpload" Height="28.4" Canvas.Left="167.968" Width="167.796" Background="White" BorderThickness="0" Click="btnUpload_Click" Canvas.Top="2.167">
+                    <Button x:Name="btnUpload" Height="30.258" Canvas.Left="159.918" Width="175.846" Background="{x:Null}" BorderThickness="0" Click="btnUpload_Click" Canvas.Top="2.167">
                         <Grid Height="28" Width="166.186">
 
                             <Image x:Name="image" Source="/HAMS;component/Resources/链接.png" d:LayoutOverrides="HorizontalAlignment, TopMargin, BottomMargin" HorizontalAlignment="Left" Width="25.111" Height="28" VerticalAlignment="Top"/>

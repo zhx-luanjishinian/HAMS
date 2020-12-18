@@ -64,7 +64,6 @@
                         <ImageBrush ImageSource="返回.png"/>
                     </Button.Background>
                 </Button>
-                <Label x:Name="label" Content="作业公告详情" VerticalAlignment="Bottom" Width="85" Height="23" Style="{DynamicResource LabelStyle1}" Canvas.Left="724.561" Canvas.Top="10"/>
             </Canvas>
 
         </Grid>

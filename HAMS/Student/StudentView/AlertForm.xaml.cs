@@ -32,6 +32,7 @@ namespace HAMS.Student.StudentView
         public AlertForm(String account,String name,string pgfile)
         {
             InitializeComponent();
+            this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             this.account = account;
             this.name = name;
             this.pngfile = pgfile;

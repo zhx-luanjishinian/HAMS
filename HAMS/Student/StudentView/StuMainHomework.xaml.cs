@@ -35,6 +35,7 @@ namespace HAMS.Student.StudentView
         public StuMainHomework(String account, String name, String classId, string pngfile)//真实课堂号
         {
             InitializeComponent();
+            this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             this.account = account;
             this.name = name;
             this.classId = classId;

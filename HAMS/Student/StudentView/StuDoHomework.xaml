@@ -5,16 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HAMS.Student.StudentView"
         mc:Ignorable="d"
-        Title="StuDoHomework" Height="626.667" Width="800" ResizeMode="CanMinimize">
-    <Grid Margin="0,0,-0.333,0" Height="631" VerticalAlignment="Top">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="24*"/>
-            <RowDefinition Height="19*"/>
-            <RowDefinition Height="167*"/>
-        </Grid.RowDefinitions>
-        <Canvas Background="LightBlue" Margin="0" Grid.Row="0" HorizontalAlignment="Left" Height="71" VerticalAlignment="Top" Width="793">
+        Title="StuDoHomework" WindowState="Maximized" Height="472" Width="840"   WindowStyle="None">
+    <Grid Margin="0,0,-0.667,-6.667" Height="472" VerticalAlignment="Top">
+
+        <Canvas Background="LightBlue" Margin="0" Grid.Row="0" HorizontalAlignment="Left" Height="71" VerticalAlignment="Top" Width="834">
             <Image x:Name="headImage" Source="/Resources/bk_create.jpg"  Grid.Column="1" HorizontalAlignment="Left" Height="37" VerticalAlignment="Top" Width="40" Canvas.Left="29" RenderTransformOrigin="1.894,0.568" Canvas.Top="15">
-                
+
             </Image>
             <TextBlock x:Name="tbUserNameAc" Text="201821060569刘小蕊" Canvas.Left="89" Canvas.Top="27" RenderTransformOrigin="1.087,0.535" FontWeight="Bold"/>
             <Image x:Name="imgSystemLogo" Height="61.029" Width="197.332" Source="/Resources/management.jpg" Stretch="UniformToFill" Canvas.Left="501.001" Canvas.Top="6.872"/>
@@ -24,36 +20,35 @@
                     <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
                 </StackPanel>
             </Button>
-
-        </Canvas>
-        <DockPanel Background="LightPink" HorizontalAlignment="Left" Height="54" LastChildFill="False" Grid.Row="1" VerticalAlignment="Top" Width="793" Margin="0,1,0,0">
-            <Menu x:Name="menu" Background="LightPink" HorizontalAlignment="Left" Height="55.463" VerticalAlignment="Center" Width="794.847" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="0,0,0,-1.506">
-                <Button x:Name="btnReturn" Background="LightPink"  Height="45" Canvas.Left="10" Canvas.Top="27.189" Width="94" Click="btnReturn_Click" >
+            <Menu x:Name="menu" Background="LightPink" HorizontalAlignment="Left" Height="61" VerticalAlignment="Center" Width="835" Grid.ColumnSpan="2" Grid.RowSpan="2" Canvas.Top="68">
+                <Button x:Name="btnReturn" Background="LightPink"  Height="40" Canvas.Left="10" Canvas.Top="27.189" Width="94" Click="btnReturn_Click" >
                     <Image x:Name="imgReturn" Height="32" Canvas.Left="10" Canvas.Top="27.189" Width="64" Source="/Resources/返回.png"/>
                 </Button>
-                <Button x:Name="homeworkManagement" Height="45.463" Width="188" Content="作业管理" FontSize="14" FontWeight="Bold" Click="homeworkManagement_Click"/>
-                <Button x:Name="homeworkAlert" Height="45.463" Width="200" Content="作业预警" FontSize="14" FontWeight="Bold" Click="homeworkAlert_Click"/>
+                <Button x:Name="homeworkManagement" Height="40" Width="188" Content="作业管理" FontSize="14" FontWeight="Bold" Click="homeworkManagement_Click"/>
+                <Button x:Name="homeworkAlert" Height="40" Width="200" Content="作业预警" FontSize="14" FontWeight="Bold" Click="homeworkAlert_Click"/>
             </Menu>
-        </DockPanel>
-        <StackPanel Grid.Row="2" Margin="0,4.667,0,28.667">
-            <Canvas HorizontalAlignment="Left" Height="45.099" Background="Azure" Margin="0,5,0,0" VerticalAlignment="Top" Width="783.333">
-                <Label Content="第一次作业" VerticalAlignment="Center" x:Name="labelHomeworkName" FontWeight="Bold" Canvas.Left="10" Canvas.Top="8.526" FontSize="14"/>
-            </Canvas>
-            <Canvas  Width="783.333" Height="401.668" Margin="5,0,4.999,0">
-                <GroupBox Header="作业说明" Name="groupBox1" Height="382" Width="763" Canvas.Left="10" Canvas.Top="10">
-                    <Canvas Margin="0,0,0.333,-114.667" Height="378" VerticalAlignment="Top">
-                        <Label  Content="作业要求" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.08,-0.379" Height="24.573" Width="72.667" Canvas.Left="10" Canvas.Top="10"/>
-                        <Label Content="截止时间" Height="27" Canvas.Left="10" Canvas.Top="249" RenderTransformOrigin="0.586,1.293"/>
-                        <TextBox Height="23" TextAlignment="Center" VerticalContentAlignment="Center"  Text="2020年11月11日"  x:Name="tbDeadLineTime" Canvas.Left="73" TextWrapping="Wrap" Canvas.Top="250" Width="120"/>
-                        <TextBox x:Name="textBoxRequest" IsReadOnly="True"  Height="140" Canvas.Left="10" Canvas.Top="35" Width="730"/>
-                        <Image x:Name="imgAccessory" Height="20" Canvas.Left="39" Canvas.Top="203" Width="29" Source="/Resources/链接.png" RenderTransformOrigin="0.32,2.694" />
-                        <Button x:Name="tbAccessoryName" Canvas.Left="73"  Content="附件名字" Canvas.Top="203"  Height="20" Width="163" Background="White" BorderBrush="White" Click="tbAccessoryName_Click"/>
-                        <Button Content="作答" x:Name="btnDoHomework" Canvas.Left="599" Canvas.Top="311" Width="75" Height="32" Click="btnDoHomework_Click"/>
-                    </Canvas>
-                </GroupBox>
+        </Canvas>
 
-            </Canvas>
-        </StackPanel>
+
+
+
+        <Canvas HorizontalAlignment="Left" Height="47" Background="Azure" Margin="0,117,0,0" VerticalAlignment="Top" Width="834">
+            <Label Content="第一次作业" VerticalAlignment="Center" x:Name="labelHomeworkName" FontWeight="Bold" Canvas.Left="10" Canvas.Top="8.526" FontSize="14"/>
+        </Canvas>
+        <Canvas Margin="0,188,1,0">
+            <GroupBox Header  ="作业说明" Name="groupBox1" Height="267" Width="833" Canvas.Top="28">
+                <Canvas Margin="0,31,0.333,-12.333">
+                    <Label  Content="作业要求" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.08,-0.379" Height="24.573" Width="72.667" Canvas.Left="10" Canvas.Top="10"/>
+                    <Label Content="截止时间" Height="27" Canvas.Left="10" Canvas.Top="249" RenderTransformOrigin="0.586,1.293"/>
+                    <TextBox Height="23" TextAlignment="Center" VerticalContentAlignment="Center"  Text="2020年11月11日"  x:Name="tbDeadLineTime" Canvas.Left="73" TextWrapping="Wrap" Canvas.Top="250" Width="120"/>
+                    <TextBox x:Name="textBoxRequest" IsReadOnly="True"  Height="140" Canvas.Left="10" Canvas.Top="35" Width="730"/>
+                    <Image x:Name="imgAccessory" Height="20" Canvas.Left="39" Canvas.Top="203" Width="29" Source="/Resources/链接.png" RenderTransformOrigin="0.32,2.694" />
+                    <Button x:Name="tbAccessoryName" Canvas.Left="73"  Content="附件名字" Canvas.Top="203"  Height="20" Width="163" Background="White" BorderBrush="White" Click="tbAccessoryName_Click"/>
+                    <Button Content="作答" x:Name="btnDoHomework" Canvas.Left="599" Canvas.Top="261" Width="75" Height="32" Click="btnDoHomework_Click"/>
+                </Canvas>
+            </GroupBox>
+
+        </Canvas>
 
     </Grid>
 </Window>

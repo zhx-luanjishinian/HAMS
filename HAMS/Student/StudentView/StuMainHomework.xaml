@@ -5,70 +5,50 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HAMS.Student.StudentView"
         mc:Ignorable="d"
-        Title="StuMainHomework" Height="550.295" Width="800" WindowState="Maximized" ResizeMode="CanMinimize">
+        Title="StuMainHomework"  WindowState="Maximized" Height="472" Width="840"   WindowStyle="None">
     <Viewbox Stretch="UniformToFill">
-        <Grid Margin="0,0,0.333,-19.333">
+    <Grid Margin="0,0,0.333,-6.667">
 
+        <Canvas Background="LightBlue" Margin="0,2,0,0" Grid.Row="0" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="70" Width="833" >
+            <Image x:Name="headImage" Source="/Resources/bk_create.jpg"  Grid.Column="1" HorizontalAlignment="Left" Height="37" VerticalAlignment="Top" Width="40"  Canvas.Left="21" RenderTransformOrigin="1.894,0.568" Canvas.Top="21"/>
+            <TextBlock x:Name="tbuserNameAc" Text="201821060569刘小蕊" Canvas.Left="75" Canvas.Top="33" RenderTransformOrigin="1.087,0.535" FontWeight="Bold"/>
+            <Image x:Name="imgSystemLogo" Height="64" Width="198" Source="/Resources/management.jpg" Stretch="UniformToFill" Canvas.Left="517"/>
+            <Button x:Name="btnExit" Background="LightBlue"  Canvas.Left="725" Canvas.Top="14" Width="82" RenderTransformOrigin="0.622,0.945" Height="44" Foreground="#FF151111" BorderBrush="LightBlue" Click="btnExit_Click">
+                <StackPanel>
+                    <Image x:Name="exit1" Width="28" Height="23.907" Source="/Resources/resizeApi.png"/>
+                    <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
+                </StackPanel>
+            </Button>
+        
+        </Canvas>
+        <Menu x:Name="menu" Background="LightPink" HorizontalAlignment="Left" Height="54" VerticalAlignment="Center" Width="833" Margin="0,118,0,300">
+            <Button x:Name="btnReturn" Background="LightPink" Height="45" Canvas.Left="23.999" Canvas.Top="19.918" Width="55" Click="btnReturn_Click">
+                <Image x:Name="imgReturn" Height="35" Canvas.Left="23.999" Canvas.Top="19.918" Width="40" Source="/Resources/返回.png"/>
+            </Button>
+            <Button x:Name="homeworkManagement" Height="45.463" Width="188" Content="作业管理" FontSize="14" FontWeight="Bold" Click="homeworkManagement_Click"/>
+            <Button x:Name="homeworkAlert" Height="45.463" Width="200" Content="作业预警" FontSize="14" FontWeight="Bold" Click="homeworkAlert_Click"/>
+        </Menu>
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="71*"/>
-                <RowDefinition Height="58*"/>
-                <RowDefinition Height="387*"/>
-            </Grid.RowDefinitions>
+        <Canvas HorizontalAlignment="Left" Height="46" Background="Azure" Margin="0,72,-3,0" VerticalAlignment="Top" Width="836">
+            <Label x:Name="labelClassName" Content="R语言" Height="25" VerticalAlignment="Top" Canvas.Left="60" Width="145" Canvas.Top="11"/>
+            <Label Content="课程名：" Canvas.Left="5" Canvas.Top="11"/>
+            <Label Content="（在课程中您是" Canvas.Left="195" Canvas.Top="9"/>
+            <Label Content="）" Canvas.Left="315" Canvas.Top="9" RenderTransformOrigin="0.212,0.639"/>
+            <TextBlock x:Name="tbUserIdentity" Canvas.Left="287" TextWrapping="Wrap" Text="学生" Canvas.Top="14"/>
+            <Path Data="M318.66667,15.078287" Fill="#FFF4F4F5" Height="1" Canvas.Left="318.667" Stretch="Fill" Stroke="Black" Canvas.Top="14.078" Width="168.333" RenderTransformOrigin="0.5,0.5">
+                <Path.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Path.RenderTransform>
+            </Path>
+            <Button x:Name="btnRefresh" Content="刷新" Canvas.Left="737" Width="62" Canvas.Top="13" Click="BtnRefresh_Click"/>
+        </Canvas>
+        <ListView x:Name="listview" Height="295" FontStretch="Condensed" HorizontalAlignment="Left" Width="833" Margin="0,172,0,4"/>
 
-
-            <Canvas Background="LightBlue" Margin="2,2,2,2" Grid.Row="0" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="70" Width="791" Grid.RowSpan="2" >
-                <Image x:Name="headImage" Source="/Resources/bk_create.jpg"  Grid.Column="1" HorizontalAlignment="Left" Height="37" VerticalAlignment="Top" Width="40"  Canvas.Left="21" RenderTransformOrigin="1.894,0.568" Canvas.Top="21"/>
-                <TextBlock x:Name="tbuserNameAc" Text="201821060569刘小蕊" Canvas.Left="75" Canvas.Top="33" RenderTransformOrigin="1.087,0.535" FontWeight="Bold"/>
-                <Image x:Name="imgSystemLogo" Height="64.072" Width="197.332" Source="/Resources/management.jpg" Stretch="UniformToFill" Canvas.Left="490.334" Canvas.Top="3.872"/>
-                <Button x:Name="btnExit" Background="LightBlue"  Canvas.Left="701.666" Canvas.Top="13.955" Width="81.667" RenderTransformOrigin="0.622,0.945" Height="43.907" Foreground="#FF151111" BorderBrush="LightBlue" Click="btnExit_Click">
-                    <StackPanel>
-                        <Image x:Name="exit1" Width="28" Height="23.907" Source="/Resources/resizeApi.png"/>
-                        <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
-                    </StackPanel>
-                </Button>
-
-            </Canvas>
-            <DockPanel  HorizontalAlignment="Left" Height="54" Background="LightPink" LastChildFill="False" VerticalAlignment="Top" Width="793" Margin="0,0.667,0,0" Grid.Row="1">
-
-                <Menu x:Name="menu" Background="LightPink" HorizontalAlignment="Left" Height="55.463" VerticalAlignment="Center" Width="794.847" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="0,0,0,-1.506">
-                    <Button x:Name="btnReturn" Background="LightPink" Height="45" Canvas.Left="23.999" Canvas.Top="19.918" Width="55" Click="btnReturn_Click">
-                        <Image x:Name="imgReturn" Height="35" Canvas.Left="23.999" Canvas.Top="19.918" Width="40" Source="/Resources/返回.png"/>
-                    </Button>
-                    <Button x:Name="homeworkManagement" Height="45.463" Width="188" Content="作业管理" FontSize="14" FontWeight="Bold" Click="homeworkManagement_Click"/>
-                    <Button x:Name="homeworkAlert" Height="45.463" Width="200" Content="作业预警" FontSize="14" FontWeight="Bold" Click="homeworkAlert_Click"/>
-                </Menu>
-            </DockPanel>
-            <StackPanel x:Name="stackPanel1" Background="White"  HorizontalAlignment="Left" Height="378" Margin="0,4.667,0,0" Grid.Row="2" VerticalAlignment="Top" Width="793" Grid.ColumnSpan="1">
-                <Canvas HorizontalAlignment="Left" Height="33.766" Background="Azure" Margin="0,5,0,0" VerticalAlignment="Top" Width="783.333">
-                    <Label x:Name="labelClassName" Content="R语言" Height="25" VerticalAlignment="Top" Canvas.Left="48" Width="145" Canvas.Top="5"/>
-                    <Label Content="课程名：" Canvas.Left="5" Canvas.Top="4.386"/>
-                    <Label Content="（在课程中您是" Canvas.Left="193" Canvas.Top="5"/>
-                    <Label Content="）" Canvas.Left="311" Canvas.Top="5" RenderTransformOrigin="0.212,0.639"/>
-                    <TextBlock x:Name="tbUserIdentity" Canvas.Left="287" TextWrapping="Wrap" Text="学生" Canvas.Top="10"/>
-                    <Path Data="M318.66667,15.078287" Fill="#FFF4F4F5" Height="1" Canvas.Left="318.667" Stretch="Fill" Stroke="Black" Canvas.Top="14.078" Width="168.333" RenderTransformOrigin="0.5,0.5">
-                        <Path.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform ScaleY="-1"/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </Path.RenderTransform>
-                    </Path>
-                    <Button x:Name="btnRefresh" Content="刷新" Canvas.Left="627" Width="62" Canvas.Top="7" Click="BtnRefresh_Click"/>
-                </Canvas>
-                <ListView Name="listview" Height="325" FontStretch="Condensed" Margin="10,0,0,0" HorizontalAlignment="Left" Width="773">
-
-
-
-
-
-
-                </ListView>
-
-            </StackPanel>
-
-        </Grid>
+    </Grid>
     </Viewbox>
 </Window>

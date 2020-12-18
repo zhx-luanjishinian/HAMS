@@ -187,7 +187,7 @@
             <TextBox x:Name="tbStuNameSearch" TextWrapping="Wrap" Margin="0,2.2,55.4,0.24" Grid.ColumnSpan="2" Text="请输入学生的完整姓名。" GotFocus="tbSearch_GotFocus"/>
             <Button x:Name="btnSearch" Content="" HorizontalAlignment="Right" Margin="0,10,62.4,0.24" Width="25" Background="{x:Null}" BorderThickness="0" Grid.Column="1"/>
 
-            <Button x:Name="btnSearch1" Width="22" HorizontalAlignment="Right" Margin="0,0,62.4,-0.56" Height="20" VerticalAlignment="Bottom" Grid.Column="1" BorderThickness="0" Click="btnSearch_Click">
+            <Button x:Name="btnSearch1" Width="22" HorizontalAlignment="Right" Margin="0,3,62.4,-0.56" Grid.Column="1" BorderThickness="0" Click="btnSearch_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="/HAMS;component/Resources/查询.png"/>
                 </Button.Background>

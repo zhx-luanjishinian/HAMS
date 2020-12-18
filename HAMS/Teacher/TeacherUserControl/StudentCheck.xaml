@@ -6,11 +6,8 @@
              xmlns:local="clr-namespace:HAMS.Teacher.TeacherUserControl"
              mc:Ignorable="d" Height="40.298" Width="485.099">
     <Canvas Height="39.8" Width="483.4">
-        <Rectangle Height="25.811" Canvas.Left="10" Stroke="Black" Canvas.Top="6.189" Width="29.2" StrokeThickness="0">
-            <Rectangle.Fill>
-                <ImageBrush ImageSource="/HAMS;component/Resources/profile.jpg"/>
-            </Rectangle.Fill>
-        </Rectangle>
+        <Image x:Name="headImage" Source="/HAMS;component/Resources/profile.jpg" Grid.Column="1" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="25"  Canvas.Left="13"  Canvas.Top="7" RenderTransformOrigin="1.894,0.568" />
+
         <Border BorderBrush="#FFABADB3" BorderThickness="0,0,0,1" Height="40" Width="483"/>
         <Label x:Name="lbStudentInfo1" Content="201821130135&#xA;" Canvas.Left="48.4" Canvas.Top="8.5" Height="22" FontSize="10"/>
         <Button x:Name="btnHomeworkCorrect1" Content="检查作业" Canvas.Left="423.867" Canvas.Top="10.47" Width="55.8" Background="{x:Null}" BorderThickness="0" FontWeight="Bold" />

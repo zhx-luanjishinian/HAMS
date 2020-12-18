@@ -451,7 +451,16 @@ namespace HAMS.Teacher.TeacherDao
             return table;
         }
 
-        
+        public DataTable getSexByStuSpecId(string stuSpecId)
+        {
+            //根据teacherSpecId查询sex
+            String sql = "select sex from student where stuSpecId=@tSpecid";
+            MySqlParameter parameter = new MySqlParameter("@tSpecid", stuSpecId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);  //查到学生id,分数,作业路径
+            return table;
+        }
+
+
     }
 
 

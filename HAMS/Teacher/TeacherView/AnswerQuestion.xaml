@@ -12,7 +12,7 @@
             <Canvas Margin="0,1.248,0,0" Background="LightBlue" Height="60.752" VerticalAlignment="Top">
                 <Label x:Name="labelClassName" Content="SVM实验" Width="95.733" Height="35.313" Canvas.Left="91.867" Canvas.Top="15.439" FontSize="20" FontWeight="Bold"/>
                 <Border BorderBrush="Black" BorderThickness="0" Height="60.752" Width="833.6"/>
-                <Button x:Name="button1" Width="52.82" Background="LightBlue" BorderThickness="0" Height="30" Canvas.Left="10" Canvas.Top="15.439" Click="button1_Click">
+                <Button x:Name="button1" Width="52.82" Background="LightBlue" BorderThickness="0" Height="30" Canvas.Left="10" Canvas.Top="15.439" Click="button1_Click" BorderBrush="{x:Null}">
                     <Image x:Name="image2" Width="52.82" Source="/HAMS;component/Resources/返回.png" Height="28.53"/>
                 </Button>
                 <Button x:Name="btnSubmitQuestion" Content="发送答疑" Height="30" Canvas.Left="719.8" Canvas.Top="15.439" Width="87" Click="btnSubmitQuestion_Click" Background="#FFFBDFE3" BorderBrush="#FFF0D5D9">

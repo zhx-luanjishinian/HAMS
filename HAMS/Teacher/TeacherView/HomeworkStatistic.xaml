@@ -58,7 +58,7 @@
                         <ImageBrush/>
                     </TextBlock.Background></TextBlock>
             </Border>
-            <Button x:Name="btnReturn1" Width="38.133" Background="LightPink" BorderThickness="0" Height="20" Canvas.Left="10" Canvas.Top="10" Click="btnReturn_Click">
+            <Button x:Name="btnReturn1" Width="38.133" Background="LightPink" BorderThickness="0" Height="20" Canvas.Left="10" Canvas.Top="10" Click="btnReturn_Click" BorderBrush="{x:Null}">
                 <Image x:Name="image2" Width="38.133" Source="/HAMS;component/Resources/返回.png" OpacityMask="LightPink" Height="17"/>
             </Button>
             <Label x:Name="label" Content="作业公告详情" VerticalAlignment="Bottom" Width="85" Height="23" Style="{DynamicResource LabelStyle1}" Canvas.Left="707" Canvas.Top="10"/>

@@ -140,7 +140,7 @@
         <Grid Margin="0,55.344,0,0" Height="20" VerticalAlignment="Top" Background="#FF292323">
 
             <Menu x:Name="menu" Background="LightPink" Width="832" Margin="0.6,0,1,-17.552" Grid.ColumnSpan="3" BorderThickness="0,0,1,0" Height="37.552" VerticalAlignment="Top">
-                <Button x:Name="btnReturn" BorderThickness="0" BorderBrush="#FF9F9D9D" Height="21" Width="36" Click="btnReturn_Click">
+                <Button x:Name="btnReturn" BorderThickness="0" BorderBrush="{x:Null}" Height="21" Width="36" Click="btnReturn_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="../../Resources/返回.png"/>
                     </Button.Background>
@@ -216,7 +216,7 @@
             </Grid>
         </Border>
         <Image x:Name="headImage" Source="男教师.png" HorizontalAlignment="Left" Height="37" VerticalAlignment="Top" Width="41"  RenderTransformOrigin="1.894,0.568" Margin="19.8,10,0,0" d:LayoutOverrides="VerticalAlignment"/>
-        <Canvas Height="50" Background="LightBlue" VerticalAlignment="Top" HorizontalAlignment="Left" Width="832">
+        <Canvas Height="55.344" Background="LightBlue" VerticalAlignment="Top" HorizontalAlignment="Left" Width="832">
             <Image x:Name="headImage1" Source="男教师.png" Height="37" VerticalAlignment="Top" Width="41"  RenderTransformOrigin="1.894,0.568" Canvas.Left="10" Canvas.Top="10"/>
             <Image x:Name="image1" Height="50" Canvas.Left="701.4" Width="43.8" Source="/HAMS;component/logo.png" Stretch="Fill"/>
             <TextBlock x:Name="tbTeacherName" Width="119" TextAlignment="Center" Height="19" Canvas.Left="120" Canvas.Top="19">

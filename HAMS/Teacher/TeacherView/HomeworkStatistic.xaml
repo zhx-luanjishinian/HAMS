@@ -43,14 +43,14 @@
             <Canvas Height="50" Background="LightBlue" Margin="1.6,0,0,414.561" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="832">
                 <TextBlock x:Name="tbTeacherSpecId" Height="20" Canvas.Left="61" Canvas.Top="19" Width="38.934" TextAlignment="Center" FontSize="13" Text="Z001 "/>
                 <TextBlock x:Name="tbTeacherName" Height="19" Canvas.Left="104.934" Canvas.Top="19" Width="57.2" TextAlignment="Center" FontSize="13"><Run Text="刘树栋"/></TextBlock>
-                <Button x:Name="btnExit" Background="LightBlue"  Canvas.Left="765.8" Width="62.8" RenderTransformOrigin="0.622,0.945" Height="47" Foreground="#FF151111" BorderBrush="LightBlue" Click="btnExit_Click">
+                <Image x:Name="headImage" Source="../../Resources/男教师.png" Height="37" VerticalAlignment="Top" Width="41"  RenderTransformOrigin="1.894,0.568" Canvas.Left="15" Canvas.Top="10"/>
+                <Image x:Name="image" Height="50" Canvas.Left="701.4" Width="43.8" Source="/HAMS;component/logo.png" Stretch="Fill"/>
+                <Button x:Name="btnExit" Background="{x:Null}" RenderTransformOrigin="0.622,0.945" Height="50" Foreground="#FF151111" BorderBrush="{x:Null}" Click="btnExit_Click" Canvas.Left="766" Canvas.Top="1" Width="64" d:LayoutOverrides="HorizontalAlignment">
                     <StackPanel>
                         <Image x:Name="exit1" Width="28" Height="23.907" Source="/HAMS;component/Resources/resizeApi.png"/>
                         <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
                     </StackPanel>
                 </Button>
-                <Image x:Name="headImage" Source="../../Resources/男教师.png" Height="37" VerticalAlignment="Top" Width="41"  RenderTransformOrigin="1.894,0.568" Canvas.Left="15" Canvas.Top="10"/>
-                <Image x:Name="image" Height="50" Canvas.Left="701.4" Width="43.8" Source="/HAMS;component/logo.png" Stretch="Fill"/>
             </Canvas>
             <Canvas Margin="0,0,0,376.609" Height="37.952" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="833.6">
                 <Border BorderBrush="Black" BorderThickness="0,0,0,1" Height="37.552" Canvas.Top="0.4" Width="832" Background="LightPink">

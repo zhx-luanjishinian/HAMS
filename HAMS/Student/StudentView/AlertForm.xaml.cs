@@ -51,17 +51,17 @@ namespace HAMS.Student.StudentView
         public void showAlertInfo( List<List<List<String>>> info)
         {
             List<List< List<String>>> result = info;
-            int count = result[0].Count;
+            int count = 0;
             for(int i = 0; i < result[0].Count; i++)
             {
                 ListViewItem lvi = new ListViewItem();
                 //首先默认用户没有设置自定义的时间,传入具体截止时间，课堂名，作业标题
-                AlertMainForm amf = new AlertMainForm(result[0][i][1],result[0][i][0],result[0][i][2]);
+                AlertMainForm amf = new AlertMainForm(result[0][i][1],result[0][i][0],result[0][i][2], result[0][i][4]);
                 if (result[0][i].Count > 4) {
                  
                     if (result[0][i][4] != "") {
                         //此处相比于先前加入了自定义的截止时间
-                        amf = new AlertMainForm(result[0][i][1], result[0][i][0], result[0][i][2], result[0][i][4]);
+                        //amf = new AlertMainForm(result[0][i][1], result[0][i][0], result[0][i][2], result[0][i][4]);
                         amf.btnLimitedTime1.Content = result[0][i][4];
                     }
                     else
@@ -74,6 +74,14 @@ namespace HAMS.Student.StudentView
                 {
                     //默认减1获得当前设置的值
                     amf.comboBoxDegree1.SelectedIndex = int.Parse(result[0][i][5])-1;
+                    }
+                }
+                if (result[0][i].Count > 6)
+                {
+                    //此处统计的是未完成作业的人数
+                    if (result[0][i][6] == "")
+                    {
+                        count++;
                     }
                 }
                 
@@ -98,14 +106,14 @@ namespace HAMS.Student.StudentView
             {
                 ListViewItem lvi = new ListViewItem();
                 //首先默认用户没有设置自定义的时间,传入具体截止时间，课堂名，作业标题
-                AlertMainForm amf = new AlertMainForm(result[1][i][1], result[1][i][0], result[1][i][2]);
+                AlertMainForm amf = new AlertMainForm(result[1][i][1], result[1][i][0], result[1][i][2], result[1][i][4]);
                 if (result[1][i].Count > 4)
                 {
 
                     if (result[1][i][4] != "")
                     {
                         //此处相比于先前加入了自定义的截止时间
-                        amf = new AlertMainForm(result[1][i][1], result[1][i][0], result[1][i][2], result[1][i][4]);
+                        //amf = new AlertMainForm(result[1][i][1], result[1][i][0], result[1][i][2], result[1][i][4]);
                         amf.btnLimitedTime1.Content = result[1][i][4];
                     }
                     else
@@ -143,7 +151,7 @@ namespace HAMS.Student.StudentView
                 
             }
             //总的作业公告数量-已完成的作业数量=未完成的作业数量
-            textBlockUnfinishedNumber.Text = (count-ss.countHomeworkNumber(account)).ToString();
+            textBlockUnfinishedNumber.Text = count.ToString();
             //直接进行预警数量的设置,库里面没有的话说明数据是为空的
             textBlockAlertNumber.Text = ss.setAlertNum(account);
         }
@@ -268,7 +276,8 @@ namespace HAMS.Student.StudentView
 
         private void BtnRefresh_Click(object sender, RoutedEventArgs e)
         {
-            //展示预警信息
+            //展示预警信息,先清空原来的东西再进行刷新
+            listView2.Items.Clear();
             showAlertInfo(ss.showAlertFormInfo(account));
         }
     }

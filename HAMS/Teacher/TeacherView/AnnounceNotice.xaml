@@ -23,7 +23,7 @@
                 </Canvas>
                 <Canvas Height="74.799" Canvas.Top="72.668" Width="820">
                     <Label x:Name="description" Content="作业描述" Height="28" Canvas.Left="46.8" Width="60.2" Canvas.Top="10"/>
-                    <TextBox x:Name="textBoxContent" Text="请输入具体作业要求" Height="65.799" Canvas.Left="181.6" TextWrapping="Wrap" Width="618.4" GotFocus="textBoxContent_GotFocus" Canvas.Top="4" />
+                    <TextBox x:Name="textBoxContent" Text="请输入具体作业要求" Height="65.799" Canvas.Left="178.375" TextWrapping="Wrap" Width="621.625" GotFocus="textBoxContent_GotFocus" Canvas.Top="4" />
                 </Canvas>
                 <Canvas Height="173.03" Canvas.Top="147.467" Width="820">
                     <Label x:Name="deadLine" Content="截止时间" Height="28" Canvas.Left="47.6" Width="62.6" Canvas.Top="7.337"/>
@@ -31,12 +31,12 @@
                 </Canvas>
                 <Canvas Height="28.4" Canvas.Top="334.997" Width="810" Canvas.Left="10">
                     <Label x:Name="attachment" Content="上传附件（可选）" Height="26.233" Canvas.Left="37.2" Canvas.Top="2.167" Width="112"/>
-                    <Button x:Name="btnUpload" Height="28.4" Canvas.Left="385.867" Width="89.334" Background="White" BorderThickness="0" Click="btnUpload_Click">
-                        <Grid Height="28" Width="89.334">
+                    <Button x:Name="btnUpload" Height="28.4" Canvas.Left="360.608" Width="166.186" Background="White" BorderThickness="0" Click="btnUpload_Click">
+                        <Grid Height="28" Width="166.186">
 
                             <Image x:Name="image" Source="/HAMS;component/Resources/链接.png" d:LayoutOverrides="HorizontalAlignment, TopMargin, BottomMargin" HorizontalAlignment="Left" Width="25.111" Height="28" VerticalAlignment="Top"/>
                             <!--<TextBlock x:Name="upload" Margin="0.4,0,-0.2,0.055" TextWrapping="Wrap" FontSize="11" FontFamily="Microsoft YaHei" FontWeight="Medium" FontStretch="SemiCondensed" RenderTransformOrigin="0.504,-0.272" Grid.Column="1"><Run Text="   "/><Run Text="                 "/><Run Text="点击"/><LineBreak/><Run Text="                    "/><Run Text="上传"/></TextBlock>-->
-                            <TextBlock x:Name="upload" Margin="0,6.714,-0.2,0" TextWrapping="Wrap" FontSize="11" FontFamily="Microsoft YaHei" FontWeight="Medium" FontStretch="SemiCondensed" RenderTransformOrigin="0.504,-0.272" VerticalAlignment="Center" HorizontalAlignment="Right" Width="59.423" Height="21.286"><Run Text="点击"/><Run Text="上传"/></TextBlock>
+                            <TextBlock x:Name="upload" Margin="27.443,5.336,0,4.664" TextWrapping="Wrap" FontSize="11" FontFamily="Microsoft YaHei" FontWeight="Medium" FontStretch="SemiCondensed" RenderTransformOrigin="0.504,-0.272" HorizontalAlignment="Left" Width="49.049"><Run Text="点击"/><Run Text="上传"/></TextBlock>
                         </Grid>
                     </Button>
                 </Canvas>

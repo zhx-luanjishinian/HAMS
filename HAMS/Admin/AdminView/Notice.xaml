@@ -21,8 +21,8 @@
                     <TextBox x:Name="txtboxNoticeContent" Height="80.119" Canvas.Left="10" Canvas.Top="105.985" Width="570.999"/>
                 </Canvas>
             </GroupBox>
-            <Button x:Name="btnAnnounce" Content="发布" Canvas.Left="282" Canvas.Top="299" Width="75" Height="26" Click="BtnAnnounce_Click"/>
-            <Button x:Name="btnCancel" Content="取消" Canvas.Left="440" Canvas.Top="299" Width="75" Height="26" Click="BtnCancel_Click"/>
+            <Button x:Name="btnAnnounce" Content="发布" Background="#FF93B3DE" Canvas.Left="282" Canvas.Top="299" Width="75" Height="26" Click="BtnAnnounce_Click"/>
+            <Button x:Name="btnCancel" Content="取消" Background="#FF93B3DE" Canvas.Left="440" Canvas.Top="299" Width="75" Height="26" Click="BtnCancel_Click"/>
         </Canvas>
     </Grid>
 </Window>

@@ -18,7 +18,7 @@
             <Label Content="姓名" Canvas.Left="415.999" Canvas.Top="14.229" RenderTransformOrigin="0.471,0.555"/>
             <TextBox x:Name="txtNum" Height="23" Canvas.Left="310" TextWrapping="Wrap" Text="" Canvas.Top="16" Width="103" TextChanged="TxtNum_TextChanged"/>
             <TextBox x:Name="txtName" Height="23" Canvas.Left="454.999" TextWrapping="Wrap" Text="" Canvas.Top="15.729" Width="84" RenderTransformOrigin="0.5,0.478"/>
-            <Button x:Name="btnQuery" Content="查询" Canvas.Left="558" Canvas.Top="14.229" Width="75" Height="24.803" Click="BtnQuery_Click"/>
+            <Button x:Name="btnQuery" Background="#FF93B3DE" Content="查询" Canvas.Left="558" Canvas.Top="14.229" Width="75" Height="24.803" Click="BtnQuery_Click"/>
         </Canvas>
         <DataGrid x:Name="datagridShowInfo"  CanUserAddRows="False" ColumnWidth="*" AutoGenerateColumns="true" HorizontalAlignment="Left" Height="413" Margin="0,59,-0.333,0" VerticalAlignment="Top" Width="659">
             <DataGrid.Columns>

@@ -14,7 +14,7 @@
                     <TextBlock x:Name="add2" VerticalAlignment="Center"  FontWeight="SemiBold"><Run Text="添加"/></TextBlock>
                 </StackPanel>
             </Button>
-            <Button Content="刷新" Canvas.Left="547" Canvas.Top="17" Width="55" Height="27" Click="Button_Click"/>
+            <Button Content="刷新" Background="#FF93B3DE" Canvas.Left="547" Canvas.Top="17" Width="55" Height="27" Click="Button_Click"/>
         </Canvas>
         <ListView x:Name="listviewNotice" Height="Auto" FontStretch="Condensed" Margin="0,59,0,-0.333" Grid.RowSpan="1">
 

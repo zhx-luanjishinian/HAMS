@@ -16,6 +16,7 @@ using System.Data;
 using HAMS.Admin.AdminDao;
 
 
+
 namespace HAMS.Admin.AdminView
 {
     /// <summary>
@@ -30,7 +31,7 @@ namespace HAMS.Admin.AdminView
         public String stuclass { get; set; }
         public String pwd { get; set; }
         private ADao ad = new ADao();
-        public ReviseStudent(String snum,String sna,String sex,String stuclass, String pwd)
+        public ReviseStudent(String snum,String sna,String sex,String stuclass, String pwd,StudentManagement s)
         {
             InitializeComponent();
             this.snum = snum;
@@ -38,6 +39,7 @@ namespace HAMS.Admin.AdminView
             this.sex = sex;
             this.stuclass = stuclass;
             this.pwd = pwd;
+            this.
             txtStuNum.Text = snum;
             txtStuName.Text = sna;
             if (sex == "1") {

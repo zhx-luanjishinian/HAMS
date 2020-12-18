@@ -21,8 +21,8 @@
         <TextBox x:Name="txtStuPassword" HorizontalAlignment="Left" Height="23" Margin="394.667,295.5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <RadioButton x:Name="radiobtnStuMale"  Content="男" HorizontalAlignment="Left" Margin="394.667,184.313,0,0" VerticalAlignment="Top"/>
         <RadioButton x:Name="radiobtnStuMale1" Content="女" HorizontalAlignment="Left" Margin="483.667,184.313,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnRevise" Content="修改" HorizontalAlignment="Left" Margin="282.166,364.053,0,0" VerticalAlignment="Top" Width="75" Click="BtnRevise_Click"/>
-        <Button x:Name="btnReset" Content="取消" HorizontalAlignment="Left" Margin="439.667,364.053,0,0" VerticalAlignment="Top" Width="75" Click="BtnReset_Click"/>
+        <Button x:Name="btnRevise" Content="修改" Background="#FF93B3DE" HorizontalAlignment="Left" Margin="282.166,364.053,0,0" VerticalAlignment="Top" Width="75" Click="BtnRevise_Click"/>
+        <Button x:Name="btnReset" Content="取消" Background="#FF93B3DE" HorizontalAlignment="Left" Margin="439.667,364.053,0,0" VerticalAlignment="Top" Width="75" Click="BtnReset_Click"/>
 
     </Grid>
 </Window>

@@ -17,19 +17,7 @@
 
 
         <Canvas Background="LightBlue" Margin="2,2,2,2" Grid.Row="0" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="70" Width="791" Grid.RowSpan="2" >
-            <Border x:Name="imgHead" BorderBrush="Black" BorderThickness="0" Grid.Column="1" HorizontalAlignment="Left" Height="37" VerticalAlignment="Top" Width="40" CornerRadius="35" Canvas.Left="21" RenderTransformOrigin="1.894,0.568" Canvas.Top="21">
-                <Border.Background>
-                    <ImageBrush>
-                        <ImageBrush.ImageSource>
-                            <DrawingImage>
-                                <DrawingImage.Drawing>
-                                    <ImageDrawing ImageSource="/Resources/bk_create.jpg" Rect="100,200,110,100"></ImageDrawing>
-                                </DrawingImage.Drawing>
-                            </DrawingImage>
-                        </ImageBrush.ImageSource>
-                    </ImageBrush>
-                </Border.Background>
-            </Border>
+            <Image x:Name="headImage" Source="/Resources/bk_create.jpg"  Grid.Column="1" HorizontalAlignment="Left" Height="37" VerticalAlignment="Top" Width="40"  Canvas.Left="21" RenderTransformOrigin="1.894,0.568" Canvas.Top="21"/>
             <TextBlock x:Name="tbuserNameAc" Text="201821060569刘小蕊" Canvas.Left="75" Canvas.Top="33" RenderTransformOrigin="1.087,0.535" FontWeight="Bold"/>
             <Image x:Name="imgSystemLogo" Height="64.072" Width="197.332" Source="/Resources/management.jpg" Stretch="UniformToFill" Canvas.Left="490.334" Canvas.Top="3.872"/>
             <Button x:Name="btnExit" Background="LightBlue"  Canvas.Left="701.666" Canvas.Top="13.955" Width="81.667" RenderTransformOrigin="0.622,0.945" Height="43.907" Foreground="#FF151111" BorderBrush="LightBlue" Click="btnExit_Click">

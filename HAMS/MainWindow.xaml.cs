@@ -53,8 +53,20 @@ namespace HAMS
                 if (br.code == 0)
                 {
                     MessageBox.Show("恭喜你已登录成功");
+                    int sex = int.Parse(sd.getSexByStuSpecId(txtUserName.Text.ToString()).Rows[0][0].ToString());
+                    string pngfile;
+                    //headImage是image控件名
+                    if (sex == 0)
+                    {
+                        pngfile = @"..\..\Resources\女生头像.png";
 
-                    StudentMainForm smf = new StudentMainForm(txtUserName.Text,(string)br.data);
+                    }
+                    else
+                    {
+                        pngfile = @"..\..\Resources\男生头像.png";
+
+                    }
+                    StudentMainForm smf = new StudentMainForm(txtUserName.Text,(string)br.data, pngfile);
                     smf.Show();
                     this.Visibility = Visibility.Hidden;
                 }

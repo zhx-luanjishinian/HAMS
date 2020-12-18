@@ -13,7 +13,7 @@
         <Label x:Name="lbStuName" Content="学生1" RenderTransformOrigin="0.512,0.533" Height="41" Canvas.Left="55" Canvas.Top="32" Width="84" FontSize="13"/>
         <TextBox x:Name="textBoxQuestion" TextWrapping="Wrap" Text="老师好，请问实验结果的具体要求是什么？" Height="62" Canvas.Top="78" Width="298" FontSize="13"/>
         <Grid x:Name="teacherResponse" Height="81" Canvas.Top="141" Width="298" Visibility="Hidden">
-            <TextBox x:Name="tbResponse" TextWrapping="Wrap" Text="TextBox" Margin="46,37,10,10"/>
+            <TextBox x:Name="tbResponse" TextWrapping="Wrap" Text="" Margin="46,37,10,10"/>
             <Label x:Name="lbResponseName" Content="" Margin="46,10,164,43"/>
             <Image x:Name="image" Source="/HAMS;component/Resources/男老师.png" Margin="10,10,252,50"/>
         </Grid>

@@ -286,6 +286,7 @@ namespace HAMS.Teacher.TeacherView
         {
             AnswerQuestion newAnswerQuestion = new AnswerQuestion(tbClassInfo1.Text);
             LoadQuestionAndAnswer(notId, newAnswerQuestion);
+            newAnswerQuestion.btnSubmitQuestion.Visibility = Visibility.Hidden;
             newAnswerQuestion.Show();
 
            // this.Visibility = System.Windows.Visibility.Hidden;
@@ -342,12 +343,24 @@ namespace HAMS.Teacher.TeacherView
                 newStudentAskQuestion[i] = new StudentAskQuestion();
                 newStudentAskQuestion[i].lbStuName.Content = "本课堂学生";
                 newStudentAskQuestion[i].textBoxQuestion.Text = table1.Rows[i][2].ToString();  //有问题
+                newStudentAskQuestion[i].tbResponse.Text = table1.Rows[i][3].ToString();
                 newStudentAskQuestion[i].btnComment.Click += new RoutedEventHandler(btnSubmitQuestion_Click);
                 newStudentAskQuestion[i].btnInsert.Click += new RoutedEventHandler(btnbtnInsert_Click);
                 newStudentAskQuestion[i].lbResponseName.Content = tbTeacherInfo1.Text;    //给老师姓名赋值
                 newAnswerQuestion.listViewQuestionAndAnswer.Items.Add(newStudentAskQuestion[i]);
                 //newAnswerQuestion.btnSubmitQuestion.Click += new RoutedEventHandler(btnSubmitQuestion_Click); //定义答疑按钮的事件
-                newStudentAskQuestion[i].teacherResponse.Visibility = Visibility.Hidden;
+                if(newStudentAskQuestion[i].tbResponse.Text!="")
+                {
+                    newStudentAskQuestion[i].teacherResponse.Visibility = Visibility.Visible;
+                    newStudentAskQuestion[i].tbResponse.IsReadOnly = true;
+                    newStudentAskQuestion[i].btnComment.Visibility = Visibility.Hidden;
+                    newStudentAskQuestion[i].btnInsert.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    newStudentAskQuestion[i].teacherResponse.Visibility = Visibility.Hidden;
+                }
+               
             }
 
         }

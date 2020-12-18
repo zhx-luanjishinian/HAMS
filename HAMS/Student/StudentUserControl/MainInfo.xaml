@@ -10,13 +10,13 @@
             <ColumnDefinition Width="293*"/>
             <ColumnDefinition Width="26*"/>
         </Grid.ColumnDefinitions>
-        <Button  x:Name="class1"        HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="Gray"  BorderThickness="2" Width="328" Click="class1_Click" Margin="0,0,-9.001,0" Grid.ColumnSpan="2">
-            <Canvas  x:Name="canvasClass1" Height="66" Width="319" >
-                <Label x:Name="labelClassId1" Content="Z004530B1300720 " Height="24" Canvas.Left="10" Canvas.Top="6" Width="121"/>
-                <TextBlock x:Name="textBlockClassName1" Text="R语言" Height="23" Width="143" Canvas.Left="136" Canvas.Top="11" TextAlignment="Center"/>
-                <Label x:Name="labe21" Content="教师：" Height="27.556" Width="53.778" RenderTransformOrigin="0.48,1.592" Canvas.Left="3.112" Canvas.Top="34.223"/>
-                <TextBlock x:Name="textBlockDepartmentName1" Text="信息与安全工程学院" Height="27" Width="120" Canvas.Left="54" Canvas.Top="39"/>
-                <TextBlock x:Name="textBlockTeacherName1" Text="刘树栋" Height="26" Width="94" Canvas.Left="193" Canvas.Top="39"/>
+        <Button  x:Name="class1"        HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="Gray"  BorderThickness="2" Width="529" Click="class1_Click" Margin="0,0,-210.333,0" Grid.ColumnSpan="2">
+            <Canvas  x:Name="canvasClass1" Height="66" Width="532" >
+                <Label x:Name="labelClassId1" Content="Z004530B1300720 " Height="24" Canvas.Left="72" Canvas.Top="5" Width="121"/>
+                <TextBlock x:Name="textBlockClassName1" Text="R语言" Height="23" Width="143" Canvas.Left="315" Canvas.Top="10" TextAlignment="Center"/>
+                <Label x:Name="labe21" Content="教师：" Height="28" Width="53" RenderTransformOrigin="0.48,1.592" Canvas.Left="55" Canvas.Top="34"/>
+                <TextBlock x:Name="textBlockDepartmentName1" Text="信息与安全工程学院" Height="27" Width="120" Canvas.Left="113" Canvas.Top="39"/>
+                <TextBlock x:Name="textBlockTeacherName1" Text="刘树栋" Height="26" Width="94" Canvas.Left="364" Canvas.Top="39"/>
             </Canvas>
         </Button>
     </Grid>

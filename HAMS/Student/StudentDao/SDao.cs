@@ -5,6 +5,7 @@ using System.Windows;
 using HAMS.DataUtil;
 using System.Collections;
 using System.Collections.Generic;
+using HAMS.ToolClass;
 
 namespace HAMS.Student.StudentDao
 {
@@ -122,6 +123,7 @@ namespace HAMS.Student.StudentDao
                 info.Add(table1.Rows[i][2].ToString());
                 //添加作业的具体截止时间
                 info.Add(table1.Rows[i][3].ToString());
+                //添加课堂名
                 //result的value每一个值都是一个列表，列表里是作业的信息，key是0，1，2，3，4，5，6
                 result.Add(i, info);
             }
@@ -132,8 +134,9 @@ namespace HAMS.Student.StudentDao
             return result;
         }
         //判断学生的作业状态,直接返回一张表,传入学生的学号以及具体的课堂号
-        public DataTable defineHomeworkStatus(String account,String notId)
+        public List<String> defineHomeworkStatus(String account,String notId)
         {
+            List<String> rtn = new List<String>();
             //查询stuId
             String sql = "select stuId from student where stuSpecId=@sid";
             MySqlParameter para = new MySqlParameter("@sid", account);
@@ -147,7 +150,17 @@ namespace HAMS.Student.StudentDao
             paras[0] = para1;
             paras[1] = para2;
             DataTable table1 = DataOperation.DataQuery(sql1, paras);
-            return table1;
+            //通过notId查truDeadline
+            String sql2 = "select truDeadline from notice where notId = @nid";
+            DataTable table2 = DataOperation.DataQuery(sql2, para1);
+            
+            for (int i=0;i<table1.Columns.Count;i++)
+            {
+
+                rtn.Add(table1.Rows[0][i].ToString());
+            }
+            rtn.Add(table2.Rows[0][0].ToString());
+            return rtn;
         }
         //查询dohomework主界面的信息，传入的直接就是作业的id
         public DataTable showDoHomeworkInfo(String notId)
@@ -158,7 +171,7 @@ namespace HAMS.Student.StudentDao
             return table;
         }
         //查询作业预警主界面的信息,直接根据学生的学号进行查询
-        public List<List<List<String>>> alertFomrInfo(String account)
+        public List<List<List<String>>> alertFormInfo(String account)
         {
             //此处返回超过老师设置的截止时间的作业和没有超过老师设置的截止时间的作业
             List<List<String>> notBeyondHomework = new List<List<string>>();
@@ -176,7 +189,7 @@ namespace HAMS.Student.StudentDao
             //查询每门课程的具体名字
             String sql3 = "select className from class where classId=@cid";
             //定位到每个具体的作业，方便进行作业时间的统计
-            String sql4 = "select defDeadline,defComplexity from homework where notId=@nid and stuId=@sid";
+            String sql4 = "select defDeadline,defComplexity,homURL from homework where notId=@nid and stuId=@sid";
             //查询具体的作业情况
             for(int i = 0; i < table1.Rows.Count; i++)
             {
@@ -205,11 +218,12 @@ namespace HAMS.Student.StudentDao
                     paras[1] = parameter1;
                     DataTable table4 = DataOperation.DataQuery(sql4, paras);
                     //5,6添加每门作业的自定义截止时间，自定义复杂度
-                    //此处需要判断用户有没有自定义截止时间和自定义复杂度
+                    //此处需要判断用户有没有自定义截止时间和自定义复杂度,其实if判断语句可以不需要
                     if (table4.Rows.Count > 0)
                     {
                         ls.Add(table4.Rows[0][0].ToString());
                         ls.Add(table4.Rows[0][1].ToString());
+                        ls.Add(table4.Rows[0][2].ToString());
                     }
                     //如果还没有达到老师设置的截止时间就放在没有超过截止时间的里面
                     if (Convert.ToDateTime(table2.Rows[j][2].ToString()) > DateTime.Now) {  
@@ -280,8 +294,16 @@ namespace HAMS.Student.StudentDao
            
         }
         //进行自定义截至时间的更新
-        public bool updateDefDeadLine(String account,String notId,String defTime)
+        public BaseResult updateDefDeadLine(String account,String notId,String defTime)
         {
+            //首先根据notId查询真实的截止时间，必须保证用户设置的截止时间小于老师的截止时间
+            String sql2 = "select truDeadline from notice where notId=@nid";
+            MySqlParameter para4 = new MySqlParameter("@nid", int.Parse(notId));
+            DataTable table1 = DataOperation.DataQuery(sql2, para4);
+            if (Convert.ToDateTime(table1.Rows[0][0]) < Convert.ToDateTime(defTime))
+            {
+                return BaseResult.errorMsg("自定义的截止时间不能大于老师的截止时间");
+            }
             String sql = "select stuId from student where stuSpecId=@sid";
             MySqlParameter para = new MySqlParameter("@sid", account);
             DataTable table = DataOperation.DataQuery(sql, para);
@@ -293,7 +315,14 @@ namespace HAMS.Student.StudentDao
             paras[1] = para2;
             MySqlParameter para3 = new MySqlParameter("@nid", notId);
             paras[2] = para3;
-            return DataOperation.DataUpdate(sql1, paras);
+            if(DataOperation.DataUpdate(sql1, paras))
+            {
+                return BaseResult.ok();
+            }
+            else
+            {
+                return BaseResult.errorMsg("自定义时间设置失败");
+            }
         }
         //通过真实学号来获取学生Id号
         public DataTable GetStuIdByAccount(String account)
@@ -380,9 +409,28 @@ namespace HAMS.Student.StudentDao
             MySqlParameter para = new MySqlParameter("@id", notId);
             DataTable table = DataUtil.DataOperation.DataQuery(sql, para);
             return table;
-
         }
-        //获得每一天提交的作业人数的数量和日期数以及已提交和为提交的人数
+        //进行提问操作
+        public String insertComm(String notId,String commStudent)
+        {
+            String result;
+            String sql = "insert comm set notId=@notId and commStudent = @comm";
+            MySqlParameter para1 = new MySqlParameter("@notId", notId);
+            MySqlParameter para2 = new MySqlParameter("@comm", commStudent);
+            bool flag=DataUtil.DataOperation.DataAdd(sql, para1, para2);
+            if(flag)
+            {
+                String sql1 = "select commId from comm where notId = @notId and commStudent = @comm";
+                DataTable table = DataUtil.DataOperation.DataQuery(sql1, para1, para2);
+                result = table.Rows[0][0].ToString();
+            }
+            else
+            {
+                return "提问失败，请重试";
+            }
+            return result;
+        }
+        //获得每一天提交的作业人数的数量和日期数以及已提交和未提交的人数
         public List<Dictionary<String,int>> getHomeNumAndDate(String classSpecId,String notId)
         {
             List<Dictionary<String,int>> result = new List<Dictionary<String,int>>();
@@ -427,6 +475,42 @@ namespace HAMS.Student.StudentDao
             return result;
 
         }
-        
+        //进行答疑区界面的展示
+        public List< List<String>> showAskQuestion(String notId)
+        {
+            String sql = "select commStudent,commTeacher from comment where notId=@nid";
+            MySqlParameter para = new MySqlParameter("@nid", notId);
+            DataTable table = DataOperation.DataQuery(sql, para);
+            List< List<String>> result = new List<List<String>>();
+            for(int i = 0; i < table.Rows.Count; i++)
+            {
+                List<String> info = new List<String>();
+                info.Add(table.Rows[i][0].ToString());
+                info.Add(table.Rows[i][1].ToString());
+                result.Add(info);
+            }
+            return result;
+        }
+        //进行学生答疑信息的插入
+        public bool insertStudentComment(String notId,String comment)
+        {
+            String sql = "insert into comment(notId,commStudent) values(@notId,@comment)";
+            MySqlParameter para = new MySqlParameter("@notId", long.Parse(notId));
+            MySqlParameter para1 = new MySqlParameter("@comment", comment);
+            MySqlParameter[] paras = new MySqlParameter[2];
+            paras[0] = para;
+            paras[1] = para1;
+            return DataOperation.DataAdd(sql, paras);
+        }
+        //通过学生真实学号来获取头像信息
+        public DataTable getSexByStuSpecId(string StuSpecId)
+        {
+            //根据teacherSpecId查询sex
+            String sql = "select sex from student where StuSpecId=@ssid";
+            MySqlParameter parameter = new MySqlParameter("@ssid", StuSpecId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);  //查到学生id,分数,作业路径
+            return table;
+        }
+
     }
 }

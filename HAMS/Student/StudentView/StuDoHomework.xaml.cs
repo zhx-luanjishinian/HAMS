@@ -23,82 +23,98 @@ namespace HAMS.Student.StudentView
     public partial class StuDoHomework : Window
     {
         private SService ss = new SService();
+        public string pngfile;
         public String account { set; get; }
         public String name { set; get; }
         public String notId { set; get; }
         public String classId { set; get; }
-
         public String message { set; get; }
-        public StuDoHomework(String account, String name)
+        public StuDoHomework(String account, String name,String notId,String classSpecId,string pgfile)
         {
             InitializeComponent();
             this.account = account;
             this.name = name;
+            this.notId = notId;
+            this.classId = classSpecId;
             tbUserNameAc.Text = account + name;
+            this.pngfile = pgfile;
+            //设置该img控件的Source
+            headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, pngfile))));
+            this.message = ss.judgeHomeworkStatus(account, notId);
             doHomeworkInfoShow();
+
         }
-        public StuDoHomework(String account, String name, String notId, String classId)
+        
+        public StuDoHomework(String account, String name, String notId, String classId,string pgfile,String message)
         {
             InitializeComponent();
             this.account = account;
             this.name = name;
             this.notId = notId;
             this.classId = classId;
+            this.pngfile = pgfile;
+            //设置该img控件的Source
+            headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, pngfile))));
+
+
             Dictionary<int, List<String>> info = ss.showAllHomeworkInfo(classId);
-            this.message = ss.judgeHomeworkStatus(account, notId, info[0][3].ToString());
+            this.message = message;
             if (message == "未完成")
             {
                 btnDoHomework.Content = "作答";
             }
-            if (message == "待批改")
+           else if (message == "待批改")
             {
                 btnDoHomework.Content = "修改";
             }
-            if (message == "已批改")
+           else if (message == "已批改")
             {
                 btnDoHomework.Content = "查看";
             }
-            if (message == "已逾期")
+           else if (message == "已逾期")
             {
                 btnDoHomework.Content = "";
             }
             tbUserNameAc.Text = account + name;
             doHomeworkInfoShow();
         }
-        //public StuDoHomework(String account, String name,String notId,String classId,String message)//真实课堂号
-        //{
-        //    InitializeComponent();
-        //    this.account = account;
-        //    this.name = name;
-        //    this.notId = notId;
-        //    this.classId = classId;
-        //    this.message = message;
-        //    if(message=="未完成")
-        //    {
-        //        btnDoHomework.Content = "作答";
-        //    }
-        //    if (message == "待批改")
-        //    {
-        //        btnDoHomework.Content = "修改";
-        //    }
-        //    if (message == "已批改")
-        //    {
-        //        btnDoHomework.Content = "查看";
-        //    }
-        //    if (message == "已逾期")
-        //    {
-        //        btnDoHomework.Content = "";
-        //    }
-        //    tbUserNameAc.Text = account + name;
-        //    doHomeworkInfoShow();
-        //}
+        
         public void doHomeworkInfoShow()
         {
             List<String> result = ss.showDohomeworkInfo(notId);
+            List<String> content = new List<string>();
             labelHomeworkName.Content = result[0];
-            ListBoxItem lbi = new ListBoxItem();
-            lbi.Content = result[1];
-            listBoxRequest.Items.Add(lbi);
+            string lbiContent = result[1];
+            int notlength = 60;
+            if (result[1].Length > notlength)
+            {
+                for (int i = 0; i < result[1].Length / notlength + 1 ;i++)
+                {
+                    
+                    //ListBoxItem lbi = new ListBoxItem();
+                    if (((i+1)* notlength) > result[1].Length)
+                    {
+                        content.Add(result[1].Substring(i* notlength, result[1].Length-1-i* notlength));
+                    }
+                    else
+                    {
+                        content.Add(result[1].Substring(i* notlength, notlength));
+                    }
+                }
+                String text ="";
+                int number =content.Count();
+                for (int i=0; i<number;i++)
+                {
+                    text =text + content[i] + "\r\n";
+                }
+                textBoxRequest.Text = text.ToString();
+            }
+            else
+            {
+                content.Add(result[1].ToString());
+                textBoxRequest.Text = content[0];
+            }
+            
             tbDeadLineTime.Text = result[2];
             if (result[3] != null)
             {
@@ -124,7 +140,8 @@ namespace HAMS.Student.StudentView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                StuMainHomework smh = new StuMainHomework(account,name,classId);
+                StuMainHomework smh = new StuMainHomework(account,name,classId,pngfile);
+                smh.pngfile = this.pngfile;
                 smh.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
@@ -136,7 +153,8 @@ namespace HAMS.Student.StudentView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                StudentMainForm smf= new StudentMainForm(account,name);
+                StudentMainForm smf= new StudentMainForm(account,name,pngfile);
+                smf.pngfile = this.pngfile;
                 smf.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
@@ -148,7 +166,8 @@ namespace HAMS.Student.StudentView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                AlertForm af = new AlertForm(account,name);
+                AlertForm af = new AlertForm(account,name,pngfile);
+                af.pngfile = this.pngfile;
                 af.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
@@ -162,7 +181,8 @@ namespace HAMS.Student.StudentView
             if (content == "修改" || content== "作答")//里面是验证函数
             {
                 // 打开子窗体
-                StuSubmitHomework ssh = new StuSubmitHomework(account,name,notId,classId);//真实课堂号
+                StuSubmitHomework ssh = new StuSubmitHomework(account,name,notId,classId,pngfile,message);//真实课堂号
+                ssh.pngfile = this.pngfile;
                 ssh.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
@@ -170,7 +190,8 @@ namespace HAMS.Student.StudentView
             if (content == "查看")//里面是验证函数
             {
                 // 打开子窗体
-                HomeworkSubmit hs = new HomeworkSubmit(account, name, notId, classId);//真实课堂号
+                HomeworkSubmit hs = new HomeworkSubmit(account, name, notId, classId,pngfile);//真实课堂号
+                hs.pngfile = this.pngfile;
                 hs.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;

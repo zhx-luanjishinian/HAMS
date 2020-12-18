@@ -4,30 +4,35 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HAMS.Teacher.TeacherView"
-             mc:Ignorable="d" Height="115.038" Width="514.286">
-    <Grid Height="113.8" Width="515" Margin="0,0,0,-1" Background="White">
+             mc:Ignorable="d" Height="115.038" Width="780">
+    <Grid Height="113.8" Width="780" Margin="0,0,0,-1" Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="112*"/>
             <ColumnDefinition Width="197*"/>
             <ColumnDefinition Width="206*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="btnModify" Grid.Column="2" Margin="54.928,46.413,0,34.52" OpacityMask="#FFB3B2B2" Background="White" BorderThickness="0" HorizontalAlignment="Left" Width="38.399" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" >
-            <Image x:Name="image4" Height="24.533" Width="19.2" Source="/HAMS;component/Resources/修改.png"/>
+        <Button x:Name="btnModify" Grid.Column="2" Margin="0,47,117.504,34.8" OpacityMask="#FFB3B2B2" BorderThickness="0" HorizontalAlignment="Right" Width="38.638" >
+            <Button.Background>
+                <ImageBrush ImageSource="修改.png"/>
+            </Button.Background>
         </Button>
-        <Button x:Name="btnDelete" Grid.Column="2" HorizontalAlignment="Right" Margin="0,46.413,53.52,34.52" Width="34.933" OpacityMask="#FFB0ACAC" Background="White" BorderThickness="0">
-            <Image x:Name="image5" Height="28.187" Width="21.867" Source="/HAMS;component/Resources/删 除 .png"/>
+        <Button x:Name="btnDelete" Grid.Column="2" HorizontalAlignment="Right" Margin="0,47,35.114,34.8" Width="41.377" OpacityMask="#FFB0ACAC" BorderThickness="0" Height="Auto">
+            <Button.Background>
+                <ImageBrush ImageSource="删 除 .png"/>
+            </Button.Background>
         </Button>
-        <Button x:Name="btnCheckDetail" Background="White" Grid.ColumnSpan="2" Margin="10,20,39,18.4" BorderThickness="0" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" >
-            <Grid Height="75.4" Width="244.4">
+        <Image x:Name="image3" Margin="21.942,12.8,23.28,10" Source="/HAMS;component/Resources/作业1.png"/>
+        <Button x:Name="btnCheckDetail" Background="{x:Null}" Grid.ColumnSpan="2" Margin="0,0,-114.155,0" BorderThickness="0" Height="Auto" >
+            <Grid Height="75.4" Width="526.171">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="121*"/>
                     <ColumnDefinition Width="123*"/>
                 </Grid.ColumnDefinitions>
-                <Image x:Name="image3" Margin="0,4.2,30.098,0" Source="/HAMS;component/Resources/作业1.png"/>
-                <Label x:Name="title" Content="SVM实验" Margin="97,4,54.8,0" FontWeight="Bold" FontSize="16" Height="32" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-                <Label x:Name="description" Content="调通SVM代码，打卡上传" Grid.Column="1" Margin="-29.872,35.6,-10.563,0" FontSize="13"/>
+                <Label x:Name="title" Content="SVM实验" Margin="-82.426,3.6,10,0" FontWeight="Bold" FontSize="16" Height="32" VerticalAlignment="Top" Grid.Column="1"/>
+                <Label x:Name="description" Content="调通SVM代码，打卡上传" Grid.Column="1" Margin="-82.426,35.6,10,10" FontSize="13"/>
             </Grid>
         </Button>
-        <Border BorderBrush="Black" BorderThickness="0,0,0,1" Grid.ColumnSpan="3"/>
+        <Border  BorderThickness="1" Grid.ColumnSpan="3" Width="780" BorderBrush="#FF0288D1"/>
+
     </Grid>
 </UserControl>

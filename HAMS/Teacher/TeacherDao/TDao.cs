@@ -1,4 +1,5 @@
-﻿using HAMS.Entity;
+﻿
+using HAMS.Entity;
 using HAMS.Teacher.TeacherView;
 using MySql.Data.MySqlClient;
 using System;
@@ -371,6 +372,94 @@ namespace HAMS.Teacher.TeacherDao
             DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);  //查到学生id,分数,作业路径
             return table;
         }
+
+        public DataTable getComment(string notId)
+        {
+            //根据homId查询stuId
+            String sql = "select * from comment where notId=@hid";
+            MySqlParameter parameter = new MySqlParameter("@hid", notId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);  //查到学生id,分数,作业路径
+            return table;
+        }
+
+        //获得已批改作业的等级和该等级下的作业数 和 获得该作业公告未完成和已完成的作业人数
+        public List<Dictionary<String, int>> getHomeNumAndScore(String notId)
+        {
+            List<Dictionary<String, int>> result = new List<Dictionary<String, int>>();
+            
+            //查询该notId下的作业等级
+            String sql1 = "select score,homURL from homework where notId=@nid";
+            MySqlParameter para = new MySqlParameter("nid", notId);
+            //统计已批改作业的等级和该等级下的作业数
+            Dictionary<String, int> dic = new Dictionary<string, int>();
+            String[] scores = { "优秀", "良好", "及格", "不及格" };
+            int[] scoreNum = { 0, 0, 0, 0 };//定义这四个成绩等级的初始人数默认值为0
+            
+            //将初始成绩等级和人数添加进dic中
+            for (int i = 0; i < scores.Length; i++)
+            {
+                dic.Add(scores[i], scoreNum[i]);
+            }
+
+            //统计已完成作业的人数
+            int count = 0;
+            //查询作业以及作业的地址
+            DataTable table1 = DataUtil.DataOperation.DataQuery(sql1, para);
+
+            //统计已完成该作业的人数（有homURL说明已完成作业）
+            for (int i = 0; i < table1.Rows.Count; i++)
+            {
+                if (table1.Rows[i][1] != DBNull.Value)//说明已完成作业
+                {
+                    string score = table1.Rows[i][0].ToString();
+                    if (score != "")//说明作业已被批改
+                    {
+                        dic[score] += 1;//该成绩等级的人数加一
+                    }
+                    count++;//已完成作业的人数加一
+                }
+            }
+            Dictionary<String, int> countNum = new Dictionary<string, int>();
+            countNum.Add("已完成", count);
+            countNum.Add("未完成", table1.Rows.Count - count);
+            //先添加该作业公告已完成和未完成的作业数量
+            result.Add(countNum);
+            //再添加已批改作业的等级和该等级下的作业数
+            result.Add(dic);
+            return result;
+
+        }
+        public bool UpdateComment(string teacherComment,string commentId)
+        {
+
+            //向comm表添加新作业记录
+            String sql = "update comment set commTeacher=@ntUrlName where commStudent=@nid";
+
+            //传入要填写的参数
+           
+            MySqlParameter para2 = new MySqlParameter("@ntUrlName", teacherComment);
+
+            MySqlParameter para3 = new MySqlParameter("@nid", commentId);
+            return DataUtil.DataOperation.DataUpdate(sql, para2,para3);//如果插入成功，则返回true
+        }
+        public DataTable getSexByTeaSpecId(string teacherSpecId)
+        {
+            //根据teacherSpecId查询sex
+            String sql = "select sex from teacher where teacherSpecId=@tSpecid";
+            MySqlParameter parameter = new MySqlParameter("@tSpecid", teacherSpecId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);  //查到学生id,分数,作业路径
+            return table;
+        }
+
+        public DataTable getSexByStuSpecId(string stuSpecId)
+        {
+            //根据teacherSpecId查询sex
+            String sql = "select sex from student where stuSpecId=@tSpecid";
+            MySqlParameter parameter = new MySqlParameter("@tSpecid", stuSpecId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);  //查到学生id,分数,作业路径
+            return table;
+        }
+
 
     }
 

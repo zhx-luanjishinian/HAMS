@@ -6,7 +6,7 @@
         xmlns:vc="clr-namespace:Visifire.Charts;assembly=WPFVisifire.Charts"
         xmlns:local="clr-namespace:HAMS.Teacher.TeacherView"
         mc:Ignorable="d"
-        Title="HomeworkStatistic" Height="600" Width="525">
+        Title="HomeworkStatistic" Height="472" Width="840" WindowState="Maximized" WindowStyle="None">
     <Window.Resources>
         <Style x:Key="LabelStyle1" TargetType="{x:Type Label}">
 
@@ -17,34 +17,55 @@
             <Setter Property="VerticalContentAlignment" Value="Top"/>
         </Style>
     </Window.Resources>
-    <Grid>
-        <Grid Height="20" VerticalAlignment="Top" Background="#FF292323">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="65*"/>
-                <ColumnDefinition Width="0*"/>
-                <ColumnDefinition Width="454*"/>
-            </Grid.ColumnDefinitions>
-            <Menu x:Name="menu" Background="LightPink" Margin="0,0,0,-1.062" Grid.ColumnSpan="3" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" BorderThickness="0,0,1,0"/>
-            <Button x:Name="btnReturn" Margin="10,0,10,-1.062" BorderThickness="0" BorderBrush="#FF9F9D9D" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
-                <Button.Background>
-                    <ImageBrush ImageSource="../../Resources/返回.png"/>
-                </Button.Background>
-            </Button>
-            <TextBlock x:Name="tbClassInfo" Width="153.467" TextAlignment="Center" HorizontalAlignment="Left" Margin="10,1,0,0" Grid.Column="2" VerticalAlignment="Center">
-                <TextBlock.Background>
-                    <ImageBrush/>
-                </TextBlock.Background><Run Text="Z004530B1300720   "/><Run Text="R语言"/></TextBlock>
-            <Label x:Name="label" Content="作业公告详情" Grid.Column="2" HorizontalAlignment="Right" Margin="0,-1.88,48.41,-1.062" VerticalAlignment="Bottom" Width="83.123" Height="22.942" Style="{DynamicResource LabelStyle1}"/>
+    <Viewbox Stretch="UniformToFill">
+        <Grid>
+            <Canvas Margin="0,88.991,0,0">
+                <Grid x:Name="ca" Height="253.2" Canvas.Top="82" Width="778.4" ToolTip="点击上方按钮显示统计图" Canvas.Left="34.4">
+                    <vc:Chart x:Name="chart" Margin="0,10,0,-10" />
+                </Grid>
+                <Button Content="完成情况统计饼图" Height="38" HorizontalAlignment="Left" x:Name="btnFinishStatistic" VerticalAlignment="Top" Width="145.067"  Canvas.Left="34.4" Canvas.Top="23.866" Background="#FFEECEE3" Click="btnFinishStatistic_Click" BorderBrush="{x:Null}" >
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="3"></Setter>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button Content="成绩等级统计柱状图" Height="38" Width="156.717"  HorizontalAlignment="Left" x:Name="btnScoreStatistic" VerticalAlignment="Top"  Canvas.Left="261.683" Canvas.Top="23.866" Click="btnScoreStatistic_Click_1" BorderBrush="{x:Null}" Background="#FFCDD5F3" >
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="3"></Setter>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
+
+            </Canvas>
+            <Canvas Height="50" Background="LightBlue" Margin="1.6,0,0,414.561" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="832">
+                <TextBlock x:Name="tbTeacherSpecId" Height="20" Canvas.Left="61" Canvas.Top="19" Width="38.934" TextAlignment="Center" FontSize="13" Text="Z001 "/>
+                <TextBlock x:Name="tbTeacherName" Height="19" Canvas.Left="104.934" Canvas.Top="19" Width="57.2" TextAlignment="Center" FontSize="13"><Run Text="刘树栋"/></TextBlock>
+                <Image x:Name="headImage" Source="../../Resources/男教师.png" Height="37" VerticalAlignment="Top" Width="41"  RenderTransformOrigin="1.894,0.568" Canvas.Left="15" Canvas.Top="10"/>
+                <Image x:Name="image" Height="50" Canvas.Left="701.4" Width="43.8" Source="/HAMS;component/logo.png" Stretch="Fill"/>
+                <Button x:Name="btnExit" Background="{x:Null}" RenderTransformOrigin="0.622,0.945" Height="50" Foreground="#FF151111" BorderBrush="{x:Null}" Click="btnExit_Click" Canvas.Left="766" Canvas.Top="1" Width="64" d:LayoutOverrides="HorizontalAlignment">
+                    <StackPanel>
+                        <Image x:Name="exit1" Width="28" Height="23.907" Source="/HAMS;component/Resources/resizeApi.png"/>
+                        <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
+                    </StackPanel>
+                </Button>
+            </Canvas>
+            <Canvas Margin="0,0,0,376.609" Height="37.952" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="833.6">
+                <Border BorderBrush="Black" BorderThickness="0,0,0,1" Height="37.552" Canvas.Top="0.4" Width="832" Background="LightPink">
+                    <TextBlock x:Name="tbNotTitle" Width="90.267" TextAlignment="Center" HorizontalAlignment="Left" Margin="67.2,12.312,0,9" Text="作业公告标题" d:LayoutOverrides="Height">
+                        <TextBlock.Background>
+                            <ImageBrush/>
+                        </TextBlock.Background></TextBlock>
+                </Border>
+                <Button x:Name="btnReturn1" Width="32.545" BorderThickness="0" Height="20" Canvas.Left="21.175" Canvas.Top="10" Click="btnReturn_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="返回.png"/>
+                    </Button.Background>
+                </Button>
+            </Canvas>
+
         </Grid>
-        <Canvas Margin="0,20,0,0">
-            <vc:Chart x:Name="chart" DockPanel.Dock="Left" Height="228.831" Canvas.Top="55.467" Width="495.639" Canvas.Left="10" />
-            <Button Content="完成统计" Height="23" HorizontalAlignment="Left" x:Name="btnFinishStatistic" VerticalAlignment="Top" Width="120.333"  Canvas.Left="24" Canvas.Top="8" Background="#FFA6DDDD" />
-            <Button Content="得分统计" Height="23" HorizontalAlignment="Left" x:Name="btnScoreStatistic" VerticalAlignment="Top" Width="120.333"  Canvas.Left="172.667" Canvas.Top="8" />
-            <RadioButton x:Name="radioLineChart" Content="条形图" Canvas.Left="10" Canvas.Top="36.227"/>
-            <RadioButton x:Name="radioPieChart" Content="饼状图" Canvas.Left="89.333" Canvas.Top="36.227"/>
-
-
-        </Canvas>
-
-    </Grid>
+    </Viewbox>
 </Window>

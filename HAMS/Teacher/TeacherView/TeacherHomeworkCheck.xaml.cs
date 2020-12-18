@@ -16,6 +16,7 @@ using HAMS.ToolClass;
 using HAMS.Teacher.TeacherService;
 using System.Data;
 using HAMS.Entity;
+using HAMS.Teacher.TeacherDao;
 
 namespace HAMS.Teacher.TeacherView
 {
@@ -25,6 +26,7 @@ namespace HAMS.Teacher.TeacherView
     public partial class TeacherHomeworkCheck : Window
     {
         private TService ts = new TService();
+        private TDao td = new TDao();
         private string homURL = ""; //存储待下载作业文件的路径
         private string homName; //存储待下载作业文件的文件名
         private int[] homIds;//存储作业Id列表
@@ -35,11 +37,15 @@ namespace HAMS.Teacher.TeacherView
         public string description;
         public string classSpecId;
         public string className;
+        public string pngfile;//头像路径
 
         //下方函数才是真正需要的
-        public TeacherHomeworkCheck(int[] hmIds, int idex, string notTitle, string studentInfo, bool IfCorrect = false)
+        public TeacherHomeworkCheck(int[] hmIds, int idex, string notTitle, string studentInfo, string pgfile,bool IfCorrect = false)
         {
             InitializeComponent();
+            this.pngfile = pgfile;
+            //设置该img控件的Source
+            headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, pngfile))));
             //通过上一个界面传递过来的值，进行此界面控件信息的赋值操作
 
             //给作业公告标题赋值
@@ -61,10 +67,25 @@ namespace HAMS.Teacher.TeacherView
 
 
 
-            ////StudentInfo存储的是学号+1空格+姓名，按空格切分即可获得学号与姓名
-            //string[] StudentInfos = StudentInfo.Split(' ');
-            //string StuId = StudentInfos[0];//获取当前待批改作业的学号
-            //string StuName = StudentInfos[1];//获取当前待批改作业的姓名
+            //StudentInfo存储的是学号+1空格+姓名，按空格切分即可获得学号与姓名
+            string[] StudentInfos = studentInfo.Split(' ');
+            string StuSpecId = StudentInfos[0];//获取当前待批改作业的学号
+            string StuName = StudentInfos[1];//获取当前待批改作业的姓名
+            
+            int sex = int.Parse(td.getSexByStuSpecId(StuSpecId).Rows[0][0].ToString());
+            
+            //headImage是image控件名
+            if (sex == 0)
+            {
+                //设置该img控件的Source
+                StudentImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, @"..\..\Resources\女生头像.png"))));
+
+            }
+            else
+            {
+                StudentImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, @"..\..\Resources\男生头像.png"))));
+
+            }
 
             //根据homId获取该学生的作业备注并显示在控件上
             lbHomPostil.Content = ts.GetPostilByHomId(homId);
@@ -77,9 +98,8 @@ namespace HAMS.Teacher.TeacherView
             homURL = homURLInfos[0];//路径为课堂号/作业标题/学生信息文件夹
             homName = homURLInfos[1];//获取学生文件名，然后进行显示
 
-            //string[] homURLs = homURL.Split('/');
-            //homName = homURLs[homURLs.Length - 1];
-            lbUpload.ToolTip = homName;
+            //加载学生文件名
+            lbDownload.ToolTip = homName;
 
             //查询是否已经批改，即查询homwork里面是否已经有score
             //1.查询数据库中是否有成绩字段，2.如果有成绩，则显示原来的成绩和评语
@@ -128,8 +148,7 @@ namespace HAMS.Teacher.TeacherView
 
         private void btnDownload_Click(object sender, RoutedEventArgs e)
         {
-
-            
+                       
             //1、从数据库中查出homURL,然后获取文件名并能够鼠标放上去时在旁边显示文件名
             //从上一界面获取notId,根据notId+stuId访问到homId
 
@@ -211,7 +230,9 @@ namespace HAMS.Teacher.TeacherView
             string teacherName = tbTeacherName.Text;
             string className = this.className;
 
-            CheckingClassHomework newCheckingClassHomework = new CheckingClassHomework(homeworkTitle, description, teacherSpecId, teacherName, classSpecId, className);
+            CheckingClassHomework newCheckingClassHomework = new CheckingClassHomework(homeworkTitle, description, teacherSpecId, teacherName, classSpecId, className,this.pngfile);
+            
+            newCheckingClassHomework.pngfile = this.pngfile;
             newCheckingClassHomework.Show();
             this.Visibility = System.Windows.Visibility.Hidden;
         }
@@ -224,7 +245,8 @@ namespace HAMS.Teacher.TeacherView
                 this.index = index + 1;
                 string studentInfo = ts.getStudentInfoByHomId(homIds[index]);
 
-                TeacherHomeworkCheck thc = new TeacherHomeworkCheck(homIds, index, lbNotTitle.Content.ToString(), studentInfo, ifCorrect);
+                TeacherHomeworkCheck thc = new TeacherHomeworkCheck(homIds, index, lbNotTitle.Content.ToString(), studentInfo, this.pngfile, ifCorrect);
+                thc.pngfile = this.pngfile;
                 thc.Show();
                 this.Visibility = System.Windows.Visibility.Hidden;
             }
@@ -244,7 +266,8 @@ namespace HAMS.Teacher.TeacherView
                 this.index = index - 1;
                 string studentInfo = ts.getStudentInfoByHomId(homIds[index]);
 
-                TeacherHomeworkCheck thc = new TeacherHomeworkCheck(homIds, index, lbNotTitle.Content.ToString(), studentInfo, ifCorrect);
+                TeacherHomeworkCheck thc = new TeacherHomeworkCheck(homIds, index, lbNotTitle.Content.ToString(), studentInfo,this.pngfile, ifCorrect);
+                thc.pngfile = this.pngfile;
                 thc.Show();
                 this.Visibility = System.Windows.Visibility.Hidden;
             }
@@ -254,6 +277,13 @@ namespace HAMS.Teacher.TeacherView
                 System.Windows.MessageBox.Show("您已浏览到第一个学生作业，无法选择上一个！");
             }
             
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+        
+            App.Current.Shutdown();    //注销，关闭系统
+        
         }
     }
 }

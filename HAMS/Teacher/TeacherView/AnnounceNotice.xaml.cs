@@ -23,11 +23,16 @@ namespace HAMS.Teacher.TeacherView
     /// </summary>
     public partial class AnnounceNotice : Window
     {
+        public string pngfile;//头像路径
         private bool ifAnnounce;//是否是修改作业公告
         private bool upNotFile = false;//是否上传作业附件
-        public AnnounceNotice(string tNum,string tName,string cId, string cName)
+        public AnnounceNotice(string tNum,string tName,string cId, string cName,string pgfile)
         {
             InitializeComponent();
+            this.pngfile = pgfile;
+            //设置该img控件的Source
+            headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, pngfile))));
+
             tbName.Text = tName;
             tbTeacherSpecId.Text = tNum;
             labelcClassName.Content = cName;
@@ -35,9 +40,13 @@ namespace HAMS.Teacher.TeacherView
             textBoxContent.Text = "请输入作业描述";
             ifAnnounce = false;//表示此公告是新公告，未经发布
         }
-        public AnnounceNotice(string tNum, string tName, string cSpecId, string cName,string nTitle,string nContent,DateTime nSubTime)
+        public AnnounceNotice(string tNum, string tName, string cSpecId, string cName,string nTitle,string nContent,DateTime nSubTime, string pgfile)
         {
             InitializeComponent();
+            this.pngfile = pgfile;
+            //设置该img控件的Source
+            headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, pngfile))));
+
             tbName.Text = tName;
             tbTeacherSpecId.Text = tNum;
             labelcClassName.Content = cName;
@@ -51,10 +60,10 @@ namespace HAMS.Teacher.TeacherView
 
             //查找附件URLName并显示名称（不需要下载）
             //调用业务层的方法获取URLName并直接显示在控件上
-            upload.Text = ts.getNotURLName(nTitle, cSpecId);
-            if(upload.Text == "")//如果之前没有上传附件
+            upload.Content = ts.getNotURLName(nTitle, cSpecId);
+            if(upload.Content.ToString() == "")//如果之前没有上传附件
             {
-                upload.Text = "点击上传";//则该空间显示点击上传附件
+                upload.Content = "点击上传";//则该空间显示点击上传附件
             }
             //System.Windows.MessageBox.Show("nTitle" + nTitle + "cSpecId" + cSpecId);
             btnAnnounce.Content = "修改";
@@ -69,7 +78,8 @@ namespace HAMS.Teacher.TeacherView
 
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
-            BreifView newBreifView = new BreifView(lbClassSpecId.Text,labelcClassName.Content.ToString(),tbTeacherSpecId.Text,tbName.Text);
+            BreifView newBreifView = new BreifView(lbClassSpecId.Text,labelcClassName.Content.ToString(),tbTeacherSpecId.Text,tbName.Text,this.pngfile);
+            newBreifView.pngfile = this.pngfile;
             newBreifView.Show();
             // 隐藏自己(父窗体)
             this.Visibility = System.Windows.Visibility.Hidden;
@@ -88,7 +98,7 @@ namespace HAMS.Teacher.TeacherView
                     upNotFile = true;
                     //作业附件文件夹->课堂真实号/作业名/作业附件->lbClassSpecId.Text/textBoxHomeworkTitle.Text/作业附件
                     //调用业务层函数，根据指定路径，删除原有作业附件
-                    bool flag = ts.deleteNotURL(lbClassSpecId.Text.ToString(), textBoxHomeworkTitle.Text, upload.Text);
+                    bool flag = ts.deleteNotURL(lbClassSpecId.Text.ToString(), textBoxHomeworkTitle.Text, upload.Content.ToString());
                     if (!flag)
                     {
                         System.Windows.MessageBox.Show("删除原有作业附件失败！");
@@ -116,7 +126,7 @@ namespace HAMS.Teacher.TeacherView
                     ofd.Filter = Regex.Replace(filter, @"\s", ""); //筛选文件
                     if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
-                        upload.Text = System.IO.Path.GetFileName(ofd.FileName); //获取文件名
+                        upload.Content = System.IO.Path.GetFileName(ofd.FileName); //获取文件名
                                                                                 //System.IO.Path.GetFullPath(ofd.FileName);//获取文件路径
                                                                                 //ofd.FileName//获取文件路径
                                                                                 // string fileName = System.IO.Path.GetFileName(ofd.FileName);//获取文件名
@@ -146,7 +156,7 @@ namespace HAMS.Teacher.TeacherView
                 ofd.Filter = Regex.Replace(filter, @"\s", ""); //筛选文件
                 if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    upload.Text = System.IO.Path.GetFileName(ofd.FileName); //获取文件名
+                    upload.Content = System.IO.Path.GetFileName(ofd.FileName); //获取文件名
                                                                             //System.IO.Path.GetFullPath(ofd.FileName);//获取文件路径
                                                                             //ofd.FileName//获取文件路径
                                                                             // string fileName = System.IO.Path.GetFileName(ofd.FileName);//获取文件名
@@ -211,7 +221,7 @@ namespace HAMS.Teacher.TeacherView
                 string notURLName = "";//存储作业附件名（本地上传文件名）
                 if (localpath != "")
                 {
-                    notURLName = upload.Text;
+                    notURLName = upload.Content.ToString();
                 }
                 String classSpecId = lbClassSpecId.Text;
                 //String notURL = 课堂真实号/作业公告名/作业附件/文件名

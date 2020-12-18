@@ -5,59 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         
         mc:Ignorable="d"
-        Title="StudentMainForm" Height="381.175" Width="561.481" WindowState="Normal" ResizeMode="CanMinimize">
-    <Grid Margin="6.667,0,6.666,6.667" Height="337.678" VerticalAlignment="Bottom">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="233*"/>
-            <ColumnDefinition Width="103*"/>
-            <ColumnDefinition Width="153*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="7*"/>
+        Title="StudentMainForm" WindowState="Maximized" Height="472" Width="840"   WindowStyle="None">
+    <Viewbox Stretch="UniformToFill">
+        <Grid Margin="0,0,3.333,-1.667" Height="467" VerticalAlignment="Bottom">
 
-            <RowDefinition Height="162*"/>
-        </Grid.RowDefinitions>
+            <ListView x:Name="listView"  Margin="546,0,0,10" HorizontalAlignment="Left" Width="277" Height="342" VerticalAlignment="Bottom" SelectionChanged="ListView_SelectionChanged"/>
+            <Canvas Background="LightBlue" Margin="1,2,0,0" Height="55" VerticalAlignment="Top" HorizontalAlignment="Left" Width="829">
+                <TextBlock x:Name="textBlockUserId" Height="18.666" Canvas.Left="70.066" Canvas.Top="21.979" Width="137.334" TextAlignment="Center" Text="201821130099 宋慧毓"/>
+                <Image x:Name="headImage" Source="/HAMS;component/Resources/bk_create.jpg"  HorizontalAlignment="Left" Height="36.996" VerticalAlignment="Top" Width="40.666"  Canvas.Left="24.4" RenderTransformOrigin="1.894,0.568" Canvas.Top="10">
 
-        <ListView x:Name="listView" Grid.Column="2" Grid.Row="1"  Margin="0.665,0,0,5.84" HorizontalAlignment="Left" Width="159.421" Height="220.518" VerticalAlignment="Bottom" SelectionChanged="ListView_SelectionChanged">
-
-          
-
-        </ListView>
-        <Canvas Background="LightBlue" Grid.ColumnSpan="3" Margin="-6.203,-13.015,-6.269,0" Height="55.634" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="553.953">
-            <TextBlock x:Name="textBlockUserId" Height="18.666" Canvas.Left="70.066" Canvas.Top="21.979" Width="137.334" TextAlignment="Center" Text="201821130099 宋慧毓"/>
-            <Border x:Name="headImage" BorderBrush="Black" BorderThickness="0" HorizontalAlignment="Left" Height="36.996" VerticalAlignment="Top" Width="40.666" CornerRadius="35" Canvas.Left="24.4" RenderTransformOrigin="1.894,0.568" Canvas.Top="10">
-                <Border.Background>
-                    <ImageBrush>
-                        <ImageBrush.ImageSource>
-                            <ImageSource>/HAMS;component/Resources/bk_create.jpg</ImageSource>
-                        </ImageBrush.ImageSource>
-                    </ImageBrush>
-                </Border.Background>
-            </Border>
-            <Button x:Name="btnExit" Background="LightBlue"  Canvas.Left="460.341" Canvas.Top="2.644" Width="81.667" RenderTransformOrigin="0.622,0.945" Height="43.907" Foreground="#FF151111" BorderBrush="LightBlue" Click="btnExit_Click">
-                <StackPanel>
-                    <Image x:Name="exit1" Width="28" Height="23.907" Source="/Resources/resizeApi.png"/>
-                    <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
-                </StackPanel>
-            </Button>
-            <Image x:Name="imgSystemLogo" Height="49.029" Width="197.332" Source="/Resources/management.jpg" Stretch="UniformToFill" Canvas.Left="268.001" Canvas.Top="2.872"/>
-        </Canvas>
-        <Menu x:Name="menu" Height="26.667" Background="LightPink" Margin="-6.29,42.538,-5.882,0" VerticalAlignment="Top" Grid.ColumnSpan="3" Grid.Row="1" d:LayoutOverrides="VerticalAlignment">
-            <Button x:Name="btnHomeworkMana" Height="21" Width="109" Content="作业管理" Click="btnHomeworkMana_Click"/>
-            <Button x:Name="btnHomewordAlert" Height="21" Width="109" Content="作业预警" Click="BtnHomewordAlert_Click"/>
-        </Menu>
-        <Canvas Height="28.668" Background="LightBlue"  Margin="-6.333,68.011,-6.525,0" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="3" HorizontalAlignment="Left" Width="554.339">
-            <Label x:Name="label1" Content="我的课程   （在课程中您是   学生）" Height="24.333" HorizontalAlignment="Right" Width="354.334" Canvas.Left="9.338" Canvas.Top="2.667"/>
-            <Label x:Name="label" Content="作业公告" Canvas.Left="381.294" Canvas.Top="0.996" Height="24.322" HorizontalAlignment="Right" Width="64.752"/>
-        </Canvas>
-
-        <StackPanel Grid.ColumnSpan="2" Margin="0,98.946,11.561,0" Grid.Row="1" Height="224.291" VerticalAlignment="Top" HorizontalAlignment="Right" Width="357.443">
-            <ListView x:Name="listView2" Height="223" Margin="0,0,1,0" HorizontalAlignment="Right" Width="351" SelectionChanged="ListView2_SelectionChanged_1" >
-
-                
-
-            </ListView>
-        </StackPanel>
-
-    </Grid>
+                </Image>
+                <Button x:Name="btnExit" Background="LightBlue"  Canvas.Left="731" Canvas.Top="3" Width="82" RenderTransformOrigin="0.622,0.945" Height="44" Foreground="#FF151111" BorderBrush="LightBlue" Click="btnExit_Click">
+                    <StackPanel>
+                        <Image x:Name="exit1" Width="28" Height="23.907" Source="/Resources/resizeApi.png"/>
+                        <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
+                    </StackPanel>
+                </Button>
+                <Image x:Name="imgSystemLogo" Height="49" Width="197" Source="/Resources/management.jpg" Stretch="UniformToFill" Canvas.Left="512" Canvas.Top="3"/>
+            </Canvas>
+            <Menu x:Name="menu" Height="29" Background="LightPink" Margin="-6,57,-6,0" VerticalAlignment="Top">
+                <Button x:Name="btnHomeworkMana" Height="21" Width="109" Content="作业管理" Click="btnHomeworkMana_Click"/>
+                <Button x:Name="btnHomewordAlert" Height="21" Width="109" Content="作业预警" Click="BtnHomewordAlert_Click"/>
+            </Menu>
+            <Canvas Height="29" Background="LightBlue"  Margin="1,86,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="829">
+                <Label x:Name="label1" Content="我的课程   （在课程中您是   学生）" Height="24.333" HorizontalAlignment="Right" Width="354.334" Canvas.Left="9.338" Canvas.Top="2.667"/>
+                <Label x:Name="label" Content="作业公告" Canvas.Left="544" Canvas.Top="1" Height="24" HorizontalAlignment="Right" Width="65"/>
+            </Canvas>
+            <ListView x:Name="listView2" Margin="0,115,284,10" HorizontalAlignment="Right" Width="544" SelectionChanged="ListView2_SelectionChanged_1" />
+        </Grid>
+    </Viewbox>
 </Window>

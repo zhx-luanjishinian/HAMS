@@ -10,6 +10,8 @@ using HAMS.Entity;
 using System.Windows.Forms;
 using HAMS.Teacher.TeacherUserControl;
 using HAMS.Teacher.TeacherView;
+using System.Windows.Media.Imaging;
+
 namespace HAMS.Teacher.TeacherService
 {
     class TService
@@ -249,8 +251,12 @@ namespace HAMS.Teacher.TeacherService
             //根据作业Id获取成绩和点评
             DataTable tbScoreAndRemark = td.GetScoreAndRemarkByHomId(homId);
             string[] Scoreinfos = new string[2];
-            Scoreinfos[0] = (string)tbScoreAndRemark.Rows[0][0];
-            Scoreinfos[1] = (string)tbScoreAndRemark.Rows[0][1];
+            Scoreinfos[0] = tbScoreAndRemark.Rows[0][0].ToString();
+            Scoreinfos[1] = tbScoreAndRemark.Rows[0][1].ToString();
+            if(Scoreinfos[1] == "")
+            {
+                Scoreinfos[1] = "老师暂无点评";
+            }
             return Scoreinfos;
         }
         public DateTime GetPreviousDateTime(String classSpaceId,String homeworkTitle)
@@ -370,7 +376,37 @@ namespace HAMS.Teacher.TeacherService
             return stuSpecId + " " + name;
         }
 
+        //获得已批改作业的等级和该等级下的作业数,用于绘制成绩等级柱状图
+        public Dictionary<String, int> getScoreAndNums(String notId)
+        {
+            List<Dictionary<String, int>> results = td.getHomeNumAndScore(notId);
+            return results[1];
+        }
+
+        //获得该作业公告未完成和已完成的作业人数，用于绘制完成情况饼图
+        public Dictionary<String, int> getNums(String notId)
+        {
+            List<Dictionary<String, int>> results = td.getHomeNumAndScore(notId);
+            return results[0];
+        }
+
+        //根据sex，设置img控件的头像
+        public BitmapImage getProfileBySex(int sex)
+        {
+            if (sex == 0)
+            {
+                string pngfile = "../../Resources/女教师.png";
+                return new BitmapImage(new Uri(@pngfile));
+            }
+            else
+            {
+                string pngfile = "../../Resources/男教师.png";
+                return new BitmapImage(new Uri(@pngfile));
+            }
 
         }
+
+
+    }
     }
 

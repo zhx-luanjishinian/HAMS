@@ -5,64 +5,54 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HAMS.Student.StudentView"
         mc:Ignorable="d"
-        Title="StuSubmitHomework" Height="479" Width="800" ResizeMode="CanMinimize">
-    <Grid Margin="0,0,-0.333,2.667">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="70*"/>
-            <RowDefinition Height="52*"/>
-            <RowDefinition Height="357*"/>
-        </Grid.RowDefinitions>
-        <Canvas Background="LightBlue" Margin="0" Grid.Row="0" HorizontalAlignment="Left" Height="71" VerticalAlignment="Top" Width="793" Grid.RowSpan="2">
-            <Border x:Name="imgHead" BorderBrush="Black" BorderThickness="0" Grid.Column="1" HorizontalAlignment="Left" Height="37" VerticalAlignment="Top" Width="40" CornerRadius="35" Canvas.Left="24" RenderTransformOrigin="1.894,0.568" Canvas.Top="21">
-                <Border.Background>
-                    <ImageBrush>
-                        <ImageBrush.ImageSource>
-                            <DrawingImage>
-                                <DrawingImage.Drawing>
-                                    <ImageDrawing ImageSource="/Resources/bk_create.jpg" Rect="100,200,110,100"></ImageDrawing>
-                                </DrawingImage.Drawing>
-                            </DrawingImage>
-                        </ImageBrush.ImageSource>
-                    </ImageBrush>
-                </Border.Background>
-            </Border>
-            <TextBlock x:Name="tbUserNameAc" Text="201821060569刘小蕊" TextAlignment="Center" HorizontalAlignment="Center" Canvas.Left="89" Canvas.Top="32" RenderTransformOrigin="1.087,0.535" FontWeight="Bold"/>
-            <Image x:Name="imgSystemLogo" Height="53.99" Width="197.332" Source="/Resources/management.jpg" Stretch="UniformToFill" Canvas.Left="490.334" Canvas.Top="8.913"/>
-            <Button x:Name="btnExit" Background="LightBlue"  Canvas.Left="701.666" Canvas.Top="13.955" Width="81.667" RenderTransformOrigin="0.622,0.945" Height="43.907" Foreground="#FF151111" BorderBrush="LightBlue" Click="btnExit_Click">
-                <StackPanel>
-                    <Image x:Name="exit1" Width="28" Height="23.907" Source="/Resources/resizeApi.png"/>
-                    <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
-                </StackPanel>
-            </Button>
+        Title="StuSubmitHomework"  ResizeMode="CanMinimize" Height="472" Width="840" WindowState="Maximized"  WindowStyle="None">
+    <Viewbox Stretch="UniformToFill">
+        <Grid Margin="0,0,-0.333,2.667" Width="766" Height="431">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70*"/>
+                <RowDefinition Height="40*"/>
+                <RowDefinition Height="321*"/>
+            </Grid.RowDefinitions>
+            <Canvas Background="LightBlue" Grid.Row="0" HorizontalAlignment="Left" Height="71" VerticalAlignment="Top" Width="766" Grid.RowSpan="2">
+                <Image x:Name="headImage" Source="/Resources/bk_create.jpg" Grid.Column="1" HorizontalAlignment="Left" Height="37" VerticalAlignment="Top" Width="40"  Canvas.Left="24" RenderTransformOrigin="1.894,0.568" Canvas.Top="21"/>
+                <TextBlock x:Name="tbUserNameAc" Text="201821060569刘小蕊" TextAlignment="Center" HorizontalAlignment="Center" Canvas.Left="89" Canvas.Top="32" RenderTransformOrigin="1.087,0.535" FontWeight="Bold"/>
+                <Image x:Name="imgSystemLogo" Height="54" Width="40" Source="/Resources/logo.png" Stretch="UniformToFill" Canvas.Left="583" Canvas.Top="4"/>
+                <Button x:Name="btnExit" Background="LightBlue"  Canvas.Left="674" Canvas.Top="14" Width="82" RenderTransformOrigin="0.622,0.945" Height="44" Foreground="#FF151111" BorderBrush="LightBlue" Click="btnExit_Click">
+                    <StackPanel>
+                        <Image x:Name="exit1" Width="28" Height="23.907" Source="/Resources/resizeApi.png"/>
+                        <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
+                    </StackPanel>
+                </Button>
 
-        </Canvas>
-        <DockPanel  HorizontalAlignment="Left" Background="LightPink" Height="54" LastChildFill="False" Grid.Row="1" VerticalAlignment="Top" Width="793" Margin="0,1,0,0" Grid.RowSpan="2">
-            <Menu x:Name="menu" Background="LightPink" HorizontalAlignment="Left" Height="55.463" VerticalAlignment="Center" Width="794.847" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="0,0,0,-1.506">
+            </Canvas>
+            <!--<DockPanel  HorizontalAlignment="Left" Background="LightPink" Height="54" LastChildFill="False" Grid.Row="1" VerticalAlignment="Top" Width="766" Margin="0,0.667,0,0" Grid.RowSpan="2">-->
+            <Menu x:Name="menu" Background="LightPink" HorizontalAlignment="Left" Height="55" VerticalAlignment="Center" Width="765" Margin="1,1,0,305.333" Grid.Row="1" Grid.RowSpan="2">
                 <Button x:Name="btnReturn"  Background="LightPink" Height="45" Canvas.Left="18" Canvas.Top="21" Width="98" Click="btnReturn_Click">
                     <Image x:Name="imgReturn" Height="35" Canvas.Left="18" Canvas.Top="21" Width="59" Source="/Resources/返回.png"/>
                 </Button>
                 <Button x:Name="homeworkManagement" Height="45.463" Width="188" Content="作业管理" FontSize="14" FontWeight="Bold" Click="homeworkManagement_Click"/>
                 <Button x:Name="homeworkAlert" Height="45.463" Width="200" Content="作业预警" FontSize="14" FontWeight="Bold" Click="homeworkAlert_Click"/>
             </Menu>
-        </DockPanel>
-        <StackPanel Grid.Row="2" Margin="0,2,1,27.667">
-            <Canvas Background="Beige" Height="34"  Margin="0,0,-0.667,0" />
-            <Canvas Height="73.333" Background="Azure">
-                <StackPanel Orientation="Horizontal" Height="38" Width="476" Canvas.Left="125" Canvas.Top="27">
-                    <TextBox x:Name="tbFileURL" Width="383.334"></TextBox>
-                    <Button x:Name="btnChooseFile" Width="92" Content="选择文件" Click="btnChooseFile_Click"></Button>
-                </StackPanel>
-            </Canvas>
-            <Canvas Background="Azure" Height="108">
+            <!--</DockPanel>-->
+            <!--<StackPanel Grid.Row="2" Margin="0,2,0,28.333" HorizontalAlignment="Left" Width="766">-->
+            <Canvas Background="Beige" Height="34"  Margin="-1,16,0,271.333" HorizontalAlignment="Left" Width="767" Grid.Row="2" />
+            <Canvas Background="Azure" HorizontalAlignment="Left" Width="766" Margin="1,135,-1,81.333" Grid.Row="2">
                 <Label Content="作业备注" Canvas.Left="132.666" Height="26.567" Width="82.667" FontSize="14" FontWeight="Bold" Canvas.Top="10"/>
                 <TextBox x:Name="listViewHomeworkNote" Background="White"  Height="56.433"   Canvas.Left="110.666" Canvas.Top="41.567" Width="492.669"/>
             </Canvas>
-            <Canvas Background="Azure" Height="112" Margin="0,0,-0.667,0">
+            <Canvas Background="Azure" HorizontalAlignment="Left" Width="762" Margin="1,50,0,186.333" Grid.Row="2">
+                <StackPanel Orientation="Horizontal" Height="38" Width="476" Canvas.Left="125" Canvas.Top="27">
+                    <TextBox x:Name="tbFileURL" Width="383.334"/>
+                    <Button x:Name="btnChooseFile" Width="92" Content="选择文件" Click="btnChooseFile_Click"/>
+                </StackPanel>
+            </Canvas>
+            <Canvas Background="Azure" HorizontalAlignment="Left" Width="762" Margin="5,240,-1,0.333" Grid.Row="2">
                 <Button x:Name="btnSubmitHomework" Content="提交" Canvas.Left="565" Canvas.Top="36" Width="75" Height="37" FontSize="14" Click="btnSubmitHomework_Click"/>
             </Canvas>
-        </StackPanel>
+            <!--</StackPanel>-->
 
 
 
-    </Grid>
+        </Grid>
+    </Viewbox>
 </Window>

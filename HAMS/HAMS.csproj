@@ -131,20 +131,17 @@
     </Compile>
     <Compile Include="Student\StudentDao\SDao.cs" />
     <Compile Include="Student\StudentService\SService.cs" />
+    <Compile Include="Student\StudentUserControl\StudentAskQuestion.xaml.cs">
+      <DependentUpon>StudentAskQuestion.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Student\StudentView\AlertForm.xaml.cs">
       <DependentUpon>AlertForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Student\StudentView\HomeworkSubmit.xaml.cs">
       <DependentUpon>HomeworkSubmit.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Student\StudentView\StuCheckHomework.xaml.cs">
-      <DependentUpon>StuCheckHomework.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Student\StudentView\StuChooseCalender.xaml.cs">
       <DependentUpon>StuChooseCalender.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Student\StudentView\StudentAnswerQuestion.xaml.cs">
-      <DependentUpon>StudentAnswerQuestion.xaml</DependentUpon>
     </Compile>
     <Compile Include="Student\StudentView\StudentMainForm.xaml.cs">
       <DependentUpon>StudentMainForm.xaml</DependentUpon>
@@ -268,8 +265,7 @@
     <Compile Include="DataUtil\DBUtil.cs" />
     <Compile Include="Entity\Admin.cs" />
     <Compile Include="Entity\Class.cs" />
-    <Compile Include="Entity\Comm1.cs" />
-    <Compile Include="Entity\Comm2.cs" />
+    <Compile Include="Entity\Comment.cs" />
     <Compile Include="Entity\Homework.cs" />
     <Compile Include="Entity\Notice.cs" />
     <Compile Include="Entity\Student.cs" />
@@ -280,6 +276,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Student\StudentUserControl\StudentAskQuestion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Student\StudentView\AlertForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -288,15 +288,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Student\StudentView\StuCheckHomework.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Student\StudentView\StuChooseCalender.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Student\StudentView\StudentAnswerQuestion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -470,7 +462,7 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\男老师.png">
+    <Resource Include="Resources\男教师.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
@@ -536,9 +528,6 @@
     <Resource Include="Resources\news.gif" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\profile.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\revise.png" />
   </ItemGroup>
   <ItemGroup>
@@ -552,6 +541,50 @@
     <Resource Include="Resources\刷新.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\对勾.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\admin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\女教师.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\教师.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\男生头像.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\女生头像.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Teacher\TeacherView\返回.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Teacher\TeacherView\刷新.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Teacher\TeacherUserControl\删 除 .png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Teacher\TeacherUserControl\修改.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Teacher\TeacherUserControl\评论.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Teacher\TeacherUserControl\删除.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets')" />

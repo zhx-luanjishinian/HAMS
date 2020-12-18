@@ -24,41 +24,44 @@ namespace HAMS.Student.StudentView
     /// </summary>
     public partial class AlertForm : Window
     {
-        
+        public string pngfile;
         public String account{set;get;}
         public String name { set; get; }
         private SService ss = new SService();
         DispatcherTimer disTimer = new DispatcherTimer();
-        public AlertForm(String account,String name)
+        public AlertForm(String account,String name,string pgfile)
         {
             InitializeComponent();
+            this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             this.account = account;
             this.name = name;
+            this.pngfile = pgfile;
+            //设置该img控件的Source
+            headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, pngfile))));
+
             this.textBlockUserId.Text = account + name;
             //展示预警信息
-            showAertInfo(ss.showAlertFormInfo(account));
+            showAlertInfo(ss.showAlertFormInfo(account));
             //初始化操作
             initComboxRank();
             homeNumberAlert();
-
-
         }
        
         //显示预警主界面信息的函数
-        public void showAertInfo( List<List<List<String>>> info)
+        public void showAlertInfo( List<List<List<String>>> info)
         {
             List<List< List<String>>> result = info;
-            int count = result[0].Count;
+            int count = 0;
             for(int i = 0; i < result[0].Count; i++)
             {
                 ListViewItem lvi = new ListViewItem();
                 //首先默认用户没有设置自定义的时间,传入具体截止时间，课堂名，作业标题
-                AlertMainForm amf = new AlertMainForm(result[0][i][1],result[0][i][0],result[0][i][2]);
+                AlertMainForm amf = new AlertMainForm(result[0][i][1],result[0][i][0],result[0][i][2], result[0][i][4]);
                 if (result[0][i].Count > 4) {
                  
                     if (result[0][i][4] != "") {
                         //此处相比于先前加入了自定义的截止时间
-                        amf = new AlertMainForm(result[0][i][1], result[0][i][0], result[0][i][2], result[0][i][4]);
+                        //amf = new AlertMainForm(result[0][i][1], result[0][i][0], result[0][i][2], result[0][i][4]);
                         amf.btnLimitedTime1.Content = result[0][i][4];
                     }
                     else
@@ -71,6 +74,14 @@ namespace HAMS.Student.StudentView
                 {
                     //默认减1获得当前设置的值
                     amf.comboBoxDegree1.SelectedIndex = int.Parse(result[0][i][5])-1;
+                    }
+                }
+                if (result[0][i].Count > 6)
+                {
+                    //此处统计的是未完成作业的人数
+                    if (result[0][i][6] == "")
+                    {
+                        count++;
                     }
                 }
                 
@@ -95,14 +106,14 @@ namespace HAMS.Student.StudentView
             {
                 ListViewItem lvi = new ListViewItem();
                 //首先默认用户没有设置自定义的时间,传入具体截止时间，课堂名，作业标题
-                AlertMainForm amf = new AlertMainForm(result[1][i][1], result[1][i][0], result[1][i][2]);
+                AlertMainForm amf = new AlertMainForm(result[1][i][1], result[1][i][0], result[1][i][2], result[1][i][4]);
                 if (result[1][i].Count > 4)
                 {
 
                     if (result[1][i][4] != "")
                     {
                         //此处相比于先前加入了自定义的截止时间
-                        amf = new AlertMainForm(result[1][i][1], result[1][i][0], result[1][i][2], result[1][i][4]);
+                        //amf = new AlertMainForm(result[1][i][1], result[1][i][0], result[1][i][2], result[1][i][4]);
                         amf.btnLimitedTime1.Content = result[1][i][4];
                     }
                     else
@@ -140,12 +151,9 @@ namespace HAMS.Student.StudentView
                 
             }
             //总的作业公告数量-已完成的作业数量=未完成的作业数量
-            textBlockUnfinishedNumber.Text = (count-ss.countHomeworkNumber(account)).ToString();
+            textBlockUnfinishedNumber.Text = count.ToString();
             //直接进行预警数量的设置,库里面没有的话说明数据是为空的
             textBlockAlertNumber.Text = ss.setAlertNum(account);
-            
-            
-            
         }
         //处理每一个控件的选择部分
         private void defcomplexity(object sender,SelectionChangedEventArgs e)
@@ -183,7 +191,8 @@ namespace HAMS.Student.StudentView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                StudentMainForm smf = new StudentMainForm(account,name);
+                StudentMainForm smf = new StudentMainForm(account,name,pngfile);
+                smf.pngfile = this.pngfile;
                 smf.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
@@ -215,12 +224,12 @@ namespace HAMS.Student.StudentView
             {
                 //先清空listView2里面的东西
                 listView2.Items.Clear();
-                showAertInfo(ss.upRank(account));      
+                showAlertInfo(ss.upRank(account));      
             }
             else if(comBoxByTime.SelectedValue.ToString() == "降序")
             {
                 listView2.Items.Clear();
-                showAertInfo(ss.downRank(account));
+                showAlertInfo(ss.downRank(account));
             }
         }
 
@@ -230,13 +239,13 @@ namespace HAMS.Student.StudentView
             {
                 listView2.Items.Clear();
                 //进行复杂度的降序排序
-                showAertInfo(ss.downComplexity(account));
+                showAlertInfo(ss.downComplexity(account));
             }
             else if (comBoxByDegree.SelectedValue.ToString() == "升序")
             {
                 listView2.Items.Clear();
                 //进行复杂度的升序排序
-                showAertInfo(ss.upComplexity(account));
+                showAlertInfo(ss.upComplexity(account));
             }
         }
         //进行作业预警数量是否到达的预警
@@ -267,8 +276,9 @@ namespace HAMS.Student.StudentView
 
         private void BtnRefresh_Click(object sender, RoutedEventArgs e)
         {
-            //展示预警信息
-            showAertInfo(ss.showAlertFormInfo(account));
+            //展示预警信息,先清空原来的东西再进行刷新
+            listView2.Items.Clear();
+            showAlertInfo(ss.showAlertFormInfo(account));
         }
     }
 }

@@ -4,8 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HAMS.Teacher.TeacherView"
-             mc:Ignorable="d" Height="115.038" Width="514.286">
-    <Grid Height="113.8" Width="515" Margin="0,0,0,-1" Background="White">
+             mc:Ignorable="d" Height="115.038" Width="820">
+    <Grid Height="113.8" Width="820" Margin="0,0,0,-1" Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="112*"/>
             <ColumnDefinition Width="197*"/>
@@ -28,6 +28,6 @@
                 <Label x:Name="description" Content="调通SVM代码，打卡上传" Grid.Column="1" Margin="-29.872,35.6,-10.563,0" FontSize="13"/>
             </Grid>
         </Button>
-        <Border BorderBrush="Black" BorderThickness="0,0,0,1" Grid.ColumnSpan="3"/>
+        <Border BorderBrush="Black" BorderThickness="0,0,0,1" Grid.ColumnSpan="3" Width="820"/>
     </Grid>
 </UserControl>

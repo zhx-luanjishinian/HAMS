@@ -6,61 +6,61 @@
         xmlns:local="clr-namespace:HAMS.Teacher.TeacherView"
         xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" 
         mc:Ignorable="d"
-       Title="MainWindow" Height="472" Width="840" WindowStyle="None">
+       Title="MainWindow" Height="472" Width="840" WindowState="Maximized" WindowStyle="None">
     <Window.Resources>
         <Style x:Key="CanvasStyle1" TargetType="{x:Type Canvas}"/>
     </Window.Resources>
+    <Viewbox Stretch="UniformToFill">
+        <Grid Margin="0,0,3.6,3.6" Height="462" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="830" >
 
-    <Grid Margin="6.667,0,6.666,6.667" Height="337.678" VerticalAlignment="Bottom">
 
-
-        <StackPanel Margin="0,-66.4,0,0" Orientation="Vertical" HorizontalAlignment="Right" Width="259.5">
-            <Label x:Name="labelRecent" Content="近期发布作业公告" FontSize="13" Height="25.143" Margin="0,0,10,0"/>
-            <ListView x:Name="listViewRecentNotice" Style="{DynamicResource ListViewStyle1}" Height="369.878">
-                <ListView.Resources>
-                    <SolidColorBrush x:Key="ListBorder" Color="#828790"/>
-                    <Style x:Key="ListViewStyle1" TargetType="{x:Type ListView}">
-                        <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
-                        <Setter Property="BorderBrush" Value="{StaticResource ListBorder}"/>
-                        <Setter Property="BorderThickness" Value="1"/>
-                        <Setter Property="Foreground" Value="#FF042271"/>
-                        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
-                        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
-                        <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
-                        <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
-                        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
-                        <Setter Property="VerticalContentAlignment" Value="Center"/>
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="{x:Type ListView}">
-                                    <Themes:ListBoxChrome x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" RenderMouseOver="{TemplateBinding IsMouseOver}" RenderFocused="{TemplateBinding IsKeyboardFocusWithin}" SnapsToDevicePixels="true">
-                                        <ScrollViewer Padding="{TemplateBinding Padding}" Style="{DynamicResource {x:Static GridView.GridViewScrollViewerStyleKey}}">
-                                            <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                                        </ScrollViewer>
-                                    </Themes:ListBoxChrome>
-                                    <ControlTemplate.Triggers>
-                                        <Trigger Property="IsEnabled" Value="false">
-                                            <Setter Property="Background" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
-                                        </Trigger>
-                                        <MultiTrigger>
-                                            <MultiTrigger.Conditions>
-                                                <Condition Property="IsGrouping" Value="true"/>
-                                                <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false"/>
-                                            </MultiTrigger.Conditions>
-                                            <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
-                                        </MultiTrigger>
-                                    </ControlTemplate.Triggers>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </ListView.Resources>
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn/>
-                    </GridView>
-                </ListView.View>
-                <!--<Button x:Name="btnRecntNo1" Height="43.201" Width="194.776" OpacityMask="White" Background="#FFD2F5FA" Click="btnRecntNo1_Click">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Right" Width="267.167" Height="414.972" VerticalAlignment="Bottom">
+                <Label x:Name="labelRecent" Content="近期发布作业公告" FontSize="13" Height="25.143" Margin="0,0,10,0"/>
+                <ListView x:Name="listViewRecentNotice" Style="{DynamicResource ListViewStyle1}" Height="380" HorizontalAlignment="Left" Width="267">
+                    <ListView.Resources>
+                        <SolidColorBrush x:Key="ListBorder" Color="#828790"/>
+                        <Style x:Key="ListViewStyle1" TargetType="{x:Type ListView}">
+                            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+                            <Setter Property="BorderBrush" Value="{StaticResource ListBorder}"/>
+                            <Setter Property="BorderThickness" Value="1"/>
+                            <Setter Property="Foreground" Value="#FF042271"/>
+                            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+                            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+                            <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+                            <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
+                            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type ListView}">
+                                        <Themes:ListBoxChrome x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" RenderMouseOver="{TemplateBinding IsMouseOver}" RenderFocused="{TemplateBinding IsKeyboardFocusWithin}" SnapsToDevicePixels="true">
+                                            <ScrollViewer Padding="{TemplateBinding Padding}" Style="{DynamicResource {x:Static GridView.GridViewScrollViewerStyleKey}}">
+                                                <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                            </ScrollViewer>
+                                        </Themes:ListBoxChrome>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsEnabled" Value="false">
+                                                <Setter Property="Background" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+                                            </Trigger>
+                                            <MultiTrigger>
+                                                <MultiTrigger.Conditions>
+                                                    <Condition Property="IsGrouping" Value="true"/>
+                                                    <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false"/>
+                                                </MultiTrigger.Conditions>
+                                                <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
+                                            </MultiTrigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListView.Resources>
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn/>
+                        </GridView>
+                    </ListView.View>
+                    <!--<Button x:Name="btnRecntNo1" Height="43.201" Width="194.776" OpacityMask="White" Background="#FFD2F5FA" Click="btnRecntNo1_Click">
                 <Canvas Height="40" Width="193">
                     <Image x:Name="image1" Height="20" Canvas.Left="10" Canvas.Top="10" Width="26.113" Source="/HAMS;component/Resources/notice1.png"/>
                     <Label x:Name="label" Content="SVM实验" Height="30" Canvas.Left="41.113" Canvas.Top="10" Width="85.133" FontSize="11"/>
@@ -78,20 +78,20 @@
                     <Label x:Name="label2" Content="LR实验报告" Height="30" Canvas.Left="41.113" Canvas.Top="10" Width="85.133" FontSize="11"/>
                 </Canvas>
             </Button>-->
-            </ListView>
-        </StackPanel>
-        <StackPanel Margin="-1.333,-66.4,264.5,0">
-            <Label x:Name="labelTeachClass" Content="我教的课   （在课程中您是   老师）" Height="25.8" Margin="3,0,-1,0" FontSize="13"/>
-            <ListView x:Name="listViewTeacherClass" Height="371.2" Margin="4,0,0,0" HorizontalAlignment="Left" Width="547.933">
-                <ListView.Background>
-                    <ImageBrush/>
-                </ListView.Background>
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn/>
-                    </GridView>
-                </ListView.View>
-                <!--<Canvas Height="66.111" Width="452.8" Style="{DynamicResource CanvasStyle1}">
+                </ListView>
+            </StackPanel>
+            <StackPanel Margin="0,0,276.567,0" Height="414.972" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="553.433" >
+                <Label x:Name="labelTeachClass" Content="我教的课   （在课程中您是   老师）" Height="25.8" Margin="10,0,6.333,0" FontSize="13"/>
+                <ListView x:Name="listViewTeacherClass" Height="380" Margin="10,0,0,0" HorizontalAlignment="Left" Width="537">
+                    <ListView.Background>
+                        <ImageBrush/>
+                    </ListView.Background>
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn/>
+                        </GridView>
+                    </ListView.View>
+                    <!--<Canvas Height="66.111" Width="452.8" Style="{DynamicResource CanvasStyle1}">
                     <Button x:Name="btnEnterClass" Content="" Height="62.963" Width="452.8" Background="White" />
                     <Label x:Name="labelClassId1" Content="Z004530B1300720 " Height="23.999" Canvas.Left="96.621" Canvas.Top="20.335" Width="120.667" RenderTransformOrigin="0.507,0.631"/>
                     <TextBlock x:Name="labelClassName1" Text="R语言" Height="15.666" Width="41" Canvas.Left="246.888" Canvas.Top="25.335" TextAlignment="Center"/>
@@ -129,19 +129,20 @@
 
 
 
-            </ListView>
-        </StackPanel>
-        <Canvas Height="50" Background="LightBlue" Grid.ColumnSpan="2" Margin="-9,-121.4,-9.333,0" VerticalAlignment="Top">
-            <TextBlock x:Name="tbTeacherInfo" Height="18.666" Canvas.Left="70.066" Canvas.Top="21.979" Width="137.334" TextAlignment="Center" FontSize="13"><Run Text="Z0004520 "/></TextBlock>
-            <TextBlock x:Name="tbTeacherInfo1" Height="19" Canvas.Left="166" Canvas.Top="21" Width="138" TextAlignment="Center" FontSize="13"><Run Text="刘树栋"/></TextBlock>
-            <Button x:Name="btnExit" Background="LightBlue"  Canvas.Left="659" Width="82" RenderTransformOrigin="0.622,0.945" Height="41" Foreground="#FF151111" BorderBrush="LightBlue" Click="btnExit_Click">
-                <StackPanel>
-                    <Image x:Name="exit1" Width="28" Height="23.907" Source="/HAMS;component/Resources/resizeApi.png"/>
-                    <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
-                </StackPanel>
-            </Button>
-            <Image x:Name="image" Height="50" Canvas.Left="497" Width="81" Source="/Resources/logo.png" Stretch="Fill"/>
-            <Image x:Name="headImage" Source="男教师.png" Height="37" VerticalAlignment="Top" Width="41"  RenderTransformOrigin="1.894,0.568" Canvas.Left="10" Canvas.Top="10"/>
-        </Canvas>
-    </Grid>
+                </ListView>
+            </StackPanel>
+            <Canvas Height="50" Background="LightBlue" Margin="0,-5.572,0,417.572" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="832" d:LayoutOverrides="LeftMargin, RightMargin">
+                <TextBlock x:Name="tbTeacherInfo" Height="20" Canvas.Left="56" Canvas.Top="21" Width="38.934" TextAlignment="Center" FontSize="13" Text="Z001 "/>
+                <TextBlock x:Name="tbTeacherInfo1" Height="19" Canvas.Left="94.934" Canvas.Top="21" Width="57.2" TextAlignment="Center" FontSize="13"><Run Text="刘树栋"/></TextBlock>
+                <Button x:Name="btnExit" Background="LightBlue"  Canvas.Left="765.8" Width="62.8" RenderTransformOrigin="0.622,0.945" Height="41" Foreground="#FF151111" BorderBrush="LightBlue" Click="btnExit_Click" Canvas.Top="6">
+                    <StackPanel>
+                        <Image x:Name="exit1" Width="28" Height="23.907" Source="/HAMS;component/Resources/resizeApi.png"/>
+                        <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
+                    </StackPanel>
+                </Button>
+                <Image x:Name="headImage" Source="男教师.png" Height="37" VerticalAlignment="Top" Width="41"  RenderTransformOrigin="1.894,0.568" Canvas.Left="10" Canvas.Top="10"/>
+                <Image x:Name="image" Height="50" Canvas.Left="701.4" Width="43.8" Source="/HAMS;component/logo.png" Stretch="Fill"/>
+            </Canvas>
+        </Grid>
+    </Viewbox>
 </Window>

@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:HAMS"
         mc:Ignorable="d"
-        Title="MainWindow" Height="472" Width="840" WindowState="Maximized">
+        Title="MainWindow" Height="472" Width="840" WindowState="Maximized" WindowStyle="None">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -26,47 +26,47 @@
         </ResourceDictionary>
     </Window.Resources>
     <Viewbox Stretch="UniformToFill">
-        <Grid Background="#FFF1C1D1" Height="362.375" Width="683.019">
+        <Grid Background="#FFF1C1D1" Height="472" Width="840">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="502*"/>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="192*"/>
             </Grid.ColumnDefinitions>
 
-            <Canvas Height="264" Margin="28.167,83,219.436,0" VerticalAlignment="Top" Background="#FFF1DADA"/>
-            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="作业预警管理系统" VerticalAlignment="Top" Margin="102.313,106.127,0,0" Height="30" Width="175.147" FontSize="20" FontWeight="Bold"/>
-            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="发布作业" VerticalAlignment="Top" Height="29" Width="89.147" Margin="140.5,162.313,0,0" FontSize="20"/>
-            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="查看作业" VerticalAlignment="Top" Height="29" Width="89.147" Margin="142,212.813,0,0" FontSize="20"/>
-            <TextBlock TextWrapping="Wrap" Text="完成作业" VerticalAlignment="Top" Margin="142,256.5,265.749,0" Height="30" FontSize="20"/>
-            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="作业预警" VerticalAlignment="Top" Height="29" Width="89.147" Margin="144.45,297.383,0,0" FontSize="20"/>
+            <Canvas Height="365.559" Margin="31.167,74.78,274.478,0" VerticalAlignment="Top" Background="#FFF1DADA"/>
+            <TextBlock TextWrapping="Wrap" Text="作业预警管理系统" VerticalAlignment="Top" Margin="132.946,103.496,294.879,0" Height="33.225" FontSize="22" FontWeight="Bold"/>
+            <TextBlock TextWrapping="Wrap" Text="发布作业" VerticalAlignment="Top" Height="29" Margin="154.473,178.813,294.879,0" FontSize="20"/>
+            <TextBlock TextWrapping="Wrap" Text="查看作业" VerticalAlignment="Top" Height="29" Margin="154.473,237.047,294.879,0" FontSize="20"/>
+            <TextBlock TextWrapping="Wrap" Text="完成作业" VerticalAlignment="Top" Margin="154.473,302.955,294.879,0" Height="30" FontSize="20"/>
+            <TextBlock TextWrapping="Wrap" Text="作业预警" VerticalAlignment="Top" Height="29" Margin="154.473,372.757,294.879,0" FontSize="20"/>
 
 
-            <Border BorderThickness="1" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="37" Margin="66.886,163.813,0,0" RenderTransformOrigin="-0.388,-0.408">
+            <Border BorderThickness="1" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="37" Margin="72.798,179.813,0,0" RenderTransformOrigin="-0.388,-0.408">
                 <Border.Background>
                     <ImageBrush ImageSource="Resources/navigation.png" />
                 </Border.Background>
             </Border>
-            <Border BorderThickness="1" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="37" Margin="66.886,212.813,0,0" RenderTransformOrigin="-0.388,-0.408">
+            <Border BorderThickness="1" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="37" Margin="72.798,238.047,0,0" RenderTransformOrigin="-0.388,-0.408">
                 <Border.Background>
                     <ImageBrush ImageSource="Resources/navigation.png" />
                 </Border.Background>
             </Border>
-            <Border BorderThickness="1" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="37" Margin="66.886,256.5,0,0" RenderTransformOrigin="-0.388,-0.408">
+            <Border BorderThickness="1" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="37" Margin="72.798,303.455,0,0" RenderTransformOrigin="-0.388,-0.408">
                 <Border.Background>
                     <ImageBrush ImageSource="Resources/navigation.png" />
                 </Border.Background>
             </Border>
-            <Border BorderThickness="1" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="37" Margin="66.886,299.883,0,0" RenderTransformOrigin="-0.388,-0.408">
+            <Border BorderThickness="1" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="37" Margin="72.798,372.757,0,0" RenderTransformOrigin="-0.388,-0.408">
                 <Border.Background>
                     <ImageBrush ImageSource="Resources/navigation.png" />
                 </Border.Background>
             </Border>
-            <Canvas HorizontalAlignment="Right" Height="266" VerticalAlignment="Top" Width="353.538" Margin="-191.16,81,27.295,0" Background="#FFD2DAF0" Grid.Column="1" Grid.ColumnSpan="2">
+            <Canvas HorizontalAlignment="Right" Height="362.515" VerticalAlignment="Top" Width="409.413" Margin="-212.734,77.824,36.587,0" Background="#FFD2DAF0" Grid.Column="1" Grid.ColumnSpan="2">
                 <Button x:Name="btnLogin" RenderTransformOrigin="1.392,0.567" HorizontalAlignment="Left" Background="#FF93B3DE" Width="72"
                   Style="{StaticResource MaterialDesignRaisedButton}"
                   materialDesign:ButtonProgressAssist.Value="-1"
                   materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
-                  materialDesign:ButtonProgressAssist.IsIndeterminate="True" Content="登录" FontSize="20" Height="35"  Click="btnLogin_Click" Canvas.Left="67.525" Canvas.Top="217.583">
+                  materialDesign:ButtonProgressAssist.IsIndeterminate="True" Content="登录" FontSize="20" Height="35"  Click="btnLogin_Click" Canvas.Left="85.327" Canvas.Top="276.431">
                     <Button.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -82,7 +82,7 @@
                   materialDesign:ButtonProgressAssist.Value="-1"
                   materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
                   materialDesign:ButtonProgressAssist.IsIndeterminate="True"
-                RenderTransformOrigin="1.392,0.567" FontSize="20" Background="#FF93B3DE" Click="btnReset_Click" Canvas.Left="214.905" Canvas.Top="218.331">
+                RenderTransformOrigin="1.392,0.567" FontSize="20" Background="#FF93B3DE" Click="btnReset_Click" Canvas.Left="244.533" Canvas.Top="275.97">
                     <Button.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -94,16 +94,16 @@
 
                 </Button>
             </Canvas>
-            <RadioButton x:Name="radiobtnTeacher" Content="老师" IsChecked="True"  HorizontalAlignment="Left" Margin="351.215,120.03,0,220.975" Width="66" FontSize="16" Checked="RadiobtnTeacher_Checked"/>
-            <RadioButton x:Name="radiobtnStudent" Content="学生" IsChecked="True" Margin="-38.695,0,-20.816,214.566" FontSize="16" Checked="RadiobtnStudent_Checked" Height="33.237" VerticalAlignment="Bottom" Grid.Column="1"/>
-            <RadioButton x:Name="radiobtnAdmin" Content="管理员" IsChecked="True"  HorizontalAlignment="Right" Margin="0,117.349,60.368,0" Width="74.703"  FontSize="16" Checked="RadiobtnAdmin_Checked" Grid.Column="2" Height="30.46" VerticalAlignment="Top"/>
-            <Label Content="账号" Margin="351.215,170.611,90.681,0" VerticalAlignment="Top" FontSize="18"/>
-            <Label Content="密码" HorizontalAlignment="Left" Margin="349.665,241.692,0,0" VerticalAlignment="Top" FontSize="18" Width="53"/>
-            <TextBox x:Name="txtUserName" HorizontalAlignment="Left" Height="29" Margin="-74.176,168.613,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="203.481" FontSize="16" TextChanged="TxtUserName_TextChanged" Grid.Column="1" Grid.ColumnSpan="2"/>
-            <PasswordBox x:Name="txtPassword" HorizontalAlignment="Left" Height="29" Margin="-74.176,240.36,0,0"   VerticalAlignment="Top" Width="203.481" FontSize="16" PasswordChar="*" Grid.Column="1" Grid.ColumnSpan="2"/>
+            <RadioButton x:Name="radiobtnTeacher" Content="老师" IsChecked="True" Margin="456.122,114.854,84.612,316.842" FontSize="16" Checked="RadiobtnTeacher_Checked"/>
+            <RadioButton x:Name="radiobtnStudent" Content="学生" IsChecked="True" Margin="-34.455,0,-25.058,320.376" FontSize="16" Checked="RadiobtnStudent_Checked" Height="33.236" VerticalAlignment="Bottom" Grid.Column="1"/>
+            <RadioButton x:Name="radiobtnAdmin" Content="管理员" IsChecked="True"  HorizontalAlignment="Right" Margin="0,116.821,84.215,0" Width="74.703"  FontSize="16" Checked="RadiobtnAdmin_Checked" Grid.Column="2" Height="38.337" VerticalAlignment="Top"/>
+            <Label Content="账号" Margin="454.019,191.94,110.299,0" FontSize="18" VerticalAlignment="Top" Height="28.961"/>
+            <Label Content="密码" Margin="456.122,267.785,100.625,0" VerticalAlignment="Top" FontSize="18" Height="31.658"/>
+            <TextBox x:Name="txtUserName" HorizontalAlignment="Left" Height="32.788" Margin="-86.956,187.113,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="247.017" FontSize="16" TextChanged="TxtUserName_TextChanged" Grid.Column="1" Grid.ColumnSpan="2"/>
+            <PasswordBox x:Name="txtPassword" HorizontalAlignment="Left" Height="32.788" Margin="-86.956,263.655,0,0"   VerticalAlignment="Top" Width="247.017" FontSize="16" PasswordChar="*" Grid.Column="1" Grid.ColumnSpan="2"/>
             <!--TextWrapping="Wrap"  Text=""-->
             <Grid Background="{DynamicResource {x:Static SystemColors.InfoBrushKey}}" Grid.ColumnSpan="3" Height="51.411" VerticalAlignment="Top">
-                <Image Height="50" Width="62" Source="./Resources/notice.png" RenderTransformOrigin="0.58,0.429" Margin="-1.045,0,634.73,0"/>
+                <Image Height="50" Width="62" Source="./Resources/notice.png" RenderTransformOrigin="0.58,0.429" Margin="0,1.411,778,0"/>
                 <Canvas HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="1000"  Margin="84,0,-508,0">
                     <Canvas.Triggers>
                         <EventTrigger RoutedEvent="FrameworkElement.Loaded">
@@ -123,7 +123,7 @@
 
                 </Canvas>
             </Grid>
-            <Image x:Name="logo_png" Source="logo.png" Stretch="Fill" HorizontalAlignment="Left" Height="57.309" VerticalAlignment="Top" Width="64.542" Margin="31.167,90.5,0,0"/>
+            <Image x:Name="logo_png" Source="logo.png" Stretch="Fill" HorizontalAlignment="Left" Height="57.309" VerticalAlignment="Top" Width="64.542" Margin="39.344,97.849,0,0"/>
 
 
         </Grid>

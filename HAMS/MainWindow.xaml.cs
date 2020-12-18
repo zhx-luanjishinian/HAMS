@@ -41,6 +41,7 @@ namespace HAMS
         public MainWindow()
         {
             InitializeComponent();
+            this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             txtblockSysNotice.Text = ats.newSysNotice();
         }
 

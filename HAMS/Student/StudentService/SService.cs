@@ -66,8 +66,6 @@ namespace HAMS.Student.StudentService
             DateTime now = DateTime.Now;
             String message = "";
             //查到作业名说明已经交了作业
-
-
             if (table.Rows[0][3].ToString() != "")
             {
                 object score = table.Rows[0][2];
@@ -86,7 +84,7 @@ namespace HAMS.Student.StudentService
             {
                 //作业为空说明学生还未提交作业，此时再比较系统当前时间和老师设置的截止时间
                 //截止时间大于当前时间，说明截止时间还没有到
-                if (DateTime.Compare(dl, now) > 0)
+                if (dl> now)
                 {
                     message = "未完成";
                 }

@@ -38,7 +38,25 @@ namespace HAMS.Student.StudentView
             this.pngfile = pgfile;
             //设置该img控件的Source
             headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, pngfile))));
-
+            Dictionary<int, List<String>> info = ss.showAllHomeworkInfo(classId);
+            this.message = ss.judgeHomeworkStatus(account, notId, info[0][3].ToString());
+            if (message == "未完成")
+            {
+                btnDoHomework.Content = "作答";
+            }
+            if (message == "待批改")
+            {
+                btnDoHomework.Content = "修改";
+            }
+            if (message == "已批改")
+            {
+                btnDoHomework.Content = "查看";
+            }
+            if (message == "已逾期")
+            {
+                btnDoHomework.Content = "";
+            }
+            tbUserNameAc.Text = account + name;
             doHomeworkInfoShow();
         }
         public StuDoHomework(String account, String name, String notId, String classId,string pgfile)

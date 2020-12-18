@@ -60,8 +60,8 @@ namespace HAMS.Student.StudentView
                 //notTitle,content,notId,truDeadline
                //this.Message = ss.judgeHomeworkStatus(account, notId, info[i][3].ToString());
                 MainHomeworkInfo mhi = new MainHomeworkInfo(info[i][1], info[i][2]); //传入两个参数，一个是content,一个是notId
-                //mhi.tbHomeworkStatus.Text = this.Message;
-                
+                //mhi.tbHomeworkStatus.Text = ss.judgeHomeworkStatus(account, notId, info[i][3].ToString());
+
                 temp[0] = info[i][1]; //获取content的值
                 temp[1] = info[i][2]; //获取作业公告Id
                 temp[2] = info[info.Count - 1][0];//获取课堂名
@@ -78,8 +78,9 @@ namespace HAMS.Student.StudentView
                 notId = info[i][2].ToString();
                 //根据学生真实学号、还有作业Id、还有真实截止时间对作业状态进行判断
                 //返回值为作业状态字符串，将该字符串赋值给作业状态的textBlock
-                mhi.tbHomeworkStatus.Text = ss.judgeHomeworkStatus(account, notId, info[i][3].ToString());
-                this.Message = mhi.tbHomeworkStatus.Text;
+                
+                mhi.tbHomeworkStatus.Text = ss.judgeHomeworkStatus(account, notId, info[i][3].ToString());//获取该作业的状态
+                //this.Message = mhi.tbHomeworkStatus.Text;//将其赋值给message
                 mhi.btnHomRe1.Tag = temp;
                 mhi.btnCheckRank.Tag = temp;
                 mhi.btnHomeworkAnswer.Tag = temp;
@@ -104,6 +105,7 @@ namespace HAMS.Student.StudentView
             sdh.Show();
             this.Visibility = Visibility.Hidden;
             //如果作业逾期了的话，就跳转之后进行弹窗提示
+            MessageBox.Show(Message);
             if (Message == "已逾期")
             {
                 MessageBox.Show("该作业已逾期，无法再进行作答");

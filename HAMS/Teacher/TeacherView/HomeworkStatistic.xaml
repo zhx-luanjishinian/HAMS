@@ -53,14 +53,14 @@
             <Grid x:Name="ca" Height="230" Canvas.Top="70.8" Width="520" ToolTip="点击上方按钮显示统计图">
                 <vc:Chart x:Name="chart" />
             </Grid>
-            <Button Content="完成情况统计柱状图" Height="23" HorizontalAlignment="Left" x:Name="btnFinishStatistic" VerticalAlignment="Top" Width="120.333"  Canvas.Left="12.961" Canvas.Top="32" Background="#FFEECEE3" Click="btnFinishStatistic_Click" BorderBrush="{x:Null}" >
+            <Button Content="完成情况统计饼图" Height="23" HorizontalAlignment="Left" x:Name="btnFinishStatistic" VerticalAlignment="Top" Width="120.333"  Canvas.Left="12.961" Canvas.Top="32" Background="#FFEECEE3" Click="btnFinishStatistic_Click" BorderBrush="{x:Null}" >
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="3"></Setter>
                     </Style>
                 </Button.Resources>
             </Button>
-            <Button Content="成绩等级统计饼图" Height="23" HorizontalAlignment="Left" x:Name="btnScoreStatistic" VerticalAlignment="Top" Width="120.333"  Canvas.Left="171.467" Canvas.Top="32" Click="btnScoreStatistic_Click_1" BorderBrush="{x:Null}" Background="#FFCDD5F3" >
+            <Button Content="成绩等级统计柱状图" Height="23" HorizontalAlignment="Left" x:Name="btnScoreStatistic" VerticalAlignment="Top" Width="120.333"  Canvas.Left="171.467" Canvas.Top="32" Click="btnScoreStatistic_Click_1" BorderBrush="{x:Null}" Background="#FFCDD5F3" >
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="3"></Setter>

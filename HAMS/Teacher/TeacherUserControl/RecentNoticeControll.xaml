@@ -4,9 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HAMS.Teacher.TeacherView"
-             mc:Ignorable="d" Height="44" Width="194.4">
-    <Button x:Name="btnRecntNo1" Height="43.201" Width="194.776" OpacityMask="White" Background="#FFD2F5FA" >
-        <Canvas x:Name="RecentNotice1" Height="40" Width="193">
+             mc:Ignorable="d" Height="44" Width="245">
+    <Button x:Name="btnRecntNo1" Height="43.201" Width="245" OpacityMask="White" Background="#FFD2F5FA" >
+        <Canvas x:Name="RecentNotice1" Height="40" Width="245">
             <Image x:Name="image1" Height="20" Canvas.Left="10" Canvas.Top="10" Width="26.113" Source="/HAMS;component/Resources/notice1.png"/>
             <Label x:Name="labelNotName" Content="" Height="30" Canvas.Left="41.113" Canvas.Top="10" Width="85.133" FontSize="11"/>
         </Canvas>

@@ -27,8 +27,9 @@ namespace HAMS.Student.StudentView
         public String name { set; get; }
         public String notId { set; get; }
         public String classId { set; get; }
+        public String message { set; get; }
        
-        public StuSubmitHomework(String account, String name,String notId,String classId,string pgfile)//真实课堂号
+        public StuSubmitHomework(String account, String name,String notId,String classId,string pgfile,String message)//真实课堂号
         {
             InitializeComponent();
             this.account = account;
@@ -36,6 +37,8 @@ namespace HAMS.Student.StudentView
             this.notId = notId;
             this.classId = classId;
             this.pngfile = pgfile;
+            this.message = message;
+            
             //设置该img控件的Source
             headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, pngfile))));
 
@@ -54,7 +57,7 @@ namespace HAMS.Student.StudentView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                StuDoHomework sdh = new StuDoHomework(account,name,notId,classId,pngfile);
+                StuDoHomework sdh = new StuDoHomework(account,name,notId,classId,pngfile,message);
                 sdh.pngfile = this.pngfile;
                 sdh.Show();
                 // 隐藏自己(父窗体)

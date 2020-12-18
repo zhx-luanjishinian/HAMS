@@ -55,12 +55,50 @@ namespace HAMS.Student.StudentService
         {
             return sd.showAllHomeworkInfo(classSpecId);
         }
+        public String judgeHomeworkStatus(String account,String notId)
+        {
+            List<String> table = sd.defineHomeworkStatus(account, notId);
+            DateTime dl = Convert.ToDateTime(table[4]);
+            DateTime now = DateTime.Now;
+            String message = "";
+            //查到作业名说明已经交了作业
+
+
+            if (table[3].ToString() != "")
+            {
+                object score = table[2];
+                //然后判断老师是否已经批改过作业了,作业评分那一部分不为空，说明作业已经批改
+                if (score != DBNull.Value) //如果有分数的话
+                {
+                    message = "已批改";
+                }
+                else
+                {
+                    message = "待批改";
+                }
+            }
+            //没有提交作业的话，进行截止时间的判断
+            else
+            {
+                //作业为空说明学生还未提交作业，此时再比较系统当前时间和老师设置的截止时间
+                //截止时间大于当前时间，说明截止时间还没有到
+                if (DateTime.Compare(dl, now) > 0)
+                {
+                    message = "未完成";
+                }
+                else
+                {
+                    message = "已逾期";
+                }
+            }
+            return message;
+        }
         //判断学生的作业状态，根据作业状态呈现出不同的值,传入学号，作业公告id,还有该项作业的截止时间
         public String judgeHomeworkStatus(String account, String notId, String deadline)
         {
             //account, notId, info[i][3].ToString()真实截止时间
             //table表的列名homId,submitTime,score,homURLName
-            DataTable table = sd.defineHomeworkStatus(account, notId);
+            List<String> table = sd.defineHomeworkStatus(account, notId);
             //将timestamp时间戳转换为DateTime类型
             DateTime dl = Convert.ToDateTime(deadline);
             DateTime now = DateTime.Now;
@@ -68,9 +106,9 @@ namespace HAMS.Student.StudentService
             //查到作业名说明已经交了作业
 
 
-            if (table.Rows[0][3].ToString() != "")
+            if (table[3].ToString() != "")
             {
-                object score = table.Rows[0][2];
+                object score = table[2];
                 //然后判断老师是否已经批改过作业了,作业评分那一部分不为空，说明作业已经批改
                 if (score != DBNull.Value) //如果有分数的话
                 {
@@ -188,7 +226,7 @@ namespace HAMS.Student.StudentService
             return sd.updateComplexity(account, notId, complexity);
         }
         //更新自定义截止时间的信息
-        public bool updateDefDeadLine(String account, String notId, String defDead)
+        public BaseResult updateDefDeadLine(String account, String notId, String defDead)
         {
             return sd.updateDefDeadLine(account, notId, defDead);
         }

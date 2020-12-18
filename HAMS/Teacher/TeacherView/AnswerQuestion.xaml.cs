@@ -11,8 +11,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using HAMS.Student.StudentDao;
 using HAMS.Student.StudentService;
 using HAMS.Student.StudentUserControl;
+using HAMS.Student.StudentView;
 
 namespace HAMS.Teacher.TeacherView
 {
@@ -21,6 +23,7 @@ namespace HAMS.Teacher.TeacherView
     /// </summary>
     public partial class AnswerQuestion : Window
     {
+        SDao sd = new SDao();
         public String notId { set; get; }
         public String classSpecId { set; get; }
         public String name { set; get; }
@@ -104,7 +107,7 @@ namespace HAMS.Teacher.TeacherView
             //往数据库里插入数据
             if (ss.insertStudentQuestion(notId, stuControl.textBoxQuestion.Text))
             {
-                MessageBox.Show("successfully insert!");
+                MessageBox.Show("发送答疑成功！");
             }
             else
             {
@@ -121,6 +124,30 @@ namespace HAMS.Teacher.TeacherView
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
+            if(account != "")
+            {
+                int sex = int.Parse(sd.getSexByStuSpecId(account).Rows[0][0].ToString());
+                string pngfile;
+                //headImage是image控件名
+                if (sex == 0)
+                {
+                    pngfile = @"..\..\Resources\女生头像.png";
+
+                }
+                else
+                {
+                    pngfile = @"..\..\Resources\男生头像.png";
+
+                }
+                StuMainHomework sdh = new StuMainHomework(account, name, classSpecId, pngfile);
+                sdh.Show();
+                this.Visibility = System.Windows.Visibility.Hidden;
+
+            }
+            else
+            {
+
+            }
             //CheckingClassHomework newHomeworkNoticeCheck = new CheckingClassHomework();
             //newHomeworkNoticeCheck.Show();
             //// 隐藏自己(父窗体)

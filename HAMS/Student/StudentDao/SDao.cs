@@ -5,6 +5,7 @@ using System.Windows;
 using HAMS.DataUtil;
 using System.Collections;
 using System.Collections.Generic;
+using HAMS.ToolClass;
 
 namespace HAMS.Student.StudentDao
 {
@@ -133,8 +134,9 @@ namespace HAMS.Student.StudentDao
             return result;
         }
         //判断学生的作业状态,直接返回一张表,传入学生的学号以及具体的课堂号
-        public DataTable defineHomeworkStatus(String account,String notId)
+        public List<String> defineHomeworkStatus(String account,String notId)
         {
+            List<String> rtn = new List<String>();
             //查询stuId
             String sql = "select stuId from student where stuSpecId=@sid";
             MySqlParameter para = new MySqlParameter("@sid", account);
@@ -148,7 +150,17 @@ namespace HAMS.Student.StudentDao
             paras[0] = para1;
             paras[1] = para2;
             DataTable table1 = DataOperation.DataQuery(sql1, paras);
-            return table1;
+            //通过notId查truDeadline
+            String sql2 = "select truDeadline from notice where notId = @nid";
+            DataTable table2 = DataOperation.DataQuery(sql2, para1);
+            
+            for (int i=0;i<table1.Columns.Count;i++)
+            {
+
+                rtn.Add(table1.Rows[0][i].ToString());
+            }
+            rtn.Add(table2.Rows[0][0].ToString());
+            return rtn;
         }
         //查询dohomework主界面的信息，传入的直接就是作业的id
         public DataTable showDoHomeworkInfo(String notId)
@@ -177,7 +189,7 @@ namespace HAMS.Student.StudentDao
             //查询每门课程的具体名字
             String sql3 = "select className from class where classId=@cid";
             //定位到每个具体的作业，方便进行作业时间的统计
-            String sql4 = "select defDeadline,defComplexity from homework where notId=@nid and stuId=@sid";
+            String sql4 = "select defDeadline,defComplexity,homURL from homework where notId=@nid and stuId=@sid";
             //查询具体的作业情况
             for(int i = 0; i < table1.Rows.Count; i++)
             {
@@ -206,11 +218,12 @@ namespace HAMS.Student.StudentDao
                     paras[1] = parameter1;
                     DataTable table4 = DataOperation.DataQuery(sql4, paras);
                     //5,6添加每门作业的自定义截止时间，自定义复杂度
-                    //此处需要判断用户有没有自定义截止时间和自定义复杂度
+                    //此处需要判断用户有没有自定义截止时间和自定义复杂度,其实if判断语句可以不需要
                     if (table4.Rows.Count > 0)
                     {
                         ls.Add(table4.Rows[0][0].ToString());
                         ls.Add(table4.Rows[0][1].ToString());
+                        ls.Add(table4.Rows[0][2].ToString());
                     }
                     //如果还没有达到老师设置的截止时间就放在没有超过截止时间的里面
                     if (Convert.ToDateTime(table2.Rows[j][2].ToString()) > DateTime.Now) {  
@@ -281,8 +294,16 @@ namespace HAMS.Student.StudentDao
            
         }
         //进行自定义截至时间的更新
-        public bool updateDefDeadLine(String account,String notId,String defTime)
+        public BaseResult updateDefDeadLine(String account,String notId,String defTime)
         {
+            //首先根据notId查询真实的截止时间，必须保证用户设置的截止时间小于老师的截止时间
+            String sql2 = "select truDeadline from notice where notId=@nid";
+            MySqlParameter para4 = new MySqlParameter("@nid", int.Parse(notId));
+            DataTable table1 = DataOperation.DataQuery(sql2, para4);
+            if (Convert.ToDateTime(table1.Rows[0][0]) < Convert.ToDateTime(defTime))
+            {
+                return BaseResult.errorMsg("自定义的截止时间不能大于老师的截止时间");
+            }
             String sql = "select stuId from student where stuSpecId=@sid";
             MySqlParameter para = new MySqlParameter("@sid", account);
             DataTable table = DataOperation.DataQuery(sql, para);
@@ -294,7 +315,14 @@ namespace HAMS.Student.StudentDao
             paras[1] = para2;
             MySqlParameter para3 = new MySqlParameter("@nid", notId);
             paras[2] = para3;
-            return DataOperation.DataUpdate(sql1, paras);
+            if(DataOperation.DataUpdate(sql1, paras))
+            {
+                return BaseResult.ok();
+            }
+            else
+            {
+                return BaseResult.errorMsg("自定义时间设置失败");
+            }
         }
         //通过真实学号来获取学生Id号
         public DataTable GetStuIdByAccount(String account)

@@ -16,6 +16,7 @@ using HAMS.ToolClass;
 using HAMS.Teacher.TeacherService;
 using System.Data;
 using HAMS.Entity;
+using HAMS.Teacher.TeacherDao;
 
 namespace HAMS.Teacher.TeacherView
 {
@@ -25,6 +26,7 @@ namespace HAMS.Teacher.TeacherView
     public partial class TeacherHomeworkCheck : Window
     {
         private TService ts = new TService();
+        private TDao td = new TDao();
         private string homURL = ""; //存储待下载作业文件的路径
         private string homName; //存储待下载作业文件的文件名
         private int[] homIds;//存储作业Id列表
@@ -65,12 +67,25 @@ namespace HAMS.Teacher.TeacherView
 
 
 
-            ////StudentInfo存储的是学号+1空格+姓名，按空格切分即可获得学号与姓名
-            //string[] StudentInfos = StudentInfo.Split(' ');
-            //string StuId = StudentInfos[0];//获取当前待批改作业的学号
-            //string StuName = StudentInfos[1];//获取当前待批改作业的姓名
+            //StudentInfo存储的是学号+1空格+姓名，按空格切分即可获得学号与姓名
+            string[] StudentInfos = studentInfo.Split(' ');
+            string StuSpecId = StudentInfos[0];//获取当前待批改作业的学号
+            string StuName = StudentInfos[1];//获取当前待批改作业的姓名
             
+            int sex = int.Parse(td.getSexByStuSpecId(StuSpecId).Rows[0][0].ToString());
+            
+            //headImage是image控件名
+            if (sex == 0)
+            {
+                //设置该img控件的Source
+                StudentImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, @"..\..\Resources\女生头像.png"))));
 
+            }
+            else
+            {
+                StudentImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, @"..\..\Resources\男生头像.png"))));
+
+            }
 
             //根据homId获取该学生的作业备注并显示在控件上
             lbHomPostil.Content = ts.GetPostilByHomId(homId);

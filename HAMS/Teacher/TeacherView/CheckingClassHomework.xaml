@@ -221,14 +221,7 @@
                                 </LinearGradientBrush>
                             </TabItem.Background>
                             <Grid Background="#FFE5E5E5">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="0*"/>
-                                    <ColumnDefinition Width="108*"/>
-                                    <ColumnDefinition Width="14*"/>
-                                    <ColumnDefinition Width="62*"/>
-                                    <ColumnDefinition Width="35*"/>
-                                    <ColumnDefinition Width="294*"/>
-                                </Grid.ColumnDefinitions>
+                                
                                 <ListView x:Name="listViewUnCheck" Grid.ColumnSpan="6" Margin="0,0,-0.2,0.2">
                                     <ListView.View>
                                         <GridView>

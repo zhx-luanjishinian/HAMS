@@ -44,8 +44,9 @@ namespace HAMS.Teacher.TeacherView
         {
             InitializeComponent();
             this.pngfile = pgfile;
-            headImage.Source = new BitmapImage(new Uri(@pngfile));
-            
+            //设置该img控件的Source
+            headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, pngfile))));
+
             tbName.Text = tName;
             tbTeacherSpecId.Text = tNum;
             labelcClassName.Content = cName;

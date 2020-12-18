@@ -31,11 +31,7 @@
             </Button>
         </Canvas>
         <ListView x:Name="listViewQuestionAndAnswer" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="259" Margin="0,62,0,-0.2" Grid.RowSpan="3" VerticalAlignment="Top" Width="518">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
+           
         </ListView>
 
     </Grid>

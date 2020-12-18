@@ -24,10 +24,17 @@ namespace HAMS.Teacher.TeacherView
     {
         TDao an = new TDao();
         TeacherService.TService ts = new TeacherService.TService();
-        public BreifView(string courseNum,string courseName,string tId,string tName)
+       
+        public string pngfile;//头像路径
+        public BreifView(string courseNum,string courseName,string tId,string tName, string pgfile)
         {
             //生成基本信息
             InitializeComponent();
+            this.pngfile = pgfile;
+            
+            //设置该img控件的Source
+            headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, @pngfile))));
+
             labelCourseName.Content = courseName;
             labelCourseNumber.Content = courseNum;
             lbTeacherInfo.Content = tId;
@@ -123,7 +130,7 @@ namespace HAMS.Teacher.TeacherView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                TeacherMainForm newTeacherMainForm = new TeacherMainForm(lbTeacherInfo.Content.ToString(),lbTeacherInfo1.Content.ToString());
+                TeacherMainForm newTeacherMainForm = new TeacherMainForm(lbTeacherInfo.Content.ToString(),lbTeacherInfo1.Content.ToString(),this.pngfile);
                 newTeacherMainForm.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
@@ -134,7 +141,8 @@ namespace HAMS.Teacher.TeacherView
         {
             // 打开子窗体
             AnnounceNotice newAnnounceNotice = new AnnounceNotice(lbTeacherInfo.Content.ToString(),lbTeacherInfo1.Content.ToString(),labelCourseNumber.Content.ToString()
-                ,labelCourseName.Content.ToString());
+                ,labelCourseName.Content.ToString(), this.pngfile);
+            newAnnounceNotice.pngfile = this.pngfile;
             newAnnounceNotice.Show();
             // 隐藏自己(父窗体)
             this.Visibility = System.Windows.Visibility.Hidden;
@@ -155,7 +163,8 @@ namespace HAMS.Teacher.TeacherView
             string classSpecId = labelCourseNumber.Content.ToString();
             string className = labelCourseName.Content.ToString();
             //生成新界面
-            CheckingClassHomework newCheckingClassHomework = new CheckingClassHomework(homeworkTitle, homeworkDescription,teacherSpecId,teacherName,classSpecId,className);
+            CheckingClassHomework newCheckingClassHomework = new CheckingClassHomework(homeworkTitle, homeworkDescription,teacherSpecId,teacherName,classSpecId,className,this.pngfile);
+            newCheckingClassHomework.pngfile = this.pngfile;
             newCheckingClassHomework.Show();
             this.Visibility = System.Windows.Visibility.Hidden;
 

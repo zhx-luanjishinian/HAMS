@@ -24,10 +24,15 @@ namespace HAMS.Teacher.TeacherView
     /// </summary>
     public partial class TeacherMainForm : Window
     {
-       
-        public TeacherMainForm(string session,string tname)
+        
+        TService ts = new TService();
+        public string pngfile;
+        public TeacherMainForm(string session,string tname,string pgfile)
         {
             InitializeComponent();
+            this.pngfile = pgfile;
+            //设置该img控件的Source
+            headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, pngfile))));
             try
             {
                 if (session != null)
@@ -68,6 +73,8 @@ namespace HAMS.Teacher.TeacherView
             RecentNoticeControll[] arrayRecentNotice = new RecentNoticeControll[20];
             //动态生成控件
             DataTable tableRecentNotice;
+
+            
             //for (int j = 0; j < tableclassId.Rows.Count; j++)
             //{
             //    tableRecentNotice=td.getRecentNoticeByClassId(tableclassId.Rows[j][0].ToString());    //获得对应classId在notice表中的内容
@@ -133,7 +140,8 @@ namespace HAMS.Teacher.TeacherView
             //记录点击的是哪个控件
             TeachClass clickTeachClass = (TeachClass)sender;
             //动态加载BreifView界面，需要知道当前课程名，课程id，老师id,老师姓名
-            BreifView newBreif = new BreifView(clickTeachClass.labelClassId1.Content.ToString(), clickTeachClass.labelClassName1.Content.ToString(), tbTeacherInfo.Text, tbTeacherInfo1.Text);
+            BreifView newBreif = new BreifView(clickTeachClass.labelClassId1.Content.ToString(), clickTeachClass.labelClassName1.Content.ToString(), tbTeacherInfo.Text, tbTeacherInfo1.Text, this.pngfile);
+            newBreif.pngfile = this.pngfile;
             newBreif.Show();
             this.Visibility = System.Windows.Visibility.Hidden;
         }
@@ -159,7 +167,8 @@ namespace HAMS.Teacher.TeacherView
             string teacherName = tbTeacherInfo1.Text;
             string classSpecId = clickRectNotice.classSpecId;
             string className = clickRectNotice.className;
-            CheckingClassHomework newCheckingClassHomework =new CheckingClassHomework(homeworkTitle, description, teacherSpecId, teacherName, classSpecId, className);
+            CheckingClassHomework newCheckingClassHomework =new CheckingClassHomework(homeworkTitle, description, teacherSpecId, teacherName, classSpecId, className, this.pngfile);
+            newCheckingClassHomework.pngfile = this.pngfile;
             newCheckingClassHomework.Show();
             this.Visibility = System.Windows.Visibility.Hidden;
         }

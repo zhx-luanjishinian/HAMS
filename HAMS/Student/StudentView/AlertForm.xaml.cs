@@ -24,16 +24,20 @@ namespace HAMS.Student.StudentView
     /// </summary>
     public partial class AlertForm : Window
     {
-        
+        public string pngfile;
         public String account{set;get;}
         public String name { set; get; }
         private SService ss = new SService();
         DispatcherTimer disTimer = new DispatcherTimer();
-        public AlertForm(String account,String name)
+        public AlertForm(String account,String name,string pgfile)
         {
             InitializeComponent();
             this.account = account;
             this.name = name;
+            this.pngfile = pgfile;
+            //设置该img控件的Source
+            headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, pngfile))));
+
             this.textBlockUserId.Text = account + name;
             //展示预警信息
             showAlertInfo(ss.showAlertFormInfo(account));
@@ -178,7 +182,8 @@ namespace HAMS.Student.StudentView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                StudentMainForm smf = new StudentMainForm(account,name);
+                StudentMainForm smf = new StudentMainForm(account,name,pngfile);
+                smf.pngfile = this.pngfile;
                 smf.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;

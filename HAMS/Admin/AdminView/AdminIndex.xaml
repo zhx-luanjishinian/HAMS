@@ -18,7 +18,7 @@
                         <ImageBrush.ImageSource>
                             <DrawingImage>
                                 <DrawingImage.Drawing>
-                                    <ImageDrawing ImageSource="/HAMS;component/Resources/profile.png" Rect="100,200,110,100"></ImageDrawing>
+                                    <ImageDrawing ImageSource="/HAMS;component/Resources/admin.png" Rect="100,200,110,100"></ImageDrawing>
                                 </DrawingImage.Drawing>
                             </DrawingImage>
                         </ImageBrush.ImageSource>

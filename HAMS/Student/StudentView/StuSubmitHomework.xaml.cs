@@ -22,18 +22,23 @@ namespace HAMS.Student.StudentView
     /// </summary>
     public partial class StuSubmitHomework : Window
     {
+        public string pngfile;
         public String account { set; get; }
         public String name { set; get; }
         public String notId { set; get; }
         public String classId { set; get; }
        
-        public StuSubmitHomework(String account, String name,String notId,String classId)//真实课堂号
+        public StuSubmitHomework(String account, String name,String notId,String classId,string pgfile)//真实课堂号
         {
             InitializeComponent();
             this.account = account;
             this.name = name;
             this.notId = notId;
             this.classId = classId;
+            this.pngfile = pgfile;
+            //设置该img控件的Source
+            headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, pngfile))));
+
             tbUserNameAc.Text = account + name;
         }
 
@@ -49,7 +54,8 @@ namespace HAMS.Student.StudentView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                StuDoHomework sdh = new StuDoHomework(account,name,notId,classId);
+                StuDoHomework sdh = new StuDoHomework(account,name,notId,classId,pngfile);
+                sdh.pngfile = this.pngfile;
                 sdh.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
@@ -61,7 +67,8 @@ namespace HAMS.Student.StudentView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                StudentMainForm smf = new StudentMainForm(account,name);
+                StudentMainForm smf = new StudentMainForm(account,name,pngfile);
+                smf.pngfile = this.pngfile;
                 smf.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
@@ -73,7 +80,8 @@ namespace HAMS.Student.StudentView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                AlertForm af = new AlertForm(account,name);
+                AlertForm af = new AlertForm(account,name,this.pngfile);
+                af.pngfile = this.pngfile;
                 af.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;

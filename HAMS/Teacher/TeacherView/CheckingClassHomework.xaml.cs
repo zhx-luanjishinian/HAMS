@@ -37,18 +37,25 @@ namespace HAMS.Teacher.TeacherView
         private String[] stuNameUnfinisheds;//未完成作业学生的stuName数组
 
         private string notId;//当前作业公告Id
+        public string pngfile;//头像路径
+
+
 
         TeacherService.TService ts = new TeacherService.TService();
         TeacherDao.TDao td = new TeacherDao.TDao();
-        public CheckingClassHomework()
-        {
-            InitializeComponent();
-        }
+      
 
-        public CheckingClassHomework(string homeworkTitle, string description, string teacherSpecId, string teacherName, string classSpecId, string className)
+        public CheckingClassHomework(string homeworkTitle, string description, string teacherSpecId, string teacherName, string classSpecId, string className,string pgfile)
         {
             //生成基本信息
             InitializeComponent();
+            this.pngfile = pgfile;
+
+            //设置该img控件的Source
+            headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, @pngfile))));
+            // int sex = int.Parse(td.getSexByTeaSpecId(tbTeacherInfo.Text.ToString()).Rows[0][0].ToString());   //有问题
+
+
             lbNotTitle.Content = homeworkTitle;
             textBlockDescription.Text = description;
             tbTeacherInfo.Text = teacherSpecId;
@@ -57,11 +64,16 @@ namespace HAMS.Teacher.TeacherView
             tbClassInfo1.Text = className;
             labelHomeworkArrangeTime.Content = "发布时间：" + ts.PasteSubmitTimeInForm(classSpecId, homeworkTitle);
             //加载已批改的动态控件
+
             LoadCorrected(classSpecId, homeworkTitle);
             //加载待批改的动态控件
+
             LoadNeedCorrect(classSpecId, homeworkTitle);
             //加载未完成的动态控件
+
             LoadUnfinished(classSpecId, homeworkTitle);
+
+
             //获得notid
             DataTable tableClassId = td.getClassId(classSpecId);
             DataTable tableNotId = td.getNotIdByClassIdAndNotTitle(homeworkTitle, Convert.ToInt32(tableClassId.Rows[0][0]));
@@ -100,6 +112,11 @@ namespace HAMS.Teacher.TeacherView
             //定义动态生成控件的数组，长度与学生列表长一致
             StudentCheck[] checkedStudent = new StudentCheck[stuListLength];
 
+            //设置学生头像的不同性别
+
+            //设置该img控件的Source
+            headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, @pngfile))));
+
             //定义存储学生列表对应homId的int数组
             homIdCorrecteds = new int[stuListLength];
             //定义存储学生列表对应stuId的int数组
@@ -109,6 +126,9 @@ namespace HAMS.Teacher.TeacherView
             for (int i = 0; i < stuListLength; i++)
             {
                 checkedStudent[i] = new StudentCheck(i);
+
+
+               
                 String stuId = table3.Rows[i][0].ToString();
                 
 
@@ -118,6 +138,21 @@ namespace HAMS.Teacher.TeacherView
                 
                 checkedStudent[i].lbStudentInfo2.Content = table4.Rows[0][1].ToString();
                 stuNameCorrecteds[i] = table4.Rows[0][1].ToString();
+                //查到当前学生的性别
+                DataTable table10 = td.getSexByStuSpecId(table4.Rows[0][0].ToString());
+                if( Convert.ToInt32( table10.Rows[0][0])==1)
+                {
+                    checkedStudent[i].pngfile = @"..\..\Resources\男生头像.png"; 
+                }
+                else
+                {
+                    checkedStudent[i].pngfile = @"..\..\Resources\女生头像.png";
+                }
+                
+
+
+                //设置该img控件的Source
+                checkedStudent[i].headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, @checkedStudent[i].pngfile))));
 
                 checkedStudent[i].lbHomeworkState1.Content = "已批改";
                 //为什么这里不能向listview中加数据
@@ -151,7 +186,8 @@ namespace HAMS.Teacher.TeacherView
             {
                 ifCorrect = true;
                 //需要传入的是已批改的homIds列表
-                TeacherHomeworkCheck newTeacherHomeworkCheck = new TeacherHomeworkCheck(homIdCorrecteds, index, notTitle, studentInfo, ifCorrect);
+                TeacherHomeworkCheck newTeacherHomeworkCheck = new TeacherHomeworkCheck(homIdCorrecteds, index, notTitle, studentInfo, this.pngfile,ifCorrect);
+                newTeacherHomeworkCheck.pngfile = this.pngfile;
                 newTeacherHomeworkCheck.className = tbClassInfo1.Text;
                 newTeacherHomeworkCheck.classSpecId = tbClassInfo.Text;
                 newTeacherHomeworkCheck.description = textBlockDescription.Text;
@@ -161,7 +197,7 @@ namespace HAMS.Teacher.TeacherView
             {
                 ifCorrect = false;
                 //需要传入的是待批改的homIds列表
-                TeacherHomeworkCheck newTeacherHomeworkCheck = new TeacherHomeworkCheck(homIdNeedCorrects, index, notTitle, studentInfo, ifCorrect);
+                TeacherHomeworkCheck newTeacherHomeworkCheck = new TeacherHomeworkCheck(homIdNeedCorrects, index, notTitle, studentInfo,this.pngfile, ifCorrect);
                 newTeacherHomeworkCheck.className = tbClassInfo1.Text;
                 newTeacherHomeworkCheck.classSpecId = tbClassInfo.Text;
                 newTeacherHomeworkCheck.description = textBlockDescription.Text;
@@ -206,6 +242,23 @@ namespace HAMS.Teacher.TeacherView
 
                 checkedStudent[i].lbStudentInfo2.Content = table8.Rows[0][1].ToString();
                 stuNameNeedCorrects[i] = table8.Rows[0][1].ToString();
+
+                //查到当前学生的性别
+                DataTable table10 = td.getSexByStuSpecId(table8.Rows[0][0].ToString());
+                
+                if (Convert.ToInt32(table10.Rows[0][0]) == 1)
+                {
+                    checkedStudent[i].pngfile = @"..\..\Resources\男生头像.png";
+                }
+                else
+                {
+                    checkedStudent[i].pngfile = @"..\..\Resources\女生头像.png";
+                }
+
+
+                //设置该img控件的Source
+                checkedStudent[i].headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, @checkedStudent[i].pngfile))));
+
                 checkedStudent[i].lbHomeworkState1.Content = "待批改";
                 checkedStudent[i].btnHomeworkCorrect1.Content = "批改作业";//修改button名称
                 //为什么这里不能向listview中加数据
@@ -252,6 +305,20 @@ namespace HAMS.Teacher.TeacherView
                 checkedStudent[i].lbStudentInfo2.Content = table4.Rows[0][1].ToString();
                 stuNameUnfinisheds[i] = table4.Rows[0][1].ToString();
 
+                //查到当前学生的性别
+                DataTable table10 = td.getSexByStuSpecId(table4.Rows[0][0].ToString());
+                if (Convert.ToInt32(table10.Rows[0][0]) == 1)
+                {
+                    checkedStudent[i].pngfile = @"..\..\Resources\男生头像.png";
+                }
+                else
+                {
+                    checkedStudent[i].pngfile = @"..\..\Resources\女生头像.png";
+                }
+                //设置该img控件的Source
+                checkedStudent[i].headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, @checkedStudent[i].pngfile))));
+
+
                 checkedStudent[i].lbHomeworkState1.Content = "";
                 checkedStudent[i].btnHomeworkCorrect1.Content = "";//修改button名称
                 //为什么这里不能向listview中加数据
@@ -271,7 +338,8 @@ namespace HAMS.Teacher.TeacherView
 
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
-            BreifView newBreifView = new BreifView(tbClassInfo.Text.ToString(),tbClassInfo1.Text.ToString(),tbTeacherInfo.Text.ToString(),tbTeacherInfo1.Text.ToString());
+            BreifView newBreifView = new BreifView(tbClassInfo.Text.ToString(),tbClassInfo1.Text.ToString(),tbTeacherInfo.Text.ToString(),tbTeacherInfo1.Text.ToString(),this.pngfile);
+            newBreifView.pngfile = this.pngfile;
             newBreifView.Show();
             this.Visibility = System.Windows.Visibility.Hidden;
         }
@@ -280,6 +348,7 @@ namespace HAMS.Teacher.TeacherView
         {
             AnswerQuestion newAnswerQuestion = new AnswerQuestion(tbClassInfo1.Text);
             LoadQuestionAndAnswer(notId, newAnswerQuestion);
+            newAnswerQuestion.btnSubmitQuestion.Visibility = Visibility.Hidden;
             newAnswerQuestion.Show();
 
            // this.Visibility = System.Windows.Visibility.Hidden;
@@ -305,7 +374,8 @@ namespace HAMS.Teacher.TeacherView
 
         private void btnHomeworkStatistic_Click(object sender, RoutedEventArgs e)
         {
-            HomeworkStatistic hs = new HomeworkStatistic();
+            HomeworkStatistic hs = new HomeworkStatistic(this.pngfile);
+            hs.pngfile = this.pngfile;
             hs.tSpecId = tbClassInfo.Text;
             hs.tName = tbClassInfo1.Text;
             hs.tbNotTitle.Text = lbNotTitle.Content.ToString();
@@ -335,12 +405,24 @@ namespace HAMS.Teacher.TeacherView
                 newStudentAskQuestion[i] = new StudentAskQuestion();
                 newStudentAskQuestion[i].lbStuName.Content = "本课堂学生";
                 newStudentAskQuestion[i].textBoxQuestion.Text = table1.Rows[i][2].ToString();  //有问题
+                newStudentAskQuestion[i].tbResponse.Text = table1.Rows[i][3].ToString();
                 newStudentAskQuestion[i].btnComment.Click += new RoutedEventHandler(btnSubmitQuestion_Click);
                 newStudentAskQuestion[i].btnInsert.Click += new RoutedEventHandler(btnbtnInsert_Click);
                 newStudentAskQuestion[i].lbResponseName.Content = tbTeacherInfo1.Text;    //给老师姓名赋值
                 newAnswerQuestion.listViewQuestionAndAnswer.Items.Add(newStudentAskQuestion[i]);
                 //newAnswerQuestion.btnSubmitQuestion.Click += new RoutedEventHandler(btnSubmitQuestion_Click); //定义答疑按钮的事件
-                newStudentAskQuestion[i].teacherResponse.Visibility = Visibility.Hidden;
+                if(newStudentAskQuestion[i].tbResponse.Text!="")
+                {
+                    newStudentAskQuestion[i].teacherResponse.Visibility = Visibility.Visible;
+                    newStudentAskQuestion[i].tbResponse.IsReadOnly = true;
+                    newStudentAskQuestion[i].btnComment.Visibility = Visibility.Hidden;
+                    newStudentAskQuestion[i].btnInsert.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    newStudentAskQuestion[i].teacherResponse.Visibility = Visibility.Hidden;
+                }
+               
             }
 
         }
@@ -409,14 +491,26 @@ namespace HAMS.Teacher.TeacherView
                         sc.lbStudentInfo2.Content = stuNameCorrecteds[i1];
                         sc.lbHomeworkState1.Content = "已批改";
                         sc.btnHomeworkCorrect1.Content = "检查作业";//修改button名称
-                        
+                        //查到当前学生的性别
+                        DataTable tbSex = td.getSexByStuSpecId(stuSpecIdCorrecteds[i1]);
+                        if (Convert.ToInt32(tbSex.Rows[0][0]) == 1)
+                        {
+                            sc.pngfile = @"..\..\Resources\男生头像.png";
+                        }
+                        else
+                        {
+                            sc.pngfile = @"..\..\Resources\女生头像.png";
+                        }
+                        //设置该img控件的Source
+                        sc.headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, @sc.pngfile))));
+
                         listViewChecked.Items.Add(sc);                                                           
                         sc.btnHomeworkCorrect1.Click += new RoutedEventHandler(btnHomeworkCorrect1_Click);
                         CorrectedNum++; 
                         
                     }
                 }
-                if(CorrectedNum >= 0)
+                if(CorrectedNum > 0)//查找到了已批改的人
                 {
                     TbItemChecked.IsSelected = true;
                 }
@@ -433,16 +527,28 @@ namespace HAMS.Teacher.TeacherView
                         sc.lbStudentInfo2.Content = stuNameNeedCorrects[i2];
                         sc.lbHomeworkState1.Content = "待批改";
                         sc.btnHomeworkCorrect1.Content = "批改作业";//修改button名称
-                        
-                        
-                        listViewChecked.Items.Add(sc);
+                        //查到当前学生的性别
+                        DataTable tbSex = td.getSexByStuSpecId(stuSpecIdNeedCorrects[i2]);
+                        if (Convert.ToInt32(tbSex.Rows[0][0]) == 1)
+                        {
+                            sc.pngfile = @"..\..\Resources\男生头像.png";
+                        }
+                        else
+                        {
+                            sc.pngfile = @"..\..\Resources\女生头像.png";
+                        }
+                        //设置该img控件的Source
+                        sc.headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, @sc.pngfile))));
+
+
+                        listViewUnCheck.Items.Add(sc);
                         sc.btnHomeworkCorrect1.Click += new RoutedEventHandler(btnHomeworkCorrect1_Click);
 
                         UnCorrectNum++;
                         
                    }
                  }
-                if (UnCorrectNum >= 0)
+                if (UnCorrectNum > 0)//查找到了待批改的人
                 {
                     if (TbItemChecked.IsSelected != true)//如果没有在已批改作业中找到该学生，才设置待批改属性值为true
                     {
@@ -462,7 +568,20 @@ namespace HAMS.Teacher.TeacherView
                         sc.lbStudentInfo2.Content = stuNameUnfinisheds[i3];
                         sc.lbHomeworkState1.Content = "";
                         sc.btnHomeworkCorrect1.Content = "";//修改button名称
+                        //查到当前学生的性别
+                        DataTable tbSex = td.getSexByStuSpecId(stuSpecIdUnfinisheds[i3]);
                         
+                        if (int.Parse(tbSex.Rows[0][0].ToString()) == 1)
+                        {
+                            sc.pngfile = @"..\..\Resources\男生头像.png";
+                        }
+                        else
+                        {
+                            sc.pngfile = @"..\..\Resources\女生头像.png";
+                        }
+                        //设置该img控件的Source
+                        sc.headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, @sc.pngfile))));
+
 
                         listViewUnFinish.Items.Add(sc);
                         sc.btnHomeworkCorrect1.Click += new RoutedEventHandler(btnHomeworkCorrect1_Click);
@@ -470,7 +589,7 @@ namespace HAMS.Teacher.TeacherView
                         UnFinishNum++;
                      }
                  }
-                if (UnFinishNum >= 0)
+                if (UnFinishNum > 0)//查找到了未完成的人
                 {
                     if (TbItemChecked.IsSelected != true || TbItemUnCheck.IsSelected != true)//如果没有在已批改作业或者待批改中找到该学生，才设置未完成属性值为true
                     {

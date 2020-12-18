@@ -10,6 +10,8 @@ using HAMS.Entity;
 using System.Windows.Forms;
 using HAMS.Teacher.TeacherUserControl;
 using HAMS.Teacher.TeacherView;
+using System.Windows.Media.Imaging;
+
 namespace HAMS.Teacher.TeacherService
 {
     class TService
@@ -386,6 +388,22 @@ namespace HAMS.Teacher.TeacherService
         {
             List<Dictionary<String, int>> results = td.getHomeNumAndScore(notId);
             return results[0];
+        }
+
+        //根据sex，设置img控件的头像
+        public BitmapImage getProfileBySex(int sex)
+        {
+            if (sex == 0)
+            {
+                string pngfile = "../../Resources/女教师.png";
+                return new BitmapImage(new Uri(@pngfile));
+            }
+            else
+            {
+                string pngfile = "../../Resources/男教师.png";
+                return new BitmapImage(new Uri(@pngfile));
+            }
+
         }
 
 

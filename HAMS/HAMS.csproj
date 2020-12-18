@@ -566,9 +566,6 @@
     <Resource Include="logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Teacher\TeacherView\男教师.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

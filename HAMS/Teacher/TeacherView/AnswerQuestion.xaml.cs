@@ -41,7 +41,9 @@ namespace HAMS.Teacher.TeacherView
         }
         public AnswerQuestion(String className)
         {
+            InitializeComponent();
             labelClassName.Content = className;
+           
         }
         private void initAskView(String notId)
         {

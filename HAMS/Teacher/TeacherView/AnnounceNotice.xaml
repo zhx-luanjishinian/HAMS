@@ -11,8 +11,8 @@
         <Grid Margin="0,0,0,-1.5" Height="577" Width="1026">
             <Canvas Margin="0,0,0,489.048" Height="37.952" VerticalAlignment="Bottom">
                 <Border BorderBrush="Black" BorderThickness="0,0,0,1" Height="37.552" Canvas.Top="-2.552" Width="1026" Background="LightPink"/>
-                <TextBlock x:Name="lbClassSpecId"  Width="136" Height="20" Canvas.Left="51.708" Canvas.Top="9" FontSize="14" FontWeight="Bold" Text="Z004530B1300720"/>
-                <Label x:Name="labelcClassName" Content="R语言" Width="47.6" Height="30" Canvas.Left="204.8" Canvas.Top="5" FontSize="14" FontWeight="Bold"/>
+                <TextBlock x:Name="lbClassSpecId"  Width="136" Height="20" Canvas.Left="63.8" Canvas.Top="7.952" FontSize="14" FontWeight="Bold" Text="Z004530B1300720"/>
+                <Label x:Name="labelcClassName" Content="R语言" Width="47.6" Height="30" Canvas.Left="216.875" Canvas.Top="3.952" FontSize="14" FontWeight="Bold"/>
                 <Button x:Name="btnReturn" Width="36.708" BorderThickness="0" Height="25" Canvas.Left="10" Canvas.Top="5" Click="btnReturn_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="返回.png"/>
@@ -30,11 +30,13 @@
                 </Canvas>
                 <Canvas Height="334.893" Canvas.Top="86.193" Width="493.501" Canvas.Left="528.899">
                     <Label x:Name="deadLine" Content="截止时间" Height="28" Canvas.Left="10" Width="62.6" Canvas.Top="10"/>
-                    <Calendar x:Name="calTruDeadline" Height="329.019" Canvas.Left="156.315" Width="314.596" BorderThickness="1,1,1,2" RenderTransformOrigin="0.497,0.417"/>
+                    <Border Height="329.019" Canvas.Left="152.29" Width="322.646" BorderThickness="1" Background="#FFDDDDDD" >
+                        <Calendar x:Name="calTruDeadline" BorderThickness="1,1,1,2" RenderTransformOrigin="0.497,0.417" Background="White" Margin="0,-1,2.22,0" HorizontalAlignment="Right" Width="314.596" Height="328.019" VerticalAlignment="Bottom"/>
+                    </Border>
                 </Canvas>
                 <Canvas Height="32.425" Canvas.Top="10" Width="503.161" Canvas.Left="519.239">
-                    <Label x:Name="attachment" Content="上传附件（可选）" Height="26.233" Canvas.Left="10" Canvas.Top="2.167" Width="112"/>
-                    <Button x:Name="btnUpload" Height="28.4" Canvas.Left="184.068" Width="190.337" Background="White" BorderThickness="0" Click="btnUpload_Click" Canvas.Top="2.167">
+                    <Label x:Name="attachment" Content="上传附件（可选）" Height="26.233" Canvas.Left="22.075" Canvas.Top="2.167" Width="112"/>
+                    <Button x:Name="btnUpload" Height="28.4" Canvas.Left="167.968" Width="167.796" Background="White" BorderThickness="0" Click="btnUpload_Click" Canvas.Top="2.167">
                         <Grid Height="28" Width="166.186">
 
                             <Image x:Name="image" Source="/HAMS;component/Resources/链接.png" d:LayoutOverrides="HorizontalAlignment, TopMargin, BottomMargin" HorizontalAlignment="Left" Width="25.111" Height="28" VerticalAlignment="Top"/>
@@ -45,10 +47,10 @@
                 </Canvas>
             </Canvas>
             <Canvas Height="50" Background="LightBlue" Margin="0,0,0,527" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="1026" d:LayoutOverrides="LeftMargin, RightMargin">
-                <TextBlock x:Name="tbTeacherSpecId" Height="20" Canvas.Left="56" Canvas.Top="21" Width="38.934" TextAlignment="Center" FontSize="13" Text="Z001 "/>
-                <TextBlock x:Name="tbName" Height="19" Canvas.Left="94.934" Canvas.Top="21" Width="57.2" TextAlignment="Center" FontSize="13"><Run Text="刘树栋"/></TextBlock>
+                <TextBlock x:Name="tbTeacherSpecId" Height="20" Canvas.Left="56" Canvas.Top="21" Width="38.934" TextAlignment="Center" FontSize="16" Text="Z001 " FontWeight="Bold"/>
+                <TextBlock x:Name="tbName" Height="19" Canvas.Left="111.034" Canvas.Top="21" Width="65.25" TextAlignment="Center" FontSize="16" FontWeight="Bold"><Run Text="刘树栋"/></TextBlock>
                 <Image x:Name="headImage" Source="../../Resources/男教师.png" Height="37" VerticalAlignment="Top" Width="41"  RenderTransformOrigin="1.894,0.568" Canvas.Left="10" Canvas.Top="10"/>
-                <Image x:Name="image1" Height="50" Canvas.Left="869.247" Width="43.8" Source="/HAMS;component/logo.png" Stretch="Fill"/>
+                <Image x:Name="image1" Height="50" Canvas.Left="895.813" Width="43.8" Source="/HAMS;component/logo.png" Stretch="Fill"/>
                 <Button x:Name="btnExit" Background="{x:Null}" RenderTransformOrigin="0.622,0.945" Height="50" Foreground="#FF151111" BorderBrush="{x:Null}" Click="btnExit_Click" Canvas.Left="962" Width="64" d:LayoutOverrides="HorizontalAlignment">
                     <StackPanel>
                         <Image x:Name="exit1" Width="28" Height="23.907" Source="/HAMS;component/Resources/resizeApi.png"/>
@@ -56,7 +58,7 @@
                     </StackPanel>
                 </Button>
             </Canvas>
-            <Button x:Name="btnAnnounce" Content="发布" Height="25.8" Click="btnAnnounce_Click" BorderBrush="LightBlue" Background="LightBlue" Margin="470.964,0,470.236,22.075" VerticalAlignment="Bottom">
+            <Button x:Name="btnAnnounce" Content="发布" Height="25.8" Click="btnAnnounce_Click" BorderBrush="LightBlue" Background="LightBlue" Margin="501.555,0,439.645,32.54" VerticalAlignment="Bottom">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="3"/>

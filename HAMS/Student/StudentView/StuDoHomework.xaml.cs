@@ -29,19 +29,23 @@ namespace HAMS.Student.StudentView
         public String notId { set; get; }
         public String classId { set; get; }
         public String message { set; get; }
-        public StuDoHomework(String account, String name,string pgfile)
+        public StuDoHomework(String account, String name,String notId,String classSpecId,string pgfile)
         {
             InitializeComponent();
             this.account = account;
             this.name = name;
+            this.notId = notId;
+            this.classId = classSpecId;
             tbUserNameAc.Text = account + name;
             this.pngfile = pgfile;
             //设置该img控件的Source
             headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, pngfile))));
-
+            this.message = ss.judgeHomeworkStatus(account, notId);
             doHomeworkInfoShow();
+
         }
-        public StuDoHomework(String account, String name, String notId, String classId,string pgfile)
+        
+        public StuDoHomework(String account, String name, String notId, String classId,string pgfile,String message)
         {
             InitializeComponent();
             this.account = account;
@@ -54,20 +58,20 @@ namespace HAMS.Student.StudentView
 
 
             Dictionary<int, List<String>> info = ss.showAllHomeworkInfo(classId);
-            this.message = ss.judgeHomeworkStatus(account, notId, info[0][3].ToString());
+            this.message = message;
             if (message == "未完成")
             {
                 btnDoHomework.Content = "作答";
             }
-            if (message == "待批改")
+           else if (message == "待批改")
             {
                 btnDoHomework.Content = "修改";
             }
-            if (message == "已批改")
+           else if (message == "已批改")
             {
                 btnDoHomework.Content = "查看";
             }
-            if (message == "已逾期")
+           else if (message == "已逾期")
             {
                 btnDoHomework.Content = "";
             }
@@ -177,7 +181,7 @@ namespace HAMS.Student.StudentView
             if (content == "修改" || content== "作答")//里面是验证函数
             {
                 // 打开子窗体
-                StuSubmitHomework ssh = new StuSubmitHomework(account,name,notId,classId,pngfile);//真实课堂号
+                StuSubmitHomework ssh = new StuSubmitHomework(account,name,notId,classId,pngfile,message);//真实课堂号
                 ssh.pngfile = this.pngfile;
                 ssh.Show();
                 // 隐藏自己(父窗体)

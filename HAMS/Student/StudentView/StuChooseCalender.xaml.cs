@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HAMS.Student.StudentService;
+using HAMS.ToolClass;
 
 namespace HAMS.Student.StudentView
 {
@@ -32,15 +33,17 @@ namespace HAMS.Student.StudentView
         }
         public bool insertDefDeadLine(String account,String notId)
         {
-            String time = tpStartDate.Text +" "+ tpStartTime.Text;
-            if (ss.updateDefDeadLine(account, notId, time))
+            String time = tpStartDate.Text + " " + tpStartTime.Text;
+            BaseResult br = ss.updateDefDeadLine(account, notId, time);
+            
+            if (br.code==0)
             {
                 MessageBox.Show("自定义截止时间设置成功");
                 return true;
             }
             else
             {
-                MessageBox.Show("自定义截止时间设置失败");
+                MessageBox.Show(br.msg);
                 return false;
             }
         }

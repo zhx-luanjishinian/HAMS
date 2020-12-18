@@ -346,8 +346,8 @@ namespace HAMS.Teacher.TeacherView
 
         private void btnAnswerQuestion_Click(object sender, RoutedEventArgs e)
         {
-            AnswerQuestion newAnswerQuestion = new AnswerQuestion(tbClassInfo1.Text);
-            LoadQuestionAndAnswer(notId, newAnswerQuestion);
+            AnswerQuestion newAnswerQuestion = new AnswerQuestion(lbNotTitle.Content.ToString());   //这里有问题
+            LoadQuestionAndAnswer(notId, newAnswerQuestion);   //加载疑问和回答
             newAnswerQuestion.btnSubmitQuestion.Visibility = Visibility.Hidden;
             newAnswerQuestion.Show();
 
@@ -398,8 +398,8 @@ namespace HAMS.Teacher.TeacherView
             //进入答疑界面时加载目前已经有的疑问和解答
             DataTable table1 = td.getComment(noteId);
             //List<StudentAskQuestion> list = new List<StudentAskQuestion>();  //生成StudentAskQuestion动态数组
-            //MessageBox.Show(table1.Rows.Count.ToString());    //
-            StudentAskQuestion[] newStudentAskQuestion = new StudentAskQuestion[50];
+            MessageBox.Show(table1.Rows.Count.ToString());    //
+            StudentAskQuestion[] newStudentAskQuestion = new StudentAskQuestion[100];
             for (int i = 0; i < table1.Rows.Count; i++)
             {
                 newStudentAskQuestion[i] = new StudentAskQuestion();
@@ -449,11 +449,11 @@ namespace HAMS.Teacher.TeacherView
             //往数据库里插入数据
             if (flag == true)
             {
-                MessageBox.Show("successfully insert!");
+                MessageBox.Show("发送成功");
             }
             else
             {
-                MessageBox.Show("failed!");
+                MessageBox.Show("发送失败");
             }
             stuControl.tbResponse.IsReadOnly = true;
         }

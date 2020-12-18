@@ -137,6 +137,7 @@ namespace HAMS.Student.StudentView
             {
                 // 打开子窗体
                 StuMainHomework smh = new StuMainHomework(account,name,classId,pngfile);
+                smh.pngfile = this.pngfile;
                 smh.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
@@ -149,6 +150,7 @@ namespace HAMS.Student.StudentView
             {
                 // 打开子窗体
                 StudentMainForm smf= new StudentMainForm(account,name,pngfile);
+                smf.pngfile = this.pngfile;
                 smf.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
@@ -161,6 +163,7 @@ namespace HAMS.Student.StudentView
             {
                 // 打开子窗体
                 AlertForm af = new AlertForm(account,name,pngfile);
+                af.pngfile = this.pngfile;
                 af.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
@@ -175,6 +178,7 @@ namespace HAMS.Student.StudentView
             {
                 // 打开子窗体
                 StuSubmitHomework ssh = new StuSubmitHomework(account,name,notId,classId,pngfile);//真实课堂号
+                ssh.pngfile = this.pngfile;
                 ssh.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
@@ -183,6 +187,7 @@ namespace HAMS.Student.StudentView
             {
                 // 打开子窗体
                 HomeworkSubmit hs = new HomeworkSubmit(account, name, notId, classId,pngfile);//真实课堂号
+                hs.pngfile = this.pngfile;
                 hs.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;

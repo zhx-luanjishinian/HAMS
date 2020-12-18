@@ -474,6 +474,15 @@ namespace HAMS.Student.StudentDao
             paras[1] = para1;
             return DataOperation.DataAdd(sql, paras);
         }
-        
+        //通过学生真实学号来获取头像信息
+        public DataTable getSexByStuSpecId(string StuSpecId)
+        {
+            //根据teacherSpecId查询sex
+            String sql = "select sex from student where StuSpecId=@ssid";
+            MySqlParameter parameter = new MySqlParameter("@ssid", StuSpecId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);  //查到学生id,分数,作业路径
+            return table;
+        }
+
     }
 }

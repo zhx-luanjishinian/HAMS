@@ -183,6 +183,7 @@ namespace HAMS.Student.StudentView
             {
                 // 打开子窗体
                 StudentMainForm smf = new StudentMainForm(account,name,pngfile);
+                smf.pngfile = this.pngfile;
                 smf.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;

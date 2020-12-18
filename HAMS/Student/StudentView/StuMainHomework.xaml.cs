@@ -31,16 +31,21 @@ namespace HAMS.Student.StudentView
         public String notId { set; get; }
         public String classId { set; get; }
         public String Message { set; get; }
-        public StuMainHomework(String account,String name,String classId)//真实课堂号
+        public string pngfile;
+        public StuMainHomework(String account, String name, String classId, string pngfile)//真实课堂号
         {
             InitializeComponent();
             this.account = account;
             this.name = name;
             this.classId = classId;
+            this.pngfile = pngfile;
             tbuserNameAc.Text = account + name;
-            
+            //设置该img控件的Source
+            headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, pngfile))));
+
             MainHomeworkShow(classId);
         }
+
 
         //显示主页面，加载动态控件,参数是classId
         public void MainHomeworkShow(String clId)
@@ -92,7 +97,8 @@ namespace HAMS.Student.StudentView
         {
             Button mh = (Button)sender;
             String[] info = (String[])mh.Tag;
-            StuDoHomework sdh = new StuDoHomework(account, name, info[1], classId);//这里的classId是真实课堂号
+            StuDoHomework sdh = new StuDoHomework(account, name, info[1], classId,this.pngfile);//这里的classId是真实课堂号
+            sdh.pngfile = this.pngfile;
             //String account, String name,String notId, String classId,String message
             sdh.Show();
             this.Visibility = Visibility.Hidden;
@@ -107,7 +113,8 @@ namespace HAMS.Student.StudentView
         {
             Button mh = (Button)sender;
             String[] info = (String[])mh.Tag;
-            StuHomeworkRank shr = new StuHomeworkRank(account,name,info[1], classId);
+            StuHomeworkRank shr = new StuHomeworkRank(account,name,info[1], classId, this.pngfile);
+            shr.pngfile = this.pngfile;
             shr.Show();
             this.Visibility = Visibility.Hidden;
         }
@@ -131,7 +138,8 @@ namespace HAMS.Student.StudentView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                StudentMainForm smf = new StudentMainForm(account,name);
+                StudentMainForm smf = new StudentMainForm(account,name,this.pngfile);
+                smf.pngfile = this.pngfile;
                 smf.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
@@ -143,7 +151,8 @@ namespace HAMS.Student.StudentView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                StudentMainForm smh = new StudentMainForm(account, name);
+                StudentMainForm smh = new StudentMainForm(account, name, this.pngfile);
+                smh.pngfile = this.pngfile;
                 smh.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;
@@ -160,7 +169,8 @@ namespace HAMS.Student.StudentView
             if (true)//里面是验证函数
             {
                 // 打开子窗体
-                AlertForm af = new AlertForm(account,name);
+                AlertForm af = new AlertForm(account,name,this.pngfile);
+                af.pngfile = this.pngfile;
                 af.Show();
                 // 隐藏自己(父窗体)
                 this.Visibility = System.Windows.Visibility.Hidden;

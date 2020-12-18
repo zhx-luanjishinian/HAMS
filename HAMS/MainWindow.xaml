@@ -103,7 +103,6 @@
             <PasswordBox x:Name="txtPassword" HorizontalAlignment="Left" Height="32.788" Margin="-86.956,263.655,0,0"   VerticalAlignment="Top" Width="247.017" FontSize="16" PasswordChar="*" Grid.Column="1" Grid.ColumnSpan="2"/>
             <!--TextWrapping="Wrap"  Text=""-->
             <Grid Background="{DynamicResource {x:Static SystemColors.InfoBrushKey}}" Grid.ColumnSpan="3" Height="51.411" VerticalAlignment="Top">
-                <Image Height="50" Width="62" Source="./Resources/notice.png" RenderTransformOrigin="0.58,0.429" Margin="0,1.411,778,0"/>
                 <Canvas HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="1000"  Margin="84,0,-508,0">
                     <Canvas.Triggers>
                         <EventTrigger RoutedEvent="FrameworkElement.Loaded">
@@ -122,6 +121,15 @@
                     </StackPanel>
 
                 </Canvas>
+                <Canvas HorizontalAlignment="Left" Margin="0,1.411,0,0" Width="62" Background="#FFFFFFE1">
+                    <Image Height="50" Width="62" Source="./Resources/notice.png" RenderTransformOrigin="0.58,0.429" OpacityMask="#FFFFFFE1" d:LayoutOverrides="HorizontalAlignment, Width, Height"/>
+                </Canvas>
+                <Button x:Name="btnExit" Background="{x:Null}" RenderTransformOrigin="0.622,0.945" Height="Auto" Foreground="#FF151111" BorderBrush="{x:Null}" Click="btnExit_Click" Margin="776,1.411,0,0">
+                    <StackPanel>
+                        <Image x:Name="exit1" Width="28" Height="23.907" Source="Resources/resizeApi.png"/>
+                        <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
+                    </StackPanel>
+                </Button>
             </Grid>
             <Image x:Name="logo_png" Source="logo.png" Stretch="Fill" HorizontalAlignment="Left" Height="57.309" VerticalAlignment="Top" Width="64.542" Margin="39.344,97.849,0,0"/>
 

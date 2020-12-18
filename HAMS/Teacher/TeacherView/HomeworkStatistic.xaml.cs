@@ -68,8 +68,9 @@ namespace HAMS.Teacher.TeacherView
             Chart chart = new Chart();
 
             //设置图标的宽度和高度
-            chart.Width = 520;
-            chart.Height = 230;
+            //chart.Width = 520;
+            //chart.Height = 230;
+
             //chart.Margin = new Thickness(100, 5, 10, 5);
             //是否启用打印和保持图片
             chart.ToolBarEnabled = false;
@@ -127,8 +128,9 @@ namespace HAMS.Teacher.TeacherView
             Chart chart = new Chart();
 
             //设置图标的宽度和高度
-            chart.Width = 520;
-            chart.Height = 230;
+            //chart.Width = 520;
+            //chart.Height = 230;
+
             //chart.Margin = new Thickness(100, 5, 10, 5);
             //是否启用打印和保持图片
             chart.ToolBarEnabled = false;

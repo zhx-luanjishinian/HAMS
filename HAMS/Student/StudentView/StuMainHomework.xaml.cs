@@ -30,7 +30,7 @@ namespace HAMS.Student.StudentView
         public String name { set; get; }
         public String notId { set; get; }
         public String classId { set; get; }
-        public String Message { set; get; }
+        
         public string pngfile;
         public StuMainHomework(String account, String name, String classId, string pngfile)//真实课堂号
         {
@@ -43,7 +43,6 @@ namespace HAMS.Student.StudentView
             tbuserNameAc.Text = account + name;
             //设置该img控件的Source
             headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, pngfile))));
-
             MainHomeworkShow(classId);
         }
 
@@ -55,7 +54,7 @@ namespace HAMS.Student.StudentView
             labelClassName.Content = info[info.Count-1][0]; //取课堂名，显示在前端课堂名的位置
             for(int i = 0; i < info.Count-1; i++) //对作业进行遍历，遍历初始化动态控件，并展示在前端界面listview位置
             {
-                String[] temp = new String[3]; //定义一个字符串数组temp
+                String[] temp = new String[4]; //定义一个字符串数组temp
                 ListViewItem ivi = new ListViewItem();  //初始化一个listview元素，用来装一条一条的作业
                 //notTitle,content,notId,truDeadline
                //this.Message = ss.judgeHomeworkStatus(account, notId, info[i][3].ToString());
@@ -64,7 +63,10 @@ namespace HAMS.Student.StudentView
                 
                 temp[0] = info[i][1]; //获取content的值
                 temp[1] = info[i][2]; //获取作业公告Id
+                this.notId = info[i][2];
                 temp[2] = info[info.Count - 1][0];//获取课堂名
+                temp[3] = ss.judgeHomeworkStatus(account, notId, info[i][3].ToString());//获得作业的批改状态传到下一个值
+
                 mhi.labelHomeworkName.Content = info[i][0];//将作业公告的标题notTitle显示在作业公告名这个前端控件中
                 //如果作业内容长度很长的话只显示7个
                 if (info[i][1].Length > 7) {
@@ -78,8 +80,8 @@ namespace HAMS.Student.StudentView
                 notId = info[i][2].ToString();
                 //根据学生真实学号、还有作业Id、还有真实截止时间对作业状态进行判断
                 //返回值为作业状态字符串，将该字符串赋值给作业状态的textBlock
-                mhi.tbHomeworkStatus.Text = ss.judgeHomeworkStatus(account, notId, info[i][3].ToString());
-                this.Message = mhi.tbHomeworkStatus.Text;
+                mhi.tbHomeworkStatus.Text = ss.judgeHomeworkStatus(account, info[i][2], info[i][3].ToString());
+         
                 mhi.btnHomRe1.Tag = temp;
                 mhi.btnCheckRank.Tag = temp;
                 mhi.btnHomeworkAnswer.Tag = temp;
@@ -98,13 +100,13 @@ namespace HAMS.Student.StudentView
         {
             Button mh = (Button)sender;
             String[] info = (String[])mh.Tag;
-            StuDoHomework sdh = new StuDoHomework(account, name, info[1], classId,this.pngfile);//这里的classId是真实课堂号
-            sdh.pngfile = this.pngfile;
+            StuDoHomework sdh = new StuDoHomework(account, name, info[1], classId,pngfile,info[3]);//这里的classId是真实课堂号
+         
             //String account, String name,String notId, String classId,String message
             sdh.Show();
             this.Visibility = Visibility.Hidden;
             //如果作业逾期了的话，就跳转之后进行弹窗提示
-            if (Message == "已逾期")
+            if (info[3] == "已逾期")
             {
                 MessageBox.Show("该作业已逾期，无法再进行作答");
             }

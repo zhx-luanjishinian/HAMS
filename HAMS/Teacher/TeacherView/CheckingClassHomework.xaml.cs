@@ -105,7 +105,7 @@ namespace HAMS.Teacher.TeacherView
             //MessageBox.Show(table3.Rows.Count.ToString());
             int checkedNum = table3.Rows.Count;
             //加载已批改的动态控件
-            TbItemChecked.Header = "已批改   " + checkedNum;
+            TbItemChecked.Header = "    已批改   " + checkedNum;
             //获取学生列表的长度
             int stuListLength = table3.Rows.Count;
 
@@ -221,7 +221,7 @@ namespace HAMS.Teacher.TeacherView
             int checkedNum = table7.Rows.Count;
             //MessageBox.Show(checkedNum.ToString());
             //加载已批改的动态控件
-            TbItemUnCheck.Header = "待批改   " + checkedNum;
+            TbItemUnCheck.Header = "    待批改   " + checkedNum;
 
             int stuListLength = table7.Rows.Count;
             StudentCheck[] checkedStudent = new StudentCheck[stuListLength];
@@ -283,7 +283,7 @@ namespace HAMS.Teacher.TeacherView
             //MessageBox.Show(table3.Rows.Count.ToString());
             int checkedNum = table3.Rows.Count;
             //加载已批改的动态控件
-            TbItemUnFinish.Header = "未完成   " + checkedNum;
+            TbItemUnFinish.Header = "    未完成   " + checkedNum;
 
             int stuListLength = table3.Rows.Count;
             StudentCheck[] checkedStudent = new StudentCheck[stuListLength];
@@ -346,8 +346,8 @@ namespace HAMS.Teacher.TeacherView
 
         private void btnAnswerQuestion_Click(object sender, RoutedEventArgs e)
         {
-            AnswerQuestion newAnswerQuestion = new AnswerQuestion(tbClassInfo1.Text);
-            LoadQuestionAndAnswer(notId, newAnswerQuestion);
+            AnswerQuestion newAnswerQuestion = new AnswerQuestion(lbNotTitle.Content.ToString());   //这里有问题
+            LoadQuestionAndAnswer(notId, newAnswerQuestion);   //加载疑问和回答
             newAnswerQuestion.btnSubmitQuestion.Visibility = Visibility.Hidden;
             newAnswerQuestion.Show();
 
@@ -376,7 +376,7 @@ namespace HAMS.Teacher.TeacherView
         {
             HomeworkStatistic hs = new HomeworkStatistic(this.pngfile);
             hs.pngfile = this.pngfile;
-            hs.tSpecId = tbClassInfo.Text;
+            hs.tSpecId = tbTeacherInfo.Text;
             hs.tName = tbClassInfo1.Text;
             hs.tbNotTitle.Text = lbNotTitle.Content.ToString();
             hs.className = tbClassInfo1.Text;
@@ -399,7 +399,7 @@ namespace HAMS.Teacher.TeacherView
             DataTable table1 = td.getComment(noteId);
             //List<StudentAskQuestion> list = new List<StudentAskQuestion>();  //生成StudentAskQuestion动态数组
             //MessageBox.Show(table1.Rows.Count.ToString());    //
-            StudentAskQuestion[] newStudentAskQuestion = new StudentAskQuestion[50];
+            StudentAskQuestion[] newStudentAskQuestion = new StudentAskQuestion[100];
             for (int i = 0; i < table1.Rows.Count; i++)
             {
                 newStudentAskQuestion[i] = new StudentAskQuestion();
@@ -449,11 +449,11 @@ namespace HAMS.Teacher.TeacherView
             //往数据库里插入数据
             if (flag == true)
             {
-                MessageBox.Show("successfully insert!");
+                MessageBox.Show("发送成功");
             }
             else
             {
-                MessageBox.Show("failed!");
+                MessageBox.Show("发送失败");
             }
             stuControl.tbResponse.IsReadOnly = true;
         }
@@ -514,7 +514,7 @@ namespace HAMS.Teacher.TeacherView
                 {
                     TbItemChecked.IsSelected = true;
                 }
-                TbItemChecked.Header = "已批改   " + CorrectedNum;
+                TbItemChecked.Header = "    已批改   " + CorrectedNum;
 
 
                 for (i2 = 0; i2 < stuNameNeedCorrects.Length; i2++)//然后在待批改作业学生姓名中找
@@ -555,7 +555,7 @@ namespace HAMS.Teacher.TeacherView
                         TbItemUnCheck.IsSelected = true;
                     }
                 }
-                TbItemUnCheck.Header = "待批改   " + UnCorrectNum;
+                TbItemUnCheck.Header = "    待批改   " + UnCorrectNum;
 
 
                 for (i3 = 0; i3 < stuNameUnfinisheds.Length; i3++)//最后在未完成作业学生姓名中找
@@ -596,7 +596,7 @@ namespace HAMS.Teacher.TeacherView
                         TbItemUnFinish.IsSelected = true;
                     }
                 }
-                TbItemUnFinish.Header = "未完成   " + UnFinishNum;
+                TbItemUnFinish.Header = "    未完成   " + UnFinishNum;
 
                 if (CorrectedNum == 0 && UnCorrectNum == 0 && UnFinishNum == 0)//说明没有在所有学生中找到
                 {

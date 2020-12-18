@@ -398,7 +398,7 @@ namespace HAMS.Teacher.TeacherView
             //进入答疑界面时加载目前已经有的疑问和解答
             DataTable table1 = td.getComment(noteId);
             //List<StudentAskQuestion> list = new List<StudentAskQuestion>();  //生成StudentAskQuestion动态数组
-            MessageBox.Show(table1.Rows.Count.ToString());    //
+            //MessageBox.Show(table1.Rows.Count.ToString());    //
             StudentAskQuestion[] newStudentAskQuestion = new StudentAskQuestion[100];
             for (int i = 0; i < table1.Rows.Count; i++)
             {

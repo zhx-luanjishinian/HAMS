@@ -67,8 +67,10 @@ namespace HAMS.Student.StudentService
             if (table[3].ToString() != "")
             {
                 object score = table[2];
+                //MessageBox.Show((score!=DBNull.Value).ToString());
+                //MessageBox.Show();
                 //然后判断老师是否已经批改过作业了,作业评分那一部分不为空，说明作业已经批改
-                if (score != DBNull.Value) //如果有分数的话
+                if (score.ToString() != "") //如果有分数的话
                 {
                     message = "已批改";
                 }
@@ -110,7 +112,7 @@ namespace HAMS.Student.StudentService
             {
                 object score = table[2];
                 //然后判断老师是否已经批改过作业了,作业评分那一部分不为空，说明作业已经批改
-                if (score != DBNull.Value) //如果有分数的话
+                if (score.ToString() != "") //如果有分数的话
                 {
                     message = "已批改";
                 }

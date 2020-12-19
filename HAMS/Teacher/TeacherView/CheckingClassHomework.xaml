@@ -105,7 +105,10 @@
     </Window.Resources>
     <Viewbox Stretch="UniformToFill">
         <Grid Margin="0,0,0,-1" Height="472" Width="840">
-            <Grid Height="50" VerticalAlignment="Top" Background="LightBlue" Margin="0,0.344,0,0">
+            <Grid Height="50" VerticalAlignment="Top"  Margin="0,0.344,0,0"><!--Background="LightBlue"-->
+                <Grid.Background>
+                    <ImageBrush ImageSource="/HAMS;component/Resources/78.-Night-sky.jpg"/>
+                </Grid.Background>
                 <TextBlock x:Name="tbTeacherInfo" Width="40.21" TextAlignment="Center" HorizontalAlignment="Left" Margin="51,18.677,0,17.667" Text="Z001">
                     <TextBlock.Background>
                         <ImageBrush/>
@@ -123,7 +126,10 @@
                     </StackPanel>
                 </Button>
             </Grid>
-            <Grid Margin="1,50.344,-1,0" Height="37.552" VerticalAlignment="Top" Background="LightPink">
+            <Grid Margin="1,50.344,-1,0" Height="37.552" VerticalAlignment="Top" ><!--Background="LightPink"-->
+                <Grid.Background>
+                    <ImageBrush ImageSource="/HAMS;component/Resources/61.-Lavender.jpg"/>
+                </Grid.Background>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="65*"/>
                     <ColumnDefinition Width="0*"/>

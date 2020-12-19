@@ -46,11 +46,11 @@ namespace HAMS.Student.StudentView
             Title title = new Title();
 
             //设置标题的名称
-            title.Text = "点击上方按钮绘制统计图";//这个没法居中
+            //title.Text = "点击上方按钮绘制统计图";//这个没法居中
             
             //向图标添加标题
-            chart.Titles.Add(title);
-            ca.Children.Add(chart);
+            //chart.Titles.Add(title);
+           // ca.Children.Add(chart);
 
             //initPie();//不知道为什么无法显示
         }
@@ -64,8 +64,8 @@ namespace HAMS.Student.StudentView
             Chart chart = new Chart();
 
             //设置图标的宽度和高度
-            chart.Width = 793;
-            chart.Height = 308;
+            chart.Width = 600;
+            chart.Height = 260;
             //chart.Margin = new Thickness(100, 5, 10, 5);
             //是否启用打印和保持图片
             chart.ToolBarEnabled = false;
@@ -122,8 +122,8 @@ namespace HAMS.Student.StudentView
             Chart chart = new Chart();
 
             //设置图标的宽度和高度
-            chart.Width = 793;
-            chart.Height = 308;
+            chart.Width = 600;
+            chart.Height = 260;
             //chart.Margin = new Thickness(100, 5, 10, 5);
             //是否启用打印和保持图片
             chart.ToolBarEnabled = false;

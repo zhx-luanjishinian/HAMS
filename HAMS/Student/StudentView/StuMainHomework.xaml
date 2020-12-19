@@ -19,7 +19,7 @@
                 <!--<Image x:Name="imgSystemPicture" Height="64" Width="198" Source="/Resources/management.jpg" Stretch="UniformToFill" Canvas.Left="517"/>-->
                 <Image x:Name="imgSystemLogo" Height="70" Width="51" Source="/HAMS;component/logo.png" Stretch="UniformToFill" Canvas.Left="625"/>
 
-                <Button x:Name="btnExit" Background="LightBlue"  Canvas.Left="725" Canvas.Top="14" Width="82" RenderTransformOrigin="0.622,0.945" Height="44" Foreground="#FF151111" BorderBrush="LightBlue" Click="btnExit_Click">
+                <Button x:Name="btnExit" Background="LightBlue"  Canvas.Left="724" Canvas.Top="4" Width="91" RenderTransformOrigin="0.622,0.945" Height="56" Foreground="#FF151111" BorderBrush="LightBlue" Click="btnExit_Click">
                     <StackPanel>
                         <Image x:Name="exit1" Width="28" Height="23.907" Source="/Resources/resizeApi.png"/>
                         <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
@@ -28,22 +28,13 @@
 
             </Canvas>
             <Menu x:Name="menu" HorizontalAlignment="Left" Height="54" VerticalAlignment="Center" Width="833" Margin="0,72,0,346" Background="LightPink">
-                <Button x:Name="btnReturn" Height="45" Canvas.Left="23.999" Canvas.Top="19.918" Width="55" BorderThickness="1,1,1,1" Click="btnReturn_Click" BorderBrush="LightPink">
-                    <Button.Background>
-                        <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InfoColorKey}}"/>
-                    </Button.Background>
-                    <Image x:Name="imgReturn" Height="35" Canvas.Left="23.999" Canvas.Top="19.918" Width="40" Source="/Resources/返回.png"/>
+                <Button x:Name="btnReturn" Background="LightPink" BorderBrush="LightPink" Height="45" Canvas.Left="23.999" Canvas.Top="19.918" Width="82" BorderThickness="1,1,1,1" Click="btnReturn_Click">
+                    <Image x:Name="imgReturn" Height="35" Canvas.Left="23.999" Canvas.Top="19.918" Width="51" Source="/Resources/返回.png"/>
                 </Button>
-                <Button x:Name="homeworkManagement" Height="45.463" Width="188" Content="作业管理" FontSize="14" FontWeight="Bold"  BorderBrush="LightPink"    Click="homeworkManagement_Click" BorderThickness="1,1,1,1">
-                    <Button.Background>
-                        <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InfoColorKey}}"/>
-                    </Button.Background>
-                </Button>
-                <Button x:Name="homeworkAlert" Height="45.463" Width="200" Content="作业预警" FontSize="14" FontWeight="Bold" BorderBrush="LightPink"   Click="homeworkAlert_Click"  BorderThickness="1,1,1,1">
-                    <Button.Background>
-                        <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InfoColorKey}}"/>
-                    </Button.Background>
-                </Button>
+                <!--<Button x:Name="homeworkManagement" Height="45.463" Width="188" Content="作业管理" FontSize="14" FontWeight="Bold"  BorderBrush="LightPink"    Click="homeworkManagement_Click" BorderThickness="1,1,1,1"/>-->
+                <!--<Button x:Name="homeworkAlert" Height="45.463" Width="200" Content="作业预警" FontSize="14" FontWeight="Bold" BorderBrush="LightPink"   Click="homeworkAlert_Click"  BorderThickness="1,1,1,1"/>-->
+                <Button x:Name="homeworkManagement" Height="40" Width="188" Content="作业管理" FontSize="14" FontWeight="Bold" Click="homeworkManagement_Click"/>
+                <Button x:Name="homeworkAlert" Height="40" Width="200" Content="作业预警" FontSize="14" FontWeight="Bold" Click="homeworkAlert_Click"/>
             </Menu>
 
             <Canvas HorizontalAlignment="Left" Height="46"  Margin="0,126,-3,0" VerticalAlignment="Top" Width="836" Background="LightBlue" >
@@ -63,11 +54,7 @@
                         </TransformGroup>
                     </Path.RenderTransform>
                 </Path>
-                <Button x:Name="btnRefresh" Content="刷新" Canvas.Left="737" Width="62" Canvas.Top="13" BorderThickness="1,1,1,1" Click="BtnRefresh_Click" BorderBrush="LightBlue">
-                    <Button.Background>
-                        <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InfoColorKey}}"/>
-                    </Button.Background>
-                </Button>
+                <Button x:Name="btnRefresh" Content="刷新" Canvas.Left="738" Width="62" Canvas.Top="6" BorderThickness="1,1,1,1" Click="BtnRefresh_Click" BorderBrush="LightBlue"/>
             </Canvas>
             <ListView x:Name="listview" Height="296" FontStretch="Condensed" HorizontalAlignment="Left" Width="833" Margin="0,0,0,4" VerticalAlignment="Bottom"/>
 

@@ -9,29 +9,30 @@
     <Viewbox Stretch="UniformToFill">
         <Grid Margin="0,0,3.333,-1.667" Height="467" VerticalAlignment="Bottom">
 
-            <ListView x:Name="listView"  Margin="546,0,0,10" HorizontalAlignment="Left" Width="277" Height="342" VerticalAlignment="Bottom" SelectionChanged="ListView_SelectionChanged"/>
-            <Canvas Background="LightBlue" Margin="1,2,0,0" Height="55" VerticalAlignment="Top" HorizontalAlignment="Left" Width="829">
-                <TextBlock x:Name="textBlockUserId" Height="18.666" Canvas.Left="70.066" Canvas.Top="21.979" Width="137.334" TextAlignment="Center" Text="201821130099 宋慧毓"/>
-                <Image x:Name="headImage" Source="/HAMS;component/Resources/bk_create.jpg"  HorizontalAlignment="Left" Height="36.996" VerticalAlignment="Top" Width="40.666"  Canvas.Left="24.4" RenderTransformOrigin="1.894,0.568" Canvas.Top="10">
+            <ListView x:Name="listView"  Margin="546,0,0,10" HorizontalAlignment="Left" Width="277" Height="301.999" VerticalAlignment="Bottom" SelectionChanged="ListView_SelectionChanged"/>
+            <Canvas Background="LightBlue" Margin="1,-0.667,-3.333,0" Height="73" VerticalAlignment="Top" HorizontalAlignment="Left" Width="832.333">
+                <TextBlock x:Name="textBlockUserId" Height="18.666" Canvas.Left="100.733" Canvas.Top="31.313" Width="137.334" TextAlignment="Center" Text="201821130099 宋慧毓"/>
+                <Image x:Name="headImage" Source="/HAMS;component/Resources/bk_create.jpg"  HorizontalAlignment="Left" Height="46.996" VerticalAlignment="Top" Width="53.999"  Canvas.Left="24.4" RenderTransformOrigin="0.431,0.496" Canvas.Top="10">
 
                 </Image>
-                <Button x:Name="btnExit" Background="LightBlue"  Canvas.Left="731" Canvas.Top="3" Width="82" RenderTransformOrigin="0.622,0.945" Height="44" Foreground="#FF151111" BorderBrush="LightBlue" Click="btnExit_Click">
+                <Button x:Name="btnExit" Background="LightBlue"  Canvas.Left="710.334" Canvas.Top="9" Width="100" RenderTransformOrigin="0.622,0.945" Height="54.667" Foreground="#FF151111" BorderBrush="LightBlue" Click="btnExit_Click">
                     <StackPanel>
                         <Image x:Name="exit1" Width="28" Height="23.907" Source="/Resources/resizeApi.png"/>
                         <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
                     </StackPanel>
                 </Button>
-                <Image x:Name="imgSystemLogo" Height="49" Width="197" Source="/Resources/management.jpg" Stretch="UniformToFill" Canvas.Left="512" Canvas.Top="3"/>
+                <Image x:Name="imgSystemLogo" Height="65.666" Width="47.001" Source="/Resources/logo.png" Stretch="UniformToFill" Canvas.Left="581.333" Canvas.Top="3.667"/>
             </Canvas>
-            <Menu x:Name="menu" Height="29" Background="LightPink" Margin="-6,57,-6,0" VerticalAlignment="Top">
-                <Button x:Name="btnHomeworkMana" Height="21" Width="109" Content="作业管理" Click="btnHomeworkMana_Click"/>
-                <Button x:Name="btnHomewordAlert" Height="21" Width="109" Content="作业预警" Click="BtnHomewordAlert_Click"/>
+            <Menu x:Name="menu" Height="51" Background="LightPink" Margin="-2,71,-10,0" VerticalAlignment="Top">
+                <Button x:Name="btnHomeworkMana" Height="40" Width="188" Content="作业管理" FontSize="14" FontWeight="Bold" Click="btnHomeworkMana_Click"/>
+                <Button x:Name="btnHomewordAlert" Height="40" Width="200" Content="作业预警" FontSize="14" FontWeight="Bold" Click="BtnHomewordAlert_Click"/>
+                
             </Menu>
-            <Canvas Height="29" Background="LightBlue"  Margin="1,86,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="829">
+            <Canvas Height="29" Background="LightBlue"  Margin="1.667,122,-0.667,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="829">
                 <Label x:Name="label1" Content="我的课程   （在课程中您是   学生）" Height="24.333" HorizontalAlignment="Right" Width="354.334" Canvas.Left="9.338" Canvas.Top="2.667"/>
                 <Label x:Name="label" Content="作业公告" Canvas.Left="544" Canvas.Top="1" Height="24" HorizontalAlignment="Right" Width="65"/>
             </Canvas>
-            <ListView x:Name="listView2" Margin="0,115,284,10" HorizontalAlignment="Right" Width="544" SelectionChanged="ListView2_SelectionChanged_1" />
+            <ListView x:Name="listView2" Margin="0,155,290,10" HorizontalAlignment="Right" Width="538" SelectionChanged="ListView2_SelectionChanged_1" />
         </Grid>
     </Viewbox>
 </Window>

@@ -10,13 +10,21 @@
             <ColumnDefinition Width="293*"/>
             <ColumnDefinition Width="26*"/>
         </Grid.ColumnDefinitions>
-        <Button  x:Name="class1"        HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="Gray"  BorderThickness="2" Width="529" Click="class1_Click" Margin="0,0,-210.333,0" Grid.ColumnSpan="2">
-            <Canvas  x:Name="canvasClass1" Height="66" Width="532" >
-                <Label x:Name="labelClassId1" Content="Z004530B1300720 " Height="24" Canvas.Left="72" Canvas.Top="5" Width="121"/>
-                <TextBlock x:Name="textBlockClassName1" Text="R语言" Height="23" Width="143" Canvas.Left="315" Canvas.Top="10" TextAlignment="Center"/>
-                <Label x:Name="labe21" Content="教师：" Height="28" Width="53" RenderTransformOrigin="0.48,1.592" Canvas.Left="55" Canvas.Top="34"/>
-                <TextBlock x:Name="textBlockDepartmentName1" Text="信息与安全工程学院" Height="27" Width="120" Canvas.Left="113" Canvas.Top="39"/>
-                <TextBlock x:Name="textBlockTeacherName1" Text="刘树栋" Height="26" Width="94" Canvas.Left="364" Canvas.Top="39"/>
+        <Button  x:Name="class1" BorderBrush="Gray"  BorderThickness="2" Click="class1_Click" Margin="0,0,-181.577,1.964" Grid.ColumnSpan="2" Height="64.783" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="488.421" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="-0.12"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="-0.56"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+            <Canvas  x:Name="canvasClass1" Height="64.672" Width="470.206" >
+                <Label x:Name="labelClassId1" Content="Z004530B1300720 "   Height="24" Canvas.Left="74.667" Canvas.Top="1.672" Width="149.65"/>
+                <TextBlock x:Name="textBlockClassName1" Text="R语言" Height="23" Width="143" Canvas.Left="297.929" Canvas.Top="5.333" TextAlignment="Center"/>
+                <Label x:Name="labe21" Content="教师：" Height="28" Width="53" RenderTransformOrigin="0.48,1.592" Canvas.Left="55.667" Canvas.Top="25.335"/>
+                <TextBlock x:Name="textBlockDepartmentName1" Text="信息与安全工程学院" Height="18.574" Width="150.335" Canvas.Left="113" Canvas.Top="30.333"/>
+                <TextBlock x:Name="textBlockTeacherName1" Text="刘树栋" Height="23" Width="143" Canvas.Left="299.929" Canvas.Top="31.488" TextAlignment="Center"/>
             </Canvas>
         </Button>
     </Grid>

@@ -24,7 +24,7 @@
         </Canvas>
         <DataGrid x:Name="datagridShowInfo" CanUserAddRows="False" ColumnWidth="*" AutoGenerateColumns="true" HorizontalAlignment="Left" Height="418" Margin="0,54,0,0" VerticalAlignment="Top" Width="690" IsReadOnly="True">
             <DataGrid.Columns>
-
+               
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

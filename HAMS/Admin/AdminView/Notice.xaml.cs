@@ -95,5 +95,10 @@ namespace HAMS.Admin.AdminView
         {
             this.Visibility = Visibility.Hidden;
         }
+
+        private void TxtboxNoticeContent_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

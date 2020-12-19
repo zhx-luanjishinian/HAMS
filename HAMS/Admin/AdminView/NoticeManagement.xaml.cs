@@ -44,7 +44,14 @@ namespace HAMS.Admin.AdminView
                 String[] temp = new String[3];
                 hni.labelNoticeId.Content = result[i][0];
                 hni.labelNoticeName.Content = result[i][1];
-                hni.labelNoticeDescription.Content = result[i][2];
+                if(result[i][2].Length > 20)
+                {
+                    hni.labelNoticeDescription.Content = result[i][2].Substring(0,20)+"...";
+                }
+                else
+                {
+                    hni.labelNoticeDescription.Content = result[i][2];
+                }
                 temp[0] = result[i][1];
                 temp[1] = result[i][2];
                 temp[2]= result[i][0];

@@ -162,7 +162,9 @@
                     </Grid>
                 </Button>
                 <Grid Height="30.843" VerticalAlignment="Top" HorizontalAlignment="Left" Width="108.992" Margin="720.608,1.521,0,0" d:LayoutOverrides="VerticalAlignment">
-                    <Button x:Name="btnAnswerQuestion" Margin="0,1.449,0,0" Background="#FFDCD5D5" Content="   作业答疑区" BorderBrush="{x:Null}"  Click="btnAnswerQuestion_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Width="117.275"/>
+                    <Button x:Name="btnAnswerQuestion" Margin="0,1.449,0,0" Background="#FFDBABAB" Content="   作业答疑区" BorderBrush="{x:Null}"  Click="btnAnswerQuestion_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Width="117.275">
+                    
+                    </Button>
                     <Image x:Name="image2" Source="../../Resources/提交作业.png" Margin="0,1.449,0,0" HorizontalAlignment="Left" Width="27.225"/>
                 </Grid>
                 <TextBox x:Name="textBlockDescription" Margin="70.872,35.685,14.967,18.682" TextWrapping="Wrap" Text="1.调试代码，结合代码和教材理解svm的大间隔理论   " RenderTransformOrigin="0.5,0.5" BorderThickness="1">
@@ -267,7 +269,7 @@
                         </TabItem>
                     </TabControl>
                 </Border>
-                <Button x:Name="btnHomeworkStatistic" Content="查看作业情况统计图" FontWeight="Bold" Margin="0,-2.701,0,0" Click="btnHomeworkStatistic_Click" Background="#FFDDD3FA" BorderBrush="#FFCDC1F3" HorizontalAlignment="Right" Width="157.796" VerticalAlignment="Top" Height="25.102">
+                <Button x:Name="btnHomeworkStatistic" Content="查看作业情况统计图" FontWeight="Bold" Margin="0,-2.701,0,0" Click="btnHomeworkStatistic_Click" Background="#FFB0A2D8" BorderBrush="#FFCDC1F3" HorizontalAlignment="Right" Width="157.796" VerticalAlignment="Top" Height="25.102">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="3"/>

@@ -152,18 +152,20 @@
             <Grid HorizontalAlignment="Right" Height="19.24" Margin="0,55.344,92.667,0" VerticalAlignment="Top" Width="52.6">
                 <Grid Margin="0,3,0,-2.76" HorizontalAlignment="Right" Width="51.4" Height="19" VerticalAlignment="Top">
                     <Label x:Name="labelBefore" Content="上一个" Margin="0,-0.76,0,0" VerticalAlignment="Top" FontSize="9" Foreground="#FF074B5C" FontWeight="Bold" HorizontalAlignment="Right"/>
-                    <Button x:Name="btnBefore" Content="" HorizontalAlignment="Right" Margin="-5.4,-0.76,37,0" Width="19.8" Foreground="{x:Null}" BorderThickness="0" Click="btnBefore_Click" BorderBrush="#FFEADFDF" Height="19.76" VerticalAlignment="Top">
+                    <Button x:Name="btnBefore" Content="" HorizontalAlignment="Right" Margin="-9.264,-1,37.4,0" Width="23.264" Foreground="{x:Null}" BorderThickness="0" Click="btnBefore_Click" BorderBrush="#FFEADFDF" Height="20" VerticalAlignment="Top">
                         <Button.Background>
-                            <ImageBrush ImageSource="/HAMS;component/Resources/向左.png"/>
+                            <ImageBrush ImageSource="上一个.png"/>
                         </Button.Background>
+
                     </Button>
                 </Grid>
                 <Grid HorizontalAlignment="Right" Margin="0,3,-70,-2.76" Width="53.8">
                     <Label x:Name="labelNext" Content="下一个" Margin="4.4,-0.76,0,0" VerticalAlignment="Top" FontSize="9" Foreground="#FF074B5C" FontWeight="Bold" HorizontalAlignment="Left"/>
-                    <Button x:Name="btnNext" Content="" Margin="37,-1,0,-0.04" Foreground="{x:Null}" BorderThickness="0" Click="btnNext_Click" Height="20.04" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="19">
+                    <Button x:Name="btnNext" Content="" Margin="39.4,-1,-8.248,-0.04" Foreground="{x:Null}" BorderThickness="0" Click="btnNext_Click" Height="20.04" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="22.648">
                         <Button.Background>
-                            <ImageBrush ImageSource="/HAMS;component/Resources/向右.png"/>
+                            <ImageBrush ImageSource="下一个.png"/>
                         </Button.Background>
+
                     </Button>
                 </Grid>
             </Grid>

@@ -15,7 +15,7 @@
         <Grid Margin="0,0,3.6,3.6" Height="462" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="830" >
 
 
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Right" Width="267.167" Height="414.972" VerticalAlignment="Bottom">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Right" Width="267.167" Height="399.572" VerticalAlignment="Bottom">
                 <Label x:Name="labelRecent" Content="近期发布作业公告" FontSize="13" Height="25.143" Margin="0,0,10,0"/>
                 <ListView x:Name="listViewRecentNotice" Style="{DynamicResource ListViewStyle1}" Height="380" HorizontalAlignment="Left" Width="267">
                     <ListView.Resources>
@@ -81,7 +81,7 @@
             </Button>-->
                 </ListView>
             </StackPanel>
-            <StackPanel Margin="0,0,276.567,0" Height="414.972" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="553.433" >
+            <StackPanel Margin="0,0,276.567,0" Height="399.572" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="553.433" >
                 <Label x:Name="labelTeachClass" Content="我教的课   （在课程中您是   老师）" Height="25.8" Margin="10,0,6.333,0" FontSize="13"/>
                 <ListView x:Name="listViewTeacherClass" Style="{DynamicResource ListViewStyle1}" Height="380" HorizontalAlignment="Left" Width="533.433" Margin="10,0,0,0">
                     <ListView.Resources>
@@ -147,16 +147,16 @@
                     </ListView.View>
                 </ListView>
             </StackPanel>
-            <Canvas Height="44.428" Background="LightBlue" Margin="0,0,-2,417.572" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="832">
+            <Canvas Height="57.428" Background="LightBlue" Margin="0,0,-2,404.572" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="832">
                 <TextBlock x:Name="tbTeacherInfo" Height="20" Canvas.Left="56" Canvas.Top="14.428" Width="38.934" TextAlignment="Center" FontSize="13" Text="Z001 "/>
                 <TextBlock x:Name="tbTeacherInfo1" Height="19" Canvas.Left="94.934" Canvas.Top="14.428" Width="57.2" TextAlignment="Center" FontSize="13"><Run Text="刘树栋"/></TextBlock>
                 <Image x:Name="headImage" Source="../../Resources/男教师.png" Height="37" VerticalAlignment="Top" Width="41"  RenderTransformOrigin="1.894,0.568" Canvas.Left="10" Canvas.Top="3"/>
-                <Image x:Name="image" Height="44.428" Canvas.Left="701.4" Width="39" Source="/HAMS;component/logo.png" Stretch="Fill"/>
+                <Image x:Name="image" Height="57.428" Canvas.Left="683" Width="50.412" Source="/HAMS;component/logo.png" Stretch="Fill"/>
             </Canvas>
-            <Button x:Name="btnExit" Background="{x:Null}" RenderTransformOrigin="0.622,0.945" Height="48.438" Foreground="#FF151111" BorderBrush="{x:Null}" Click="btnExit_Click" Margin="768,-4.01,0,0" VerticalAlignment="Top">
+            <Button x:Name="btnExit" RenderTransformOrigin="0.622,0.945" Height="47.028" Foreground="#FF151111" BorderBrush="{x:Null}" Click="btnExit_Click" Margin="759.805,4.901,10,0" VerticalAlignment="Top" Background="LightBlue">
                 <StackPanel>
                     <Image x:Name="exit1" Width="28" Height="23.907" Source="/HAMS;component/Resources/resizeApi.png"/>
-                    <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
+                    <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold" Height="16.18"><Run Text="注销"/></TextBlock>
                 </StackPanel>
             </Button>
         </Grid>

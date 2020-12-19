@@ -22,7 +22,7 @@
                         </Style>
                     </Button.Resources>
                 </Button>
-                <Button x:Name="button1" Width="57.668" BorderThickness="0" Height="35.313" Canvas.Left="10" Canvas.Top="15.439" Click="button1_Click">
+                <Button x:Name="button1" Width="47.994" BorderThickness="0" Height="35.313" Canvas.Left="10" Canvas.Top="15.439" Click="button1_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="返回.png"/>
                     </Button.Background>

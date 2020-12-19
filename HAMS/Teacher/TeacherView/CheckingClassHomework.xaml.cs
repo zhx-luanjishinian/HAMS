@@ -465,19 +465,20 @@ namespace HAMS.Teacher.TeacherView
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-            //首先删除listview里面的东西
-            listViewChecked.Items.Clear();
-            listViewUnCheck.Items.Clear();
-            listViewUnFinish.Items.Clear();
+            
 
             
             //非空判断
-            if (tbStuNameSearch.Text == "" || tbStuNameSearch.Text == "请输入学生的完整姓名。")
+            if (tbStuNameSearch.Text == "" || tbStuNameSearch.Text == "请输入学生的完整姓名。")//此时不需要清空listview里的东西
             {
                 MessageBox.Show("请输入查询条件");
             }
             else 
             {
+                //首先删除listview里面的东西
+                listViewChecked.Items.Clear();
+                listViewUnCheck.Items.Clear();
+                listViewUnFinish.Items.Clear();
                 string stuName = tbStuNameSearch.Text;
                 int i1,i2,i3;
 

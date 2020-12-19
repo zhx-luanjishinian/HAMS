@@ -9,28 +9,29 @@
         Title="AlertForm" WindowState="Maximized" Height="472" Width="840"   WindowStyle="None">
     <Viewbox Stretch="UniformToFill">
         <Grid Margin="0,0,-6.667,3.333" Height="462" VerticalAlignment="Bottom">
-            <Canvas Background="LightBlue" Margin="2,1,0,0" Height="56" VerticalAlignment="Top" HorizontalAlignment="Left" Width="834">
-                <TextBlock x:Name="textBlockUserId" Height="18.666" Canvas.Left="70.066" Canvas.Top="21.979" Width="137.334" TextAlignment="Center"><Run Text="201821130099"/><Run Text="   "/><Run Text="宋慧毓"/></TextBlock>
+            <Canvas Background="LightBlue" Margin="2,1,0,0" Height="70" VerticalAlignment="Top" HorizontalAlignment="Left" Width="834">
+                <TextBlock x:Name="textBlockUserId" Height="19" Canvas.Left="98" Canvas.Top="31" Width="138" TextAlignment="Center"><Run Text="201821130099"/><Run Text="   "/><Run Text="宋慧毓"/></TextBlock>
 
-                <Image x:Name="headImage" Source="/Resources/bk_create.jpg"  HorizontalAlignment="Left" Height="36.996" VerticalAlignment="Top" Width="40.666"  Canvas.Left="24.4" RenderTransformOrigin="1.894,0.568" Canvas.Top="10"/>
-                <Button x:Name="btnExit" Background="LightBlue"  Canvas.Left="741" Canvas.Top="7" Width="82" RenderTransformOrigin="0.622,0.945" Height="44" Foreground="#FF151111" BorderBrush="LightBlue"  Click="btnExit_Click">
+                <Image x:Name="headImage" Source="/Resources/bk_create.jpg"  HorizontalAlignment="Left" Height="49" VerticalAlignment="Top" Width="50"  Canvas.Left="21" RenderTransformOrigin="1.894,0.568" Canvas.Top="10"/>
+                <Button x:Name="btnExit" Background="LightBlue"  Canvas.Left="715" Canvas.Top="10" Width="98" RenderTransformOrigin="0.622,0.945" Height="53" Foreground="#FF151111" BorderBrush="LightBlue" Click="btnExit_Click">
                     <StackPanel>
                         <Image x:Name="exit1" Width="28" Height="23.907" Source="/Resources/resizeApi.png"/>
                         <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
                     </StackPanel>
                 </Button>
-                <Image x:Name="imgSystemLogo" Height="49" Width="197" Source="/Resources/management.jpg" Stretch="UniformToFill" Canvas.Left="540" Canvas.Top="3"/>
+                <Image x:Name="imgSystemLogo" Height="62" Width="46" Source="/Resources/logo.png" Stretch="UniformToFill" Canvas.Left="555" Canvas.Top="3"/>
             </Canvas>
-            <Menu x:Name="menu" Height="30" Background="LightPink" Margin="0,57,2,0" VerticalAlignment="Top">
-                <Button x:Name="btnHomeworkMana" Height="21" Width="109" Content="作业管理" Click="btnHomeworkMana_Click"/>
-                <Button x:Name="btnHomeworkAlert" Height="21" Width="109" Content="作业预警"/>
-                <Button x:Name="btnRefresh" Content="刷新" Width="42" Click="BtnRefresh_Click"/>
+            <Menu x:Name="menu" Height="48" Background="LightPink" Margin="0,71,2,0" VerticalAlignment="Top">
+                <Button x:Name="btnHomeworkMana" Height="30" Width="150" Content="作业管理" FontSize="14" FontWeight="Bold" Click="btnHomeworkMana_Click"/>
+                <Button x:Name="btnHomeworkAlert" Height="30" Width="150" Content="作业预警" FontSize="14" FontWeight="Bold"/>
+                <Button x:Name="btnRefresh" Content="刷新" Height="30" Width="90" Click="BtnRefresh_Click"/>
             </Menu>
-            <Canvas  Height="30.11" Margin="-5,87,2,345">
+
+            <Canvas  Height="30.11" Margin="0,119,2,313">
                 <Label x:Name="label2" Content="未完成数：" Height="23.667" Canvas.Left="6.332" Width="68.001" Canvas.Top="1.333"/>
                 <TextBlock x:Name="textBlockUnfinishedNumber"  Height="17.667" Canvas.Left="83.666" Width="15.334" Canvas.Top="4.333" RenderTransformOrigin="0.621,0.534"/>
                 <Label x:Name="label3" Content="预警数：" Height="23.667" Canvas.Left="112.998" Width="57.334" Canvas.Top="1.333"/>
-                <TextBox x:Name="textBlockAlertNumber"  Height="18" Canvas.Left="166" Width="15" Canvas.Top="5" RenderTransformOrigin="0.621,0.534" TextChanged="TextBlockAlertNumber_TextChanged"/>
+                <TextBox x:Name="textBlockAlertNumber"  Height="21" Canvas.Left="170" Width="18" Canvas.Top="4" RenderTransformOrigin="0.621,0.534" TextChanged="TextBlockAlertNumber_TextChanged"/>
                 <Label x:Name="label4" Content="排序：" Height="24" Canvas.Left="538" Width="39" Canvas.Top="3"/>
                 <ComboBox x:Name="comBoxByTime" Text="按时间" Height="24" Canvas.Left="628" Width="71" Canvas.Top="3" SelectionChanged="ComBoxByTime_SelectionChanged">
                     <ComboBox.ContextMenu>
@@ -43,13 +44,13 @@
                 <Label Content="难易" Canvas.Left="706" Width="44" Canvas.Top="2"/>
 
             </Canvas>
-            <Canvas Height="29" Background="LightBlue"  Margin="0,117,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="838">
+            <Canvas Height="29" Background="LightBlue"  Margin="0,149,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="838">
                 <Label x:Name="label1" Content="我的作业" Height="24" HorizontalAlignment="Right" Width="354" Canvas.Left="6" Canvas.Top="3"/>
             </Canvas>
 
 
 
-            <ListView x:Name="listView2" Margin="0,148,0,0" HorizontalAlignment="Left" Width="838"/>
+            <ListView x:Name="listView2" Margin="0,178,0,0" HorizontalAlignment="Left" Width="828"/>
         </Grid>
     </Viewbox>
 </Window>

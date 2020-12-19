@@ -159,11 +159,7 @@ namespace HAMS.Student.StudentService
         {
             return sd.alertFormInfo(account);
         }
-        //统计已完成作业的数量
-        public int countHomeworkNumber(String account)
-        {
-            return sd.countHomeworkNumber(account);
-        }
+        
         //进行预警数量的修改
         public bool updateAlertNum(String num)
         {
@@ -394,6 +390,11 @@ namespace HAMS.Student.StudentService
         public bool insertStudentQuestion(String notId,String comment)
         {
             return sd.insertStudentComment(notId, comment);
+        }
+
+        public int getSexByStuSpecId(string StuSpecId)
+        {
+            return int.Parse(sd.getSexByStuSpecId(StuSpecId).Rows[0][0].ToString());
         }
 
     }

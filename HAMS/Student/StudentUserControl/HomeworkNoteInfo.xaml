@@ -5,10 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HAMS.Student.StudentUserControl"
              mc:Ignorable="d" Height="31.201" Width="114.338">
-    <Button x:Name="btnRecntNo1" OpacityMask="White" Height="31.201" Background="#FFD2F5FA" Click="BtnRecntNo1_Click" Margin="0,0,-151.333,0.333" HorizontalAlignment="Left" Width="266" >
-        <Canvas Height="27" Width="115">
+    <Button x:Name="btnRecntNo1" OpacityMask="White" Height="36.382" Background="#FFD2F5FA" Click="BtnRecntNo1_Click" Margin="0,0,-124.939,-5.181" HorizontalAlignment="Left" Width="239.277" VerticalAlignment="Top" >
+        <Canvas Height="27" Width="117.999">
             <Image x:Name="image1" Height="20" Canvas.Left="-40" Width="26" Source="/HAMS;component/Resources/notice1.png" RenderTransformOrigin="0.423,0.012" Canvas.Top="3"/>
-            <Label x:Name="lab1" Content="SVM实验" Height="23" Width="74" FontSize="11" Canvas.Left="36" Canvas.Top="3"/>
+            <Label x:Name="lab1" Content="SVM实验" Height="23" Width="71.001" FontSize="11" Canvas.Left="36" Canvas.Top="3"/>
         </Canvas>
     </Button>
 </UserControl>

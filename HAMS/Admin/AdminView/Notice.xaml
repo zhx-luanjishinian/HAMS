@@ -5,24 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HAMS.Admin.AdminView"
         mc:Ignorable="d"
-        Title="Notice" Height="450" Width="800">
-    <Grid>
-        <Canvas Background="LightBlue" HorizontalAlignment="Left" Height="57.5" VerticalAlignment="Top" Width="793.333">
-            <Label Content="系统通知公告" Canvas.Left="331.166" Canvas.Top="11.5" Width="106" Height="37.74" FontSize="16"/>
-        </Canvas>
-        <Canvas  Width="783.333" Margin="5,57.5,4.999,9.5">
-            <GroupBox Header="公告说明" Name="groupBox1" Height="284" Width="763" Canvas.Left="10" Canvas.Top="10">
-                <Canvas Margin="0,0,0,0.76">
-                    <Label Content="公告标题" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.08,-0.379" Height="24.573" Width="72.667" Canvas.Left="10" Canvas.Top="10"/>
-                    <Label Content="公告内容" RenderTransformOrigin="0.441,2.331" Height="25.908" Canvas.Left="10" Canvas.Top="75.077"/>
-                    <Label Content="时间" Height="27.24" Canvas.Left="10" Canvas.Top="207.052" RenderTransformOrigin="0.586,1.293"/>
-                    <TextBox x:Name="txtboxReleaseTime" Height="23" TextAlignment="Center" VerticalContentAlignment="Center"  Text="" Canvas.Left="43" TextWrapping="Wrap" Canvas.Top="209" Width="168"/>
-                    <TextBox x:Name="txtboxNoticeTitle" Height="35.504" Canvas.Left="10" Canvas.Top="34.573" Width="570.999"/>
-                    <TextBox x:Name="txtboxNoticeContent" Height="80.119" Canvas.Left="10" Canvas.Top="105.985" Width="570.999"/>
-                </Canvas>
-            </GroupBox>
-            <Button BorderBrush="{x:Null}" x:Name="btnAnnounce" Content="发布" Background="#FF93B3DE" Canvas.Left="282" Canvas.Top="309" Width="75" Height="26" Click="BtnAnnounce_Click"/>
-            <Button BorderBrush="{x:Null}" x:Name="btnCancel" Content="取消" Background="#FF93B3DE" Canvas.Left="438" Canvas.Top="309" Width="75" Height="26" Click="BtnCancel_Click"/>
-        </Canvas>
-    </Grid>
+        Title="Notice" Height="472" Width="880" WindowState="Maximized"  WindowStyle="None" >
+    <Viewbox Stretch="UniformToFill">
+        <Grid Height="521" Width="976">
+            <Canvas Background="LightBlue" HorizontalAlignment="Left" Height="58" VerticalAlignment="Top" Width="976">
+                <Label Content="系统通知公告" Canvas.Left="427" Canvas.Top="11" Width="131" Height="38" FontSize="20" FontWeight="Bold"/>
+            </Canvas>
+            <Canvas Margin="0,58,10,0">
+                <GroupBox Header="公告说明" Name="groupBox1" FontSize="16" Height="335" Width="956" Canvas.Left="10" Canvas.Top="10">
+                    <Canvas Margin="0,0,0,0.76">
+                        <Label Content="公告标题" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.08,-0.379" Height="25" Width="73" Canvas.Left="183" Canvas.Top="15"/>
+                        <Label Content="公告内容" RenderTransformOrigin="0.441,2.331" Height="26" Canvas.Left="183" Canvas.Top="80"/>
+                        <Label Content="时间" Height="27" Canvas.Left="183" Canvas.Top="218" RenderTransformOrigin="0.586,1.293"/>
+                        <TextBox x:Name="txtboxReleaseTime" Height="23" TextAlignment="Center" VerticalContentAlignment="Center"  Text="" Canvas.Left="220" TextWrapping="Wrap" Canvas.Top="218" Width="168"/>
+                        <TextBox x:Name="txtboxNoticeTitle" Height="35" Canvas.Left="183" Canvas.Top="40" Width="571"/>
+                        <TextBox x:Name="txtboxNoticeContent" Height="80" Canvas.Left="183" Canvas.Top="101" Width="571" TextChanged="TxtboxNoticeContent_TextChanged"/>
+                    </Canvas>
+                </GroupBox>
+                <Button FontSize="16" BorderBrush="{x:Null}" x:Name="btnAnnounce" Content="发布" Background="#FF93B3DE" Canvas.Left="282" Canvas.Top="391" Width="75" Height="36" Click="BtnAnnounce_Click"/>
+                <Button FontSize="16" BorderBrush="{x:Null}" x:Name="btnCancel" Content="取消" Background="#FF93B3DE" Canvas.Left="632" Canvas.Top="391" Width="75" Height="36" Click="BtnCancel_Click"/>
+            </Canvas>
+        </Grid>
+    </Viewbox>
 </Window>

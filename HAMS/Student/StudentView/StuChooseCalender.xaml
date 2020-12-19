@@ -13,16 +13,16 @@
 
 
         <Canvas>
-            <wfi:WindowsFormsHost  Width="166" Height="39" Canvas.Left="318" Canvas.Top="30"  >
+            <wfi:WindowsFormsHost  Width="196" Height="58" Canvas.Left="340" Canvas.Top="30"  >
                 <wf:DateTimePicker x:Name="tpStartDate" Format="Custom" ShowUpDown="True" />
             </wfi:WindowsFormsHost>
-            <wfi:WindowsFormsHost Width="166" Height="39" Canvas.Left="318" Canvas.Top="123">
+            <wfi:WindowsFormsHost Width="196" Height="51" Canvas.Left="340" Canvas.Top="157">
                 <wf:DateTimePicker x:Name="tpStartTime" Format="Time" ShowUpDown="True" />
             </wfi:WindowsFormsHost>
-            <Label Content="选择日期" Canvas.Left="179" Canvas.Top="30"/>
-            <Label Content="选择时间" Canvas.Left="179" Canvas.Top="123"/>
-            <Button Content="确认" Name="btnOk" Canvas.Left="179" Canvas.Top="216" Width="75" Click="BtnOk_Click"/>
-            <Button Content="取消" Name="btnCancl" Canvas.Left="426" Canvas.Top="216" Width="75" Click="BtnCancl_Click"/>
+            <Label Content="选择日期" Canvas.Left="213" Canvas.Top="47" Height="29"/>
+            <Label Content="选择时间" Canvas.Left="213" Canvas.Top="170"/>
+            <Button Content="确认" Name="btnOk" Canvas.Left="213" Canvas.Top="248" Width="75" Click="BtnOk_Click"/>
+            <Button Content="取消" Name="btnCancl" Canvas.Left="439" Canvas.Top="248" Width="75" Click="BtnCancl_Click"/>
         </Canvas>
 
 

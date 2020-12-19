@@ -35,8 +35,8 @@ namespace HAMS
         private SService sts = new SService();
         private TService tts = new TService();
         private AService ats = new AService();
-        TDao td = new TDao();
-        SDao sd = new SDao();
+        
+      
 
         public MainWindow()
         {
@@ -54,7 +54,7 @@ namespace HAMS
                 if (br.code == 0)
                 {
                     MessageBox.Show("恭喜你已登录成功");
-                    int sex = int.Parse(sd.getSexByStuSpecId(txtUserName.Text.ToString()).Rows[0][0].ToString());
+                    int sex = sts.getSexByStuSpecId(txtUserName.Text.ToString());
                     string pngfile;
                     //headImage是image控件名
                     if (sex == 0)
@@ -84,7 +84,7 @@ namespace HAMS
                 {
                     MessageBox.Show("恭喜你已登录成功");
                    
-                    int sex = int.Parse(td.getSexByTeaSpecId(txtUserName.Text.ToString()).Rows[0][0].ToString());
+                    int sex = tts.getSexByTeaSpecId(txtUserName.Text.ToString());
 
                     string pngfile;
                     //headImage是image控件名

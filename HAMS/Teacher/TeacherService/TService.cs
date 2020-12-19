@@ -48,14 +48,20 @@ namespace HAMS.Teacher.TeacherService
             string homURL = tbHomURL.Rows[0][0].ToString();
             return homURL;
         }
-
-       
+        
 
         public bool CorrectHomework(int homId, string score, string remark)
         {
             //批改作业，往数据库中写入成绩和点评
             bool flag = td.updateHomeworkByCorrect(homId, score, remark);
             return flag;
+        }
+        public string GetNotIdFromClassSpecId(string classSpecId,string homeworkTitle)
+        {
+            DataTable tableClassId = td.getClassId(classSpecId);
+            DataTable tableNotId = td.getNotIdByClassIdAndNotTitle(homeworkTitle, Convert.ToInt32(tableClassId.Rows[0][0]));
+            string notId = tableNotId.Rows[0][0].ToString();
+            return notId;
         }
 
         //DateTime baseDate = new DateTime(1970, 1, 1);
@@ -428,6 +434,80 @@ namespace HAMS.Teacher.TeacherService
 
         }
 
+        public int getSexByTeaSpecId(string teacherSpecId)
+        {
+           return int.Parse(td.getSexByTeaSpecId(teacherSpecId).Rows[0][0].ToString());
+        }
+
+        public DataTable getNotice(string classSpaceId)  //从数据库查询目前已有的作业
+        {
+            return td.getNotice(classSpaceId);
+        }
+
+        public DataTable getTeacherId(String TeacherSpecId)
+        {
+            return td.getTeacherId(TeacherSpecId);
+        }
+
+        public DataTable LoadMainFormLeft(string teacherSpecId)
+        {
+            return td.LoadMainFormLeft(teacherSpecId);
+        }
+
+        public String getNoticeNum(string classId)
+        {
+            return td.getNoticeNum(classId).ToString();
+        }
+
+        public String getStuNum(string classId)
+        {
+            return td.getStuNum(classId).ToString();
+        }
+
+        public DataTable getClassIdByTId(string teacherId)
+        {
+            return td.getClassIdByTId(teacherId);
+        }
+
+        public DataTable getRecentNoticeByClassId(string classId)
+        {
+            return td.getRecentNoticeByClassId(classId);
+        }
+
+        public DataTable GetClassInfoByClassID(String classId)
+        {
+            return td.GetClassInfoByClassID(classId);
+        }
+
+        public DataTable getClassId(string classSpecId)
+        {
+            return td.getClassId(classSpecId);
+        }
+
+        public DataTable getNotIdByClassIdAndNotTitle(String notTitle, int classId)
+        {
+            return td.getNotIdByClassIdAndNotTitle(notTitle,classId);
+        }
+
+        public Boolean deleteNotice(string noticeId)
+        {
+            return td.deleteNotice(noticeId);
+        }
+
+        public DataTable getNotURLNameByNotId(int notId)
+        {
+            return td.getNotURLNameByNotId(notId);
+        }
+
+        public DataTable SelectHomeworkCheckedInfo(String notId)
+        {
+            return td.SelectHomeworkCheckedInfo(notId);
+        }
+
+        public DataTable GetStudentNameAndIdByStuID(String stuId)
+        {
+            return td.GetStudentNameAndIdByStuID(stuId);
+        }
 
     }
     }

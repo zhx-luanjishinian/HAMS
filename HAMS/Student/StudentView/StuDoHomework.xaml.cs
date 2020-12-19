@@ -116,14 +116,18 @@ namespace HAMS.Student.StudentView
             }
             
             tbDeadLineTime.Text = result[2];
-            if (result[3] != null)
+            if (result[3] != "")
             {
                 tbAccessoryName.Content = result[3];
             }
             else
             {
+               
                 //如果不存在作业附件则不进行显示
-                tbAccessoryName.Content = "";
+                tbAccessoryName.Visibility = Visibility.Collapsed;
+                //减掉某个具体的事件
+                tbAccessoryName.Click -= new RoutedEventHandler(tbAccessoryName_Click);
+                //tbAccessoryName.Content = "";
                 imgAccessory.Source = null;
             }
 

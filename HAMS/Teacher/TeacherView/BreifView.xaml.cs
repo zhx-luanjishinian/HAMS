@@ -53,7 +53,17 @@ namespace HAMS.Teacher.TeacherView
                 //加载作业标题
                 arrayBreifHomework[i].title.Content = table.Rows[i][7].ToString();
                 //加载作业描述
-                arrayBreifHomework[i].description.Content = table.Rows[i][4].ToString();
+                //arrayBreifHomework[i].description.Content = table.Rows[i][4].ToString();
+                //如果作业描述很长的话只显示10个
+                if (table.Rows[i][4].ToString().Length > 40)
+                {
+                    arrayBreifHomework[i].description.Content = table.Rows[i][4].ToString().Substring(0, 40) + "...";//将作业内容content值显示在对应的控件中
+                }
+                else
+                {
+                    arrayBreifHomework[i].description.Content = table.Rows[i][4].ToString();//不超过10条就全部展示
+                }
+
                 //加在canvas里面
                 //arrayHomk.Children.Add(arrayBreifHomework[i]);
                 homeworkListView.Items.Add(arrayBreifHomework[i]);
@@ -118,16 +128,16 @@ namespace HAMS.Teacher.TeacherView
                 }
                 else
                 {
-                    bool ifDelete = ts.DeleteHomeworkNotice(labelCourseNumber.Content.ToString(), clickTeachClass.title.Content.ToString());  //删除时要考虑到与作业表级联删除的情况
+                    String ifDelete = ts.DeleteHomeworkNotice(labelCourseNumber.Content.ToString(), clickTeachClass.title.Content.ToString());  //删除时要考虑到与作业表级联删除的情况
 
-                    if (ifDelete == true)
+                    if (ifDelete == "删除该作业公告成功")
                     {
                         System.Windows.MessageBox.Show("删除该作业公告成功");
                         homeworkListView.Items.Remove(clickTeachClass);
                     }
                     else
                     {
-                        System.Windows.MessageBox.Show("删除该作业公告失败");
+                        System.Windows.MessageBox.Show(ifDelete);
                     }
                 }
 

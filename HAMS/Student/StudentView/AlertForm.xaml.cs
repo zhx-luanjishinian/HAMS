@@ -140,7 +140,7 @@ namespace HAMS.Student.StudentView
                 }
                 //超过了截止时间的不计入到里面,而且不能进行自定义截止时间和自定义复杂度的设置
                 var bc = new BrushConverter();
-                amf.bor.Background = (Brush)bc.ConvertFrom("#FF0000");
+                amf.bor.Background = (Brush)bc.ConvertFrom("#AAB6E0");
                 //amf.comboBoxDegree1.Tag = result[1][i][3];
                 //amf.comboBoxDegree1.SelectionChanged += new SelectionChangedEventHandler(defcomplexity);
                 //amf.btnLimitedTime1.Click += new RoutedEventHandler(btnDeadline_Click);

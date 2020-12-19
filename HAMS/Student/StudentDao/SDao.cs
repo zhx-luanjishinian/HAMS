@@ -156,7 +156,7 @@ namespace HAMS.Student.StudentDao
             
             for (int i=0;i<table1.Columns.Count;i++)
             {
-
+                //MessageBox.Show(table1.Rows[0][i].ToString());
                 rtn.Add(table1.Rows[0][i].ToString());
             }
             rtn.Add(table2.Rows[0][0].ToString());

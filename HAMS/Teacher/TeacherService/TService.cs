@@ -321,36 +321,58 @@ namespace HAMS.Teacher.TeacherService
             string submitTime = table3.Rows[0][0].ToString();
             return submitTime;
         }
-        public Boolean DeleteHomeworkNotice(String classSpecId, String homeworkTitle)
+        public String DeleteHomeworkNotice(String classSpecId, String homeworkTitle)
         {
             DataTable table1 = td.getClassId(classSpecId);
             int classId = Convert.ToInt32(table1.Rows[0][0]);
             DataTable table2 = td.getNotIdByClassIdAndNotTitle(homeworkTitle, classId);
             bool flag = td.deleteHomework(table2.Rows[0][0].ToString());
-            if(flag==true)
+            if (flag == true)
             {
                 string notId = table2.Rows[0][0].ToString();
-                
-               
-                //根据notId找notURL
-                DataTable tbNotURL = td.getNotURLByNotId(notId);
-                //把作业公告文件夹进行改名
-                string notURL = tbNotURL.Rows[0][0].ToString();//课堂号/作业公告号/作业附件
-                string[] notURLs = notURL.Split('/');
-                string currentDirFullPath = notURLs[0] + "/" + notURLs[1];
-                string newDirName = "已被删除的作业公告" + notURLs[1];
-                FtpUpDown.Rename(currentDirFullPath, newDirName);
-                
+
+
+            //根据notId找notURL
+            DataTable tbNotURL = td.getNotURLByNotId(notId);
+            //把作业公告文件夹进行改名
+            string notURL = tbNotURL.Rows[0][0].ToString();//课堂号/作业公告号/作业附件
+            string[] notURLs = notURL.Split('/');
+            string currentDirFullPath = notURLs[0] + "/" + notURLs[1];
+            string newDirName = "已被删除的作业公告" + notURLs[1];
+            FtpUpDown.Rename(currentDirFullPath, newDirName);
+
+            //在数据库中删除作业答疑
+            if (td.getCommentNumByNotId(notId) != 0)//此时才需要删除答疑
+                {
+                    bool flag1 = td.deleteComment(notId);
+                    if (flag1 != true)
+                    {
+                        return "删除作业答疑失败";
+                        
+                    }
+                    
+                }
 
                 //在数据库中删除作业公告
-                bool flag1 = td.deleteNotice(notId);
-                
-                return flag1;
+                bool flag2 = td.deleteNotice(notId);
+                if (flag2 == true)
+                {
+                    return "删除该作业公告成功";
+                }
+                else
+                {
+                    return "删除该作业公告失败";
+                }
+
+
+
+
+
             }
             else
             {
-                MessageBox.Show("删除学生作业记录失败");
-                return false;
+                //MessageBox.Show("删除学生作业记录失败");
+                return "删除学生作业记录失败";
             }
         }
         public string GetPostilByForm(string classSpecId, string noticeName, string studentSpecId)
@@ -410,6 +432,11 @@ namespace HAMS.Teacher.TeacherService
                 return new BitmapImage(new Uri(@pngfile));
             }
 
+        }
+
+        public int getSexByTeaSpecId(string teacherSpecId)
+        {
+           return int.Parse(td.getSexByTeaSpecId(teacherSpecId).Rows[0][0].ToString());
         }
 
 

@@ -8,15 +8,15 @@
 
     <Canvas x:Name="canHomRecord1" Margin="10,0,0.667,-0.333" >
         <Button x:Name="btnHomRe1" Height="58"  Width="400"  Background="White" BorderBrush="White" Click="btnHomRe1_Click">
-            <Canvas Height="58" Width="400">
-                <Image x:Name="imgLabel" Height="47" Canvas.Left="10" Canvas.Top="10" Width="42" Source="/Resources/1200856.gif"/>
-                <Label x:Name="labelHomeworkName" Content="第一次作业" Canvas.Left="81" Canvas.Top="4" FontWeight="Bold" Height="23" Width="199"/>
-                <Label x:Name="labelHomeworkDescription" Content="本次作业需要完成支持向量机打卡..." Canvas.Left="81" Canvas.Top="27"/>
+            <Canvas Height="48" Width="372">
+                <Image x:Name="imgLabel" Height="47" Canvas.Left="10" Canvas.Top="1" Width="42" Source="/Resources/1200856.gif"/>
+                <Label x:Name="labelHomeworkName" Content="第一次作业" Canvas.Left="81" FontWeight="Bold" Height="27" Width="199"/>
+                <Label x:Name="labelHomeworkDescription" Content="本次作业需要完成支持向量机打卡..." Canvas.Left="81" Canvas.Top="27" Width="230"/>
             </Canvas>
         </Button>
-        <Button x:Name="btnCheckRank" Content="查看排行" Canvas.Left="423.667" Canvas.Top="25.627" Width="75" FontFamily="Nirmala UI Semilight" Click="btnCheckRank_Click"/>
-        <Button x:Name="btnHomeworkAnswer" Content="作业答疑区" Canvas.Left="555.666" Canvas.Top="25.627" Width="75" FontFamily="Nirmala UI Semilight" Click="btnHomeworkAnswer_Click"/>
-        <TextBlock x:Name="tbHomeworkStatus" Text="待批改" Canvas.Left="685" Canvas.Top="27" Width="75" FontFamily="Nirmala UI Semilight" />
+        <Button x:Name="btnCheckRank" Content="查看排行" Canvas.Left="425" Canvas.Top="18" Width="102" FontFamily="微软雅黑" Click="btnCheckRank_Click"/>
+        <Button x:Name="btnHomeworkAnswer" Content="作业答疑区" Canvas.Left="555" Canvas.Top="18" Width="118" FontFamily="微软雅黑" Click="btnHomeworkAnswer_Click"/>
+        <TextBlock x:Name="tbHomeworkStatus" Text="待批改" Canvas.Left="707" Canvas.Top="24" Width="58" FontFamily="Nirmala UI Semilight" Height="22" FontSize="14" />
     </Canvas>
 
 </UserControl>

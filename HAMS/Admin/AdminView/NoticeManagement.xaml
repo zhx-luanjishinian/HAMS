@@ -5,18 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HAMS.Admin.AdminView"
         mc:Ignorable="d"
-        Title="NoticeManagement" Height="472" Width="659">
+        Title="NoticeManagement" Height="440" Width="690">
     <Grid>
-        <Canvas HorizontalAlignment="Left" Height="59" VerticalAlignment="Top" Width="659" Background="{DynamicResource {x:Static SystemColors.InfoBrushKey}}" Margin="0,0,-0.333,0">
-            <Button x:Name="btnAddNotice" Canvas.Left="10" Canvas.Top="10" Width="67" Height="33.699" Background="{DynamicResource {x:Static SystemColors.InfoBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.InfoBrushKey}}" Click="BtnAddNotice_Click">
-                <StackPanel Orientation="Horizontal" RenderTransformOrigin="0.293,0.557" Width="62">
-                    <Image x:Name="add1" Height="33.699" Width="35" Source="/HAMS;component/Resources/add.png" />
-                    <TextBlock x:Name="add2" VerticalAlignment="Center"  FontWeight="SemiBold"><Run Text="添加"/></TextBlock>
+        <Canvas HorizontalAlignment="Left" Height="59" VerticalAlignment="Top" Width="690" Background="{DynamicResource {x:Static SystemColors.InfoBrushKey}}">
+            <Button x:Name="btnAddNotice"  Canvas.Left="17" Canvas.Top="7" Width="102" Height="40"   Click="BtnAddNotice_Click">
+                <StackPanel Orientation="Horizontal" Height="30" Width="70">
+                    <Image x:Name="add1" Source="/HAMS;component/Resources/add.png" Margin="0,0,36,0" />
+                    <TextBlock  VerticalAlignment="Center"  FontWeight="SemiBold" RenderTransformOrigin="2.623,2.043" Margin="-25,6,0,0" Width="34" Height="26"><Run Text="添加"/></TextBlock>
                 </StackPanel>
+
             </Button>
-            <Button Content="刷新" Canvas.Left="547" Canvas.Top="17" Width="55" Height="27" Click="Button_Click"/>
+
+            <Button BorderBrush="{x:Null}" Content="刷新" Background="#FF93B3DE" Canvas.Left="587" Canvas.Top="17" Width="63" Height="27" Click="Button_Click"/>
         </Canvas>
-        <ListView x:Name="listviewNotice" Height="Auto" FontStretch="Condensed" Margin="0,59,0,-0.333" Grid.RowSpan="1">
+        <ListView x:Name="listviewNotice" Height="Auto" FontStretch="Condensed" Margin="0,59,0,74" Grid.RowSpan="1">
 
         </ListView>
     </Grid>

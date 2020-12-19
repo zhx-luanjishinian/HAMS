@@ -29,6 +29,7 @@ namespace HAMS.Admin.AdminView
         public ReviseClass(String cnum, String cna, int id)
         {
             InitializeComponent();
+            this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             this.cnum = cnum;
             this.cna = cna;
             this.id = id;

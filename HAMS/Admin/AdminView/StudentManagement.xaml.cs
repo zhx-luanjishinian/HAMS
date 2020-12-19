@@ -29,6 +29,8 @@ namespace HAMS.Admin.AdminView
         {
             InitializeComponent();
             showStudent();
+            txtNum.ToolTip = "请输入完整学号";
+            txtName.ToolTip = "请输入完整姓名";
 
         }
         public void showStudent()
@@ -92,8 +94,8 @@ namespace HAMS.Admin.AdminView
                 string name = selectedElement.Row[1].ToString();
                 string sex = selectedElement.Row[2].ToString();
                 string stuclass = selectedElement.Row[3].ToString();
-                string pwd = selectedElement.Row[4].ToString();
-                ReviseStudent  rs = new ReviseStudent(account, name, sex, stuclass, pwd);
+                string pwd = selectedElement.Row[4].ToString();            
+                ReviseStudent  rs = new ReviseStudent(account, name, sex, stuclass, pwd,this);
                 if (rs.ShowDialog() == true)
                 {
                     rs.Show();

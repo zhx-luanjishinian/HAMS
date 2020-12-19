@@ -58,6 +58,7 @@ namespace HAMS.Teacher.TeacherView
 
             lbNotTitle.Content = homeworkTitle;
             textBlockDescription.Text = description;
+            textBlockDescription.IsReadOnly = true;
             tbTeacherInfo.Text = teacherSpecId;
             tbTeacherInfo1.Text = teacherName;
             tbClassInfo.Text = classSpecId;
@@ -408,10 +409,11 @@ namespace HAMS.Teacher.TeacherView
                 newStudentAskQuestion[i] = new StudentAskQuestion();
                 newStudentAskQuestion[i].lbStuName.Content = "本课堂学生";
                 newStudentAskQuestion[i].textBoxQuestion.Text = table1.Rows[i][2].ToString();  //有问题
+                newStudentAskQuestion[i].textBoxQuestion.IsReadOnly = true;
                 newStudentAskQuestion[i].tbResponse.Text = table1.Rows[i][3].ToString();
                 newStudentAskQuestion[i].btnComment.Click += new RoutedEventHandler(btnSubmitQuestion_Click);
                 newStudentAskQuestion[i].btnInsert.Click += new RoutedEventHandler(btnbtnInsert_Click);
-                newStudentAskQuestion[i].lbResponseName.Content = tbTeacherInfo1.Text;    //给老师姓名赋值
+                newStudentAskQuestion[i].lbResponseName.Content = tbTeacherInfo1.Text +"老师";    //给老师姓名赋值
                 newAnswerQuestion.listViewQuestionAndAnswer.Items.Add(newStudentAskQuestion[i]);
                 //newAnswerQuestion.btnSubmitQuestion.Click += new RoutedEventHandler(btnSubmitQuestion_Click); //定义答疑按钮的事件
                 if(newStudentAskQuestion[i].tbResponse.Text!="")

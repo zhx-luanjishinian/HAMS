@@ -159,11 +159,7 @@ namespace HAMS.Student.StudentService
         {
             return sd.alertFormInfo(account);
         }
-        //统计已完成作业的数量
-        public int countHomeworkNumber(String account)
-        {
-            return sd.countHomeworkNumber(account);
-        }
+        
         //进行预警数量的修改
         public bool updateAlertNum(String num)
         {

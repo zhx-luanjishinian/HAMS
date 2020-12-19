@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:HAMS.Student.StudentView"
         xmlns:vc="clr-namespace:Visifire.Charts;assembly=WPFVisifire.Charts"
         mc:Ignorable="d"
-        Title="StuHomeworkRank" Height="472" Width="840" ResizeMode="CanMinimize" WindowState="Maximized"    WindowStyle="None">
+        Title="StuHomeworkRank" Height="472" Width="840"  WindowState="Maximized"    WindowStyle="None">
     <Viewbox Stretch="UniformToFill">
         <Grid Margin="0,0,-0.333,-1" Height="448" VerticalAlignment="Top">
             <Grid.RowDefinitions>
@@ -37,7 +37,7 @@
                 <Button Content="查看提交排行榜" Height="29" HorizontalAlignment="Left" x:Name="btnShowChartData" VerticalAlignment="Top" Width="138"  Canvas.Left="24" Canvas.Top="8" Click="BtnShowChartData_Click" />
                 <Button Content="查看提交人数" Height="29" HorizontalAlignment="Left" x:Name="btnShowNumber" VerticalAlignment="Top" Width="148"  Canvas.Left="173" Canvas.Top="8" Click="BtnShowNumber_Click" ></Button>
             </Canvas>
-            <Canvas Grid.Row="2" Name ="ca" Margin="1,45,0.666,0" ToolTip="点击上方按钮绘制统计图" Height="265" VerticalAlignment="Top">
+            <Canvas Grid.Row="2" Name ="ca" Margin="95,51,88.666,0"  Height="250" VerticalAlignment="Top">
 
             </Canvas>
         </Grid>

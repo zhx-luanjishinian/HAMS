@@ -53,7 +53,17 @@ namespace HAMS.Teacher.TeacherView
                 //加载作业标题
                 arrayBreifHomework[i].title.Content = table.Rows[i][7].ToString();
                 //加载作业描述
-                arrayBreifHomework[i].description.Content = table.Rows[i][4].ToString();
+                //arrayBreifHomework[i].description.Content = table.Rows[i][4].ToString();
+                //如果作业描述很长的话只显示10个
+                if (table.Rows[i][4].ToString().Length > 40)
+                {
+                    arrayBreifHomework[i].description.Content = table.Rows[i][4].ToString().Substring(0, 40) + "...";//将作业内容content值显示在对应的控件中
+                }
+                else
+                {
+                    arrayBreifHomework[i].description.Content = table.Rows[i][4].ToString();//不超过10条就全部展示
+                }
+
                 //加在canvas里面
                 //arrayHomk.Children.Add(arrayBreifHomework[i]);
                 homeworkListView.Items.Add(arrayBreifHomework[i]);

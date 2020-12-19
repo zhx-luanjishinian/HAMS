@@ -428,6 +428,11 @@ namespace HAMS.Teacher.TeacherService
 
         }
 
+        public int getSexByTeaSpecId(string teacherSpecId)
+        {
+           return int.Parse(td.getSexByTeaSpecId(teacherSpecId).Rows[0][0].ToString());
+        }
+
 
     }
     }

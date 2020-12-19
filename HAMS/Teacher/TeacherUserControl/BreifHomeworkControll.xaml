@@ -11,25 +11,25 @@
             <ColumnDefinition Width="197*"/>
             <ColumnDefinition Width="206*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="btnModify" Grid.Column="2" Margin="0,47,53.162,44.538" OpacityMask="#FFB3B2B2" BorderThickness="0" HorizontalAlignment="Right" Width="26.88" d:LayoutOverrides="HorizontalAlignment" Height="Auto" >
+        <Button x:Name="btnModify" Grid.Column="2" Margin="0,47,79.721,44.538" OpacityMask="#FFB3B2B2" BorderThickness="0" HorizontalAlignment="Right" Width="26.88" d:LayoutOverrides="HorizontalAlignment" Height="Auto" >
             <Button.Background>
                 <ImageBrush ImageSource="修改.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btnDelete" Grid.Column="2" HorizontalAlignment="Right" Margin="0,47,10,44.538" Width="28.785" OpacityMask="#FFB0ACAC" BorderThickness="0" Height="Auto">
+        <Button x:Name="btnDelete" Grid.Column="2" HorizontalAlignment="Right" Margin="0,47,21.509,44.538" Width="28.785" OpacityMask="#FFB0ACAC" BorderThickness="0" Height="Auto">
             <Button.Background>
                 <ImageBrush ImageSource="删 除 .png"/>
             </Button.Background>
         </Button>
         <Image x:Name="image3" Margin="21.942,10,45.412,10" Source="/HAMS;component/Resources/作业1.png"/>
-        <Button x:Name="btnCheckDetail" Background="{x:Null}" Grid.ColumnSpan="3" Margin="0,0,85.042,0" BorderThickness="0" Height="Auto" >
-            <Grid Height="103.8" Width="673.45">
+        <Button x:Name="btnCheckDetail" Background="{x:Null}" Grid.ColumnSpan="3" Margin="0,0,142.586,0" BorderThickness="0" Height="Auto" >
+            <Grid Height="103.8" Width="616.791">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="121*"/>
                     <ColumnDefinition Width="123*"/>
                 </Grid.ColumnDefinitions>
-                <Label x:Name="title" Content="SVM实验" Margin="114.611,16.247,19.738,0" FontWeight="Bold" FontSize="16" Height="32" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-                <Label x:Name="description" Content="调通SVM代码，打卡上传" Margin="114.611,0,10,10" FontSize="13" Grid.ColumnSpan="2" Height="40.553" VerticalAlignment="Bottom"/>
+                <Label x:Name="title" Content="SVM实验" Margin="130.546,16.247,19.738,0" FontWeight="Bold" FontSize="16" Height="32" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                <Label x:Name="description" Content="调通SVM代码，打卡上传" Margin="130.546,0,10,10" FontSize="13" Grid.ColumnSpan="2" Height="40.553" VerticalAlignment="Bottom"/>
             </Grid>
         </Button>
         <Border  BorderThickness="1" Grid.ColumnSpan="3" Width="780" BorderBrush="#FF0288D1"/>

@@ -76,7 +76,7 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="WindowsFormsIntegration" />
     <Reference Include="WPFVisifire.Charts">
-      <HintPath>..\..\..\..\..\wpfvisifire\WPFVisifire.Charts\X86\4.5.2.1\WPFVisifire.Charts.dll</HintPath>
+      <HintPath>..\..\UML\wpfvisifire\WPFVisifire.Charts\X86\4.5.2.1\WPFVisifire.Charts.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -567,6 +567,33 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Teacher\TeacherView\返回.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Teacher\TeacherView\刷新.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Teacher\TeacherUserControl\删 除 .png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Teacher\TeacherUserControl\修改.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Teacher\TeacherUserControl\评论.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Teacher\TeacherUserControl\删除.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\62.-Amour_1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\61.-Lavender.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\78.-Night-sky.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets')" />

@@ -28,6 +28,8 @@ namespace HAMS.Admin.AdminView
         public ClassManagement()
         {
             InitializeComponent();
+            txtClassNum.ToolTip = "请输入完整课堂号";
+            txtClassName.ToolTip = "请输入完整课堂名";
         }
     
 

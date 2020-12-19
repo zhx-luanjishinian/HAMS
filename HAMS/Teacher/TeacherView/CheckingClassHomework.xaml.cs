@@ -58,6 +58,7 @@ namespace HAMS.Teacher.TeacherView
 
             lbNotTitle.Content = homeworkTitle;
             textBlockDescription.Text = description;
+            textBlockDescription.IsReadOnly = true;
             tbTeacherInfo.Text = teacherSpecId;
             tbTeacherInfo1.Text = teacherName;
             tbClassInfo.Text = classSpecId;
@@ -190,7 +191,10 @@ namespace HAMS.Teacher.TeacherView
                 newTeacherHomeworkCheck.pngfile = this.pngfile;
                 newTeacherHomeworkCheck.className = tbClassInfo1.Text;
                 newTeacherHomeworkCheck.classSpecId = tbClassInfo.Text;
-                newTeacherHomeworkCheck.description = textBlockDescription.Text;
+                newTeacherHomeworkCheck.description = textBlockDescription.Text;   //有问题
+                newTeacherHomeworkCheck.tbTeacherSpecId.Text = tbTeacherInfo.Text;
+                newTeacherHomeworkCheck.tbTeacherName.Text = tbTeacherInfo1.Text;    //加载教师工号和姓名
+
                 newTeacherHomeworkCheck.Show();
             }
             else
@@ -376,7 +380,7 @@ namespace HAMS.Teacher.TeacherView
         {
             HomeworkStatistic hs = new HomeworkStatistic(this.pngfile);
             hs.pngfile = this.pngfile;
-            hs.tSpecId = tbClassInfo.Text;
+            hs.tSpecId = tbTeacherInfo.Text;
             hs.tName = tbClassInfo1.Text;
             hs.tbNotTitle.Text = lbNotTitle.Content.ToString();
             hs.className = tbClassInfo1.Text;
@@ -398,17 +402,18 @@ namespace HAMS.Teacher.TeacherView
             //进入答疑界面时加载目前已经有的疑问和解答
             DataTable table1 = td.getComment(noteId);
             //List<StudentAskQuestion> list = new List<StudentAskQuestion>();  //生成StudentAskQuestion动态数组
-            MessageBox.Show(table1.Rows.Count.ToString());    //
+            //MessageBox.Show(table1.Rows.Count.ToString());    //
             StudentAskQuestion[] newStudentAskQuestion = new StudentAskQuestion[100];
             for (int i = 0; i < table1.Rows.Count; i++)
             {
                 newStudentAskQuestion[i] = new StudentAskQuestion();
                 newStudentAskQuestion[i].lbStuName.Content = "本课堂学生";
                 newStudentAskQuestion[i].textBoxQuestion.Text = table1.Rows[i][2].ToString();  //有问题
+                newStudentAskQuestion[i].textBoxQuestion.IsReadOnly = true;
                 newStudentAskQuestion[i].tbResponse.Text = table1.Rows[i][3].ToString();
                 newStudentAskQuestion[i].btnComment.Click += new RoutedEventHandler(btnSubmitQuestion_Click);
                 newStudentAskQuestion[i].btnInsert.Click += new RoutedEventHandler(btnbtnInsert_Click);
-                newStudentAskQuestion[i].lbResponseName.Content = tbTeacherInfo1.Text;    //给老师姓名赋值
+                newStudentAskQuestion[i].lbResponseName.Content = tbTeacherInfo1.Text +"老师";    //给老师姓名赋值
                 newAnswerQuestion.listViewQuestionAndAnswer.Items.Add(newStudentAskQuestion[i]);
                 //newAnswerQuestion.btnSubmitQuestion.Click += new RoutedEventHandler(btnSubmitQuestion_Click); //定义答疑按钮的事件
                 if(newStudentAskQuestion[i].tbResponse.Text!="")
@@ -608,5 +613,10 @@ namespace HAMS.Teacher.TeacherView
 
             }
         }
-    }
+
+		private void BtnReturn_MouseMove(object sender, MouseEventArgs e)
+		{
+
+		}
+	}
 }

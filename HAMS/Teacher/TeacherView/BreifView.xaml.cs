@@ -118,16 +118,16 @@ namespace HAMS.Teacher.TeacherView
                 }
                 else
                 {
-                    bool ifDelete = ts.DeleteHomeworkNotice(labelCourseNumber.Content.ToString(), clickTeachClass.title.Content.ToString());  //删除时要考虑到与作业表级联删除的情况
+                    String ifDelete = ts.DeleteHomeworkNotice(labelCourseNumber.Content.ToString(), clickTeachClass.title.Content.ToString());  //删除时要考虑到与作业表级联删除的情况
 
-                    if (ifDelete == true)
+                    if (ifDelete == "删除该作业公告成功")
                     {
                         System.Windows.MessageBox.Show("删除该作业公告成功");
                         homeworkListView.Items.Remove(clickTeachClass);
                     }
                     else
                     {
-                        System.Windows.MessageBox.Show("删除该作业公告失败");
+                        System.Windows.MessageBox.Show(ifDelete);
                     }
                 }
 

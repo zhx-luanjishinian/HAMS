@@ -25,7 +25,7 @@ namespace HAMS.Teacher.TeacherView
     public partial class TeacherMainForm : Window
     {
         
-        TService ts = new TService();
+        private TService ts = new TService();
         public string pngfile;
         public TeacherMainForm(string session,string tname,string pgfile)
         {
@@ -45,7 +45,7 @@ namespace HAMS.Teacher.TeacherView
             {
                 throw new Exception("界面间传值发生异常" + ex.Message);
             }
-            TeacherDao.TDao td = new TeacherDao.TDao();
+             TeacherDao.TDao td = new TeacherDao.TDao();
             //AnnounceNoticeDao temp = new AnnounceNoticeDao();
             //两个方法类
             DataTable tableTeacherId = td.getTeacherId(session);

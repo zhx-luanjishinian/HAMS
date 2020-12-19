@@ -37,11 +37,11 @@ namespace HAMS.Admin.AdminView
             this.pwd = pwd;
             txtTeaNum.Text = tnum;
             txtTeaName.Text = tna;
-            if (tsex == "1")
+            if (tsex == "男")
             {
                 radiobtnTeaMale.IsChecked = true;
             }
-            else if (tsex == "0")
+            else if (tsex == "女")
             {
                 radiobtnTeaFemale.IsChecked = true;
             }

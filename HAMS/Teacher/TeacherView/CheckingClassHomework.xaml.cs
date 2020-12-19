@@ -15,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using HAMS.Student.StudentService;
 
 namespace HAMS.Teacher.TeacherView
 {
@@ -23,6 +24,8 @@ namespace HAMS.Teacher.TeacherView
     /// </summary>
     public partial class CheckingClassHomework : Window
     {
+        TeacherDao.TDao td = new TeacherDao.TDao();
+        SService ss = new SService();
         private int[] homIdCorrecteds;//已批改作业学生的homId数组
         private int[] homIdNeedCorrects;//待批改作业学生的homId数组
         private int[] homIdUnfinisheds;//未完成作业学生的homId数组
@@ -42,7 +45,7 @@ namespace HAMS.Teacher.TeacherView
 
 
         TeacherService.TService ts = new TeacherService.TService();
-        TeacherDao.TDao td = new TeacherDao.TDao();
+        
       
 
         public CheckingClassHomework(string homeworkTitle, string description, string teacherSpecId, string teacherName, string classSpecId, string className,string pgfile)
@@ -76,12 +79,13 @@ namespace HAMS.Teacher.TeacherView
 
 
             //获得notid
-            DataTable tableClassId = td.getClassId(classSpecId);
-            DataTable tableNotId = td.getNotIdByClassIdAndNotTitle(homeworkTitle, Convert.ToInt32(tableClassId.Rows[0][0]));
+            DataTable tableClassId = ts.getClassId(classSpecId);
+            DataTable tableNotId = ts.getNotIdByClassIdAndNotTitle(homeworkTitle, Convert.ToInt32(tableClassId.Rows[0][0]));
             notId = tableNotId.Rows[0][0].ToString();
             //对查看相关附件按钮进行初始化：能够实现鼠标放上去之后显示作业附件的名称
             //根据notId获得notURLName
-            string notURLName = td.getNotURLNameByNotId(int.Parse(notId)).Rows[0][0].ToString();
+            
+            string notURLName = ts.getNotURLNameByNotId(int.Parse(notId)).Rows[0][0].ToString();
             //加载作业附件名
             if(notURLName == "")
             {
@@ -97,12 +101,13 @@ namespace HAMS.Teacher.TeacherView
 
         public void LoadCorrected(string classSpecId, string homeworkTitle)
         {
-            DataTable table1 = td.getClassId(classSpecId);
+            DataTable table1 = ts.getClassId(classSpecId);
             int classId = Convert.ToInt32(table1.Rows[0][0]);
-            DataTable table2 = td.getNotIdByClassIdAndNotTitle(homeworkTitle, classId);
+            DataTable table2 = ts.getNotIdByClassIdAndNotTitle(homeworkTitle, classId);
             //获得notId
             this.notId = table2.Rows[0][0].ToString();
-            DataTable table3 = td.SelectHomeworkCheckedInfo(notId);
+            
+            DataTable table3 = ts.SelectHomeworkCheckedInfo(notId);
             //MessageBox.Show(table3.Rows.Count.ToString());
             int checkedNum = table3.Rows.Count;
             //加载已批改的动态控件
@@ -131,17 +136,17 @@ namespace HAMS.Teacher.TeacherView
 
                
                 String stuId = table3.Rows[i][0].ToString();
-                
 
-                DataTable table4 = td.GetStudentNameAndIdByStuID(stuId);
+                
+                DataTable table4 = ts.GetStudentNameAndIdByStuID(stuId);
                 checkedStudent[i].lbStudentInfo1.Content = table4.Rows[0][0].ToString();
                 stuSpecIdCorrecteds[i] = table4.Rows[0][0].ToString();
                 
                 checkedStudent[i].lbStudentInfo2.Content = table4.Rows[0][1].ToString();
                 stuNameCorrecteds[i] = table4.Rows[0][1].ToString();
                 //查到当前学生的性别
-                DataTable table10 = td.getSexByStuSpecId(table4.Rows[0][0].ToString());
-                if( Convert.ToInt32( table10.Rows[0][0])==1)
+                int sex = ss.getSexByStuSpecId(table4.Rows[0][0].ToString());
+                if( sex ==1)
                 {
                     checkedStudent[i].pngfile = @"..\..\Resources\男生头像.png"; 
                 }
@@ -465,19 +470,20 @@ namespace HAMS.Teacher.TeacherView
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-            //首先删除listview里面的东西
-            listViewChecked.Items.Clear();
-            listViewUnCheck.Items.Clear();
-            listViewUnFinish.Items.Clear();
+            
 
             
             //非空判断
-            if (tbStuNameSearch.Text == "" || tbStuNameSearch.Text == "请输入学生的完整姓名。")
+            if (tbStuNameSearch.Text == "" || tbStuNameSearch.Text == "请输入学生的完整姓名。")//此时不需要清空listview里的东西
             {
                 MessageBox.Show("请输入查询条件");
             }
             else 
             {
+                //首先删除listview里面的东西
+                listViewChecked.Items.Clear();
+                listViewUnCheck.Items.Clear();
+                listViewUnFinish.Items.Clear();
                 string stuName = tbStuNameSearch.Text;
                 int i1,i2,i3;
 

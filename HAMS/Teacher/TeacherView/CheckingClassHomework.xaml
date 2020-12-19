@@ -105,10 +105,9 @@
     </Window.Resources>
     <Viewbox Stretch="UniformToFill">
         <Grid Margin="0,0,0,-1" Height="472" Width="840">
-            <Grid Height="50" VerticalAlignment="Top"  Margin="0,0.344,0,0"><!--Background="LightBlue"-->
-                <Grid.Background>
-                    <ImageBrush ImageSource="/HAMS;component/Resources/78.-Night-sky.jpg"/>
-                </Grid.Background>
+            <Grid Height="58.061" VerticalAlignment="Top"  Margin="0,0.344,0,0" Background="LightBlue">
+
+
                 <TextBlock x:Name="tbTeacherInfo" Width="40.21" TextAlignment="Center" HorizontalAlignment="Left" Margin="51,18.677,0,17.667" Text="Z001">
                     <TextBlock.Background>
                         <ImageBrush/>
@@ -119,38 +118,33 @@
                     </TextBlock.Background></TextBlock>
                 <Image x:Name="imgSystemLogo" Width="47.831" Source="/HAMS;component/logo.png" Stretch="Fill" HorizontalAlignment="Right" Margin="0,0,82.707,1.235"/>
                 <Image x:Name="headImage" Source="../../Resources/男教师.png" HorizontalAlignment="Left" Height="37" VerticalAlignment="Top" Width="41"  RenderTransformOrigin="1.894,0.568" Margin="10,7.656,0,0"/>
-                <Button x:Name="btnExit" Background="{x:Null}" RenderTransformOrigin="0.622,0.945" Height="Auto" Foreground="#FF151111" BorderBrush="{x:Null}" Click="btnExit_Click" Margin="776,1.411,0,-1.411">
+                <Button x:Name="btnExit" Background="LightBlue" RenderTransformOrigin="0.622,0.945" Height="Auto" Foreground="#FF151111" BorderBrush="{x:Null}" Click="btnExit_Click" Margin="766,2.529,10,7.471">
                     <StackPanel>
                         <Image x:Name="exit1" Width="28" Height="23.907" Source="/HAMS;component/Resources/resizeApi.png"/>
                         <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
                     </StackPanel>
                 </Button>
             </Grid>
-            <Grid Margin="1,50.344,-1,0" Height="37.552" VerticalAlignment="Top" ><!--Background="LightPink"-->
-                <Grid.Background>
-                    <ImageBrush ImageSource="/HAMS;component/Resources/61.-Lavender.jpg"/>
-                </Grid.Background>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="65*"/>
-                    <ColumnDefinition Width="0*"/>
-                    <ColumnDefinition Width="454*"/>
-                </Grid.ColumnDefinitions>
-                <Button x:Name="btnReturn" Margin="10,3,0,6.552" BorderThickness="0" BorderBrush="#FF9F9D9D" Click="btnReturn_Click" HorizontalAlignment="Left" Width="51" Height="Auto">
+            <Grid Margin="-0.4,58.405,0.4,0" Height="29.491" VerticalAlignment="Top" Background="LightPink">
+
+
+
+                <Button x:Name="btnReturn" Margin="10,3,0,6.552" BorderThickness="0" BorderBrush="#FF9F9D9D" Click="btnReturn_Click" HorizontalAlignment="Left" Width="35.683" Height="Auto">
                     <Button.Background>
                         <ImageBrush ImageSource="../../Resources/返回.png"/>
                     </Button.Background>
                 </Button>
-                <TextBlock x:Name="tbClassInfo" Width="113.16" TextAlignment="Center" HorizontalAlignment="Left" Margin="-39.98,9.24,0,7" Grid.Column="2">
+                <TextBlock x:Name="tbClassInfo" Width="113.16" TextAlignment="Center" HorizontalAlignment="Left" Margin="70.222,8.368,0,7.872">
                     <TextBlock.Background>
                         <ImageBrush/>
                     </TextBlock.Background><Run Text="Z004530B1300720   "/></TextBlock>
-                <TextBlock x:Name="tbClassInfo1" Width="50.281" TextAlignment="Center" HorizontalAlignment="Right" Margin="0,9.24,606.337,7" Grid.Column="2">
+                <TextBlock x:Name="tbClassInfo1" Width="50.281" TextAlignment="Center" HorizontalAlignment="Right" Margin="0,7.304,582.959,8.936">
                     <TextBlock.Background>
                         <ImageBrush/>
                     </TextBlock.Background><Run Text="R语言"/></TextBlock>
-                <Label x:Name="label" Content="作业公告详情" Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,34.706,10" VerticalAlignment="Bottom" Width="83.123" Height="22.942" Style="{DynamicResource LabelStyle1}"/>
+                <Label x:Name="label" Content="作业公告详情" HorizontalAlignment="Right" Margin="0,0,19.389,3.549" VerticalAlignment="Bottom" Width="83.123" Height="22.942" Style="{DynamicResource LabelStyle1}"/>
             </Grid>
-            <Grid Margin="1.4,87.896,-1,247.911">
+            <Grid Margin="1.4,92.896,-1,247.911">
                 <Label x:Name="lbNotTitle" Content="" Height="24" Width="130" RenderTransformOrigin="0.507,0.631" HorizontalAlignment="Left" Margin="71,6.843,0,0" VerticalAlignment="Top"/>
                 <Image x:Name="homework_png" Source="../../Resources/homework.png" Stretch="Fill" Width="56" HorizontalAlignment="Left" Margin="10,6.843,0,0" OpacityMask="{x:Null}" Height="57.595" VerticalAlignment="Top"/>
                 <Label x:Name="labelHomeworkArrangeTime" Content="2020年11月10日 星期二 10:10" Width="156.021" FontSize="10" HorizontalAlignment="Right" Margin="0,10.143,198.177,0" VerticalAlignment="Top"/>
@@ -184,7 +178,7 @@
                         <ImageBrush ImageSource="刷新.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="btnSearch1" Width="33" HorizontalAlignment="Right" Margin="0,0,68.061,-1" Height="30" VerticalAlignment="Bottom" BorderThickness="0" Click="btnSearch_Click">
+                <Button x:Name="btnSearch1" Width="33" HorizontalAlignment="Right" Margin="0,6,68,-0.499" Height="30" VerticalAlignment="Top" BorderThickness="0" Click="btnSearch_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="/HAMS;component/Resources/查询.png"/>
                     </Button.Background>
@@ -213,7 +207,7 @@
                             </TabItem.Background>
                             <Grid Background="#FFE5E5E5" Margin="0,0,0,-3.066">
 
-                                <ListView x:Name="listViewChecked" Grid.ColumnSpan="7">
+                                <ListView x:Name="listViewChecked" Margin="0,10,0,0">
                                     <ListView.View>
                                         <GridView>
                                             <GridViewColumn/>
@@ -267,7 +261,7 @@
                         </TabItem>
                     </TabControl>
                 </Border>
-                <Button x:Name="btnHomeworkStatistic" Content="查看作业情况统计图" FontWeight="Bold" Margin="0,-2.701,0,0" Click="btnHomeworkStatistic_Click" Background="#FFDDD3FA" BorderBrush="#FFCDC1F3" HorizontalAlignment="Right" Width="157.796" VerticalAlignment="Top" Height="25.102">
+                <Button x:Name="btnHomeworkStatistic" Content="查看作业情况统计图" FontWeight="Bold" Click="btnHomeworkStatistic_Click" Background="#FFDDD3FA" BorderBrush="#FFCDC1F3" HorizontalAlignment="Right" Width="159.408" VerticalAlignment="Top" Height="23.691" Margin="0,0,10,0">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="3"/>

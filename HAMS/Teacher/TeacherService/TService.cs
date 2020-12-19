@@ -428,6 +428,80 @@ namespace HAMS.Teacher.TeacherService
 
         }
 
+        public int getSexByTeaSpecId(string teacherSpecId)
+        {
+           return int.Parse(td.getSexByTeaSpecId(teacherSpecId).Rows[0][0].ToString());
+        }
+
+        public DataTable getNotice(string classSpaceId)  //从数据库查询目前已有的作业
+        {
+            return td.getNotice(classSpaceId);
+        }
+
+        public DataTable getTeacherId(String TeacherSpecId)
+        {
+            return td.getTeacherId(TeacherSpecId);
+        }
+
+        public DataTable LoadMainFormLeft(string teacherSpecId)
+        {
+            return td.LoadMainFormLeft(teacherSpecId);
+        }
+
+        public String getNoticeNum(string classId)
+        {
+            return td.getNoticeNum(classId).ToString();
+        }
+
+        public String getStuNum(string classId)
+        {
+            return td.getStuNum(classId).ToString();
+        }
+
+        public DataTable getClassIdByTId(string teacherId)
+        {
+            return td.getClassIdByTId(teacherId);
+        }
+
+        public DataTable getRecentNoticeByClassId(string classId)
+        {
+            return td.getRecentNoticeByClassId(classId);
+        }
+
+        public DataTable GetClassInfoByClassID(String classId)
+        {
+            return td.GetClassInfoByClassID(classId);
+        }
+
+        public DataTable getClassId(string classSpecId)
+        {
+            return td.getClassId(classSpecId);
+        }
+
+        public DataTable getNotIdByClassIdAndNotTitle(String notTitle, int classId)
+        {
+            return td.getNotIdByClassIdAndNotTitle(notTitle,classId);
+        }
+
+        public Boolean deleteNotice(string noticeId)
+        {
+            return td.deleteNotice(noticeId);
+        }
+
+        public DataTable getNotURLNameByNotId(int notId)
+        {
+            return td.getNotURLNameByNotId(notId);
+        }
+
+        public DataTable SelectHomeworkCheckedInfo(String notId)
+        {
+            return td.SelectHomeworkCheckedInfo(notId);
+        }
+
+        public DataTable GetStudentNameAndIdByStuID(String stuId)
+        {
+            return td.GetStudentNameAndIdByStuID(stuId);
+        }
 
     }
     }

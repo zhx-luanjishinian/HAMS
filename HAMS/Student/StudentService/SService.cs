@@ -392,5 +392,10 @@ namespace HAMS.Student.StudentService
             return sd.insertStudentComment(notId, comment);
         }
 
+        public int getSexByStuSpecId(string StuSpecId)
+        {
+            return int.Parse(sd.getSexByStuSpecId(StuSpecId).Rows[0][0].ToString());
+        }
+
     }
 }

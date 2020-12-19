@@ -22,7 +22,7 @@ namespace HAMS.Teacher.TeacherView
     /// </summary>
     public partial class BreifView : Window
     {
-        TDao an = new TDao();
+        
         TeacherService.TService ts = new TeacherService.TService();
        
         public string pngfile;//头像路径
@@ -39,9 +39,9 @@ namespace HAMS.Teacher.TeacherView
             labelCourseNumber.Content = courseNum;
             lbTeacherInfo.Text = tId;
             lbTeacherInfo1.Text = tName;
+
             //从数据库中查找目前该课堂已经的布置作业
-            TeacherDao.TDao td = new TeacherDao.TDao();
-            DataTable table = td.getNotice(courseNum);  //有问题
+            DataTable table = ts.getNotice(courseNum);  //有问题
             //MessageBox.Show(table.Rows[3][0].ToString());
             ////动态生成控件
             BreifHomework[] arrayBreifHomework = new BreifHomework[20];
@@ -53,7 +53,17 @@ namespace HAMS.Teacher.TeacherView
                 //加载作业标题
                 arrayBreifHomework[i].title.Content = table.Rows[i][7].ToString();
                 //加载作业描述
-                arrayBreifHomework[i].description.Content = table.Rows[i][4].ToString();
+                //arrayBreifHomework[i].description.Content = table.Rows[i][4].ToString();
+                //如果作业描述很长的话只显示10个
+                if (table.Rows[i][4].ToString().Length > 40)
+                {
+                    arrayBreifHomework[i].description.Content = table.Rows[i][4].ToString().Substring(0, 40) + "...";//将作业内容content值显示在对应的控件中
+                }
+                else
+                {
+                    arrayBreifHomework[i].description.Content = table.Rows[i][4].ToString();//不超过10条就全部展示
+                }
+
                 //加在canvas里面
                 //arrayHomk.Children.Add(arrayBreifHomework[i]);
                 homeworkListView.Items.Add(arrayBreifHomework[i]);
@@ -68,7 +78,7 @@ namespace HAMS.Teacher.TeacherView
         }
         private void btnModify_Click(object sender, RoutedEventArgs e)
         {
-            TDao td = new TDao();  //创建TDao对象
+           
             TeacherService.TService ts = new TeacherService.TService();
             System.Windows.Controls.Button sonBtn = (System.Windows.Controls.Button)sender;  //获取当前点击的那个
             Grid sonGrid = (Grid)sonBtn.Parent;
@@ -100,12 +110,12 @@ namespace HAMS.Teacher.TeacherView
                 //获取父级元素，找到要删除的公告
                 Grid sonGrid = (Grid)sonBtn.Parent;
                 BreifHomework clickTeachClass = (BreifHomework)sonGrid.Parent;
-                DataTable tableClassId = an.getClassId(labelCourseNumber.Content.ToString());
-                DataTable tableNotId = an.getNotIdByClassIdAndNotTitle(clickTeachClass.title.Content.ToString(),Convert.ToInt32(tableClassId.Rows[0][0]) );
-                int stuNum = an.getStuNum(tableClassId.Rows[0][0].ToString());
+                DataTable tableClassId = ts.getClassId(labelCourseNumber.Content.ToString());
+                DataTable tableNotId = ts.getNotIdByClassIdAndNotTitle(clickTeachClass.title.Content.ToString(),Convert.ToInt32(tableClassId.Rows[0][0]) );
+                int stuNum = int.Parse(ts.getStuNum(tableClassId.Rows[0][0].ToString()));
                 if(stuNum==0)
                 {
-                    bool flag0 =an.deleteNotice(tableNotId.Rows[0][0].ToString());
+                    bool flag0 =ts.deleteNotice(tableNotId.Rows[0][0].ToString());
                     if(flag0 ==true)
                     {
                         System.Windows.MessageBox.Show("删除成功");

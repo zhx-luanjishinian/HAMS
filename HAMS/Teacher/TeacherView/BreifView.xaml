@@ -10,12 +10,12 @@
     <Viewbox Stretch="UniformToFill">
         <Grid Margin="0,0,-6.4,0.4" Height="472" Width="840">
 
-            <Canvas Height="50" Background="LightBlue" VerticalAlignment="Top" HorizontalAlignment="Left" Width="832">
+            <Canvas Height="62" Background="LightBlue" VerticalAlignment="Top" HorizontalAlignment="Left" Width="832">
                 <TextBlock x:Name="lbTeacherInfo" Height="20" Canvas.Left="56" Canvas.Top="21" Width="38.934" TextAlignment="Center" FontSize="13" Text="Z001 "/>
                 <TextBlock x:Name="lbTeacherInfo1" Height="19" Canvas.Left="94.934" Canvas.Top="21" Width="57.2" TextAlignment="Center" FontSize="13"><Run Text="刘树栋"/></TextBlock>
                 <Image x:Name="headImage" Source="../../Resources/男教师.png" Height="37" VerticalAlignment="Top" Width="41"  RenderTransformOrigin="1.894,0.568" Canvas.Left="10" Canvas.Top="10"/>
-                <Image x:Name="image1" Height="50" Canvas.Left="701.4" Width="43.8" Source="/HAMS;component/logo.png" Stretch="Fill"/>
-                <Canvas Height="37.952" VerticalAlignment="Bottom" Canvas.Top="50" Width="832">
+                <Image x:Name="image1" Height="60" Canvas.Left="690.2" Width="52.56" Source="/HAMS;component/logo.png" Stretch="Fill" Canvas.Top="0.2"/>
+                <Canvas Height="37.952" VerticalAlignment="Bottom" Canvas.Top="62.716" Width="832">
                     <Border BorderBrush="Black" BorderThickness="0,0,0,1" Height="37.552" Canvas.Top="0.4" Width="832" Background="LightPink"/>
                     <Label x:Name="labelCourseNumber" Content="Z004530B1300720 " Width="116" Height="24" Canvas.Left="51.708" Canvas.Top="7.378"/>
                     <Label x:Name="labelCourseName" Content="R语言" Width="40" Height="24" Canvas.Left="183.8" Canvas.Top="6"/>
@@ -32,7 +32,7 @@
                         </Button.Background>
                     </Button>
                 </Canvas>
-                <Button x:Name="btnExit" Background="{x:Null}" RenderTransformOrigin="0.622,0.945" Height="50" Foreground="#FF151111" BorderBrush="{x:Null}" Click="btnExit_Click" Canvas.Left="768" Width="64" d:LayoutOverrides="HorizontalAlignment">
+                <Button x:Name="btnExit" Background="LightBlue" RenderTransformOrigin="0.622,0.945" Height="50" Foreground="#FF151111" BorderBrush="{x:Null}" Click="btnExit_Click" Canvas.Left="758" Width="64" d:LayoutOverrides="HorizontalAlignment" Canvas.Top="7.716">
                     <StackPanel>
                         <Image x:Name="exit1" Width="28" Height="23.907" Source="/HAMS;component/Resources/resizeApi.png"/>
                         <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>
@@ -40,7 +40,7 @@
                 </Button>
             </Canvas>
             <Canvas x:Name="arrayHomk" Margin="0,0,8,10" Height="366.698" VerticalAlignment="Bottom">
-                <ListView x:Name="homeworkListView" Height="366.698" Width="832">
+                <ListView x:Name="homeworkListView" Height="356.698" Width="832" Canvas.Top="10">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn/>

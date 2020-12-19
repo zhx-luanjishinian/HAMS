@@ -52,7 +52,14 @@ namespace HAMS.Admin.AdminService
                 dr2 = result.NewRow();
                 dr2[0] = row["stuSpecId"];
                 dr2[1] = row["name"];
-                dr2[2] = row["sex"];
+                if (row["sex"].ToString() == "0")
+                {
+                    dr2[2] = "女";
+                }
+                else
+                {
+                    dr2[2] = "男";
+                }
                 dr2[3] = row["classroom"];
                 dr2[4] = row["password"];
                 result.Rows.Add(dr2);
@@ -77,7 +84,15 @@ namespace HAMS.Admin.AdminService
                 dr2 = result.NewRow();
                 dr2[0] = row["stuSpecId"];
                 dr2[1] = row["name"];
-                dr2[2] = row["sex"];
+                if(row["sex"].ToString()=="0")
+                {
+                    dr2[2] = "女";
+                }
+                else
+                {
+                    dr2[2] = "男";
+                }
+                //dr2[2] = row["sex"];
                 dr2[3] = row["classroom"];
                 dr2[4] = row["password"];
                 result.Rows.Add(dr2);
@@ -102,7 +117,14 @@ namespace HAMS.Admin.AdminService
                 dr2 = result.NewRow();
                 dr2[0] = row["stuSpecId"];
                 dr2[1] = row["name"];
-                dr2[2] = row["sex"];
+                if (row["sex"].ToString() == "0")
+                {
+                    dr2[2] = "女";
+                }
+                else
+                {
+                    dr2[2] = "男";
+                }
                 dr2[3] = row["classroom"];
                 dr2[4] = row["password"];
                 result.Rows.Add(dr2);
@@ -132,7 +154,14 @@ namespace HAMS.Admin.AdminService
                 dr2 = result.NewRow();
                 dr2[0] = row["teacherSpecId"];
                 dr2[1] = row["name"];
-                dr2[2] = row["sex"];
+                if (row["sex"].ToString() == "0")
+                {
+                    dr2[2] = "女";
+                }
+                else
+                {
+                    dr2[2] = "男";
+                }
                 dr2[3] = row["department"];
                 dr2[4] = row["password"];
                 result.Rows.Add(dr2);
@@ -156,7 +185,14 @@ namespace HAMS.Admin.AdminService
                 dr2 = result.NewRow();
                 dr2[0] = row["teacherSpecId"];
                 dr2[1] = row["name"];
-                dr2[2] = row["sex"];
+                if (row["sex"].ToString() == "0")
+                {
+                    dr2[2] = "女";
+                }
+                else
+                {
+                    dr2[2] = "男";
+                }
                 dr2[3] = row["department"];
                 dr2[4] = row["password"];
                 result.Rows.Add(dr2);
@@ -180,7 +216,14 @@ namespace HAMS.Admin.AdminService
                 dr2 = result.NewRow();
                 dr2[0] = row["teacherSpecId"];
                 dr2[1] = row["name"];
-                dr2[2] = row["sex"];
+                if (row["sex"].ToString() == "0")
+                {
+                    dr2[2] = "女";
+                }
+                else
+                {
+                    dr2[2] = "男";
+                }
                 dr2[3] = row["department"];
                 dr2[4] = row["password"];
                 result.Rows.Add(dr2);

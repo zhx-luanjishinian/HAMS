@@ -63,6 +63,7 @@ namespace HAMS.Student.StudentView
         {
             tpStartDate.Text = "";
             tpStartTime.Text = "";
+            this.Visibility = Visibility.Hidden;
         }
     }
 }

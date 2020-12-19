@@ -37,6 +37,10 @@ namespace HAMS.Admin.AdminView
         private void BtnStuManage_Click(object sender, RoutedEventArgs e)
         {
             StudentManagement StudentManagement = new StudentManagement();
+            btnStuManage.Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
+            btnTeaManage.Background = new SolidColorBrush(Color.FromRgb(2, 136, 209));
+            btnClassManage.Background = new SolidColorBrush(Color.FromRgb(2, 136, 209));
+            btnNoticeManage.Background = new SolidColorBrush(Color.FromRgb(2, 136, 209));
             content.Content = new Frame()
             {
                 Content = StudentManagement
@@ -46,6 +50,10 @@ namespace HAMS.Admin.AdminView
         private void BtnTeaManage_Click(object sender, RoutedEventArgs e)
         {
             TeacherManagement TeacherManagement = new TeacherManagement();
+            btnTeaManage.Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
+            btnStuManage.Background = new SolidColorBrush(Color.FromRgb(2, 136, 209));
+            btnClassManage.Background = new SolidColorBrush(Color.FromRgb(2, 136, 209));
+            btnNoticeManage.Background = new SolidColorBrush(Color.FromRgb(2, 136, 209));
             content.Content = new Frame()
             {
                 Content = TeacherManagement
@@ -55,6 +63,10 @@ namespace HAMS.Admin.AdminView
         private void BtnClassManage_Click(object sender, RoutedEventArgs e)
         {
             ClassManagement ClassManagement = new ClassManagement();
+            btnClassManage.Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
+            btnStuManage.Background = new SolidColorBrush(Color.FromRgb(2, 136, 209));
+            btnTeaManage.Background = new SolidColorBrush(Color.FromRgb(2, 136, 209));
+            btnNoticeManage.Background = new SolidColorBrush(Color.FromRgb(2, 136, 209));
             content.Content = new Frame()
             {
                 Content = ClassManagement
@@ -64,6 +76,10 @@ namespace HAMS.Admin.AdminView
         private void BtnNoticeManage_Click(object sender, RoutedEventArgs e)
         {
             NoticeManagement NoticeManagement = new NoticeManagement(adminId);
+            btnStuManage.Background = new SolidColorBrush(Color.FromRgb(2, 136, 209));
+            btnTeaManage.Background = new SolidColorBrush(Color.FromRgb(2, 136, 209));
+            btnClassManage.Background = new SolidColorBrush(Color.FromRgb(2, 136, 209));
+            btnNoticeManage.Background = new SolidColorBrush(Color.FromRgb(221, 221, 221));
             content.Content = new Frame()
             {
                 Content = NoticeManagement

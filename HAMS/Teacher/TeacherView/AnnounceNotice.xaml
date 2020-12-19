@@ -9,7 +9,7 @@
         Title="AnnounceNotice" Height="577" Width="1026" WindowState="Maximized" WindowStyle="None">
     <Viewbox Stretch="UniformToFill">
         <Grid Margin="0,0,0,-1.5" Height="577" Width="1026">
-            <Canvas Margin="0,0,0,489.048" Height="37.952" VerticalAlignment="Bottom">
+            <Canvas Margin="0,0,0,477.778" Height="37.952" VerticalAlignment="Bottom">
                 <Border BorderBrush="Black" BorderThickness="0,0,0,1" Height="37.552" Canvas.Top="-2.552" Width="1026" Background="LightPink"/>
                 <TextBlock x:Name="lbClassSpecId"  Width="136" Height="20" Canvas.Left="63.8" Canvas.Top="7.952" FontSize="14" FontWeight="Bold" Text="Z004530B1300720"/>
                 <Label x:Name="labelcClassName" Content="R语言" Width="64" Height="30" Canvas.Left="217" Canvas.Top="4" FontSize="14" FontWeight="Bold"/>
@@ -19,7 +19,7 @@
                     </Button.Background>
                 </Button>
             </Canvas>
-            <Canvas Margin="0,87.952,3.6,0">
+            <Canvas Margin="0,99.222,0,0">
                 <Canvas Height="41.455" Width="503.161" Canvas.Top="10">
                     <Label x:Name="homeworkTitle" Height="24.055" Canvas.Left="10" Canvas.Top="11.4" Width="65.8" Content="作业标题" BorderThickness="0,0,0,1" Background="#00000000"/>
                     <TextBox x:Name="textBoxHomeworkTitle" Height="28.055" Canvas.Left="89.443" TextWrapping="Wrap" Canvas.Top="7.4" Width="403.718" Background="White" Text="请输入作业标题"  GotFocus="textBoxHomeworkTitle_GotFocus"  />
@@ -46,12 +46,12 @@
                     </Button>
                 </Canvas>
             </Canvas>
-            <Canvas Height="50" Background="LightBlue" Margin="0,0,0,527" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="1026" d:LayoutOverrides="LeftMargin, RightMargin">
+            <Canvas Height="61.27" Background="LightBlue" Margin="0,0,0,515.73" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="1026" d:LayoutOverrides="LeftMargin, RightMargin">
                 <TextBlock x:Name="tbTeacherSpecId" Height="20" Canvas.Left="56" Canvas.Top="21" Width="38.934" TextAlignment="Center" FontSize="16" Text="Z001 " FontWeight="Bold"/>
                 <TextBlock x:Name="tbName" Height="19" Canvas.Left="111.034" Canvas.Top="21" Width="65.25" TextAlignment="Center" FontSize="16" FontWeight="Bold"><Run Text="刘树栋"/></TextBlock>
                 <Image x:Name="headImage" Source="../../Resources/男教师.png" Height="37" VerticalAlignment="Top" Width="41"  RenderTransformOrigin="1.894,0.568" Canvas.Left="10" Canvas.Top="10"/>
-                <Image x:Name="image1" Height="50" Canvas.Left="895.813" Width="43.8" Source="/HAMS;component/logo.png" Stretch="Fill"/>
-                <Button x:Name="btnExit" Background="{x:Null}" RenderTransformOrigin="0.622,0.945" Height="50" Foreground="#FF151111" BorderBrush="{x:Null}" Click="btnExit_Click" Canvas.Left="962" Width="64" d:LayoutOverrides="HorizontalAlignment">
+                <Image x:Name="image1" Height="57.352" Canvas.Left="868.442" Width="50.24" Source="/HAMS;component/logo.png" Stretch="Fill"/>
+                <Button x:Name="btnExit" Background="LightBlue" RenderTransformOrigin="0.622,0.945" Height="52.479" Foreground="#FF151111" BorderBrush="{x:Null}" Click="btnExit_Click" Canvas.Left="948.826" Width="67.174" d:LayoutOverrides="HorizontalAlignment" Canvas.Top="4.873">
                     <StackPanel>
                         <Image x:Name="exit1" Width="28" Height="23.907" Source="/HAMS;component/Resources/resizeApi.png"/>
                         <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold"><Run Text="注销"/></TextBlock>

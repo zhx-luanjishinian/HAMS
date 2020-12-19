@@ -43,10 +43,10 @@ namespace HAMS.Admin.AdminView
             this.
             txtStuNum.Text = snum;
             txtStuName.Text = sna;
-            if (sex == "1") {
+            if (sex == "男") {
                 radiobtnStuMale.IsChecked = true; 
             }
-            else if(sex == "0")
+            else if(sex == "女")
             {
                 radiobtnStuMale1.IsChecked = true;
             }

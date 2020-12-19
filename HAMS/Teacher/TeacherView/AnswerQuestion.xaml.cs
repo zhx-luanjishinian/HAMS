@@ -108,6 +108,11 @@ namespace HAMS.Teacher.TeacherView
             StudentAskQuestion stuControl = (StudentAskQuestion)stuCanvas.Parent;
             //MessageBox.Show(stuControl.lbStuName.Content.ToString());   
             //往数据库里插入数据
+            if (stuControl.textBoxQuestion.Text == "")
+            {
+                MessageBox.Show("同学，请输入你的答疑信息");
+            }
+            else { 
             if (ss.insertStudentQuestion(notId, stuControl.textBoxQuestion.Text))
             {
                 MessageBox.Show("发送答疑成功！");
@@ -116,7 +121,8 @@ namespace HAMS.Teacher.TeacherView
             {
                 MessageBox.Show("failed!");
             }
-           
+            }
+
 
         }
         /// <summary>

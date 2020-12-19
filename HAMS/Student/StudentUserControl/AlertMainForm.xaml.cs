@@ -46,6 +46,8 @@ namespace HAMS.Student.StudentUserControl
        private void timeAlert()
         {
             DateTime trueDl = Convert.ToDateTime(truD);
+            
+
             //如果已经到达截止时间，此时就提醒一次，后面只有刷新的时候才进行提醒
             if (trueDl < DateTime.Now)
             {
@@ -53,8 +55,15 @@ namespace HAMS.Student.StudentUserControl
                 MessageBox.Show("亲，你的" + className + "课堂的作业" + notName + "到达老师设置的截止时间了");
 
             }
-            else { 
-            disTimer1.Tick += new EventHandler(alertTime);
+            else {
+                if (defD != "") {
+                    
+                    DateTime defD1 = Convert.ToDateTime(defD);
+                    if( defD1 < DateTime.Now) { 
+                    MessageBox.Show("亲，你的" + className + "课堂的作业" + notName + "到达自己设置的截止时间了");
+                }
+                }
+                disTimer1.Tick += new EventHandler(alertTime);
             //每隔一分钟进行一次报警
             disTimer1.Interval = new TimeSpan(0, 0, 60);
             disTimer1.Start();

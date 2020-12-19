@@ -9,7 +9,8 @@
     <Viewbox Stretch="UniformToFill">
         <Grid Height="472" Width="840">
 
-            <Canvas Margin="0,1.248,0,0"  Height="60.752" VerticalAlignment="Top" ><!--Background="LightBlue"-->
+            <Canvas Margin="0,1.248,0,0"  Height="60.752" VerticalAlignment="Top" >
+                <!--Background="LightBlue"-->
                 <Canvas.Background>
                     <ImageBrush Stretch="Fill" ImageSource="/HAMS;component/Resources/78.-Night-sky.jpg"/>
                 </Canvas.Background>
@@ -29,6 +30,11 @@
                 </Button>
             </Canvas>
             <ListView x:Name="listViewQuestionAndAnswer" HorizontalAlignment="Left" Height="374.439" Margin="10,77.48,0,0" VerticalAlignment="Top" Width="820" Foreground="#DD999191" BorderBrush="#89807777"/>
+            <Button x:Name="btnRefresh" HorizontalAlignment="Left" Margin="630,0,0,422" Width="36" BorderBrush="{x:Null}" Click="btnRefresh_Click" Height="31" Foreground="{x:Null}" VerticalAlignment="Bottom" >
+                <Button.Background>
+                    <ImageBrush ImageSource="刷新.png"/>
+                </Button.Background>
+            </Button>
 
         </Grid>
     </Viewbox>

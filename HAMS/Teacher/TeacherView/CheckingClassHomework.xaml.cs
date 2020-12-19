@@ -349,7 +349,7 @@ namespace HAMS.Teacher.TeacherView
 
         private void btnAnswerQuestion_Click(object sender, RoutedEventArgs e)
         {
-            AnswerQuestion newAnswerQuestion = new AnswerQuestion(lbNotTitle.Content.ToString());   //这里有问题
+            AnswerQuestion newAnswerQuestion = new AnswerQuestion(lbNotTitle.Content.ToString(), tbTeacherInfo1.Text,notId);   //这里有问题
             LoadQuestionAndAnswer(notId, newAnswerQuestion);   //加载疑问和回答
             newAnswerQuestion.btnSubmitQuestion.Visibility = Visibility.Hidden;
             newAnswerQuestion.Show();

@@ -62,9 +62,11 @@ namespace HAMS.Teacher.TeacherView
                 arrayTeachClass[i].labelStudentNumber.Content = "当前课堂人数：" + td.getStuNum(table.Rows[i][0].ToString()).ToString();
                 arrayTeachClass[i].labelClassName1.Content = table.Rows[i][1].ToString();
                 listViewTeacherClass.Items.Add(arrayTeachClass[i]);
+                //arrayBreifHomework[i].btnModify.Click += new RoutedEventHandler(btnModify_Click);
                 arrayTeachClass[i].MouseDown += new System.Windows.Input.MouseButtonEventHandler(mousedown);
-                
-             }
+                //arrayTeachClass[i].btnEnterClass.Click += new RoutedEventHandler(btnModify_Click);
+
+            }
             //查到老师当前教的课程的id
             
          
@@ -74,44 +76,7 @@ namespace HAMS.Teacher.TeacherView
             //动态生成控件
             DataTable tableRecentNotice;
 
-            
-            //for (int j = 0; j < tableclassId.Rows.Count; j++)
-            //{
-            //    tableRecentNotice=td.getRecentNoticeByClassId(tableclassId.Rows[j][0].ToString());    //获得对应classId在notice表中的内容
-            //    DataTable tableclassInfo = td.GetClassInfoByClassID(tableclassId.Rows[j][0].ToString()); //获得对应classId在class表中的其他内容
-            //    int noticeNum = tableRecentNotice.Rows.Count;
-            //    if(noticeNum>=3)     //取布置的所有作业
-            //    {
-            //         for(int k = 0; k<3 ; k++)
-            //         {
-            //            arrayRecentNotice[k] = new RecentNoticeControll();
-            //            arrayRecentNotice[k].labelNotName.Content = tableRecentNotice.Rows[2-k][7];
-            //            //为UserControl的属性赋值
-            //            arrayRecentNotice[k].desrciption = tableRecentNotice.Rows[2 - k][4].ToString();
-            //            arrayRecentNotice[k].className = tableclassInfo.Rows[j][1].ToString();
-            //            arrayRecentNotice[k].classSpecId = tableclassInfo.Rows[j][5].ToString();
-
-            //            listViewRecentNotice.Items.Add(arrayRecentNotice[k]);
-            //            //定义点击查看作业公告详情按钮
-            //            arrayRecentNotice[k].btnRecntNo1.Click += new RoutedEventHandler(btnRecntNo1_Click);
-
-            //        }
-            //    }
-            //    else
-            //    {
-            //        for (int k = 0; k < noticeNum; k++)
-            //        {
-            //            arrayRecentNotice[k] = new RecentNoticeControll();
-            //            arrayRecentNotice[k].labelNotName.Content = tableRecentNotice.Rows[noticeNum-1-k][7];
-            //            arrayRecentNotice[k].desrciption = tableRecentNotice.Rows[noticeNum - 1 - k][4].ToString();
-            //            arrayRecentNotice[k].className = tableclassInfo.Rows[j][1].ToString();   //这里有问题
-            //            arrayRecentNotice[k].classSpecId = tableclassInfo.Rows[j][5].ToString();
-            //            listViewRecentNotice.Items.Add(arrayRecentNotice[k]);
-            //            arrayRecentNotice[k].btnRecntNo1.Click += new RoutedEventHandler(btnRecntNo1_Click);
-            //        }
-            //    }
-
-            //}
+    
             for (int j = 0; j < tableclassId.Rows.Count; j++)
             {
                 tableRecentNotice = td.getRecentNoticeByClassId(tableclassId.Rows[j][0].ToString());    //获得对应classId在notice表中的内容
@@ -135,6 +100,11 @@ namespace HAMS.Teacher.TeacherView
                
             }
 
+        //private void btnModify_Click(object sender, RoutedEventArgs e)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
         private void mousedown(object sender, MouseButtonEventArgs e)
         {
             //记录点击的是哪个控件
@@ -148,7 +118,13 @@ namespace HAMS.Teacher.TeacherView
 
         private void btnEnterClass_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            //记录点击的是哪个控件
+            TeachClass clickTeachClass = (TeachClass)sender;
+            //动态加载BreifView界面，需要知道当前课程名，课程id，老师id,老师姓名
+            BreifView newBreif = new BreifView(clickTeachClass.labelClassId1.Content.ToString(), clickTeachClass.labelClassName1.Content.ToString(), tbTeacherInfo.Text, tbTeacherInfo1.Text, this.pngfile);
+            newBreif.pngfile = this.pngfile;
+            newBreif.Show();
+            this.Visibility = System.Windows.Visibility.Hidden;
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)

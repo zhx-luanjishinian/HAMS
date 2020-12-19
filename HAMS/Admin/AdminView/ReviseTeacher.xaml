@@ -14,14 +14,14 @@
             <Label Content="工号" FontSize="14" HorizontalAlignment="Left" Margin="248,76,0,0" VerticalAlignment="Top"/>
             <Label Content="姓名" FontSize="14" HorizontalAlignment="Left" Margin="248,128,0,0" VerticalAlignment="Top"/>
             <Label Content="性别" FontSize="14" HorizontalAlignment="Left" Margin="248,178,0,0" VerticalAlignment="Top"/>
-            <Label Content="学院" FontSize="14" HorizontalAlignment="Left" Margin="248,236,0,0" VerticalAlignment="Top"/>
+            <Label Content="院系" FontSize="14" HorizontalAlignment="Left" Margin="248,236,0,0" VerticalAlignment="Top"/>
             <Label Content="密码" FontSize="14" HorizontalAlignment="Left" Margin="248,292,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.471,0.555"/>
             <TextBox x:Name="txtTeaNum" HorizontalAlignment="Left" Height="23" Margin="319,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" IsReadOnly="True"/>
             <TextBox x:Name="txtTeaName" HorizontalAlignment="Left" Height="23" Margin="319,128,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="148"/>
             <TextBox x:Name="txtTeaCollege" HorizontalAlignment="Left" Height="23" Margin="319,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" RenderTransformOrigin="0.492,0.5"/>
             <TextBox x:Name="lableTeaPassword" HorizontalAlignment="Left" Height="23" Margin="322,291,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145"/>
             <RadioButton x:Name="radiobtnTeaMale" FontSize="14" Content="男" HorizontalAlignment="Left" Margin="322,180,0,0" VerticalAlignment="Top"/>
-            <RadioButton x:Name="radiobtnTeaFemale" FontSize="14" Content="女" HorizontalAlignment="Left" Margin="431,178,0,0" VerticalAlignment="Top"/>
+            <RadioButton x:Name="radiobtnTeaFemale" FontSize="14" Content="女" HorizontalAlignment="Left" Margin="416,180,0,0" VerticalAlignment="Top"/>
             <Button x:Name="btnRevise" BorderBrush="{x:Null}" Content="修改" HorizontalAlignment="Left" Margin="252,340,0,0" VerticalAlignment="Top" Background="#FF93B3DE" Width="76" Click="BtnRevise_Click"/>
             <Button x:Name="btnCancel" BorderBrush="{x:Null}" Content="取消" Margin="392,340,229,24" Background="#FF93B3DE" Width="75" Click="BtnCancel_Click"/>
 

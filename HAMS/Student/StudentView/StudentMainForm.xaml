@@ -26,9 +26,9 @@
             <Menu x:Name="menu" Height="51" Background="LightPink" Margin="-2,71,-10,0" VerticalAlignment="Top">
                 <Button x:Name="btnHomeworkMana" Height="40" Width="188" Content="作业管理" FontSize="14" FontWeight="Bold" Click="btnHomeworkMana_Click"/>
                 <Button x:Name="btnHomewordAlert" Height="40" Width="200" Content="作业预警" FontSize="14" FontWeight="Bold" Click="BtnHomewordAlert_Click"/>
-                
+
             </Menu>
-            <Canvas Height="29" Background="LightBlue"  Margin="1.667,122,-0.667,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="829">
+            <Canvas Height="29" Background="LightBlue"  Margin="-2,122,-1,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="833">
                 <Label x:Name="label1" Content="我的课程   （在课程中您是   学生）" Height="24.333" HorizontalAlignment="Right" Width="354.334" Canvas.Left="9.338" Canvas.Top="2.667"/>
                 <Label x:Name="label" Content="作业公告" Canvas.Left="544" Canvas.Top="1" Height="24" HorizontalAlignment="Right" Width="65"/>
             </Canvas>

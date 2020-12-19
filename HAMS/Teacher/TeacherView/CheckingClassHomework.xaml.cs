@@ -190,7 +190,10 @@ namespace HAMS.Teacher.TeacherView
                 newTeacherHomeworkCheck.pngfile = this.pngfile;
                 newTeacherHomeworkCheck.className = tbClassInfo1.Text;
                 newTeacherHomeworkCheck.classSpecId = tbClassInfo.Text;
-                newTeacherHomeworkCheck.description = textBlockDescription.Text;
+                newTeacherHomeworkCheck.description = textBlockDescription.Text;   //有问题
+                newTeacherHomeworkCheck.tbTeacherSpecId.Text = tbTeacherInfo.Text;
+                newTeacherHomeworkCheck.tbTeacherName.Text = tbTeacherInfo1.Text;    //加载教师工号和姓名
+
                 newTeacherHomeworkCheck.Show();
             }
             else
@@ -608,5 +611,10 @@ namespace HAMS.Teacher.TeacherView
 
             }
         }
-    }
+
+		private void BtnReturn_MouseMove(object sender, MouseEventArgs e)
+		{
+
+		}
+	}
 }

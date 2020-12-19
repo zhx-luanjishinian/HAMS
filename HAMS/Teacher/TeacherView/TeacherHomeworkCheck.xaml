@@ -191,7 +191,7 @@
                     <Label x:Name="label5" Content="成绩等级：" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="label5_Copy" Content="点评：" HorizontalAlignment="Left" Margin="10,49.2,0,0" VerticalAlignment="Top"/>
                     <TextBox x:Name="tbRemark" TextWrapping="Wrap" Text="请输入你的点评" Margin="85,53.2,23.2,54.894"  GotFocus="tbRemark_GotFocus" BorderThickness="1"/>
-                    <Button x:Name="btnCorrect" Content="批改" Width="75" HorizontalAlignment="Right" Margin="0,0,42.4,10" VerticalAlignment="Bottom" Click="btnCorrect_Click" BorderBrush="LightBlue" Background="LightBlue" Height="27.84">
+                    <Button x:Name="btnCorrect" Content="批改" Width="94" HorizontalAlignment="Right" Margin="0,0,23,10" VerticalAlignment="Bottom" Click="btnCorrect_Click" BorderBrush="LightBlue" Background="LightBlue" Height="28">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="3"></Setter>
@@ -209,8 +209,8 @@
                 <TextBlock x:Name="tbTeacherName" Width="59" TextAlignment="Center" Height="19" Canvas.Left="104" Canvas.Top="20">
                     <TextBlock.Background>
                         <ImageBrush/>
-                    </TextBlock.Background><Run Text="刘树栋"/></TextBlock>
-                <TextBlock x:Name="tbTeacherSpecId" Width="43" TextAlignment="Center" Height="20" Canvas.Left="56" Canvas.Top="19" Text="Z001">
+                    </TextBlock.Background><Run Text=""/></TextBlock>
+                <TextBlock x:Name="tbTeacherSpecId" Width="43" TextAlignment="Center" Height="20" Canvas.Left="56" Canvas.Top="19" Text="">
                     <TextBlock.Background>
                         <ImageBrush/>
                     </TextBlock.Background></TextBlock>

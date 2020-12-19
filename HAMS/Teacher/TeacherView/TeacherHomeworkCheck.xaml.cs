@@ -38,7 +38,8 @@ namespace HAMS.Teacher.TeacherView
         public string classSpecId;
         public string className;
         public string pngfile;//头像路径
-
+        public string teacherName;
+        public string teacherSpecId;
         //下方函数才是真正需要的
         public TeacherHomeworkCheck(int[] hmIds, int idex, string notTitle, string studentInfo, string pgfile,bool IfCorrect = false)
         {
@@ -227,7 +228,7 @@ namespace HAMS.Teacher.TeacherView
             string description = this.description;
             string classSpecId = this.classSpecId;
             string teacherSpecId = tbTeacherSpecId.Text;
-            string teacherName = tbTeacherName.Text;
+            string teacherName = tbTeacherName.Text;       //可能有问题
             string className = this.className;
 
             CheckingClassHomework newCheckingClassHomework = new CheckingClassHomework(homeworkTitle, description, teacherSpecId, teacherName, classSpecId, className,this.pngfile);

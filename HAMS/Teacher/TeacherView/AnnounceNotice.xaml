@@ -12,7 +12,7 @@
             <Canvas Margin="0,0,0,489.048" Height="37.952" VerticalAlignment="Bottom">
                 <Border BorderBrush="Black" BorderThickness="0,0,0,1" Height="37.552" Canvas.Top="-2.552" Width="1026" Background="LightPink"/>
                 <TextBlock x:Name="lbClassSpecId"  Width="136" Height="20" Canvas.Left="63.8" Canvas.Top="7.952" FontSize="14" FontWeight="Bold" Text="Z004530B1300720"/>
-                <Label x:Name="labelcClassName" Content="R语言" Width="47.6" Height="30" Canvas.Left="216.875" Canvas.Top="3.952" FontSize="14" FontWeight="Bold"/>
+                <Label x:Name="labelcClassName" Content="R语言" Width="64" Height="30" Canvas.Left="217" Canvas.Top="4" FontSize="14" FontWeight="Bold"/>
                 <Button x:Name="btnReturn" Width="36.708" BorderThickness="0" Height="25" Canvas.Left="10" Canvas.Top="5" Click="btnReturn_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="返回.png"/>
@@ -29,13 +29,13 @@
                     <TextBox x:Name="textBoxContent" Text="请输入具体作业要求" Height="320.893" Canvas.Left="92.105" TextWrapping="Wrap" Width="401.056" GotFocus="textBoxContent_GotFocus" Canvas.Top="4" BorderThickness="1" />
                 </Canvas>
                 <Canvas Height="334.893" Canvas.Top="86.193" Width="493.501" Canvas.Left="528.899">
-                    <Label x:Name="deadLine" Content="截止时间" Height="28" Canvas.Left="10" Width="62.6" Canvas.Top="10"/>
+                    <Label x:Name="deadLine" Content="截止时间" Height="28" Canvas.Left="20" Width="63" Canvas.Top="10"/>
                     <Border Height="329.019" Canvas.Left="152.29" Width="322.646" BorderThickness="1" Background="#FFDDDDDD" >
                         <Calendar x:Name="calTruDeadline" BorderThickness="1,1,1,2" RenderTransformOrigin="0.497,0.417" Background="White" Margin="0,-1,2.22,0" HorizontalAlignment="Right" Width="314.596" Height="328.019" VerticalAlignment="Bottom"/>
                     </Border>
                 </Canvas>
                 <Canvas Height="32.425" Canvas.Top="10" Width="503.161" Canvas.Left="519.239">
-                    <Label x:Name="attachment" Content="上传附件（可选）" Height="26.233" Canvas.Left="22.075" Canvas.Top="2.167" Width="112"/>
+                    <Label x:Name="attachment" Content="上传附件（可选）" Height="27" Canvas.Left="22" Canvas.Top="6" Width="112"/>
                     <Button x:Name="btnUpload" Height="30.258" Canvas.Left="159.918" Width="175.846" Background="{x:Null}" BorderThickness="0" Click="btnUpload_Click" Canvas.Top="2.167">
                         <Grid Height="28" Width="166.186">
 

@@ -28,6 +28,8 @@ namespace HAMS.Admin.AdminView
         public TeacherManagement()
         {
             InitializeComponent();
+            txtNum.ToolTip = "请输入完整工号";
+            txtName.ToolTip = "请输入完整姓名";
         }
 
         private void BtnQuery_Click_1(object sender, RoutedEventArgs e)

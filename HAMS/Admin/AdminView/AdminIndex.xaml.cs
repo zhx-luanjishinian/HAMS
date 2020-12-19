@@ -25,7 +25,7 @@ namespace HAMS.Admin.AdminView
         {
             this.adminId = number;
             InitializeComponent();
-            
+            this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             try { if (session != null) { userName.Text = session; } }
             catch (Exception ex)
             {

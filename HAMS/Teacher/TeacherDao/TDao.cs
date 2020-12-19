@@ -460,6 +460,24 @@ namespace HAMS.Teacher.TeacherDao
             return table;
         }
 
+        public int getCommentNumByNotId(String noticeId)
+        {
+            //根据notId查询答疑表中的行数
+            String sql = "select * from comment where notId=@nid";
+            MySqlParameter parameter = new MySqlParameter("@nid", noticeId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);  //查到学生id,分数,作业路径
+            return table.Rows.Count;
+        }
+
+        public Boolean deleteComment(String noticeId)
+        {
+            //因为需要级联删除，因此需要首先删除comment表中的数据,才能删除notice表中的数据
+            String sql1 = "delete from comment where notId=@nId;";
+            MessageBox.Show(noticeId);
+            MySqlParameter para = new MySqlParameter("@nId", noticeId);
+            return DataUtil.DataOperation.DataDelete(sql1, para);//如果删除成功，则返回true
+        }
+
 
     }
 

@@ -5,20 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HAMS.Admin.AdminView"
         mc:Ignorable="d"
-        Title="ReviseClass" Height="450" Width="800">
-    <Grid>
-        <Canvas Background="LightBlue" HorizontalAlignment="Left" Height="57.5" VerticalAlignment="Top" Width="793.333">
-            <Label Content="修改课堂信息" Canvas.Left="331.166" Canvas.Top="11.5" Width="106" Height="37.74" FontSize="16"/>
-        </Canvas>
-        <Label Content="课堂号" HorizontalAlignment="Left" Margin="282.166,78.5,0,0" VerticalAlignment="Top"/>
-        <Label Content="课堂名" HorizontalAlignment="Left" Margin="283.667,127.74,0,0" VerticalAlignment="Top"/>
-        <Label Content="教师工号" HorizontalAlignment="Left" Margin="283.667,178.313,0,0" VerticalAlignment="Top"/>
+        Title="ReviseClass" Height="450" Width="800" WindowState="Maximized"  WindowStyle="None">
+    <Viewbox Stretch="UniformToFill">
+        <Grid Width="678">
+            <Canvas Background="LightBlue" HorizontalAlignment="Left" Height="58" VerticalAlignment="Top" Width="678">
+                <Label Content="修改课堂信息" Canvas.Left="284" Canvas.Top="15" Width="132" Height="38" FontSize="20" FontFamily="Microsoft YaHei" FontWeight="Bold"/>
+            </Canvas>
+            <Label Content="课堂号" FontSize="14" HorizontalAlignment="Left" Margin="216,86,0,0" VerticalAlignment="Top"/>
+            <Label Content="课堂名" FontSize="14" HorizontalAlignment="Left" Margin="216,168,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.581,-0.262"/>
+            <Label Content="教师工号" FontSize="14" HorizontalAlignment="Left" Margin="216,261,0,0" VerticalAlignment="Top"/>
 
-        <TextBox x:Name="txtClassNum" HorizontalAlignment="Left" Height="23" Margin="394.667,80.74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
-        <TextBox x:Name="txtClassName" HorizontalAlignment="Left" Height="23" Margin="394.667,127.74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtTeaNum" HorizontalAlignment="Left" Height="23" Margin="394.667,180.553,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
-        <Button x:Name="btnRevise" Content="修改" HorizontalAlignment="Left" Margin="282.166,364.053,0,0" VerticalAlignment="Top" Width="75" Click="BtnRevise_Click"/>
-        <Button x:Name="btnCancel" Content="取消" HorizontalAlignment="Left" Margin="439.667,364.053,0,0" VerticalAlignment="Top" Width="75" Click="BtnCancel_Click"/>
+            <TextBox x:Name="txtClassNum" HorizontalAlignment="Left" Height="23" Margin="332,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="151" IsReadOnly="True"/>
+            <TextBox x:Name="txtClassName" HorizontalAlignment="Left" Height="23" Margin="332,166,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="151"/>
+            <TextBox x:Name="txtTeaNum" HorizontalAlignment="Left" Height="23" Margin="332,258,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="151" IsReadOnly="True"/>
+            <Button x:Name="btnRevise" BorderBrush="{x:Null}" Content="修改" HorizontalAlignment="Left" Background="#FF93B3DE" Margin="212,320,0,0" VerticalAlignment="Top" Width="73" Click="BtnRevise_Click"/>
+            <Button x:Name="btnCancel" BorderBrush="{x:Null}" Content="取消"  Background="#FF93B3DE" Margin="408,320,195,28"  Width="75" Click="BtnCancel_Click"/>
 
-    </Grid>
+        </Grid>
+    </Viewbox>
 </Window>

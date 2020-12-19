@@ -76,9 +76,8 @@ namespace HAMS.Teacher.TeacherView
 
 
             //获得notid
-            DataTable tableClassId = td.getClassId(classSpecId);
-            DataTable tableNotId = td.getNotIdByClassIdAndNotTitle(homeworkTitle, Convert.ToInt32(tableClassId.Rows[0][0]));
-            notId = tableNotId.Rows[0][0].ToString();
+            
+            notId = ts.GetNotIdFromClassSpecId(classSpecId, homeworkTitle);
             //对查看相关附件按钮进行初始化：能够实现鼠标放上去之后显示作业附件的名称
             //根据notId获得notURLName
             string notURLName = td.getNotURLNameByNotId(int.Parse(notId)).Rows[0][0].ToString();

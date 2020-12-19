@@ -147,21 +147,7 @@ namespace HAMS.Teacher.TeacherView
             }
             else
             {
-                //int sex = int.Parse(sd.getSexByStuSpecId(account).Rows[0][0].ToString());
-                //string pngfile;
-                ////headImage是image控件名
-                //if (sex == 0)
-                //{
-                //    pngfile = @"..\..\Resources\女生头像.png";
-
-                //}
-                //else
-                //{
-                //    pngfile = @"..\..\Resources\男生头像.png";
-
-                //}
-                //StuMainHomework sdh = new StuMainHomework(account, name, classSpecId, pngfile);
-                //sdh.Show();
+                
                 this.Visibility = System.Windows.Visibility.Hidden;
             }
             //CheckingClassHomework newHomeworkNoticeCheck = new CheckingClassHomework();
@@ -184,10 +170,6 @@ namespace HAMS.Teacher.TeacherView
            
         }
 
-        //private void btnSubmitQuestion_Click(object sender, RoutedEventArgs e)
-        //{
-        //    Student.StudentUserControl.StudentAskQuestion newStudentAskQuestion = new Student.StudentUserControl.StudentAskQuestion();
-
-        //}
+       
     }
 }

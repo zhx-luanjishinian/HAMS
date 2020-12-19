@@ -46,6 +46,7 @@ namespace HAMS.Admin.AdminView
                 data.Columns[0].ColumnName = "工号";
                 data.Columns[1].ColumnName = "姓名";
                 data.Columns[2].ColumnName = "性别";
+                
                 data.Columns[3].ColumnName = "学院";
                 data.Columns[4].ColumnName = "密码";
                 datagridShowInfo.ItemsSource = data.DefaultView;

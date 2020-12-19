@@ -34,6 +34,7 @@ namespace HAMS.Admin.AdminView
         public ReviseStudent(String snum,String sna,String sex,String stuclass, String pwd,StudentManagement s)
         {
             InitializeComponent();
+            this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             this.snum = snum;
             this.sna = sna;
             this.sex = sex;

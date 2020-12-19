@@ -5,24 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HAMS.Admin.AdminView"
         mc:Ignorable="d"
-        Title="ReviseStudent" Height="450" Width="800">
-    <Grid x:Name="grid">
-        <Canvas Background="LightBlue" HorizontalAlignment="Left" Height="57.5" VerticalAlignment="Top" Width="793.333">
-            <Label Content="修改学生信息" Canvas.Left="331.166" Canvas.Top="11.5" Width="106" Height="37.74" FontSize="16"/>
-        </Canvas>
-        <Label Content="学号" HorizontalAlignment="Left" Margin="282.166,78.5,0,0" VerticalAlignment="Top"/>
-        <Label Content="姓名" HorizontalAlignment="Left" Margin="283.667,127.74,0,0" VerticalAlignment="Top"/>
-        <Label Content="性别" HorizontalAlignment="Left" Margin="283.667,178.313,0,0" VerticalAlignment="Top"/>
-        <Label Content="班级" HorizontalAlignment="Left" Margin="283.667,239.313,0,0" VerticalAlignment="Top"/>
-        <Label Content="密码" HorizontalAlignment="Left" Margin="282.166,293.26,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.471,0.555"/>
-        <TextBox x:Name="txtStuNum" HorizontalAlignment="Left" Height="23" Margin="394.667,80.74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
-        <TextBox x:Name="txtStuName" HorizontalAlignment="Left" Height="23" Margin="394.667,127.74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtStuClass" HorizontalAlignment="Left" Height="23" Margin="394.667,239.313,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.492,0.5"/>
-        <TextBox x:Name="txtStuPassword" HorizontalAlignment="Left" Height="23" Margin="394.667,295.5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <RadioButton x:Name="radiobtnStuMale"  Content="男" HorizontalAlignment="Left" Margin="394.667,184.313,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="radiobtnStuMale1" Content="女" HorizontalAlignment="Left" Margin="483.667,184.313,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnRevise" Content="修改" Background="#FF93B3DE" HorizontalAlignment="Left" Margin="282.166,364.053,0,0" VerticalAlignment="Top" Width="75" Click="BtnRevise_Click"/>
-        <Button x:Name="btnReset" Content="取消" Background="#FF93B3DE" HorizontalAlignment="Left" Margin="439.667,364.053,0,0" VerticalAlignment="Top" Width="75" Click="BtnReset_Click"/>
+        Title="ReviseStudent" Height="450" Width="800" WindowState="Maximized"  WindowStyle="None">
+    <Viewbox Stretch="UniformToFill">
+        <Grid x:Name="grid" Width="712">
+            <Canvas Background="LightBlue" HorizontalAlignment="Left" Height="58" VerticalAlignment="Top" Width="712">
+                <Label Content="修改学生信息" Canvas.Left="298" Canvas.Top="13" Width="132" Height="38" FontSize="20" FontWeight="Bold"/>
+            </Canvas>
+            <Label Content="学号" FontSize="14" HorizontalAlignment="Left" Margin="240,84,0,0" VerticalAlignment="Top"/>
+            <Label Content="姓名" FontSize="14" HorizontalAlignment="Left" Margin="240,133,0,0" VerticalAlignment="Top"/>
+            <Label Content="性别" FontSize="14" HorizontalAlignment="Left" Margin="240,182,0,0" VerticalAlignment="Top"/>
+            <Label Content="班级" FontSize="14" HorizontalAlignment="Left" Margin="240,239,0,0" VerticalAlignment="Top"/>
+            <Label Content="密码" FontSize="14" HorizontalAlignment="Left" Margin="240,292,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.13,0.641"/>
+            <TextBox x:Name="txtStuNum" HorizontalAlignment="Left" Height="26" Margin="327,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" IsReadOnly="True"/>
+            <TextBox x:Name="txtStuName" HorizontalAlignment="Left" Height="23" Margin="327,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160"/>
+            <TextBox x:Name="txtStuClass" HorizontalAlignment="Left" Height="23" Margin="327,233,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" RenderTransformOrigin="0.492,0.5"/>
+            <TextBox x:Name="txtStuPassword" HorizontalAlignment="Left" Height="23" Margin="327,289,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160"/>
+            <RadioButton x:Name="radiobtnStuMale" FontSize="14" Content="男" HorizontalAlignment="Left" Margin="327,184,0,0" VerticalAlignment="Top"/>
+            <RadioButton x:Name="radiobtnStuMale1" FontSize="14" Content="女" HorizontalAlignment="Left" Margin="440,184,0,0" VerticalAlignment="Top"/>
+            <Button x:Name="btnRevise" BorderBrush="{x:Null}" Content="修改" Background="#FF93B3DE" HorizontalAlignment="Left" Margin="246,344,0,0" VerticalAlignment="Top" Width="75" Click="BtnRevise_Click"/>
+            <Button x:Name="btnReset" BorderBrush="{x:Null}" Content="取消" Background="#FF93B3DE"  Margin="412,344,225,20"  Width="75" Click="BtnReset_Click"/>
 
-    </Grid>
+        </Grid>
+    </Viewbox>
 </Window>

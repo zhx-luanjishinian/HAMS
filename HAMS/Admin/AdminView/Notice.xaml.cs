@@ -32,6 +32,7 @@ namespace HAMS.Admin.AdminView
         public Notice(string AdminId)
         {
             InitializeComponent();
+            this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             timer.Tick += new EventHandler(timer_Tick);
             timer.Interval = TimeSpan.FromSeconds(0.1);   //设置刷新的间隔时间
             timer.Start();

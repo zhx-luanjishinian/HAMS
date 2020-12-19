@@ -5,18 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HAMS.Admin.AdminView"
         mc:Ignorable="d"
-        Title="AdminIndex" Height="472" Width="840" WindowState="Maximized"  WindowStyle="None"    >
+        Title="AdminIndex" Height="472" Width="880" WindowState="Maximized"  WindowStyle="None"    >
     <Viewbox Stretch="UniformToFill">
         <Grid Height="445">
 
-            <Canvas Background="#6DCAE2" Margin="0" Grid.Row="0" HorizontalAlignment="Left" Height="70.944" VerticalAlignment="Top" Width="793.333" Grid.RowSpan="2" Grid.ColumnSpan="2">
+            <Canvas Background="#6DCAE2" Margin="0" Grid.Row="0" HorizontalAlignment="Left" Height="71" VerticalAlignment="Top" Width="830">
                 <Border x:Name="headImage" BorderBrush="Black" BorderThickness="0" Grid.Column="1" HorizontalAlignment="Left" Height="50.078" VerticalAlignment="Top" Width="54.021" CornerRadius="35" Canvas.Left="10" RenderTransformOrigin="1.894,0.568" Canvas.Top="10.366">
                     <Border.Background>
                         <ImageBrush>
                             <ImageBrush.ImageSource>
                                 <DrawingImage>
                                     <DrawingImage.Drawing>
-                                        <ImageDrawing ImageSource="/HAMS;component/Resources/profile.png" Rect="100,200,110,100"></ImageDrawing>
+                                        <ImageDrawing ImageSource="/HAMS;component/Resources/admin.png" Rect="100,200,110,100"></ImageDrawing>
                                     </DrawingImage.Drawing>
                                 </DrawingImage>
                             </ImageBrush.ImageSource>
@@ -25,7 +25,7 @@
                 </Border>
                 <TextBlock x:Name="userName" Text="管理员" Canvas.Left="75.021" Canvas.Top="28.689" RenderTransformOrigin="1.087,0.535" FontWeight="Bold"/>
                 <Image x:Name="systemLogo" Height="64.072" Width="197.332" Source="/HAMS;component/Resources/management.jpg" Stretch="UniformToFill" Canvas.Left="490.334" Canvas.Top="3.872"/>
-                <Button x:Name="btnExit" Background="#6DCAE2"  Canvas.Left="701.666" Canvas.Top="13.955" Width="81.667" RenderTransformOrigin="0.622,0.945" Height="43.907" Foreground="#FF151111" BorderBrush="#6DCAE2" Click="BtnExit_Click">
+                <Button x:Name="btnExit" Background="#6DCAE2"  Canvas.Left="729" Canvas.Top="10" Width="82" RenderTransformOrigin="0.622,0.945" Height="51" Foreground="#FF151111" BorderBrush="{x:Null}" Click="BtnExit_Click">
                     <StackPanel>
                         <Image x:Name="exit1" Width="28" Height="23.907" Source="/HAMS;component/Resources/resizeApi.png"/>
                         <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold">
@@ -35,16 +35,16 @@
                 </Button>
             </Canvas>
             <DockPanel HorizontalAlignment="Left" LastChildFill="False" Margin="0,71,0,0" Width="134">
-                <Menu Width="133" Margin="0,0,0,-30.333">
-                    <Button x:Name="btnStuManage" Content="学生管理" Width="120" Height="41.24" Click="BtnStuManage_Click"/>
-                    <Button x:Name="btnTeaManage" Content="教师管理" Width="120" Height="41.24" Click="BtnTeaManage_Click"/>
-                    <Button x:Name="btnClassManage" Content="课堂管理" Width="120" Height="41.24" Click="BtnClassManage_Click" />
-                    <Button x:Name="btnNoticeManage" Content="公告管理" Width="120" Height="41.24" Click="BtnNoticeManage_Click"/>
+                <Menu Width="133" Margin="0,0,0,0.667">
+                    <Button x:Name="btnStuManage" Content="学生管理" Width="104" Height="41" Click="BtnStuManage_Click" FontFamily="Microsoft YaHei"/>
+                    <Button x:Name="btnTeaManage" Content="教师管理" Width="104" Height="41" Click="BtnTeaManage_Click" FontFamily="Microsoft YaHei"/>
+                    <Button x:Name="btnClassManage" Content="课堂管理" Width="103" Height="41" Click="BtnClassManage_Click" FontFamily="Microsoft YaHei" />
+                    <Button x:Name="btnNoticeManage" Content="公告管理" Width="103" Height="41" Click="BtnNoticeManage_Click" FontFamily="Microsoft YaHei"/>
                 </Menu>
             </DockPanel>
-            
-            
-            <ContentControl Name="content" HorizontalAlignment="Left" Margin="386,236,0,0" VerticalAlignment="Top">
+
+
+            <ContentControl Name="content" HorizontalAlignment="Left" Margin="139,71,0,0" VerticalAlignment="Top" Width="691" Height="374">
                 <TextBlock x:Name="textwel"  Text="管理员界面欢迎您" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
             </ContentControl>
         </Grid>

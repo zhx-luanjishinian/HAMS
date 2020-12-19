@@ -34,17 +34,16 @@
                     </StackPanel>
                 </Button>
             </Canvas>
-            <DockPanel HorizontalAlignment="Left" LastChildFill="False" Margin="0,71,0,0" Width="134">
-                <Menu Width="133" Margin="0,0,0,0.667">
-                    <Button x:Name="btnStuManage" Content="学生管理" Width="104" Height="41" Click="BtnStuManage_Click" FontFamily="Microsoft YaHei"/>
-                    <Button x:Name="btnTeaManage" Content="教师管理" Width="104" Height="41" Click="BtnTeaManage_Click" FontFamily="Microsoft YaHei"/>
-                    <Button x:Name="btnClassManage" Content="课堂管理" Width="103" Height="41" Click="BtnClassManage_Click" FontFamily="Microsoft YaHei" />
-                    <Button x:Name="btnNoticeManage" Content="公告管理" Width="103" Height="41" Click="BtnNoticeManage_Click" FontFamily="Microsoft YaHei"/>
-                </Menu>
-            </DockPanel>
+            <Canvas Width="133" Margin="0,71,0,0" HorizontalAlignment="Left">
+                <Button x:Name="btnStuManage" Content="学生管理" Width="133" Height="51" Click="BtnStuManage_Click" FontFamily="Microsoft YaHei"/>
+                <Button x:Name="btnTeaManage" Content="教师管理" Width="133" Height="51" Click="BtnTeaManage_Click" FontFamily="Microsoft YaHei" Canvas.Top="67"/>
+                <Button x:Name="btnClassManage" Content="课堂管理" Width="133" Height="51" Click="BtnClassManage_Click" FontFamily="Microsoft YaHei" Canvas.Top="132" />
+                <Button x:Name="btnNoticeManage" Content="公告管理" Width="133" Height="51" Click="BtnNoticeManage_Click" FontFamily="Microsoft YaHei" Canvas.Top="198"/>
+            </Canvas>
 
 
-            <ContentControl Name="content" HorizontalAlignment="Left" Margin="139,71,0,0" VerticalAlignment="Top" Width="691" Height="374">
+
+            <ContentControl Name="content" HorizontalAlignment="Left" Margin="133,71,0,0" VerticalAlignment="Top" Width="697" Height="374">
                 <TextBlock x:Name="textwel"  Text="管理员界面欢迎您" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
             </ContentControl>
         </Grid>

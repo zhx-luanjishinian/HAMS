@@ -82,7 +82,7 @@ namespace HAMS.Teacher.TeacherView
                     
                     saq.tbResponse.Text = result[i][1];
                     saq.tbResponse.IsReadOnly = true;
-                    saq.lbResponseName.Content = teacherName;
+                    saq.lbResponseName.Content = teacherName+"老师";
 
                     //添加content
                     ivi.Content = saq;

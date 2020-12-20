@@ -15,7 +15,7 @@
                     <ImageBrush Stretch="Fill" ImageSource="/HAMS;component/Resources/78.-Night-sky.jpg"/>
                 </Canvas.Background>
                 <Border BorderBrush="Black" BorderThickness="0" Height="47.946" Width="840"/>
-                <Button x:Name="btnSubmitQuestion" Content="发送答疑" Height="41.124" Canvas.Left="732.519" Canvas.Top="3.411" Width="97.481" Click="btnSubmitQuestion_Click" Background="#FFE5BDC3" BorderBrush="{x:Null}">
+                <Button x:Name="btnSubmitQuestion" Content="发送答疑" Height="41" Canvas.Left="662" Width="97" Click="btnSubmitQuestion_Click" Background="#FFE5BDC3" BorderBrush="{x:Null}" Canvas.Top="4">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="3"></Setter>
@@ -31,7 +31,7 @@
                 <Label x:Name="labelClassName" Content="SVM实验" Width="349.668" Height="35.313" Canvas.Left="80.581" Canvas.Top="4.99" FontSize="20"/>
             </Canvas>
             <ListView x:Name="listViewQuestionAndAnswer" HorizontalAlignment="Left" Height="374.439" Margin="10,77.48,0,0" VerticalAlignment="Top" Width="820" Foreground="#DD999191" BorderBrush="#89807777"/>
-            <Button x:Name="btnRefresh" HorizontalAlignment="Left" Margin="652.572,0,0,431" Width="36" BorderBrush="{x:Null}" Click="btnRefresh_Click" Height="31" Foreground="{x:Null}" VerticalAlignment="Bottom" >
+            <Button x:Name="btnRefresh" HorizontalAlignment="Left" Margin="794,0,0,431" Width="36" BorderBrush="{x:Null}" Click="btnRefresh_Click" Height="31" Foreground="{x:Null}" VerticalAlignment="Bottom" >
                 <Button.Background>
                     <ImageBrush ImageSource="刷新.png"/>
                 </Button.Background>

@@ -43,8 +43,8 @@
                 <Label x:Name="labelClassName" Content="R语言" Height="25" VerticalAlignment="Top" Canvas.Left="60" Width="145" Canvas.Top="11"/>
                 <Label Content="课程名：" Canvas.Left="5" Canvas.Top="11"/>
                 <Label Content="（在课程中您是" Canvas.Left="195" Canvas.Top="9"/>
-                <Label Content="）" Canvas.Left="315" Canvas.Top="9" RenderTransformOrigin="0.212,0.639"/>
-                <TextBlock x:Name="tbUserIdentity" Canvas.Left="287" TextWrapping="Wrap" Text="学生" Canvas.Top="14"/>
+                <Label Content="）" Canvas.Left="311" Canvas.Top="9" RenderTransformOrigin="0.212,0.639"/>
+                <TextBlock x:Name="tbUserIdentity" Canvas.Left="287" TextWrapping="Wrap" Text="学生" Canvas.Top="13"/>
                 <Path Data="M318.66667,15.078287" Fill="#FFF4F4F5" Height="1" Canvas.Left="318.667" Stretch="Fill" Stroke="Black" Canvas.Top="14.078" Width="168.333" RenderTransformOrigin="0.5,0.5">
                     <Path.RenderTransform>
                         <TransformGroup>

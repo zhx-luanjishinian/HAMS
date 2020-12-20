@@ -42,7 +42,7 @@ namespace HAMS.Student.StudentView
             //设置该img控件的Source
             headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, pngfile))));
 
-            tbUserNameAc.Text = account + name;
+            tbUserNameAc.Text = account +" " + name;
         }
 
         

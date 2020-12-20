@@ -29,6 +29,7 @@ namespace HAMS.Teacher.TeacherView
         public String classSpecId { set; get; }
         public String name { set; get; }
         public String account { set; get; }
+        public String teacherName { set; get; }
         private SService ss = new SService();
         
 
@@ -38,6 +39,7 @@ namespace HAMS.Teacher.TeacherView
             labelClassName.Content = className;
             this.account = account;
             this.name = name;
+            this.teacherName = ss.findTeacherName(classSpecId);
             this.classSpecId = classSpecId;
             this.notId = notId;
             initAskView(notId);
@@ -50,6 +52,11 @@ namespace HAMS.Teacher.TeacherView
             name = teacherName;
             this.notId = notId;
            
+        }
+        public AnswerQuestion(String className)
+        {
+            InitializeComponent();
+            labelClassName.Content = className;
         }
         private void initAskView(String notId)
         {
@@ -65,11 +72,17 @@ namespace HAMS.Teacher.TeacherView
                     StudentAskQuestion saq = new StudentAskQuestion();
                     //首先放置学生的东西
                     saq.textBoxQuestion.Text = result[i][0];
+                    saq.textBoxQuestion.IsReadOnly = true;
+                    saq.btnComment.Visibility = Visibility.Hidden;
+                    saq.btnInsert.Visibility = Visibility.Hidden;
                     //saq.textBoxQuestion.TextChanged += new TextChangedEventHandler();
                     //然后判断老师的评语是否为空，不为空就放置老师的评语
                     //不为空就加载老师的评语
                     saq.teacherResponse.Visibility = Visibility.Visible;
-                    saq.tbResponse.Text = result[i][1];       
+                    
+                    saq.tbResponse.Text = result[i][1];
+                    saq.tbResponse.IsReadOnly = true;
+                    saq.lbResponseName.Content = teacherName+"老师";
 
                     //添加content
                     ivi.Content = saq;
@@ -82,6 +95,9 @@ namespace HAMS.Teacher.TeacherView
                     //添加一个listviewitem控件
                     ListViewItem ivi = new ListViewItem();
                     StudentAskQuestion saq = new StudentAskQuestion();
+                    saq.textBoxQuestion.IsReadOnly = true;//当老师的评论为空时，已经发送的答疑也要加readonly
+                    saq.btnComment.Visibility = Visibility.Hidden;
+                    saq.btnInsert.Visibility = Visibility.Hidden;
                     //首先放置学生的东西
                     saq.textBoxQuestion.Text = result[i][0];
                     //添加点击事件
@@ -90,6 +106,7 @@ namespace HAMS.Teacher.TeacherView
                     ivi.Content = saq;
                     //添加子item控件
                     listViewQuestionAndAnswer.Items.Add(ivi);
+                    
                 }
                 
 
@@ -116,6 +133,9 @@ namespace HAMS.Teacher.TeacherView
             if (ss.insertStudentQuestion(notId, stuControl.textBoxQuestion.Text))
             {
                 MessageBox.Show("发送答疑成功！");
+                //隐藏评论和插入的按钮
+                stuControl.btnComment.Visibility = Visibility.Hidden;
+                stuControl.btnInsert.Visibility = Visibility.Hidden;
             }
             else
             {
@@ -171,6 +191,7 @@ namespace HAMS.Teacher.TeacherView
             //发送答疑的时候就直接添加一个新的东西
             ListViewItem ivi = new ListViewItem();
             StudentAskQuestion saq = new StudentAskQuestion();
+            saq.btnComment.Visibility = Visibility.Hidden;
             saq.btnInsert.Click += new RoutedEventHandler(btnInsert_Click);
             //刚开始展示的时候赋值为空
             saq.textBoxQuestion.Text = "";
@@ -208,6 +229,8 @@ namespace HAMS.Teacher.TeacherView
                 else
                 {
                     newStudentAskQuestion[i].teacherResponse.Visibility = Visibility.Hidden;
+                    newStudentAskQuestion[i].btnComment.Visibility = Visibility.Hidden;
+                    newStudentAskQuestion[i].btnInsert.Visibility = Visibility.Hidden;//哪怕没有教师的回答，在发送成功后也需要隐藏评论和发送按钮
                 }
 
             }
@@ -229,6 +252,8 @@ namespace HAMS.Teacher.TeacherView
             if (flag == true)
             {
                 MessageBox.Show("发送成功");
+                stuControl.btnInsert.Visibility = Visibility.Hidden;
+                stuControl.btnComment.Visibility = Visibility.Hidden;
             }
             else
             {

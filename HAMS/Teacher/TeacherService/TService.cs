@@ -321,17 +321,15 @@ namespace HAMS.Teacher.TeacherService
             string submitTime = table3.Rows[0][0].ToString();
             return submitTime;
         }
+
         public String DeleteHomeworkNotice(String classSpecId, String homeworkTitle)
         {
-            DataTable table1 = td.getClassId(classSpecId);
-            int classId = Convert.ToInt32(table1.Rows[0][0]);
-            DataTable table2 = td.getNotIdByClassIdAndNotTitle(homeworkTitle, classId);
-            bool flag = td.deleteHomework(table2.Rows[0][0].ToString());
-            if (flag == true)
-            {
-                string notId = table2.Rows[0][0].ToString();
+            DataTable tbClassId = td.getClassId(classSpecId);
+            int classId = Convert.ToInt32(tbClassId.Rows[0][0]);//获取classId
+            DataTable tbNotId = td.getNotIdByClassIdAndNotTitle(homeworkTitle, classId);
+            string notId = tbNotId.Rows[0][0].ToString();//获取notId
 
-
+            //第一步：删除远程服务器上文件
             //根据notId找notURL
             DataTable tbNotURL = td.getNotURLByNotId(notId);
             //把作业公告文件夹进行改名
@@ -341,40 +339,40 @@ namespace HAMS.Teacher.TeacherService
             string newDirName = "已被删除的作业公告" + notURLs[1];
             FtpUpDown.Rename(currentDirFullPath, newDirName);
 
-            //在数据库中删除作业答疑
+            //第二步：在数据库comment表中删除作业答疑
+            //当数据库中存在答疑的时候才需要删除，否则不需要删除答疑
             if (td.getCommentNumByNotId(notId) != 0)//此时才需要删除答疑
+            {
+                bool flagComm = td.deleteComment(notId);
+                if (flagComm != true)
                 {
-                    bool flag1 = td.deleteComment(notId);
-                    if (flag1 != true)
-                    {
-                        return "删除作业答疑失败";
-                        
-                    }
-                    
+                    return "删除作业答疑失败";
+
                 }
-
-                //在数据库中删除作业公告
-                bool flag2 = td.deleteNotice(notId);
-                if (flag2 == true)
-                {
-                    return "删除该作业公告成功";
-                }
-                else
-                {
-                    return "删除该作业公告失败";
-                }
-
-
-
-
 
             }
-            else
+
+            //第三步：在数据库homework表中删除作业
+            bool flagHomework = td.deleteHomework(tbNotId.Rows[0][0].ToString());
+            if(flagHomework != true)
             {
-                //MessageBox.Show("删除学生作业记录失败");
                 return "删除学生作业记录失败";
             }
+
+            //第四步：在数据库notice表中删除作业公告
+            bool flagNotice = td.deleteNotice(notId);
+            if (flagNotice != true)
+            {
+                return "删除该作业公告失败";
+            }
+               
+            return "删除该作业公告成功";
+              
+            
+            
         }
+
+
         public string GetPostilByForm(string classSpecId, string noticeName, string studentSpecId)
         {
             DataTable table1 = td.GetStuIdFromStuSpecId(studentSpecId);

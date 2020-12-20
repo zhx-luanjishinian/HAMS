@@ -31,20 +31,24 @@
             </Canvas>
             <Canvas HorizontalAlignment="Left" Height="34" Background="Azure" Margin="1,125,-1,0" VerticalAlignment="Top" Width="834">
                 <Label Content="第一次作业" VerticalAlignment="Center" x:Name="labelHomeworkName" FontWeight="Bold" Canvas.Left="10" FontSize="14"/>
+                <Button x:Name="btnRefresh" Content="刷新"  Canvas.Left="750" Width="62" Canvas.Top="3" BorderThickness="1,1,1,1" Click="BtnRefresh_Click"  Height="25"/>
             </Canvas>
             <Canvas Margin="1,164,0,299">
                 <GroupBox Header  ="作业说明" Name="groupBox1" Height="224" Width="795" Canvas.Left="10">
                     <Canvas Margin="0,0,0,4">
                         <Label  Content="作业要求" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.08,-0.379" Height="25" Width="73"/>
                         <Label Content="截止时间" Height="27" Canvas.Left="17" Canvas.Top="145" RenderTransformOrigin="0.586,1.293"/>
-                        <TextBox Height="23" TextAlignment="Center" VerticalContentAlignment="Center"  Text="2020年11月11日"  x:Name="tbDeadLineTime" Canvas.Left="89" TextWrapping="Wrap" Canvas.Top="149" Width="120"/>
-                        <TextBox x:Name="textBoxRequest" IsReadOnly="True"  Height="83" Canvas.Left="27" Canvas.Top="25" Width="730"/>
+                        <TextBox Height="23" TextAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True"  Text="2020年11月11日"  x:Name="tbDeadLineTime" Canvas.Left="89" TextWrapping="Wrap" Canvas.Top="149" Width="120"/>
+                        <TextBox x:Name="textBoxRequest"   BorderBrush="LightBlue" IsReadOnly="True"  Height="83" Canvas.Left="27" Canvas.Top="25" Width="730" BorderThickness="1"/>
                         <Image x:Name="imgAccessory" Height="20" Canvas.Left="44" Canvas.Top="113" Width="29" Source="/Resources/链接.png" RenderTransformOrigin="0.32,2.694" />
                         <Button x:Name="tbAccessoryName" Canvas.Left="89"  Content="附件名字" Canvas.Top="113"  Height="20" Width="190"  BorderBrush="White" Click="tbAccessoryName_Click" FontSize="10"/>
                     </Canvas>
                 </GroupBox>
             </Canvas>
+            <Label x:Name="Myhomework"  Content="上次作业" Canvas.Left="89" Canvas.Top="100" Margin="43,397,739,98"></Label>
+            <Button x:Name="tbMyHomework" IsEnabled="False"  Canvas.Left="89"  Content="作业名字" Canvas.Top="113"  Height="20" Width="190" Foreground="Pink" Background="Blue"  FontSize="10" Margin="114,426,534,78"/>
             <Button Content="作答" x:Name="btnDoHomework" Height="Auto" Click="btnDoHomework_Click" Margin="676,408,83,84"/>
+            <Image x:Name="imgAccessory_Copy" Source="/HAMS;component/Resources/链接.png" RenderTransformOrigin="0.32,2.694" Margin="66,426,739,78" />
         </Grid>
     </Viewbox>
 </Window>

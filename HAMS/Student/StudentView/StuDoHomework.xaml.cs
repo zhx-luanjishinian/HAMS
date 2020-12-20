@@ -41,8 +41,35 @@ namespace HAMS.Student.StudentView
             //设置该img控件的Source
             headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, pngfile))));
             this.message = ss.judgeHomeworkStatus(account, notId);
+            if (message == "未完成")
+            {
+                btnDoHomework.Content = "作答";
+            }
+            else if (message == "待批改")
+            {
+                btnDoHomework.Content = "修改";
+            }
+            else if (message == "已批改")
+            {
+                btnDoHomework.Content = "查看";
+            }
+            else if (message == "已逾期")
+            {
+                System.Windows.Forms.MessageBox.Show("该作业已逾期，无法再进行作答");
+                btnDoHomework.Content = "";
+            }
+            string homeworkName = ss.homeworkName(account, notId);
+            if(homeworkName == "还未提交")
+            {
+                //如果不存在作业附件则不进行显示
+                tbMyHomework.Visibility = Visibility.Collapsed;
+                imgAccessory_Copy.Source = null;
+            }
+            else
+            {
+                tbMyHomework.Content = homeworkName;
+            }
             doHomeworkInfoShow();
-
         }
         
         public StuDoHomework(String account, String name, String notId, String classId,string pgfile,String message)
@@ -75,7 +102,19 @@ namespace HAMS.Student.StudentView
             {
                 btnDoHomework.Content = "";
             }
-            tbUserNameAc.Text = account + name;
+            tbUserNameAc.Text = account +" " +name;
+            string homeworkName = ss.homeworkName(account, notId);
+            if (homeworkName == "还未提交")
+            {
+                //如果不存在作业附件则不进行显示
+                tbMyHomework.Visibility = Visibility.Collapsed;
+                imgAccessory_Copy.Source = null;
+                Myhomework.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                tbMyHomework.Content = homeworkName;
+            }
             doHomeworkInfoShow();
         }
         
@@ -178,6 +217,30 @@ namespace HAMS.Student.StudentView
             }
         }
 
+        private void BtnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, pngfile))));
+            this.message = ss.judgeHomeworkStatus(account, notId);
+            if (message == "未完成")
+            {
+                btnDoHomework.Content = "作答";
+            }
+            else if (message == "待批改")
+            {
+                btnDoHomework.Content = "修改";
+            }
+            else if (message == "已批改")
+            {
+                btnDoHomework.Content = "查看";
+            }
+            else if (message == "已逾期")
+            {
+                System.Windows.Forms.MessageBox.Show("该作业已逾期，无法再进行作答");
+                btnDoHomework.Content = "";
+            }
+            doHomeworkInfoShow();
+        }
+
         private void btnDoHomework_Click(object sender, RoutedEventArgs e)
         {
             string content = btnDoHomework.Content.ToString();
@@ -202,8 +265,6 @@ namespace HAMS.Student.StudentView
             }
 
         }
-
-
         private void tbAccessoryName_Click(object sender, RoutedEventArgs e)
         {
             string notTitle = ss.downloadLink(notId);

@@ -142,6 +142,20 @@ namespace HAMS.Student.StudentService
             }
             return message;
         }
+
+        public String homeworkName(String account, String notId)
+        {
+            List<String> table = sd.defineHomeworkStatus(account, notId);
+            //查到作业名说明已经交了作业
+            if (table[3].ToString() != "")
+            {
+                return table[3].ToString();
+            }
+            else
+            {
+                return "还未提交";
+            }
+        }
         //获得doHomework界面的信息
         public List<String> showDohomeworkInfo(String notId)
         {

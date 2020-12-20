@@ -33,20 +33,20 @@
                 <Image x:Name="imgSystemLogo" Height="56" Width="43" Source="/Resources/logo.png" Stretch="UniformToFill" Canvas.Left="349" Canvas.Top="3"/>
             </Canvas>
             <Menu x:Name="menu" Height="47" Background="LightPink" Margin="0,0,-6.667,225" VerticalAlignment="Bottom" Grid.ColumnSpan="3" Grid.Row="2" HorizontalAlignment="Right" Width="554" Grid.RowSpan="2">
-                <Button x:Name="btnComeback" Background="LightPink" BorderBrush="LightPink" RenderTransformOrigin="0.622,0.945" Height="37" Foreground="#FF151111"  Width="60" Click="btnComeback_Click">
-                    <Image x:Name="comeback1" Width="26" Height="27" Source="/Resources/返回.png" RenderTransformOrigin="0.345,0.505"/>
+                <Button x:Name="btnComeback" Background="LightPink" BorderBrush="LightPink" RenderTransformOrigin="0.622,0.945" Height="24" Foreground="#FF151111"  Width="51" Click="btnComeback_Click">
+                    <Image x:Name="comeback1" Width="23" Height="13" Source="/Resources/返回.png" RenderTransformOrigin="0.345,0.505"/>
                 </Button>
                 <!--<Button x:Name="btnHomeworkMana" Height="42" Width="149" Content="作业管理" Click="btnHomeworkMana_Click"/>-->
                 <!--<Button x:Name="btnHomeworkAlert" Height="21" Width="109" Content="作业预警" Click="btnHomeworkAlert_Click"/>-->
-                <Button x:Name="btnHomeworkMana" Height="40" Width="100" Content="作业管理" FontSize="14" FontWeight="Bold" Click="btnHomeworkMana_Click"/>
-                <Button x:Name="btnHomeworkAlert" Height="40" Width="100" Content="作业预警" FontSize="14" FontWeight="Bold" Click="btnHomeworkAlert_Click"/>
+                <Button x:Name="btnHomeworkMana" Height="24" Width="90" Content="作业管理" FontSize="14" FontWeight="Bold" Click="btnHomeworkMana_Click"/>
+                <Button x:Name="btnHomeworkAlert" Height="24" Width="90" Content="作业预警" FontSize="14" FontWeight="Bold" Click="btnHomeworkAlert_Click"/>
 
             </Menu>
             <Canvas Margin="0,0,-5.667,6" Grid.ColumnSpan="3" Grid.Row="3" Background="#FFD6F4FE" HorizontalAlignment="Right" Width="553" Height="219" VerticalAlignment="Bottom">
                 <Label x:Name="label1" Content="作业成绩：" Height="39" Canvas.Left="16" Canvas.Top="10" Width="90" RenderTransformOrigin="0.489,0.519" FontSize="14"/>
                 <TextBlock x:Name="textBlockGrade" Height="17" Width="36" Canvas.Left="111" Canvas.Top="14" Text="优秀" FontSize="14"/>
                 <Label x:Name="label2" Content="老师评语：" Height="25" Canvas.Left="16" Canvas.Top="54" Width="72" RenderTransformOrigin="0.489,0.519" FontSize="14"/>
-                <TextBox x:Name="textBoxComment"  IsReadOnly="True"   Height="112" Canvas.Left="111" TextWrapping="Wrap" Text="TextBox" Canvas.Top="63" Width="398"/>
+                <TextBox x:Name="textBoxComment"   IsReadOnly="True"   Height="112" Canvas.Left="111" TextWrapping="Wrap" Text="TextBox" Canvas.Top="63" Width="398" BorderThickness="1"/>
             </Canvas>
 
 

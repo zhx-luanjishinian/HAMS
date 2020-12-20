@@ -38,7 +38,7 @@ namespace HAMS.Student.StudentView
             headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, pngfile))));
 
 
-            textBlockUserId.Text = account + name;
+            textBlockUserId.Text = account +" "+ name;
             List<String> result = ss.showHomeworkInfo(account,notId);
             textBlockGrade.Text = result[0];
             textBoxComment.Text = result[1];

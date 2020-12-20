@@ -22,8 +22,8 @@
             <Canvas  x:Name="canvasClass1" Height="64.672" Width="470.206" >
                 <Label x:Name="labelClassId1" Content="Z004530B1300720 "   Height="24" Canvas.Left="56" Canvas.Top="1" Width="150"/>
                 <TextBlock x:Name="textBlockClassName1" Text="R语言" Foreground="Black" Height="23" Width="143" Canvas.Left="297.929" Canvas.Top="5.333" TextAlignment="Center"/>
-                <Label x:Name="labe21" Content="教师：" Height="28" Width="53" RenderTransformOrigin="0.48,1.592" Canvas.Left="55.667" Canvas.Top="25.335"/>
-                <TextBlock x:Name="textBlockDepartmentName1" Text="信息与安全工程学院" Foreground="Black" Height="18.574" Width="150.335" Canvas.Left="113" Canvas.Top="30.333"/>
+                <Label x:Name="labe21" Content="院系：" Height="28" Width="53" RenderTransformOrigin="0.48,1.592" Canvas.Left="55.667" Canvas.Top="25.335"/>
+                <TextBlock x:Name="textBlockDepartmentName1" Text="信息与安全工程学院" Foreground="Black" Height="19" Width="151" Canvas.Left="109" Canvas.Top="29"/>
                 <TextBlock x:Name="textBlockTeacherName1" Text="刘树栋" Foreground="Black" Height="23" Width="143" Canvas.Left="299.929" Canvas.Top="31.488" TextAlignment="Center"/>
             </Canvas>
         </Button>

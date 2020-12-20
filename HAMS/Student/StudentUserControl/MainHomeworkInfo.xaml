@@ -10,7 +10,7 @@
         <Button x:Name="btnHomRe1" Height="58"  Width="400"  Background="White" BorderBrush="White" Click="btnHomRe1_Click">
             <Canvas Height="48" Width="372">
                 <Image x:Name="imgLabel" Height="47" Canvas.Left="10" Canvas.Top="1" Width="42" Source="/Resources/1200856.gif"/>
-                <Label x:Name="labelHomeworkName" Content="第一次作业" Canvas.Left="81" FontWeight="Bold" Height="27" Width="199"/>
+                <Label x:Name="labelHomeworkName" Content="第一次作业" Canvas.Left="81" FontWeight="Bold" Height="27" Width="281"/>
                 <Label x:Name="labelHomeworkDescription" Content="本次作业需要完成支持向量机打卡..." Canvas.Left="81" Canvas.Top="27" Width="230"/>
             </Canvas>
         </Button>

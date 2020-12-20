@@ -19,7 +19,7 @@
                         <Label Content="时间" Height="27" Canvas.Left="183" Canvas.Top="218" RenderTransformOrigin="0.586,1.293"/>
                         <TextBox x:Name="txtboxReleaseTime" Height="23" TextAlignment="Center" VerticalContentAlignment="Center"  Text="" Canvas.Left="220" TextWrapping="Wrap" Canvas.Top="218" Width="168"/>
                         <TextBox x:Name="txtboxNoticeTitle" Height="35" Canvas.Left="183" Canvas.Top="40" Width="571"/>
-                        <TextBox x:Name="txtboxNoticeContent" Height="80" Canvas.Left="183" Canvas.Top="101" Width="571" TextChanged="TxtboxNoticeContent_TextChanged"/>
+                        <TextBox x:Name="txtboxNoticeContent" Height="80" Canvas.Left="183" Canvas.Top="111" Width="571" TextChanged="TxtboxNoticeContent_TextChanged" BorderThickness="1"/>
                     </Canvas>
                 </GroupBox>
                 <Button FontSize="16" BorderBrush="{x:Null}" x:Name="btnAnnounce" Content="发布" Background="#FF93B3DE" Canvas.Left="282" Canvas.Top="391" Width="75" Height="36" Click="BtnAnnounce_Click"/>

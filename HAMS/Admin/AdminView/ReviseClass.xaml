@@ -15,9 +15,9 @@
             <Label Content="课堂名" FontSize="14" HorizontalAlignment="Left" Margin="216,168,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.581,-0.262"/>
             <Label Content="教师工号" FontSize="14" HorizontalAlignment="Left" Margin="216,261,0,0" VerticalAlignment="Top"/>
 
-            <TextBox x:Name="txtClassNum" HorizontalAlignment="Left" Height="23" Margin="332,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="151" IsReadOnly="True"/>
+            <TextBox x:Name="txtClassNum" HorizontalAlignment="Left" Height="23" Margin="332,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="151" IsEnabled = "False" IsReadOnly="True"/>
             <TextBox x:Name="txtClassName" HorizontalAlignment="Left" Height="23" Margin="332,166,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="151"/>
-            <TextBox x:Name="txtTeaNum" HorizontalAlignment="Left" Height="23" Margin="332,258,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="151" IsReadOnly="True"/>
+            <TextBox x:Name="txtTeaNum" HorizontalAlignment="Left" Height="23" Margin="332,258,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="151" IsReadOnly="True" IsEnabled = "False" />
             <Button x:Name="btnRevise" BorderBrush="{x:Null}" Content="修改" HorizontalAlignment="Left" Background="#FF93B3DE" Margin="212,320,0,0" VerticalAlignment="Top" Width="73" Click="BtnRevise_Click"/>
             <Button x:Name="btnCancel" BorderBrush="{x:Null}" Content="取消"  Background="#FF93B3DE" Margin="408,320,195,28"  Width="75" Click="BtnCancel_Click"/>
 

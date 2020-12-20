@@ -60,7 +60,7 @@
                     </StackPanel>
                 </Button>
             </Canvas>
-            <Button x:Name="btnAnnounce" Content="发布" Height="25.8" Click="btnAnnounce_Click" BorderBrush="LightBlue" Background="LightBlue" Margin="501.555,0,439.645,32.54" VerticalAlignment="Bottom">
+            <Button x:Name="btnAnnounce" Content="发布" Height="26" Click="btnAnnounce_Click" BorderBrush="LightBlue" Background="LightBlue" Margin="522,0,420,33" VerticalAlignment="Bottom">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="3"/>

@@ -105,10 +105,8 @@
     </Window.Resources>
     <Viewbox Stretch="UniformToFill">
         <Grid Margin="0,0,0,-1" Height="472" Width="840">
-            <Grid Height="50" VerticalAlignment="Top"  Margin="0,0.344,0,0"><!--Background="LightBlue"-->
-                <Grid.Background>
-                    <ImageBrush ImageSource="/HAMS;component/Resources/78.-Night-sky.jpg"/>
-                </Grid.Background>
+            <Grid Height="50" VerticalAlignment="Top"  Margin="0,0.344,0,0" Background="LightBlue">
+                <!--Background="LightBlue"-->
                 <TextBlock x:Name="tbTeacherInfo" Width="40.21" TextAlignment="Center" HorizontalAlignment="Left" Margin="51,18.677,0,17.667" Text="Z001">
                     <TextBlock.Background>
                         <ImageBrush/>
@@ -126,20 +124,13 @@
                     </StackPanel>
                 </Button>
             </Grid>
-            <Grid Margin="1,50.344,-1,0" Height="37.552" VerticalAlignment="Top" ><!--Background="LightPink"-->
-                <Grid.Background>
-                    <ImageBrush ImageSource="/HAMS;component/Resources/61.-Lavender.jpg"/>
-                </Grid.Background>
+            <Grid Margin="0,50,0,0" Height="38" VerticalAlignment="Top" Background="LightPink" >
+                <!--Background="LightPink"-->
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="65*"/>
                     <ColumnDefinition Width="0*"/>
                     <ColumnDefinition Width="454*"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="btnReturn" Margin="10,3,0,6.552" BorderThickness="0" BorderBrush="#FF9F9D9D" Click="btnReturn_Click" HorizontalAlignment="Left" Width="51" Height="Auto">
-                    <Button.Background>
-                        <ImageBrush ImageSource="../../Resources/返回.png"/>
-                    </Button.Background>
-                </Button>
                 <TextBlock x:Name="tbClassInfo" Width="113.16" TextAlignment="Center" HorizontalAlignment="Left" Margin="-39.98,9.24,0,7" Grid.Column="2">
                     <TextBlock.Background>
                         <ImageBrush/>
@@ -148,7 +139,7 @@
                     <TextBlock.Background>
                         <ImageBrush/>
                     </TextBlock.Background><Run Text="R语言"/></TextBlock>
-                <Label x:Name="label" Content="作业公告详情" Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,34.706,10" VerticalAlignment="Bottom" Width="83.123" Height="22.942" Style="{DynamicResource LabelStyle1}"/>
+                <Label x:Name="label" Content="作业公告详情" Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,35,6.552" VerticalAlignment="Bottom" Width="83" Height="26" Style="{DynamicResource LabelStyle1}"/>
             </Grid>
             <Grid Margin="1.4,87.896,-1,247.911">
                 <Label x:Name="lbNotTitle" Content="" Height="24" Width="130" RenderTransformOrigin="0.507,0.631" HorizontalAlignment="Left" Margin="71,6.843,0,0" VerticalAlignment="Top"/>
@@ -163,7 +154,7 @@
                 </Button>
                 <Grid Height="30.843" VerticalAlignment="Top" HorizontalAlignment="Left" Width="108.992" Margin="720.608,1.521,0,0" d:LayoutOverrides="VerticalAlignment">
                     <Button x:Name="btnAnswerQuestion" Margin="0,1.449,0,0" Background="#FFDBABAB" Content="   作业答疑区" BorderBrush="{x:Null}"  Click="btnAnswerQuestion_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Width="117.275">
-                    
+
                     </Button>
                     <Image x:Name="image2" Source="../../Resources/提交作业.png" Margin="0,1.449,0,0" HorizontalAlignment="Left" Width="27.225"/>
                 </Grid>
@@ -213,9 +204,9 @@
                                     <GradientStop Color="#FFB4A8E9" Offset="1"/>
                                 </LinearGradientBrush>
                             </TabItem.Background>
-                            <Grid Background="#FFE5E5E5" Margin="0,0,0,-3.066">
+                            <Grid Background="White" Margin="0,0,0,-3.066">
 
-                                <ListView x:Name="listViewChecked" Grid.ColumnSpan="7">
+                                <ListView x:Name="listViewChecked" Grid.ColumnSpan="7" Background="White">
                                     <ListView.View>
                                         <GridView>
                                             <GridViewColumn/>
@@ -234,7 +225,7 @@
                                     <GradientStop Color="#FFF3C5D6" Offset="1"/>
                                 </LinearGradientBrush>
                             </TabItem.Background>
-                            <Grid Background="#FFE5E5E5">
+                            <Grid Background="White">
 
                                 <ListView x:Name="listViewUnCheck" Grid.ColumnSpan="6" Margin="0,0,-0.2,0.2">
                                     <ListView.View>
@@ -255,7 +246,7 @@
                                     <GradientStop Color="#FFC5F3EB" Offset="1"/>
                                 </LinearGradientBrush>
                             </TabItem.Background>
-                            <Grid Background="#FFE5E5E5" Margin="0,0,0,-10.4">
+                            <Grid Background="White" Margin="0,0,0,-10.4">
 
                                 <ListView x:Name="listViewUnFinish" Margin="0,0,0,10" Grid.ColumnSpan="4">
                                     <ListView.View>
@@ -277,6 +268,12 @@
                     </Button.Resources>
                 </Button>
             </Grid>
+            <Button x:Name="btnReturn" BorderBrush="LightPink" RenderTransformOrigin="0.622,0.945" Height="36" Foreground="#FF151111" Click="btnReturn_Click" VerticalAlignment="Top" Margin="2,52,780,0">
+                <Button.Background>
+                    <ImageBrush/>
+                </Button.Background>
+                <Image x:Name="comeback1" Width="26" Height="19.491" Source="/HAMS;component/Resources/返回.png" RenderTransformOrigin="0.345,0.505"/>
+            </Button>
         </Grid>
     </Viewbox>
 </Window>

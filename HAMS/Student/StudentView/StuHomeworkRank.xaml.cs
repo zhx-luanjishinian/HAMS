@@ -57,11 +57,13 @@ namespace HAMS.Student.StudentView
         //绘制提交排行榜柱状图
         public void initColumn()
         {
+            List<String> info = ss.getHomeworkDoneInfo(account, notId);
             Dictionary<String, int> result = ss.getTimeAndUsers(classSpecId, notId);
             String[] valueX = result.Keys.ToArray<String>();
             int[] valueY = result.Values.ToArray<int>();
             //创建一个图标
             Chart chart = new Chart();
+            
 
             //设置图标的宽度和高度
             chart.Width = 600;
@@ -99,6 +101,11 @@ namespace HAMS.Student.StudentView
             {
                 // 创建一个数据点的实例。                   
                 dataPoint = new DataPoint();
+                //当学生提交了作业时就进行标记
+                if(info[3]!=""&&info[4]==valueX[i])
+                {
+                    
+                }
                 // 设置X轴点                    
                 dataPoint.AxisXLabel = valueX[i];
                 //设置Y轴点                   

@@ -55,6 +55,11 @@ namespace HAMS.Student.StudentService
         {
             return sd.showAllHomeworkInfo(classSpecId);
         }
+        //获得与作业有关的截止日期以及作业实际提交日期有关的数据
+        public List<String> getHomeworkDoneInfo(String account,String notId)
+        {
+            return sd.defineHomeworkStatus(account, notId);
+        }
         public String judgeHomeworkStatus(String account,String notId)
         {
             List<String> table = sd.defineHomeworkStatus(account, notId);

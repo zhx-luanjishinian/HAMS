@@ -9,26 +9,33 @@
     <Viewbox Stretch="UniformToFill">
         <Grid Height="472" Width="840">
 
-            <Canvas Margin="0,1.248,0,0"  Height="60.752" VerticalAlignment="Top" ><!--Background="LightBlue"-->
+            <Canvas Margin="0,1.248,0,0"  Height="47.946" VerticalAlignment="Top" >
+                <!--Background="LightBlue"-->
                 <Canvas.Background>
                     <ImageBrush Stretch="Fill" ImageSource="/HAMS;component/Resources/78.-Night-sky.jpg"/>
                 </Canvas.Background>
-                <Label x:Name="labelClassName" Content="SVM实验" Width="95.733" Height="35.313" Canvas.Left="91.867" Canvas.Top="15.439" FontSize="20" FontWeight="Bold"/>
-                <Border BorderBrush="Black" BorderThickness="0" Height="60.752" Width="833.6"/>
-                <Button x:Name="btnSubmitQuestion" Content="发送答疑" Height="35.313" Canvas.Left="719.8" Canvas.Top="15.439" Width="95.868" Click="btnSubmitQuestion_Click" Background="#FFFBDFE3" BorderBrush="{x:Null}">
+                <Border BorderBrush="Black" BorderThickness="0" Height="47.946" Width="840"/>
+                <Button x:Name="btnSubmitQuestion" Content="发送答疑" Height="41.124" Canvas.Left="732.519" Canvas.Top="3.411" Width="97.481" Click="btnSubmitQuestion_Click" Background="#FFE5BDC3" BorderBrush="{x:Null}">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="3"></Setter>
                         </Style>
                     </Button.Resources>
                 </Button>
-                <Button x:Name="button1" Width="57.668" BorderThickness="0" Height="35.313" Canvas.Left="10" Canvas.Top="15.439" Click="button1_Click">
+                <Button x:Name="button1" BorderBrush="LightPink" RenderTransformOrigin="0.622,0.945" Height="44.535" Foreground="#FF151111"  Width="60.061" Click="button1_Click" Canvas.Left="4.478">
                     <Button.Background>
-                        <ImageBrush ImageSource="返回.png"/>
+                        <ImageBrush/>
                     </Button.Background>
+                    <Image x:Name="comeback1" Width="26" Height="27" Source="/HAMS;component/Resources/返回.png" RenderTransformOrigin="0.345,0.505"/>
                 </Button>
+                <Label x:Name="labelClassName" Content="SVM实验" Width="349.668" Height="35.313" Canvas.Left="80.581" Canvas.Top="4.99" FontSize="20"/>
             </Canvas>
             <ListView x:Name="listViewQuestionAndAnswer" HorizontalAlignment="Left" Height="374.439" Margin="10,77.48,0,0" VerticalAlignment="Top" Width="820" Foreground="#DD999191" BorderBrush="#89807777"/>
+            <Button x:Name="btnRefresh" HorizontalAlignment="Left" Margin="652.572,0,0,431" Width="36" BorderBrush="{x:Null}" Click="btnRefresh_Click" Height="31" Foreground="{x:Null}" VerticalAlignment="Bottom" >
+                <Button.Background>
+                    <ImageBrush ImageSource="刷新.png"/>
+                </Button.Background>
+            </Button>
 
         </Grid>
     </Viewbox>

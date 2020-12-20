@@ -55,6 +55,11 @@ namespace HAMS.Student.StudentService
         {
             return sd.showAllHomeworkInfo(classSpecId);
         }
+        //获得与作业有关的截止日期以及作业实际提交日期有关的数据
+        public List<String> getHomeworkDoneInfo(String account,String notId)
+        {
+            return sd.defineHomeworkStatus(account, notId);
+        }
         public String judgeHomeworkStatus(String account,String notId)
         {
             List<String> table = sd.defineHomeworkStatus(account, notId);
@@ -395,6 +400,11 @@ namespace HAMS.Student.StudentService
         public int getSexByStuSpecId(string StuSpecId)
         {
             return int.Parse(sd.getSexByStuSpecId(StuSpecId).Rows[0][0].ToString());
+        }
+        //找到老师的名字
+        public String findTeacherName(String classSpecId)
+        {
+            return sd.findTeacherName(classSpecId);
         }
 
     }

@@ -11,12 +11,12 @@
             <Image x:Name="image3" Height="23" Width="24" Source="/HAMS;component/Resources/评论.png"/>
         </Button>
         <Image x:Name="stuImage" Height="38" Width="48" Source="/HAMS;component/Resources/学生.png" Canvas.Left="3" Canvas.Top="32"/>
-        <Label x:Name="lbStuName" Content="学生1" RenderTransformOrigin="0.512,0.533" Height="41" Canvas.Left="55" Canvas.Top="32" Width="84" FontSize="13"/>
+        <Label x:Name="lbStuName" Content="本课堂学生" RenderTransformOrigin="0.512,0.533" Height="41" Canvas.Left="55" Canvas.Top="32" Width="84" FontSize="13"/>
         <TextBox x:Name="textBoxQuestion" TextWrapping="Wrap" Text="老师好，请问实验结果的具体要求是什么？" Height="62" Canvas.Top="78" Width="760" FontSize="13" Margin="0" BorderThickness="1"/>
-        <Grid x:Name="teacherResponse" Height="125" Canvas.Top="141" Width="777">
-            <TextBox x:Name="tbResponse" TextWrapping="Wrap" Text="" Margin="46,37,17,10" BorderThickness="1"/>
-            <Label x:Name="lbResponseName" Content="" Margin="46,10,164,43"/>
-            <Image x:Name="image" Source="/HAMS;component/Resources/男教师.png" Margin="0,0,733,60"/>
+        <Grid x:Name="teacherResponse" Height="125" Canvas.Top="141" Width="777" Visibility="Hidden" >
+            <TextBox x:Name="tbResponse" TextWrapping="Wrap" Text="" Margin="72.297,37,17,10" BorderThickness="1"/>
+            <Label x:Name="lbResponseName" Content="" Margin="46,10,580,93"/>
+            <Image x:Name="image" Source="/HAMS;component/Resources/男教师.png" Margin="15.403,0,717.597,60"/>
         </Grid>
         <Button x:Name="btnInsert" Height="33" Width="53" Background="White" BorderThickness="0" Canvas.Left="232" Canvas.Top="37" Click="btnComment_Click">
             <Image x:Name="image1" Height="24.866" Width="40.667" Source="/HAMS;component/Resources/对勾.png"/>

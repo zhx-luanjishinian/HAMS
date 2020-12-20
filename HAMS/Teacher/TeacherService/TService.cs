@@ -48,14 +48,20 @@ namespace HAMS.Teacher.TeacherService
             string homURL = tbHomURL.Rows[0][0].ToString();
             return homURL;
         }
-
-       
+        
 
         public bool CorrectHomework(int homId, string score, string remark)
         {
             //批改作业，往数据库中写入成绩和点评
             bool flag = td.updateHomeworkByCorrect(homId, score, remark);
             return flag;
+        }
+        public string GetNotIdFromClassSpecId(string classSpecId,string homeworkTitle)
+        {
+            DataTable tableClassId = td.getClassId(classSpecId);
+            DataTable tableNotId = td.getNotIdByClassIdAndNotTitle(homeworkTitle, Convert.ToInt32(tableClassId.Rows[0][0]));
+            string notId = tableNotId.Rows[0][0].ToString();
+            return notId;
         }
 
         //DateTime baseDate = new DateTime(1970, 1, 1);
@@ -315,17 +321,15 @@ namespace HAMS.Teacher.TeacherService
             string submitTime = table3.Rows[0][0].ToString();
             return submitTime;
         }
+
         public String DeleteHomeworkNotice(String classSpecId, String homeworkTitle)
         {
-            DataTable table1 = td.getClassId(classSpecId);
-            int classId = Convert.ToInt32(table1.Rows[0][0]);
-            DataTable table2 = td.getNotIdByClassIdAndNotTitle(homeworkTitle, classId);
-            bool flag = td.deleteHomework(table2.Rows[0][0].ToString());
-            if (flag == true)
-            {
-                string notId = table2.Rows[0][0].ToString();
+            DataTable tbClassId = td.getClassId(classSpecId);
+            int classId = Convert.ToInt32(tbClassId.Rows[0][0]);//获取classId
+            DataTable tbNotId = td.getNotIdByClassIdAndNotTitle(homeworkTitle, classId);
+            string notId = tbNotId.Rows[0][0].ToString();//获取notId
 
-
+            //第一步：删除远程服务器上文件
             //根据notId找notURL
             DataTable tbNotURL = td.getNotURLByNotId(notId);
             //把作业公告文件夹进行改名
@@ -335,40 +339,40 @@ namespace HAMS.Teacher.TeacherService
             string newDirName = "已被删除的作业公告" + notURLs[1];
             FtpUpDown.Rename(currentDirFullPath, newDirName);
 
-            //在数据库中删除作业答疑
+            //第二步：在数据库comment表中删除作业答疑
+            //当数据库中存在答疑的时候才需要删除，否则不需要删除答疑
             if (td.getCommentNumByNotId(notId) != 0)//此时才需要删除答疑
+            {
+                bool flagComm = td.deleteComment(notId);
+                if (flagComm != true)
                 {
-                    bool flag1 = td.deleteComment(notId);
-                    if (flag1 != true)
-                    {
-                        return "删除作业答疑失败";
-                        
-                    }
-                    
+                    return "删除作业答疑失败";
+
                 }
-
-                //在数据库中删除作业公告
-                bool flag2 = td.deleteNotice(notId);
-                if (flag2 == true)
-                {
-                    return "删除该作业公告成功";
-                }
-                else
-                {
-                    return "删除该作业公告失败";
-                }
-
-
-
-
 
             }
-            else
+
+            //第三步：在数据库homework表中删除作业
+            bool flagHomework = td.deleteHomework(tbNotId.Rows[0][0].ToString());
+            if(flagHomework != true)
             {
-                //MessageBox.Show("删除学生作业记录失败");
                 return "删除学生作业记录失败";
             }
+
+            //第四步：在数据库notice表中删除作业公告
+            bool flagNotice = td.deleteNotice(notId);
+            if (flagNotice != true)
+            {
+                return "删除该作业公告失败";
+            }
+               
+            return "删除该作业公告成功";
+              
+            
+            
         }
+
+
         public string GetPostilByForm(string classSpecId, string noticeName, string studentSpecId)
         {
             DataTable table1 = td.GetStuIdFromStuSpecId(studentSpecId);
@@ -433,6 +437,75 @@ namespace HAMS.Teacher.TeacherService
            return int.Parse(td.getSexByTeaSpecId(teacherSpecId).Rows[0][0].ToString());
         }
 
+        public DataTable getNotice(string classSpaceId)  //从数据库查询目前已有的作业
+        {
+            return td.getNotice(classSpaceId);
+        }
+
+        public DataTable getTeacherId(String TeacherSpecId)
+        {
+            return td.getTeacherId(TeacherSpecId);
+        }
+
+        public DataTable LoadMainFormLeft(string teacherSpecId)
+        {
+            return td.LoadMainFormLeft(teacherSpecId);
+        }
+
+        public String getNoticeNum(string classId)
+        {
+            return td.getNoticeNum(classId).ToString();
+        }
+
+        public String getStuNum(string classId)
+        {
+            return td.getStuNum(classId).ToString();
+        }
+
+        public DataTable getClassIdByTId(string teacherId)
+        {
+            return td.getClassIdByTId(teacherId);
+        }
+
+        public DataTable getRecentNoticeByClassId(string classId)
+        {
+            return td.getRecentNoticeByClassId(classId);
+        }
+
+        public DataTable GetClassInfoByClassID(String classId)
+        {
+            return td.GetClassInfoByClassID(classId);
+        }
+
+        public DataTable getClassId(string classSpecId)
+        {
+            return td.getClassId(classSpecId);
+        }
+
+        public DataTable getNotIdByClassIdAndNotTitle(String notTitle, int classId)
+        {
+            return td.getNotIdByClassIdAndNotTitle(notTitle,classId);
+        }
+
+        public Boolean deleteNotice(string noticeId)
+        {
+            return td.deleteNotice(noticeId);
+        }
+
+        public DataTable getNotURLNameByNotId(int notId)
+        {
+            return td.getNotURLNameByNotId(notId);
+        }
+
+        public DataTable SelectHomeworkCheckedInfo(String notId)
+        {
+            return td.SelectHomeworkCheckedInfo(notId);
+        }
+
+        public DataTable GetStudentNameAndIdByStuID(String stuId)
+        {
+            return td.GetStudentNameAndIdByStuID(stuId);
+        }
 
     }
     }

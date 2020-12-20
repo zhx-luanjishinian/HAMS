@@ -17,6 +17,7 @@ using HAMS.Teacher.TeacherService;
 using System.Data;
 using HAMS.Entity;
 using HAMS.Teacher.TeacherDao;
+using HAMS.Student.StudentService;
 
 namespace HAMS.Teacher.TeacherView
 {
@@ -26,7 +27,8 @@ namespace HAMS.Teacher.TeacherView
     public partial class TeacherHomeworkCheck : Window
     {
         private TService ts = new TService();
-        private TDao td = new TDao();
+        private SService ss = new SService();
+
         private string homURL = ""; //存储待下载作业文件的路径
         private string homName; //存储待下载作业文件的文件名
         private int[] homIds;//存储作业Id列表
@@ -73,7 +75,7 @@ namespace HAMS.Teacher.TeacherView
             string StuSpecId = StudentInfos[0];//获取当前待批改作业的学号
             string StuName = StudentInfos[1];//获取当前待批改作业的姓名
             
-            int sex = int.Parse(td.getSexByStuSpecId(StuSpecId).Rows[0][0].ToString());
+            int sex = ss.getSexByStuSpecId(StuSpecId);
             
             //headImage是image控件名
             if (sex == 0)
@@ -248,6 +250,14 @@ namespace HAMS.Teacher.TeacherView
 
                 TeacherHomeworkCheck thc = new TeacherHomeworkCheck(homIds, index, lbNotTitle.Content.ToString(), studentInfo, this.pngfile, ifCorrect);
                 thc.pngfile = this.pngfile;
+                
+                thc.className = this.className;
+                thc.classSpecId = this.classSpecId;
+                thc.description = this.description;   
+                thc.tbTeacherSpecId.Text = this.tbTeacherSpecId.Text.ToString();
+                thc.tbTeacherName.Text = this.tbTeacherName.Text.ToString();    //加载教师工号和姓名
+
+
                 thc.Show();
                 this.Visibility = System.Windows.Visibility.Hidden;
             }
@@ -269,6 +279,11 @@ namespace HAMS.Teacher.TeacherView
 
                 TeacherHomeworkCheck thc = new TeacherHomeworkCheck(homIds, index, lbNotTitle.Content.ToString(), studentInfo,this.pngfile, ifCorrect);
                 thc.pngfile = this.pngfile;
+                thc.className = this.className;
+                thc.classSpecId = this.classSpecId;
+                thc.description = this.description;  
+                thc.tbTeacherSpecId.Text = this.tbTeacherSpecId.Text.ToString();
+                thc.tbTeacherName.Text = this.tbTeacherName.Text.ToString();    //加载教师工号和姓名
                 thc.Show();
                 this.Visibility = System.Windows.Visibility.Hidden;
             }

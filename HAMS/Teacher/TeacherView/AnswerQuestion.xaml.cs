@@ -15,6 +15,7 @@ using HAMS.Student.StudentDao;
 using HAMS.Student.StudentService;
 using HAMS.Student.StudentUserControl;
 using HAMS.Student.StudentView;
+using System.Data;
 
 namespace HAMS.Teacher.TeacherView
 {
@@ -28,6 +29,7 @@ namespace HAMS.Teacher.TeacherView
         public String classSpecId { set; get; }
         public String name { set; get; }
         public String account { set; get; }
+        public String teacherName { set; get; }
         private SService ss = new SService();
         
 
@@ -37,16 +39,24 @@ namespace HAMS.Teacher.TeacherView
             labelClassName.Content = className;
             this.account = account;
             this.name = name;
+            this.teacherName = ss.findTeacherName(classSpecId);
             this.classSpecId = classSpecId;
             this.notId = notId;
             initAskView(notId);
             
         }
+        public AnswerQuestion(String className,string teacherName,string notId)
+        {
+            InitializeComponent();
+            labelClassName.Content = className;
+            name = teacherName;
+            this.notId = notId;
+           
+        }
         public AnswerQuestion(String className)
         {
             InitializeComponent();
             labelClassName.Content = className;
-           
         }
         private void initAskView(String notId)
         {
@@ -62,11 +72,14 @@ namespace HAMS.Teacher.TeacherView
                     StudentAskQuestion saq = new StudentAskQuestion();
                     //首先放置学生的东西
                     saq.textBoxQuestion.Text = result[i][0];
+                    saq.btnComment.Visibility = Visibility.Hidden;
+                    saq.btnInsert.Visibility = Visibility.Hidden;
                     //saq.textBoxQuestion.TextChanged += new TextChangedEventHandler();
                     //然后判断老师的评语是否为空，不为空就放置老师的评语
                     //不为空就加载老师的评语
                     saq.teacherResponse.Visibility = Visibility.Visible;
-                    saq.tbResponse.Text = result[i][1];       
+                    saq.tbResponse.Text = result[i][1];
+                    saq.lbResponseName.Content = teacherName;
 
                     //添加content
                     ivi.Content = saq;
@@ -87,6 +100,7 @@ namespace HAMS.Teacher.TeacherView
                     ivi.Content = saq;
                     //添加子item控件
                     listViewQuestionAndAnswer.Items.Add(ivi);
+                    
                 }
                 
 
@@ -105,6 +119,11 @@ namespace HAMS.Teacher.TeacherView
             StudentAskQuestion stuControl = (StudentAskQuestion)stuCanvas.Parent;
             //MessageBox.Show(stuControl.lbStuName.Content.ToString());   
             //往数据库里插入数据
+            if (stuControl.textBoxQuestion.Text == "")
+            {
+                MessageBox.Show("同学，请输入你的答疑信息");
+            }
+            else { 
             if (ss.insertStudentQuestion(notId, stuControl.textBoxQuestion.Text))
             {
                 MessageBox.Show("发送答疑成功！");
@@ -113,7 +132,8 @@ namespace HAMS.Teacher.TeacherView
             {
                 MessageBox.Show("failed!");
             }
-           
+            }
+
 
         }
         /// <summary>
@@ -147,21 +167,7 @@ namespace HAMS.Teacher.TeacherView
             }
             else
             {
-                //int sex = int.Parse(sd.getSexByStuSpecId(account).Rows[0][0].ToString());
-                //string pngfile;
-                ////headImage是image控件名
-                //if (sex == 0)
-                //{
-                //    pngfile = @"..\..\Resources\女生头像.png";
-
-                //}
-                //else
-                //{
-                //    pngfile = @"..\..\Resources\男生头像.png";
-
-                //}
-                //StuMainHomework sdh = new StuMainHomework(account, name, classSpecId, pngfile);
-                //sdh.Show();
+                
                 this.Visibility = System.Windows.Visibility.Hidden;
             }
             //CheckingClassHomework newHomeworkNoticeCheck = new CheckingClassHomework();
@@ -183,11 +189,74 @@ namespace HAMS.Teacher.TeacherView
             listViewQuestionAndAnswer.Items.Add(ivi);
            
         }
+        private void LoadQuestionAndAnswer(string noteId, AnswerQuestion newAnswerQuestion)
+        {
+            //进入答疑界面时加载目前已经有的疑问和解答
+            TeacherDao.TDao td = new TeacherDao.TDao();
+            DataTable table1 = td.getComment(noteId);
+            //List<StudentAskQuestion> list = new List<StudentAskQuestion>();  //生成StudentAskQuestion动态数组
+            //MessageBox.Show(table1.Rows.Count.ToString());    //
+            StudentAskQuestion[] newStudentAskQuestion = new StudentAskQuestion[100];
+            for (int i = 0; i < table1.Rows.Count; i++)
+            {
+                newStudentAskQuestion[i] = new StudentAskQuestion();
+                newStudentAskQuestion[i].lbStuName.Content = "本课堂学生";
+                newStudentAskQuestion[i].textBoxQuestion.Text = table1.Rows[i][2].ToString();  //有问题
+                newStudentAskQuestion[i].textBoxQuestion.IsReadOnly = true;
+                newStudentAskQuestion[i].tbResponse.Text = table1.Rows[i][3].ToString();
+                newStudentAskQuestion[i].btnComment.Click += new RoutedEventHandler(btnSubmitQuestion_Click);
+                newStudentAskQuestion[i].btnInsert.Click += new RoutedEventHandler(btnbtnInsert_Click);
+                newStudentAskQuestion[i].lbResponseName.Content = name + "老师";    //给老师姓名赋值
+                newAnswerQuestion.listViewQuestionAndAnswer.Items.Add(newStudentAskQuestion[i]);
+                //newAnswerQuestion.btnSubmitQuestion.Click += new RoutedEventHandler(btnSubmitQuestion_Click); //定义答疑按钮的事件
+                if (newStudentAskQuestion[i].tbResponse.Text != "")
+                {
+                    newStudentAskQuestion[i].teacherResponse.Visibility = Visibility.Visible;
+                    newStudentAskQuestion[i].tbResponse.IsReadOnly = true;
+                    newStudentAskQuestion[i].btnComment.Visibility = Visibility.Hidden;
+                    newStudentAskQuestion[i].btnInsert.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    newStudentAskQuestion[i].teacherResponse.Visibility = Visibility.Hidden;
+                }
 
-        //private void btnSubmitQuestion_Click(object sender, RoutedEventArgs e)
-        //{
-        //    Student.StudentUserControl.StudentAskQuestion newStudentAskQuestion = new Student.StudentUserControl.StudentAskQuestion();
+            }
 
-        //}
+        }
+
+        private void btnbtnInsert_Click(object sender, RoutedEventArgs e)
+        {
+            //进入答疑界面时加载目前已经有的疑问和解答
+            TeacherDao.TDao td = new TeacherDao.TDao();
+            //TeacherAnswerQuestion newTeacherAnswerQuestion = new TeacherAnswerQuestion();
+            Button sonBtn = (Button)sender;
+            Canvas stuCanvas = (Canvas)sonBtn.Parent;
+            StudentAskQuestion stuControl = (StudentAskQuestion)stuCanvas.Parent;
+            //MessageBox.Show(stuControl.lbStuName.Content.ToString());
+
+            bool flag = td.UpdateComment(stuControl.tbResponse.Text, stuControl.textBoxQuestion.Text);
+            //往数据库里插入数据
+            if (flag == true)
+            {
+                MessageBox.Show("发送成功");
+            }
+            else
+            {
+                MessageBox.Show("发送失败");
+            }
+            stuControl.tbResponse.IsReadOnly = true;
+        }
+
+        private void btnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+
+            //首先删除listview里面的东西
+            listViewQuestionAndAnswer.Items.Clear();
+
+            LoadQuestionAndAnswer(notId, this);   //加载疑问和回答
+                                                               //然后再重新加载一遍
+        }
+
     }
 }

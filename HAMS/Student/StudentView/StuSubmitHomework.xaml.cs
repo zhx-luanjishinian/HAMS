@@ -138,6 +138,11 @@ namespace HAMS.Student.StudentView
         {
             //public String SubmitHomework(string classId, string account, string postil, string homUrlName, string notId, string localpath)
             //调用业务层方法，修改数据库Homework表的相应字段
+            if (tbFileURL.Text == "")
+            {
+                System.Windows.Forms.MessageBox.Show("同学，你还没有选择文件");
+            }
+            else {
             String homUrlName = tbFileURL.Text;  //获取到文件名，从tbFileURL这个界面控件中获取
             String postil = listViewHomeworkNote.Text; //从listViewHomeworkNote中获取备注的信息
             String localpath = ofd.FileName; //获取作业内容在本地的存储路径
@@ -146,6 +151,7 @@ namespace HAMS.Student.StudentView
             //该方法实现向homework表中修改一条作业记录，且返回具体的信息提示用户
             string message = ss.SubmitHomework(name,classId, account, postil, homUrlName, notId, localpath);
             System.Windows.MessageBox.Show(message);
+            }
             //System.Windows.MessageBox.Show("提交成功！");//只要一个提示就OK，所以就注释了一个
         }
     }

@@ -218,21 +218,28 @@ namespace HAMS.Student.StudentDao
                     paras[1] = parameter1;
                     DataTable table4 = DataOperation.DataQuery(sql4, paras);
                     //5,6添加每门作业的自定义截止时间，自定义复杂度
-                    //此处需要判断用户有没有自定义截止时间和自定义复杂度,其实if判断语句可以不需要
-                    if (table4.Rows.Count > 0)
-                    {
+                    //此处需要判断学生是否提交了作业，没有提交就需要将这些加进来
+                    
                         ls.Add(table4.Rows[0][0].ToString());
-                        ls.Add(table4.Rows[0][1].ToString());
-                        ls.Add(table4.Rows[0][2].ToString());
-                    }
+                        ls.Add(table4.Rows[0][1].ToString());       
+                   
+
                     //如果还没有达到老师设置的截止时间就放在没有超过截止时间的里面
-                    if (Convert.ToDateTime(table2.Rows[j][2].ToString()) > DateTime.Now) {  
-                    notBeyondHomework.Add(ls);
+                    if (Convert.ToDateTime(table2.Rows[j][2].ToString()) > DateTime.Now) {
+                        //此处需要判断学生是否提交了作业，没有提交就需要将这些加进来
+                        if (table4.Rows[0][2] == DBNull.Value)
+                    {
+                        notBeyondHomework.Add(ls);
+                    }
                     }
                     //否则就将其放在超过了截止时间的列表里面
                     else
                     {
-                        BeyondHomework.Add(ls);
+                        //此处需要判断学生是否提交了作业，没有提交就需要将这些加进来,只有没完成的才进行预警
+                        if (table4.Rows[0][2] == DBNull.Value)
+                        {
+                            BeyondHomework.Add(ls);
+                        }
                     }
                 }
                 //首先放的是没有超过截止时间的数据
@@ -510,6 +517,17 @@ namespace HAMS.Student.StudentDao
             MySqlParameter parameter = new MySqlParameter("@ssid", StuSpecId);
             DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);  //查到学生id,分数,作业路径
             return table;
+        }
+        //根据课堂名查找老师的名字
+        public String findTeacherName(String classSpecId)
+        {
+            String sql = "select teacherId from class where classSpecId=@cid";
+            MySqlParameter para = new MySqlParameter("@cid", classSpecId);
+            DataTable table = DataOperation.DataQuery(sql, para);
+            String sql1 = "select name from teacher where teacherId=@tid";
+            MySqlParameter para1 = new MySqlParameter("@tid", table.Rows[0][0]);
+            DataTable table1 = DataOperation.DataQuery(sql1, para1);
+            return table1.Rows[0][0].ToString();
         }
 
     }

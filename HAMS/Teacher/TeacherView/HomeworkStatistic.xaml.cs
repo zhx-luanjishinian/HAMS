@@ -41,16 +41,16 @@ namespace HAMS.Teacher.TeacherView
             //设置该img控件的Source
             headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, pngfile))));
 
-            Chart chart = new Chart();
-            //创建一个标题的对象
-            Title title = new Title();
+            //Chart chart = new Chart();
+            ////创建一个标题的对象
+            //Title title = new Title();
 
-            //设置标题的名称
-            title.Text = "点击上方按钮绘制统计图";
-            title.Padding = new Thickness(0, 10, 5, 0);
-            //向图标添加标题
-            chart.Titles.Add(title);
-            ca.Children.Add(chart);
+            ////设置标题的名称
+            //title.Text = "点击上方按钮绘制统计图";
+            //title.Padding = new Thickness(0, 10, 5, 0);
+            ////向图标添加标题
+            //chart.Titles.Add(title);
+            //ca.Children.Add(chart);
             
             //initPie();//不知道为什么无法显示
             

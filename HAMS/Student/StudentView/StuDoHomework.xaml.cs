@@ -41,6 +41,23 @@ namespace HAMS.Student.StudentView
             //设置该img控件的Source
             headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, pngfile))));
             this.message = ss.judgeHomeworkStatus(account, notId);
+            if (message == "未完成")
+            {
+                btnDoHomework.Content = "作答";
+            }
+            else if (message == "待批改")
+            {
+                btnDoHomework.Content = "修改";
+            }
+            else if (message == "已批改")
+            {
+                btnDoHomework.Content = "查看";
+            }
+            else if (message == "已逾期")
+            {
+                System.Windows.Forms.MessageBox.Show("该作业已逾期，无法再进行作答");
+                btnDoHomework.Content = "";
+            }
             doHomeworkInfoShow();
 
         }
@@ -116,14 +133,18 @@ namespace HAMS.Student.StudentView
             }
             
             tbDeadLineTime.Text = result[2];
-            if (result[3] != null)
+            if (result[3] != "")
             {
                 tbAccessoryName.Content = result[3];
             }
             else
             {
+               
                 //如果不存在作业附件则不进行显示
-                tbAccessoryName.Content = "";
+                tbAccessoryName.Visibility = Visibility.Collapsed;
+                //减掉某个具体的事件
+                tbAccessoryName.Click -= new RoutedEventHandler(tbAccessoryName_Click);
+                //tbAccessoryName.Content = "";
                 imgAccessory.Source = null;
             }
 

@@ -79,7 +79,7 @@ namespace HAMS.Teacher.TeacherView
                     //不为空就加载老师的评语
                     saq.teacherResponse.Visibility = Visibility.Visible;
                     saq.tbResponse.Text = result[i][1];
-                    saq.lbResponseName.Content = teacherName;
+                    saq.lbResponseName.Content = teacherName+"老师";
 
                     //添加content
                     ivi.Content = saq;

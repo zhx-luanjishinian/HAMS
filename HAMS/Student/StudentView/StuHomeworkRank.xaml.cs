@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using Visifire.Charts;
 using HAMS.Student.StudentService;
 
+
 namespace HAMS.Student.StudentView
 {
     /// <summary>
@@ -102,11 +103,22 @@ namespace HAMS.Student.StudentView
                 // 创建一个数据点的实例。                   
                 dataPoint = new DataPoint();
                 //当学生提交了作业时就进行标记
-                if(info[3]!=""&&info[4]==valueX[i])
+                if(info[3]!=""&&info[4].Substring(0,10)==valueX[i])
                 {
-                    
+                    MessageBox.Show("用户已经提交过作业了");
+                    // Label lb = new Label();
+                    Title t = new Title();
+                    t.Text = "你在这里";
+                   // //获取控件在chart中的坐标
+                   Point point = dataPoint.TransformToAncestor(dataSeries).Transform(new Point(0,0));
+                    dataPoint.TranslatePoint(point, t);
+                    chart.Titles.Add(t);
+                    // lb.Content = "你在这里";
+
+
                 }
-                // 设置X轴点                    
+                // 设置X轴点  
+      
                 dataPoint.AxisXLabel = valueX[i];
                 //设置Y轴点                   
                 dataPoint.YValue = valueY[i];

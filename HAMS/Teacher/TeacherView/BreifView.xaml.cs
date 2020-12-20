@@ -106,7 +106,7 @@ namespace HAMS.Teacher.TeacherView
             MessageBoxResult dr = System.Windows.MessageBox.Show("此操作将会导致该公告所有已交作业被删除，是否确定删除该作业？", "", MessageBoxButton.OKCancel, MessageBoxImage.Question);
            if(dr== MessageBoxResult.OK)
             {
-                System.Windows.Controls.Button sonBtn = (System.Windows.Controls.Button)sender;  //获取当前点击的那个
+                System.Windows.Controls.Button sonBtn = (System.Windows.Controls.Button)sender;  //获取当前点击的那个具体作业 
                 //获取父级元素，找到要删除的公告
                 Grid sonGrid = (Grid)sonBtn.Parent;
                 BreifHomework clickTeachClass = (BreifHomework)sonGrid.Parent;

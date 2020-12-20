@@ -48,14 +48,20 @@ namespace HAMS.Teacher.TeacherService
             string homURL = tbHomURL.Rows[0][0].ToString();
             return homURL;
         }
-
-       
+        
 
         public bool CorrectHomework(int homId, string score, string remark)
         {
             //批改作业，往数据库中写入成绩和点评
             bool flag = td.updateHomeworkByCorrect(homId, score, remark);
             return flag;
+        }
+        public string GetNotIdFromClassSpecId(string classSpecId,string homeworkTitle)
+        {
+            DataTable tableClassId = td.getClassId(classSpecId);
+            DataTable tableNotId = td.getNotIdByClassIdAndNotTitle(homeworkTitle, Convert.ToInt32(tableClassId.Rows[0][0]));
+            string notId = tableNotId.Rows[0][0].ToString();
+            return notId;
         }
 
         //DateTime baseDate = new DateTime(1970, 1, 1);

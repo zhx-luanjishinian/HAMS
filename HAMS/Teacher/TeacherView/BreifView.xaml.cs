@@ -53,7 +53,7 @@ namespace HAMS.Teacher.TeacherView
                 //加载作业标题
                 arrayBreifHomework[i].title.Content = table.Rows[i][7].ToString();
                 //加载作业描述
-                //arrayBreifHomework[i].description.Content = table.Rows[i][4].ToString();
+                
                 //如果作业描述很长的话只显示10个
                 if (table.Rows[i][4].ToString().Length > 40)
                 {

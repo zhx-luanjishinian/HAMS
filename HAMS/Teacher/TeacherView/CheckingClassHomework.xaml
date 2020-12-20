@@ -108,11 +108,11 @@
             <Grid Height="58.061" VerticalAlignment="Top"  Margin="0,0.344,0,0" Background="LightBlue">
 
 
-                <TextBlock x:Name="tbTeacherInfo" Width="40.21" TextAlignment="Center" HorizontalAlignment="Left" Margin="51,18.677,0,17.667" Text="Z001">
+                <TextBlock x:Name="tbTeacherInfo" Width="40.21" TextAlignment="Center" HorizontalAlignment="Left" Margin="59.893,18.677,0,17.667" Text="Z001" FontSize="14">
                     <TextBlock.Background>
                         <ImageBrush/>
                     </TextBlock.Background></TextBlock>
-                <TextBlock x:Name="tbTeacherInfo1" Width="45.047" TextAlignment="Center" HorizontalAlignment="Left" Margin="105.103,18.677,0,17.667" Text="刘树栋">
+                <TextBlock x:Name="tbTeacherInfo1" Width="72.456" TextAlignment="Center" HorizontalAlignment="Left" Margin="105.103,18.677,0,17.667" Text="刘树栋" FontSize="14">
                     <TextBlock.Background>
                         <ImageBrush/>
                     </TextBlock.Background></TextBlock>
@@ -125,27 +125,25 @@
                     </StackPanel>
                 </Button>
             </Grid>
-            <Grid Margin="-0.4,58.405,0.4,0" Height="29.491" VerticalAlignment="Top" Background="LightPink">
-
-
-
-                <Button x:Name="btnReturn" Margin="10,3,0,6.552" BorderThickness="0" BorderBrush="#FF9F9D9D" Click="btnReturn_Click" HorizontalAlignment="Left" Width="35.683" Height="Auto">
-                    <Button.Background>
-                        <ImageBrush ImageSource="../../Resources/返回.png"/>
-                    </Button.Background>
-                </Button>
-                <TextBlock x:Name="tbClassInfo" Width="113.16" TextAlignment="Center" HorizontalAlignment="Left" Margin="70.222,8.368,0,7.872">
+            <Grid Margin="-0.4,58.405,0.4,0" Height="34.491" VerticalAlignment="Top" Background="LightPink">
+                <TextBlock x:Name="tbClassInfo" Width="113.16" TextAlignment="Center" HorizontalAlignment="Left" Margin="93.6,7.304,0,8.936">
                     <TextBlock.Background>
                         <ImageBrush/>
                     </TextBlock.Background><Run Text="Z004530B1300720   "/></TextBlock>
-                <TextBlock x:Name="tbClassInfo1" Width="50.281" TextAlignment="Center" HorizontalAlignment="Right" Margin="0,7.304,582.959,8.936">
+                <TextBlock x:Name="tbClassInfo1" Width="50.281" TextAlignment="Center" HorizontalAlignment="Right" Margin="0,7.304,561.999,8.936">
                     <TextBlock.Background>
                         <ImageBrush/>
                     </TextBlock.Background><Run Text="R语言"/></TextBlock>
                 <Label x:Name="label" Content="作业公告详情" HorizontalAlignment="Right" Margin="0,0,19.389,3.549" VerticalAlignment="Bottom" Width="83.123" Height="22.942" Style="{DynamicResource LabelStyle1}"/>
+                <Button x:Name="btnReturn" BorderBrush="LightPink" RenderTransformOrigin="0.622,0.945" Height="30.942" Foreground="#FF151111"  Width="61.55" Click="btnReturn_Click" HorizontalAlignment="Left" Margin="4.478,0,0,0" VerticalAlignment="Top">
+                    <Button.Background>
+                        <ImageBrush/>
+                    </Button.Background>
+                    <Image x:Name="comeback1" Width="26" Height="19.491" Source="/HAMS;component/Resources/返回.png" RenderTransformOrigin="0.345,0.505"/>
+                </Button>
             </Grid>
             <Grid Margin="1.4,92.896,-1,247.911">
-                <Label x:Name="lbNotTitle" Content="" Height="24" Width="130" RenderTransformOrigin="0.507,0.631" HorizontalAlignment="Left" Margin="71,6.843,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="lbNotTitle" Content="" Height="24" RenderTransformOrigin="0.507,0.631" Margin="71,6.843,383.053,0" VerticalAlignment="Top"/>
                 <Image x:Name="homework_png" Source="../../Resources/homework.png" Stretch="Fill" Width="56" HorizontalAlignment="Left" Margin="10,6.843,0,0" OpacityMask="{x:Null}" Height="57.595" VerticalAlignment="Top"/>
                 <Label x:Name="labelHomeworkArrangeTime" Content="2020年11月10日 星期二 10:10" Width="156.021" FontSize="10" HorizontalAlignment="Right" Margin="0,10.143,198.177,0" VerticalAlignment="Top"/>
                 <Button x:Name="uploadButton" Height="25.132" Background="{x:Null}" BorderThickness="0" Width="132.489" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="-11.286,0,0,0">

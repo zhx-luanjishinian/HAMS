@@ -250,6 +250,14 @@ namespace HAMS.Teacher.TeacherView
 
                 TeacherHomeworkCheck thc = new TeacherHomeworkCheck(homIds, index, lbNotTitle.Content.ToString(), studentInfo, this.pngfile, ifCorrect);
                 thc.pngfile = this.pngfile;
+                thc.pngfile = this.pngfile;
+                thc.className = this.className;
+                thc.classSpecId = this.classSpecId;
+                thc.description = this.description;   
+                thc.tbTeacherSpecId.Text = this.tbTeacherSpecId.ToString();
+                thc.tbTeacherName.Text = this.tbTeacherName.ToString();    //加载教师工号和姓名
+
+
                 thc.Show();
                 this.Visibility = System.Windows.Visibility.Hidden;
             }
@@ -271,6 +279,10 @@ namespace HAMS.Teacher.TeacherView
 
                 TeacherHomeworkCheck thc = new TeacherHomeworkCheck(homIds, index, lbNotTitle.Content.ToString(), studentInfo,this.pngfile, ifCorrect);
                 thc.pngfile = this.pngfile;
+                thc.className = this.className;
+                thc.classSpecId = this.classSpecId;
+                thc.description = this.description;  
+                thc.tbTeacherSpecId.Text = this.tbTeacherSpecId.ToString();
                 thc.Show();
                 this.Visibility = System.Windows.Visibility.Hidden;
             }

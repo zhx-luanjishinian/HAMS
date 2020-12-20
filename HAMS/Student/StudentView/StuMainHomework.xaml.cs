@@ -40,7 +40,7 @@ namespace HAMS.Student.StudentView
             this.name = name;
             this.classId = classId;
             this.pngfile = pngfile;
-            tbuserNameAc.Text = account + name;
+            tbuserNameAc.Text = account +" "+  name;
             //设置该img控件的Source
             headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, pngfile))));
             MainHomeworkShow(classId);

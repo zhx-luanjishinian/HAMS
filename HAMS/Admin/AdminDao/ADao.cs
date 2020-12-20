@@ -52,6 +52,16 @@ namespace HAMS.Admin.AdminDao
 
             return table;
         }
+        //根据自增id查看教师工号
+        public DataTable ShowTeacherSpecId(int teaId)
+        {
+            String sql = "select teacherSpecId from teacher where teacherId = @id;";
+            //传入要填写的参数
+            MySqlParameter para1 = new MySqlParameter("@id", teaId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, para1);
+
+            return table;
+        }
         //修改教师信息
         public bool updateTeacherInfo(string teacherSpecId, string teacherName, int teacherSex, string teacherDep, string teacherPass)
         {
@@ -140,7 +150,7 @@ namespace HAMS.Admin.AdminDao
         //按课堂号和课堂名查询课堂信息
         public DataTable ShowClass(string classSpecId, string className)
         {
-            String sql = "select * from class where classSpecId = @id and name = @className;";
+            String sql = "select * from class where classSpecId = @id and className = @name;";
             //传入要填写的参数
             MySqlParameter para1 = new MySqlParameter("@id", classSpecId);
             MySqlParameter para2 = new MySqlParameter("@name", className);

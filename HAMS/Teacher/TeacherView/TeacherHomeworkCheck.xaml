@@ -139,28 +139,27 @@
     </Window.Resources>
     <Viewbox Stretch="UniformToFill">
         <Grid Margin="0,0,0,-1" Height="472" Width="840">
-            <Grid Margin="0.4,55.344,-0.4,0" Height="37.552" VerticalAlignment="Top" Background="LightPink">
-
-                <Button x:Name="btnReturn" BorderThickness="0" BorderBrush="#FF9F9D9D" Width="36" Click="btnReturn_Click" HorizontalAlignment="Left" Margin="10,6.192,0,5.559" Height="Auto">
+            <Grid Margin="0,55.344,-0.4,0" Height="48.032" VerticalAlignment="Top" Background="LightPink" HorizontalAlignment="Right" Width="840">
+                <Label x:Name="lbNotTitle" Width="107" Content="猫狗大战期末作业" HorizontalAlignment="Left" Margin="64.702,13.094,0,10"/>
+                <Button x:Name="btnReturn" BorderBrush="LightPink" RenderTransformOrigin="0.622,0.945" Height="Auto" Foreground="#FF151111"  Width="55.224" Click="btnReturn_Click" HorizontalAlignment="Left" Margin="4.478,0,0,3.497">
                     <Button.Background>
-                        <ImageBrush ImageSource="../../Resources/返回.png"/>
+                        <ImageBrush/>
                     </Button.Background>
+                    <Image x:Name="comeback1" Width="26" Height="27" Source="/HAMS;component/Resources/返回.png" RenderTransformOrigin="0.345,0.505"/>
                 </Button>
-                <Label x:Name="lbNotTitle" Width="107" Content="猫狗大战期末作业" HorizontalAlignment="Left" Margin="64.702,8.055,0,5.559" d:LayoutOverrides="Height"/>
-                <Label x:Name="label" Content="作业批改" VerticalAlignment="Bottom" Width="61" Height="27" Style="{DynamicResource LabelStyle1}" HorizontalAlignment="Left" Margin="201.496,0,0,3.497"/>
             </Grid>
-            <Grid HorizontalAlignment="Right" Height="19.24" Margin="0,55.344,92.667,0" VerticalAlignment="Top" Width="52.6">
-                <Grid Margin="0,3,0,-2.76" HorizontalAlignment="Right" Width="51.4" Height="19" VerticalAlignment="Top">
-                    <Label x:Name="labelBefore" Content="上一个" Margin="0,6.24,0,-6.67" VerticalAlignment="Top" FontSize="9" Foreground="#FF074B5C" FontWeight="Bold" HorizontalAlignment="Right"/>
-                    <Button x:Name="btnBefore" Content="" HorizontalAlignment="Right" Margin="-5.4,6.24,37,-7" Width="19.8" Foreground="{x:Null}" BorderThickness="0" Click="btnBefore_Click" BorderBrush="#FFEADFDF" Height="19.76" VerticalAlignment="Top">
+            <Grid HorizontalAlignment="Right" Height="37.552" Margin="0,60.344,10,0" VerticalAlignment="Top" Width="127.206">
+                <Grid Margin="0,3,0,0" HorizontalAlignment="Left" Width="51.4" Height="32.704" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment">
+                    <Label x:Name="labelBefore" Content="上一个" Margin="16.4,6.24,0,-6.67" VerticalAlignment="Top" FontSize="9" Foreground="#FF074B5C" FontWeight="Bold" d:LayoutOverrides="Width"/>
+                    <Button x:Name="btnBefore" Content="" HorizontalAlignment="Left" Margin="-5.4,6.24,0,0" Width="19.8" Foreground="{x:Null}" BorderThickness="0" Click="btnBefore_Click" BorderBrush="#FFEADFDF" Height="19.76" VerticalAlignment="Top">
                         <Button.Background>
                             <ImageBrush ImageSource="/HAMS;component/Resources/向左.png"/>
                         </Button.Background>
                     </Button>
                 </Grid>
-                <Grid HorizontalAlignment="Right" Margin="0,3,-70,-2.76" Width="53.8">
+                <Grid HorizontalAlignment="Right" Width="53.8" Margin="0,3,10,1.848">
                     <Label x:Name="labelNext" Content="下一个" Margin="4.4,6.24,0,-6.67" VerticalAlignment="Top" FontSize="9" Foreground="#FF074B5C" FontWeight="Bold" HorizontalAlignment="Left"/>
-                    <Button x:Name="btnNext" Content="" Margin="37,0,-2.2,-7.04" Foreground="{x:Null}" BorderThickness="0" Click="btnNext_Click" Height="20.04" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="19">
+                    <Button x:Name="btnNext" Content="" Margin="37,6,-2.2,-7.04" Foreground="{x:Null}" BorderThickness="0" Click="btnNext_Click" Height="20.04" VerticalAlignment="Top" HorizontalAlignment="Left" Width="19">
                         <Button.Background>
                             <ImageBrush ImageSource="/HAMS;component/Resources/向右.png"/>
                         </Button.Background>
@@ -206,11 +205,11 @@
             </Border>
             <Canvas Height="55.344" Background="LightBlue" VerticalAlignment="Top" HorizontalAlignment="Left" Width="840.4" Margin="0,0,-0.4,0">
                 <Image x:Name="image1" Height="52.781" Canvas.Left="701.4" Width="47.025" Source="/HAMS;component/logo.png" Stretch="Fill"/>
-                <TextBlock x:Name="tbTeacherName" Width="59" TextAlignment="Center" Height="19" Canvas.Left="104" Canvas.Top="20">
+                <TextBlock x:Name="tbTeacherName" Width="67.868" TextAlignment="Center" Height="19" Canvas.Left="129.796" Canvas.Top="19" Text="刘树栋" FontSize="14">
                     <TextBlock.Background>
                         <ImageBrush/>
-                    </TextBlock.Background><Run Text=""/></TextBlock>
-                <TextBlock x:Name="tbTeacherSpecId" Width="43" TextAlignment="Center" Height="20" Canvas.Left="56" Canvas.Top="19" Text="">
+                    </TextBlock.Background></TextBlock>
+                <TextBlock x:Name="tbTeacherSpecId" Width="43" TextAlignment="Center" Height="20" Canvas.Left="68.092" Canvas.Top="19" Text="Z001" FontSize="14">
                     <TextBlock.Background>
                         <ImageBrush/>
                     </TextBlock.Background></TextBlock>

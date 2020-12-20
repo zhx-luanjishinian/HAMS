@@ -21,12 +21,13 @@ namespace HAMS.Admin.AdminView
     public partial class AdminIndex : Window
     {
         public string adminId{get;set;}
-        public AdminIndex(string session,string number)
+
+        public AdminIndex(string session,string name)
         {
-            this.adminId = number;
+            this.adminId = session;
             InitializeComponent();
             this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
-            try { if (session != null) { userName.Text = session; } }
+            try { if (session != null) { userName.Text = session+name; } }
             catch (Exception ex)
             {
                 throw new Exception("界面间传值发生异常" + ex.Message);

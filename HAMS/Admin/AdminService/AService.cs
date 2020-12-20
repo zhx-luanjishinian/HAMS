@@ -30,7 +30,7 @@ namespace HAMS.Admin.AdminService
             }
             else
             {
-                return BaseResult.ok(table.Rows[0][0].ToString());
+                return BaseResult.ok(table.Rows[0][1].ToString());
             }
 
         }
@@ -252,6 +252,9 @@ namespace HAMS.Admin.AdminService
                 dr2[0] = row["classSpecId"];
                 dr2[1] = row["className"];
                 dr2[2] = row["teacherId"];
+                int teaId = int.Parse(dr2[2].ToString());
+                DataTable table2 = ad.ShowTeacherSpecId(teaId);
+                dr2[2] = table2.Rows[0][0];
                 result.Rows.Add(dr2);
             }
             return result;
@@ -272,6 +275,9 @@ namespace HAMS.Admin.AdminService
                 dr2[0] = row["classSpecId"];
                 dr2[1] = row["className"];
                 dr2[2] = row["teacherId"];
+                int teaId = int.Parse(dr2[2].ToString());
+                DataTable table2 = ad.ShowTeacherSpecId(teaId);
+                dr2[2] = table2.Rows[0][0];
                 result.Rows.Add(dr2);
             }
             return result;
@@ -292,6 +298,9 @@ namespace HAMS.Admin.AdminService
                 dr2[0] = row["classSpecId"];
                 dr2[1] = row["className"];
                 dr2[2] = row["teacherId"];
+                int teaId = int.Parse(dr2[2].ToString());
+                DataTable table2 = ad.ShowTeacherSpecId(teaId);
+                dr2[2] = table2.Rows[0][0];
                 result.Rows.Add(dr2);
             }
             return result;

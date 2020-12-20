@@ -16,7 +16,7 @@
             <Label Content="性别" FontSize="14" HorizontalAlignment="Left" Margin="248,178,0,0" VerticalAlignment="Top"/>
             <Label Content="院系" FontSize="14" HorizontalAlignment="Left" Margin="248,236,0,0" VerticalAlignment="Top"/>
             <Label Content="密码" FontSize="14" HorizontalAlignment="Left" Margin="248,292,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.471,0.555"/>
-            <TextBox x:Name="txtTeaNum" HorizontalAlignment="Left" Height="23" Margin="319,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" IsReadOnly="True"/>
+            <TextBox x:Name="txtTeaNum" HorizontalAlignment="Left" Height="23" Margin="319,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" IsReadOnly="True" IsEnabled = "False" />
             <TextBox x:Name="txtTeaName" HorizontalAlignment="Left" Height="23" Margin="319,128,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="148"/>
             <TextBox x:Name="txtTeaCollege" HorizontalAlignment="Left" Height="23" Margin="319,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" RenderTransformOrigin="0.492,0.5"/>
             <TextBox x:Name="lableTeaPassword" HorizontalAlignment="Left" Height="23" Margin="322,291,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145"/>

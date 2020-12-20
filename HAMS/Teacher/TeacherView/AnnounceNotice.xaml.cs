@@ -37,7 +37,7 @@ namespace HAMS.Teacher.TeacherView
             tbTeacherSpecId.Text = tNum;
             labelcClassName.Content = cName;
             lbClassSpecId.Text = cId;
-            textBoxContent.Text = "请输入作业描述";
+            
             ifAnnounce = false;//表示此公告是新公告，未经发布
         }
         public AnnounceNotice(string tNum, string tName, string cSpecId, string cName,string nTitle,string nContent,DateTime nSubTime, string pgfile)
@@ -171,9 +171,15 @@ namespace HAMS.Teacher.TeacherView
         }
 
         private TService ts = new TService();
-        
+
         private void btnAnnounce_Click(object sender, RoutedEventArgs e)
         {
+            if(textBoxHomeworkTitle.Text == "")
+            {
+                System.Windows.MessageBox.Show("您必须输入作业标题！");
+            }
+            else
+            { 
             if (ifAnnounce)//如果是已发布
             {
                 string notTitle, content, localpath, notURLName, classSpecId;
@@ -188,7 +194,7 @@ namespace HAMS.Teacher.TeacherView
                     localpath = ofd.FileName;
                     notURLName = System.IO.Path.GetFileName(localpath);//存储作业附件名（本地上传文件名）
                     classSpecId = lbClassSpecId.Text;
-                    
+
                 }
                 else//表示并未覆盖上传作业附件，notURLName还是原来的数据库中的名称
                 {
@@ -211,10 +217,10 @@ namespace HAMS.Teacher.TeacherView
                 //调用业务层方法，往数据库里添加新的作业公告
                 String notTitle = textBoxHomeworkTitle.Text;
                 String content = textBoxContent.Text;
-           
-                if(calTruDeadline.SelectedDate == null)//如果没有选择截止日期，默认两天后
+
+                if (calTruDeadline.SelectedDate == null)//如果没有选择截止日期，默认两天后
                 {
-                    calTruDeadline.SelectedDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day+2); ;//给日历控件截止时间设置默认为当前时间两天之后
+                    calTruDeadline.SelectedDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day + 2); ;//给日历控件截止时间设置默认为当前时间两天之后
                 }
                 DateTime truDeadline = calTruDeadline.SelectedDate.Value;
                 String localpath = ofd.FileName;
@@ -227,9 +233,10 @@ namespace HAMS.Teacher.TeacherView
                 //String notURL = 课堂真实号/作业公告名/作业附件/文件名
                 //String notURL = classSpecId + "/" + notTitle + "/" + "作业附件" + fileName;
                 //该方法实现向notice表中新增一条作业公告，且返回具体的信息提示用户
-                string message = ts.AnnounceNotice(truDeadline, content, notTitle, classSpecId,tbTeacherSpecId.Text, localpath, notURLName);
+                string message = ts.AnnounceNotice(truDeadline, content, notTitle, classSpecId, tbTeacherSpecId.Text, localpath, notURLName);
                 System.Windows.MessageBox.Show(message);
             }
+        }
         }
 
         private void textBoxHomeworkTitle_GotFocus(object sender, RoutedEventArgs e)
@@ -248,6 +255,8 @@ namespace HAMS.Teacher.TeacherView
             }
             
         }
+
+       
     }
 }
 

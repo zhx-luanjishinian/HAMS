@@ -39,7 +39,7 @@ namespace HAMS.Student.StudentView
             //设置该img控件的Source
             headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, pngfile))));
 
-            this.textBlockUserId.Text = account + name;
+            this.textBlockUserId.Text = account +" "+ name;
             //展示预警信息
             showAlertInfo(ss.showAlertFormInfo(account));
             //初始化操作

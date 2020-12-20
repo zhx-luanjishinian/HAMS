@@ -207,9 +207,13 @@ namespace HAMS.Teacher.TeacherView
                 ifCorrect = false;
                 //需要传入的是待批改的homIds列表
                 TeacherHomeworkCheck newTeacherHomeworkCheck = new TeacherHomeworkCheck(homIdNeedCorrects, index, notTitle, studentInfo,this.pngfile, ifCorrect);
+                
+                newTeacherHomeworkCheck.pngfile = this.pngfile;
                 newTeacherHomeworkCheck.className = tbClassInfo1.Text;
                 newTeacherHomeworkCheck.classSpecId = tbClassInfo.Text;
-                newTeacherHomeworkCheck.description = textBlockDescription.Text;
+                newTeacherHomeworkCheck.description = textBlockDescription.Text;   //有问题
+                newTeacherHomeworkCheck.tbTeacherSpecId.Text = tbTeacherInfo.Text;
+                newTeacherHomeworkCheck.tbTeacherName.Text = tbTeacherInfo1.Text;    //加载教师工号和姓名
                 newTeacherHomeworkCheck.Show();
             }
             
@@ -355,7 +359,7 @@ namespace HAMS.Teacher.TeacherView
 
         private void btnAnswerQuestion_Click(object sender, RoutedEventArgs e)
         {
-            AnswerQuestion newAnswerQuestion = new AnswerQuestion(lbNotTitle.Content.ToString());   //这里有问题
+            AnswerQuestion newAnswerQuestion = new AnswerQuestion(lbNotTitle.Content.ToString(), tbTeacherInfo1.Text, notId);   //这里有问题
             LoadQuestionAndAnswer(notId, newAnswerQuestion);   //加载疑问和回答
             newAnswerQuestion.btnSubmitQuestion.Visibility = Visibility.Hidden;
             newAnswerQuestion.Show();
@@ -386,7 +390,7 @@ namespace HAMS.Teacher.TeacherView
             HomeworkStatistic hs = new HomeworkStatistic(this.pngfile);
             hs.pngfile = this.pngfile;
             hs.tSpecId = tbTeacherInfo.Text;
-            hs.tName = tbClassInfo1.Text;
+            hs.tName = tbTeacherInfo1.Text;
             hs.tbNotTitle.Text = lbNotTitle.Content.ToString();
             hs.className = tbClassInfo1.Text;
             hs.classSpecId = tbClassInfo.Text;
@@ -460,6 +464,9 @@ namespace HAMS.Teacher.TeacherView
             if (flag == true)
             {
                 MessageBox.Show("发送成功");
+
+                stuControl.btnInsert.Visibility = Visibility.Hidden;
+                stuControl.btnComment.Visibility = Visibility.Hidden;
             }
             else
             {

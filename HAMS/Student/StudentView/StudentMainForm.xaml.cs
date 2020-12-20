@@ -42,7 +42,7 @@ namespace HAMS.Student.StudentView
             
             this.account = account;
             this.name = name;
-            textBlockUserId.Text = account+name;
+            textBlockUserId.Text = account+" "+name;
             MainShow();
             HomeWorkShow();
         }

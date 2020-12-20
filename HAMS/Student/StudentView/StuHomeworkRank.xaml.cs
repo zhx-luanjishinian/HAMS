@@ -37,7 +37,7 @@ namespace HAMS.Student.StudentView
             this.classSpecId = classSpecId;
             this.account = account;
             this.name = name;
-            tbUserNameAc.Content = account + name;
+            tbUserNameAc.Content = account + " "+ name;
             this.pngfile = pgfile;
             //设置该img控件的Source
             headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, pngfile))));

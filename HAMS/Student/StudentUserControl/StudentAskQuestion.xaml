@@ -19,7 +19,7 @@
             <Image x:Name="image" Source="/HAMS;component/Resources/男教师.png" Margin="15.403,0,717.597,60"/>
         </Grid>
         <Button x:Name="btnInsert" Height="33" Width="53" Background="White" BorderThickness="0" Canvas.Left="232" Canvas.Top="37" Click="btnComment_Click">
-            <Image x:Name="image1" Height="24.866" Width="40.667" Source="/HAMS;component/Resources/对勾.png"/>
+            <Image x:Name="image1" Height="25" Width="25" Source="/HAMS;component/Resources/对勾.png"/>
         </Button>
 
     </Canvas>

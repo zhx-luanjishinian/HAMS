@@ -95,6 +95,7 @@ namespace HAMS.Teacher.TeacherView
                     //添加一个listviewitem控件
                     ListViewItem ivi = new ListViewItem();
                     StudentAskQuestion saq = new StudentAskQuestion();
+                    saq.textBoxQuestion.IsReadOnly = true;//当老师的评论为空时，已经发送的答疑也要加readonly
                     saq.btnComment.Visibility = Visibility.Hidden;
                     saq.btnInsert.Visibility = Visibility.Hidden;
                     //首先放置学生的东西
@@ -132,6 +133,9 @@ namespace HAMS.Teacher.TeacherView
             if (ss.insertStudentQuestion(notId, stuControl.textBoxQuestion.Text))
             {
                 MessageBox.Show("发送答疑成功！");
+                //隐藏评论和插入的按钮
+                stuControl.btnComment.Visibility = Visibility.Hidden;
+                stuControl.btnInsert.Visibility = Visibility.Hidden;
             }
             else
             {
@@ -225,6 +229,8 @@ namespace HAMS.Teacher.TeacherView
                 else
                 {
                     newStudentAskQuestion[i].teacherResponse.Visibility = Visibility.Hidden;
+                    newStudentAskQuestion[i].btnComment.Visibility = Visibility.Hidden;
+                    newStudentAskQuestion[i].btnInsert.Visibility = Visibility.Hidden;//哪怕没有教师的回答，在发送成功后也需要隐藏评论和发送按钮
                 }
 
             }

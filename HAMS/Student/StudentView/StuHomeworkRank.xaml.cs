@@ -42,9 +42,9 @@ namespace HAMS.Student.StudentView
             //设置该img控件的Source
             headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, pngfile))));
 
-            Chart chart = new Chart();
+            //Chart chart = new Chart();
             //创建一个标题的对象
-            Title title = new Title();
+            //Title title = new Title();
 
             //设置标题的名称
             //title.Text = "点击上方按钮绘制统计图";//这个没法居中
@@ -105,15 +105,15 @@ namespace HAMS.Student.StudentView
                 //当学生提交了作业时就进行标记
                 if(info[3]!=""&&info[4].Substring(0,10)==valueX[i])
                 {
-                    MessageBox.Show("用户已经提交过作业了");
+                    MessageBox.Show("你已经提交过作业了");
                     // Label lb = new Label();
-                    Title t = new Title();
-                    t.Text = "你在这里";
+                    //Title t = new Title();
+                    //t.Text = "你在这里";
                    // //获取控件在chart中的坐标
-                   Point point = dataPoint.TransformToAncestor(dataSeries).Transform(new Point(0,0));
-                    dataPoint.TranslatePoint(point, t);
-                    chart.Titles.Add(t);
-                    // lb.Content = "你在这里";
+                   //Point point = dataPoint.TransformToAncestor(window).Transform(new Point(0,0));
+                   //dataPoint.TranslatePoint(point, t);
+                  // chart.Titles.Add(t);
+                    // lb.Content = "你在这里";5
 
 
                 }

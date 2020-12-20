@@ -29,7 +29,7 @@ namespace HAMS.Student.StudentView
         public String name { set; get; }
         private SService ss = new SService();
         DispatcherTimer disTimer = new DispatcherTimer();
-        public AlertForm(String account,String name,string pgfile)
+        public AlertForm(String account,String name,String pgfile)
         {
             InitializeComponent();
             this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;

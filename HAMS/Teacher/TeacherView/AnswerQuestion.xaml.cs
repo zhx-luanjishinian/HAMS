@@ -72,13 +72,16 @@ namespace HAMS.Teacher.TeacherView
                     StudentAskQuestion saq = new StudentAskQuestion();
                     //首先放置学生的东西
                     saq.textBoxQuestion.Text = result[i][0];
+                    saq.textBoxQuestion.IsReadOnly = true;
                     saq.btnComment.Visibility = Visibility.Hidden;
                     saq.btnInsert.Visibility = Visibility.Hidden;
                     //saq.textBoxQuestion.TextChanged += new TextChangedEventHandler();
                     //然后判断老师的评语是否为空，不为空就放置老师的评语
                     //不为空就加载老师的评语
                     saq.teacherResponse.Visibility = Visibility.Visible;
+                    
                     saq.tbResponse.Text = result[i][1];
+                    saq.tbResponse.IsReadOnly = true;
                     saq.lbResponseName.Content = teacherName;
 
                     //添加content
@@ -92,6 +95,8 @@ namespace HAMS.Teacher.TeacherView
                     //添加一个listviewitem控件
                     ListViewItem ivi = new ListViewItem();
                     StudentAskQuestion saq = new StudentAskQuestion();
+                    saq.btnComment.Visibility = Visibility.Hidden;
+                    saq.btnInsert.Visibility = Visibility.Hidden;
                     //首先放置学生的东西
                     saq.textBoxQuestion.Text = result[i][0];
                     //添加点击事件
@@ -182,6 +187,7 @@ namespace HAMS.Teacher.TeacherView
             //发送答疑的时候就直接添加一个新的东西
             ListViewItem ivi = new ListViewItem();
             StudentAskQuestion saq = new StudentAskQuestion();
+            saq.btnComment.Visibility = Visibility.Hidden;
             saq.btnInsert.Click += new RoutedEventHandler(btnInsert_Click);
             //刚开始展示的时候赋值为空
             saq.textBoxQuestion.Text = "";
@@ -240,6 +246,8 @@ namespace HAMS.Teacher.TeacherView
             if (flag == true)
             {
                 MessageBox.Show("发送成功");
+                stuControl.btnInsert.Visibility = Visibility.Hidden;
+                stuControl.btnComment.Visibility = Visibility.Hidden;
             }
             else
             {

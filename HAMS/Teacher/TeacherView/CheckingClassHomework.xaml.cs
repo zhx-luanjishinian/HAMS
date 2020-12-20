@@ -464,6 +464,9 @@ namespace HAMS.Teacher.TeacherView
             if (flag == true)
             {
                 MessageBox.Show("发送成功");
+
+                stuControl.btnInsert.Visibility = Visibility.Hidden;
+                stuControl.btnComment.Visibility = Visibility.Hidden;
             }
             else
             {

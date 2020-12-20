@@ -518,6 +518,17 @@ namespace HAMS.Student.StudentDao
             DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);  //查到学生id,分数,作业路径
             return table;
         }
+        //根据课堂名查找老师的名字
+        public String findTeacherName(String classSpecId)
+        {
+            String sql = "select teacherId from class where classSpecId=@cid";
+            MySqlParameter para = new MySqlParameter("@cid", classSpecId);
+            DataTable table = DataOperation.DataQuery(sql, para);
+            String sql1 = "select name from teacher where teacherId=@tid";
+            MySqlParameter para1 = new MySqlParameter("@tid", table.Rows[0][0]);
+            DataTable table1 = DataOperation.DataQuery(sql1, para1);
+            return table1.Rows[0][0].ToString();
+        }
 
     }
 }

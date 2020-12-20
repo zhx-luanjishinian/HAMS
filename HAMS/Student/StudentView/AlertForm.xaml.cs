@@ -149,10 +149,15 @@ namespace HAMS.Student.StudentView
                 //如果超过了截止时间就变红            
                 
             }
-            //总的作业公告数量-已完成的作业数量=未完成的作业数量
+            //总的作业公告数量
             textBlockUnfinishedNumber.Text = result[0].Count.ToString();
-            //直接进行预警数量的设置,库里面没有的话说明数据是为空的
+            //直接进行预警数量的设置,库里面没有的话说明数据是为空的      
+            
+            
             textBlockAlertNumber.Text = ss.setAlertNum(account);
+           
+
+
         }
         //处理每一个控件的选择部分
         private void defcomplexity(object sender,SelectionChangedEventArgs e)
@@ -250,13 +255,16 @@ namespace HAMS.Student.StudentView
         //进行作业预警数量是否到达的预警
         public void homeNumberAlert()
         {
-            if (int.Parse(this.textBlockUnfinishedNumber.Text) > int.Parse(this.textBlockAlertNumber.Text))
+            if (textBlockAlertNumber.Text != "") {         
+            if (int.Parse(textBlockUnfinishedNumber.Text) > int.Parse(textBlockAlertNumber.Text))
             {
-                int count = int.Parse(this.textBlockUnfinishedNumber.Text) - int.Parse(this.textBlockAlertNumber.Text);
+               
+                int count = int.Parse(textBlockUnfinishedNumber.Text) - int.Parse(textBlockAlertNumber.Text);
                 MessageBox.Show("亲，你已有" + count.ToString() + "份作业超出了预警范围，请及时完成");
                 disTimer.Tick += new EventHandler(funcAlert);
                 disTimer.Interval = new TimeSpan(0, 0, 60);
                 disTimer.Start();
+            }
             }
         }
         //设置每隔1分钟进行一次弹窗提醒
@@ -266,6 +274,11 @@ namespace HAMS.Student.StudentView
             {
                 int count = int.Parse(this.textBlockUnfinishedNumber.Text) - int.Parse(this.textBlockAlertNumber.Text);
                 MessageBox.Show("亲，你已有" + count.ToString() + "份作业超出了预警范围，请及时完成");
+            }
+            else
+            {
+                //当没有超过预警数量的时候就停止预警
+                disTimer.Stop();
             }
         }
         public void homeTimeAlert()

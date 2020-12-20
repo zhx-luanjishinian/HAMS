@@ -152,13 +152,10 @@ namespace HAMS.Student.StudentView
             //总的作业公告数量
             textBlockUnfinishedNumber.Text = result[0].Count.ToString();
             //直接进行预警数量的设置,库里面没有的话说明数据是为空的      
-            if (ss.setAlertNum(account) == "")
-            {
-                textBlockAlertNumber.Text = 0.ToString();
-            }
-            else {
+            
+            
             textBlockAlertNumber.Text = ss.setAlertNum(account);
-            }
+           
 
 
         }

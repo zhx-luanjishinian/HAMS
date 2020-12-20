@@ -401,6 +401,11 @@ namespace HAMS.Student.StudentService
         {
             return int.Parse(sd.getSexByStuSpecId(StuSpecId).Rows[0][0].ToString());
         }
+        //找到老师的名字
+        public String findTeacherName(String classSpecId)
+        {
+            return sd.findTeacherName(classSpecId);
+        }
 
     }
 }

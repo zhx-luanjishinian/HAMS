@@ -81,7 +81,7 @@ namespace HAMS.Admin.AdminView
             {
                 string account = selectedElement.Row[0].ToString();
                 string name = selectedElement.Row[1].ToString();
-                int id =int.Parse(selectedElement.Row[2].ToString());
+                string id =selectedElement.Row[2].ToString();
                 ReviseClass rs = new ReviseClass(account, name,id);
                 if (rs.ShowDialog() == true)
                 {

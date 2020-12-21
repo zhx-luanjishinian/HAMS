@@ -50,6 +50,7 @@ namespace HAMS.Teacher.TeacherView
             InitializeComponent();
             labelClassName.Content = className;
             name = teacherName;
+            this.teacherName = teacherName;
             this.notId = notId;
            
         }
@@ -226,11 +227,25 @@ namespace HAMS.Teacher.TeacherView
                     newStudentAskQuestion[i].btnComment.Visibility = Visibility.Hidden;
                     newStudentAskQuestion[i].btnInsert.Visibility = Visibility.Hidden;
                 }
-                else
+                else//说明老师没有回复
                 {
-                    newStudentAskQuestion[i].teacherResponse.Visibility = Visibility.Hidden;
-                    newStudentAskQuestion[i].btnComment.Visibility = Visibility.Hidden;
-                    //newStudentAskQuestion[i].btnInsert.Visibility = Visibility.Hidden;//哪怕没有教师的回答，在发送成功后也需要隐藏评论和发送按钮,没有教师的回答可以继续进行加载,不需要隐藏
+                    MessageBox.Show(this.name);
+                    if(this.name != this.teacherName)
+                    {
+                        //如果是学生身份，隐藏老师回答框和评论框
+                        newStudentAskQuestion[i].teacherResponse.Visibility = Visibility.Hidden;
+                        newStudentAskQuestion[i].btnComment.Visibility = Visibility.Hidden;
+                        newStudentAskQuestion[i].btnInsert.Visibility = Visibility.Visible;
+
+                    }
+                    else//如果是老师身份，则仅隐藏老师回答框
+                    {
+                        newStudentAskQuestion[i].teacherResponse.Visibility = Visibility.Hidden;
+                        newStudentAskQuestion[i].btnComment.Visibility = Visibility.Visible;
+                        newStudentAskQuestion[i].btnInsert.Visibility = Visibility.Visible;
+                        //newStudentAskQuestion[i].btnInsert.Visibility = Visibility.Hidden;//哪怕没有教师的回答，在发送成功后也需要隐藏评论和发送按钮,没有教师的回答可以继续进行加载,不需要隐藏
+                    }
+
                 }
 
             }
@@ -268,7 +283,7 @@ namespace HAMS.Teacher.TeacherView
             //首先删除listview里面的东西
             listViewQuestionAndAnswer.Items.Clear();
 
-            LoadQuestionAndAnswer(notId, this);   //加载疑问和回答
+            LoadQuestionAndAnswer(notId,this);   //加载疑问和回答
                                                                //然后再重新加载一遍
         }
 

@@ -50,6 +50,7 @@ namespace HAMS.Teacher.TeacherView
             InitializeComponent();
             labelClassName.Content = className;
             name = teacherName;
+            this.teacherName = teacherName;
             this.notId = notId;
            
         }
@@ -214,7 +215,7 @@ namespace HAMS.Teacher.TeacherView
                 newStudentAskQuestion[i].textBoxQuestion.Text = table1.Rows[i][2].ToString();  //有问题
                 newStudentAskQuestion[i].textBoxQuestion.IsReadOnly = true;
                 newStudentAskQuestion[i].tbResponse.Text = table1.Rows[i][3].ToString();
-                newStudentAskQuestion[i].btnComment.Click += new RoutedEventHandler(btnSubmitQuestion_Click);
+                newStudentAskQuestion[i].btnComment.Click += new RoutedEventHandler(btnComment_Click);
                 newStudentAskQuestion[i].btnInsert.Click += new RoutedEventHandler(btnbtnInsert_Click);
                 newStudentAskQuestion[i].lbResponseName.Content = teacherName + "老师";    //给老师姓名赋值
                 newAnswerQuestion.listViewQuestionAndAnswer.Items.Add(newStudentAskQuestion[i]);
@@ -226,15 +227,38 @@ namespace HAMS.Teacher.TeacherView
                     newStudentAskQuestion[i].btnComment.Visibility = Visibility.Hidden;
                     newStudentAskQuestion[i].btnInsert.Visibility = Visibility.Hidden;
                 }
-                else
+                else//说明老师没有回复
                 {
-                    newStudentAskQuestion[i].teacherResponse.Visibility = Visibility.Hidden;
-                    newStudentAskQuestion[i].btnComment.Visibility = Visibility.Hidden;
-                    //newStudentAskQuestion[i].btnInsert.Visibility = Visibility.Hidden;//哪怕没有教师的回答，在发送成功后也需要隐藏评论和发送按钮,没有教师的回答可以继续进行加载,不需要隐藏
+                    
+                    if(this.name != this.teacherName)
+                    {
+                        //如果是学生身份，隐藏老师回答框和评论框
+                        newStudentAskQuestion[i].textBoxQuestion.IsReadOnly = false;//允许重新编辑
+                        newStudentAskQuestion[i].teacherResponse.Visibility = Visibility.Hidden;
+                        newStudentAskQuestion[i].btnComment.Visibility = Visibility.Hidden;
+                        newStudentAskQuestion[i].btnInsert.Visibility = Visibility.Visible;
+
+                    }
+                    else//如果是老师身份，则仅隐藏老师回答框
+                    {
+                        newStudentAskQuestion[i].teacherResponse.Visibility = Visibility.Hidden;
+                        newStudentAskQuestion[i].btnComment.Visibility = Visibility.Visible;
+                        newStudentAskQuestion[i].btnInsert.Visibility = Visibility.Visible;
+                        //newStudentAskQuestion[i].btnInsert.Visibility = Visibility.Hidden;//哪怕没有教师的回答，在发送成功后也需要隐藏评论和发送按钮,没有教师的回答可以继续进行加载,不需要隐藏
+                    }
+
                 }
 
             }
 
+        }
+
+        private void btnComment_Click(object sender, RoutedEventArgs e)
+        {
+            Button sonBtn = (Button)sender;
+            Canvas stuCanvas = (Canvas)sonBtn.Parent;
+            StudentAskQuestion stuControl = (StudentAskQuestion)stuCanvas.Parent;
+            stuControl.teacherResponse.Visibility = Visibility.Visible;
         }
 
         private void btnbtnInsert_Click(object sender, RoutedEventArgs e)
@@ -268,7 +292,7 @@ namespace HAMS.Teacher.TeacherView
             //首先删除listview里面的东西
             listViewQuestionAndAnswer.Items.Clear();
 
-            LoadQuestionAndAnswer(notId, this);   //加载疑问和回答
+            LoadQuestionAndAnswer(notId,this);   //加载疑问和回答
                                                                //然后再重新加载一遍
         }
 

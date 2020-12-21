@@ -57,7 +57,7 @@
                 </Path>
                 <Button x:Name="btnRefresh" Content="刷新"  Canvas.Left="738" Width="63" Canvas.Top="6" BorderThickness="1,1,1,1" Click="BtnRefresh_Click"  Height="27"/>
             </Canvas>
-            <ListView x:Name="listview" Height="301" FontStretch="Condensed" HorizontalAlignment="Left" Width="833" Margin="0,0,0,4" VerticalAlignment="Bottom"/>
+            <ListView x:Name="listview" Height="301" FontStretch="Condensed" HorizontalAlignment="Left" Width="833" Margin="0,0,0,4" VerticalAlignment="Bottom" Foreground="#DDA9A8A8" BorderBrush="#89AEABAB"/>
 
         </Grid>
     </Viewbox>

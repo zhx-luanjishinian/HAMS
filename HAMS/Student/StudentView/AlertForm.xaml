@@ -45,7 +45,7 @@
 
 
 
-            <ListView x:Name="listView2" Margin="0,178,0,0" HorizontalAlignment="Left" Width="828"/>
+            <ListView x:Name="listView2" Margin="0,178,0,0" HorizontalAlignment="Left" Width="828" Foreground="#DDBCBCBC" BorderBrush="#890C0C0C"/>
         </Grid>
     </Viewbox>
 </Window>

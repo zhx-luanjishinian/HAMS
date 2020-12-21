@@ -27,7 +27,7 @@ namespace HAMS.Admin.AdminView
             this.adminId = session;
             InitializeComponent();
             this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
-            try { if (session != null) { userName.Text = session+name; } }
+            try { if (session != null) { userName.Text = session+' '+name; } }
             catch (Exception ex)
             {
                 throw new Exception("界面间传值发生异常" + ex.Message);

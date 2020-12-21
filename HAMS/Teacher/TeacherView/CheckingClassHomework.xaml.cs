@@ -330,8 +330,8 @@ namespace HAMS.Teacher.TeacherView
                 }
                 //设置该img控件的Source
                 checkedStudent[i].headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, @checkedStudent[i].pngfile))));
-
-
+                //检查作业的按钮隐藏
+                checkedStudent[i].btnHomeworkCorrect1.Visibility = Visibility.Hidden;
                 checkedStudent[i].lbHomeworkState1.Content = "";
                 checkedStudent[i].btnHomeworkCorrect1.Content = "";//修改button名称
                 //为什么这里不能向listview中加数据
@@ -586,6 +586,7 @@ namespace HAMS.Teacher.TeacherView
                         sc.lbStudentInfo2.Content = stuNameUnfinisheds[i3];
                         sc.lbHomeworkState1.Content = "";
                         sc.btnHomeworkCorrect1.Content = "";//修改button名称
+                        sc.btnHomeworkCorrect1.Visibility = Visibility.Hidden;
                         //查到当前学生的性别
                         DataTable tbSex = td.getSexByStuSpecId(stuSpecIdUnfinisheds[i3]);
                         

@@ -12,13 +12,13 @@
 
             <Canvas Height="62" Background="LightBlue" VerticalAlignment="Top" HorizontalAlignment="Left" Width="832">
                 <TextBlock x:Name="lbTeacherInfo" Height="20" Canvas.Left="65.6" Canvas.Top="21" Width="38.934" TextAlignment="Center" FontSize="14" Text="Z001 "/>
-                <TextBlock x:Name="lbTeacherInfo1" Height="19" Canvas.Left="123.734" Canvas.Top="21" Width="86" TextAlignment="Center" FontSize="14"><Run Text="刘树栋"/></TextBlock>
+                <TextBlock x:Name="lbTeacherInfo1" Height="19" Canvas.Left="123.734" Canvas.Top="21" Width="86" FontSize="14" Text="刘树栋"/>
                 <Image x:Name="headImage" Source="../../Resources/男教师.png" Height="37" VerticalAlignment="Top" Width="41"  RenderTransformOrigin="1.894,0.568" Canvas.Left="10" Canvas.Top="10"/>
                 <Image x:Name="image1" Height="60" Canvas.Left="690.2" Width="52.56" Source="/HAMS;component/logo.png" Stretch="Fill" Canvas.Top="0.2"/>
                 <Canvas Height="37.952" VerticalAlignment="Bottom" Canvas.Top="62.716" Width="832">
                     <Border BorderBrush="Black" BorderThickness="0,0,0,1" Height="37.552" Canvas.Top="0.4" Width="832" Background="LightPink"/>
                     <Label x:Name="labelCourseNumber" Content="Z004530B1300720 " Width="116" Height="24" Canvas.Left="92" Canvas.Top="7.378"/>
-                    <Label x:Name="labelCourseName" Content="R语言" Width="101.6" Height="24" Canvas.Left="229.4" Canvas.Top="7.378"/>
+                    <Label x:Name="labelCourseName" Content="R语言" Width="132" Height="24" Canvas.Left="230" Canvas.Top="7"/>
                     <Button x:Name="btnDeliverHomework" Content="发布作业" Width="94.799" FontSize="13" Click="btnDeliverHomework_Click" BorderBrush="Black" Background="#FF6FB1E2" Height="34.128" Canvas.Left="727.201" Canvas.Top="1.552" BorderThickness="0">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">

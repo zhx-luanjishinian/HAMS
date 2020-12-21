@@ -55,9 +55,9 @@ namespace HAMS.Teacher.TeacherView
                 //加载作业描述
                 
                 //如果作业描述很长的话只显示10个
-                if (table.Rows[i][4].ToString().Length > 40)
+                if (table.Rows[i][4].ToString().Length > 30)
                 {
-                    arrayBreifHomework[i].description.Content = table.Rows[i][4].ToString().Substring(0, 40) + "...";//将作业内容content值显示在对应的控件中
+                    arrayBreifHomework[i].description.Content = table.Rows[i][4].ToString().Substring(0, 30) + "...";//将作业内容content值显示在对应的控件中
                 }
                 else
                 {
@@ -188,11 +188,15 @@ namespace HAMS.Teacher.TeacherView
             BreifHomework clickTeachClass = (BreifHomework)sonGrid.Parent;
             //获得当前点击按钮对应的作业标题和作业描述
             string homeworkTitle =clickTeachClass.title.Content.ToString();
-            string homeworkDescription = clickTeachClass.description.Content.ToString();
+            //string homeworkDescription = clickTeachClass.description.Content.ToString();
             string teacherSpecId = lbTeacherInfo.Text.ToString();
             string teacherName = lbTeacherInfo1.Text.ToString();
             string classSpecId = labelCourseNumber.Content.ToString();
             string className = labelCourseName.Content.ToString();
+            //从数据库中查找作业描述
+            DataTable tbClassId = ts.getClassId(classSpecId);
+            String NotDesp = ts.getNotDespByClassIdAndNotTitle(tbClassId.Rows[0][0].ToString(), homeworkTitle);
+            string homeworkDescription = NotDesp;
             //生成新界面
             CheckingClassHomework newCheckingClassHomework = new CheckingClassHomework(homeworkTitle, homeworkDescription,teacherSpecId,teacherName,classSpecId,className,this.pngfile);
             newCheckingClassHomework.pngfile = this.pngfile;

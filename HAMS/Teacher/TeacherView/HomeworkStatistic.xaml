@@ -40,7 +40,7 @@
             </Canvas>
             <Canvas Height="50" Background="LightBlue" Margin="1.6,0,0,414.561" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="832">
                 <TextBlock x:Name="tbTeacherSpecId" Height="20" Canvas.Left="61" Canvas.Top="19" Width="38.934" TextAlignment="Center" FontSize="14" Text="Z001 "/>
-                <TextBlock x:Name="tbTeacherName" Height="19" Canvas.Left="104.934" Canvas.Top="19" Width="74.761" TextAlignment="Center" FontSize="14"><Run Text="刘树栋"/></TextBlock>
+                <TextBlock x:Name="tbTeacherName" Height="19" Canvas.Left="113" Canvas.Top="19" Width="86" FontSize="14" Text="刘树栋"/>
                 <Image x:Name="headImage" Source="../../Resources/男教师.png" Height="37" VerticalAlignment="Top" Width="41"  RenderTransformOrigin="1.894,0.568" Canvas.Left="15" Canvas.Top="10"/>
                 <Image x:Name="image" Height="50" Canvas.Left="701.4" Width="43.8" Source="/HAMS;component/logo.png" Stretch="Fill"/>
                 <Button x:Name="btnExit" Background="{x:Null}" RenderTransformOrigin="0.622,0.945" Height="50" Foreground="#FF151111" BorderBrush="{x:Null}" Click="btnExit_Click" Canvas.Left="766" Canvas.Top="1" Width="64" d:LayoutOverrides="HorizontalAlignment">
@@ -52,7 +52,7 @@
             </Canvas>
             <Canvas Margin="0,0,0,376.609" Height="37.952" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="833.6">
                 <Border BorderBrush="Black" BorderThickness="0,0,0,1" Height="37.552" Canvas.Top="0.4" Width="832" Background="LightPink">
-                    <TextBlock x:Name="tbNotTitle" Width="136" TextAlignment="Center" HorizontalAlignment="Left" Margin="67,12,0,8.8" Text="作业公告标题">
+                    <TextBlock x:Name="tbNotTitle" Width="265" HorizontalAlignment="Left" Margin="81,12,0,8.6" Text="作业公告标题">
                         <TextBlock.Background>
                             <ImageBrush/>
                         </TextBlock.Background></TextBlock>

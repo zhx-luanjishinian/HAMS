@@ -29,7 +29,7 @@
                     <ColumnDefinition Width="123*"/>
                 </Grid.ColumnDefinitions>
                 <Label x:Name="title" Content="SVM实验" Margin="130.546,16.247,19.738,0" FontWeight="Bold" FontSize="16" Height="32" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-                <Label x:Name="description" Content="调通SVM代码，打卡上传" Margin="130.546,0,10,10" FontSize="13" Grid.ColumnSpan="2" Height="40.553" VerticalAlignment="Bottom"/>
+                <Label x:Name="description" Content="调通SVM代码，打卡上传" Margin="131,0,9.8,9.8" FontSize="13" Grid.ColumnSpan="2" Height="46" VerticalAlignment="Bottom"/>
             </Grid>
         </Button>
         <Border  BorderThickness="1" Grid.ColumnSpan="3" Width="780" BorderBrush="#FF0288D1"/>

@@ -215,7 +215,7 @@ namespace HAMS.Teacher.TeacherView
                 newStudentAskQuestion[i].textBoxQuestion.Text = table1.Rows[i][2].ToString();  //有问题
                 newStudentAskQuestion[i].textBoxQuestion.IsReadOnly = true;
                 newStudentAskQuestion[i].tbResponse.Text = table1.Rows[i][3].ToString();
-                newStudentAskQuestion[i].btnComment.Click += new RoutedEventHandler(btnSubmitQuestion_Click);
+                newStudentAskQuestion[i].btnComment.Click += new RoutedEventHandler(btnComment_Click);
                 newStudentAskQuestion[i].btnInsert.Click += new RoutedEventHandler(btnbtnInsert_Click);
                 newStudentAskQuestion[i].lbResponseName.Content = teacherName + "老师";    //给老师姓名赋值
                 newAnswerQuestion.listViewQuestionAndAnswer.Items.Add(newStudentAskQuestion[i]);
@@ -251,6 +251,14 @@ namespace HAMS.Teacher.TeacherView
 
             }
 
+        }
+
+        private void btnComment_Click(object sender, RoutedEventArgs e)
+        {
+            Button sonBtn = (Button)sender;
+            Canvas stuCanvas = (Canvas)sonBtn.Parent;
+            StudentAskQuestion stuControl = (StudentAskQuestion)stuCanvas.Parent;
+            stuControl.teacherResponse.Visibility = Visibility.Visible;
         }
 
         private void btnbtnInsert_Click(object sender, RoutedEventArgs e)

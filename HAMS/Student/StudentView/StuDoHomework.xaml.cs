@@ -109,6 +109,7 @@ namespace HAMS.Student.StudentView
                 //如果不存在作业附件则不进行显示
                 tbMyHomework.Visibility = Visibility.Collapsed;
                 imgAccessory_Copy.Source = null;
+                Myhomework.Visibility = Visibility.Collapsed;
             }
             else
             {

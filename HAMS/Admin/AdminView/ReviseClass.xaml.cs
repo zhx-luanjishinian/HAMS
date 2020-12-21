@@ -24,9 +24,10 @@ namespace HAMS.Admin.AdminView
     {
         public String cnum { get; set; }
         public String cna { get; set; }
-        public int id { get; set; }
+        public String id { get; set; }
+        public int dr { get; set; }
         private ADao ad = new ADao();
-        public ReviseClass(String cnum, String cna, int id)
+        public ReviseClass(String cnum, String cna, String id)
         {
             InitializeComponent();
             this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
@@ -35,7 +36,9 @@ namespace HAMS.Admin.AdminView
             this.id = id;
             txtClassNum.Text = cnum;
             txtClassName.Text = cna;
-            txtTeaNum.Text = id.ToString();
+            txtTeaNum.Text = id;
+            DataTable table = ad.ShowTeacherId(id);
+            this.dr = int.Parse(table.Rows[0][0].ToString());
         }
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
@@ -63,9 +66,8 @@ namespace HAMS.Admin.AdminView
                 {
                     string classNum = txtClassNum.Text;
                     string className = txtClassName.Text;
-                    int teaId = int.Parse(txtTeaNum.Text);
 
-                    if (ad.updateClassInfo(classNum, className, teaId) == true)
+                    if (ad.updateClassInfo(classNum, className, dr) == true)
                     {
                         this.DialogResult = true;
                         MessageBox.Show("修改成功");

@@ -14,10 +14,10 @@
             <Canvas Margin="0,58,10,0">
                 <GroupBox Header="公告说明" Name="groupBox1" FontSize="16" Height="335" Width="956" Canvas.Left="10" Canvas.Top="10">
                     <Canvas Margin="0,0,0,0.76">
-                        <Label Content="公告标题" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.08,-0.379" Height="25" Width="73" Canvas.Left="183" Canvas.Top="15"/>
-                        <Label Content="公告内容" RenderTransformOrigin="0.441,2.331" Height="26" Canvas.Left="183" Canvas.Top="80"/>
+                        <Label Content="公告标题" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.08,-0.379" Height="30" Width="73" Canvas.Left="183" Canvas.Top="10"/>
+                        <Label Content="公告内容" RenderTransformOrigin="0.441,2.331" Height="31" Canvas.Left="183" Canvas.Top="75"/>
                         <Label Content="时间" Height="27" Canvas.Left="183" Canvas.Top="218" RenderTransformOrigin="0.586,1.293"/>
-                        <TextBox x:Name="txtboxReleaseTime" Height="23" TextAlignment="Center" VerticalContentAlignment="Center"  Text="" Canvas.Left="220" TextWrapping="Wrap" Canvas.Top="218" Width="168"/>
+                        <TextBox x:Name="txtboxReleaseTime" Height="27" TextAlignment="Center" VerticalContentAlignment="Center"  Text="" Canvas.Left="220" TextWrapping="Wrap" Canvas.Top="218" Width="188"/>
                         <TextBox x:Name="txtboxNoticeTitle" Height="35" Canvas.Left="183" Canvas.Top="40" Width="571"/>
                         <TextBox x:Name="txtboxNoticeContent" Height="80" Canvas.Left="183" Canvas.Top="111" Width="571" TextChanged="TxtboxNoticeContent_TextChanged" BorderThickness="1"/>
                     </Canvas>

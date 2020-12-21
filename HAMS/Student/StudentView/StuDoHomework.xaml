@@ -45,7 +45,7 @@
                     </Canvas>
                 </GroupBox>
             </Canvas>
-            <Label Content="上次作业" Canvas.Left="89" Canvas.Top="100" Margin="43,397,739,98"></Label>
+            <Label x:Name="Myhomework"  Content="上次作业" Canvas.Left="89" Canvas.Top="100" Margin="43,397,739,98"></Label>
             <Button x:Name="tbMyHomework" IsEnabled="False"  Canvas.Left="89"  Content="作业名字" Canvas.Top="113"  Height="20" Width="190" Foreground="Pink" Background="Blue"  FontSize="10" Margin="114,426,534,78"/>
             <Button Content="作答" x:Name="btnDoHomework" Height="Auto" Click="btnDoHomework_Click" Margin="676,408,83,84"/>
             <Image x:Name="imgAccessory_Copy" Source="/HAMS;component/Resources/链接.png" RenderTransformOrigin="0.32,2.694" Margin="66,426,739,78" />

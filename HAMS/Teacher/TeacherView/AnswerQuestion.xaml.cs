@@ -33,10 +33,10 @@ namespace HAMS.Teacher.TeacherView
         private SService ss = new SService();
         
 
-        public AnswerQuestion(String account,String name,String classSpecId,String notId,String className)
+        public AnswerQuestion(String account,String name,String classSpecId,String notId,String notName)
         {
             InitializeComponent();
-            labelClassName.Content = className;
+            labelClassName.Content = notName;
             this.account = account;
             this.name = name;
             this.teacherName = ss.findTeacherName(classSpecId);

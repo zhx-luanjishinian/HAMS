@@ -33,12 +33,7 @@
                 <Label x:Name="label3" Content="预警数：" Height="23.667" Canvas.Left="112.998" Width="57.334" Canvas.Top="1.333"/>
                 <TextBox x:Name="textBlockAlertNumber"  Height="21" Canvas.Left="170" Width="18" Canvas.Top="4" RenderTransformOrigin="0.621,0.534" TextChanged="TextBlockAlertNumber_TextChanged"/>
                 <Label x:Name="label4" Content="排序：" Height="24" Canvas.Left="538" Width="39" Canvas.Top="3"/>
-                <ComboBox x:Name="comBoxByTime" Text="按时间" Height="24" Canvas.Left="628" Width="71" Canvas.Top="3" SelectionChanged="ComBoxByTime_SelectionChanged">
-                    <ComboBox.ContextMenu>
-                        <ContextMenu/>
-                    </ComboBox.ContextMenu>
-
-                </ComboBox>
+                <ComboBox x:Name="comBoxByTime" Text="按时间" Height="24" Canvas.Left="628" Width="71" Canvas.Top="3" SelectionChanged="ComBoxByTime_SelectionChanged"/>
                 <ComboBox x:Name="comBoxByDegree" Text="按难易" Height="24" Canvas.Left="747" Width="70" Canvas.Top="3" SelectionChanged="ComBoxByDegree_SelectionChanged"/>
                 <Label Content="时间" Canvas.Left="584" Canvas.Top="3" Width="44"/>
                 <Label Content="难易" Canvas.Left="706" Width="44" Canvas.Top="2"/>

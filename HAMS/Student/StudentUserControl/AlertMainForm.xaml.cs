@@ -63,9 +63,10 @@ namespace HAMS.Student.StudentUserControl
                     MessageBox.Show("亲，你的" + className + "课堂的作业" + notName + "到达自己设置的截止时间了");
                 }
                 }
-                disTimer1.Tick += new EventHandler(alertTime);
-            //每隔一分钟进行一次报警
-            disTimer1.Interval = new TimeSpan(0, 0, 60);
+               
+            disTimer1.Tick += new EventHandler(alertTime);
+            //每隔10秒钟进行一次报警
+            disTimer1.Interval = new TimeSpan(0, 0, 10);
             disTimer1.Start();
             }
         }
@@ -124,22 +125,31 @@ namespace HAMS.Student.StudentUserControl
         //进行每个作业超过设置的预警时间或者老师设置的截止时间的预警操作
         private void alertTime(object sender,EventArgs e)
         {
-            DateTime trueDl = Convert.ToDateTime(truD);
+      
 
             
-            //用户没有设置自定义截止时间
+            //用户设置了自定义截止时间
             
             if(defD!="")
             {
                 DateTime defD1 = Convert.ToDateTime(defD);
+              
                 if (defD1 > DateTime.Now)
                 {
+                    
                     disTimer1.Stop();
                 }
                 else
                 {
+                    
                     MessageBox.Show("亲，你的" + className + "课堂的作业" + notName + "到达自己设置的截止时间了");
+                    disTimer1.Stop();
                 }
+            }
+            else
+            {
+                //没有自定义截止时间就不进行预警操作，直接第一次进入的时候弹一下窗进行了
+                disTimer1.Stop();
             }
 
         }

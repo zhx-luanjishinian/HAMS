@@ -92,6 +92,7 @@ namespace HAMS.Student.StudentView
 
                 }
                 //加入作业公告的id
+            
                 amf.comboBoxDegree1.Tag = result[0][i][3];           
                 amf.comboBoxDegree1.SelectionChanged += new SelectionChangedEventHandler(defcomplexity);
                 //加入作业公告的id
@@ -174,7 +175,7 @@ namespace HAMS.Student.StudentView
         }
         private void initComboxRank()
         {
-            String[] ranks = new string[2] { "降序", "升序" };
+            String[] ranks = new string[3] {"无序", "降序", "升序" };
             for(int i = 0; i < ranks.Length; i++)
             {
                 comBoxByTime.Items.Add(ranks[i]);
@@ -235,6 +236,11 @@ namespace HAMS.Student.StudentView
                 listView2.Items.Clear();
                 showAlertInfo(ss.downRank(account));
             }
+            else if (comBoxByTime.SelectedValue.ToString() == "无序")
+            {
+                listView2.Items.Clear();
+                showAlertInfo(ss.showAlertFormInfo(account));
+            }
         }
 
         private void ComBoxByDegree_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -251,6 +257,11 @@ namespace HAMS.Student.StudentView
                 //进行复杂度的升序排序
                 showAlertInfo(ss.upComplexity(account));
             }
+            else if (comBoxByDegree.SelectedValue.ToString() == "无序")
+            {
+                listView2.Items.Clear();
+                showAlertInfo(ss.showAlertFormInfo(account));
+            }
         }
         //进行作业预警数量是否到达的预警
         public void homeNumberAlert()
@@ -262,7 +273,7 @@ namespace HAMS.Student.StudentView
                 int count = int.Parse(textBlockUnfinishedNumber.Text) - int.Parse(textBlockAlertNumber.Text);
                 MessageBox.Show("亲，你已有" + count.ToString() + "份作业超出了预警范围，请及时完成");
                 disTimer.Tick += new EventHandler(funcAlert);
-                disTimer.Interval = new TimeSpan(0, 0, 60);
+                disTimer.Interval = new TimeSpan(0, 0, 10);
                 disTimer.Start();
             }
             }
@@ -291,6 +302,7 @@ namespace HAMS.Student.StudentView
             //展示预警信息,先清空原来的东西再进行刷新
             listView2.Items.Clear();
             showAlertInfo(ss.showAlertFormInfo(account));
+            homeNumberAlert();
         }
     }
 }

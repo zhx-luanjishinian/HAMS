@@ -216,7 +216,7 @@ namespace HAMS.Teacher.TeacherView
                 newStudentAskQuestion[i].tbResponse.Text = table1.Rows[i][3].ToString();
                 newStudentAskQuestion[i].btnComment.Click += new RoutedEventHandler(btnSubmitQuestion_Click);
                 newStudentAskQuestion[i].btnInsert.Click += new RoutedEventHandler(btnbtnInsert_Click);
-                newStudentAskQuestion[i].lbResponseName.Content = name + "老师";    //给老师姓名赋值
+                newStudentAskQuestion[i].lbResponseName.Content = teacherName + "老师";    //给老师姓名赋值
                 newAnswerQuestion.listViewQuestionAndAnswer.Items.Add(newStudentAskQuestion[i]);
                 //newAnswerQuestion.btnSubmitQuestion.Click += new RoutedEventHandler(btnSubmitQuestion_Click); //定义答疑按钮的事件
                 if (newStudentAskQuestion[i].tbResponse.Text != "")
@@ -230,7 +230,7 @@ namespace HAMS.Teacher.TeacherView
                 {
                     newStudentAskQuestion[i].teacherResponse.Visibility = Visibility.Hidden;
                     newStudentAskQuestion[i].btnComment.Visibility = Visibility.Hidden;
-                    //newStudentAskQuestion[i].btnInsert.Visibility = Visibility.Hidden;//哪怕没有教师的回答，在发送成功后也需要隐藏评论和发送按钮,没有教师的回答可以继续进行加载
+                    //newStudentAskQuestion[i].btnInsert.Visibility = Visibility.Hidden;//哪怕没有教师的回答，在发送成功后也需要隐藏评论和发送按钮,没有教师的回答可以继续进行加载,不需要隐藏
                 }
 
             }

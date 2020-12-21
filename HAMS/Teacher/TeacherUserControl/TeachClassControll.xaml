@@ -10,7 +10,7 @@
         <!--//Style="{DynamicResource CanvasStyle1}"-->
         <Button x:Name="btnEnterClass" Content="" Height="62.963" Width="515" Background="White" />
         <Label x:Name="labelClassId1" Content="" Height="23.999" Canvas.Left="71" Canvas.Top="20.335" Width="120.667" RenderTransformOrigin="0.507,0.631"/>
-        <Label x:Name="labelClassName1" Content="" Height="23.999" Canvas.Left="228.067" Canvas.Top="20.335" Width="81" RenderTransformOrigin="0.507,0.631"/>
+        <Label x:Name="labelClassName1" Content="123" Height="24" Canvas.Left="215" Canvas.Top="20" Width="150" RenderTransformOrigin="0.507,0.631"/>
         <Label x:Name="labelStudentNumber" Content="" Height="33" Canvas.Left="377.513" Canvas.Top="2.868" Width="128"/>
         <Label x:Name="labelNoticeNumber" Content="" Height="30.243" Canvas.Left="377.346" Canvas.Top="32.72" Width="128.167"/>
         <Image x:Name="homework_png" Source="/Resources/homework.png" Stretch="Fill" Width="56" Height="48.562" Canvas.Left="10" Canvas.Top="10"/>

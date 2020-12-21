@@ -134,13 +134,23 @@ namespace HAMS.Teacher.TeacherView
                 {
                     rBtnD.IsChecked = true;
                 }
-                tbRemark.Text = Scoreinfos[1];
+                if (Scoreinfos[1] == "请输入你的评语" || Scoreinfos[1] == "" || Scoreinfos[1] == "老师暂无点评")
+                {
+                    tbRemark.Text = "";
+                }
+                else
+                {
+                    tbRemark.Text = Scoreinfos[1];
+                }
+
+
+                //tbRemark.Text = Scoreinfos[1];
                 btnCorrect.Content = "重新批改";
             }
             else//如果还没有批改，则鼠标点击评语处就可以从头输入评语
             {
                 
-                tbRemark.Text = "请输入您的评语";
+                tbRemark.ToolTip = "请输入您的评语";
             }
 
 
@@ -183,6 +193,15 @@ namespace HAMS.Teacher.TeacherView
         {
             string score = "";//点评的成绩
             string remark;//点评的分数
+            if (rBtnA.IsChecked == false && rBtnB.IsChecked == false && rBtnC.IsChecked == false && rBtnD.IsChecked == false)
+            {
+                System.Windows.MessageBox.Show("您必须输入成绩等级");
+            }
+
+            else
+            {
+
+            
             if (rBtnA.IsChecked == true)
             {
                 score = (string)rBtnA.Content;//获取该单选框对应的文本值，如“优秀”
@@ -200,7 +219,17 @@ namespace HAMS.Teacher.TeacherView
             {
                 score = (string)rBtnD.Content;
             }
-            remark = tbRemark.Text;
+
+
+            if(tbRemark.Text == "请输入你的评语" || tbRemark.Text == "" || tbRemark.Text == "老师暂无点评")
+            {
+                remark = "";
+            }
+            else
+            {
+                remark = tbRemark.Text;
+            }
+           
 
             bool flag = ts.CorrectHomework(homId,score,remark);
             if (flag)
@@ -211,7 +240,7 @@ namespace HAMS.Teacher.TeacherView
             {
                 System.Windows.MessageBox.Show("作业批改失败:(");
             }
-
+            }
         }
 
         private void tbRemark_GotFocus(object sender, RoutedEventArgs e)

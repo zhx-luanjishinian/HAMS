@@ -163,11 +163,11 @@ namespace HAMS.ToolClass
                 String onlyFileName = Path.GetFileName(DbURLs[DbURLs.Length-1]);
                 
 
-                if (File.Exists(localpath))
-                {
-                    errorinfo = string.Format("本地文件{0}已存在,无法下载", localpath);
-                    return false;
-                }
+                //if (File.Exists(localpath))
+                //{
+                //    errorinfo = string.Format("本地文件{0}已存在,无法下载", localpath);
+                //    return false;
+                //}
                 string url = "ftp://" + ftpServerIP + "/" + DbURL;
                 
                 Connect(url);//连接 

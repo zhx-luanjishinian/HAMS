@@ -63,6 +63,16 @@ namespace HAMS.Teacher.TeacherDao
             DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter,parameter1);
             return table;
         }
+
+        public DataTable getNotDespByClassIdAndNotTitle(String notTitle, String classId)    //根据名称和classId查content
+        {
+            //sql语句
+            String sql = "select content from notice where notTitle=@id and classId=@cId";   //根据noticeId查找truDeadline
+            MySqlParameter parameter = new MySqlParameter("@id", notTitle);
+            MySqlParameter parameter1 = new MySqlParameter("@cid", classId);
+            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter, parameter1);
+            return table;
+        }
         public DataTable getNotice(string classSpaceId)  //从数据库查询目前已有的作业
         {
             
@@ -473,7 +483,7 @@ namespace HAMS.Teacher.TeacherDao
         {
             //因为需要级联删除，因此需要首先删除comment表中的数据,才能删除notice表中的数据
             String sql1 = "delete from comment where notId=@nId;";
-            MessageBox.Show(noticeId);
+            
             MySqlParameter para = new MySqlParameter("@nId", noticeId);
             return DataUtil.DataOperation.DataDelete(sql1, para);//如果删除成功，则返回true
         }

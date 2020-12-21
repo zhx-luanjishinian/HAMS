@@ -507,6 +507,13 @@ namespace HAMS.Teacher.TeacherService
             return td.GetStudentNameAndIdByStuID(stuId);
         }
 
+        public String getNotDespByClassIdAndNotTitle(String classId, String notTitle)
+       {
+            return td.getNotDespByClassIdAndNotTitle(notTitle,classId).Rows[0][0].ToString();
+        }
+
+
+
     }
     }
 

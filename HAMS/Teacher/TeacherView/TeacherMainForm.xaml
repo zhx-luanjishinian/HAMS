@@ -149,7 +149,7 @@
             </StackPanel>
             <Canvas Height="57.428" Background="LightBlue" Margin="0,0,-2,404.572" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="832">
                 <TextBlock x:Name="tbTeacherInfo" Height="20" Canvas.Left="56" Canvas.Top="14.428" Width="38.934" TextAlignment="Center" FontSize="14" Text="Z001 "/>
-                <TextBlock x:Name="tbTeacherInfo1" Height="19" Canvas.Left="94.934" Canvas.Top="14.428" Width="69.2" TextAlignment="Center" FontSize="14"><Run Text="刘树栋"/></TextBlock>
+                <TextBlock x:Name="tbTeacherInfo1" Height="20" Canvas.Left="114" Canvas.Top="14" Width="86" FontSize="14" Text="刘树栋"/>
                 <Image x:Name="headImage" Source="../../Resources/男教师.png" Height="37" VerticalAlignment="Top" Width="41"  RenderTransformOrigin="1.894,0.568" Canvas.Left="10" Canvas.Top="3"/>
                 <Image x:Name="image" Height="57.428" Canvas.Left="683" Width="50.412" Source="/HAMS;component/logo.png" Stretch="Fill"/>
             </Canvas>

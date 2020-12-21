@@ -229,10 +229,11 @@ namespace HAMS.Teacher.TeacherView
                 }
                 else//说明老师没有回复
                 {
-                    MessageBox.Show(this.name);
+                    
                     if(this.name != this.teacherName)
                     {
                         //如果是学生身份，隐藏老师回答框和评论框
+                        newStudentAskQuestion[i].textBoxQuestion.IsReadOnly = false;//允许重新编辑
                         newStudentAskQuestion[i].teacherResponse.Visibility = Visibility.Hidden;
                         newStudentAskQuestion[i].btnComment.Visibility = Visibility.Hidden;
                         newStudentAskQuestion[i].btnInsert.Visibility = Visibility.Visible;

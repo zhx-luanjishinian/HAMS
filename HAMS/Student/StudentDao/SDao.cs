@@ -22,28 +22,29 @@ namespace HAMS.Student.StudentDao
             return table;
            
         }
+
+        //获取学生所选课程信息
         public Dictionary<int,List<String>> showCourseInfo(String account)
         {
             //此类用来装返回的对象
-            
             Dictionary<int,List<String>> dictionaryEntry = new Dictionary<int, System.Collections.Generic.List<String>>();
-            String sql = "select stuId from student where stuSpecId=@id";
-            MySqlParameter parameter = new MySqlParameter("@id", account);
-            DataTable table = DataOperation.DataQuery(sql, parameter);
-            String sql1 = "select classId from takecourse where stuId =@sid";
-            MySqlParameter parameter1 = new MySqlParameter("@sid", table.Rows[0][0].ToString());
-            DataTable table1 = DataOperation.DataQuery(sql1, parameter1);
-            String sql2 = "select teacherId,classSpecId,className from class where classId=@cid";
-            String sql3 = "select name,department from teacher where teacherId=@tid";
-            for(int i =0;i<table1.Rows.Count; i++)
+            String sql = "select stuId from student where stuSpecId=@id";//通过学生真实学号查找学生stuId
+            MySqlParameter parameter = new MySqlParameter("@id", account); //进行赋值操作
+            DataTable table = DataOperation.DataQuery(sql, parameter); //调用Query函数执行查询语句
+            String sql1 = "select classId from takecourse where stuId =@sid"; //用刚刚查到的stuId从takecourse表中查找classId
+            MySqlParameter parameter1 = new MySqlParameter("@sid", table.Rows[0][0].ToString());//从table中拿到stuId之后进行赋值操作
+            DataTable table1 = DataOperation.DataQuery(sql1, parameter1); //调用Query函数执行查询语句，返回classId的一个table1
+            String sql2 = "select teacherId,classSpecId,className from class where classId=@cid"; //通过classId在class表中查找课程信息
+            String sql3 = "select name,department from teacher where teacherId=@tid";//通过teacherId在teacher表中查找教师信息
+            for(int i =0;i<table1.Rows.Count; i++) //遍历所有的classId
             {
                 //所有的信息都装在列表里面
                 List<String> arrayList = new List<string>();
                 //取每一条记录中的classid进行查询
                 MySqlParameter para1 = new MySqlParameter("@cid", table1.Rows[i][0].ToString());
-                DataTable table2 = DataOperation.DataQuery(sql2, para1);
-                MySqlParameter para2 = new MySqlParameter("@tid", table2.Rows[0][0].ToString());
-                DataTable table3 = DataOperation.DataQuery(sql3, para2);
+                DataTable table2 = DataOperation.DataQuery(sql2, para1);//查到课程信息和teacherId，放在table2中
+                MySqlParameter para2 = new MySqlParameter("@tid", table2.Rows[0][0].ToString());//在table2中取出teacherId进行教师信息查找
+                DataTable table3 = DataOperation.DataQuery(sql3, para2);//教师信息存在table3中
                 //添加老师的名字
                 arrayList.Add(table3.Rows[0][0].ToString());
                 //添加老师的学院
@@ -52,32 +53,36 @@ namespace HAMS.Student.StudentDao
                 arrayList.Add(table2.Rows[0][1].ToString());
                 //添加课堂名字
                 arrayList.Add(table2.Rows[0][2].ToString());
+                //将列表添加到字典中
                 dictionaryEntry.Add(i, arrayList);
             }
+            //将字典做为返回值返回
             return dictionaryEntry;
       
 
         }
+
+
         //查询作业公告的信息
         public List<List<String>> showHomeNoticeInfo(String account)
         {
            
             List<List<String>> info = new List<List<String>>();
             //先查学生id(自增)
-            String sql = "select stuId from student where stuSpecId=@id";
+            String sql = "select stuId from student where stuSpecId=@id";//通过账号查找stuId
             MySqlParameter parameter = new MySqlParameter("@id", account);
             DataTable table = DataOperation.DataQuery(sql, parameter);
             //再到选课表里面查询课程id
-            String sql1 = "select classId from takecourse where stuId =@sid";
+            String sql1 = "select classId from takecourse where stuId =@sid";//用stuId查找classId
             //查询每门课程具体的课堂号
             String sql3 = "select classSpecId from class where classId=@cid";
             MySqlParameter parameter1 = new MySqlParameter("@sid", table.Rows[0][0].ToString());
             DataTable table1 = DataOperation.DataQuery(sql1, parameter1);
             //查询作业的标题
-            String sql2 = "select notTitle,notId from notice where classId=@cid";
-            for(int i = 0; i < table1.Rows.Count; i++)
+            String sql2 = "select notTitle,notId from notice where classId=@cid";//用classId查找notTitle和notId
+            for(int i = 0; i < table1.Rows.Count; i++)//进行遍历
             {
-                MySqlParameter para = new MySqlParameter("@cid", table1.Rows[i][0].ToString());
+                MySqlParameter para = new MySqlParameter("@cid", table1.Rows[i][0].ToString());//按照流程依次进行查询操作
                 DataTable table2 = DataOperation.DataQuery(sql2, para);
                 DataTable table3 = DataOperation.DataQuery(sql3, para);
                 //一门课程不只有一个作业
@@ -90,7 +95,6 @@ namespace HAMS.Student.StudentDao
                     result.Add(table2.Rows[j][1].ToString());
                     //获得每门课程的课堂号
                     result.Add(table3.Rows[0][0].ToString());
-
                     info.Add(result);
                 }
             }

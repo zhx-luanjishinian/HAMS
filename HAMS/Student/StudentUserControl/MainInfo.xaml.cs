@@ -26,7 +26,7 @@ namespace HAMS
         public MainInfo(String classSpecId)
         {
             InitializeComponent();
-            this.classSpecId = classSpecId;
+            this.classSpecId = classSpecId;//只有真实课堂号一个参数
             
         }
 

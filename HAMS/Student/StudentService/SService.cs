@@ -43,12 +43,12 @@ namespace HAMS.Student.StudentService
         //获得主界面的课程信息
         public Dictionary<int, List<String>> showCourseInfo(String account)
         {
-            return sd.showCourseInfo(account);
+            return sd.showCourseInfo(account);//调用dao层函数获取，返回字典类型
         }
         //获得主界面的作业信息
         public List<List<String>> showHomeNoticeInfo(String account)
         {
-            return sd.showHomeNoticeInfo(account);
+            return sd.showHomeNoticeInfo(account);//调用dao层函数获取，返回列表类型
         }
         //获取作业主界面每门课程所有的作业信息
         public Dictionary<int, List<String>> showAllHomeworkInfo(String classSpecId)

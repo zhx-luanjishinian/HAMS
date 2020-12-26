@@ -26,8 +26,8 @@ namespace HAMS.Student.StudentUserControl
         public HomeworkNoteInfo(String notId,String classSpecId)
         {
             InitializeComponent();
-            this.notId = notId;
-            this.classSpecId = classSpecId;
+            this.notId = notId;//作业公告Id
+            this.classSpecId = classSpecId;//真实课堂号
            
         }
 

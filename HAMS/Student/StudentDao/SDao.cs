@@ -12,13 +12,13 @@ namespace HAMS.Student.StudentDao
     class SDao
     {
         private MySqlConnection conn = DataUtil.DBUtil.getConnection();
-        public DataTable Login(String account, String pw)
+        public DataTable login(String account, String pw)
         {
             
             String sql = "select stuSpecId,name,password from student where stuSpecId=@id";
             //传入要填写的参数
             MySqlParameter parameter = new MySqlParameter("@id",account);
-            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);
+            DataTable table = DataUtil.DataOperation.dataQuery(sql, parameter);
             return table;
            
         }
@@ -30,10 +30,10 @@ namespace HAMS.Student.StudentDao
             Dictionary<int,List<String>> dictionaryEntry = new Dictionary<int, System.Collections.Generic.List<String>>();
             String sql = "select stuId from student where stuSpecId=@id";//通过学生真实学号查找学生stuId
             MySqlParameter parameter = new MySqlParameter("@id", account); //进行赋值操作
-            DataTable table = DataOperation.DataQuery(sql, parameter); //调用Query函数执行查询语句
+            DataTable table = DataOperation.dataQuery(sql, parameter); //调用Query函数执行查询语句
             String sql1 = "select classId from takecourse where stuId =@sid"; //用刚刚查到的stuId从takecourse表中查找classId
             MySqlParameter parameter1 = new MySqlParameter("@sid", table.Rows[0][0].ToString());//从table中拿到stuId之后进行赋值操作
-            DataTable table1 = DataOperation.DataQuery(sql1, parameter1); //调用Query函数执行查询语句，返回classId的一个table1
+            DataTable table1 = DataOperation.dataQuery(sql1, parameter1); //调用Query函数执行查询语句，返回classId的一个table1
             String sql2 = "select teacherId,classSpecId,className from class where classId=@cid"; //通过classId在class表中查找课程信息
             String sql3 = "select name,department from teacher where teacherId=@tid";//通过teacherId在teacher表中查找教师信息
             for(int i =0;i<table1.Rows.Count; i++) //遍历所有的classId
@@ -42,9 +42,9 @@ namespace HAMS.Student.StudentDao
                 List<String> arrayList = new List<string>();
                 //取每一条记录中的classid进行查询
                 MySqlParameter para1 = new MySqlParameter("@cid", table1.Rows[i][0].ToString());
-                DataTable table2 = DataOperation.DataQuery(sql2, para1);//查到课程信息和teacherId，放在table2中
+                DataTable table2 = DataOperation.dataQuery(sql2, para1);//查到课程信息和teacherId，放在table2中
                 MySqlParameter para2 = new MySqlParameter("@tid", table2.Rows[0][0].ToString());//在table2中取出teacherId进行教师信息查找
-                DataTable table3 = DataOperation.DataQuery(sql3, para2);//教师信息存在table3中
+                DataTable table3 = DataOperation.dataQuery(sql3, para2);//教师信息存在table3中
                 //添加老师的名字
                 arrayList.Add(table3.Rows[0][0].ToString());
                 //添加老师的学院
@@ -71,20 +71,20 @@ namespace HAMS.Student.StudentDao
             //先查学生id(自增)
             String sql = "select stuId from student where stuSpecId=@id";//通过账号查找stuId
             MySqlParameter parameter = new MySqlParameter("@id", account);
-            DataTable table = DataOperation.DataQuery(sql, parameter);
+            DataTable table = DataOperation.dataQuery(sql, parameter);
             //再到选课表里面查询课程id
             String sql1 = "select classId from takecourse where stuId =@sid";//用stuId查找classId
             //查询每门课程具体的课堂号
             String sql3 = "select classSpecId from class where classId=@cid";
             MySqlParameter parameter1 = new MySqlParameter("@sid", table.Rows[0][0].ToString());
-            DataTable table1 = DataOperation.DataQuery(sql1, parameter1);
+            DataTable table1 = DataOperation.dataQuery(sql1, parameter1);
             //查询作业的标题
             String sql2 = "select notTitle,notId from notice where classId=@cid";//用classId查找notTitle和notId
             for(int i = 0; i < table1.Rows.Count; i++)//进行遍历
             {
                 MySqlParameter para = new MySqlParameter("@cid", table1.Rows[i][0].ToString());//按照流程依次进行查询操作
-                DataTable table2 = DataOperation.DataQuery(sql2, para);
-                DataTable table3 = DataOperation.DataQuery(sql3, para);
+                DataTable table2 = DataOperation.dataQuery(sql2, para);
+                DataTable table3 = DataOperation.dataQuery(sql3, para);
                 //一门课程不只有一个作业
                 for(int j = 0; j < table2.Rows.Count; j++)
                 {
@@ -110,10 +110,10 @@ namespace HAMS.Student.StudentDao
             Dictionary<int, List<String>> result = new Dictionary<int, List<string>>();   //定义返回值，类型是字典类型
             String sql = "select classId,className from class where classSpecId=@cid"; //通过真实课堂号来查询课堂号、课堂名
             MySqlParameter para = new MySqlParameter("@cid", classSpecId); //赋值操作
-            DataTable table = DataOperation.DataQuery(sql, para);  //执行SQL语句进行查询
+            DataTable table = DataOperation.dataQuery(sql, para);  //执行SQL语句进行查询
             String sql1 = "select notTitle,content,notId,truDeadline from notice where classId =@cd";   //通过课堂号来查找notTitle,content,notId,truDeadline
             MySqlParameter para1 = new MySqlParameter("@cd", table.Rows[0][0].ToString());  //进行赋值操作
-            DataTable table1 = DataOperation.DataQuery(sql1, para1);  //执行SQL语句进行查询
+            DataTable table1 = DataOperation.dataQuery(sql1, para1);  //执行SQL语句进行查询
            //在table1中进行遍历。table1中内容是notTitle,content,notId,truDeadline
             for(int i = 0; i < table1.Rows.Count; i++)
             {
@@ -144,7 +144,7 @@ namespace HAMS.Student.StudentDao
             //查询stuId
             String sql = "select stuId from student where stuSpecId=@sid";
             MySqlParameter para = new MySqlParameter("@sid", account);
-            DataTable table = DataOperation.DataQuery(sql, para);
+            DataTable table = DataOperation.dataQuery(sql, para);
             //查询作业表中的信息，包括homId,submitTime,score,homURLName
             String sql1 = "select homId,submitTime,score,homURLName from homework where notId =@nid and stuId=@sd";
             MySqlParameter para1 = new MySqlParameter("@nid", notId);//notId的赋值
@@ -153,10 +153,10 @@ namespace HAMS.Student.StudentDao
             MySqlParameter[] paras = new MySqlParameter[2];
             paras[0] = para1;
             paras[1] = para2;
-            DataTable table1 = DataOperation.DataQuery(sql1, paras);
+            DataTable table1 = DataOperation.dataQuery(sql1, paras);
             //通过notId查truDeadline
             String sql2 = "select truDeadline from notice where notId = @nid";
-            DataTable table2 = DataOperation.DataQuery(sql2, para1);
+            DataTable table2 = DataOperation.dataQuery(sql2, para1);
             
             for (int i=0;i<table1.Columns.Count;i++)
             {
@@ -171,7 +171,7 @@ namespace HAMS.Student.StudentDao
         {
             String sql = "select notTitle,content,truDeadline,notURLName from notice where notId=@nid";
             MySqlParameter para = new MySqlParameter("@nid", notId);
-            DataTable table = DataOperation.DataQuery(sql, para);
+            DataTable table = DataOperation.dataQuery(sql, para);
             return table;
         }
         //查询作业预警主界面的信息,直接根据学生的学号进行查询
@@ -183,11 +183,11 @@ namespace HAMS.Student.StudentDao
             List<List<List<String>>> result = new List<List<List<string>>>();     
             String sql = "select stuId from student where stuSpecId=@id";
             MySqlParameter parameter = new MySqlParameter("@id", account);
-            DataTable table = DataOperation.DataQuery(sql, parameter);
+            DataTable table = DataOperation.dataQuery(sql, parameter);
             //再到选课表里面查询课程id
             String sql1 = "select classId from takecourse where stuId =@sid";
             MySqlParameter parameter1 = new MySqlParameter("@sid", table.Rows[0][0].ToString());
-            DataTable table1 = DataOperation.DataQuery(sql1, parameter1);
+            DataTable table1 = DataOperation.dataQuery(sql1, parameter1);
             //查询作业公告的id
             String sql2 = "select notId,notTitle,truDeadline from notice where classId=@cid";
             //查询每门课程的具体名字
@@ -199,9 +199,9 @@ namespace HAMS.Student.StudentDao
             {
                 MySqlParameter para = new MySqlParameter("@cid", table1.Rows[i][0].ToString());
                 //作业公告信息
-                DataTable table2 = DataOperation.DataQuery(sql2, para);
+                DataTable table2 = DataOperation.dataQuery(sql2, para);
                 //课堂名信息
-                DataTable table3 = DataOperation.DataQuery(sql3, para);
+                DataTable table3 = DataOperation.dataQuery(sql3, para);
                 
                 //由于一门课的作业公告又有多个，所以还要进行一次循环操作
                 for(int j = 0; j < table2.Rows.Count; j++)
@@ -220,7 +220,7 @@ namespace HAMS.Student.StudentDao
                     //将作业公告id和学生的id添加到参数中去
                     paras[0] = para1;
                     paras[1] = parameter1;
-                    DataTable table4 = DataOperation.DataQuery(sql4, paras);
+                    DataTable table4 = DataOperation.dataQuery(sql4, paras);
                     //5,6添加每门作业的自定义截止时间，自定义复杂度
                     //此处需要判断学生是否提交了作业，没有提交就需要将这些加进来
                     
@@ -258,10 +258,10 @@ namespace HAMS.Student.StudentDao
         {
             String sql = "select stuId from student where stuSpecId=@sid";
             MySqlParameter para = new MySqlParameter("@sid", account);
-            DataTable table = DataOperation.DataQuery(sql, para);
+            DataTable table = DataOperation.dataQuery(sql, para);
             String sql1 = "select homURL from homework where stuId=@sd";
             MySqlParameter para1 = new MySqlParameter("@sd", table.Rows[0][0].ToString());
-            DataTable table1 = DataOperation.DataQuery(sql1, para1);
+            DataTable table1 = DataOperation.dataQuery(sql1, para1);
             int count = 0;
             for(int i = 0; i < table1.Rows.Count; i++)
             {
@@ -277,7 +277,7 @@ namespace HAMS.Student.StudentDao
         {
             String sql = "select defHomNum from student where stuSpecId = @sid";
             MySqlParameter para = new MySqlParameter("@sid", account);
-            DataTable table = DataOperation.DataQuery(sql, para);
+            DataTable table = DataOperation.dataQuery(sql, para);
             return table.Rows[0][0].ToString();
         }
         //插入用户设置的预警数量
@@ -285,14 +285,14 @@ namespace HAMS.Student.StudentDao
         {
             String sql = "update student set defHomNum=@dfn";
             MySqlParameter para = new MySqlParameter("@dfn", long.Parse(num));
-            return DataOperation.DataUpdate(sql, para);
+            return DataOperation.dataUpdate(sql, para);
         }
         //进行作业复杂度信息的更新
         public bool updateComplexity(String account,String notId,String complexity)
         {
             String sql = "select stuId from student where stuSpecId=@sid";
             MySqlParameter para = new MySqlParameter("@sid", account);
-            DataTable table = DataOperation.DataQuery(sql, para);
+            DataTable table = DataOperation.dataQuery(sql, para);
             String sql1 = "update homework set defComplexity=@cl where stuId=@sd and notId=@nid";
             MySqlParameter[] paras = new MySqlParameter[3];
             MySqlParameter para1 = new MySqlParameter("@cl", complexity);
@@ -301,7 +301,7 @@ namespace HAMS.Student.StudentDao
             paras[1] = para2;
             MySqlParameter para3 = new MySqlParameter("@nid", notId);
             paras[2] = para3;
-            return DataOperation.DataUpdate(sql1, paras);
+            return DataOperation.dataUpdate(sql1, paras);
            
         }
         //进行自定义截至时间的更新
@@ -310,14 +310,14 @@ namespace HAMS.Student.StudentDao
             //首先根据notId查询真实的截止时间，必须保证用户设置的截止时间小于老师的截止时间
             String sql2 = "select truDeadline from notice where notId=@nid";
             MySqlParameter para4 = new MySqlParameter("@nid", int.Parse(notId));
-            DataTable table1 = DataOperation.DataQuery(sql2, para4);
+            DataTable table1 = DataOperation.dataQuery(sql2, para4);
             if (Convert.ToDateTime(table1.Rows[0][0]) < Convert.ToDateTime(defTime))
             {
                 return BaseResult.errorMsg("自定义的截止时间不能大于老师的截止时间");
             }
             String sql = "select stuId from student where stuSpecId=@sid";
             MySqlParameter para = new MySqlParameter("@sid", account);
-            DataTable table = DataOperation.DataQuery(sql, para);
+            DataTable table = DataOperation.dataQuery(sql, para);
             String sql1 = "update homework set defDeadline=@dl where stuId=@sd and notId=@nid";
             MySqlParameter[] paras = new MySqlParameter[3];
             MySqlParameter para1 = new MySqlParameter("@dl", defTime);
@@ -326,7 +326,7 @@ namespace HAMS.Student.StudentDao
             paras[1] = para2;
             MySqlParameter para3 = new MySqlParameter("@nid", notId);
             paras[2] = para3;
-            if(DataOperation.DataUpdate(sql1, paras))
+            if(DataOperation.dataUpdate(sql1, paras))
             {
                 return BaseResult.ok();
             }
@@ -336,14 +336,14 @@ namespace HAMS.Student.StudentDao
             }
         }
         //通过真实学号来获取学生Id号
-        public DataTable GetStuIdByAccount(String account)
+        public DataTable getStuIdByAccount(String account)
         {
             //在学生表中，通过真实学号来获取学生的Id号
             String sql = "select stuId from student where stuSpecId=@id";
             //传入要填写的参数
             MySqlParameter parameter = new MySqlParameter("@id", account);
             //执行查询语句，以table类型返回
-            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);
+            DataTable table = DataUtil.DataOperation.dataQuery(sql, parameter);
             return table;
         }
         //获取学生成绩和老师评语，通过stuId和notId
@@ -355,12 +355,12 @@ namespace HAMS.Student.StudentDao
             MySqlParameter para1 = new MySqlParameter("@sid", stuId);
             MySqlParameter para2 = new MySqlParameter("@nid", notId);
             //执行查询语句，以table类型返回
-            DataTable table = DataUtil.DataOperation.DataQuery(sql, para1,para2);
+            DataTable table = DataUtil.DataOperation.dataQuery(sql, para1,para2);
             return table;
         }
 
         //学生提交作业，其实是对homework表的一个修改操作，修改与作业相关的字段即可
-        public Boolean UpdateHomework(DateTime submitTime, string notId, string stuId, string postil, string homUrl, string homUrlName)
+        public Boolean updateHomework(DateTime submitTime, string notId, string stuId, string postil, string homUrl, string homUrlName)
         {
             //sql语句，对homework表的更新操作
             String sql = "update homework  set postil = @postil, homUrl = @homUrl, homUrlName = @homUrlName , submitTime = @submitTime where notId  = @notId  and  stuId = @stuId;";
@@ -371,11 +371,11 @@ namespace HAMS.Student.StudentDao
             MySqlParameter para4 = new MySqlParameter("@submitTime",submitTime);
             MySqlParameter para5 = new MySqlParameter("@notId", notId);
             MySqlParameter para6 = new MySqlParameter("@stuId",stuId);
-            return DataUtil.DataOperation.DataUpdate(sql, para1, para2, para3,para4,para5,para6);//如果更新成功，则返回true
+            return DataUtil.DataOperation.dataUpdate(sql, para1, para2, para3,para4,para5,para6);//如果更新成功，则返回true
         }
 
         //通过作业名是否为空来判断它是否交过作业
-        public DataTable GetHomeUrlNameByStuIdAndNotId(String stuId, String notId)
+        public DataTable getHomeUrlNameByStuIdAndNotId(String stuId, String notId)
         {
             //在作业表中，通过学号和作业公告号来获取作业名 
             String sql = "select homURLName from homework where stuId=@stuid and notId = @notId";
@@ -383,7 +383,7 @@ namespace HAMS.Student.StudentDao
             MySqlParameter para1 = new MySqlParameter("@stuId", stuId);
             MySqlParameter para2 = new MySqlParameter("@notId", notId);
             //执行查询语句，以table类型返回
-            DataTable table = DataUtil.DataOperation.DataQuery(sql, para1,para2);
+            DataTable table = DataUtil.DataOperation.dataQuery(sql, para1,para2);
             return table;
         }
 
@@ -412,13 +412,13 @@ namespace HAMS.Student.StudentDao
         //}
 
         //通过作业公告Id来获取作业公告标题
-        public DataTable GetNotName(string notId)
+        public DataTable getNotName(string notId)
         {
             //根据作业公告号来获取作业公告标题
             String sql = "select notTitle from notice where notId = @id;";
             //传入要填写的参数
             MySqlParameter para = new MySqlParameter("@id", notId);
-            DataTable table = DataUtil.DataOperation.DataQuery(sql, para);
+            DataTable table = DataUtil.DataOperation.dataQuery(sql, para);
             return table;
         }
         //进行提问操作
@@ -428,11 +428,11 @@ namespace HAMS.Student.StudentDao
             String sql = "insert comm set notId=@notId and commStudent = @comm";
             MySqlParameter para1 = new MySqlParameter("@notId", notId);
             MySqlParameter para2 = new MySqlParameter("@comm", commStudent);
-            bool flag=DataUtil.DataOperation.DataAdd(sql, para1, para2);
+            bool flag=DataUtil.DataOperation.dataAdd(sql, para1, para2);
             if(flag)
             {
                 String sql1 = "select commId from comm where notId = @notId and commStudent = @comm";
-                DataTable table = DataUtil.DataOperation.DataQuery(sql1, para1, para2);
+                DataTable table = DataUtil.DataOperation.dataQuery(sql1, para1, para2);
                 result = table.Rows[0][0].ToString();
             }
             else
@@ -447,7 +447,7 @@ namespace HAMS.Student.StudentDao
             List<Dictionary<String,int>> result = new List<Dictionary<String,int>>();
             String sql = "select classId from class where classSpecId =@cid";
             MySqlParameter para = new MySqlParameter("@cid", classSpecId);
-            DataTable table = DataOperation.DataQuery(sql,para);
+            DataTable table = DataOperation.dataQuery(sql,para);
             String sql1 = "select submitTime,homURL  from homework where notId=@nid and classId=@cd";
             MySqlParameter[] paras = new MySqlParameter[2];
             MySqlParameter para1 = new MySqlParameter("nid", notId);
@@ -458,7 +458,7 @@ namespace HAMS.Student.StudentDao
             //统计已完成作业的人数
             int count = 0;
             //查询提交时间以及作业的地址
-            DataTable table1 = DataOperation.DataQuery(sql1, paras);
+            DataTable table1 = DataOperation.dataQuery(sql1, paras);
             for(int i = 0; i < table1.Rows.Count; i++)
             {
                 if (table1.Rows[i][1] != DBNull.Value) { 
@@ -491,7 +491,7 @@ namespace HAMS.Student.StudentDao
         {
             String sql = "select commStudent,commTeacher from comment where notId=@nid";
             MySqlParameter para = new MySqlParameter("@nid", notId);
-            DataTable table = DataOperation.DataQuery(sql, para);
+            DataTable table = DataOperation.dataQuery(sql, para);
             List< List<String>> result = new List<List<String>>();
             for(int i = 0; i < table.Rows.Count; i++)
             {
@@ -511,7 +511,7 @@ namespace HAMS.Student.StudentDao
             MySqlParameter[] paras = new MySqlParameter[2];
             paras[0] = para;
             paras[1] = para1;
-            return DataOperation.DataAdd(sql, paras);
+            return DataOperation.dataAdd(sql, paras);
         }
         //通过学生真实学号来获取头像信息
         public DataTable getSexByStuSpecId(string StuSpecId)
@@ -519,7 +519,7 @@ namespace HAMS.Student.StudentDao
             //根据teacherSpecId查询sex
             String sql = "select sex from student where StuSpecId=@ssid";
             MySqlParameter parameter = new MySqlParameter("@ssid", StuSpecId);
-            DataTable table = DataUtil.DataOperation.DataQuery(sql, parameter);  //查到学生id,分数,作业路径
+            DataTable table = DataUtil.DataOperation.dataQuery(sql, parameter);  //查到学生id,分数,作业路径
             return table;
         }
         //根据课堂名查找老师的名字
@@ -527,10 +527,10 @@ namespace HAMS.Student.StudentDao
         {
             String sql = "select teacherId from class where classSpecId=@cid";
             MySqlParameter para = new MySqlParameter("@cid", classSpecId);
-            DataTable table = DataOperation.DataQuery(sql, para);
+            DataTable table = DataOperation.dataQuery(sql, para);
             String sql1 = "select name from teacher where teacherId=@tid";
             MySqlParameter para1 = new MySqlParameter("@tid", table.Rows[0][0]);
-            DataTable table1 = DataOperation.DataQuery(sql1, para1);
+            DataTable table1 = DataOperation.dataQuery(sql1, para1);
             return table1.Rows[0][0].ToString();
         }
 

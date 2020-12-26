@@ -33,7 +33,7 @@
             <ListView x:Name="listViewQuestionAndAnswer" HorizontalAlignment="Left" Height="374.439" Margin="10,77.48,0,0" VerticalAlignment="Top" Width="820" Foreground="#DD999191" BorderBrush="#89807777"/>
             <Button x:Name="btnRefresh" HorizontalAlignment="Left" Margin="794,0,0,431" Width="36" BorderBrush="{x:Null}" Click="btnRefresh_Click" Height="31" Foreground="{x:Null}" VerticalAlignment="Bottom" >
                 <Button.Background>
-                    <ImageBrush ImageSource="刷新.png"/>
+                    <ImageBrush ImageSource="../../Resources/刷新.png"/>
                 </Button.Background>
             </Button>
 

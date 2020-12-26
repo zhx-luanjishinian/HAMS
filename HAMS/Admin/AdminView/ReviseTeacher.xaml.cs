@@ -23,7 +23,7 @@ namespace HAMS.Admin.AdminView
         public String tnum { get; set; }
         public String tna { get; set; }
         public String tsex { get; set; }
-        public String teadep { get; set; }
+        public String teaDep { get; set; }
         public String pwd { get; set; }
         private ADao ad = new ADao();
         public ReviseTeacher(String tnum, String tna, String tsex, String teadep, String pwd)
@@ -33,7 +33,7 @@ namespace HAMS.Admin.AdminView
             this.tnum = tnum;
             this.tna = tna;
             this.tsex = tsex;
-            this.teadep = teadep;
+            this.teaDep = teadep;
             this.pwd = pwd;
             txtTeaNum.Text = tnum;
             txtTeaName.Text = tna;

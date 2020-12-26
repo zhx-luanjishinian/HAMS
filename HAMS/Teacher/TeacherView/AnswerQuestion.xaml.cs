@@ -200,7 +200,7 @@ namespace HAMS.Teacher.TeacherView
             listViewQuestionAndAnswer.Items.Add(ivi);
            
         }
-        private void LoadQuestionAndAnswer(string noteId, AnswerQuestion newAnswerQuestion)
+        private void loadQuestionAndAnswer(string noteId, AnswerQuestion newAnswerQuestion)
         {
             //进入答疑界面时加载目前已经有的疑问和解答
             TeacherDao.TDao td = new TeacherDao.TDao();
@@ -271,7 +271,7 @@ namespace HAMS.Teacher.TeacherView
             StudentAskQuestion stuControl = (StudentAskQuestion)stuCanvas.Parent;
             //MessageBox.Show(stuControl.lbStuName.Content.ToString());
 
-            bool flag = td.UpdateComment(stuControl.tbResponse.Text, stuControl.textBoxQuestion.Text);
+            bool flag = td.updateComment(stuControl.tbResponse.Text, stuControl.textBoxQuestion.Text);
             //往数据库里插入数据
             if (flag == true)
             {
@@ -292,7 +292,7 @@ namespace HAMS.Teacher.TeacherView
             //首先删除listview里面的东西
             listViewQuestionAndAnswer.Items.Clear();
 
-            LoadQuestionAndAnswer(notId,this);   //加载疑问和回答
+            loadQuestionAndAnswer(notId,this);   //加载疑问和回答
                                                                //然后再重新加载一遍
         }
 

@@ -43,12 +43,12 @@ namespace HAMS.Student.StudentView
             tbuserNameAc.Text = account +" "+  name;
             //设置该img控件的Source
             headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, pngfile))));
-            MainHomeworkShow(classId);
+            mainHomeworkShow(classId);
         }
 
 
         //显示主页面，加载动态控件,参数是classId
-        public void MainHomeworkShow(String clId)
+        public void mainHomeworkShow(String clId)
         {
             Dictionary<int, List<String>> info = ss.showAllHomeworkInfo(clId); //返回的是所有作业的信息列表+【作业数量，课堂名】
             labelClassName.Content = info[info.Count-1][0]; //取课堂名，显示在前端课堂名的位置
@@ -186,7 +186,7 @@ namespace HAMS.Student.StudentView
             //首先删除listview里面的东西
             listview.Items.Clear();
             //然后再重新加载一遍
-            MainHomeworkShow(classId);
+            mainHomeworkShow(classId);
         }
     }
 }

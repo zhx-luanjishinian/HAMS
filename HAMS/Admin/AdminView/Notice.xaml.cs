@@ -26,7 +26,7 @@ namespace HAMS.Admin.AdminView
         private ADao ad = new ADao();
         public String title { get; set; }
         public String content { get; set; }
-        public int sysid { get; set; }
+        public int sysId { get; set; }
         public String ID { get; set; }
         DispatcherTimer timer = new DispatcherTimer();
         public Notice(string AdminId)
@@ -38,7 +38,7 @@ namespace HAMS.Admin.AdminView
             timer.Start();
             
             //txtboxReleaseTime.Text = DateTime.Now.ToString();
-            this.sysid = -1;
+            this.sysId = -1;
             this.ID = AdminId;
         }
         
@@ -46,7 +46,7 @@ namespace HAMS.Admin.AdminView
         {
             this.title = title;
             this.content = content;
-            this.sysid = int.Parse(id);
+            this.sysId = int.Parse(id);
             timer.Tick += new EventHandler(timer_Tick);
             timer.Interval = TimeSpan.FromSeconds(0.1);   //设置刷新的间隔时间
             timer.Start();
@@ -64,7 +64,7 @@ namespace HAMS.Admin.AdminView
         {
             string sysTitle = txtboxNoticeTitle.Text;
             string sysContent=txtboxNoticeContent.Text;
-            if (sysid == -1)
+            if (sysId == -1)
             {
                 if (ad.insertSysNotice(sysTitle, sysContent,ID))
                 {
@@ -78,7 +78,7 @@ namespace HAMS.Admin.AdminView
                 }
             }
             else { 
-            if(ad.updateSysNotice(sysid, sysTitle, sysContent))
+            if(ad.updateSysNotice(sysId, sysTitle, sysContent))
             {
                 MessageBox.Show("系统通知发布成功");
                     this.Visibility = Visibility.Hidden;

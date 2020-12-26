@@ -79,7 +79,7 @@ namespace HAMS
             }
             else if (radiobtnTeacher.IsChecked == true)
             {
-                BaseResult br = tts.Login(txtUserName.Text, txtPassword.Password);
+                BaseResult br = tts.login(txtUserName.Text, txtPassword.Password);
                 if (br.code == 0)
                 {
                     MessageBox.Show("恭喜你已登录成功");

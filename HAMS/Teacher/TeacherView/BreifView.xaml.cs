@@ -86,7 +86,7 @@ namespace HAMS.Teacher.TeacherView
 
          
             //获取父级元素
-            DateTime dt = ts.GetPreviousDateTime(labelCourseNumber.Content.ToString(), clickTeachClass.title.Content.ToString());
+            DateTime dt = ts.getPreviousDateTime(labelCourseNumber.Content.ToString(), clickTeachClass.title.Content.ToString());
             //获取当前作业的作业截止时间
             // 打开子窗体
             AnnounceNotice newAnnounceNotice = new AnnounceNotice(lbTeacherInfo.Text.ToString(), lbTeacherInfo1.Text.ToString(), labelCourseNumber.Content.ToString()
@@ -128,7 +128,7 @@ namespace HAMS.Teacher.TeacherView
                 }
                 else
                 {
-                    String ifDelete = ts.DeleteHomeworkNotice(labelCourseNumber.Content.ToString(), clickTeachClass.title.Content.ToString());  //删除时要考虑到与作业表级联删除的情况
+                    String ifDelete = ts.deleteHomeworkNotice(labelCourseNumber.Content.ToString(), clickTeachClass.title.Content.ToString());  //删除时要考虑到与作业表级联删除的情况
 
                     if (ifDelete == "删除该作业公告成功")
                     {

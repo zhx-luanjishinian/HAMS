@@ -13,12 +13,12 @@
         </Grid.ColumnDefinitions>
         <Button x:Name="btnModify" Grid.Column="2" Margin="0,47,79.721,44.538" OpacityMask="#FFB3B2B2" BorderThickness="0" HorizontalAlignment="Right" Width="26.88" d:LayoutOverrides="HorizontalAlignment" Height="Auto" >
             <Button.Background>
-                <ImageBrush ImageSource="修改.png"/>
+                <ImageBrush ImageSource="../../Resources/修改.png"/>
             </Button.Background>
         </Button>
         <Button x:Name="btnDelete" Grid.Column="2" HorizontalAlignment="Right" Margin="0,47,21.509,44.538" Width="28.785" OpacityMask="#FFB0ACAC" BorderThickness="0" Height="Auto">
             <Button.Background>
-                <ImageBrush ImageSource="删 除 .png"/>
+                <ImageBrush ImageSource="../../Resources/删 除 .png"/>
             </Button.Background>
         </Button>
         <Image x:Name="image3" Margin="21.942,10,45.412,10" Source="/HAMS;component/Resources/作业1.png"/>

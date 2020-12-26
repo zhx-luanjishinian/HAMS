@@ -43,11 +43,11 @@ namespace HAMS.Student.StudentView
             this.account = account;
             this.name = name;
             textBlockUserId.Text = account+" "+name;
-            MainShow();
+            mainShow();
             HomeWorkShow();
         }
         //主界面生成
-        public void MainShow()
+        public void mainShow()
         {
             Dictionary<int, List<string>> info = sts.showCourseInfo(this.account);
             

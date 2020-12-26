@@ -49,7 +49,7 @@ namespace HAMS.Teacher.TeacherView
             //AnnounceNoticeDao temp = new AnnounceNoticeDao();
             //两个方法类
             DataTable tableTeacherId = ts.getTeacherId(session);
-            DataTable table= ts.LoadMainFormLeft(tbTeacherInfo.Text);
+            DataTable table= ts.loadMainFormLeft(tbTeacherInfo.Text);
 
             TeachClass[] arrayTeachClass = new TeachClass[10];
             //给自定义控件的子控件加属性
@@ -80,7 +80,7 @@ namespace HAMS.Teacher.TeacherView
             for (int j = 0; j < tableclassId.Rows.Count; j++)
             {
                 tableRecentNotice = ts.getRecentNoticeByClassId(tableclassId.Rows[j][0].ToString());    //获得对应classId在notice表中的内容
-                DataTable tableclassInfo = ts.GetClassInfoByClassID(tableclassId.Rows[j][0].ToString()); //获得对应classId在class表中的其他内容
+                DataTable tableclassInfo = ts.getClassInfoByClassID(tableclassId.Rows[j][0].ToString()); //获得对应classId在class表中的其他内容
                 int noticeNum = tableRecentNotice.Rows.Count;
                     for (int k = 0; k < noticeNum; k++)
                     {

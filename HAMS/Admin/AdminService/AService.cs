@@ -19,7 +19,7 @@ namespace HAMS.Admin.AdminService
             {
                 return BaseResult.errorMsg("账号或者密码为空");
             }
-            DataTable table = ad.Login(account, pw);
+            DataTable table = ad.login(account, pw);
             if (table.Rows.Count == 0)
             {
                 return BaseResult.errorMsg("账号或者密码输入错误，请检查后再进行输入");
@@ -104,7 +104,7 @@ namespace HAMS.Admin.AdminService
         public DataTable showStudentInfo3(String stuNumber, String stuName)
         {
             DataTable result = new DataTable();
-            DataTable table = ad.ShowStudent(stuNumber,stuName);
+            DataTable table = ad.showStudent(stuNumber,stuName);
             result.Columns.Add(new DataColumn("stuSpecId", typeof(string)));
             result.Columns.Add(new DataColumn("name", typeof(string)));
             result.Columns.Add(new DataColumn("sex", typeof(string)));
@@ -203,7 +203,7 @@ namespace HAMS.Admin.AdminService
         public DataTable showTeacherInfo3(String teaNum,String teaName)
         {
             DataTable result = new DataTable(); ;
-            DataTable table = ad.ShowTeacher(teaNum,teaName);
+            DataTable table = ad.showTeacher(teaNum,teaName);
             result.Columns.Add(new DataColumn("teacherSpecId", typeof(string)));
             result.Columns.Add(new DataColumn("name", typeof(string)));
             result.Columns.Add(new DataColumn("sex", typeof(string)));
@@ -253,7 +253,7 @@ namespace HAMS.Admin.AdminService
                 dr2[1] = row["className"];
                 dr2[2] = row["teacherId"];
                 int teaId = int.Parse(dr2[2].ToString());
-                DataTable table2 = ad.ShowTeacherSpecId(teaId);
+                DataTable table2 = ad.showTeacherSpecId(teaId);
                 dr2[2] = table2.Rows[0][0];
                 result.Rows.Add(dr2);
             }
@@ -276,7 +276,7 @@ namespace HAMS.Admin.AdminService
                 dr2[1] = row["className"];
                 dr2[2] = row["teacherId"];
                 int teaId = int.Parse(dr2[2].ToString());
-                DataTable table2 = ad.ShowTeacherSpecId(teaId);
+                DataTable table2 = ad.showTeacherSpecId(teaId);
                 dr2[2] = table2.Rows[0][0];
                 result.Rows.Add(dr2);
             }
@@ -286,7 +286,7 @@ namespace HAMS.Admin.AdminService
         public DataTable showClassInfo3(String classId,String className)
         {
             DataTable result = new DataTable();
-            DataTable table = ad.ShowClass(classId,className);
+            DataTable table = ad.showClass(classId,className);
             result.Columns.Add(new DataColumn("classSpecId", typeof(string)));
             result.Columns.Add(new DataColumn("className", typeof(string)));
             result.Columns.Add(new DataColumn("teacherId", typeof(string)));
@@ -299,14 +299,14 @@ namespace HAMS.Admin.AdminService
                 dr2[1] = row["className"];
                 dr2[2] = row["teacherId"];
                 int teaId = int.Parse(dr2[2].ToString());
-                DataTable table2 = ad.ShowTeacherSpecId(teaId);
+                DataTable table2 = ad.showTeacherSpecId(teaId);
                 dr2[2] = table2.Rows[0][0];
                 result.Rows.Add(dr2);
             }
             return result;
         }
         //修改课堂信息
-        public bool ReviseClass(string classSpecId, string className, int teacherId)
+        public bool reviseClass(string classSpecId, string className, int teacherId)
         {
             bool flag = ad.updateClassInfo(classSpecId, className, teacherId);
             return flag;

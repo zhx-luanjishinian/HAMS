@@ -18,13 +18,13 @@ namespace HAMS.Teacher.TeacherService
     {
         private TDao td = new TDao();
 
-        public BaseResult Login(string account, string pw)
+        public BaseResult login(string account, string pw)
         {
             if (account == "" || pw == "")
             {
                 return BaseResult.errorMsg("账号或者密码为空");
             }
-            DataTable table = td.Login(account, pw);
+            DataTable table = td.login(account, pw);
             if (table.Rows.Count == 0)
             {
                 return BaseResult.errorMsg("账号或者密码输入错误，请检查后再进行输入");
@@ -41,7 +41,7 @@ namespace HAMS.Teacher.TeacherService
         }
 
         
-        public String GetPostilByHomId(int homId)
+        public String getPostilByHomId(int homId)
         {
             //根据homId获取学生的作业备注
             DataTable tbHomURL = td.getPostilByHomId(homId);
@@ -50,13 +50,13 @@ namespace HAMS.Teacher.TeacherService
         }
         
 
-        public bool CorrectHomework(int homId, string score, string remark)
+        public bool correctHomework(int homId, string score, string remark)
         {
             //批改作业，往数据库中写入成绩和点评
             bool flag = td.updateHomeworkByCorrect(homId, score, remark);
             return flag;
         }
-        public string GetNotIdFromClassSpecId(string classSpecId,string homeworkTitle)
+        public string getNotIdFromClassSpecId(string classSpecId,string homeworkTitle)
         {
             DataTable tableClassId = td.getClassId(classSpecId);
             DataTable tableNotId = td.getNotIdByClassIdAndNotTitle(homeworkTitle, Convert.ToInt32(tableClassId.Rows[0][0]));
@@ -67,7 +67,7 @@ namespace HAMS.Teacher.TeacherService
         //DateTime baseDate = new DateTime(1970, 1, 1);
         //DateTime result = temp.AddSeconds(timeStamp);
         //对truDeadline用datetime
-        public String AnnounceNotice(DateTime truDeadline, String content, String notTitle, String classSpecId, String teacherSpecId, String localpath = "",String notURLName = "")
+        public String announceNotice(DateTime truDeadline, String content, String notTitle, String classSpecId, String teacherSpecId, String localpath = "",String notURLName = "")
         {
             Notice notice = new Notice();
             notice.TruDeadLine = truDeadline;
@@ -105,7 +105,7 @@ namespace HAMS.Teacher.TeacherService
             //创建作业公告目录 
             string dirNotTitle = notTitle;//课堂真实号/作业公告标题/
             string orginPath = classSpecId;//原始目录或起始目录，即在哪个目录下创建
-            flag = FtpUpDown.MakeDir(dirNotTitle, out errorinfo, orginPath);//创建目录的静态方法，可以直接通过类名访问
+            flag = FtpUpDown.makeDir(dirNotTitle, out errorinfo, orginPath);//创建目录的静态方法，可以直接通过类名访问
             if (flag == false)
             {
                 return "在文件服务器中创建对应作业公告的目录失败";
@@ -115,7 +115,7 @@ namespace HAMS.Teacher.TeacherService
             //创建作业附件目录
             string dirNotFile = "作业附件";
             orginPath += "/" + dirNotTitle;
-            flag = FtpUpDown.MakeDir(dirNotFile, out errorinfo, orginPath);//创建目录的静态方法，可以直接通过类名访问
+            flag = FtpUpDown.makeDir(dirNotFile, out errorinfo, orginPath);//创建目录的静态方法，可以直接通过类名访问
             if (flag == false)
             {
                 return "在文件服务器中创建存放作业附件的目录失败";
@@ -127,7 +127,7 @@ namespace HAMS.Teacher.TeacherService
             if (localpath != "")//存在作业公告附件，根据路径插入FTP服务器中
             {
                 
-                flag = FtpUpDown.Upload(localpath, dirFullNotFile);
+                flag = FtpUpDown.upload(localpath, dirFullNotFile);
                 if (!flag)
                 {
                     return "在文件服务器中指定目录上传作业附件失败";
@@ -166,7 +166,7 @@ namespace HAMS.Teacher.TeacherService
             //调用学生角色的业务层添加作业函数，该函数负责调用Dao层将作业插入数据库homework表
             //[studentDao文件夹下某Dao文件的一个对象].insertHomework(classId,teacherId,notId);
             //该函数还需要根据classId，获得每个选课学生的stuId，然后依次在作业表中根据(stuId,classId,teacherId,notId)进行插入
-            DataTable tbStuId = td.GetStuIdFromClassId(notice.ClassId);
+            DataTable tbStuId = td.getStuIdFromClassId(notice.ClassId);
             int stuidNum = tbStuId.Rows.Count;  //获取所有选课学生的数量
             for (int i = 0; i < stuidNum; i++)
             {
@@ -181,7 +181,7 @@ namespace HAMS.Teacher.TeacherService
                 homework.TeacherId = teacherId;
                 homework.NotId = notId;
                 //stuId, classId, teacherId, notId
-                bool flag1 = td.InsertHomework(homework);
+                bool flag1 = td.insertHomework(homework);
                 if (!flag1)
                 {
                     return "发布失败，请重试";
@@ -192,7 +192,7 @@ namespace HAMS.Teacher.TeacherService
             return "发布公告成功";
         }
 
-        public String ModifyNotice(DateTime truDeadline, String content, String notTitle, String classSpecId, String teacherSpecId, String localpath = "", String notURLName = "")
+        public String modifyNotice(DateTime truDeadline, String content, String notTitle, String classSpecId, String teacherSpecId, String localpath = "", String notURLName = "")
         {
             Notice notice = new Notice();
             notice.TruDeadLine = truDeadline;
@@ -220,7 +220,7 @@ namespace HAMS.Teacher.TeacherService
             {
                 //具体上传作业附件
                 string dirFullNotFile = classSpecId + "/" + notTitle+ "/" + "作业附件";
-                flag = FtpUpDown.Upload(localpath, dirFullNotFile);
+                flag = FtpUpDown.upload(localpath, dirFullNotFile);
                 if (!flag)
                 {
                     return "在文件服务器中指定目录上传作业附件失败";
@@ -252,10 +252,10 @@ namespace HAMS.Teacher.TeacherService
             return "更新公告成功";
         }
 
-        public string[] GetScoreAndRemarkByHomId(int homId)
+        public string[] getScoreAndRemarkByHomId(int homId)
         {
             //根据作业Id获取成绩和点评
-            DataTable tbScoreAndRemark = td.GetScoreAndRemarkByHomId(homId);
+            DataTable tbScoreAndRemark = td.getScoreAndRemarkByHomId(homId);
             string[] Scoreinfos = new string[2];
             Scoreinfos[0] = tbScoreAndRemark.Rows[0][0].ToString();
             Scoreinfos[1] = tbScoreAndRemark.Rows[0][1].ToString();
@@ -265,7 +265,7 @@ namespace HAMS.Teacher.TeacherService
             }
             return Scoreinfos;
         }
-        public DateTime GetPreviousDateTime(String classSpaceId,String homeworkTitle)
+        public DateTime getPreviousDateTime(String classSpaceId,String homeworkTitle)
         {
             DataTable table1 = td.getClassId(classSpaceId);
             int result;
@@ -312,7 +312,7 @@ namespace HAMS.Teacher.TeacherService
             return FtpUpDown.delFile(FileFullPath, out errorinfo);
             
         }
-        public string PasteSubmitTimeInForm(string classSpecId, string homeworkTitle)
+        public string pasteSubmitTimeInForm(string classSpecId, string homeworkTitle)
         {
           DataTable table1 =  td.getClassId(classSpecId);
             int classId=Convert.ToInt32(table1.Rows[0][0]) ;
@@ -322,7 +322,7 @@ namespace HAMS.Teacher.TeacherService
             return submitTime;
         }
 
-        public String DeleteHomeworkNotice(String classSpecId, String homeworkTitle)
+        public String deleteHomeworkNotice(String classSpecId, String homeworkTitle)
         {
             DataTable tbClassId = td.getClassId(classSpecId);
             int classId = Convert.ToInt32(tbClassId.Rows[0][0]);//获取classId
@@ -337,7 +337,7 @@ namespace HAMS.Teacher.TeacherService
             string[] notURLs = notURL.Split('/');
             string currentDirFullPath = notURLs[0] + "/" + notURLs[1];
             string newDirName = "已被删除的作业公告" + notURLs[1];
-            FtpUpDown.Rename(currentDirFullPath, newDirName);
+            FtpUpDown.rename(currentDirFullPath, newDirName);
 
             //第二步：在数据库comment表中删除作业答疑
             //当数据库中存在答疑的时候才需要删除，否则不需要删除答疑
@@ -373,13 +373,13 @@ namespace HAMS.Teacher.TeacherService
         }
 
 
-        public string GetPostilByForm(string classSpecId, string noticeName, string studentSpecId)
+        public string getPostilByForm(string classSpecId, string noticeName, string studentSpecId)
         {
-            DataTable table1 = td.GetStuIdFromStuSpecId(studentSpecId);
+            DataTable table1 = td.getStuIdFromStuSpecId(studentSpecId);
             DataTable table2 = td.getClassId(classSpecId);
             int classId = Convert.ToInt32(table2.Rows[0][0]);
             DataTable table3 = td.getNotIdByClassIdAndNotTitle(noticeName, classId);
-            DataTable table4 = td.GetHomIdByStuIdAndNotId(table1.Rows[0][0].ToString(), table3.Rows[0][0].ToString());
+            DataTable table4 = td.getHomIdByStuIdAndNotId(table1.Rows[0][0].ToString(), table3.Rows[0][0].ToString());
             string postil1 = table4.Rows[0][0].ToString();
             //根据学生id和noteid查到homeworkid
             DataTable table5 = td.getPostilByHomId(Convert.ToInt32(table4.Rows[0][0].ToString()));
@@ -395,7 +395,7 @@ namespace HAMS.Teacher.TeacherService
             //根据homId获取stuInfo(学号+“ ”+姓名）
             DataTable tbStuId = td.getStuIdByHomId(homId);
             string stuId = tbStuId.Rows[0][0].ToString();
-            DataTable tbStuInfo = td.GetStudentNameAndIdByStuID(stuId);
+            DataTable tbStuInfo = td.getStudentNameAndIdByStuID(stuId);
             string stuSpecId = tbStuInfo.Rows[0][0].ToString();
             string name = tbStuInfo.Rows[0][1].ToString();
             
@@ -447,9 +447,9 @@ namespace HAMS.Teacher.TeacherService
             return td.getTeacherId(TeacherSpecId);
         }
 
-        public DataTable LoadMainFormLeft(string teacherSpecId)
+        public DataTable loadMainFormLeft(string teacherSpecId)
         {
-            return td.LoadMainFormLeft(teacherSpecId);
+            return td.loadMainFormLeft(teacherSpecId);
         }
 
         public String getNoticeNum(string classId)
@@ -472,9 +472,9 @@ namespace HAMS.Teacher.TeacherService
             return td.getRecentNoticeByClassId(classId);
         }
 
-        public DataTable GetClassInfoByClassID(String classId)
+        public DataTable getClassInfoByClassID(String classId)
         {
-            return td.GetClassInfoByClassID(classId);
+            return td.getClassInfoByClassID(classId);
         }
 
         public DataTable getClassId(string classSpecId)
@@ -497,14 +497,14 @@ namespace HAMS.Teacher.TeacherService
             return td.getNotURLNameByNotId(notId);
         }
 
-        public DataTable SelectHomeworkCheckedInfo(String notId)
+        public DataTable selectHomeworkCheckedInfo(String notId)
         {
-            return td.SelectHomeworkCheckedInfo(notId);
+            return td.selectHomeworkCheckedInfo(notId);
         }
 
-        public DataTable GetStudentNameAndIdByStuID(String stuId)
+        public DataTable getStudentNameAndIdByStuID(String stuId)
         {
-            return td.GetStudentNameAndIdByStuID(stuId);
+            return td.getStudentNameAndIdByStuID(stuId);
         }
 
         public String getNotDespByClassIdAndNotTitle(String classId, String notTitle)

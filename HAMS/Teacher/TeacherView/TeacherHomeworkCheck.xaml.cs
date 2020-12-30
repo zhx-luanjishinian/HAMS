@@ -97,7 +97,7 @@ namespace HAMS.Teacher.TeacherView
             //根据homId获得要下载文件在服务器上的路径
             string[] homURLInfos;
 
-            homURLInfos = ts.GetHomURLAndNameByHomId(homId);
+            homURLInfos = ts.getHomURLAndNameByHomId(homId);
             homURL = homURLInfos[0];//路径为课堂号/作业标题/学生信息文件夹
             homName = homURLInfos[1];//获取学生文件名，然后进行显示
 

@@ -46,7 +46,7 @@ namespace HAMS.Teacher.TeacherDao
             DataTable table = DataUtil.DataOperation.dataQuery(sql, parameter);       
             return table;
         }
-        public DataTable GetSubmitTime(string notId)
+        public DataTable getSubmitTime(string notId)
         {
             //sql语句
             String sql = "select submitTime from notice where notId=@id";   //根据noticeId查找truDeadline

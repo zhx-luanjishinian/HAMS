@@ -37,7 +37,7 @@ namespace HAMS.Admin.AdminView
             txtClassNum.Text = cnum;
             txtClassName.Text = cna;
             txtTeaNum.Text = id;
-            DataTable table = ad.ShowTeacherId(id);
+            DataTable table = ad.showTeacherId(id);
             this.dr = int.Parse(table.Rows[0][0].ToString());
         }
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)

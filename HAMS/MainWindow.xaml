@@ -133,7 +133,7 @@
                     </Button>
                 </Grid>
             </Grid>
-            <Image x:Name="logo_png" Source="logo.png" Stretch="Fill" HorizontalAlignment="Left" Height="57.309" VerticalAlignment="Top" Width="64.542" Margin="39.344,97.849,0,0"/>
+            <Image x:Name="logo_png" Source="Resources/logo.png" Stretch="Fill" HorizontalAlignment="Left" Height="57.309" VerticalAlignment="Top" Width="64.542" Margin="39.344,97.849,0,0"/>
 
 
         </Grid>

@@ -149,7 +149,7 @@ namespace HAMS.Student.StudentView
             //System.Windows.MessageBox.Show(localpath);
             //System.Windows.MessageBox.Show(classId);
             //该方法实现向homework表中修改一条作业记录，且返回具体的信息提示用户
-            string message = ss.SubmitHomework(name,classId, account, postil, homUrlName, notId, localpath);
+            string message = ss.submitHomework(name,classId, account, postil, homUrlName, notId, localpath);
             System.Windows.MessageBox.Show(message);
             }
             //System.Windows.MessageBox.Show("提交成功！");//只要一个提示就OK，所以就注释了一个

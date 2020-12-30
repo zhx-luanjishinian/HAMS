@@ -12,7 +12,7 @@ namespace HAMS.DataUtil
     {
       private  static MySqlConnection conn = DataUtil.DBUtil.getConnection();
         //定义静态数据查询函数,此处可能不止有一个参数,params声明的是未知长度的数组
-        public static DataTable DataQuery(string sql, params MySqlParameter[] paras)
+        public static DataTable dataQuery(string sql, params MySqlParameter[] paras)
         {
             try {
             
@@ -32,7 +32,7 @@ namespace HAMS.DataUtil
 
         }
         //静态数据增加函数
-        public static bool DataAdd(string sql, params MySqlParameter[] paras)
+        public static bool dataAdd(string sql, params MySqlParameter[] paras)
         {
             try
             {
@@ -53,7 +53,7 @@ namespace HAMS.DataUtil
             }
         }
         //静态数据更新函数
-        public static bool DataUpdate(string sql,params MySqlParameter[]paras)
+        public static bool dataUpdate(string sql,params MySqlParameter[]paras)
         {
             try { 
            
@@ -75,7 +75,7 @@ namespace HAMS.DataUtil
 
         }
         //静态数据删除函数
-        public static bool DataDelete(string sql ,params MySqlParameter[] paras)
+        public static bool dataDelete(string sql ,params MySqlParameter[] paras)
         {
             try
             {

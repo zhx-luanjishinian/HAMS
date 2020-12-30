@@ -42,7 +42,7 @@
                 <TextBlock x:Name="tbTeacherSpecId" Height="20" Canvas.Left="61" Canvas.Top="19" Width="38.934" TextAlignment="Center" FontSize="14" Text="Z001 "/>
                 <TextBlock x:Name="tbTeacherName" Height="19" Canvas.Left="113" Canvas.Top="19" Width="86" FontSize="14" Text="刘树栋"/>
                 <Image x:Name="headImage" Source="../../Resources/男教师.png" Height="37" VerticalAlignment="Top" Width="41"  RenderTransformOrigin="1.894,0.568" Canvas.Left="15" Canvas.Top="10"/>
-                <Image x:Name="image" Height="50" Canvas.Left="701.4" Width="43.8" Source="/HAMS;component/logo.png" Stretch="Fill"/>
+                <Image x:Name="image" Height="50" Canvas.Left="701.4" Width="43.8" Source="../../Resources/logo.png" Stretch="Fill"/>
                 <Button x:Name="btnExit" Background="{x:Null}" RenderTransformOrigin="0.622,0.945" Height="50" Foreground="#FF151111" BorderBrush="{x:Null}" Click="btnExit_Click" Canvas.Left="766" Canvas.Top="1" Width="64" d:LayoutOverrides="HorizontalAlignment">
                     <StackPanel>
                         <Image x:Name="exit1" Width="28" Height="23.907" Source="/HAMS;component/Resources/resizeApi.png"/>

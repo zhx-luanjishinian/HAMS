@@ -23,19 +23,19 @@ namespace HAMS.Admin.AdminView
     /// </summary>
     public partial class NoticeManagement : Page
     {
-        public String Id{ set; get; }
+        public String id{ set; get; }
         public String als { set; get; }
         private AService s = new AService();
         private ADao ad = new ADao();
         public NoticeManagement(string adminId)
         {
-            this.Id = adminId;
+            this.id = adminId;
             InitializeComponent();
-            MainShow();
+            mainShow();
         }
-        public void MainShow()
+        public void mainShow()
         {  
-            List<List<String>> result = s.showNoticeInfo(Id);
+            List<List<String>> result = s.showNoticeInfo(id);
             for (int i = 0; i < result.Count; i++)
             {
                 SysNoticeInfo hni = new SysNoticeInfo();
@@ -88,7 +88,7 @@ namespace HAMS.Admin.AdminView
 
         private void BtnAddNotice_Click(object sender, RoutedEventArgs e)
         {
-            Notice sdh = new Notice(Id);
+            Notice sdh = new Notice(id);
             sdh.Show();
             this.Visibility = Visibility.Hidden;
         }
@@ -96,7 +96,7 @@ namespace HAMS.Admin.AdminView
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             listviewNotice.Items.Clear();
-            MainShow();
+            mainShow();
         }
     }
 

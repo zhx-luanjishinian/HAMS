@@ -91,13 +91,13 @@ namespace HAMS.Teacher.TeacherView
             }
 
             //根据homId获取该学生的作业备注并显示在控件上
-            lbHomPostil.Content = ts.GetPostilByHomId(homId);
+            lbHomPostil.Content = ts.getPostilByHomId(homId);
 
             //对下载附件按钮进行初始化：能够实现鼠标放上去之后学生附件的名称，将该按钮和服务器上的某个路径建立关系（这里应该得到数据库中存储的文件路
             //根据homId获得要下载文件在服务器上的路径
             string[] homURLInfos;
 
-            homURLInfos = ts.GetHomURLAndNameByHomId(homId);
+            homURLInfos = ts.getHomURLAndNameByHomId(homId);
             homURL = homURLInfos[0];//路径为课堂号/作业标题/学生信息文件夹
             homName = homURLInfos[1];//获取学生文件名，然后进行显示
 
@@ -117,7 +117,7 @@ namespace HAMS.Teacher.TeacherView
             if (IfCorrect == true)//如果已经批改，则有成绩并且直接在原来的基础上编辑评语
             {
                 string[] Scoreinfos;
-                Scoreinfos = ts.GetScoreAndRemarkByHomId(homId);
+                Scoreinfos = ts.getScoreAndRemarkByHomId(homId);
                 if ((string)rBtnA.Content == Scoreinfos[0])
                 {
                     rBtnA.IsChecked = true;
@@ -180,7 +180,7 @@ namespace HAMS.Teacher.TeacherView
                 string localpath = sfd.FileName;// System.IO.Path.GetFullPath(sfd.FileName);
                                                 //调用下载文件函数，将学生作业从服务器上下载下来，其中localpath是本地路径,homURL是数据库中存放的文件路径（文件在服务器上的路径）
                 string homFullURL = homURL + "/" + homName;
-                bool flag = FtpUpDown.Download(localpath, homFullURL, out errorinfo);
+                bool flag = FtpUpDown.download(localpath, homFullURL, out errorinfo);
                 
                 if (flag == true)
                     System.Windows.MessageBox.Show("下载成功");
@@ -231,7 +231,7 @@ namespace HAMS.Teacher.TeacherView
             }
            
 
-            bool flag = ts.CorrectHomework(homId,score,remark);
+            bool flag = ts.correctHomework(homId,score,remark);
             if (flag)
             {
                 System.Windows.MessageBox.Show("作业批改成功:)");

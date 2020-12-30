@@ -17,7 +17,7 @@
                 <Image x:Name="headImage" Source="/Resources/bk_create.jpg"  Grid.Column="1" HorizontalAlignment="Left" Height="37" VerticalAlignment="Top" Width="40"  Canvas.Left="21" RenderTransformOrigin="1.894,0.568" Canvas.Top="21"/>
                 <TextBlock x:Name="tbuserNameAc" Text="201821060569刘小蕊" Canvas.Left="75" Canvas.Top="33" RenderTransformOrigin="1.087,0.535" FontWeight="Bold"/>
                 <!--<Image x:Name="imgSystemPicture" Height="64" Width="198" Source="/Resources/management.jpg" Stretch="UniformToFill" Canvas.Left="517"/>-->
-                <Image x:Name="imgSystemLogo" Height="70" Width="51" Source="/HAMS;component/logo.png" Stretch="UniformToFill" Canvas.Left="625"/>
+                <Image x:Name="imgSystemLogo" Height="70" Width="51" Source="../../Resources/logo.png" Stretch="UniformToFill" Canvas.Left="625"/>
 
                 <Button x:Name="btnExit" Background="LightBlue"  Canvas.Left="724" Canvas.Top="4" Width="91" RenderTransformOrigin="0.622,0.945" Height="56" Foreground="#FF151111" BorderBrush="LightBlue" Click="btnExit_Click">
                     <StackPanel>

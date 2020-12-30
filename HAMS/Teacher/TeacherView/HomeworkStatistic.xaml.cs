@@ -81,13 +81,11 @@ namespace HAMS.Teacher.TeacherView
 
             //创建一个标题的对象
             Title title = new Title();
-
             //设置标题的名称
             title.Text = "成绩等级统计柱状图";
             title.Padding = new Thickness(0, 10, 5, 0);
             //向图标添加标题
             chart.Titles.Add(title);
-
             Axis yAxis = new Axis();
             //设置图标中Y轴的最小值永远为0           
             yAxis.AxisMinimum = 0;

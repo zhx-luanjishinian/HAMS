@@ -28,7 +28,7 @@ namespace HAMS.Admin.AdminView
         public String snum { get; set; }
         public String sna { get; set; }
         public String sex { get; set; }
-        public String stuclass { get; set; }
+        public String stuClass { get; set; }
         public String pwd { get; set; }
         private ADao ad = new ADao();
         public ReviseStudent(String snum,String sna,String sex,String stuclass, String pwd,StudentManagement s)
@@ -38,7 +38,7 @@ namespace HAMS.Admin.AdminView
             this.snum = snum;
             this.sna = sna;
             this.sex = sex;
-            this.stuclass = stuclass;
+            this.stuClass = stuclass;
             this.pwd = pwd;
             this.
             txtStuNum.Text = snum;

@@ -83,6 +83,7 @@ namespace HAMS.Student.StudentView
                     //默认减1获得当前设置的值
                     amf.comboBoxDegree1.SelectedIndex = int.Parse(result[0][i][5]) - 1;
                 }
+                //amf.MouseDoubleClick += new MouseButtonEventHandler(mouseColorChanged);
                 amf.textBlockHomeworkOrder1.Text = (i+1).ToString();
                 amf.textBlockHomeworkName1.Text = result[0][i][2];
                 amf.textBlockClassName1.Text = result[0][i][0];             
@@ -160,6 +161,8 @@ namespace HAMS.Student.StudentView
 
 
         }
+        //进行鼠标点击事件的处理
+        
         //处理每一个控件的选择部分
         private void defcomplexity(object sender,SelectionChangedEventArgs e)
         {

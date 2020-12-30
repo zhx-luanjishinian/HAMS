@@ -31,12 +31,12 @@
                 <Label x:Name="label2" Content="未完成数：" Height="23.667" Canvas.Left="6.332" Width="68.001" Canvas.Top="1.333"/>
                 <TextBlock x:Name="textBlockUnfinishedNumber"  Height="17.667" Canvas.Left="83.666" Width="15.334" Canvas.Top="4.333" RenderTransformOrigin="0.621,0.534"/>
                 <Label x:Name="label3" Content="预警数：" Height="23.667" Canvas.Left="112.998" Width="57.334" Canvas.Top="1.333"/>
-                <TextBox x:Name="textBlockAlertNumber"  Height="22" Canvas.Left="170" Width="18" Canvas.Top="4" RenderTransformOrigin="0.621,0.534" TextChanged="TextBlockAlertNumber_TextChanged"/>
-                <Label x:Name="label4" Content="排序：" Height="24" Canvas.Left="538" Width="39" Canvas.Top="3"/>
-                <ComboBox x:Name="comBoxByTime" Text="按时间" Height="24" Canvas.Left="628" Width="71" Canvas.Top="3" SelectionChanged="ComBoxByTime_SelectionChanged"/>
-                <ComboBox x:Name="comBoxByDegree" Text="按难易" Height="23" Canvas.Left="747" Width="70" Canvas.Top="3" SelectionChanged="ComBoxByDegree_SelectionChanged"/>
-                <Label Content="时间" Canvas.Left="584" Canvas.Top="3" Width="44"/>
-                <Label Content="难易" Canvas.Left="706" Width="44" Canvas.Top="2"/>
+                <TextBox x:Name="textBlockAlertNumber"  Height="21" Canvas.Left="170" Width="18" Canvas.Top="4" RenderTransformOrigin="0.621,0.534" TextChanged="TextBlockAlertNumber_TextChanged"/>
+                <Label x:Name="label4" Content="排序：" Height="24" Canvas.Left="513" Width="39" Canvas.Top="4"/>
+                <ComboBox x:Name="comBoxByTime" Text="按时间" Height="27" Canvas.Left="601" Width="93" SelectionChanged="ComBoxByTime_SelectionChanged"/>
+                <Label Content="时间" Canvas.Left="557" Canvas.Top="3" Width="44"/>
+                <Label Content="难易" Canvas.Left="700" Width="44" Canvas.Top="2"/>
+                <ComboBox x:Name="comBoxByDegree" Text="按时间" Height="27" Canvas.Left="733" Width="93" SelectionChanged="ComBoxByDegree_SelectionChanged" Canvas.Top="-2"/>
 
             </Canvas>
             <Canvas Height="29" Background="LightBlue"  Margin="0,149,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="838">

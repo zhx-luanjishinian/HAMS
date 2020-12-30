@@ -115,7 +115,7 @@
                     <TextBlock.Background>
                         <ImageBrush/>
                     </TextBlock.Background></TextBlock>
-                <Image x:Name="imgSystemLogo" Width="47.831" Source="/HAMS;component/logo.png" Stretch="Fill" HorizontalAlignment="Right" Margin="0,0,82.707,1.235"/>
+                <Image x:Name="imgSystemLogo" Width="47.831" Source="../../Resources/logo.png" Stretch="Fill" HorizontalAlignment="Right" Margin="0,0,82.707,1.235"/>
                 <Image x:Name="headImage" Source="../../Resources/男教师.png" HorizontalAlignment="Left" Height="37" VerticalAlignment="Top" Width="41"  RenderTransformOrigin="1.894,0.568" Margin="10,7.656,0,0"/>
                 <Button x:Name="btnExit" Background="{x:Null}" RenderTransformOrigin="0.622,0.945" Height="Auto" Foreground="#FF151111" BorderBrush="{x:Null}" Click="btnExit_Click" Margin="776,1.411,0,-1.411">
                     <StackPanel>
@@ -174,7 +174,7 @@
                 <TextBox x:Name="tbStuNameSearch" TextWrapping="Wrap" Margin="0,5.501,60,-3.373" Text="请输入学生的完整姓名。" GotFocus="tbSearch_GotFocus" BorderThickness="1"/>
                 <Button x:Name="btnRefresh" HorizontalAlignment="Left" Margin="792.563,0,0,0" Width="36.437" BorderBrush="{x:Null}" Click="btnRefresh_Click" Height="29" Foreground="{x:Null}" VerticalAlignment="Bottom">
                     <Button.Background>
-                        <ImageBrush ImageSource="刷新.png"/>
+                        <ImageBrush ImageSource="../../Resources/刷新.png"/>
                     </Button.Background>
                 </Button>
                 <Button x:Name="btnSearch1" Width="33" HorizontalAlignment="Right" Margin="0,0,68.061,-1" Height="30" VerticalAlignment="Bottom" BorderThickness="0" Click="btnSearch_Click">

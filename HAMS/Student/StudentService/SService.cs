@@ -22,7 +22,7 @@ namespace HAMS.Student.StudentService
             {
                 return BaseResult.errorMsg("账号或者密码为空");
             }
-            DataTable table = sd.Login(account, pw);
+            DataTable table = sd.login(account, pw);
             //table[0][0]表示第0个从数据库查出来数据的第0条信息-》stuSpecId
             //table[0][1]->name
             //table[0][1]表示第0个从数据库查出来数据的第1条信息-》password
@@ -43,12 +43,12 @@ namespace HAMS.Student.StudentService
         //获得主界面的课程信息
         public Dictionary<int, List<String>> showCourseInfo(String account)
         {
-            return sd.showCourseInfo(account);
+            return sd.showCourseInfo(account);//调用dao层函数获取，返回字典类型
         }
         //获得主界面的作业信息
         public List<List<String>> showHomeNoticeInfo(String account)
         {
-            return sd.showHomeNoticeInfo(account);
+            return sd.showHomeNoticeInfo(account);//调用dao层函数获取，返回列表类型
         }
         //获取作业主界面每门课程所有的作业信息
         public Dictionary<int, List<String>> showAllHomeworkInfo(String classSpecId)
@@ -280,7 +280,7 @@ namespace HAMS.Student.StudentService
             return results;
         }
         //学生提交作业时需要调用该函数对作业表中的字段进行修改
-        public String SubmitHomework(string name, string classId, string account, string postil, string homUrlName, string notId, string localpath)
+        public String submitHomework(string name, string classId, string account, string postil, string homUrlName, string notId, string localpath)
         {
             //可以直接从前端界面取值，就不需要查库了
             //通过账号来获取到姓名
@@ -289,7 +289,7 @@ namespace HAMS.Student.StudentService
             //System.Windows.MessageBox.Show(name);
 
             //通过作业公告Id获取作业公告名
-            DataTable sdNotName = sd.GetNotName(notId);
+            DataTable sdNotName = sd.getNotName(notId);
             string notName = sdNotName.Rows[0][0].ToString();
 
 
@@ -299,7 +299,7 @@ namespace HAMS.Student.StudentService
             //学生提交作业的时间
             DateTime submitTime = DateTime.Now;
             //查询该真实的学号在数据库中课堂表对应自增主键stuId
-            DataTable sdStuId = sd.GetStuIdByAccount(account);
+            DataTable sdStuId = sd.getStuIdByAccount(account);
             
             int result;
             if (!int.TryParse(sdStuId.Rows[0][0].ToString(), out result))//table[0][0]就是查到的stuId
@@ -311,7 +311,7 @@ namespace HAMS.Student.StudentService
             string errorinfo;
 
             //根据stuId和notId获取homework表中该作业的作业名，判断是否交过作业
-            DataTable sdHomName = sd.GetHomeUrlNameByStuIdAndNotId(stuId, notId);
+            DataTable sdHomName = sd.getHomeUrlNameByStuIdAndNotId(stuId, notId);
 
             String homName = sdHomName.Rows[0][0].ToString();//获得该作业的作业名
             //作业名为空，表示是第一次交作业，需要创建目录并添加文件到服务器
@@ -319,7 +319,7 @@ namespace HAMS.Student.StudentService
             {
                 string dirNameAc = account + name;//课堂真实号/作业公告标题/学生学号+姓名
                 string orginPath = classId + "/" + notName;//原始目录或起始目录，即在哪个目录下创建
-                flag = FtpUpDown.MakeDir(dirNameAc, out errorinfo, orginPath);//创建目录的静态方法，可以直接通过类名访问
+                flag = FtpUpDown.makeDir(dirNameAc, out errorinfo, orginPath);//创建目录的静态方法，可以直接通过类名访问
                 //创建作业目录 
                 if (flag == false)
                 {
@@ -329,7 +329,7 @@ namespace HAMS.Student.StudentService
                 string dirFullNotFile = orginPath + "/" + dirNameAc;
                 if (localpath != "")
                 {
-                    flag = FtpUpDown.Upload(localpath, dirFullNotFile);
+                    flag = FtpUpDown.upload(localpath, dirFullNotFile);
                     if (!flag)
                     {
                         return "在文件服务器中指定目录上传作业失败";
@@ -344,7 +344,7 @@ namespace HAMS.Student.StudentService
                 string dirFullNotFile = orginPath + "/" + dirNameAc;
                 if (localpath != "")
                 {
-                    DataTable normalName = sd.GetHomeUrlNameByStuIdAndNotId(stuId, notId);  //寻找到当前文件服务器和数据库中存储的作业文件名
+                    DataTable normalName = sd.getHomeUrlNameByStuIdAndNotId(stuId, notId);  //寻找到当前文件服务器和数据库中存储的作业文件名
                     string Name = normalName.Rows[0][0].ToString(); 
                     string fileFullPath = dirFullNotFile + "/" + Name;  //寻找到在文件服务器中当前作业的路径
                     flag =  FtpUpDown.delFile(fileFullPath, out errorinfo);  //将文件服务器中已有的作业删除
@@ -352,7 +352,7 @@ namespace HAMS.Student.StudentService
                     {
                         return "修改时，源文件删除失败，请重试";  //表示修改失败
                     }
-                    flag = FtpUpDown.Upload(localpath, dirFullNotFile);  //删除原文件之后，将新的文件添加到文件服务器中
+                    flag = FtpUpDown.upload(localpath, dirFullNotFile);  //删除原文件之后，将新的文件添加到文件服务器中
                     if (!flag)
                     {
                         return "在文件服务器中指定目录修改作业失败";
@@ -362,7 +362,7 @@ namespace HAMS.Student.StudentService
             string homUrl = classId + "/" + notName + "/" + account + name;
             //进行数据库中表的更新
             //调用函数，更新数据库homework表
-            flag = sd.UpdateHomework(submitTime, notId, stuId, postil, homUrl, homUrlName);
+            flag = sd.updateHomework(submitTime, notId, stuId, postil, homUrl, homUrlName);
             if (!flag)
             {
                 return "无法将更新homework表";
@@ -372,7 +372,7 @@ namespace HAMS.Student.StudentService
 
         public string downloadLink(string notId)
         {
-            DataTable sdNotName = sd.GetNotName(notId);
+            DataTable sdNotName = sd.getNotName(notId);
             string notName = sdNotName.Rows[0][0].ToString();
             return notName;
         }
@@ -392,7 +392,7 @@ namespace HAMS.Student.StudentService
         public List<String> showHomeworkInfo(String account, String notId)
         {
             List<String> result = new List<string>();
-            DataTable stuIdTable = sd.GetStuIdByAccount(account);
+            DataTable stuIdTable = sd.getStuIdByAccount(account);
             string stuId = stuIdTable.Rows[0][0].ToString();
             DataTable homInfo = sd.getScoreByNotIdStuId(stuId, notId);
             result.Add(homInfo.Rows[0][0].ToString());//将成绩加入列表中

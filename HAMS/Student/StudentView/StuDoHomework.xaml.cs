@@ -284,7 +284,7 @@ namespace HAMS.Student.StudentView
                 string localpath = sfd.FileName;// System.IO.Path.GetFullPath(sfd.FileName);
                                                 //调用下载文件函数，将教师作业公告附件从服务器上下载下来，其中localpath是本地路径,NotURL是数据库中存放的文件路径（文件在服务器上的路径）
                 string NotURL = classId + "/" +notTitle +"/作业附件/"+ tbAccessoryName.Content.ToString();
-                bool flag = FtpUpDown.Download(localpath, NotURL, out errorinfo);
+                bool flag = FtpUpDown.download(localpath, NotURL, out errorinfo);
 
                 if (flag == true)
                     System.Windows.MessageBox.Show("下载成功");

@@ -157,7 +157,7 @@
                     <Label x:Name="labelBefore" Content="上一个" Margin="24.868,-1,0,0" VerticalAlignment="Top" FontSize="9" Foreground="#FF074B5C" FontWeight="Bold" Grid.RowSpan="2"/>
                     <Button x:Name="btnBefore" Content="" HorizontalAlignment="Right" Margin="-4,-1,36.6,0" Width="20" Foreground="{x:Null}" BorderThickness="0" Click="btnBefore_Click" BorderBrush="#FFEADFDF" Height="20" VerticalAlignment="Top" Grid.RowSpan="2">
                         <Button.Background>
-                            <ImageBrush ImageSource="上一个.png"/>
+                            <ImageBrush ImageSource="../../Resources/上一个.png"/>
                         </Button.Background>
 
                     </Button>
@@ -166,7 +166,7 @@
                     <Label x:Name="labelNext" Content="下一个" Margin="4.4,-0.76,0,0" VerticalAlignment="Top" FontSize="9" Foreground="#FF074B5C" FontWeight="Bold" HorizontalAlignment="Left"/>
                     <Button x:Name="btnNext" Content="" Margin="39.4,-1.37,0,0.33" Foreground="{x:Null}" BorderThickness="0" Click="btnNext_Click" Height="20.04" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="19">
                         <Button.Background>
-                            <ImageBrush ImageSource="下一个.png"/>
+                            <ImageBrush ImageSource="../../Resources/下一个.png"/>
                         </Button.Background>
 
                     </Button>
@@ -211,7 +211,7 @@
                 </Grid>
             </Border>
             <Canvas Height="55.344" Background="LightBlue" VerticalAlignment="Top" HorizontalAlignment="Left" Width="840.4" Margin="0,0,-0.4,0">
-                <Image x:Name="image1" Height="52.781" Canvas.Left="701.4" Width="47.025" Source="/HAMS;component/logo.png" Stretch="Fill"/>
+                <Image x:Name="image1" Height="52.781" Canvas.Left="701.4" Width="47.025" Source="../../Resources/logo.png" Stretch="Fill"/>
                 <TextBlock x:Name="tbTeacherName" Width="112" Height="19" Canvas.Left="119" Canvas.Top="19" Text="刘树栋" RenderTransformOrigin="0.5,0.5" FontSize="14">
                     <TextBlock.RenderTransform>
                         <TransformGroup>

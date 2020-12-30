@@ -208,7 +208,7 @@ namespace HAMS.Teacher.TeacherView
                 //String notURL = 课堂真实号/作业公告名/作业附件/文件名
                 //String notURL = classSpecId + "/" + notTitle + "/" + "作业附件" + fileName;
                 //该方法实现修改notice表中原有的一条作业公告，且返回具体的信息提示用户
-                string message = ts.ModifyNotice(truDeadline, content, notTitle, classSpecId, tbTeacherSpecId.Text, localpath, notURLName);
+                string message = ts.modifyNotice(truDeadline, content, notTitle, classSpecId, tbTeacherSpecId.Text, localpath, notURLName);
                 System.Windows.MessageBox.Show(message);
 
             }
@@ -233,7 +233,7 @@ namespace HAMS.Teacher.TeacherView
                 //String notURL = 课堂真实号/作业公告名/作业附件/文件名
                 //String notURL = classSpecId + "/" + notTitle + "/" + "作业附件" + fileName;
                 //该方法实现向notice表中新增一条作业公告，且返回具体的信息提示用户
-                string message = ts.AnnounceNotice(truDeadline, content, notTitle, classSpecId, tbTeacherSpecId.Text, localpath, notURLName);
+                string message = ts.announceNotice(truDeadline, content, notTitle, classSpecId, tbTeacherSpecId.Text, localpath, notURLName);
                 System.Windows.MessageBox.Show(message);
             }
         }

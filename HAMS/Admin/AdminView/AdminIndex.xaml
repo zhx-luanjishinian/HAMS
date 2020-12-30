@@ -24,7 +24,7 @@
                     </Border.Background>
                 </Border>
                 <TextBlock x:Name="userName" Text="管理员" Canvas.Left="75.021" Canvas.Top="28.689" RenderTransformOrigin="1.087,0.535" FontWeight="Bold"/>
-                <Button x:Name="btnExit" Background="#FF6DCAE2"  Canvas.Left="729" Canvas.Top="10" Width="82" RenderTransformOrigin="0.622,0.945" Height="51" Foreground="#FF151111" BorderBrush="{x:Null}" Click="BtnExit_Click">
+                <Button x:Name="btnExit" Background="#FF6DCAE2"  Canvas.Left="679" Canvas.Top="9" Width="82" RenderTransformOrigin="0.622,0.945" Height="51" Foreground="#FF151111" BorderBrush="{x:Null}" Click="BtnExit_Click">
                     <StackPanel>
                         <Image x:Name="exit1" Width="28" Height="23.907" Source="/HAMS;component/Resources/resizeApi.png"/>
                         <TextBlock x:Name="exit2" VerticalAlignment="Center" RenderTransformOrigin="0.47,1.481" FontWeight="SemiBold">
@@ -45,7 +45,7 @@
             <ContentControl Name="content" HorizontalAlignment="Left" Margin="133,71,0,0" VerticalAlignment="Top" Width="697" Height="374">
                 <TextBlock x:Name="textwel"  Text="管理员界面欢迎您" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
             </ContentControl>
-            <Image x:Name="imgSystemLogo" Source="/HAMS;component/Resources/logo.png" Stretch="UniformToFill" Margin="651,6,132.8,374" RenderTransformOrigin="1.839,0.521"/>
+            <Image x:Name="imgSystemLogo" Source="/HAMS;component/Resources/logo.png" Stretch="UniformToFill" Margin="601,1,182.8,379" RenderTransformOrigin="1.839,0.521"/>
         </Grid>
     </Viewbox>
 </Window>

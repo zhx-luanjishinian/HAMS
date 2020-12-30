@@ -103,7 +103,8 @@ namespace HAMS.Student.StudentView
                 // 创建一个数据点的实例。                   
                 dataPoint = new DataPoint();
                 //当学生提交了作业时就进行标记
-                if(info[3]!=""&&info[4].Substring(0,10)==valueX[i])
+                
+                if(info[3]!=""&&info[1].Substring(0,10)==valueX[i])
                 {
                     MessageBox.Show("你已经提交过作业了");
                     // Label lb = new Label();

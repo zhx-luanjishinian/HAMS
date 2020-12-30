@@ -151,7 +151,7 @@
                 <TextBlock x:Name="tbTeacherInfo" Height="20" Canvas.Left="56" Canvas.Top="14.428" Width="38.934" TextAlignment="Center" FontSize="14" Text="Z001 "/>
                 <TextBlock x:Name="tbTeacherInfo1" Height="20" Canvas.Left="114" Canvas.Top="14" Width="86" FontSize="14" Text="刘树栋"/>
                 <Image x:Name="headImage" Source="../../Resources/男教师.png" Height="37" VerticalAlignment="Top" Width="41"  RenderTransformOrigin="1.894,0.568" Canvas.Left="10" Canvas.Top="3"/>
-                <Image x:Name="image" Height="57.428" Canvas.Left="683" Width="50.412" Source="/HAMS;component/logo.png" Stretch="Fill"/>
+                <Image x:Name="image" Height="57.428" Canvas.Left="683" Width="50.412" Source="../../Resources/logo.png" Stretch="Fill"/>
             </Canvas>
             <Button x:Name="btnExit" RenderTransformOrigin="0.622,0.945" Height="47.028" Foreground="#FF151111" BorderBrush="{x:Null}" Click="btnExit_Click" Margin="759.805,4.901,10,0" VerticalAlignment="Top" Background="LightBlue">
                 <StackPanel>

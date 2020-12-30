@@ -30,11 +30,9 @@
                     <Label x:Name="description" Content="作业描述" Height="28" Canvas.Left="10" Width="60.2" Canvas.Top="4"/>
                     <TextBox x:Name="textBoxContent" Height="320.893" Canvas.Left="92.105" TextWrapping="Wrap" Width="401.056" GotFocus="textBoxContent_GotFocus" Canvas.Top="4" BorderThickness="1" ToolTip="请输入具体作业要求" />
                 </Canvas>
-                <Canvas Height="334.893" Canvas.Top="86.193" Width="493.501" Canvas.Left="528.899">
+                <Canvas Height="350.028" Canvas.Top="86.193" Width="493.501" Canvas.Left="528.899">
                     <Label x:Name="deadLine" Content="截止时间" Height="28" Canvas.Left="20" Width="63" Canvas.Top="10"/>
-                    <Border Height="329.019" Canvas.Left="152.29" Width="322.646" BorderThickness="1" Background="#FFDDDDDD" >
-                        <Calendar x:Name="calTruDeadline" BorderThickness="1,1,1,2" RenderTransformOrigin="0.497,0.417" Background="White" Margin="0,-1,2.22,0" HorizontalAlignment="Right" Width="314.596" Height="328.019" VerticalAlignment="Bottom" ToolTip="如果没有设置截止时间，默认两天后"/>
-                    </Border>
+                    <Calendar x:Name="calTruDeadline" BorderThickness="1,1,1,2" RenderTransformOrigin="0.497,0.417" Background="White" HorizontalAlignment="Right" Width="279" Height="348" VerticalAlignment="Bottom" ToolTip="如果没有设置截止时间，默认两天后" Canvas.Left="175"/>
                 </Canvas>
                 <Canvas Height="32.425" Canvas.Top="10" Width="503.161" Canvas.Left="519.239">
                     <Label x:Name="attachment" Content="上传附件（可选）" Height="27" Canvas.Left="22" Canvas.Top="6" Width="112"/>
@@ -60,7 +58,7 @@
                     </StackPanel>
                 </Button>
             </Canvas>
-            <Button x:Name="btnAnnounce" Content="发布" Height="26" Click="btnAnnounce_Click" BorderBrush="LightBlue" Background="LightBlue" Margin="522,0,420,33" VerticalAlignment="Bottom">
+            <Button x:Name="btnAnnounce" Content="发布" Height="26" Click="btnAnnounce_Click" BorderBrush="LightBlue" Background="LightBlue" Margin="499.986,0,442.014,28.872" VerticalAlignment="Bottom" d:LayoutOverrides="HorizontalAlignment">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="3"/>

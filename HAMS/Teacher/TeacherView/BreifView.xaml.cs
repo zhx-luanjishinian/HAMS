@@ -115,7 +115,7 @@ namespace HAMS.Teacher.TeacherView
                 int stuNum = int.Parse(ts.getStuNum(tableClassId.Rows[0][0].ToString()));
                 if(stuNum==0)
                 {
-                    bool flag0 =ts.deleteNotice(tableNotId.Rows[0][0].ToString());
+                    bool flag0 =ts.deleteNotice(tableNotId.Rows[0][0].ToString());   //学生人数为0，可以直接删除
                     if(flag0 ==true)
                     {
                         System.Windows.MessageBox.Show("删除成功");

@@ -79,7 +79,7 @@ namespace HAMS.Teacher.TeacherView
                     //saq.textBoxQuestion.TextChanged += new TextChangedEventHandler();
                     //然后判断老师的评语是否为空，不为空就放置老师的评语
                     //不为空就加载老师的评语
-                    saq.teacherResponse.Visibility = Visibility.Visible;
+                    //saq.teacherResponse.Visibility = Visibility.Visible;
                     
                     saq.tbResponse.Text = result[i][1];
                     saq.tbResponse.IsReadOnly = true;
@@ -195,6 +195,7 @@ namespace HAMS.Teacher.TeacherView
             saq.btnComment.Visibility = Visibility.Hidden;
             saq.btnInsert.Click += new RoutedEventHandler(btnInsert_Click);
             //刚开始展示的时候赋值为空
+            saq.tbResponse.Visibility = Visibility.Hidden;
             saq.textBoxQuestion.Text = "";
             ivi.Content = saq;
             listViewQuestionAndAnswer.Items.Add(ivi);

@@ -30,6 +30,7 @@ namespace HAMS.Student.StudentView
         private SService ss = new SService();
        
 
+        //构造函数，界面初始化
         public StuHomeworkRank(String account,String name,String notId,String classSpecId,string pgfile)
         {
             InitializeComponent();
@@ -55,6 +56,8 @@ namespace HAMS.Student.StudentView
 
             //initPie();//不知道为什么无法显示
         }
+
+
         //绘制提交排行榜柱状图
         public void initColumn()
         {
@@ -131,6 +134,7 @@ namespace HAMS.Student.StudentView
             //将图表添加到ca中
             ca.Children.Add(chart);
         }
+
         //绘制提交人数饼图
         public void initPie()
         {
@@ -189,6 +193,8 @@ namespace HAMS.Student.StudentView
             ca.Children.Add(chart);
         }
 
+
+        //设置按钮的背景颜色，并定义点击显示柱状图事件
         private void BtnShowChartData_Click(object sender, RoutedEventArgs e)
         {
             //设置按钮的背景颜色
@@ -198,6 +204,7 @@ namespace HAMS.Student.StudentView
             initColumn();
         }
 
+        //设置按钮的背景颜色，并定义点击显示饼图事件
         private void BtnShowNumber_Click(object sender, RoutedEventArgs e)
         {
             //设置按钮的背景颜色
@@ -208,6 +215,7 @@ namespace HAMS.Student.StudentView
             initPie();
         }
 
+        //返回上一界面
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
             if (true)//里面是验证函数
@@ -221,6 +229,7 @@ namespace HAMS.Student.StudentView
             }
         }
 
+        //返回作业管理主界面
         private void HomeworkManagement_Click(object sender, RoutedEventArgs e)
         {
             if (true)//里面是验证函数
@@ -234,6 +243,7 @@ namespace HAMS.Student.StudentView
             }
         }
 
+        //返回作业预警主界面
         private void HomeworkAlert_Click(object sender, RoutedEventArgs e)
         {
             if (true)//里面是验证函数
@@ -247,6 +257,7 @@ namespace HAMS.Student.StudentView
             }
         }
 
+        //注销按钮，退出系统
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             App.Current.Shutdown();

@@ -15,7 +15,7 @@
                     <ImageBrush Stretch="Fill" ImageSource="/HAMS;component/Resources/78.-Night-sky.jpg"/>
                 </Canvas.Background>
                 <Border BorderBrush="Black" BorderThickness="0" Height="47.946" Width="840"/>
-                <Button x:Name="btnSubmitQuestion" Content="发送答疑" Height="41" Canvas.Left="662" Width="97" Click="btnSubmitQuestion_Click" Background="#FFE5BDC3" BorderBrush="{x:Null}" Canvas.Top="4">
+                <Button x:Name="btnSubmitQuestion" Content="发送答疑" Height="41" Canvas.Left="665" Width="97" Click="btnSubmitQuestion_Click" Background="#FFE5BDC3" BorderBrush="{x:Null}" Canvas.Top="5">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="3"></Setter>

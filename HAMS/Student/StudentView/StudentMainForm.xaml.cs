@@ -51,6 +51,30 @@ namespace HAMS.Student.StudentView
         }
 
 
+        //作业公告生成调用
+        public void homeWorkShow()
+        {
+            List<List<String>> result = sts.showHomeNoticeInfo(this.account);//将该学生的全部作业公告放在list中进行存储
+            //作业公告标题、Id，每门课课堂号
+            for (int i = 0; i < result.Count; i++)
+            {
+                ListViewItem ivi = new ListViewItem();
+                //定义一个数组用来放东西
+                String[] temp = new String[2];
+                this.notId = result[i][1];//存放查到的notId
+                this.cls = result[i][2];//存放classId
+                temp[0] = result[i][1];
+                temp[1] = result[i][2];
+                HomeworkNoteInfo hni = new HomeworkNoteInfo(notId, cls);//调用动态控件的构造函数进行动态控件的加载
+                hni.btnRecntNo1.Tag = temp;
+                hni.btnRecntNo1.Click += new RoutedEventHandler(homeworkNote_Click);//按钮事件的绑定
+                hni.lab1.Content = result[i][0];//将动态控件的Lab1中的content值设为notId进行展示
+                ivi.Content = hni;//将动态控件作为listview的一个content
+                listView.Items.Add(ivi); //将动态控件放在listview里，从而实现动态加载
+            }
+        }
+
+
         //所选课程展示动态控件加载
         public void mainShow()
         {
@@ -86,30 +110,6 @@ namespace HAMS.Student.StudentView
 
         }
 
-
-        //作业公告生成调用
-        public void homeWorkShow()
-        {
-            List<List<String>> result = sts.showHomeNoticeInfo(this.account);//将该学生的全部作业公告放在list中进行存储
-            //作业公告标题、Id，每门课课堂号
-            for(int i = 0; i < result.Count; i++) {
-                ListViewItem ivi = new ListViewItem();
-                //定义一个数组用来放东西
-                String[] temp = new String[2];
-                this.notId = result[i][1];//存放查到的notId
-                this.cls = result[i][2];//存放classId
-                temp[0] = result[i][1];
-                temp[1] = result[i][2];
-                HomeworkNoteInfo hni = new HomeworkNoteInfo(notId,cls);//调用动态控件的构造函数进行动态控件的加载
-                hni.btnRecntNo1.Tag = temp;
-                hni.btnRecntNo1.Click += new RoutedEventHandler(homeworkNote_Click);//按钮事件的绑定
-                hni.lab1.Content = result[i][0];//将动态控件的Lab1中的content值设为notId进行展示
-                ivi.Content = hni;//将动态控件作为listview的一个content
-                listView.Items.Add(ivi); //将动态控件放在listview里，从而实现动态加载
-            }
-        }
-        
-
         //作业公告的按钮点击事件
         private void homeworkNote_Click(object sender , RoutedEventArgs e)
         {
@@ -124,7 +124,8 @@ namespace HAMS.Student.StudentView
             this.Visibility = Visibility.Hidden;//上一个界面的隐藏
         }
        
-        private void btnHomewordAlert_Click(object sender, RoutedEventArgs e)
+        //点击作业预警按钮跳转
+        private void btnHomeworkAlert_Click(object sender, RoutedEventArgs e)
         {
             if (true)//里面是验证函数
             {
@@ -137,17 +138,13 @@ namespace HAMS.Student.StudentView
             }
         }
 
+        //点击作业管理按钮跳转
         private void btnHomeworkMana_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-       
-
-      
-
-      
-
+        //注销按钮，退出系统
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             App.Current.Shutdown();

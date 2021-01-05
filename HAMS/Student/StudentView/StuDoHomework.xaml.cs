@@ -171,7 +171,7 @@ namespace HAMS.Student.StudentView
             }
 
         }
-        //点击作答按钮跳转到作业提交界面
+       
        
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {

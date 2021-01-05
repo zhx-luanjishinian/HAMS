@@ -29,6 +29,8 @@ namespace HAMS.Student.StudentView
         public String name { set; get; }
         private SService ss = new SService();
         DispatcherTimer disTimer = new DispatcherTimer();
+
+        //构造函数
         public AlertForm(String account,String name,String pgfile)
         {
             InitializeComponent();
@@ -161,8 +163,7 @@ namespace HAMS.Student.StudentView
 
 
         }
-        //进行鼠标点击事件的处理
-        
+
         //处理每一个控件的选择部分
         private void defcomplexity(object sender,SelectionChangedEventArgs e)
         {
@@ -176,6 +177,8 @@ namespace HAMS.Student.StudentView
                 MessageBox.Show("作业复杂度设置失败");
             }
         }
+
+        //设置下拉框中的选项
         private void initComboxRank()
         {
             String[] ranks = new string[3] {"无序", "降序", "升序" };
@@ -193,25 +196,8 @@ namespace HAMS.Student.StudentView
             StuChooseCalender scc = new StuChooseCalender(account,bt.Tag.ToString());
             scc.Show();
         }
-      
-        private void btnHomeworkMana_Click(object sender, RoutedEventArgs e)
-        {
-            if (true)//里面是验证函数
-            {
-                // 打开子窗体
-                StudentMainForm smf = new StudentMainForm(account,name,pngfile);
-                smf.pngfile = this.pngfile;
-                smf.Show();
-                // 隐藏自己(父窗体)
-                this.Visibility = System.Windows.Visibility.Hidden;
-            }
-        }
 
-        private void btnExit_Click(object sender, RoutedEventArgs e)
-        {
-            App.Current.Shutdown();
-        }
-        //当用户有进行修改时，直接读取用户的修改值插入数据库
+        //预警数量修改，当用户有进行修改时，直接读取用户的修改值插入数据库
         private void TextBlockAlertNumber_TextChanged(object sender, TextChangedEventArgs e)
         {
             if(textBlockAlertNumber.Text!= ss.setAlertNum(account)&&textBlockAlertNumber.Text!="") {
@@ -226,6 +212,7 @@ namespace HAMS.Student.StudentView
             }
         }
 
+        //按照时间排序
         private void ComBoxByTime_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (comBoxByTime.SelectedValue.ToString() == "升序")
@@ -246,6 +233,7 @@ namespace HAMS.Student.StudentView
             }
         }
 
+        //按照难易程度排序
         private void ComBoxByDegree_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (comBoxByDegree.SelectedValue.ToString() == "降序")
@@ -266,6 +254,7 @@ namespace HAMS.Student.StudentView
                 showAlertInfo(ss.showAlertFormInfo(account));
             }
         }
+
         //进行作业预警数量是否到达的预警
         public void homeNumberAlert()
         {
@@ -281,6 +270,7 @@ namespace HAMS.Student.StudentView
             }
             }
         }
+
         //设置每隔1分钟进行一次弹窗提醒
         private void funcAlert(object sender,EventArgs e)
         {
@@ -295,11 +285,29 @@ namespace HAMS.Student.StudentView
                 disTimer.Stop();
             }
         }
-        public void homeTimeAlert()
-        {
 
+
+        //跳转至作业管理主界面
+        private void btnHomeworkMana_Click(object sender, RoutedEventArgs e)
+        {
+            if (true)//里面是验证函数
+            {
+                // 打开子窗体
+                StudentMainForm smf = new StudentMainForm(account, name, pngfile);
+                smf.pngfile = this.pngfile;
+                smf.Show();
+                // 隐藏自己(父窗体)
+                this.Visibility = System.Windows.Visibility.Hidden;
+            }
         }
 
+        //注销，退出系统
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            App.Current.Shutdown();
+        }
+
+        //刷新按钮定义
         private void BtnRefresh_Click(object sender, RoutedEventArgs e)
         {
             //展示预警信息,先清空原来的东西再进行刷新

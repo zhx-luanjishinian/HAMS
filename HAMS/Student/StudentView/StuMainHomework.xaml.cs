@@ -32,6 +32,14 @@ namespace HAMS.Student.StudentView
         public String classId { set; get; }
         
         public string pngfile;
+
+        /// <summary>
+        /// 主界面的初始化
+        /// </summary>
+        /// <param name="account"></param>
+        /// <param name="name"></param>
+        /// <param name="classId"></param>
+        /// <param name="pngfile"></param>
         public StuMainHomework(String account, String name, String classId, string pngfile)//真实课堂号
         {
             InitializeComponent();
@@ -45,7 +53,6 @@ namespace HAMS.Student.StudentView
             headImage.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(System.IO.Path.Combine(System.Environment.CurrentDirectory, pngfile))));
             mainHomeworkShow(classId);
         }
-
 
         //显示主页面，加载动态控件,参数是classId
         public void mainHomeworkShow(String clId)
@@ -96,6 +103,7 @@ namespace HAMS.Student.StudentView
             }
 
         }
+
         //打开具体的做作业界面的点击事件
         private void doHomework_Click(object sender,RoutedEventArgs e)
         {
@@ -112,6 +120,7 @@ namespace HAMS.Student.StudentView
                 MessageBox.Show("该作业已逾期，无法再进行作答");
             }
         }
+
         //查看排行榜的点击事件（后面还要传参，这里目前是这样写)
         private void homRk(object sender, RoutedEventArgs e)
         {
@@ -136,7 +145,7 @@ namespace HAMS.Student.StudentView
             this.Visibility = Visibility.Hidden;
         }
 
-
+        //作业管理界面跳转
         private void homeworkManagement_Click(object sender, RoutedEventArgs e)
         {
             if (true)//里面是验证函数
@@ -150,6 +159,7 @@ namespace HAMS.Student.StudentView
             }
         }
 
+        //返回上一界面跳转
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
             if (true)//里面是验证函数
@@ -163,11 +173,13 @@ namespace HAMS.Student.StudentView
             }
         }
 
+        //注销，退出系统
          private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             App.Current.Shutdown();
         }
 
+        //作业预警界面跳转
         private void homeworkAlert_Click(object sender, RoutedEventArgs e)
         {
             if (true)//里面是验证函数
@@ -181,6 +193,7 @@ namespace HAMS.Student.StudentView
             }
         }
 
+        //刷新功能
         private void BtnRefresh_Click(object sender, RoutedEventArgs e)
         {
             //首先删除listview里面的东西

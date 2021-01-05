@@ -26,6 +26,8 @@ namespace HAMS.Student.StudentView
         public String account { set; get; }
         public String notId { set; get; }
         public String classSpecId { set; get; }
+
+        //构造函数
         public HomeworkSubmit(String account,String name,String notId,String classSpecId,string pgfile)
         {
             InitializeComponent();
@@ -44,11 +46,13 @@ namespace HAMS.Student.StudentView
             textBoxComment.Text = result[1];
         }
 
+        //注销，退出系统
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             App.Current.Shutdown();
         }
 
+        //返回上一界面
         private void btnComeback_Click(object sender, RoutedEventArgs e)
         {
             if (true)//里面是验证函数
@@ -63,6 +67,7 @@ namespace HAMS.Student.StudentView
             }
         }
 
+        //跳转至作业管理主界面
         private void btnHomeworkMana_Click(object sender, RoutedEventArgs e)
         {
             if (true)//里面是验证函数
@@ -76,6 +81,7 @@ namespace HAMS.Student.StudentView
             }
         }
 
+        //跳转至作业预警主界面
         private void btnHomeworkAlert_Click(object sender, RoutedEventArgs e)
         {
             if (true)//里面是验证函数

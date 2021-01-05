@@ -274,7 +274,7 @@ namespace HAMS.Teacher.TeacherService
             DataTable table3 = td.getTrueDeadLine(table2.Rows[0][0].ToString());
             return (DateTime)table3.Rows[0][0];
         }
-        public string[] GetHomURLAndNameByHomId(int homId)
+        public string[] getHomURLAndNameByHomId(int homId)
         {
             //根据homId获取文件在服务器上的路径
             DataTable tbHomURL = td.getHomURLAndNameByHomId(homId);
@@ -317,7 +317,7 @@ namespace HAMS.Teacher.TeacherService
           DataTable table1 =  td.getClassId(classSpecId);
             int classId=Convert.ToInt32(table1.Rows[0][0]) ;
             DataTable table2 = td.getNotIdByClassIdAndNotTitle(homeworkTitle, classId);
-            DataTable table3 = td.GetSubmitTime(table2.Rows[0][0].ToString());
+            DataTable table3 = td.getSubmitTime(table2.Rows[0][0].ToString());
             string submitTime = table3.Rows[0][0].ToString();
             return submitTime;
         }

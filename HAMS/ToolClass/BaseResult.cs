@@ -19,7 +19,7 @@ namespace HAMS.ToolClass
         public Object data { set; get; }
 
 
-
+        //返回一个新的BaseResult对象，并初始化各属性值
         public static BaseResult build(int code, String msg, Object data)
         {
 

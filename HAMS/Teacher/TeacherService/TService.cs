@@ -18,6 +18,7 @@ namespace HAMS.Teacher.TeacherService
     {
         private TDao td = new TDao();
 
+        //登录验证函数
         public BaseResult login(string account, string pw)
         {
             if (account == "" || pw == "")
@@ -40,22 +41,23 @@ namespace HAMS.Teacher.TeacherService
 
         }
 
-        
+        //根据homId获取学生的作业备注
         public String getPostilByHomId(int homId)
         {
-            //根据homId获取学生的作业备注
+            
             DataTable tbHomURL = td.getPostilByHomId(homId);
             string homURL = tbHomURL.Rows[0][0].ToString();
             return homURL;
         }
-        
 
+        //批改作业，往数据库中写入成绩和点评
         public bool correctHomework(int homId, string score, string remark)
         {
-            //批改作业，往数据库中写入成绩和点评
+            
             bool flag = td.updateHomeworkByCorrect(homId, score, remark);
             return flag;
         }
+
         public string getNotIdFromClassSpecId(string classSpecId,string homeworkTitle)
         {
             DataTable tableClassId = td.getClassId(classSpecId);
@@ -67,6 +69,8 @@ namespace HAMS.Teacher.TeacherService
         //DateTime baseDate = new DateTime(1970, 1, 1);
         //DateTime result = temp.AddSeconds(timeStamp);
         //对truDeadline用datetime
+
+        //发布作业公告函数
         public String announceNotice(DateTime truDeadline, String content, String notTitle, String classSpecId, String teacherSpecId, String localpath = "",String notURLName = "")
         {
             Notice notice = new Notice();
@@ -163,11 +167,12 @@ namespace HAMS.Teacher.TeacherService
            
 
             int classId = notice.ClassId;
-            //调用学生角色的业务层添加作业函数，该函数负责调用Dao层将作业插入数据库homework表
+            //调用添加作业函数，该函数负责调用Dao层将作业插入数据库homework表
             //[studentDao文件夹下某Dao文件的一个对象].insertHomework(classId,teacherId,notId);
             //该函数还需要根据classId，获得每个选课学生的stuId，然后依次在作业表中根据(stuId,classId,teacherId,notId)进行插入
             DataTable tbStuId = td.getStuIdFromClassId(notice.ClassId);
             int stuidNum = tbStuId.Rows.Count;  //获取所有选课学生的数量
+            //插入作业
             for (int i = 0; i < stuidNum; i++)
             {
                 string stuId = tbStuId.Rows[i][0].ToString();  //获取每一个学生的id号
@@ -192,6 +197,7 @@ namespace HAMS.Teacher.TeacherService
             return "发布公告成功";
         }
 
+        //修改作业公告函数
         public String modifyNotice(DateTime truDeadline, String content, String notTitle, String classSpecId, String teacherSpecId, String localpath = "", String notURLName = "")
         {
             Notice notice = new Notice();
@@ -243,7 +249,7 @@ namespace HAMS.Teacher.TeacherService
 
             }
 
-            //调用插入作业公告函数，将公告插入数据库notice表
+            //调用更新作业公告函数，更新数据库notice表中该公告信息
             flag = td.updateNotice(truDeadline, content, notURLName,notId);
             if (!flag)
             {
@@ -252,9 +258,10 @@ namespace HAMS.Teacher.TeacherService
             return "更新公告成功";
         }
 
+        //根据作业Id获取成绩和点评
         public string[] getScoreAndRemarkByHomId(int homId)
         {
-            //根据作业Id获取成绩和点评
+           
             DataTable tbScoreAndRemark = td.getScoreAndRemarkByHomId(homId);
             string[] Scoreinfos = new string[2];
             Scoreinfos[0] = tbScoreAndRemark.Rows[0][0].ToString();
@@ -265,6 +272,8 @@ namespace HAMS.Teacher.TeacherService
             }
             return Scoreinfos;
         }
+
+        //获得先前设置的截止时间
         public DateTime getPreviousDateTime(String classSpaceId,String homeworkTitle)
         {
             DataTable table1 = td.getClassId(classSpaceId);
@@ -274,6 +283,8 @@ namespace HAMS.Teacher.TeacherService
             DataTable table3 = td.getTrueDeadLine(table2.Rows[0][0].ToString());
             return (DateTime)table3.Rows[0][0];
         }
+
+        //根据homId获取文件在服务器上的路径
         public string[] GetHomURLAndNameByHomId(int homId)
         {
             //根据homId获取文件在服务器上的路径
@@ -284,7 +295,7 @@ namespace HAMS.Teacher.TeacherService
             return homURLInfos;
         }
 
-
+        //获得作业附件名
         public string getNotURLName(String notTitle, String classSpecId)
         {
             //根据notTitle、 classSpecId获取作业附件URL名
@@ -302,6 +313,8 @@ namespace HAMS.Teacher.TeacherService
 
             
         }
+
+        ////删除作业公告附件URL，用于实现上传新的作业附件
         public bool deleteNotURL(string classSpecId,string notTitle,string notFileName)
         {
             //删除作业公告附件URL，用于实现上传新的作业附件
@@ -312,6 +325,8 @@ namespace HAMS.Teacher.TeacherService
             return FtpUpDown.delFile(FileFullPath, out errorinfo);
             
         }
+
+        //查询发布作业公告的时间并返回
         public string pasteSubmitTimeInForm(string classSpecId, string homeworkTitle)
         {
           DataTable table1 =  td.getClassId(classSpecId);
@@ -322,6 +337,7 @@ namespace HAMS.Teacher.TeacherService
             return submitTime;
         }
 
+        //删除作业公告
         public String deleteHomeworkNotice(String classSpecId, String homeworkTitle)
         {
             DataTable tbClassId = td.getClassId(classSpecId);
@@ -372,7 +388,7 @@ namespace HAMS.Teacher.TeacherService
             
         }
 
-
+        //获得学生的作业备注
         public string getPostilByForm(string classSpecId, string noticeName, string studentSpecId)
         {
             DataTable table1 = td.getStuIdFromStuSpecId(studentSpecId);
@@ -390,9 +406,10 @@ namespace HAMS.Teacher.TeacherService
 
         }
 
+        //根据homId获取stuInfo(学号+“ ”+姓名）
         public string getStudentInfoByHomId(int homId)
         {
-            //根据homId获取stuInfo(学号+“ ”+姓名）
+            
             DataTable tbStuId = td.getStuIdByHomId(homId);
             string stuId = tbStuId.Rows[0][0].ToString();
             DataTable tbStuInfo = td.getStudentNameAndIdByStuID(stuId);
@@ -447,11 +464,13 @@ namespace HAMS.Teacher.TeacherService
             return td.getTeacherId(TeacherSpecId);
         }
 
+        //获得教师主界面左侧展示的信息，就是教授的课堂信息
         public DataTable loadMainFormLeft(string teacherSpecId)
         {
             return td.loadMainFormLeft(teacherSpecId);
         }
 
+        //获得该课堂发布的公告数量
         public String getNoticeNum(string classId)
         {
             return td.getNoticeNum(classId).ToString();
@@ -462,15 +481,18 @@ namespace HAMS.Teacher.TeacherService
             return td.getStuNum(classId).ToString();
         }
 
+        //通过教师id获得课堂id
         public DataTable getClassIdByTId(string teacherId)
         {
             return td.getClassIdByTId(teacherId);
         }
 
+        //该函数获得近期的作业公告列表，对应于教师主界面右侧的信息。
         public DataTable getRecentNoticeByClassId(string classId)
         {
             return td.getRecentNoticeByClassId(classId);
         }
+
 
         public DataTable getClassInfoByClassID(String classId)
         {
@@ -492,21 +514,25 @@ namespace HAMS.Teacher.TeacherService
             return td.deleteNotice(noticeId);
         }
 
+        //根据作业公告id查询作业附件名称
         public DataTable getNotURLNameByNotId(int notId)
         {
             return td.getNotURLNameByNotId(notId);
         }
 
+        //根据作业公告id查询已批改作业信息
         public DataTable selectHomeworkCheckedInfo(String notId)
         {
             return td.selectHomeworkCheckedInfo(notId);
         }
 
+        //根据学生id查询学生姓名和学生具体学号
         public DataTable getStudentNameAndIdByStuID(String stuId)
         {
             return td.getStudentNameAndIdByStuID(stuId);
         }
 
+        //根据公告标题、课堂号来查询该作业公告的具体描述
         public String getNotDespByClassIdAndNotTitle(String classId, String notTitle)
        {
             return td.getNotDespByClassIdAndNotTitle(notTitle,classId).Rows[0][0].ToString();

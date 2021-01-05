@@ -34,7 +34,5 @@ namespace HAMS.Entity
         public int TeacherId { set; get; }
 
         public int NotId { set; get; }
-
-
     }
 }

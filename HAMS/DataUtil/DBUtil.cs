@@ -10,6 +10,7 @@ namespace HAMS.DataUtil
     class DBUtil
     {
         private static MySqlConnection conn;
+        //初始化、具体实现数据库连接的函数
         private static void init()
         {
             try

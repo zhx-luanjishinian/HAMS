@@ -20,6 +20,7 @@ namespace HAMS.Teacher.TeacherView
     /// </summary>
     public partial class BreifHomework : UserControl
     {
+        //初始化用户自定义控件类
         public BreifHomework()
         {
             InitializeComponent();

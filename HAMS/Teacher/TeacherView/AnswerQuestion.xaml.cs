@@ -25,14 +25,14 @@ namespace HAMS.Teacher.TeacherView
     public partial class AnswerQuestion : Window
     {
         SDao sd = new SDao();
-        public String notId { set; get; }
-        public String classSpecId { set; get; }
-        public String name { set; get; }
-        public String account { set; get; }
-        public String teacherName { set; get; }
-        private SService ss = new SService();
+        public String notId { set; get; }   //作业公告id
+        public String classSpecId { set; get; }    //课堂号id
+        public String name { set; get; }     //学生姓名
+        public String account { set; get; }   //教师工号
+        public String teacherName { set; get; }    //教师姓名
+        private SService ss = new SService();   
         
-
+        //构造函数
         public AnswerQuestion(String account,String name,String classSpecId,String notId,String notName)
         {
             InitializeComponent();
@@ -116,7 +116,7 @@ namespace HAMS.Teacher.TeacherView
 
         }
         
-        //btnInsert的点击事件
+        //btnInsert的点击事件（）
         private void btnInsert_Click(object sender,RoutedEventArgs e)
         {
             //进行信息的保存
@@ -200,6 +200,7 @@ namespace HAMS.Teacher.TeacherView
             listViewQuestionAndAnswer.Items.Add(ivi);
            
         }
+        //加载目前已有疑问和答疑
         private void loadQuestionAndAnswer(string noteId, AnswerQuestion newAnswerQuestion)
         {
             //进入答疑界面时加载目前已经有的疑问和解答
@@ -260,7 +261,7 @@ namespace HAMS.Teacher.TeacherView
             StudentAskQuestion stuControl = (StudentAskQuestion)stuCanvas.Parent;
             stuControl.teacherResponse.Visibility = Visibility.Visible;
         }
-
+        //提交教师答疑信息
         private void btnbtnInsert_Click(object sender, RoutedEventArgs e)
         {
             //进入答疑界面时加载目前已经有的疑问和解答

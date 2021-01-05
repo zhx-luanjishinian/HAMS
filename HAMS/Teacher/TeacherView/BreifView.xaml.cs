@@ -22,10 +22,11 @@ namespace HAMS.Teacher.TeacherView
     /// </summary>
     public partial class BreifView : Window
     {
-        
+        //教师业务类对象
         TeacherService.TService ts = new TeacherService.TService();
-       
-        public string pngfile;//头像路径
+        //头像路径
+        public string pngfile;
+        //构造函数
         public BreifView(string courseNum,string courseName,string tId,string tName, string pgfile)
         {
             //生成基本信息
@@ -76,6 +77,7 @@ namespace HAMS.Teacher.TeacherView
 
             }
         }
+        //修改作业公告按钮点击事件
         private void btnModify_Click(object sender, RoutedEventArgs e)
         {
            
@@ -94,6 +96,7 @@ namespace HAMS.Teacher.TeacherView
             newAnnounceNotice.Show();
             this.Visibility = System.Windows.Visibility.Hidden;
         }
+        //删除作业公告按钮点击事件
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             //删除服务器上的作业附件
@@ -151,11 +154,12 @@ namespace HAMS.Teacher.TeacherView
         }
 
         // public BreifV
+        //注销按钮点击事件
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             App.Current.Shutdown();
         }
-
+        //返回按钮点击事件
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
             if (true)//里面是验证函数
@@ -167,7 +171,7 @@ namespace HAMS.Teacher.TeacherView
                 this.Visibility = System.Windows.Visibility.Hidden;
             }
         }
-
+        //发布作业按钮点击跳转事件
         private void btnDeliverHomework_Click(object sender, RoutedEventArgs e)
         {
             // 打开子窗体
@@ -178,7 +182,7 @@ namespace HAMS.Teacher.TeacherView
             // 隐藏自己(父窗体)
             this.Visibility = System.Windows.Visibility.Hidden;
         }
-
+       // 查看作业公告详情点击跳转事件
         private void btnCheckDetail_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Controls.Button sonBtn = (System.Windows.Controls.Button)sender;  //获取当前点击的那个按钮

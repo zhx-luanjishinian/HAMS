@@ -20,6 +20,7 @@ namespace HAMS.Teacher.TeacherView
     /// </summary>
     public partial class TeachClass : UserControl
     {
+        //构造函数
         public TeachClass()
         {
             InitializeComponent();

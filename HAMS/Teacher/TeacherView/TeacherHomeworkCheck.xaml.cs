@@ -42,7 +42,7 @@ namespace HAMS.Teacher.TeacherView
         public string pngfile;//头像路径
         public string teacherName;
         public string teacherSpecId;
-        //下方函数才是真正需要的
+        
         public TeacherHomeworkCheck(int[] hmIds, int idex, string notTitle, string studentInfo, string pgfile,bool IfCorrect = false)
         {
             InitializeComponent();
@@ -158,7 +158,7 @@ namespace HAMS.Teacher.TeacherView
         }
 
 
-
+        //下载作业
         private void btnDownload_Click(object sender, RoutedEventArgs e)
         {
                        
@@ -188,7 +188,7 @@ namespace HAMS.Teacher.TeacherView
                     System.Windows.MessageBox.Show("下载失败：" + errorinfo + "");
             }
         }
-
+        //批改作业
         private void btnCorrect_Click(object sender, RoutedEventArgs e)
         {
             string score = "";//点评的成绩
@@ -269,6 +269,7 @@ namespace HAMS.Teacher.TeacherView
             this.Visibility = System.Windows.Visibility.Hidden;
         }
 
+        //切换下一个学生
         private void btnNext_Click(object sender, RoutedEventArgs e)
         {
             
@@ -297,7 +298,7 @@ namespace HAMS.Teacher.TeacherView
             }
             
         }
-
+        //切换上一个学生
         private void btnBefore_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -323,7 +324,7 @@ namespace HAMS.Teacher.TeacherView
             }
             
         }
-
+        //注销
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
         

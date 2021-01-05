@@ -174,11 +174,12 @@ namespace HAMS.Teacher.TeacherView
             ca.Children.Add(chart);
         }
 
+        //注销按钮
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             App.Current.Shutdown();
         }
-
+        //返回按钮
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
             CheckingClassHomework cch = new CheckingClassHomework(tbNotTitle.Text, description, tSpecId, tName, classSpecId, className, this.pngfile);
@@ -193,7 +194,7 @@ namespace HAMS.Teacher.TeacherView
         {
 
         }
-
+        //完成统计
         private void btnFinishStatistic_Click(object sender, RoutedEventArgs e)
         {
             //设置按钮的背景颜色
@@ -204,7 +205,7 @@ namespace HAMS.Teacher.TeacherView
             //绘制完成统计饼图
             initPie();
         }
-
+        //成绩等级统计
         private void btnScoreStatistic_Click_1(object sender, RoutedEventArgs e)
         {
             

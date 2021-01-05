@@ -314,6 +314,7 @@ namespace HAMS.Teacher.TeacherDao
             return table;
 
         }
+        //根据notId查询学生作业路径，用来在作业批改界面下载学生的作业。
         public DataTable getNotURLByNotId(String notId)    
         {
             //根据notId查notURL
@@ -368,6 +369,7 @@ namespace HAMS.Teacher.TeacherDao
             return table;
 
         }
+        //根据课堂id查到学生id,分数和作业路径
         public DataTable getClassInfoByClassID(String classId)
         {
             //此类用来装返回的对象
@@ -379,6 +381,7 @@ namespace HAMS.Teacher.TeacherDao
 
         }
 
+        //根据学生Id和作业公告id查到作业id
         public DataTable getHomIdByStuIdAndNotId(String stuId,string noteId)
         {
             String sql = "select homId from homework where stuId=@nid and notId=@ntId";
@@ -388,7 +391,7 @@ namespace HAMS.Teacher.TeacherDao
             return table;
         }
 
-
+        //根据作业id查到学生id
         public DataTable getStuIdByHomId(int homId)
         {
             //根据homId查询stuId
@@ -398,12 +401,13 @@ namespace HAMS.Teacher.TeacherDao
             return table;
         }
 
+        //根据公告id查到评论信息
         public DataTable getComment(string notId)
         {
             //根据homId查询stuId
             String sql = "select * from comment where notId=@hid";
             MySqlParameter parameter = new MySqlParameter("@hid", notId);
-            DataTable table = DataUtil.DataOperation.dataQuery(sql, parameter);  //查到学生id,分数,作业路径
+            DataTable table = DataUtil.DataOperation.dataQuery(sql, parameter); 
             return table;
         }
 
@@ -454,6 +458,7 @@ namespace HAMS.Teacher.TeacherDao
             return result;
 
         }
+        //更新答疑
         public bool updateComment(string teacherComment,string commentId)
         {
 
@@ -467,6 +472,7 @@ namespace HAMS.Teacher.TeacherDao
             MySqlParameter para3 = new MySqlParameter("@nid", commentId);
             return DataUtil.DataOperation.dataUpdate(sql, para2,para3);//如果插入成功，则返回true
         }
+        //根据具体教师工号返回教师性别
         public DataTable getSexByTeaSpecId(string teacherSpecId)
         {
             //根据teacherSpecId查询sex
@@ -475,7 +481,7 @@ namespace HAMS.Teacher.TeacherDao
             DataTable table = DataUtil.DataOperation.dataQuery(sql, parameter);  //查到学生id,分数,作业路径
             return table;
         }
-
+        //根据学号返回学生性别
         public DataTable getSexByStuSpecId(string stuSpecId)
         {
             //根据teacherSpecId查询sex
@@ -485,6 +491,7 @@ namespace HAMS.Teacher.TeacherDao
             return table;
         }
 
+        //获得该公告的答疑数量
         public int getCommentNumByNotId(String noticeId)
         {
             //根据notId查询答疑表中的行数
@@ -494,6 +501,7 @@ namespace HAMS.Teacher.TeacherDao
             return table.Rows.Count;
         }
 
+        //删除答疑评论
         public Boolean deleteComment(String noticeId)
         {
             //因为需要级联删除，因此需要首先删除comment表中的数据,才能删除notice表中的数据

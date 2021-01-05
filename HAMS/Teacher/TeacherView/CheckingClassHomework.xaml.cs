@@ -24,7 +24,8 @@ namespace HAMS.Teacher.TeacherView
     /// </summary>
     public partial class CheckingClassHomework : Window
     {
-        TeacherDao.TDao td = new TeacherDao.TDao();
+
+        TeacherService.TService ts = new TeacherService.TService();
         SService ss = new SService();
         private int[] homIdCorrecteds;//已批改作业学生的homId数组
         private int[] homIdNeedCorrects;//待批改作业学生的homId数组
@@ -44,9 +45,13 @@ namespace HAMS.Teacher.TeacherView
 
 
 
-        TeacherService.TService ts = new TeacherService.TService();
         
-      
+
+
+
+
+        TeacherDao.TDao td = new TeacherDao.TDao();
+
 
         public CheckingClassHomework(string homeworkTitle, string description, string teacherSpecId, string teacherName, string classSpecId, string className,string pgfile)
         {
@@ -99,6 +104,7 @@ namespace HAMS.Teacher.TeacherView
 
         }
 
+        //加载已完成学生信息
         public void loadCorrected(string classSpecId, string homeworkTitle)
         {
             DataTable table1 = ts.getClassId(classSpecId);
@@ -171,57 +177,7 @@ namespace HAMS.Teacher.TeacherView
                 homIdCorrecteds[i] = homId;//保存homId到数组
             }
         }
-
-        private void btnHomeworkCorrect1_Click(object sender, RoutedEventArgs e)//检查作业按钮
-        {
-            Button sonBtn = (Button)sender;
-            Canvas stuCanvas = (Canvas)sonBtn.Parent;
-            StudentCheck stuControl = (StudentCheck)stuCanvas.Parent;
-            //获得学生姓名
-            string studentName = stuControl.lbStudentInfo2.Content.ToString();
-            //获得学生学号
-            string studentId = stuControl.lbStudentInfo1.Content.ToString();
-            //还需要写根据学号得作业提交描述
-            string postil = ts.getPostilByForm(tbClassInfo.Text,lbNotTitle.Content.ToString(),studentId);
-            //MessageBox.Show(postil);
-            int index = stuControl.index;
-            string notTitle = lbNotTitle.Content.ToString();
-            string studentInfo = stuControl.lbStudentInfo1.Content.ToString()+" "+stuControl.lbStudentInfo2.Content.ToString() ;
-            bool ifCorrect ;//表示是否进行了作业批改
-            if (stuControl.btnHomeworkCorrect1.Content.ToString() == "检查作业")//说明作业已被批改，需要查询出之前的批改记录
-            {
-                ifCorrect = true;
-                //需要传入的是已批改的homIds列表
-                TeacherHomeworkCheck newTeacherHomeworkCheck = new TeacherHomeworkCheck(homIdCorrecteds, index, notTitle, studentInfo, this.pngfile,ifCorrect);
-                newTeacherHomeworkCheck.pngfile = this.pngfile;
-                newTeacherHomeworkCheck.className = tbClassInfo1.Text;
-                newTeacherHomeworkCheck.classSpecId = tbClassInfo.Text;
-                newTeacherHomeworkCheck.description = textBlockDescription.Text;   //有问题
-                newTeacherHomeworkCheck.tbTeacherSpecId.Text = tbTeacherInfo.Text;
-                newTeacherHomeworkCheck.tbTeacherName.Text = tbTeacherInfo1.Text;    //加载教师工号和姓名
-
-                newTeacherHomeworkCheck.Show();
-            }
-            else
-            {
-                ifCorrect = false;
-                //需要传入的是待批改的homIds列表
-                TeacherHomeworkCheck newTeacherHomeworkCheck = new TeacherHomeworkCheck(homIdNeedCorrects, index, notTitle, studentInfo,this.pngfile, ifCorrect);
-                
-                newTeacherHomeworkCheck.pngfile = this.pngfile;
-                newTeacherHomeworkCheck.className = tbClassInfo1.Text;
-                newTeacherHomeworkCheck.classSpecId = tbClassInfo.Text;
-                newTeacherHomeworkCheck.description = textBlockDescription.Text;   //有问题
-                newTeacherHomeworkCheck.tbTeacherSpecId.Text = tbTeacherInfo.Text;
-                newTeacherHomeworkCheck.tbTeacherName.Text = tbTeacherInfo1.Text;    //加载教师工号和姓名
-                newTeacherHomeworkCheck.Show();
-            }
-            
-            
-            this.Visibility = System.Windows.Visibility.Hidden;
-            
-        }
-
+        //加载待批改学生信息
         public void loadNeedCorrect(string classSpecId, string homeworkTitle)
         {
             DataTable table5 = td.getClassId(classSpecId);
@@ -284,7 +240,7 @@ namespace HAMS.Teacher.TeacherView
                 homIdNeedCorrects[i] = homId;//保存homId到数组
             }
         }
-
+        //加载未完成学生信息
         public void loadUnfinished(string classSpecId, string homeworkTitle)
         {
             DataTable table1 = td.getClassId(classSpecId);
@@ -343,12 +299,64 @@ namespace HAMS.Teacher.TeacherView
                 homIdUnfinisheds[i] = homId;//保存homId到数组
             }
         }
+
+        //对应于批改作业/检查作业按钮的点击事件
+        private void btnHomeworkCorrect1_Click(object sender, RoutedEventArgs e)//检查作业按钮
+        {
+            Button sonBtn = (Button)sender;
+            Canvas stuCanvas = (Canvas)sonBtn.Parent;
+            StudentCheck stuControl = (StudentCheck)stuCanvas.Parent;
+            //获得学生姓名
+            string studentName = stuControl.lbStudentInfo2.Content.ToString();
+            //获得学生学号
+            string studentId = stuControl.lbStudentInfo1.Content.ToString();
+            //还需要写根据学号得作业提交描述
+            string postil = ts.getPostilByForm(tbClassInfo.Text, lbNotTitle.Content.ToString(), studentId);
+            //MessageBox.Show(postil);
+            int index = stuControl.index;
+            string notTitle = lbNotTitle.Content.ToString();
+            string studentInfo = stuControl.lbStudentInfo1.Content.ToString() + " " + stuControl.lbStudentInfo2.Content.ToString();
+            bool ifCorrect;//表示是否进行了作业批改
+            if (stuControl.btnHomeworkCorrect1.Content.ToString() == "检查作业")//说明作业已被批改，需要查询出之前的批改记录
+            {
+                ifCorrect = true;
+                //需要传入的是已批改的homIds列表
+                TeacherHomeworkCheck newTeacherHomeworkCheck = new TeacherHomeworkCheck(homIdCorrecteds, index, notTitle, studentInfo, this.pngfile, ifCorrect);
+                newTeacherHomeworkCheck.pngfile = this.pngfile;
+                newTeacherHomeworkCheck.className = tbClassInfo1.Text;
+                newTeacherHomeworkCheck.classSpecId = tbClassInfo.Text;
+                newTeacherHomeworkCheck.description = textBlockDescription.Text;   //有问题
+                newTeacherHomeworkCheck.tbTeacherSpecId.Text = tbTeacherInfo.Text;
+                newTeacherHomeworkCheck.tbTeacherName.Text = tbTeacherInfo1.Text;    //加载教师工号和姓名
+
+                newTeacherHomeworkCheck.Show();
+            }
+            else
+            {
+                ifCorrect = false;
+                //需要传入的是待批改的homIds列表
+                TeacherHomeworkCheck newTeacherHomeworkCheck = new TeacherHomeworkCheck(homIdNeedCorrects, index, notTitle, studentInfo, this.pngfile, ifCorrect);
+
+                newTeacherHomeworkCheck.pngfile = this.pngfile;
+                newTeacherHomeworkCheck.className = tbClassInfo1.Text;
+                newTeacherHomeworkCheck.classSpecId = tbClassInfo.Text;
+                newTeacherHomeworkCheck.description = textBlockDescription.Text;   //有问题
+                newTeacherHomeworkCheck.tbTeacherSpecId.Text = tbTeacherInfo.Text;
+                newTeacherHomeworkCheck.tbTeacherName.Text = tbTeacherInfo1.Text;    //加载教师工号和姓名
+                newTeacherHomeworkCheck.Show();
+            }
+
+
+            this.Visibility = System.Windows.Visibility.Hidden;
+
+        }
+        //注销程序
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             //注销程序
             App.Current.Shutdown();
         }
-
+        //返回按钮，返回教师的所有作业公告总览界面，就是BriefView
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
             BreifView newBreifView = new BreifView(tbClassInfo.Text.ToString(),tbClassInfo1.Text.ToString(),tbTeacherInfo.Text.ToString(),tbTeacherInfo1.Text.ToString(),this.pngfile);
@@ -356,7 +364,7 @@ namespace HAMS.Teacher.TeacherView
             newBreifView.Show();
             this.Visibility = System.Windows.Visibility.Hidden;
         }
-
+        //查看答疑的按钮，点击进入答疑区
         private void btnAnswerQuestion_Click(object sender, RoutedEventArgs e)
         {
             AnswerQuestion newAnswerQuestion = new AnswerQuestion(lbNotTitle.Content.ToString(), tbTeacherInfo1.Text, notId);   //这里有问题
@@ -366,7 +374,7 @@ namespace HAMS.Teacher.TeacherView
 
            // this.Visibility = System.Windows.Visibility.Hidden;
         }
-
+        //刷新按钮
         private void btnRefresh_Click(object sender, RoutedEventArgs e)
         {
             tbStuNameSearch.Text = null;//因为是刷新整个下半部分，则查询框里的值也没有了
@@ -384,7 +392,7 @@ namespace HAMS.Teacher.TeacherView
             loadUnfinished(tbClassInfo.Text, lbNotTitle.Content.ToString());
 
         }
-
+        //实现点击作业统计按钮，创建作业统计的新界面。
         private void btnHomeworkStatistic_Click(object sender, RoutedEventArgs e)
         {
             HomeworkStatistic hs = new HomeworkStatistic(this.pngfile);
@@ -399,13 +407,13 @@ namespace HAMS.Teacher.TeacherView
             hs.Show();
             this.Visibility = System.Windows.Visibility.Hidden;
         }
-
+        //实现鼠标聚焦在查询框时，文本消失
         private void tbSearch_GotFocus(object sender, RoutedEventArgs e)
         {
             //实现鼠标聚焦时文本消失
             tbStuNameSearch.Text = "";
         }
-
+        //进入答疑界面时加载目前已经有的疑问和解答
         private void loadQuestionAndAnswer(string noteId, AnswerQuestion newAnswerQuestion)
         {
             //进入答疑界面时加载目前已经有的疑问和解答
@@ -440,7 +448,7 @@ namespace HAMS.Teacher.TeacherView
             }
 
         }
-
+        //提交疑问
         private void btnSubmitQuestion_Click(object sender, RoutedEventArgs e)
         {
             //Teach                        erAnswerQuestion newTeacherAnswerQuestion = new TeacherAnswerQuestion();
@@ -451,6 +459,7 @@ namespace HAMS.Teacher.TeacherView
             stuControl.teacherResponse.Visibility = Visibility.Visible;  //点击，此时可见
 
         }
+        //插入回复
         private void btnbtnInsert_Click(object sender, RoutedEventArgs e)
         {
             //TeacherAnswerQuestion newTeacherAnswerQuestion = new TeacherAnswerQuestion();
@@ -474,7 +483,7 @@ namespace HAMS.Teacher.TeacherView
             }
             stuControl.tbResponse.IsReadOnly = true;
         }
-
+        //查询按钮的点击事件，实现查询功能
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
             

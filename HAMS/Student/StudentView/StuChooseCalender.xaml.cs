@@ -24,6 +24,8 @@ namespace HAMS.Student.StudentView
         public String account { set; get; }
         public String notId { set; get; }
         private SService ss = new SService();
+
+        //构造函数
         public StuChooseCalender(String account,String notId)
         {
             InitializeComponent();
@@ -31,6 +33,8 @@ namespace HAMS.Student.StudentView
             this.notId = notId;
        
         }
+
+        //设置自定义截止时间
         public bool insertDefDeadLine(String account,String notId)
         {
             String time = tpStartDate.Text + " " + tpStartTime.Text;
@@ -48,6 +52,7 @@ namespace HAMS.Student.StudentView
             }
         }
 
+        //点击确定设置成功之后界面跳转事件
         private void BtnOk_Click(object sender, RoutedEventArgs e)
         {
             //如果自定义截止时间设置成功
@@ -59,6 +64,7 @@ namespace HAMS.Student.StudentView
            
         }
 
+        //点击确定设置取消之后的事件
         private void BtnCancl_Click(object sender, RoutedEventArgs e)
         {
             tpStartDate.Text = "";

@@ -21,8 +21,9 @@ namespace HAMS.Teacher.TeacherView
     public partial class RecentNoticeControll : UserControl
     {
         public string desrciption;
-        public string classSpecId;
+        public string classSpecId;  //作业公告描述，课堂号，课堂名称
         public string className;
+        //构造函数
         public RecentNoticeControll()
         {
             InitializeComponent();

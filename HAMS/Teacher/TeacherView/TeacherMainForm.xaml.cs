@@ -24,9 +24,11 @@ namespace HAMS.Teacher.TeacherView
     /// </summary>
     public partial class TeacherMainForm : Window
     {
-        
+        //业务类对象
         private TService ts = new TService();
+        //图片路径
         public string pngfile;
+        //构造函数，其中包括加载用户自定义控件
         public TeacherMainForm(string session,string tname,string pgfile)
         {
             InitializeComponent();
@@ -99,12 +101,8 @@ namespace HAMS.Teacher.TeacherView
                 }
                
             }
-
-        //private void btnModify_Click(object sender, RoutedEventArgs e)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
+        
+        //点击TeachClassControl控件的事件
         private void mousedown(object sender, MouseButtonEventArgs e)
         {
             //记录点击的是哪个控件
@@ -126,12 +124,12 @@ namespace HAMS.Teacher.TeacherView
             newBreif.Show();
             this.Visibility = System.Windows.Visibility.Hidden;
         }
-
+        //注销按钮点击事件
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             App.Current.Shutdown();    //注销，关闭系统
         }
-
+        //点击近期作业公告事件
         private void btnRecntNo1_Click(object sender, RoutedEventArgs e)
         {
             //有一个按钮还是有问题，就一个

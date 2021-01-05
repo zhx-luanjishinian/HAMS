@@ -280,7 +280,7 @@ namespace HAMS.Student.StudentService
             return results;
         }
         //学生提交作业时需要调用该函数对作业表中的字段进行修改
-        public String SubmitHomework(string name, string classId, string account, string postil, string homUrlName, string notId, string localpath)
+        public String submitHomework(string name, string classId, string account, string postil, string homUrlName, string notId, string localpath)
         {
             //可以直接从前端界面取值，就不需要查库了
             //通过账号来获取到姓名

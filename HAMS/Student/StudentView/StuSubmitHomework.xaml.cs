@@ -22,13 +22,18 @@ namespace HAMS.Student.StudentView
     /// </summary>
     public partial class StuSubmitHomework : Window
     {
+        private SService ss = new SService();
         public string pngfile;
         public String account { set; get; }
         public String name { set; get; }
         public String notId { set; get; }
         public String classId { set; get; }
         public String message { set; get; }
-       
+
+        //文件对话框设置
+        OpenFileDialog ofd = new OpenFileDialog();//选择文件的对话框
+
+        //构造函数
         public StuSubmitHomework(String account, String name,String notId,String classId,string pgfile,String message)//真实课堂号
         {
             InitializeComponent();
@@ -46,12 +51,14 @@ namespace HAMS.Student.StudentView
         }
 
         
-
+        //注销，退出系统
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             App.Current.Shutdown();
         }
 
+
+        //返回上一界面
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
             if (true)//里面是验证函数
@@ -65,6 +72,8 @@ namespace HAMS.Student.StudentView
             }
         }
 
+
+        //跳转至作业管理主界面
         private void homeworkManagement_Click(object sender, RoutedEventArgs e)
         {
             if (true)//里面是验证函数
@@ -78,6 +87,8 @@ namespace HAMS.Student.StudentView
             }
         }
 
+
+        //跳转至作业预警主界面
         private void homeworkAlert_Click(object sender, RoutedEventArgs e)
         {
             if (true)//里面是验证函数
@@ -91,8 +102,7 @@ namespace HAMS.Student.StudentView
             }
         }
 
-
-        OpenFileDialog ofd = new OpenFileDialog();//选择文件的对话框
+        //选择文件按钮设置
         private void btnChooseFile_Click(object sender, RoutedEventArgs e)
         {
             //文件打开用到openFileDialog，文件保存是SaveFileDialog
@@ -132,8 +142,8 @@ namespace HAMS.Student.StudentView
                 */
             }
         }
-        
-        private SService ss = new SService();
+
+        //提交作业按钮点击事件
         private void btnSubmitHomework_Click(object sender, RoutedEventArgs e)
         {
             //public String SubmitHomework(string classId, string account, string postil, string homUrlName, string notId, string localpath)
@@ -149,7 +159,7 @@ namespace HAMS.Student.StudentView
             //System.Windows.MessageBox.Show(localpath);
             //System.Windows.MessageBox.Show(classId);
             //该方法实现向homework表中修改一条作业记录，且返回具体的信息提示用户
-            string message = ss.SubmitHomework(name,classId, account, postil, homUrlName, notId, localpath);
+            string message = ss.submitHomework(name,classId, account, postil, homUrlName, notId, localpath);
             System.Windows.MessageBox.Show(message);
             }
             //System.Windows.MessageBox.Show("提交成功！");//只要一个提示就OK，所以就注释了一个

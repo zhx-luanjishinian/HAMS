@@ -24,6 +24,8 @@ namespace HAMS.Teacher.TeacherDao
             //MessageBox.Show(table.Rows[0][2].ToString());->password
             return table;
         }
+
+        //查询教师主界面左侧信息
         public DataTable loadMainFormLeft(string teacherSpecId)
         {
             //sql语句
@@ -38,6 +40,7 @@ namespace HAMS.Teacher.TeacherDao
         
             return table;
         }
+        //查询教师布置作业的截止时间
         public DataTable getTrueDeadLine(String notId)
         {
             //sql语句
@@ -46,6 +49,7 @@ namespace HAMS.Teacher.TeacherDao
             DataTable table = DataUtil.DataOperation.dataQuery(sql, parameter);       
             return table;
         }
+        //查询作业公告发布时间
         public DataTable GetSubmitTime(string notId)
         {
             //sql语句
@@ -54,6 +58,7 @@ namespace HAMS.Teacher.TeacherDao
             DataTable table = DataUtil.DataOperation.dataQuery(sql, parameter);
             return table;
         }
+        //查找notId
         public DataTable getNotIdByClassIdAndNotTitle(String notTitle,int classId)    //根据名称和classId查notId
         {
             //sql语句
@@ -63,7 +68,7 @@ namespace HAMS.Teacher.TeacherDao
             DataTable table = DataUtil.DataOperation.dataQuery(sql, parameter,parameter1);
             return table;
         }
-
+        //根据公告标题和classId查询公告描述
         public DataTable getNotDespByClassIdAndNotTitle(String notTitle, String classId)    //根据名称和classId查content
         {
             //sql语句
@@ -73,6 +78,7 @@ namespace HAMS.Teacher.TeacherDao
             DataTable table = DataUtil.DataOperation.dataQuery(sql, parameter, parameter1);
             return table;
         }
+        //从数据库查询目前已有的作业公告
         public DataTable getNotice(string classSpaceId)  //从数据库查询目前已有的作业
         {
             
@@ -84,6 +90,7 @@ namespace HAMS.Teacher.TeacherDao
             return table;
 
         }
+        //新增作业公告
         public bool insertNotice(Notice notice)
         {
             String sql = "insert into notice (truDeadline,content,notURL,notURLName,notTitle,classId) values (@truDdl,@cont,@ntUrl,@ntUrlName,@ntTitle,@cid);";
@@ -96,7 +103,7 @@ namespace HAMS.Teacher.TeacherDao
             MySqlParameter para6 = new MySqlParameter("@cid", notice.ClassId);
             return DataUtil.DataOperation.dataAdd(sql, para1, para2, para3, para4, para5, para6);//如果插入成功，则返回true
         }
-
+        //更新作业公告
         public bool updateNotice(DateTime truDeadline,string content,string notURLName,int notId)
         {
             //根据notId更新truDeadline,content,notURLName
@@ -108,7 +115,7 @@ namespace HAMS.Teacher.TeacherDao
             MySqlParameter para4 = new MySqlParameter("@nid", notId);
             return DataUtil.DataOperation.dataAdd(sql, para1, para2, para3, para4);//如果插入成功，则返回true
         }
-
+        //根据课堂号获得课堂id
         public DataTable getClassId(string classSpecId)
         {
             //根据真实的课堂号获取课堂表里的自增主键课堂号classId
@@ -129,7 +136,7 @@ namespace HAMS.Teacher.TeacherDao
             return table;
 
         }
-       
+       //获得教师id
         public DataTable getTeacherId(String TeacherSpecId)
         {
             //根据教师工号获取课堂表里的自增主键教师号teacherId
@@ -139,7 +146,7 @@ namespace HAMS.Teacher.TeacherDao
             DataTable table = DataUtil.DataOperation.dataQuery(sql, para);
             return table;
         }
-
+        //查询发布公告数
         public int getNoticeNum(string classId)
         {
             //根据classId获取notice的数量
@@ -149,7 +156,7 @@ namespace HAMS.Teacher.TeacherDao
             DataTable table = DataUtil.DataOperation.dataQuery(sql, para);
             return table.Rows.Count;
         }
-
+        //获得学生人数
         public int getStuNum(string classId)
         {
             //根据classId获取notice的数量
@@ -159,7 +166,7 @@ namespace HAMS.Teacher.TeacherDao
             DataTable table = DataUtil.DataOperation.dataQuery(sql, para);
             return table.Rows.Count;
         }
-
+        //查询近期发布作业公告
         public DataTable getRecentNoticeByClassId(string classId)
         {
             //根据classId获取公告表里的全部内容
@@ -169,7 +176,7 @@ namespace HAMS.Teacher.TeacherDao
             DataTable table = DataUtil.DataOperation.dataQuery(sql, para);
             return table;
         }
-
+        //根据教师id获得classId
         public DataTable getClassIdByTId(string teacherId)
         {
             //根据teacherId获得classId
@@ -179,7 +186,7 @@ namespace HAMS.Teacher.TeacherDao
             DataTable table = DataUtil.DataOperation.dataQuery(sql, para);
             return table;
         }
-
+        //根据homeworkId获得附件地址
         public DataTable getHomURLByHomId(int homId)
         {
             //根据homId获得homURL
@@ -189,7 +196,7 @@ namespace HAMS.Teacher.TeacherDao
             DataTable table = DataUtil.DataOperation.dataQuery(sql, para);
             return table;
         }
-
+        //查询作业评语
         public DataTable getPostilByHomId(int homId)
         {
             //根据homId获得postil
@@ -199,7 +206,7 @@ namespace HAMS.Teacher.TeacherDao
             DataTable table = DataUtil.DataOperation.dataQuery(sql, para);
             return table;
         }
-
+        //更新作业批改信息
         public bool updateHomeworkByCorrect(int homId,string score,string remark)
         {
             String sql = "update homework set score = @sc,remark = @rm where homId = @hid;";
@@ -209,7 +216,7 @@ namespace HAMS.Teacher.TeacherDao
             MySqlParameter para3 = new MySqlParameter("@hid", homId);
             return DataUtil.DataOperation.dataUpdate(sql, para1, para2, para3);//如果更新成功，则返回true
         }
-
+        //查询作业批改信息
         public DataTable getScoreAndRemarkByHomId(int homId)    //需要用到的函数
         {
             //根据homId获取score和remark
@@ -220,6 +227,7 @@ namespace HAMS.Teacher.TeacherDao
 
             return table;
         }
+        //删除作业公告
         public Boolean deleteNotice(string noticeId)
         {
             //根据notTitle删除公告，此功能有问题
@@ -231,6 +239,7 @@ namespace HAMS.Teacher.TeacherDao
             MySqlParameter para = new MySqlParameter("@nId", noticeId);
             return DataUtil.DataOperation.dataDelete(sql, para);//如果删除成功，则返回true
         }
+        //删除作业
         public Boolean deleteHomework(String noticeId)
         {
             //因为需要级联删除，因此需要首先删除homework表中的数据,才能删除notice表中的数据
@@ -238,6 +247,7 @@ namespace HAMS.Teacher.TeacherDao
             MySqlParameter para = new MySqlParameter("@nId", noticeId);
             return DataUtil.DataOperation.dataDelete(sql1, para);//如果删除成功，则返回true
         }
+        //更新作业公告
         public Boolean updateNotice(int notId, string notTitle,string content)
         {
             //根据notId更新notTitle和ontent
@@ -248,6 +258,7 @@ namespace HAMS.Teacher.TeacherDao
             MySqlParameter para3 = new MySqlParameter("@notId", notId);
             return DataUtil.DataOperation.dataUpdate(sql, para1, para2, para3);//如果更新成功，则返回true
         }
+        //查询学生id
         public DataTable getStuIdFromClassId(int classId)
         {
             //根据classId获取公告表里的全部内容
@@ -257,6 +268,7 @@ namespace HAMS.Teacher.TeacherDao
             DataTable table = DataUtil.DataOperation.dataQuery(sql, para);
             return table;
         }
+        //查询学生id（根据学号）
         public DataTable getStuIdFromStuSpecId(string stuSpecId)
         {
             //根据学生学号查询学生Id
@@ -266,6 +278,7 @@ namespace HAMS.Teacher.TeacherDao
             DataTable table = DataUtil.DataOperation.dataQuery(sql, para);
             return table;
         }
+        //插入作业
         public bool insertHomework(Homework homework)
         {
             //发布作业公告后，需要在Homework表添加作业记录
@@ -280,6 +293,7 @@ namespace HAMS.Teacher.TeacherDao
             MySqlParameter para4 = new MySqlParameter("@notId", homework.NotId);
             return DataUtil.DataOperation.dataAdd(sql, para1, para2, para3, para4);//如果插入成功，则返回true
         }
+        //查询作业地址
         public DataTable getHomURLAndNameByHomId(int homId)
         {
             //根据homId获得homURL
@@ -289,6 +303,7 @@ namespace HAMS.Teacher.TeacherDao
             DataTable table = DataUtil.DataOperation.dataQuery(sql, para);
             return table;
         }
+        //查询公告附件名称
         public DataTable getNotURLNameByNotId(int notId)
         {
             //根据notId获得notURLName

@@ -25,7 +25,7 @@
             </Canvas>
             <Menu x:Name="menu" Height="51" Background="LightPink" Margin="-2,71,-10,0" VerticalAlignment="Top">
                 <Button x:Name="btnHomeworkMana" Height="40" Width="188" Content="作业管理" FontSize="14" FontWeight="Bold" Click="btnHomeworkMana_Click"/>
-                <Button x:Name="btnHomewordAlert" Height="40" Width="200" Content="作业预警" FontSize="14" FontWeight="Bold" Click="btnHomewordAlert_Click"/>
+                <Button x:Name="btnHomeworkAlert" Height="40" Width="200" Content="作业预警" FontSize="14" FontWeight="Bold" Click="btnHomewordAlert_Click"/>
 
             </Menu>
             <Canvas Height="29" Background="LightBlue"  Margin="-2,122,-1,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="833">

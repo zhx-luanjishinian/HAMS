@@ -26,6 +26,7 @@ namespace HAMS.Teacher.TeacherView
         public string pngfile;//头像路径
         private bool ifAnnounce;//是否是修改作业公告
         private bool upNotFile = false;//是否上传作业附件
+        //构造函数
         public AnnounceNotice(string tNum,string tName,string cId, string cName,string pgfile)
         {
             InitializeComponent();
@@ -40,6 +41,7 @@ namespace HAMS.Teacher.TeacherView
             
             ifAnnounce = false;//表示此公告是新公告，未经发布
         }
+        //构造函数（修改作业公告时）
         public AnnounceNotice(string tNum, string tName, string cSpecId, string cName,string nTitle,string nContent,DateTime nSubTime, string pgfile)
         {
             InitializeComponent();
@@ -71,11 +73,12 @@ namespace HAMS.Teacher.TeacherView
 
 
         }
+        //退出按钮事件
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             App.Current.Shutdown();
         }
-
+        //返回按钮事件
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
             BreifView newBreifView = new BreifView(lbClassSpecId.Text,labelcClassName.Content.ToString(),tbTeacherSpecId.Text,tbName.Text,this.pngfile);
@@ -84,7 +87,9 @@ namespace HAMS.Teacher.TeacherView
             // 隐藏自己(父窗体)
             this.Visibility = System.Windows.Visibility.Hidden;
         }
+
         OpenFileDialog ofd = new OpenFileDialog();//选择文件的对话框
+        //上传作业附件按钮点击事件
         private void btnUpload_Click(object sender, RoutedEventArgs e)
         {
             // 实现覆盖上传新的作业附件
@@ -171,7 +176,7 @@ namespace HAMS.Teacher.TeacherView
         }
 
         private TService ts = new TService();
-
+        //发布作业按钮点击事件
         private void btnAnnounce_Click(object sender, RoutedEventArgs e)
         {
             if(textBoxHomeworkTitle.Text == "")
@@ -238,7 +243,7 @@ namespace HAMS.Teacher.TeacherView
             }
         }
         }
-
+        //鼠标点击时，文字消失
         private void textBoxHomeworkTitle_GotFocus(object sender, RoutedEventArgs e)
         {
             if (!ifAnnounce)//当这个公告是没有发布的公告时，才需要实现此功能；如果是修改已发布公告，不需要实现文字消失
